@@ -1,0 +1,5 @@
+# mac
+.DS_Store
+
+# data files
+data/user/user_*.csv
