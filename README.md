@@ -1,4 +1,3 @@
-
 # EnergyPriceSimulationChallenge
 
 Welcome to EnergyPriceSimulationChallenge! This project is to challenge the analysis of big energy consumption data. We prepared two challenges. You can try either of them or maybe both :)
@@ -61,12 +60,12 @@ The data files have enegy consumption in every 5 minutes as you see this [sample
 
 Please analyze the energy consumption data and fiture out which price plan is the best for each user.
 
-@TODO: Price plans to be posted here
-@TODO: Detail of the rule to be described here
+- @TODO: Price plans to be posted here
+- @TODO: Detail of the rule to be described here
 
 ## Challenge 2 - Web Application
 
 Please create a web application to show each user's energy usages with time-series graph.
 
-@TODO: Detail of the rule to be described here
+- @TODO: Detail of the rule to be described here
 
