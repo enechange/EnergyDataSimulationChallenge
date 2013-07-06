@@ -1,8 +1,7 @@
 
-
 # EnergyPriceSimulationChallenge
 
-Welcome to EnergyPriceSimulationChallenge! This project is to challenge the analysis of big energy consumption data. We are prepared two challenges and you can challenge either of them or maybe both :)
+Welcome to EnergyPriceSimulationChallenge! This project is to challenge the analysis of big energy consumption data. We prepared two challenges. You can try either of them or maybe both :)
 Your pull-request is always welcome.
 
 
