@@ -55,17 +55,26 @@ The data files have enegy consumption in every 5 minutes as you see this [sample
 2013/01/01,01:40,75W
 ```
 
-
 ## Challenge 1 - Price Plan Optimization
 
 Please analyze the energy consumption data and fiture out which price plan is the best for each user.
 
-- @TODO: Price plans to be posted here
-- @TODO: Detail of the rule to be described here
+### Trying
+
+1. Fork it
+2. Create your branch
+(Name the branch name 'analyst/YOURNAME' like analysit/shirakia)
+3. Create your directory in 'analysis' directory.
+4. Code your analysis programs and commit them
+5. Push to the branch
+6. Make a Pull Request
+
+### Attention
+- Avoid working in any branch except your own branch
+- Avoid committing any file except in your directory
 
 ## Challenge 2 - Web Application
 
 Please create a web application to show each user's energy usages with time-series graph.
 
 - @TODO: Detail of the rule to be described here
-
