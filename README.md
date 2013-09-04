@@ -1,11 +1,17 @@
-# EnergyPriceSimulationChallenge
+# EnergyDataSimulationChallenge
 
-Welcome to EnergyPriceSimulationChallenge! This project is to challenge the analysis of big energy consumption data. We prepared two challenges. You can try either of them or maybe both :)
+Welcome to EnergyPriceSimulationChallenge! This project is to challenge the analysis of big energy production data. We prepared two challenges. You can try either of them or maybe both :)
 Your pull-request is always welcome.
 
-## Challenge 1 - Price Plan Optimization
+## Challenge 1 - Energy Production Data Simulation
 
-Please analyze the energy consumption data and fiture out which price plan is the best for each user.
+We prepared the energy production data for 500 houses.
+For each house, there are data from July, 2011 to June, 2013.
+The data are given temperature data and daylight data.
+
+Please make a model of Polynomial regression using data from July, 2011 to December, 2012.
+On that basis, Please predict EnergyProduction from January, 2013 to July, and calculate MAE.
+
 
 ### Dataset
 
