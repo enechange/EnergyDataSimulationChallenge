@@ -1,21 +1,23 @@
 # EnergyDataSimulationChallenge
 
-Welcome to EnergyPriceSimulationChallenge! This project is to challenge the analysis of big energy production data. We prepared two challenges. You can try either of them or maybe both :)
+Welcome to EnergyDataSimulationChallenge!
+This project is to challenge the analysis of big energy production data.
+We prepared two challenges.
+You can try either of them or maybe both :)
 Your pull-request is always welcome.
 
 ## Challenge 1 - Energy Production Data Simulation
 
 We prepared the energy production data for 500 houses.
-For each house, there are data from July, 2011 to June, 2013.
+For each house, there are monthly data from July, 2011 to June, 2013.
 The data are given temperature data and daylight data.
 
-Please make a model of Polynomial regression using data from July, 2011 to December, 2012.
-On that basis, Please predict EnergyProduction from January, 2013 to July, and calculate MAE.
+Please make a model of Polynomial regression using data from July 2011 to May 2013.
+On that basis, predict EnergyProduction on June 2013 for each house, and calculate MAE(Mean Absolute Error).
 
+### Input
 
-### Dataset
-
-Dataset file is in data/ directory as follows.
+Input dataset file is in data/ directory as follows.
 ```
 $ head data/dataset_500.csv | column -s, -t
 ID  Label  House  Year  Month  Temperature  Daylight  EnergyProduction
@@ -33,6 +35,26 @@ ID  Label  House  Year  Month  Temperature  Daylight  EnergyProduction
 The first line of the file gives the format name.
 The rest of the file describes EnergyProduction data for 500 houses.
 Each data of a house consists of 24 lines showing monthly EnergyProduction data with Temparature data and Daylight data.
+
+training_dataset_500.csv and test_dataset_500.csv are just subsets of dataset_500.csv.
+test_dataset_500.csv includes only June 2013 data of each house. The rest of it is training_dataset_500.csv.
+
+You can use any given data you like. But do not forget that you can use only data from July 2011 to May 2013 for training.
+
+### Output
+
+Output is predicted_energy_production.csv, mae.txt and another files.
+Please set these files in analysis/YOURNAME/.
+
+1. **predicted_energy_production.csv**  
+Need to include House column and EnergyProduction column for each line.
+Any csv file that we can find which columns means House and EnergyProduction is also acceptable.
+2. **mae.txt**  
+Need to include just MAE value.
+3. **another files**  
+Files you use, edit, or write like R source code, batch Python file, excel file, etc.  
+These files will be good materials for us to understand your thoughts.
+This rule is not so strict that you can avoid to commit your secret files.
 
 ### Trying
 
