@@ -12,8 +12,9 @@ We prepared the energy production data for 500 houses.
 For each house, there are monthly data from July, 2011 to June, 2013.
 The data are given temperature data and daylight data.
 
-Please make a model of Polynomial regression using data from July 2011 to May 2013.
+Please make a model for predicting EnergyProduction using data from July 2011 to May 2013.
 On that basis, predict EnergyProduction on June 2013 for each house, and calculate MAE(Mean Absolute Error).
+You can use any algorithms including multiple-variables regression, polynomial regression, Neural network, SVM, etc...
 
 ### Input
 
