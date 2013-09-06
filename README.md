@@ -16,6 +16,9 @@ Please make a model for predicting EnergyProduction using data from July 2011 to
 On that basis, predict EnergyProduction on June 2013 for each house, and calculate MAE(Mean Absolute Error).
 You can use any algorithms including multiple-variables regression, polynomial regression, Neural network, SVM, etc...
 
+We will see **accuracy of prediction(MAE), algorithm choice, parameter tuning, programming skill**.
+Make sure that MAE value is not all. We would like to see many aspects of your commits.
+
 ### Input
 
 Input dataset file is in data/ directory as follows.
@@ -51,7 +54,7 @@ Please set these files in analysis/YOURNAME/.
 Need to include House column and EnergyProduction column for each line.
 Any csv file that we can find which columns means House and EnergyProduction is also acceptable.
 2. **mae.txt**  
-Need to include just MAE value.
+Need to include just MAE value. Minimizie it.
 3. **another files**  
 Files you use, edit, or write like R source code, batch Python file, excel file, etc.  
 These files will be good materials for us to understand your thoughts.
