@@ -38,7 +38,7 @@ ID  Label  House  Year  Month  Temperature  Daylight  EnergyProduction
 
 The first line of the file gives the format name.
 The rest of the file describes EnergyProduction data for 500 houses.
-Each data of a house consists of 24 lines showing monthly EnergyProduction data with Temparature data and Daylight data.
+Each data of a house consists of 24 lines showing monthly EnergyProduction data with Temperature data and Daylight data.
 
 training_dataset_500.csv and test_dataset_500.csv are just subsets of dataset_500.csv.
 test_dataset_500.csv includes only June 2013 data of each house. The rest of it is training_dataset_500.csv.
@@ -50,13 +50,13 @@ You can use any given data you like. But do not forget that you can use only dat
 Output is predicted_energy_production.csv, mae.txt and another files.
 Please set these files in analysis/YOURNAME/.
 
-1. **predicted_energy_production.csv**  
+1. **predicted_energy_production.csv**
 Need to include House column and EnergyProduction column for each line.
 Any csv file that we can find which columns means House and EnergyProduction is also acceptable.
-2. **mae.txt**  
-Need to include just MAE value. Minimizie it.
-3. **another files**  
-Files you use, edit, or write like R source code, batch Python file, excel file, etc.  
+2. **mae.txt**
+Need to include just MAE value. Minimize it.
+3. **another files**
+Files you use, edit, or write like R source code, batch Python file, excel file, etc.
 These files will be good materials for us to understand your thoughts.
 This rule is not so strict that you can avoid to commit your secret files.
 
@@ -64,7 +64,7 @@ This rule is not so strict that you can avoid to commit your secret files.
 
 1. Fork it
 2. Create your branch
-(Name the branch name 'analyst/YOURNAME' like analysit/shirakia)
+(Name the branch name 'analyst/YOURNAME' like analyst/shirakia)
 3. Create your directory in 'analysis' directory.
 4. Code your analysis programs and commit them
 5. Push to the branch
@@ -76,7 +76,7 @@ This rule is not so strict that you can avoid to commit your secret files.
 
 ### Deadline
 
-The deadline for Challange 1 is September 31.
+The deadline for Challenge 1 is 30th September.
 Please commit files and make a Pull Request by the deadline.
 
 ## Challenge 2 - Web Application
