@@ -1,71 +1,86 @@
-# EnergyPriceSimulationChallenge
+# EnergyDataSimulationChallenge
 
-Welcome to EnergyPriceSimulationChallenge! This project is to challenge the analysis of big energy consumption data. We prepared two challenges. You can try either of them or maybe both :)
+Welcome to EnergyDataSimulationChallenge!
+This project is to challenge the analysis of big energy production data.
+We prepared two challenges.
+You can try either of them or maybe both :)
 Your pull-request is always welcome.
 
+## Challenge 1 - Energy Production Data Simulation
 
-## Set Up
+We prepared the energy production data for 500 houses.
+For each house, there are monthly data from July, 2011 to June, 2013.
+The data are given temperature data and daylight data.
 
-please run this scala script to create data files.
+Please make a model for predicting EnergyProduction using data from July 2011 to May 2013.
+On that basis, predict EnergyProduction on June 2013 for each house, and calculate MAE(Mean Absolute Error).
+You can use any algorithms including multiple-variables regression, polynomial regression, Neural network, SVM, etc...
 
+We will see **accuracy of prediction(MAE), algorithm choice, parameter tuning, programming skill**.
+Make sure that MAE value is not all. We would like to see many aspects of your commits.
+
+### Input
+
+Input dataset file is in data/ directory as follows.
 ```
-scala util/GenerateUserData.scala <number of users>
-```
-
-data files will be crated in data/user directories as follows.
-
-```
-$ scala util/GenerateUserData.scala 10
-generating 10 user data
-data/user/user_00001.csv
-data/user/user_00002.csv
-data/user/user_00003.csv
-data/user/user_00004.csv
-data/user/user_00005.csv
-data/user/user_00006.csv
-data/user/user_00007.csv
-data/user/user_00008.csv
-data/user/user_00009.csv
-data/user/user_00010.csv
-```
-
-The data files have enegy consumption in every 5 minutes as you see this [sample file](https://github.com/peisan/EnergyPriceSimulationChallenge/blob/master/data/user/sample.csv)
-
-```
-2013/01/01,00:00,79W
-2013/01/01,00:05,71W
-2013/01/01,00:10,6W
-2013/01/01,00:15,11W
-2013/01/01,00:20,2W
-2013/01/01,00:25,87W
-2013/01/01,00:30,66W
-2013/01/01,00:35,90W
-2013/01/01,00:40,30W
-2013/01/01,00:45,55W
-2013/01/01,00:50,72W
-2013/01/01,00:55,63W
-2013/01/01,01:00,83W
-2013/01/01,01:05,38W
-2013/01/01,01:10,66W
-2013/01/01,01:15,35W
-2013/01/01,01:20,83W
-2013/01/01,01:25,91W
-2013/01/01,01:30,27W
-2013/01/01,01:35,48W
-2013/01/01,01:40,75W
+$ head data/dataset_500.csv | column -s, -t
+ID  Label  House  Year  Month  Temperature  Daylight  EnergyProduction
+0   0      1      2011  7      26.2         178.9     740
+1   1      1      2011  8      25.8         169.7     731
+2   2      1      2011  9      22.8         170.2     694
+3   3      1      2011  10     16.4         169.1     688
+4   4      1      2011  11     11.4         169.1     650
+5   5      1      2011  12     4.2          199.5     763
+6   6      1      2012  1      1.8          203.1     765
+7   7      1      2012  2      2.8          178.2     706
+8   8      1      2012  3      6.7          172.7     788
 ```
 
+The first line of the file gives the format name.
+The rest of the file describes EnergyProduction data for 500 houses.
+Each data of a house consists of 24 lines showing monthly EnergyProduction data with Temparature data and Daylight data.
 
-## Challenge 1 - Price Plan Optimization
+training_dataset_500.csv and test_dataset_500.csv are just subsets of dataset_500.csv.
+test_dataset_500.csv includes only June 2013 data of each house. The rest of it is training_dataset_500.csv.
 
-Please analyze the energy consumption data and fiture out which price plan is the best for each user.
+You can use any given data you like. But do not forget that you can use only data from July 2011 to May 2013 for training.
 
-- @TODO: Price plans to be posted here
-- @TODO: Detail of the rule to be described here
+### Output
+
+Output is predicted_energy_production.csv, mae.txt and another files.
+Please set these files in analysis/YOURNAME/.
+
+1. **predicted_energy_production.csv**  
+Need to include House column and EnergyProduction column for each line.
+Any csv file that we can find which columns means House and EnergyProduction is also acceptable.
+2. **mae.txt**  
+Need to include just MAE value. Minimizie it.
+3. **another files**  
+Files you use, edit, or write like R source code, batch Python file, excel file, etc.  
+These files will be good materials for us to understand your thoughts.
+This rule is not so strict that you can avoid to commit your secret files.
+
+### Trying
+
+1. Fork it
+2. Create your branch
+(Name the branch name 'analyst/YOURNAME' like analysit/shirakia)
+3. Create your directory in 'analysis' directory.
+4. Code your analysis programs and commit them
+5. Push to the branch
+6. Make a Pull Request
+
+### Attention
+- Avoid working in any branch except your own branch
+- Avoid committing any file except in your directory
+
+### Deadline
+
+The deadline for Challange 1 is September 31.
+Please commit files and make a Pull Request by the deadline.
 
 ## Challenge 2 - Web Application
 
 Please create a web application to show each user's energy usages with time-series graph.
 
 - @TODO: Detail of the rule to be described here
-
