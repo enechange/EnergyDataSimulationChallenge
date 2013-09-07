@@ -79,6 +79,13 @@ This rule is not so strict that you can avoid to commit your secret files.
 The deadline for Challenge 1 is 30th September.
 Please commit files and make a Pull Request by the deadline.
 
+### Reward
+
+* Winner (max 2 people) will be kindly offered the position for Paid Internship. (3-month programme, competitive salary.)
+* Accommodation (private room) and your desk at Co-Working space in Cambridge, UK will be provided for FREE if you wish to work with us here.
+* Or, you can still work from your own place remotely.
+* After Successful 3-month programme, we could offer other positions (permanent position, longer contract, additional intern etc.)
+
 ## Challenge 2 - Web Application
 
 Please create a web application to show each user's energy usages with time-series graph.
