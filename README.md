@@ -74,6 +74,11 @@ This rule is not so strict that you can avoid to commit your secret files.
 - Avoid working in any branch except your own branch
 - Avoid committing any file except in your directory
 
+### Deadline
+
+The deadline for Challange 1 is September 31.
+Please commit files and make a Pull Request by the deadline.
+
 ## Challenge 2 - Web Application
 
 Please create a web application to show each user's energy usages with time-series graph.
