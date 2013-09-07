@@ -13,11 +13,11 @@ For each house, there are monthly data from July, 2011 to June, 2013.
 The data are given temperature data and daylight data.
 
 Please make a model for predicting EnergyProduction using data from July 2011 to May 2013.
-On that basis, predict EnergyProduction on June 2013 for each house, and calculate MAE(Mean Absolute Error).
+On that basis, predict EnergyProduction on June 2013 for each house, and calculate MAPE(Mean Absolute Persentage Error).
 You can use any algorithms including multiple-variables regression, polynomial regression, Neural network, SVM, etc...
 
-We will see **accuracy of prediction(MAE), algorithm choice, parameter tuning, programming skill**.
-Make sure that MAE value is not all. We would like to see many aspects of your commits.
+We will see **accuracy of prediction(MAPE), algorithm choice, parameter tuning, programming skill**.
+Make sure that MAPE value is not all. We would like to see many aspects of your commits.
 
 ### Input
 
@@ -47,14 +47,14 @@ You can use any given data you like. But do not forget that you can use only dat
 
 ### Output
 
-Output is predicted_energy_production.csv, mae.txt and another files.
+Output is predicted_energy_production.csv, mape.txt and another files.
 Please set these files in analysis/YOURNAME/.
 
 1. **predicted_energy_production.csv**
 Need to include House column and EnergyProduction column for each line.
 Any csv file that we can find which columns means House and EnergyProduction is also acceptable.
-2. **mae.txt**
-Need to include just MAE value. Minimize it.
+2. **mape.txt**
+Need to include just MAPE value. Minimize it.
 3. **another files**
 Files you use, edit, or write like R source code, batch Python file, excel file, etc.
 These files will be good materials for us to understand your thoughts.
