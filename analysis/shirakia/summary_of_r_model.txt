@@ -1,0 +1,20 @@
+Call:
+lm(formula = EnergyProduction ~ Month + Temperature + Daylight,
+    data = energy.data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max
+-342.27  -72.59  -25.41   62.79  480.12
+
+Coefficiets:
+             Estimate Std. Error t value Pr(>|t|)
+(Intercept) 137.41758    7.63849   17.99   <2e-16 ***
+Month        -9.38380    0.31900  -29.42   <2e-16 ***
+Temperature   6.37583    0.12745   50.02   <2e-16 ***
+Daylight      2.35242    0.03578   65.74   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 108.4 on 11496 degrees of freedom
+Multiple R-squared: 0.4174,     Adjusted R-squared: 0.4172
+F-statistic:  2745 on 3 and 11496 DF,  p-value: < 2.2e-16
