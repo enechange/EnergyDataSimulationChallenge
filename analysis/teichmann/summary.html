@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en" ng-app="energymodelcat">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>EnergyProduction Model</title>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+        rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+
+  <style type="text/css">
+    .down {
+    margin-top: 0;
+    margin-bottom: 10px;
+    width: 0; 
+	height: 0; 
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #e1e1e1;}
+    body{padding-bottom: 50px;}
+  </style>
+
+  <script type="text/javascript">
+function EnergyModelCtrl($scope) {
+
+    $scope.rawdata = [
+        [ 0,     0,     1, 2011,     7,        26.2,    178.9,              740],
+        [ 1,     1,     1, 2011,     8,        25.8,    169.7,              731],
+        [2,     2 ,    1, 2011,     9,        22.8,    170.2,              694],
+        [ 3,     3,     1, 2011,    10,        16.4,    169.1,              688],
+        [4,     4,     1, 2011,    11,        11.4 ,   169.1,              650],
+        [5,     5,     1, 2011,    12,         4.2,    199.5,              763]
+        ];
+    $scope.explplots = [
+        "hist.png",
+        "lm_1.png"
+    ];
+    $scope.mainPlot = "hist.png";
+    $scope.setImage = function(imageUrl) {
+        $scope.mainPlot = imageUrl;
+    };  
+    $scope.bn1 = "net1.png";
+    $scope.bn1mape = 0.1839504;
+    $scope.housescluster = "lm_2.png";
+    $scope.houses = [
+    "houses_G.png",
+    "lm_3_G0.png",
+    "lm_3_G1.png"];
+    $scope.mainPlot2 = "houses_G.png";
+    $scope.setImage2 = function(imageUrl) {
+        $scope.mainPlot2 = imageUrl;
+    };
+    $scope.bn2 = "net2.png";
+    $scope.bn2mape = 0.1787392;
+}
+</script>
+
+
+  <script type="text/javascript">
+    angular.module('energymodelcat', []).
+    config(['$routeProvider', function($routeProvider) {
+    $routeProvider.
+    when('/step_1', {templateUrl: 'step_1.html',
+    controller: EnergyModelCtrl}).
+    when('/step_2', {templateUrl: 'step_2.html',
+    controller: EnergyModelCtrl}).
+    when('/step_3', {templateUrl: 'step_3.html',
+    controller: EnergyModelCtrl}).
+    when('/step_4', {templateUrl: 'step_4.html',
+    controller: EnergyModelCtrl}).
+    when('/step_5', {templateUrl: 'step_5.html',
+    controller: EnergyModelCtrl}).
+    when('/step_6', {templateUrl: 'step_6.html',
+    controller: EnergyModelCtrl}).
+    otherwise({redirectTo: '/step_1'});
+}]);
+
+  </script>
+
+
+
+  <script type="text/ng-template" id="step_1.html">
+      <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>Fist things first: A look at the data</h3>
+        
+        <pre>
+# reading the data
+raw.data <- read.table("../../data/training_dataset_500.csv",
+            header=T, sep=",")
+                      
+head(raw.data)
+</pre>
+        <hr class="down">
+        
+        <table class="table table-striped">
+          <caption>The first lines of the raw data.</caption>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Label</th>
+              <th>House</th>
+              <th>Year</th>
+              <th>Month</th>
+              <th>Temperature</th>
+              <th>Daylight</th>
+              <th>EnergyProduction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="line in rawdata">
+              <td ng-repeat="element in line">
+             {{ element }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <div class="btn-group pull-right">
+           <a class="btn btn-primary disabled"
+          href="#"> <i class="icon-step-backward icon-white"></i> Previous</a>
+          <a class="btn btn-primary"
+          href="#/step_2">Next <i class="icon-step-forward icon-white"></i></a>
+          </div>
+
+      </div>
+  </div>
+  </script>
+
+
+  <script type="text/ng-template" id="step_2.html">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>Some exploratory plots</h3>
+        
+        <div class="row">
+          <div class="col-md-7 col-md-offset-1">
+            <img class="img-responsive" ng-src="{{mainPlot}}">
+          </div>
+          <div class="col-md-3">
+            <a class="thumbnail" ng-repeat="plot in explplots">
+                  <img class="img-responsive" ng-src="{{plot}}" alt="" ng-click="setImage(plot)">
+              
+            </a>
+          </div>
+        
+          <div>
+        
+            <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+
+            
+            <hr class="down"/>
+            
+<h3>Interpretation</h3>
+<p>
+  The dataset doesn't even cover 2 seasons and isn't suited for a meaningful time series analysis.
+  The presented plots were made to explore whether a Bayesian Network is an
+  eligible method.
+  The histograms show curves of the Normal distribution.
+  Especially, <code>Temperature</code> 
+  doesn't look very Gaussian.  
+</p>
+
+<p>
+  Unfortunately, also the conditional scatter plots don't look very
+  encouraging. The only linear tendency might be in EnergyProduction ~ Daylight.
+</p>
+
+<p>
+  This already tells me that the MAPE won't impress. But this is rather due to the
+  quality of the data than that the data
+  completely disqualifies for a Bayesian network approach.
+</p>
+
+<h3>Code</h3>
+
+            <pre>
+par(mfrow=c(2,2))
+h <- hist(raw.data$Temperature, main="Temperature")
+x <- seq(min(raw.data$Temperature),
+         max(raw.data$Temperature), length=100) 
+y <- dnorm(x, mean=mean(raw.data$Temperature),
+           sd=sd(raw.data$Temperature)) 
+y <- y * diff(h$mids[1:2]) * length(raw.data$Temperature) 
+lines(x, y, lwd=2)
+
+h <- hist(raw.data$Daylight, main="DayLight")
+x <- seq(min(raw.data$Daylight),
+         max(raw.data$Daylight), length=100) 
+y <- dnorm(x, mean=mean(raw.data$Daylight),
+           sd=sd(raw.data$Daylight)) 
+y <- y * diff(h$mids[1:2]) * length(raw.data$Daylight) 
+lines(x, y, lwd=2)
+
+h <- hist(raw.data$EnergyProduction, main="EnergyProduction")
+x <- seq(min(raw.data$EnergyProduction),
+         max(raw.data$EnergyProduction), length=100) 
+y <- dnorm(x, mean=mean(raw.data$EnergyProduction),
+           sd=sd(raw.data$EnergyProduction)) 
+y <- y * diff(h$mids[1:2]) * length(raw.data$EnergyProduction) 
+lines(x, y, lwd=2)
+</pre>
+
+           
+
+<pre>
+library(lattice)
+splom(raw.data[c("Month", "Temperature",
+                 "Daylight", "EnergyProduction")])
+</pre>
+            
+            
+
+         <div class="btn-group pull-right">
+           <a class="btn btn-primary"
+          href="#/step_1"> <i class="icon-step-backward icon-white"></i> Previous</a>
+          <a class="btn btn-primary"
+          href="#/step_3">Next <i class="icon-step-forward icon-white"></i></a>
+          </div>
+      </div>
+    </div>
+
+  </script>
+
+
+   <script type="text/ng-template" id="step_3.html">
+     <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>A first BN model</h3>
+     
+        <pre>
+library(deal)
+bn.data <- data.frame("Month"=factor(raw.data$Month),
+                      "Daylight"=raw.data$Daylight,
+                      "Temperature"=raw.data$Temperature,
+                      "EnergyProduction"=raw.data$EnergyProduction)
+
+net <- network(bn.data)
+net.prior <- jointprior(net)
+banlist <- matrix(c(2,3,4,4,4,
+                      1,1,1,2,3),
+                    ncol=2)
+banlist(net) <- banlist
+net <- learn(net, bn.data, net.prior)$nw
+net <- autosearch(net, bn.data, net.prior, trace=TRUE)$nw
+</pre>
+
+        <hr class="down"/>
+
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <img class="img-responsive" ng-src="{{bn1}}">
+          </div>
+        </div>
+
+         <div class="row">
+          <div class="col-md-12">
+            <p>
+              I include the month as a discrete factor into the model to
+              improve the non-Gaussian distribution
+              of <code>Temperature</code>. The posterior of the model is as bad as expected.
+            </p>
+            <pre>
+localposterior(deal::nodes(net)$EnergyProduction)[[6]]
+model <- localposterior(deal::nodes(net)$EnergyProduction)[[6]]$mu
+</pre>
+
+<h3>Calculating the MAPE</h3>
+
+<pre>
+raw.test.data <- read.table("../../data/test_dataset_500.csv",
+                       header=T, sep=",")
+test.data <- raw.test.data[c("Daylight", "Temperature",
+                             "EnergyProduction")]
+
+MAPE <- mean(apply(test.data, 1,
+                   function(x) abs((x[3] -
+                                    (model[1] + model[2]*x[1] +
+                                     model[3]*x[2])) / x[3] )))
+</pre>
+
+<hr class="down"/>
+
+
+
+<div class="panel panel-primary">
+<div class="panel-heading">
+    <h3 class="panel-title">Result:</h3>
+  </div>
+  <div class="panel-body text-center">
+    MAPE: <span class="badge">{{bn1mape}}</span>
+  </div>
+</div>
+
+
+
+<div class="btn-group pull-right">
+           <a class="btn btn-primary"
+          href="#/step_2"> <i class="icon-step-backward icon-white"></i> Previous</a>
+          <a class="btn btn-primary"
+          href="#/step_4">Next <i class="icon-step-forward icon-white"></i></a>
+          </div>
+
+          </div>
+        </div>
+
+ 
+
+        </div>
+      </div>
+   </script>
+
+
+
+
+    <script type="text/ng-template" id="step_4.html">
+      <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>A closer look at the data</h3>
+
+        <p>Let's have a look at the different Houses whether
+        there are any clusters: </p>
+
+<pre>
+library(reshape)
+house.melt <- melt(raw.data[,c("House","Daylight",
+                                "Temperature",
+                                "EnergyProduction")],
+                    id=c("House")) 
+house.cast <- cast(house.melt,
+                    House~variable, mean)
+splom(house.cast[c("Temperature", "Daylight",
+                 "EnergyProduction")])
+</pre>
+
+<hr class="down"/>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <img class="img-responsive" ng-src="{{housescluster}}">
+          </div>
+        </div>
+
+         <div class="row">
+          <div class="col-md-12">
+            <p>
+              It looks like there are two linear models for
+              EnergyPrd~Daylight. E.g. north/south orientation of the roof for solar power
+ or two different efficiencies for energy convergence.
+As a time constraint I use
+the classification method "derived from expert knowledge" or "classification by eye". <i class="icon-smile"></i>
+              </p>
+            
+<pre>
+L <- c(-2420, 16)
+plot(house.cast$Daylight,
+     house.cast$EnergyProduction)
+abline(L)
+
+G <- apply(house.cast, 1,
+           function(x) as.integer (
+             x[3] > (x[1]*L[2] + L[1])) )
+GG <- as.vector(sapply(G,
+            function(x) rep(x,23)))
+
+splom(raw.data[GG==0,c("Month", "Temperature",
+                 "Daylight", "EnergyProduction")])
+splom(raw.data[GG==1,c("Month", "Temperature",
+                 "Daylight", "EnergyProduction")])
+</pre>
+
+<hr class="down"/>
+            </div>
+         </div>
+
+         <div class="row">
+           <div class="col-md-7 col-md-offset-1">
+            <img class="img-responsive" ng-src="{{mainPlot2}}">
+          </div>
+          <div class="col-md-3">
+            <a class="thumbnail" ng-repeat="plot in houses">
+                  <img class="img-responsive" ng-src="{{plot}}" alt="" ng-click="setImage2(plot)">
+              
+            </a>
+          </div>
+         </div>
+
+          <div class="row">
+           <div class="col-md-12">
+             &nbsp;
+           </div>
+           </div>
+         
+
+ <div class="row">
+           <div class="col-md-12">
+             <div class="btn-group pull-right">
+           <a class="btn btn-primary"
+          href="#/step_3"> <i class="icon-step-backward icon-white"></i> Previous</a>
+          <a class="btn btn-primary"
+          href="#/step_5">Next <i class="icon-step-forward icon-white"></i></a>
+          </div>
+           </div>
+      </div>
+
+
+      </div>
+      </div>
+
+    </script>
+
+<script type="text/ng-template" id="step_5.html">
+      <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>A second BN model</h3>
+
+        
+             <pre>
+bn.data.2 <- data.frame("G"=factor(GG),
+                        "Daylight"=raw.data$Daylight,
+                        "Temperature"=raw.data$Temperature,
+                        "EnergyProduction"=raw.data$EnergyProduction)
+
+net.2 <- network(bn.data.2)
+net.2.prior <- jointprior(net.2)
+net.2 <- learn(net.2, bn.data.2, net.2.prior)$nw
+net.2 <- autosearch(net.2, bn.data.2, net.2.prior, trace=TRUE)$nw
+</pre>
+
+<hr class="down"/>
+         
+
+          <div class="row">
+           <div class="col-md-6 col-md-offset-3">
+             <img class="img-responsive" ng-src="{{bn2}}">
+           </div>
+      </div>
+          
+           <div class="row">
+           <div class="col-md-12">
+
+             <p>As expected, this model isn't significantly better:
+               </p>
+             <pre>
+localposterior(deal::nodes(net.2)$EnergyProduction)
+model <- array(0,dim=c(2,3))
+model[1,] <- localposterior(deal::nodes(net.2)$EnergyProduction)[[1]]$mu
+model[2,] <- localposterior(deal::nodes(net.2)$EnergyProduction)[[2]]$mu
+</pre>
+
+<h3>Calculating the MAPE</h3>
+<pre>
+test.data.g <- test.data
+test.data.g$G <- G+1
+MAPE <- mean(apply(test.data.g, 1,
+                   function(x) abs((x[3] -
+                                    (model[x[4],1] + model[x[4],2]*x[1] +
+                                     model[x[4],3]*x[2])) / x[3] )))
+</pre>
+
+<hr class="down"/>
+<div class="panel panel-primary">
+<div class="panel-heading">
+    <h3 class="panel-title">Result:</h3>
+  </div>
+  <div class="panel-body text-center">
+    MAPE: <span class="badge">{{bn2mape}}</span>
+  </div>
+</div>
+
+             <div class="btn-group pull-right">
+           <a class="btn btn-primary"
+          href="#/step_4"> <i class="icon-step-backward icon-white"></i> Previous</a>
+          <a class="btn btn-primary"
+          href="#/step_6">Next <i class="icon-step-forward icon-white"></i></a>
+          </div>
+             </div>
+          </div>
+
+
+
+  </div>
+          </div>
+</script>
+
+
+ <script type="text/ng-template" id="step_6.html">
+      <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3>Conclusions</h3>
+
+        <p>
+          It's fair to say that the two Bayesian networks didn't impress with
+          their MAPEs. This is because there isn't any linear
+relation between <code>Temperature</code>~<code>Daylight</code> and
+<code>EnergyPrd</code>~<code>Temperature</code>. Additionally, <code>Temperature</code>
+          and <code>Daylight</code> aren't very Gaussian.
+          Modelling requires great insight into the data and the system. I
+          assumed that we might look at a system based on solar energy but
+          with the little information provided even this is just guessing. Based on that assumption I introduced to discrete factors
+          to the Bayesian network:
+        <dl class="dl-horizontal">
+          <dt><code>Month</code></dt>
+          <dd>This factor improves the distribution
+          of <code>Temperature</code> as it looks more Gaussian on monthly
+          intervals. Assuming a solar power based system
+          the <code>Month</code> has an effect on solar intensity and
+          angles of the sun rays.</dd>
+           <dt><code>G</code></dt>
+          <dd>The houses seem to cluster into two different linear models
+          for <code>EnergyPrd</code>~<code>Daylight</code>. This could indicate two different
+          systems or effects of the orientation of the roof of the houses. </dd>
+          
+</dl>
+        </p>
+
+<p>
+  The introduction of this two discrete factors to the Bayesian network
+  didn't improve the MAPE significantly. It seems like the only useful
+  variable is <code>Daylight</code>. A model can only be as good as the
+  data available. There might be a model which has a lower MAPE but it
+  would probably over-fit. If I had to model this kind of system I would
+  try to improve the quality of the data and get a better understanding of
+  the system itself. Even if there isn't more/better data available a
+  better understanding would allow to define some prior distributions which
+  could feed into the Bayesian approach to improve the model.
+</p>
+
+
+<div class="btn-group pull-right">
+           <a class="btn btn-primary"
+          href="#/step_5"> <i class="icon-step-backward icon-white"></i> Previous</a>
+          <a class="btn btn-primary disabled"
+          href="#">Next <i class="icon-step-forward icon-white"></i></a>
+          </div>
+
+        </div>
+      </div>
+</script>
+
+</head>
+
+
+<body>
+ 
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12">
+        <h1>Modelling Energy Production <small>by Jan Teichmann</small></h1>
+        </div>
+      </div>
+
+
+    <div ng-view></div>
+
+  
+      
+  </div> 
+
+  
+
+ 
+</body>
+</html>
