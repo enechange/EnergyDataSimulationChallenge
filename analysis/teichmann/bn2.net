@@ -1,0 +1,141 @@
+%Created by deal, Wed Sep 11 17:39:15 2013 
+%deal is Copyright (C) 2002-2006  Susanne Gammelgaard Bottcher, Claus Dethlefsen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+net
+{
+	node_size = (40 40);
+}
+
+discrete node G 
+{
+	states = ( "0" "1" );
+	label = "G";
+	position = ( 111.4413 299.7409 );
+}
+
+discrete node Month 
+{
+	states = ( "1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12" );
+	label = "Month";
+	position = ( 36.72363 153.0992 );
+}
+
+continuous node Daylight 
+{
+	label = "Daylight";
+	position = ( 153.0992 36.72363 );
+}
+
+continuous node Temperature 
+{
+	label = "Temperature";
+	position = ( 299.7409 111.4413 );
+}
+
+continuous node EnergyProduction 
+{
+	label = "EnergyProduction";
+	position = ( 273.9949 273.9949 );
+}
+
+
+potential ( G )
+{
+	data=(0.4880499 0.5119501);
+}
+
+potential ( Month )
+{
+	data=(0.08694146 0.08694146 0.08694146 0.08694146 0.08694146 0.04364392 0.08694146 0.08694146 0.08694146 0.08694146 0.08694146 0.08694146);
+}
+
+potential ( Daylight | G  Month   )
+{
+	data=(
+		normal (  215.5646,  238.9072 ) 	% :0:1 
+	normal (  181.9048,  209.354 ) 	% :0:2 
+	normal (  187.8568,  662.5668 ) 	% :0:3 
+	normal (  198.9285,  428.6151 ) 	% :0:4 
+	normal (  228.9989,  481.9789 ) 	% :0:5 
+	normal (  152.6595,  138.6854 ) 	% :0:6 
+	normal (  173.5611,  139.7675 ) 	% :0:7 
+	normal (  215.7344,  2036.588 ) 	% :0:8 
+	normal (  172.1323,  53.47722 ) 	% :0:9 
+	normal (  172.0909,  327.4096 ) 	% :0:10 
+	normal (  171.8352,  211.035 ) 	% :0:11 
+	normal (  191.4529,  134.117 ) 	% :0:12 
+	normal (  214.1682,  245.1389 ) 	% :1:1 
+	normal (  181.0658,  193.665 ) 	% :1:2 
+	normal (  185.8281,  558.8466 ) 	% :1:3 
+	normal (  195.8896,  439.3385 ) 	% :1:4 
+	normal (  229.2038,  434.6073 ) 	% :1:5 
+	normal (  148.2498,  77.18359 ) 	% :1:6 
+	normal (  172.262,  107.8954 ) 	% :1:7 
+	normal (  212.9228,  2101.207 ) 	% :1:8 
+	normal (  171.4586,  44.66707 ) 	% :1:9 
+	normal (  171.1563,  308.6386 ) 	% :1:10 
+	normal (  167.9026,  123.1676 ) 	% :1:11 
+	normal (  188.117,  185.1132 ) 	% :1:12 
+	);
+}
+
+potential ( Temperature | G  Month  Daylight   )
+{
+	data=(
+		normal (  1.638702+0.004544127 * Daylight,  0.9847333 ) 	% :0:1 
+	normal (  1.069754+0.01401232 * Daylight,  0.729939 ) 	% :0:2 
+	normal (  -1.507943+0.05410804 * Daylight,  0.7995195 ) 	% :0:3 
+	normal (  10.81871+0.01012442 * Daylight,  0.3894947 ) 	% :0:4 
+	normal (  15.15722+0.01218355 * Daylight,  0.8616292 ) 	% :0:5 
+	normal (  31.79201-0.07461978 * Daylight,  0.664029 ) 	% :0:6 
+	normal (  25.86998-8.988259e-05 * Daylight,  1.358764 ) 	% :0:7 
+	normal (  23.84757+0.01429608 * Daylight,  1.162052 ) 	% :0:8 
+	normal (  27.63873-0.02147056 * Daylight,  0.9729761 ) 	% :0:9 
+	normal (  17.63769-0.002156227 * Daylight,  0.3355478 ) 	% :0:10 
+	normal (  21.49359-0.05974417 * Daylight,  0.7312611 ) 	% :0:11 
+	normal (  5.335489-0.002767718 * Daylight,  0.8779847 ) 	% :0:12 
+	normal (  -2.114482+0.02166184 * Daylight,  1.045808 ) 	% :1:1 
+	normal (  -0.9266018+0.02448126 * Daylight,  0.7491147 ) 	% :1:2 
+	normal (  -1.992479+0.05643242 * Daylight,  0.8427032 ) 	% :1:3 
+	normal (  12.12123+0.003220169 * Daylight,  0.3677732 ) 	% :1:4 
+	normal (  14.87592+0.01349894 * Daylight,  0.6695901 ) 	% :1:5 
+	normal (  32.77299-0.08368407 * Daylight,  0.4656868 ) 	% :1:6 
+	normal (  25.12561+0.00388379 * Daylight,  1.467941 ) 	% :1:7 
+	normal (  23.49336+0.0158518 * Daylight,  1.473754 ) 	% :1:8 
+	normal (  28.23908-0.02570124 * Daylight,  1.237438 ) 	% :1:9 
+	normal (  16.76898+0.001927736 * Daylight,  0.564962 ) 	% :1:10 
+	normal (  20.15226-0.05439179 * Daylight,  1.121913 ) 	% :1:11 
+	normal (  -0.2488229+0.02589393 * Daylight,  0.8575158 ) 	% :1:12 
+	);
+}
+
+potential ( EnergyProduction | G  Month  Daylight  Temperature   )
+{
+	data=(
+		normal (  363.5147+1.02053 * Daylight-17.57818 * Temperature,  4159.652 ) 	% :0:1 
+	normal (  151.4893+2.036683 * Daylight-2.724334 * Temperature,  2293.617 ) 	% :0:2 
+	normal (  74.23921+3.714944 * Daylight-21.44417 * Temperature,  2011.129 ) 	% :0:3 
+	normal (  -58.70288+2.46317 * Daylight+15.39597 * Temperature,  2233.078 ) 	% :0:4 
+	normal (  82.76996+2.709642 * Daylight-0.3712942 * Temperature,  3049.715 ) 	% :0:5 
+	normal (  -526.4427+2.956084 * Daylight+30.4899 * Temperature,  3575.047 ) 	% :0:6 
+	normal (  303.2833+2.231857 * Daylight-3.334413 * Temperature,  2638.648 ) 	% :0:7 
+	normal (  365.2539+1.748813 * Daylight-3.440418 * Temperature,  3977.789 ) 	% :0:8 
+	normal (  468.3378+1.315641 * Daylight-6.370634 * Temperature,  2447.71 ) 	% :0:9 
+	normal (  695.7947+2.485303 * Daylight-35.34871 * Temperature,  1723.274 ) 	% :0:10 
+	normal (  -474.266+4.003405 * Daylight+20.82475 * Temperature,  1743.596 ) 	% :0:11 
+	normal (  -403.2274+4.671363 * Daylight-4.195246 * Temperature,  2497.73 ) 	% :0:12 
+	normal (  -42.13224+3.071464 * Daylight+9.073611 * Temperature,  15466.17 ) 	% :1:1 
+	normal (  -576.4196+6.810309 * Daylight-14.97192 * Temperature,  8301.061 ) 	% :1:2 
+	normal (  -204.9543+7.852605 * Daylight-65.88425 * Temperature,  6939.204 ) 	% :1:3 
+	normal (  -111.664+3.962932 * Daylight+5.686136 * Temperature,  9261.908 ) 	% :1:4 
+	normal (  -717.6565+3.972999 * Daylight+35.85995 * Temperature,  13615.25 ) 	% :1:5 
+	normal (  -263.1125+0.1361694 * Daylight+44.83885 * Temperature,  11754.77 ) 	% :1:6 
+	normal (  1809.563-5.920476 * Daylight-3.996208 * Temperature,  6126.524 ) 	% :1:7 
+	normal (  -211.9359+2.526482 * Daylight+15.7009 * Temperature,  13162.32 ) 	% :1:8 
+	normal (  572.3095-2.185499 * Daylight+18.28243 * Temperature,  9351.109 ) 	% :1:9 
+	normal (  -344.8638+5.051607 * Daylight+4.646877 * Temperature,  6071.284 ) 	% :1:10 
+	normal (  -1620.69+9.148888 * Daylight+55.39998 * Temperature,  3960.425 ) 	% :1:11 
+	normal (  -1155.354+9.322109 * Daylight-7.665294 * Temperature,  8225.372 ) 	% :1:12 
+	);
+}
