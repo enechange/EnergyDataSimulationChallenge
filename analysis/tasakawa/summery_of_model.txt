@@ -1,0 +1,29 @@
+> result
+
+Call:
+lm(formula = EnergyProduction ~ I(Daylight^1) + I(Month^1), data = norm_data)
+
+Coefficients:
+  (Intercept)  I(Daylight^1)     I(Month^1)  
+      1.11146        0.35356       -0.08505  
+
+> summary(result)
+
+Call:
+lm(formula = EnergyProduction ~ I(Daylight^1) + I(Month^1), data = norm_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.080590 -0.024631 -0.005801  0.022301  0.095125 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    1.111459   0.065053  17.085   <2e-16 ***
+I(Daylight^1)  0.353560   0.018762  18.845   <2e-16 ***
+I(Month^1)    -0.085053   0.008671  -9.808   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+
+Residual standard error: 0.03258 on 997 degrees of freedom
+Multiple R-squared: 0.935,	Adjusted R-squared: 0.9349 
+F-statistic:  7174 on 2 and 997 DF,  p-value: < 2.2e-16 
