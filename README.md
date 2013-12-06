@@ -88,6 +88,7 @@ This rule is not so strict that you can avoid to commit your secret files.
 
 The following task is intended to give us an idea of your data visualisation skills. Please use the tools/programming language you are most familiar with.
 
+
 ### Steps
 1. Download the data-set total-watt.csv
 2. The data-set consists of two columns: a time stamp and the energy consumption
@@ -96,6 +97,29 @@ The following task is intended to give us an idea of your data visualisation ski
 6. cluster the values per day into 3 groups: low, medium, and high energy consumption
 7. visualise the clusters (How you visualize the data is up to you. Please show us your imagination and creativity!)
 
+### Input 
+dataset file is in data/ directory as follows.
+
+```
+$ head data/total_watt.csv| column -s, -t
+2011-04-18 13:22:00  925.840613752523
+2011-04-18 13:52:00  483.295891812865
+2011-04-18 14:22:00  915.761633660131
+2011-04-18 14:52:00  609.043490935672
+2011-04-18 15:22:00  745.155434458509
+2011-04-18 15:52:00  409.855947368421
+2011-04-18 16:22:00  434.084038321073
+2011-04-18 16:52:00  152.684299188514
+2011-04-18 17:22:00  327.579073188405
+2011-04-18 17:52:00  156.826945856169
+```
+
+### Output
+Please set output files in analysis/YOURNAME/.
+
+1. visualization of the data-set as values per 30mins
+2. visualization of the data-set as values per day
+3. visualization of the data-set as clusters
 
 ## Challenge 3 - Web Application
 
