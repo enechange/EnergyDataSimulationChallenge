@@ -12,8 +12,8 @@ Your pull-request is always welcome.
 
 1. Fork it
 2. Create your branch
-(Name the branch name 'analyst/YOURNAME' like analyst/shirakia)
-3. Create your directory in 'analysis' directory.
+(Name the branch name 'analysis/YOURNAME' like analysis/shirakia)
+3. Create your directory in 'analysis/' directory.
 4. Code your analysis programs and commit them
 5. Push to the branch
 6. Make a Pull Request
@@ -71,7 +71,7 @@ You can use any given data you like. But do not forget that you can use only dat
 ### Output
 
 Output is predicted_energy_production.csv, mape.txt and another files.
-Please set these files in analysis/YOURNAME/.
+Please set these files in challenge1/analysis/YOURNAME/.
 
 1. **predicted_energy_production.csv**
 Need to include House column and EnergyProduction column for each line.
@@ -115,7 +115,7 @@ $ head data/total_watt.csv| column -s, -t
 ```
 
 ### Output
-Please set output files in analysis/YOURNAME/.
+Please set output files in challenge2/analysis/YOURNAME/.
 
 1. visualization of the data-set as values per 30mins
 2. visualization of the data-set as values per day
