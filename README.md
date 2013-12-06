@@ -84,7 +84,7 @@ These files will be good materials for us to understand your thoughts.
 This rule is not so strict that you can avoid to commit your secret files.
 
 
-## Challenge 2 - Visualization of Energy Comsumptions
+## Challenge 2 - Visualization of Energy Consumptions
 
 The following task is intended to give us an idea of your data visualisation skills. Please use the tools/programming language you are most familiar with.
 
