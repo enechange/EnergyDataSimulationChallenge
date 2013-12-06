@@ -2,9 +2,32 @@
 
 Welcome to EnergyDataSimulationChallenge!
 This project is to challenge the analysis of big energy production data.
-We prepared two challenges.
-You can try either of them or maybe both :)
+We prepared several challenges.
+You can try either of them or maybe all :)
 Your pull-request is always welcome.
+
+## Instructions
+
+### Steps
+
+1. Fork it
+2. Create your branch
+(Name the branch name 'analyst/YOURNAME' like analyst/shirakia)
+3. Create your directory in 'analysis' directory.
+4. Code your analysis programs and commit them
+5. Push to the branch
+6. Make a Pull Request
+
+### Attention
+- Avoid working in any branch except your own branch
+- Avoid committing any file except in your directory
+
+### Reward
+
+* Winner will be kindly offered the position for Paid Internship. (3-month programme, competitive salary.)
+* Accommodation (private room) and your desk at Co-Working space in Cambridge, UK will be provided for FREE if you wish to work with us here.
+* Or, you can still work from your own place remotely.
+* After Successful 3-month programme, we could offer other positions (permanent position, longer contract, additional intern etc.)
 
 ## Challenge 1 - Energy Production Data Simulation
 
@@ -60,33 +83,21 @@ Files you use, edit, or write like R source code, batch Python file, excel file,
 These files will be good materials for us to understand your thoughts.
 This rule is not so strict that you can avoid to commit your secret files.
 
-### Trying
 
-1. Fork it
-2. Create your branch
-(Name the branch name 'analyst/YOURNAME' like analyst/shirakia)
-3. Create your directory in 'analysis' directory.
-4. Code your analysis programs and commit them
-5. Push to the branch
-6. Make a Pull Request
+## Challenge 2 - Visualization of Energy Comsumptions
 
-### Attention
-- Avoid working in any branch except your own branch
-- Avoid committing any file except in your directory
+The following task is intended to give us an idea of your data visualisation skills. Please use the tools/programming language you are most familiar with.
 
-### Deadline
+### Steps
+1. Download the data-set total-watt.csv
+2. The data-set consists of two columns: a time stamp and the energy consumption
+3. visualise the data-set
+5. visualise the data-set as values per day
+6. cluster the values per day into 3 groups: low, medium, and high energy consumption
+7. visualise the clusters (How you visualize the data is up to you. Please show us your imagination and creativity!)
 
-The deadline for Challenge 1 is 30th September.
-Please commit files and make a Pull Request by the deadline.
 
-### Reward
-
-* Winner (max 2 people) will be kindly offered the position for Paid Internship. (3-month programme, competitive salary.)
-* Accommodation (private room) and your desk at Co-Working space in Cambridge, UK will be provided for FREE if you wish to work with us here.
-* Or, you can still work from your own place remotely.
-* After Successful 3-month programme, we could offer other positions (permanent position, longer contract, additional intern etc.)
-
-## Challenge 2 - Web Application
+## Challenge 3 - Web Application
 
 Please create a web application to show each user's energy usages with time-series graph.
 
