@@ -61,3 +61,29 @@ ggplot(total_watt) + stat_smooth(aes(x = yday(time), y = energy))
 
 ggplot(total_watt) + stat_boxplot(aes(x = factor(yday(time)), y = energy))
 # this isn't really much use, and looks pretty messy.
+
+# clustering days ============================================
+# The simplest thing to do here it to take one average reading for each day.
+# More advanced stuff could involve clustering days by the distribution of usage inside that day
+
+# first, we need to aggregate aggregate
+total_watt_daily <- ddply(.data = total_watt, .variables = c(yday = .(yday(time))), .fun = summarise,
+													avg_energy = mean(energy)
+													)
+
+# now let's do k-means
+clusters_kmeans <- kmeans(x = total_watt_daily$avg_energy, 
+													centers = 3)
+# and view the results:
+clusters_kmeans
+
+# we'll assign the clusters back to the aggregated days
+total_watt_daily$cluster <- clusters_kmeans$centers[clusters_kmeans$cluster]
+# and see the results
+ggplot(total_watt_daily[order(total_watt_daily$avg_energy),]) + geom_point(aes(x = 1:nrow(total_watt_daily), y = avg_energy, colour = factor(cluster_centre)))
+# The highest energy consumption cluster does seem to be somewhat different.
+# the line between the lower two seems a bit arbitrary, though
+# let's see the results another way
+total_watt$daily_cluster_centre <- total_watt_daily[match(yday(total_watt$time), total_watt_daily$yday),'cluster']
+ggplot(total_watt) + stat_boxplot(aes(x = factor(yday(time)), y = energy, colour = factor(daily_cluster_centre)))
+# this seems to show that the high values are heavily driven by outliers
