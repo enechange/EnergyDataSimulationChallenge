@@ -1,6 +1,7 @@
 # Load libraries ---------------------------
 library(lubridate)
 library(ggplot2)
+library(plyr) # dplyr is a bit more elegant, but isn't in CRAN yet 
 
 # Load data ---------------------------
 total_watt <- read.csv("../../data/total_watt.csv", 
@@ -39,9 +40,21 @@ with(total_watt, sum(energy > 1500) / length(energy) * 24)
 # so these outliers could plausibly be one particular application, say an oven or a tumble dryer.
 
 # so how do we work out what the application is? aggregating over time!
+ggplot(ddply(.data = total_watt, .variables = c(hour = .(hour(time))), .fun = summarise,
+						 avg_energy = mean(energy))
+			 ) + geom_line(aes(x = hour, y = avg_energy))
+# so this is alright, we can see people cooking lunch. Variance would be nice, though
+ggplot(total_watt) + stat_smooth(aes(x = hour(time), y = energy))
+# much better visualization, and nicer code too.
+# (the line is a loess line, the grey area is 0.95 confidence interval)
 
-
+# this plot over half hour intervals:
+ggplot(total_watt) + stat_smooth(aes(x = time, y = energy))
+# doesn't really reveal much more. 
+# Unfortunately this plot hides the period of no measurment in early May,
+# but it does show that consumption drops ~50% over the unmeasured period
+# before rebounding at the end of May
 
 # visualize the dataset by day ---------------------------
-
+ggplot(total_watt) + stat_smooth(aes(x = yday(time), y = energy))
 
