@@ -1,18 +1,18 @@
-# Load libraries ---------------------------
+# Load libraries ===========================================
 library(lubridate)
 library(ggplot2)
 library(plyr) # dplyr is a bit more elegant, but isn't in CRAN yet 
 
-# Load data ---------------------------
+# Load data ============================================
 total_watt <- read.csv("../../data/total_watt.csv", 
 											 col.names = c('time','energy'), 
 											 stringsAsFactors = F
 )
 
-# clean data ---------------------------
+# clean data =====================================
 total_watt$time <- ymd_hms(total_watt$time)
 
-# exploration and visualization ---------------------------
+# exploration and visualization ==================================
 ggplot(total_watt) + geom_point(aes(x = time, y = energy))
 # conclusion: there's a gap, otherwise quite unenlightening
 
@@ -55,6 +55,6 @@ ggplot(total_watt) + stat_smooth(aes(x = time, y = energy))
 # but it does show that consumption drops ~50% over the unmeasured period
 # before rebounding at the end of May
 
-# visualize the dataset by day ---------------------------
+# visualize the dataset by day =======================================
 ggplot(total_watt) + stat_smooth(aes(x = yday(time), y = energy))
 
