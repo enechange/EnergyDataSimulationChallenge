@@ -1,7 +1,7 @@
 # Load libraries ===========================================
-library(lubridate)
-library(ggplot2)
-library(plyr) # dplyr is a bit more elegant, but isn't in CRAN yet 
+require(lubridate)
+require(ggplot2)
+require(plyr) # dplyr is a bit more elegant, but isn't in CRAN yet 
 
 # Load data ============================================
 total_watt <- read.csv("../../data/total_watt.csv", 
