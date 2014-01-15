@@ -1,3 +1,15 @@
+##############################################################
+# This analysis is shown as source file (visualize.R) and a 
+# derived html page (visualize.html). 
+# I've written it straight through, without going back and 
+# correcting much.
+# Hopefully this stream of consciousness approach shows my
+# workflow well.
+##############################################################
+
+
+
+
 # Load libraries ===========================================
 require(lubridate)
 require(ggplot2)
