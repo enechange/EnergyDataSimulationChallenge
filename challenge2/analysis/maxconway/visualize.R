@@ -80,7 +80,7 @@ clusters_kmeans
 # we'll assign the clusters back to the aggregated days
 total_watt_daily$cluster <- clusters_kmeans$centers[clusters_kmeans$cluster]
 # and see the results
-ggplot(total_watt_daily[order(total_watt_daily$avg_energy),]) + geom_point(aes(x = 1:nrow(total_watt_daily), y = avg_energy, colour = factor(cluster_centre)))
+ggplot(total_watt_daily[order(total_watt_daily$avg_energy),]) + geom_point(aes(x = 1:nrow(total_watt_daily), y = avg_energy, colour = factor(cluster)))
 # The highest energy consumption cluster does seem to be somewhat different.
 # the line between the lower two seems a bit arbitrary, though
 # let's see the results another way
