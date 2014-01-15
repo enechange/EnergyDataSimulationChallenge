@@ -57,4 +57,7 @@ ggplot(total_watt) + stat_smooth(aes(x = time, y = energy))
 
 # visualize the dataset by day =======================================
 ggplot(total_watt) + stat_smooth(aes(x = yday(time), y = energy))
+# this is per day of the year. Doesn't really have any advantage over half hour intervals.
 
+ggplot(total_watt) + stat_boxplot(aes(x = factor(yday(time)), y = energy))
+# this isn't really much use, and looks pretty messy.
