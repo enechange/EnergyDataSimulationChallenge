@@ -1,0 +1,33 @@
+Challenge 1: Energy Production Data Simulation
+========================================================
+
+Preparation
+--------------------------------------------------------
+Load libraries:
+```{r}
+require(ggplot2, quiet = TRUE)
+require(lubridate, quiet = TRUE)
+```
+
+Load data:
+```{r}
+training <- read.csv("../../data/training_dataset_500.csv")
+```
+
+Exploration
+--------------------------------------------------------
+First, let's see what we're dealing with:
+```{r}
+summary(training)
+head(training)
+```
+
+
+Let's look at some kernel density estimates:
+```{r}
+densityplot <- ggplot(training) + geom_density()
+densityplot + aes(x = Temperature)
+densityplot + aes(Daylight)
+densityplot + aes(EnergyProduction)
+
+```
