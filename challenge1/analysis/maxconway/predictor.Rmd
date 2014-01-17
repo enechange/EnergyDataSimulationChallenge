@@ -84,3 +84,25 @@ Wow, that really works. Looks like we're doing fine without anything fancy.
 To get better predictions, we've could move in two directions: improve the data, or improve how we model the data. In the past, I've generally found that improving data, or finding more data, is often better than making a model more 'sophisticated' (i.e. complicated).
 
 TBC...
+
+Results
+-------------------------------------------------
+We'll try the best model on the training set:
+```{r}
+testing <- read.csv("../../data/test_dataset_500.csv")
+testing$House <- factor(testing$House)
+
+MAPE <- mean(abs(predict(fit, testing) - testing$EnergyProduction) / testing$EnergyProduction) * 100
+
+print(MAPE)
+
+writeLines(text = paste0('MAPE is ', round(MAPE,3), '%'),
+					 con = 'mape.txt')
+
+predicted_energy_production <- data.frame(House = testing$House,
+																					EnergyProduction = predict(fit, testing)
+																					)
+write.csv(x = predicted_energy_production,
+					file = 'predicted_energy_production.csv'
+					)
+```
