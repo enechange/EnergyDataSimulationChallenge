@@ -22,6 +22,16 @@ summary(training)
 head(training)
 ```
 
+```{r}
+training$startdate <- ymd(paste(training$Year, training$Month, 1))
+training$House <- factor(training$House)
+```
+
+And check for missing data:
+```{r}
+ggplot(training) + geom_tile(aes(x = startdate, y = House, colour = EnergyProduction))
+```
+Doesn't look like we have missing data, but there appears to be a periodicity in the houses. If the labels are arbitrary, this shouldn't happen. Hopefully its just due to them having been sorted somehow before naming.
 
 Let's look at some kernel density estimates:
 ```{r}
