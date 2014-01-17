@@ -72,3 +72,15 @@ mean(abs(predict(fit, training) - training$EnergyProduction) / training$EnergyPr
 ```
 This is fairly promising. We've used three variables: `Daylight`, `Temperature`, and 'summeriness' (number of months away from June), and we've got a MAPE of 13.3%. And this isn't specified to houses yet!
 
+### Including Houses
+The baseline is now 13.3%, obtained by a linear model over all houses and environmental conditions. So now, we will include houses into the linear model.
+```{r}
+fit <- lm(EnergyProduction ~ House + Daylight + Temperature + I(abs(Month - 6)), data = training)
+mean(abs(predict(fit, training) - training$EnergyProduction) / training$EnergyProduction)
+```
+Wow, that really works. Looks like we're doing fine without anything fancy.
+
+### Improving on 5.8%
+To get better predictions, we've could move in two directions: improve the data, or improve how we model the data. In the past, I've generally found that improving data, or finding more data, is often better than making a model more 'sophisticated' (i.e. complicated).
+
+TBC...
