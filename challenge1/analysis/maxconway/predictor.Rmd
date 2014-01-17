@@ -50,13 +50,17 @@ cor(training[,c('Temperature', 'Daylight', 'EnergyProduction')])
 
 Prediction
 -------------------------------------------------------
+### Some discussion
 The first thing to do before modelling a system is to make sure you understand it, in particular the causes and effects. 
-Let's first make some assumptions about the dataset:
-- The `EnergyProduction` column describes the total energy produced by an array of solar panels, over a given month.
-- `Daylight` could mean a number of different things. With a maximum of 271, it is too small to be hours of sunlight in the month. It has decimal points and +ve correlation with `EnergyProduction` so it can't be based on Oktas.
-- Temperature is the average temperature in the month. Or is it? If this is British data, in Celsius, then 0.8 seems too low, and 29 too high.
 
-# todo
--continue discussion of the model.
--maybe look at correlations with number of days in the month
+Let's look at a few columns from the dataset:
+
+- The `EnergyProduction` column describes the total energy produced by an array of solar panels, over a given month.
+
+- `Daylight` could mean a number of different things. With a maximum of 271, it is too small to be hours of sunlight in the month. It has decimal points and +ve correlation with `EnergyProduction` so it can't be based on Oktas. The Other thing that would be nice to know is if this value is measured at the panel
+
+- Temperature is the average temperature in the month. Or is it? If this is British data, in Celsius, then 0.8 seems too low, and 29 too high. Also the weird shape of the density estimate is quite alarming.
+
+But for now, let's ignore these issues, and build a quick linear model.
+
 
