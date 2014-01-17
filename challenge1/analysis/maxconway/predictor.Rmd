@@ -37,10 +37,10 @@ Let's look at some kernel density estimates:
 ```{r}
 densityplot <- ggplot(training) + geom_density()
 densityplot + aes(x = Temperature)
-densityplot + aes(Daylight)
-densityplot + aes(EnergyProduction)
-
+densityplot + aes(x = Daylight)
+densityplot + aes(x = EnergyProduction)
 ```
+The density plot for `Temperature` is worryingly non-Gaussian, but I'll continue until this becomes a problem.
 
 Now let's look at the correlations between `Temperature`, `Daylight` and `EnergyProduction`. I'm not sure exactly what `Daylight` measures, but I'd guess that it's correlated with `Temperature`. I also expect `EnergyProduction` to have some correlation with both.
 ```{r}
