@@ -63,4 +63,12 @@ Let's look at a few columns from the dataset:
 
 But for now, let's ignore these issues, and build a quick linear model.
 
+### A quick linear model
+
+(Obviously testing on the training set like this is a bit taboo, but this is just exploration and overfitting isn't going to be an issue with a linear model over this kind of sample size)
+```{r}
+fit <- lm(EnergyProduction ~ Daylight + Temperature + I(abs(Month - 6)), data = training)
+mean(abs(predict(fit, training) - training$EnergyProduction) / training$EnergyProduction)
+```
+This is fairly promising. We've used three variables: `Daylight`, `Temperature`, and 'summeriness' (number of months away from June), and we've got a MAPE of 13.3%. And this isn't specified to houses yet!
 
