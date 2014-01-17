@@ -72,6 +72,8 @@ mean(abs(predict(fit, training) - training$EnergyProduction) / training$EnergyPr
 ```
 This is fairly promising. We've used three variables: `Daylight`, `Temperature`, and 'summeriness' (number of months away from June), and we've got a MAPE of 13.3%. And this isn't specified to houses yet!
 
+At this point, its worth noting that I'm choosing to make predictions conditional on the Daylight and Temperature readings. This seems to be the spirit of the problem, given that these values are included in the testing dataset. If we do not use these values, the bulk of the problem would essentially be weather forecasting.
+
 ### Including Houses
 The baseline is now 13.3%, obtained by a linear model over all houses and environmental conditions. So now, we will include houses into the linear model.
 ```{r}
