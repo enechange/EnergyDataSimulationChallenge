@@ -1,0 +1,110 @@
+Challenge 1: Energy Production Data Simulation
+========================================================
+
+Preparation
+--------------------------------------------------------
+Load libraries:
+```{r}
+require(ggplot2, quiet = TRUE)
+require(lubridate, quiet = TRUE)
+```
+
+Load data:
+```{r}
+training <- read.csv("../../data/training_dataset_500.csv")
+```
+
+Exploration
+--------------------------------------------------------
+First, let's see what we're dealing with:
+```{r}
+summary(training)
+head(training)
+```
+
+```{r}
+training$startdate <- ymd(paste(training$Year, training$Month, 1))
+training$House <- factor(training$House)
+```
+
+And check for missing data:
+```{r}
+ggplot(training) + geom_tile(aes(x = startdate, y = House, colour = EnergyProduction))
+```
+Doesn't look like we have missing data, but there appears to be a periodicity in the houses. If the labels are arbitrary, this shouldn't happen. Hopefully its just due to them having been sorted somehow before naming.
+
+Let's look at some kernel density estimates:
+```{r}
+densityplot <- ggplot(training) + geom_density()
+densityplot + aes(x = Temperature)
+densityplot + aes(x = Daylight)
+densityplot + aes(x = EnergyProduction)
+```
+The density plot for `Temperature` is worryingly non-Gaussian, but I'll continue until this becomes a problem.
+
+Now let's look at the correlations between `Temperature`, `Daylight` and `EnergyProduction`. I'm not sure exactly what `Daylight` measures, but I'd guess that it's correlated with `Temperature`. I also expect `EnergyProduction` to have some correlation with both.
+```{r}
+cor(training[,c('Temperature', 'Daylight', 'EnergyProduction')])
+```
+`EnergyProduction` has the expected correlations, but the very low correlation between `Temperature` and `Daylight` is pretty surprising. One or both of these may not mean what I think it means. 
+
+Prediction
+-------------------------------------------------------
+### Some discussion
+The first thing to do before modelling a system is to make sure you understand it, in particular the causes and effects. 
+
+Let's look at a few columns from the dataset:
+
+- The `EnergyProduction` column describes the total energy produced by an array of solar panels, over a given month.
+
+- `Daylight` could mean a number of different things. With a maximum of 271, it is too small to be hours of sunlight in the month. It has decimal points and +ve correlation with `EnergyProduction` so it can't be based on Oktas. The Other thing that would be nice to know is if this value is measured at the panel
+
+- Temperature is the average temperature in the month. Or is it? If this is British data, in Celsius, then 0.8 seems too low, and 29 too high. Also the weird shape of the density estimate is quite alarming.
+
+But for now, let's ignore these issues, and build a quick linear model.
+
+### A quick linear model
+
+(Obviously testing on the training set like this is a bit taboo, but this is just exploration and overfitting isn't going to be an issue with a linear model over this kind of sample size)
+```{r}
+fit <- lm(EnergyProduction ~ Daylight + Temperature + I(abs(Month - 6)), data = training)
+mean(abs(predict(fit, training) - training$EnergyProduction) / training$EnergyProduction)
+```
+This is fairly promising. We've used three variables: `Daylight`, `Temperature`, and 'summeriness' (number of months away from June), and we've got a MAPE of 13.3%. And this isn't specified to houses yet!
+
+At this point, its worth noting that I'm choosing to make predictions conditional on the Daylight and Temperature readings. This seems to be the spirit of the problem, given that these values are included in the testing dataset. If we do not use these values, the bulk of the problem would essentially be weather forecasting.
+
+### Including Houses
+The baseline is now 13.3%, obtained by a linear model over all houses and environmental conditions. So now, we will include houses into the linear model.
+```{r}
+fit <- lm(EnergyProduction ~ House + Daylight + Temperature + I(abs(Month - 6)), data = training)
+mean(abs(predict(fit, training) - training$EnergyProduction) / training$EnergyProduction)
+```
+Wow, that really works. Looks like we're doing fine without anything fancy.
+
+### Improving on 5.8%
+To get better predictions, we've could move in two directions: improve the data, or improve how we model the data. In the past, I've generally found that improving data, or finding more data, is often better than making a model more 'sophisticated' (i.e. complicated).
+
+TBC...
+
+Results
+-------------------------------------------------
+We'll try the best model on the training set:
+```{r}
+testing <- read.csv("../../data/test_dataset_500.csv")
+testing$House <- factor(testing$House)
+
+MAPE <- mean(abs(predict(fit, testing) - testing$EnergyProduction) / testing$EnergyProduction) * 100
+
+print(MAPE)
+
+writeLines(text = paste0('MAPE is ', round(MAPE,3), '%'),
+					 con = 'mape.txt')
+
+predicted_energy_production <- data.frame(House = testing$House,
+																					EnergyProduction = predict(fit, testing)
+																					)
+write.csv(x = predicted_energy_production,
+					file = 'predicted_energy_production.csv'
+					)
+```
