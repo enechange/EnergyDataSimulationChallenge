@@ -34,7 +34,7 @@ Files included:
         watts_cluster_areachart.csv
 
     These 3 files are used by energy_consumption_vis.html to produce SVG
-    visualisation dynamically. You should be able to run analysis.py against any file in the same format
+    visualisation dynamically. You should be able to run analyse.py against any file in the same format
     as total_watt.csv and load the vis html file in browser to see the
     visualisation. d3.js will automatically realign axes, scales etc. There may
     be slight issues with lablels and pie/tool tips as I have aligned them
@@ -43,7 +43,7 @@ Files included:
 
 I initially planned to produce a web app by wrappping analysis.py inside a
 python microframework(bottle). In that way new files can be loaded via the
-webapp for anaylysis and visuslisation can be made fully dynamic by accessing
+webapp for anaylyse and visuslisation can be made fully dynamic by accessing
 analysis.py via api calls. I didn't get to time to work on that! 
 
 
