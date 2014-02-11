@@ -1,4 +1,3 @@
-
 Visualisation file : energy_consumption_vis.html
 
 Please copy the file to a webserver and access it via URL in your browser instead of accessing it directly as a local
@@ -27,7 +26,7 @@ Files included:
 
     To run:
 
-    python analysis.py ../../data/total_watt.csv
+    python analyse.py ../../data/total_watt.csv
 
     produces 3 files:
         watts_grouped_by_30.csv 
