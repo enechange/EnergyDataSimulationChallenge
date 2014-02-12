@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <style>
+
+  body {
+    font: 10px sans-serif;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #cccccc ;
+    shape-rendering: crispEdges;
+  }
+  .axis text {
+    font-family: sans-serif;
+    font-size: 10px;
+  }
+
+  .x.axis path {
+    //display: none;
+  }
+
+  .line {
+    fill: none;
+    stroke: #fc8d59;
+    stroke-width: 1px;
+  }
+  
+
+  
+  </style>
+  <script src="../js/d3.v3.min.js" type="text/javascript"></script>
+</head>
+  <body>
+   <p>Energy consumption per 30 minutes. Hover over the graph to get time, watt values</p>
+   <script type="text/javascript">
+   /* SVG1 for first visualisation - energy consumption per 30 days */
+    var margin = {top: 20, right: 80, bottom: 30, left: 50};
+    var width = 960 - margin.left - margin.right;
+    var height = 500 - margin.top - margin.bottom;
+    var padding = 30;
+    
+    var formatDateToString = d3.time.format("%d-%m-%Y %H:%M:%S");
+    var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
+
+    var y = d3.scale.linear()
+         .range([height, 0]);
+         
+    var x = d3.time.scale()
+         .range([0, width]);
+         
+    var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .ticks(d3.time.day, 5)
+                    .tickFormat(d3.time.format("%d-%m-%Y"))
+                    .orient("bottom");
+                    
+    var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .tickFormat(d3.format("04d"))
+                    .orient("left");
+    
+    var line = d3.svg.line()
+                 .interpolate("linear")
+                 .x(function(d) { return x(d.date); })
+                 .y(function(d) { return y(d.watts); });
+                 
+    var svg1 = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.csv("watts_grouped_by_30.csv", 
+            function(error, data) {
+            
+                
+                
+                data.forEach(function(d) {
+                                d.date = parseDate(d.date);
+                                d.watts = parseFloat(d.watts);
+                            }
+                );
+                
+                     
+                x.domain(d3.extent(data, function(d) { return d.date; }));
+                
+                
+              
+                
+                y.domain([
+                  d3.min(data, function(d) { return d.watts; }),
+                  d3.max(data, function(d) { return d.watts; })
+                ]);
+                
+                                
+                
+                
+            
+                    
+                svg1.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+                
+                
+                svg1.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Energy Consumption in Watts");
+                
+                svg1.append("path")
+                .datum(data)
+                .attr("class", "line")
+                .attr("d", line);
+
+                svg1.selectAll("rect")
+			    .data(data)
+			    .enter()
+			    .append("rect")
+			    .attr("x", function(d) {
+			   		return x(d.date);
+			    })
+			    .attr("y", function(d) {
+			   		return y(d.watts);
+			    })
+			    .attr("width", 0.01)
+			    .attr("height", function(d) {
+			   		return height - y(d.watts);
+			    })
+			    .attr("stroke", "grey")
+			    .attr("stroke-opacity", "0.0")
+			    .on("mouseover", function(d) {
+
+					//Get this bar's x/y values, then augment for the tooltip
+					var xPosition = parseFloat(d3.select(this).attr("x")) ;
+					var yPosition = parseFloat(d3.select(this).attr("y")) ;
+                    d3.select(this).attr("stroke","#cccccc");
+                    d3.select(this).attr("stroke-opacity","100.0");
+					//Create the tooltip label
+					svg1.append("text")
+					   .attr("id", "tooltip1")
+					   .attr("x", xPosition)
+					   .attr("y", yPosition)
+					   .attr("text-anchor", "right")
+					   .attr("font-family", "sans-serif")
+					   .attr("font-size", "10px")
+					   .attr("font-weight", "normal")
+					   .attr("fill", "black")
+					   .text("Time : " + formatDateToString(d.date));
+					   
+					//Create the tooltip label
+					svg1.append("text")
+					   .attr("id", "tooltip2")
+					   .attr("x", xPosition)
+					   .attr("y", yPosition + 10)
+					   .attr("text-anchor", "right")
+					   .attr("font-family", "sans-serif")
+					   .attr("font-size", "10px")
+					   .attr("font-weight", "normal")
+					   .attr("fill", "black")
+					   .text(" Watt : " + d.watts);
+
+			   })
+			   .on("mouseout", function() {
+			   
+					//Remove the tooltip
+					d3.select("#tooltip1").remove();
+					d3.select("#tooltip2").remove();
+					d3.select(this).attr("stroke-opacity","0.0");
+					
+			   });
+
+
+ 
+       
+
+    });
+     
+   </script>
+   
+   <!--SVG2 for values grouped by day. todo: separate js scripts into reusable .js files-->
+   <p>Energy consumption per day. Hover over the graph to get time, watt values</p>
+   <script type="text/javascript">
+   /* SVG for first visualisation - energy consumption per 30 days */
+    var margin = {top: 20, right: 80, bottom: 30, left: 50};
+    var width = 960 - margin.left - margin.right;
+    var height = 500 - margin.top - margin.bottom;
+    var padding = 30;
+    
+    var formatDateToString = d3.time.format("%d-%m-%Y %H:%M:%S");
+    var formatDateToDay = d3.time.format("%d-%m-%Y");
+    var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
+
+    var y = d3.scale.linear()
+         .range([height, 0]);
+         
+    var x = d3.time.scale()
+         .range([0, width]);
+         
+    var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .ticks(d3.time.day, 5)
+                    .tickFormat(d3.time.format("%d-%m-%Y"))
+                    .orient("bottom");
+                    
+    var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .tickFormat(d3.format("04d"))
+                    .orient("left");
+    
+    var line = d3.svg.line()
+                 .interpolate("linear")
+                 .x(function(d) { return x(d.date); })
+                 .y(function(d) { return y(d.watts); });
+                 
+    var svg2 = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.csv("watts_grouped_by_day.csv", 
+            function(error, data) {
+            
+                
+                
+                data.forEach(function(d) {
+                                d.date = parseDate(d.date);
+                                d.watts = parseFloat(d.watts);
+                            }
+                );
+                
+                     
+                x.domain(d3.extent(data, function(d) { return d.date; }));
+                
+                
+              
+                
+                y.domain([
+                  d3.min(data, function(d) { return d.watts; }),
+                  d3.max(data, function(d) { return d.watts; })
+                ]);
+                
+                                
+                
+                
+            
+                    
+                svg2.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+                
+                
+                svg2.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Energy Consumption in Watts");
+                
+                svg2.append("path")
+                .datum(data)
+                .attr("class", "line")
+                .attr("d", line);
+
+                svg2.selectAll("rect")
+			    .data(data)
+			    .enter()
+			    .append("rect")
+			    .attr("x", function(d) {
+			   		return x(d.date);
+			    })
+			    .attr("y", function(d) {
+			   		return y(d.watts);
+			    })
+			    .attr("width", 0.5)
+			    .attr("height", function(d) {
+			   		return height - y(d.watts);
+			    })
+			    .attr("stroke", "#cccccc")
+			    .attr("stroke-opacity", "0.1")
+			    .attr("fill", "#cccccc")
+			    .attr("fill-opacity", "0.1")			    
+			    .on("mouseover", function(d) {
+
+					//Get this bar's x/y values, then augment for the tooltip
+					var xPosition = parseFloat(d3.select(this).attr("x")) ;
+					var yPosition = parseFloat(d3.select(this).attr("y")) ;
+                    d3.select(this).attr("stroke","#cccccc");
+                    d3.select(this).attr("stroke-opacity","100.0");
+					//Create the tooltip label
+					svg2.append("text")
+					   .attr("id", "tooltip1")
+					   .attr("x", xPosition)
+					   .attr("y", yPosition)
+					   .attr("text-anchor", "right")
+					   .attr("font-family", "sans-serif")
+					   .attr("font-size", "10px")
+					   .attr("font-weight", "normal")
+					   .attr("fill", "black")
+					   .text("Day : " + formatDateToDay(d.date));
+					   
+					//Create the tooltip label
+					svg2.append("text")
+					   .attr("id", "tooltip2")
+					   .attr("x", xPosition)
+					   .attr("y", yPosition + 10)
+					   .attr("text-anchor", "right")
+					   .attr("font-family", "sans-serif")
+					   .attr("font-size", "10px")
+					   .attr("font-weight", "normal")
+					   .attr("fill", "black")
+					   .text(" Watt : " + d3.round(d.watts, 2));
+					   
+					   
+
+			   })
+			   .on("mouseout", function() {
+			   
+					//Remove the tooltip
+					
+					d3.select("#tooltip1").remove();
+					d3.select("#tooltip2").remove();
+					
+					d3.select(this).attr("stroke-opacity","0.1");
+					
+			   });
+
+
+ 
+       
+
+    });
+     
+   </script>
+   
+   <!--SVG3 for cluster area chart. -->
+   <p>Low, medium, high energy consumption over time as a stacked area chart. Hover over the graph to get watts consumed in each category</p>
+   <p>Cluster ranges from analysis.py (watts) </p>
+   <p>Low : 347 - 1118 </p>
+   <p>Medium : 1905 - 3756 </p>
+   <p>High : 6320 - 9108 </p>
+
+   <script type="text/javascript">
+   
+   var format = d3.time.format("%m/%d/%y");
+
+   var margin = {top: 20, right: 80, bottom: 30, left: 50};
+   var width = 960 - margin.left - margin.right;
+   var height = 500 - margin.top - margin.bottom;
+
+   var x = d3.time.scale()
+    .range([0, width]);
+
+   var y = d3.scale.linear()
+    .range([height, 0]);
+
+   //var z = d3.scale.category20c();
+   var z = function(i){
+            colors = ['#fdbe85', '#fd8d3c', '#d94701'];
+            return colors[i];
+        }
+
+   var xAxis = d3.svg.axis()
+    .scale(x)
+    .ticks(d3.time.day, 5)
+    .tickFormat(d3.time.format("%d-%m-%Y"))
+    .orient("bottom");
+
+
+   var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+   var stack = d3.layout.stack()
+    .offset("zero")
+    .values(function(d) { return d.values; })
+    .x(function(d) { return d.date; })
+    .y(function(d) { return d.value; });
+
+   var nest = d3.nest()
+    .key(function(d) { return d.key; });
+
+   var area = d3.svg.area()
+    .interpolate("linear")
+    .x(function(d) { return x(d.date); })
+    .y0(function(d) { return y(d.y0); })
+    .y1(function(d) { return y(d.y0 + d.y); });
+
+   var svg3 = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+   d3.csv("watts_cluster_areachart.csv", function(data) {
+    data.forEach(function(d) {
+        d.date = format.parse(d.date);
+        d.value = parseFloat(d.value);
+    });
+
+    var layers = stack(nest.entries(data));
+
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain([0, d3.max(data, function(d) { return d.y0 + d.y; })]);
+    
+    
+    //data for pie chart
+    pie_data = {};        
+
+    data.forEach(function (d){
+       if(d.date in pie_data){
+            pie_data[d.date].push(d.value);
+       }
+       else{
+            pie_data[d.date] = []
+            pie_data[d.date].push(d.value)
+       }
+        
+       
+   });
+   
+   
+      svg3.selectAll(".layer")
+      .data(layers)
+      .enter().append("path")
+      .attr("class", "layer")
+      .attr("d", function(d) { return area(d.values); })
+      .style("fill", function(d, i) { return z(i); });
+
+    svg3.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+    svg3.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+      
+    svg3.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", ".71em")
+                .style("text-anchor", "end")
+                .text("Energy Consumption in Watts");
+    
+    /*tooltip*/
+   
+     svg3.selectAll("circle")
+			    .data(data)
+			    .enter()
+			    .append("circle")
+			    .attr("cx", function(d) {
+			   		return x(d.date);
+			    })
+			    .attr("cy", function(d) {
+			   		return y(d.y0 + d.y);
+			    })
+			    .attr("r", 4)
+			    .attr("stroke", "#cccccc")
+			    .attr("stroke-opacity", "100.0")
+			    .attr("fill", "#cccccc")
+			    .attr("fill-opacity", "0")
+			    .on("mouseover", function(d){
+			                        d3.select(this).attr("stroke","#cccccc");
+                                    d3.select(this).attr("stroke-opacity","100.0");
+                                    d3.select(this).attr("fill-opacity", "100");
+
+                                    
+                                    var pie_dataset = [0, 0, 0];
+                                    var watt_sum = 1;
+                                    if(d.date in pie_data){
+                                        pie_dataset = pie_data[d.date];
+                                    }
+                                    
+                                    watt_sum = d3.sum(pie_dataset);
+
+                                    var outerRadius = 90;
+                                    var innerRadius = 60;
+                          			var arc = d3.svg.arc()
+						                            	.innerRadius(innerRadius)
+						                            	.outerRadius(outerRadius);
+						                            	
+						            var pie = d3.layout.pie();
+						            
+						            var arcs = svg3.selectAll("g.arc")
+						                            .data(pie(pie_dataset))
+						                            .enter()
+						                            .append("g")
+						                            .attr("id", "pie")
+						                            .attr("transform", "translate(" + 650 + "," + 100 + ")")
+						                            .attr("class", "arc");
+						            
+						            arcs.append("path")
+						                    .attr("fill", function(d, i) {
+						                             return z(i);       
+						                     })
+						                     .attr("id", "pie_path")
+						                     .attr("d", arc);
+						                     
+						            //Labels
+						            dt = formatDateToDay(d.date)
+						            arcs.append("text")
+						                .attr("transform", function(d) {
+						                        return "translate(" + arc.centroid(d) + ")";
+						                 })
+						                 .attr("text-anchor", "middle")
+						                 .attr("id", "pie_label")
+						                 .text(function(d) {
+						                    if(d.value != 0){
+						                        return d3.round(d.value) + "(" + d3.round(d.value * 100/watt_sum) + "%)";
+						                    }
+						                 });
+						                 
+						            // label units on donut
+                                        svg3.append("text")
+                                       .attr("id", "donutLabel1")
+                                       .attr("text-anchor", "middle")
+                                       .attr("x", 650)
+                                       .attr("y", 80)
+                                       .attr("dy", ".75em")
+                                       .attr("fill", "gray")
+                                       .attr("opacity", "100")
+                                       .attr("font-size", "11px")
+                                       .text(dt);       
+                                       
+                                        svg3.append("text")
+                                       .attr("id", "donutLabel2")
+                                       .attr("text-anchor", "middle")
+                                       .attr("x", 650)
+                                       .attr("y", 100)
+                                       .attr("dy", ".75em")
+                                       .attr("fill", "gray")
+                                       .attr("opacity", "100")
+                                       .attr("font-size", "11px")
+                                       .text(d3.round(watt_sum));
+                                       
+                                       
+                                        svg3.append("text")
+                                       .attr("id", "donutLabel3")
+                                       .attr("text-anchor", "middle")
+                                       .attr("x", 650)
+                                       .attr("y", 110)
+                                       .attr("dy", ".75em")
+                                       .attr("fill", "gray")
+                                       .attr("opacity", "100")
+                                       .attr("font-size", "6px")
+                                       .text("(Watts)");                                                                                
+                          	
+                                                
+                                    
+			      })
+			     .on("mouseout", function(){
+                                    d3.select("#donutLabel1").remove();
+                                    d3.select("#donutLabel2").remove();
+                                    d3.select("#donutLabel3").remove();
+                                    d3.selectAll("g.arc").remove();
+                                    d3.select(this).attr("fill-opacity", "0")
+			        
+			      });
+
+      
+    });
+    </script>
+   
+  </body>
+</html>
