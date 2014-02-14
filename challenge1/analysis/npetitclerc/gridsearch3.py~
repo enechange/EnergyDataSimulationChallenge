@@ -1,0 +1,39 @@
+import numpy as np
+from sklearn.utils import check_arrays
+from sklearn import linear_model
+from sklearn import preprocessing
+from sklearn import svm, metrics
+from sklearn import grid_search 
+from utility_extra import mape
+ 
+# Columns of data:
+# 0-ID  1-Label  2-House  3-Year  4-Month  5-Temperature  6-Daylight  7-EnergyProduction
+data_train = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/training_dataset_500.csv", delimiter=',', skiprows=1)
+data_test = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/test_dataset_500.csv", delimiter=',', skiprows=1)
+file_output = open("./gridsearch_results2.dat", 'w')
+x_train = data_train[:, [2, 4, 5, 6]]
+y_train = data_train[:,7]
+x_test = data_test[:, [2, 4, 5, 6]]
+y_test = data_test[:, 7]
+
+scaler = preprocessing.Scaler()
+x_train_scaled = scaler.fit_transform(x_train)
+x_test_scaled = scaler.transform(x_test)
+
+normalizer = preprocessing.Normalizer()
+x_train_norm = normalizer.fit_transform(x_train_scaled)
+x_test_norm = normalizer.transform(x_test_scaled)
+       
+tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1.5, 1.25, 1, 0.75, 0.5], 'C': [5, .75, 10, 12.5, 15],},]
+
+clf = grid_search.GridSearchCV( svm.SVR(), tuned_parameters, scoring='r2', n_jobs=-1, verbose=2 )
+clf.fit(x_train_norm, y_train)
+print "Best parameters set found on development set:"
+print clf.best_estimator_
+print "Grid scores on development set:"
+for params, mean_score, scores in clf.grid_scores_:
+    print >>file_output, "%0.3f (+/-%0.03f) for %r" % (mean_score, np.asarray(scores).std() / 2, params)
+
+file_output.close()
+
+

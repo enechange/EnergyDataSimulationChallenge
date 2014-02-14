@@ -1,0 +1,104 @@
+#!/var/bin/python
+"""
+Plot the predicted Energy produced vs the actual Energy produced
+
+"""
+import numpy as np
+from sklearn.utils import check_arrays
+from sklearn import linear_model
+from sklearn import preprocessing
+from sklearn import svm
+from utility_extra import mape
+
+# Columns of data:
+# 0-ID  1-Label  2-House  3-Year  4-Month  5-Temperature  6-Daylight  7-EnergyProduction
+data_train = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/training_dataset_500_nh.csv", delimiter=',')
+data_test = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/test_dataset_500_nh.csv", delimiter=',')
+#data_train = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/training_dataset_500.csv", delimiter=',', skiprows=1)
+#data_test = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/test_dataset_500.csv", delimiter=',', skiprows=1)
+
+#x_train = data_train[:, :8]
+#x_test = data_test[:, :8]
+x_train = data_train[:, [4, 5, 6, 7]]
+y_train = data_train[:,8]
+x_test = data_test[:, [4, 5, 6, 7]]
+y_test = data_test[:, 8]
+
+#data2 = np.asarray([dt[[2, 4, 5, 6, 7]] for dt in data_train if (dt[3] == 2012 and dt[4] == 6) ])
+#x_d2 = data2[:, :-1]
+#y_d2 = data2[:, -1]
+#print x_d2.shape, y_d2.shape
+
+#for i, y in enumerate(y_train):
+#    if x_train[i][0] in [86, 96, 109, 152]:
+#        print y, x_train[i]
+
+scaler = preprocessing.StandardScaler()
+x_train_scaled = scaler.fit_transform(x_train)
+x_test_scaled = scaler.transform(x_test)
+
+#normalizer = preprocessing.Normalizer()
+#x_train_norm = normalizer.fit_transform(x_train_scaled)
+#x_test_norm = normalizer.transform(x_test_scaled)
+#MAPE:  6.72694693659 ==> Both scaled and normalized is worst
+
+x_train_norm = x_train_scaled
+x_test_norm = x_test_scaled
+#MAPE:  6.1699333695 ===> Scaling data helps, but not normalizing
+
+#normalizer = preprocessing.Normalizer()
+#x_train_norm = normalizer.fit_transform(x_train)
+#x_test_norm = normalizer.transform(x_test)
+#MAPE:  6.41293549389 ==> Only normalize is worst then doing nothing
+
+#x_train_norm = x_train
+#x_test_norm = x_test
+#MAPE:  6.31901245033  ===> No change 
+
+#x_d2_scaled = scaler.transform(x_d2)
+#x_d2_norm = normalizer.transform(x_d2_scaled)
+
+from sklearn import ensemble
+rfr = ensemble.RandomForestRegressor(n_estimators=300, max_features='sqrt', min_samples_split=10, min_samples_leaf=2)
+rfr.fit(x_train_norm, y_train)
+print "RFR norm"
+print "MAPE: ", mape( y_test, rfr.predict(x_test_norm))
+y_pred = rfr.predict(x_test_norm)
+
+## Using best parameters from GridSearch:
+#svr = svm.SVR(kernel='rbf') #, C=30, gamma=1)
+##svr = svm.SVR(kernel='linear')
+#svr.fit(x_train_norm, y_train)
+##svr.fit(x_train_norm, y_train)
+#y_pred = svr.predict(x_test_norm)
+##y_pred = svr.predict(x_d2_norm)
+##y_pred = scaler.inverse_transform(y_pred)
+##y_pred = normalizer.inverse_transform(y_pred)
+#print "MAPE: ", mape( y_test, y_pred)
+##print "MAPE: ", mape( y_d2, y_pred)
+
+y_pred = y_pred * data_test[:, 7]
+y_test = y_test * data_test[:, 7]
+
+import pylab as pl
+pl.scatter(y_test, y_pred, cmap=pl.cm.Paired)
+#pl.scatter(y_d2, y_pred, cmap=pl.cm.Paired)
+#pl.scatter(y_train, y_train, cmap=pl.cm.Paired)
+low = min(np.append(y_test, y_pred))
+hig = max(np.append(y_test, y_pred))
+pl.plot([low,hig], [low,hig], '-')
+pl.xlabel('True Energy Produced')
+pl.ylabel('Predicted Energy Produced')
+
+pl.show()
+
+#Output files
+out_pred = "/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/analysis/npetitclerc/predicted_energy_production.csv"
+
+print data_test[:, 2]
+pred = np.asarray([np.append(['House'], data_test[:, 2]), np.append(['Predicted Energy Production'], y_pred)]).T
+print pred
+np.savetxt(out_pred, pred, delimiter=',', fmt='%i,%.2f') #i,%i,%i,%i,%.1f,%.1f,%f,%f')
+
+
+

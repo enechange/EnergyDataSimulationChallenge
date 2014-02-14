@@ -1,0 +1,103 @@
+#!/var/bin/python
+"""
+Plot the predicted Energy produced vs the actual Energy produced
+
+"""
+import numpy as np
+from sklearn.utils import check_arrays
+from sklearn import linear_model
+from sklearn import preprocessing
+from sklearn import svm
+from utility_extra import mape
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Columns of data:
+# 0-ID  1-Label  2-House  3-Year  4-Month  5-Temperature  6-Daylight  7-EnergyProduction
+data_train = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/training_dataset_500.csv", delimiter=',', skiprows=1)
+data_test = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/test_dataset_500.csv", delimiter=',', skiprows=1)
+
+#rfile = open("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/training_dataset_500.csv", 'r')
+#col_names = rfile.readline()
+
+
+x_train = data_train[:, :8] #[2, 4, 5, 6]]
+y_train = data_train[:,7]
+x_test = data_test[:, :8] #[2, 4, 5, 6]]
+y_test = data_test[:, 7]
+print x_train[-1]
+#plt.subplot(2, 2, 1)
+
+###################
+
+xm = range(500)
+#ym = [np.mean(y_train[x*24:x*24 + 24]) for x in xm]
+
+houses = {} 
+for i, x in enumerate(x_train):
+    if x[2] in houses:
+        houses[x[2]]['x'].append(x)
+        houses[x[2]]['y'].append(y_train[i])
+    else:
+        houses[x[2]] = {'x':[x], 'y':[y_train[i]]}
+
+for x in houses.keys():
+    houses[x]['ymean'] = np.mean(houses[x]['y'])
+    
+sorting_dict = {}
+for k in houses.keys():
+    sorting_dict[k] = houses[k]['ymean']
+
+#print "sorting_dict: ", sorting_dict
+sorted_keys = sorted(sorting_dict, key=sorting_dict.__getitem__)
+#print "sorted_keys: ", sorted_keys
+
+x_train_sorted = []
+y_train_sorted = []
+x_test_sorted = []
+house_n = 0
+sorted_h = []
+sorted_y = []
+
+for i, k in enumerate(sorted_keys):
+    houses[k]['x'] = np.asarray(houses[k]['x'])
+    houses[k]['x'][:,2] = house_n
+    if len(x_train_sorted) == 0:        
+        x_train_sorted = houses[k]['x']
+    else:
+        x_train_sorted = np.append(x_train_sorted, houses[k]['x'], axis=0)
+    y_train_sorted.extend(houses[k]['y'])
+    sorted_h.append(house_n)
+    sorted_y.append(houses[k]['ymean'])
+    house_n += 1    
+    
+    x_test_temp = x_test[i]
+    x_test_temp[2] = sorted_keys.index(x_test_temp[2])
+    x_test_sorted.append(x_test_temp)
+                
+regr = linear_model.LinearRegression()
+regr.fit(x_train_sorted, y_train_sorted)
+pred = regr.predict(x_test_sorted)
+print "MAPE: ", mape(y_test, regr.predict(x_test_sorted)), "%"
+print "Coefs: ", regr.coef_
+
+          
+#for i in xrange(4):
+#    plt.subplot(2, 2, i + 1)
+#    plt.scatter(x_train_sorted[:, i], y_train_sorted)
+#    if i==0:
+#        plt.scatter(sorted_h, sorted_y, c='red')
+#    xr = np.asarray(range(int(max(x_train_sorted[:, i]) - min(x_train_sorted[:, i])))) + min(x_train_sorted[:, i])
+#    yr = xr * regr.coef_[i] + min(y_train_sorted)
+#    plt.plot(xr, yr)
+#    
+#    plt.xlabel(str(i))
+#    plt.ylabel('E')
+#plt.show()
+#np.savetxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/training_dataset_500_sorted.csv", col_names, delimiter=',')
+np.savetxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/training_dataset_500_sorted.csv", x_train_sorted, delimiter=',', fmt='%i,%i,%i,%i,%i,%.1f,%.1f,%i')
+np.savetxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/test_dataset_500_sorted.csv", x_test_sorted, delimiter=',', fmt='%i,%i,%i,%i,%i,%.1f,%.1f,%i')
+        
+        
+        
+        

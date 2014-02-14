@@ -1,0 +1,32 @@
+import numpy as np
+from sklearn import decomposition
+from sklearn import preprocessing
+
+# Columns of data:
+# 0-ID  1-Label  2-House  3-Year  4-Month  5-Temperature  6-Daylight  7-EnergyProduction
+data_train = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/training_dataset_500.csv", delimiter=',', skiprows=1)
+data_test = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/test_dataset_500.csv", delimiter=',', skiprows=1)
+
+x_train = data_train[:, :7]
+y_train = data_train[:,7]
+x_test = data_test[:, :7]
+y_test = data_test[:, 7]
+
+
+
+
+scaler = preprocessing.Scaler()
+x_train_scaled = scaler.fit_transform(x_train)
+x_test_scaled = scaler.transform(x_test)
+
+normalizer = preprocessing.Normalizer()
+x_train_norm = normalizer.fit_transform(x_train_scaled)
+x_test_norm = normalizer.transform(x_test_scaled)
+
+
+################ PCA #########################
+# To find which parameters matters
+
+pca = decomposition.PCA()
+pca.fit(x_train_norm)
+print(pca.explained_variance_) 

@@ -1,0 +1,75 @@
+import numpy as np
+from sklearn.utils import check_arrays
+from sklearn import linear_model
+from sklearn import preprocessing
+from sklearn import svm
+from sklearn import grid_search 
+ 
+def mape(y_true, y_pred): 
+    """
+    Use of this metric is not recommended; for illustration only. 
+    See other regression metrics on sklearn docs:
+      http://scikit-learn.org/stable/modules/classes.html#regression-metrics
+ 
+    Use like any other metric
+    >>> y_true = [3, -0.5, 2, 7]; y_pred = [2.5, -0.3, 2, 8]
+    >>> mape(y_true, y_pred)
+    Out[]: 24.791666666666668
+    """
+    
+    y_true, y_pred = check_arrays(y_true, y_pred)
+ 
+    ## Note: does not handle mix 1d representation
+    #if _is_1d(y_true): 
+    #    y_true, y_pred = _check_1d_array(y_true, y_pred)
+ 
+    return np.mean(np.abs((y_true - y_pred) / y_pred)) * 100
+
+
+# Columns of data:
+# 0-ID  1-Label  2-House  3-Year  4-Month  5-Temperature  6-Daylight  7-EnergyProduction
+data_train = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/training_dataset_500.csv", delimiter=',', skiprows=1)
+data_test = np.loadtxt("/home/nicolas/workspace/camenergydatalab/EnergyDataSimulationChallenge/challenge1/data/test_dataset_500.csv", delimiter=',', skiprows=1)
+
+x_train = data_train[:, [2, 4, 5, 6]]
+y_train = data_train[:,7]
+x_test = data_test[:, [2, 4, 5, 6]]
+y_test = data_test[:, 7]
+
+scaler = preprocessing.Scaler()
+x_train_scaled = scaler.fit_transform(x_train)
+x_test_scaled = scaler.transform(x_test)
+
+normalizer = preprocessing.Normalizer()
+x_train_norm = normalizer.fit_transform(x_train_scaled)
+x_test_norm = normalizer.transform(x_test_scaled)
+
+
+#svr = svm.SVR()
+#random_search = grid_search.RandomizedSearchCV(svr)
+
+#tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4], 'C': [1, 10, 100, 1000]},
+#        {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
+        
+tuned_parameters = [{'kernel': ['linear','poly','rbf'], 
+                    'gamma': [1, 0, 0.1, 1e-2, 1e-3, 1e-4], 
+                    'C': [0.001, 0.1, 1, 10, 100, 1000], 
+                    'degree': [0,1,2,3,4,5]}]
+
+#>>> parameters = {'kernel':('linear', 'rbf'), 'C':[1, 10]}
+
+clf = grid_search.GridSearchCV( svm.SVR(), tuned_parameters, n_jobs=-1, verbose=2 )
+clf.fit(x_train_norm, y_train)
+print "Best parameters set found on development set:"
+print clf.best_estimator_
+print "Grid scores on development set:"
+for params, mean_score, scores in clf.grid_scores_:
+    print "%0.3f (+/-%0.03f) for %r" % (mean_score, np.asarray(scores).std() / 2, params)
+
+
+#>>> svr = svm.SVC()
+#>>> clf = grid_search.GridSearchCV(svr, parameters)
+#>>> clf.fit(iris.data, iris.target)
+
+
+
