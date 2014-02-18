@@ -1,0 +1,2 @@
+Linear Regression: mape = 0.13505
+Linear Regression with 10 fold: mape = 0.13434
