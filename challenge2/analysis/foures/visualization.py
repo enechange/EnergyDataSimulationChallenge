@@ -19,7 +19,8 @@ n = len(energy)
 
 # String to timestamps and simple formats
 datetime_new = [ dt.datetime.strftime(dt.datetime.strptime(date, '%Y-%m-%d %H:%M:%S'),'%m-%d %H:%M') for date in datetime]
-timestamps = [time.mktime(dt.datetime.strptime(date, '%m-%d %H:%M').timetuple()) for date in datetime_new]   # In seconds
+time_data = [dt.datetime.strptime(date, '%m-%d %H:%M').timetuple() for date in datetime_new]
+timestamps = [time.mktime(dt.datetime.strptime(date, '%m-%d %H:%M').timetuple()) for date in datetime_new]
 dates=[dt.datetime.fromtimestamp(ts) for ts in timestamps]
 datenums = md.date2num(dates)
 seconds = [ts - timestamps[0] for ts in timestamps]
@@ -73,10 +74,10 @@ plt.tight_layout()
 
 # Plot 1
 plt.figure(1,figsize=(10,4))
-freq_axis = fh
+freq_axis = fd
 plt.loglog(freq_axis,fft_energy)
 plt.xlim([np.min(freq_axis),np.max(freq_axis)])
-plt.xlabel('Frequency (1/hour)')
+plt.xlabel('Frequency (1/day)')
 plt.ylabel('Energy consumption (W)')
 indmax = np.argmax(fft_energy[1:])
 plt.plot([freq_axis[indmax+1],freq_axis[indmax+1]],[0.8*np.min(fft_energy),1.2*np.max(fft_energy)],'r--')
@@ -230,6 +231,101 @@ elif time_unit == 'day':
 plt.ylabel('Energy consumption (W)')
 plt.tight_layout()
 
+
+# Hourly consumption
+time_of_the_day = []
+time_to_ave = [dt.datetime.strptime(datetime_new[i], '%m-%d %H:%M').timetuple().tm_mday for i in range(n)]
+for i in range(n):
+    time_of_the_day.append((time_data[i].tm_hour,time_data[i].tm_min))
+    
+time_of_the_day = list(set(time_of_the_day))
+
+index = [0]*n
+for i in range(n):
+    for j in range(len(time_of_the_day)):
+        if time_of_the_day[j] == (time_data[i].tm_hour,time_data[i].tm_min):
+            index[i] = j
+            break   
+
+datetime_hour = [ dt.datetime.strftime(dt.datetime.strptime(date, '%Y-%m-%d %H:%M:%S'),'%H:%M') for date in datetime]
+timestamps_hour = [time.mktime(dt.datetime.strptime(date, '%H:%M').timetuple()) for date in datetime_hour]   # In seconds
+dates_hour=[dt.datetime.fromtimestamp(ts) for ts in timestamps_hour] 
+
+energy_hour = [0]*(np.max(index)+1)
+datenums_hour = [0]*(np.max(index)+1)
+for i in range(n):
+    energy_hour[index[i]] += energy[i]
+    datenums_hour[index[i]] = md.date2num(dates_hour[i])
+
+# Compute moment
+mean_hour = np.mean(energy_hour)
+std_hour = np.std(energy_hour)
+lim_up_hour = mean_hour + std_hour/2
+lim_down_hour = mean_hour - std_hour/2
+
+# cluster
+low_energy_hour = []
+medium_energy_hour = []
+high_energy_hour = []
+low_date_hour = []
+medium_date_hour = []
+high_date_hour = []
+for i in range(len(energy_hour)):
+    if energy_hour[i] <= lim_down_hour:
+        low_energy_hour.append(energy_hour[i])
+        low_date_hour.append(dates_hour[i])
+    elif lim_down_hour < energy_hour[i] <= lim_up_hour:
+        medium_energy_hour.append(energy_hour[i])
+        medium_date_hour.append(dates_hour[i])
+    elif lim_up_hour <= energy_hour[i]:
+        high_energy_hour.append(energy_hour[i])
+        high_date_hour.append(dates_hour[i])
+
+
+# plot 6
+plt.figure(6,figsize=(10,4))
+time_axis = sorted(dates_hour)
+b1 = plt.bar(low_date_hour,low_energy_hour,width=0.02,color='b',edgecolor='k')
+b2 = plt.bar(medium_date_hour,medium_energy_hour,width=0.02,color='g',edgecolor='k')
+b3 = plt.bar(high_date_hour,high_energy_hour,width=0.02,color='r',edgecolor='k')
+p4, = plt.plot([time_axis[0],time_axis[-1]],[mean_hour,mean_hour],'--k')
+p5, = plt.plot([time_axis[0],time_axis[-1]],[lim_up_hour,lim_up_hour],'-.k')
+p6, = plt.plot([time_axis[0],time_axis[-1]],[lim_down_hour,lim_down_hour],'-.k')
+plt.axis([time_axis[0],time_axis[-1],np.min(energy_hour)*0.8,np.max(energy_hour)*1.2])
+xfmt = md.DateFormatter('%H-%M')
+ax=plt.gca()
+ax.xaxis.set_major_formatter(xfmt)
+plt.xticks( rotation=25 )
+plt.legend([b1,b2,b3,p4,p5],['Low','Medium','High','Mean hourly energy consumption','Mean +/-  0.5*std'])
+plt.title('Hourly energy consumption coloured by level')
+plt.xlabel('Time (H:M)')
+plt.ylabel('Energy consumption (W)')
+plt.tight_layout()
+
+
+# Pie chart
+total_low_ener_hour = np.sum(low_energy_hour)
+total_medium_ener_hour = np.sum(medium_energy_hour)
+total_high_ener_hour = np.sum(high_energy_hour)
+n_low_ener_hour = len(low_energy_hour)
+n_medium_ener_hour = len(medium_energy_hour)
+n_high_ener_hour = len(high_energy_hour)
+
+# plot 7
+plt.figure(7,figsize=(12,6))
+plt.subplot(1, 2, 1)
+labels = ('Low', 'Medium', 'High')
+fracs = [total_low_ener_hour, total_medium_ener_hour, total_high_ener_hour]
+plt.pie(fracs, labels=labels,autopct='%1.1f%%',startangle=90,explode=[0.01,0.01,0.01],labeldistance=1.1)
+plt.title('Hourly energy consumption (% of energy volume)')
+plt.tight_layout()
+
+plt.subplot(1, 2, 2)
+labels = ('Low', 'Medium', 'High')
+fracs = [n_low_ener_hour, n_medium_ener_hour, n_high_ener_hour]
+plt.pie(fracs, labels=labels,autopct='%1.1f%%',startangle=90,explode=[0.01,0.01,0.01],labeldistance=1.1)
+plt.title('Hourly energy consumption (% of days)')
+plt.tight_layout()
 
 # Show
 pylab.show()
