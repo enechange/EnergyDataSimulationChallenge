@@ -1,0 +1,6 @@
+# Created by Octave 3.8.0, Fri Mar 21 09:16:40 2014 GMT <alouisos@louizosdrossmbp>
+# name: mape
+# type: scalar
+14.69078496879776
+
+
