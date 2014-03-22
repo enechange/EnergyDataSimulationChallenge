@@ -18,9 +18,10 @@ development:
   adapter: postgresql
   encoding: unicode
   database: sample_development
+  host: localhost
   pool: 5
   username: sample
-  password:
+  password: sample
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -47,14 +48,16 @@ test:
   adapter: postgresql
   encoding: unicode
   database: sample_test
+  host: localhost
   pool: 5
   username: sample
-  password:
+  password: sample
 
 production:
   adapter: postgresql
   encoding: unicode
   database: sample_production
+  host: localhost
   pool: 5
   username: sample
-  password:
+  password: sample
