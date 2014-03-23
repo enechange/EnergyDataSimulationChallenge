@@ -12,10 +12,10 @@ Your pull-request is always welcome.
 
 1. Fork it
 2. Create your branch
-(Name the branch name 'analysis/YOURNAME' like analysis/shirakia)
-3. Create your directory in 'analysis/' directory.
-4. Code your analysis programs and commit them
-5. Push to the branch
+(Name the branch 'challengeX/YOURNAME' like challenge1/shirakia)
+3. Create your directory in 'analysis/' or 'webapp/' directory
+4. Code your analysis programs and commit them to the branch
+5. Push the branch
 6. Make a Pull Request
 
 ### Attention
