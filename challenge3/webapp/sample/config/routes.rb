@@ -1,4 +1,6 @@
 Sample::Application.routes.draw do
+  resources :houses
+
   resources :energies
 
   # The priority is based upon order of creation: first created -> highest priority.
