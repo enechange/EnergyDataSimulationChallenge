@@ -10,6 +10,8 @@ class HousesController < ApplicationController
   # GET /houses/1
   # GET /houses/1.json
   def show
+    @energies_for_gchart = [["Date", "Energy Production"]] +
+      @house.energies.map{|e| ["#{e.year}-#{e.month}", e.energy_production]}
   end
 
   # GET /houses/new
