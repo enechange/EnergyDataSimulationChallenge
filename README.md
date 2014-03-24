@@ -12,10 +12,10 @@ Your pull-request is always welcome.
 
 1. Fork it
 2. Create your branch
-(Name the branch name 'analysis/YOURNAME' like analysis/shirakia)
-3. Create your directory in 'analysis/' directory.
-4. Code your analysis programs and commit them
-5. Push to the branch
+(Name the branch 'challengeX/YOURNAME' like challenge1/shirakia)
+3. Create your directory in 'analysis/' or 'webapp/' directory
+4. Code your analysis programs and commit them to the branch
+5. Push the branch
 6. Make a Pull Request
 
 ### Attention
@@ -97,7 +97,7 @@ The following task is intended to give us an idea of your data visualisation ski
 6. cluster the values per day into 3 groups: low, medium, and high energy consumption
 7. visualise the clusters (How you visualize the data is up to you. Please show us your imagination and creativity!)
 
-### Input 
+### Input
 dataset file is in data/ directory as follows.
 
 ```
@@ -123,6 +123,44 @@ Please set output files in challenge2/analysis/YOURNAME/.
 
 ## Challenge 3 - Web Application
 
-Please create a web application to show each user's energy usages with time-series graph.
+Please create a web application to show house energy usages.
 
-- @TODO: Detail of the rule to be described here
+1. Insert csv files into SQL database. (MySQL, postgreSQL, etc..)
+2. Load data from DB and show it on the web with a web framework. (Rails preffered)
+3. Show 1 or 2 types of charts of the data. (no more than 2 types)
+4. (Option) Deploy it to somewhere. (AWS, Heroku, your own server, etc...)
+
+We will see basic programming skill, data modeling and what to show. We will **not** see web design skill.
+
+### Input
+
+Input dataset files are in challenge3/data/ directory as follows.
+```
+$ ls data/
+dataset_50.csv  house_data.csv
+
+$ head data/house_data.csv | column -s, -t
+ID  Firstname  Lastname  City       num_of_people  has_child
+1   Carolyn    Flores    London     2              Yes
+2   Jennifer   Martinez  Cambridge  3              No
+3   Larry      Robinson  London     4              Yes
+4   Paul       Wright    Oxford     3              No
+5   Frances    Ramirez   London     3              Yes
+6   Pamela     Lee       Oxford     3              Yes
+7   Patricia   Taylor    London     3              Yes
+8   Denise     Lewis     Oxford     4              Yes
+9   Kelly      Clark     Cambridge  4              No
+```
+(Names are by Random Name Generator http://random-name-generator.info/ )
+
+dataset_50.csv is almost same to Challenge1's Input. It is smaller and its ID starts with 1 rather than 0. Please refer to Challenge1.
+house_data.csv is household data related to dataset_50.csv.
+The first line gives the format name. 'ID' is 'House' of dataset_50.csv. 'City' includes 'London', 'Cambridge' and 'Oxford'. 'has_child' has only 'Yes' or 'No'.
+
+### Output
+
+1. Please set All source codes in challenge3/webapp/YOURNAME/
+2. Write deployed URL in Pull Request Comment.
+
+You can refer to sample implementation in challenge3/webapp/sample/
+But please mind that it is rough and may have some points to be fixed.
