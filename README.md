@@ -14,7 +14,7 @@ Your pull-request is always welcome.
 2. Create your branch
 (Name the branch 'challengeX/YOURNAME' like challenge1/shirakia)
 3. Create your directory in 'analysis/' or 'webapp/' directory
-4. Code your analysis programs and commit them to the branch
+4. Design and write your programs and commit them to the branch
 5. Push the branch
 6. Make a Pull Request
 
@@ -36,7 +36,7 @@ For each house, there are monthly data from July, 2011 to June, 2013.
 The data are given temperature data and daylight data.
 
 Please make a model for predicting EnergyProduction using data from July 2011 to May 2013.
-On that basis, predict EnergyProduction on June 2013 for each house, and calculate MAPE(Mean Absolute Persentage Error).
+On that basis, predict EnergyProduction on June 2013 for each house, and calculate MAPE(Mean Absolute Percentage Error).
 You can use any algorithms including multiple-variables regression, polynomial regression, Neural network, SVM, etc...
 
 We will see **accuracy of prediction(MAPE), algorithm choice, parameter tuning, programming skill**.
@@ -77,7 +77,7 @@ Please set these files in challenge1/analysis/YOURNAME/.
 Need to include House column and EnergyProduction column for each line.
 Any csv file that we can find which columns means House and EnergyProduction is also acceptable.
 2. **mape.txt**
-Need to include just MAPE value. Minimize it.
+Need to include just MAPE value. Minimise it.
 3. **another files**
 Files you use, edit, or write like R source code, batch Python file, excel file, etc.
 These files will be good materials for us to understand your thoughts.
@@ -126,11 +126,11 @@ Please set output files in challenge2/analysis/YOURNAME/.
 Please create a web application to show house energy usages.
 
 1. Insert csv files into SQL database. (MySQL, postgreSQL, etc..)
-2. Load data from DB and show it on the web with a web framework. (Rails preffered)
+2. Load data from DB and show it on the web with a web framework. (Rails preferred)
 3. Show 1 or 2 types of charts of the data. (no more than 2 types)
 4. (Option) Deploy it to somewhere. (AWS, Heroku, your own server, etc...)
 
-We will see basic programming skill, data modeling and what to show. We will **not** see web design skill.
+We will see basic programming skill, data modelling and what to show. We will **not** see web design skill.
 
 ### Input
 
