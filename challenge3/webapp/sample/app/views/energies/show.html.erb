@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @energy.label %>
+</p>
+
+<p>
+  <strong>House:</strong>
+  <%= @energy.house_id %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @energy.year %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @energy.month %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @energy.temperature %>
+</p>
+
+<p>
+  <strong>Daylight:</strong>
+  <%= @energy.daylight %>
+</p>
+
+<p>
+  <strong>Energy production:</strong>
+  <%= @energy.energy_production %>
+</p>
+
+<%= link_to 'Edit', edit_energy_path(@energy) %> |
+<%= link_to 'Back', energies_path %>
