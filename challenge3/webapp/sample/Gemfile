@@ -46,3 +46,5 @@ end
 
 # Use heroku
 gem 'rails_12factor', group: :production
+
+gem 'therubyracer'
