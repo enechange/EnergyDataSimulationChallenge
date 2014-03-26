@@ -2,6 +2,16 @@
 
 <p>Click 'show' to see charts</p>
 
+<input type="text" ng-model="keyword" placeholder="Keyword" />
+
+<div ng-controller="houseCtrl">
+  <table>
+    <tr ng-repeat="house in houses | filter:keyword">
+      <td>{{house.name}}</td>
+    </tr>
+  </table>
+</div>
+
 <table>
   <thead>
     <tr>
@@ -31,6 +41,8 @@
     <% end %>
   </tbody>
 </table>
+
+
 
 <br>
 
