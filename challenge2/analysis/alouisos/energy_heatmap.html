@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.jpg"> <!-- Your logo as favicon....nice ?  -->
+
+    <title>Calendar HeatMap Visualization for Cambridge Energy Data Simulation Challenge</title>
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="http://cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+	<link rel="stylesheet" href="http://cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+     <link href="bootstrap_custom.css" rel="stylesheet">
+
+</head> 
+
+ <div class="container">
+
+      <div class="row">
+      	<p class="texty-text"> Daily Calendar HeatMap Visualization for Cambridge Energy Data Simulation Challenge using D3js</p> 
+        <div class="col-lg-12 col-lg-offset-2">
+
+<br> 
+<br> 
+
+<!-- ========================START OF HEATMAP CREATION==================================-->
+
+<div id="cal-heatmap"></div>
+<script type="text/javascript">
+	
+
+// Let's load our data. Data were created by csvwrite in Octave and csv toolbox for json conversion
+
+var data = 
+
+{ 
+"1303120980": 17105,
+"1303207380": 30440,
+"1303293780": 24027,
+"1303380180": 17475,
+"1303466580": 18776,
+"1303552980": 41551,
+"1303639380": 58647,
+"1303812180": 24618,
+"1303898580": 30200,
+"1303984980": 19878,
+"1304071380": 14010,
+"1304157780": 11210,
+"1304244180": 66411,
+"1304330580": 42598,
+"1304416980": 16972,
+"1304676180": 24946,
+"1304762580": 8278,
+"1304848980": 25523,
+"1304935380": 16024,
+"1305021780": 15928,
+"1305108180": 11153,
+"1305194580": 15456,
+"1305280980": 15033,
+"1305367380": 11530,
+"1305453780": 20096,
+"1305540180": 22447,
+"1305626580": 20563,
+"1305712980": 12609,
+"1305799380": 11859,
+"1305885780": 11050,
+"1305972180": 13579,
+"1306058580": 11900,
+"1306144980": 51413, 
+"1306231380": 40378, 
+	 }
+
+
+// Initialization of a new heatmap 
+
+	var cal = new CalHeatMap();
+cal.init({
+	
+	domain: "month",
+	subDomain: "x_day",
+		subDomainTextFormat: "%d",
+
+	start: new Date(2011, 3),
+	data: data,
+	cellSize: 40,
+	weekStartOnMonday: false,
+	cellPadding: 7,
+	domainGutter: 40,
+	range: 2,
+	animationDuration: 2500,
+	cellRadius: 10,
+	
+	// HIGHLIGHT THE DATES WITH HIGH PRODUCTION
+
+	highlight: [new Date(2011, 3, 23)],
+	highlight: [new Date(2011, 3, 24)],
+	highlight: [new Date(2011, 4, 01)],
+	highlight: [new Date(2011, 4, 02)],
+	highlight: [new Date(2011, 4, 23)],
+	highlight: [new Date(2011, 4, 24)],
+	legend: [9200, 23319, 37429],
+	legendCellSize: 25, 
+	legendCellPadding: 3, 
+	legendVerticalPosition: "center",
+	legendOrientation: "vertical",
+	legendMargin: [80, 30, 0, 0], 
+	legendColors: {
+		min: "#efefef",
+		max: "#df2136",
+		empty: "white"}, 
+	 
+	 //isn't it beautiful the way that javascript handles the plural? 
+	itemName: ["Watt"], 
+	// Producing custom titles for the dates and the legend 
+	subDomainTitleFormat: {
+		empty: "Missing data for production at that date",
+		filled: "{count} {name} where produced on {date}"}, 
+		legendTitleFormat: {
+		lower: "Low production is below mean Average minus 1 standard deviation ",
+		inner: "Medium production is mean average minus/plus 1 standard deviation",
+		upper: "High Production is mean average plus 1 standard deviation"
+	}
+
+
+	
+
+});
+</script>
+ 
+</div> 
+</div> 
+</div> 
+<div class="container">
+
+      <div class="row">
+ <div class="col-lg-12">
+<p class="texty-bottom"> Please hover over a date or the legend for more info </p> </div> </div> 
+</html> 
+
+<!-- CREATED BY LA, 2014 -->
