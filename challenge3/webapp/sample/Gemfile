@@ -7,6 +7,9 @@ gem 'rails', '4.0.0'
 gem 'pg'
 
 # Use angular.js for creating interactive user interface
+gem 'angularjs-rails'
+gem "angularjs-rails-resource", '~>0.2.3'
+# TODO(sungho.arai): The following gem may be removed
 gem "angular-gem", '~> 1.2.1'
 
 # Use SCSS for stylesheets
