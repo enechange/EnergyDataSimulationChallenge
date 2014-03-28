@@ -1,14 +1,35 @@
-<h1>Sample Application for EnergyDataSimulationChallenge Challenge3!</h1>
+<%= image_tag 'logo.png' %>
+<h1>EnergyDataSimulationChallenge Challenge3!</h1>
 
 <p>Click 'show' to see charts</p>
 
-<input type="text" ng-model="keyword" placeholder="Keyword" />
+<input type="text" ng-model="keyword" placeholder="Search" />
 
 <div ng-controller="houseCtrl">
   <table>
-    <tr ng-repeat="house in houses | filter:keyword">
-      <td>{{house.name}}</td>
+    <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>City</th>
+      <th>Num of people</th>
+      <th>Has child</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
+    </thead>
+    </tbody>
+    <tr ng-repeat="house in houses | filter:keyword">
+      <td>{{house.firstname}}</td>
+      <td>{{house.lastname}}</td>
+      <td>{{house.city}}</td>
+      <td>{{house.has_child}}</td>
+      <td>Graphe</td>
+      <td>EDIT</td>
+      <td>REMOVE</td>
+    </tr>
+    </tbody>
   </table>
 </div>
 

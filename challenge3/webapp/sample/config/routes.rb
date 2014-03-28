@@ -9,6 +9,12 @@ Sample::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'houses#index'
 
+  # For APIs
+  scope "api" do
+    get "/houses(.:format)" => "houses#index"
+    get "/houses/:id(.:format)" => "houses#show"
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
