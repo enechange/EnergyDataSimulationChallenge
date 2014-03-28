@@ -16,6 +16,12 @@ class HousesController < ApplicationController
         end
   end
 
+  # GET /api/houses/cities
+  # GET /api/houses/cities.json
+  def show_cities
+    @cities = House.select("city").group(:city).count("city")
+  end
+
   # GET /houses/new
   def new
     @house = House.new

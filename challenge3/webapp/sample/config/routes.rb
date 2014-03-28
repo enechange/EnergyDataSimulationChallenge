@@ -11,9 +11,12 @@ Sample::Application.routes.draw do
 
   # For APIs
   scope "api" do
+    get "/houses/cities(.:format)" => "houses#show_cities"
     get "/houses(.:format)" => "houses#index"
     get "/houses/:id(.:format)" => "houses#show"
   end
+
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
