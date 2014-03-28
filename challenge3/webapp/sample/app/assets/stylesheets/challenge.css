@@ -1,0 +1,11 @@
+.basic {
+  background-color: #eee;
+}
+
+.logo {
+  float: left;
+}
+
+.geochart {
+  float: right; 
+}

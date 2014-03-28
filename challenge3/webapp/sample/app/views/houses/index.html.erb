@@ -1,10 +1,13 @@
-<%= image_tag 'logo.png' %>
+<%= image_tag('logo.png', :class => "logo") %>
+
 <h1>EnergyDataSimulationChallenge Challenge3!</h1>
 
-<p>Click 'show' to see charts</p>
 
+<p style="clear: left;">You can search for houses</p>
 <input type="text" ng-model="keyword" placeholder="Search" />
 
+<p>Click 'show' to see charts</p>
+<div id="chart" class="geochart" style="width: 800px; height: 400px;"></div>
 <div ng-controller="houseCtrl">
   <table>
     <thead>
@@ -32,7 +35,25 @@
     </tbody>
   </table>
 </div>
-
 <br>
+
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+     google.load('visualization', '1', {'packages': ['geochart']});
+     google.setOnLoadCallback(drawMarkersMap);
+
+      function drawMarkersMap() {
+      var data = google.visualization.arrayToDataTable(<%= raw @cities_for_geochart %>);
+
+      var options = {
+        region: 'GB',
+        displayMode: 'markers',
+        colorAxis: {colors: ['green', 'blue']}
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('chart'));
+      chart.draw(data, options);
+    };
+</script>
 
 <%= link_to 'New House', new_house_path %>
