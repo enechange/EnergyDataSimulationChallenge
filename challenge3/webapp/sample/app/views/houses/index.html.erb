@@ -2,37 +2,23 @@
 
 <h1>EnergyDataSimulationChallenge Challenge3!</h1>
 
-
 <p style="clear: left;">You can search for houses</p>
+<p>Click column name to sort data</p>
+<p>Click 'show' to see charts</p>
 <input type="text" ng-model="keyword" placeholder="Search" />
 
-<p>Click 'show' to see charts</p>
 <div id="chart" class="geochart" style="width: 800px; height: 400px;"></div>
 <div ng-controller="houseCtrl">
-  <table>
-    <thead>
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>City</th>
-      <th>Num of people</th>
-      <th>Has child</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-    </thead>
-    </tbody>
-    <tr ng-repeat="house in houses | filter:keyword">
-      <td>{{house.firstname}}</td>
-      <td>{{house.lastname}}</td>
-      <td>{{house.city}}</td>
-      <td>{{house.has_child}}</td>
+  <table ng-table="tableParams" class="table">
+    <tr ng-repeat="house in $data | filter:keyword">
+      <td data-title="'Firstname'" sortable="'firstname'">{{house.firstname}}</td>
+      <td data-title="'Lastname'" sortable="'lastname'">{{house.lastname}}</td>
+      <td data-title="'City'" sortable="'city'">{{house.city}}</td>
+      <td data-title="'Has Child'" sortable="'haschild'">{{house.has_child}}</td>
       <td><a href='houses/{{house.id}}'>Show</a></td>
       <td><a href='houses/{{house.id}}/edit'>Edit</a></td>
       <td><a href='houses/{{house.id}}'>DELETE</a></td>
     </tr>
-    </tbody>
   </table>
 </div>
 <br>

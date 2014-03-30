@@ -5,7 +5,8 @@ class HousesController < ApplicationController
   # GET /houses.json
   def index
     @houses = House.all
-    @cities = House.select("city").group(:city).count("city")
+    #@cities = House.select("city").group(:city).count("city")
+    @cities = show_cities
     @cities_for_geochart = [["City", "Houses"]]
     @cities.each do |k, v|
       @cities_for_geochart += [[k, v]]
