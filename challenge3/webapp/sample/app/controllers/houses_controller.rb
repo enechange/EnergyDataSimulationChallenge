@@ -1,5 +1,5 @@
 class HousesController < ApplicationController
-  before_action :set_house, only: [:show, :edit, :update, :destroy]
+  before_action :set_house, only: [:show, :edit, :update, :destroy, :show_data]
 
   # GET /houses
   # GET /houses.json
@@ -16,10 +16,17 @@ class HousesController < ApplicationController
   # GET /houses/1
   # GET /houses/1.json
   def show
-    @energies_for_gchart = [["Date", "Energy Production", "Temperature", "DayLight"]] +
-        @house.energies.map do |e|
-          ["#{e.year}-#{e.month}", e.energy_production, e.temperature.to_i, e.daylight.to_i]
-        end
+    #@energies_for_gchart = [["Date", "Energy Production", "Temperature", "DayLight"]] +
+    #    @house.energies.map do |e|
+    #      ["#{e.year}-#{e.month}", e.energy_production, e.temperature.to_i, e.daylight.to_i]
+    #    end
+  end
+
+  # GET /api/houses/1/showData.json 
+  def show_data
+    @dataset = @house.energies.map do |e|
+      ["#{e.year}-#{e.month}", e.energy_production, e.temperature.to_i, e.daylight.to_i]
+    end
   end
 
   # GET /api/houses/cities

@@ -25,25 +25,8 @@
   <%= @house.has_child %>
 </p>
 
-<div id="chart"></div>
-
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">
-  google.load("visualization", "1", {packages:["corechart"]});
-  google.setOnLoadCallback(drawChart);
-
-  function drawChart() {
-  var data = google.visualization.arrayToDataTable(<%= raw @energies_for_gchart %>);
-
-  var options = {
-    seriesType: "bars"
-  };
-
-  var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
-  chart.draw(data, options);
-  }
-</script>
-
+<div ng-controller="graphCtrl" ng-init="init('<%= @house.id %>')" id="chartdiv" ng-chart style="width: 800px; height: 400px;">
+</div>
 
 
 <%= link_to 'Edit', edit_house_path(@house) %> |
