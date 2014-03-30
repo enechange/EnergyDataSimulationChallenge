@@ -22,6 +22,7 @@ app.controller('graphCtrl', [
          });
         var data = google.visualization.arrayToDataTable(titles);
         var chart = {};
+        var options = {};
 
         chart.data = data;
         chart.options = options;
