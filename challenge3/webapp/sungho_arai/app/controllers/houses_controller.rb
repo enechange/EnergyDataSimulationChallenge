@@ -1,17 +1,38 @@
 class HousesController < ApplicationController
-  before_action :set_house, only: [:show, :edit, :update, :destroy]
+  before_action :set_house, only: [:show, :edit, :update, :destroy, :show_data]
 
   # GET /houses
   # GET /houses.json
   def index
     @houses = House.all
+    #@cities = House.select("city").group(:city).count("city")
+    @cities = show_cities
+    @cities_for_geochart = [["City", "Houses"]]
+    @cities.each do |k, v|
+      @cities_for_geochart += [[k, v]]
+    end
   end
 
   # GET /houses/1
   # GET /houses/1.json
   def show
-    @energies_for_gchart = [["Date", "Energy Production"]] +
-      @house.energies.map{|e| ["#{e.year}-#{e.month}", e.energy_production]}
+    #@energies_for_gchart = [["Date", "Energy Production", "Temperature", "DayLight"]] +
+    #    @house.energies.map do |e|
+    #      ["#{e.year}-#{e.month}", e.energy_production, e.temperature.to_i, e.daylight.to_i]
+    #    end
+  end
+
+  # GET /api/houses/1/showData.json 
+  def show_data
+    @dataset = @house.energies.map do |e|
+      ["#{e.year}-#{e.month}", e.energy_production, e.temperature.to_i, e.daylight.to_i]
+    end
+  end
+
+  # GET /api/houses/cities
+  # GET /api/houses/cities.json
+  def show_cities
+    @cities = House.select("city").group(:city).count("city")
   end
 
   # GET /houses/new

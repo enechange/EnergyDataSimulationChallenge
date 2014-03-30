@@ -1,45 +1,37 @@
-<%= image_tag('logo.png', :class => "logo") %>
+<h1>Sample Application for EnergyDataSimulationChallenge Challenge3!</h1>
 
-<h1>EnergyDataSimulationChallenge Challenge3!</h1>
-
-<p style="clear: left;">You can search for houses</p>
-<p>Click column name to sort data</p>
 <p>Click 'show' to see charts</p>
-<input type="text" ng-model="keyword" placeholder="Search" />
 
-<div id="chart" class="geochart" style="width: 800px; height: 400px;"></div>
-<div ng-controller="houseCtrl">
-  <table ng-table="tableParams" class="table">
-    <tr ng-repeat="house in $data | filter:keyword">
-      <td data-title="'Firstname'" sortable="'firstname'">{{house.firstname}}</td>
-      <td data-title="'Lastname'" sortable="'lastname'">{{house.lastname}}</td>
-      <td data-title="'City'" sortable="'city'">{{house.city}}</td>
-      <td data-title="'Has Child'" sortable="'haschild'">{{house.has_child}}</td>
-      <td><a href='houses/{{house.id}}'>Show</a></td>
-      <td><a href='houses/{{house.id}}/edit'>Edit</a></td>
-      <td><a href='houses/{{house.id}}'>DELETE</a></td>
+<table>
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>City</th>
+      <th>Num of people</th>
+      <th>Has child</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
-  </table>
-</div>
+  </thead>
+
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+        <td><%= house.firstname %></td>
+        <td><%= house.lastname %></td>
+        <td><%= house.city %></td>
+        <td><%= house.num_of_people %></td>
+        <td><%= house.has_child %></td>
+        <td><%= link_to 'Show', house %></td>
+        <td><%= link_to 'Edit', edit_house_path(house) %></td>
+        <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <br>
-
-<script type='text/javascript' src='https://www.google.com/jsapi'></script>
-    <script type='text/javascript'>
-     google.load('visualization', '1', {'packages': ['geochart']});
-     google.setOnLoadCallback(drawMarkersMap);
-
-      function drawMarkersMap() {
-      var data = google.visualization.arrayToDataTable(<%= raw @cities_for_geochart %>);
-
-      var options = {
-        region: 'GB',
-        displayMode: 'markers',
-        colorAxis: {colors: ['green', 'blue']}
-      };
-
-      var chart = new google.visualization.GeoChart(document.getElementById('chart'));
-      chart.draw(data, options);
-    };
-</script>
 
 <%= link_to 'New House', new_house_path %>
