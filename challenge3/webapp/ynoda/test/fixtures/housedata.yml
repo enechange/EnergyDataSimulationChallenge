@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  house: 1
+  firstname: MyString
+  lastname: MyString
+  city: MyString
+  n_of_people: 1
+  has_child: MyString
+
+two:
+  house: 1
+  firstname: MyString
+  lastname: MyString
+  city: MyString
+  n_of_people: 1
+  has_child: MyString

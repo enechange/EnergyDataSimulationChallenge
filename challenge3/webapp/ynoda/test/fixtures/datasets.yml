@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id2: 1
+  label: 1
+  house: 1
+  year: 1
+  month: 1
+  templature: 1.5
+  daylight: 1.5
+  energyproduction: 1
+
+two:
+  id2: 1
+  label: 1
+  house: 1
+  year: 1
+  month: 1
+  templature: 1.5
+  daylight: 1.5
+  energyproduction: 1

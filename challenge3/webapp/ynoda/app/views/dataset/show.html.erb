@@ -1,0 +1,34 @@
+<h1>Data set</h1>
+<!--<h1>Dataset#show</h1>-->
+<!--<p>Find me in app/views/dataset/show.html.erb</p>-->
+<h3>API</h3>
+This data can be extracted as json:
+<a href="<%= url_for(:controller => 'service', :action => 'listdataset', :only_path => false) %>">
+<%= url_for(:controller => 'service', :action => 'listdataset', :only_path => false) %>
+</a>
+<table border="1">
+<tr>
+<th bgcolor="#EE0000">ID(System generated)</th>
+<th bgcolor="#EE0000">ID</th>
+<th bgcolor="#EE0000">Label</th>
+<th bgcolor="#EE0000">House</th>
+<th bgcolor="#EE0000">Year</th>
+<th bgcolor="#EE0000">Month</th>
+<th bgcolor="#EE0000">Templature</th>
+<th bgcolor="#EE0000">Daylight</th>
+<th bgcolor="#EE0000">Energy Production</th>
+</tr>
+<% @dataset.each do |data| %>
+<tr style="background-color: <%= cycle '#ccc', '#fff' %>">
+	<td><%= data.id %></td>
+	<td><%= data.id2 %></td>
+	<td><%= data.label %></td>
+	<td><%= data.house %></td>
+	<td><%= data.year %></td>
+	<td><%= data.month %></td>
+	<td><%= data.templature %></td>
+	<td><%= data.daylight %></td>
+	<td><%= data.energyproduction %></td>
+</tr>
+<% end %>
+</table>
