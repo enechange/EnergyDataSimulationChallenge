@@ -4,8 +4,9 @@ google.load("visualization", "1", {packages:["corechart"]});
 
 app.controller('graphCtrl', [
   '$scope', 'Data', function($scope, Data) {
+    $scope.daylight_box = true; 
+    $scope.temperature_box = true; 
 
-    // TODO(sungho.arai): Make the follwing simpler with ng-chart directive
     $scope.init = function(id)
     {
       $scope.house_id = id;
@@ -35,26 +36,37 @@ app.controller('graphCtrl', [
           $scope.daylight.push(datapoint3);
          });
 
-        // TODO(sungho.arai): create a graph dynamically with radio button 
-        dataset = new Array();
-        for (var i =0; i< $scope.date.length; i++) {
-          datapoint = new Array();
-          datapoint.push($scope.date[i][0], $scope.production[i][0], $scope.daylight[i][0]);
-          dataset.push(datapoint);
-        }
-
-        var chart = {};
-        var data = google.visualization.arrayToDataTable(dataset);
-        var options = {
-          seriesType: "bars"
-        };
-
-        chart.data = data;
-        chart.options = options;
-        $scope.chart = chart;
-
-        var graph = new google.visualization.ColumnChart(document.getElementById('chartdiv'));
-        graph.draw($scope.chart.data, $scope.chart.options)
+        $scope.updateChart();
       });
+    };
+   
+    // TODO(sungho.arai): Create datasets for each case in advance
+    $scope.updateChart = function() {
+      dataset = new Array();
+      for (var i =0; i< $scope.date.length; i++) {
+        datapoint = new Array();
+        if ($scope.daylight_box && $scope.temperature_box) {
+          datapoint.push($scope.date[i][0], $scope.production[i][0], $scope.daylight[i][0], $scope.temperature[i][0]);
+        } else if ($scope.daylight_box) {
+          datapoint.push($scope.date[i][0], $scope.production[i][0], $scope.daylight[i][0]);
+        } else if ($scope.temperature_box) {
+          datapoint.push($scope.date[i][0], $scope.production[i][0], $scope.temperature[i][0]);
+        } else {
+          datapoint.push($scope.date[i][0], $scope.production[i][0]);
+        }
+        dataset.push(datapoint);
+      }
+      var chart = {};
+      var data = google.visualization.arrayToDataTable(dataset);
+      var options = {
+        seriesType: "bars"
+      };
+
+      chart.data = data;
+      chart.options = options;
+      $scope.chart = chart;
+
+      var graph = new google.visualization.ColumnChart(document.getElementById('chartdiv'));
+      graph.draw($scope.chart.data, $scope.chart.options)
     };
  }]);

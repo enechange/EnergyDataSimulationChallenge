@@ -25,7 +25,12 @@
   <%= @house.has_child %>
 </p>
 
-<div ng-controller="graphCtrl" ng-init="init('<%= @house.id %>')" id="chartdiv" ng-chart style="width: 800px; height: 400px;">
+<div ng-controller="graphCtrl" ng-init="init('<%= @house.id %>')">
+
+Daylight: <input type="checkbox" ng-model="daylight_box" ng-change="updateChart()"> <br/>
+Temperature: <input type="checkbox" ng-model="temperature_box" ng-change="updateChart()"> <br/>
+
+<div id="chartdiv" ng-chart style="width: 800px; height: 400px;"></div>
 </div>
 
 
