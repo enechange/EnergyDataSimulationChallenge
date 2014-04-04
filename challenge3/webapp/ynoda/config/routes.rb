@@ -1,4 +1,5 @@
 Ynoda::Application.routes.draw do
+  get "top/index"
   get "service/listhousedata"
   get "service/listdataset"
   get "dataset/show"

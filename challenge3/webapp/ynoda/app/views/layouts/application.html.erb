@@ -5,8 +5,13 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag "dojo/dojo/dojo", "data-dojo-config" => %Q(parseOnLoad: true) %>
+  <style type="text/css">
+    @import "/assets/dojo/dijit/themes/claro/claro.css";
+    @import "/assets/dojo/dijit/themes/dijit.css";
+  </style>
 </head>
-<body>
+<body class="claro">
 
 <%= yield %>
 

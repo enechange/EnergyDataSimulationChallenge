@@ -1,6 +1,7 @@
 <h1>Data set</h1>
 <!--<h1>Dataset#show</h1>-->
 <!--<p>Find me in app/views/dataset/show.html.erb</p>-->
+<%= javascript_include_tag "/js/topTab"  %>
 <h3>API</h3>
 This data can be extracted as json:
 <a href="<%= url_for(:controller => 'service', :action => 'listdataset', :only_path => false) %>">
