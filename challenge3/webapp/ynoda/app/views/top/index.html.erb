@@ -1,0 +1,14 @@
+<h2>Challenge 3 - Cambridge Energy Data Lab</h2>
+<%= javascript_include_tag "/js/topTab"  %>
+<div data-dojo-type="dijit/layout/TabContainer" style="width: 100%; height: 1000px;">
+<div data-dojo-type="dijit/layout/ContentPane" title="Chart 1">
+</div>
+<div data-dojo-type="dijit/layout/ContentPane" title="Chart 2">
+</div>
+<div data-dojo-type="dijit/layout/ContentPane" title="Dataset">
+  <%= render :template => 'dataset/show' %>
+</div>
+<div data-dojo-type="dijit/layout/ContentPane" title="House data">
+  <%= render :template => 'housedata/show' %>
+</div>
+</div>

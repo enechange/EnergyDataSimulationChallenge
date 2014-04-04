@@ -1,0 +1,70 @@
+<h2>Challenge 3 - Cambridge Energy Data Lab</h2>
+<%= javascript_include_tag "/js/topTab"  %>
+<div data-dojo-type="dijit/layout/TabContainer" style="width: 100%; height: 100%;">
+<div data-dojo-type="dijit/layout/ContentPane" title="Chart 1">
+</div>
+<div data-dojo-type="dijit/layout/ContentPane" title="Chart 2">
+</div>
+<div data-dojo-type="dijit/layout/ContentPane" title="Dataset">
+<h3>Dataset</h3>
+This data can be extracted as json:
+<a href="<%= url_for(:controller => 'service', :action => 'listdataset', :only_path => false) %>">
+<%= url_for(:controller => 'service', :action => 'listdataset', :only_path => false) %>
+</a>
+<table border="1">
+<tr>
+<th bgcolor="#EE0000">ID(System generated)</th>
+<th bgcolor="#EE0000">ID</th>
+<th bgcolor="#EE0000">Label</th>
+<th bgcolor="#EE0000">House</th>
+<th bgcolor="#EE0000">Year</th>
+<th bgcolor="#EE0000">Month</th>
+<th bgcolor="#EE0000">Templature</th>
+<th bgcolor="#EE0000">Daylight</th>
+<th bgcolor="#EE0000">Energy Production</th>
+</tr>
+<% @dataset.each do |data| %>
+<tr style="background-color: <%= cycle '#ccc', '#fff' %>">
+        <td><%= data.id %></td>
+        <td><%= data.id2 %></td>
+        <td><%= data.label %></td>
+        <td><%= data.house %></td>
+        <td><%= data.year %></td>
+        <td><%= data.month %></td>
+        <td><%= data.templature %></td>
+        <td><%= data.daylight %></td>
+        <td><%= data.energyproduction %></td>
+</tr>
+<% end %>
+</table>
+</div>
+<div data-dojo-type="dijit/layout/ContentPane" title="House data">
+<h3>House data</h3>
+This data can be extracted as json:
+<a href="<%= url_for(:controller => 'service', :action => 'listhousedata', :only_path => false) %>">
+<%= url_for(:controller => 'service', :action => 'listhousedata', :only_path => false) %>
+</a>
+<table border="1">
+<tr>
+        <th bgcolor="#EE0000">ID(System generated)</th>
+        <th bgcolor="#EE0000">House</th>
+        <th bgcolor="#EE0000">First Name</th>
+        <th bgcolor="#EE0000">Last Name</th>
+        <th bgcolor="#EE0000">City</th>
+        <th bgcolor="#EE0000">Number of People</th>
+        <th bgcolor="#EE0000">has_child</th>
+</tr>
+<% @houses.each do |house| %>
+<tr style="background-color: <%= cycle '#ccc', '#fff' %>">
+        <td><%= house.id %></td>
+        <td><%= house.house %></td>
+        <td><%= house.firstname %></td>
+        <td><%= house.lastname %></td>
+        <td><%= house.city %></td>
+        <td><%= house.n_of_people %></td>
+        <td><%= house.has_child %></td>
+</tr>
+<% end %>
+</table>
+</div>
+</div>
