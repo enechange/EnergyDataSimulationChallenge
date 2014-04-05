@@ -15,7 +15,6 @@ app.controller('graphCtrl', [
       $scope.temperature = [["Temperature"]];
       $scope.daylight = [["DayLight"]];
 
-      // TODO(sungho.arai): Rename variables for datapoints 
       var dataset = Data.query({id: $scope.house_id});
       dataset.$promise.then(function (dataset) {
         dataset.forEach(function(data){
