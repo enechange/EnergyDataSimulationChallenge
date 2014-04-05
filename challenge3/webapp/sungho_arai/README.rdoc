@@ -11,9 +11,10 @@
   * PostgreSQL 9.1.12
 
 * Configuration
+  * bundle install
 
 * Database creation
-  * rake db:migrate RAILS_ENV=development
+  * rake db:migrate
 
 * Database initialization
   * rake db:seed
