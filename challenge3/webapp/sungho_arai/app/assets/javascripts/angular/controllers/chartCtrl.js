@@ -19,21 +19,21 @@ app.controller('graphCtrl', [
       var dataset = Data.query({id: $scope.house_id});
       dataset.$promise.then(function (dataset) {
         dataset.forEach(function(data){
-          datapoint0 = new Array();
-          datapoint0.push(data["Date"]);
-          $scope.date.push(datapoint0);
+          datapointDate = new Array();
+          datapointDate.push(data["Date"]);
+          $scope.date.push(datapointDate);
 
-          datapoint1 = new Array();
-          datapoint1.push(data["Production"]);
-          $scope.production.push(datapoint1);
+          datapointProduction = new Array();
+          datapointProduction.push(data["Production"]);
+          $scope.production.push(datapointProduction);
 
-          datapoint2 = new Array();
-          datapoint2.push(data["Temperature"]);
-          $scope.temperature.push(datapoint2);
+          datapointTemperature = new Array();
+          datapointTemperature.push(data["Temperature"]);
+          $scope.temperature.push(datapointTemperature);
 
-          datapoint3 = new Array();
-          datapoint3.push(data["Daylight"]);
-          $scope.daylight.push(datapoint3);
+          datapointDaylight = new Array();
+          datapointDaylight.push(data["Daylight"]);
+          $scope.daylight.push(datapointDaylight);
          });
 
         $scope.updateChart();
