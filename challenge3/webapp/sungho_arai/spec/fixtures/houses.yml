@@ -1,0 +1,7 @@
+house_1:
+  id : 1
+  firstname : 'Sungho'
+  lastname : 'Park'
+  city: 'New York'
+  num_of_people: '1'
+  has_child: 'YES'
