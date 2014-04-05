@@ -2,25 +2,21 @@
 
 * Ruby version
 
-- ruby 1.9.3p545
+  * ruby 1.9.3p545
 
 * System dependencies
 
-- Ubuntu Precise 64bit
-- Rails 4.0.0
-- PostgreSQL 9.1.12
+  * Ubuntu Precise 64bit
+  * Rails 4.0.0
+  * PostgreSQL 9.1.12
 
 * Configuration
 
 * Database creation
-```
-rake db:migrate RAILS_ENV=development
-```
+  * rake db:migrate RAILS_ENV=development
 
 * Database initialization
-```
-rake db:seed
-```
+  * rake db:seed
 
 * How to run the test suite
 
