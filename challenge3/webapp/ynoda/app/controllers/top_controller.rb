@@ -1,6 +1,6 @@
 class TopController < ApplicationController
   def index
-      @dataset = Dataset.order(:id)
-      @houses = Housedata.order(:house)
+      @energylog = Energylog.order(:id)
+      @houses = House.order(:house)
   end
 end

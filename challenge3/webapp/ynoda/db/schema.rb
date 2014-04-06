@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140330091908) do
+ActiveRecord::Schema.define(version: 20140406092942) do
 
-  create_table "datasets", force: true do |t|
+  create_table "energylogs", force: true do |t|
     t.integer  "id2"
     t.integer  "label"
-    t.integer  "house"
+    t.integer  "house_id"
     t.integer  "year"
     t.integer  "month"
     t.float    "templature"
@@ -26,7 +26,9 @@ ActiveRecord::Schema.define(version: 20140330091908) do
     t.datetime "updated_at"
   end
 
-  create_table "housedata", force: true do |t|
+  add_index "energylogs", ["house_id"], name: "index_energylogs_on_house_id"
+
+  create_table "houses", force: true do |t|
     t.integer  "house"
     t.string   "firstname"
     t.string   "lastname"
@@ -36,5 +38,7 @@ ActiveRecord::Schema.define(version: 20140330091908) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "houses", ["house"], name: "index_houses_on_house"
 
 end

@@ -1,9 +1,14 @@
 Ynoda::Application.routes.draw do
+  get "chartb/show"
+  get "charta/show"
   get "top/index"
-  get "service/listhousedata"
-  get "service/listdataset"
-  get "dataset/show"
-  get "housedata/show"
+  get "service/listhouses"
+  get "service/listenergylogs"
+  get "service/listjoineddata"
+  get "service/getAvgEPByCity"
+  get "service/getEPByFamily"
+  get "energylog/show"
+  get "house/show"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
