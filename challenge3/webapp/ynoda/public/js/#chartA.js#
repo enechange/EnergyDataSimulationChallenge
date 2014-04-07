@@ -1,0 +1,33 @@
+define([
+	"dojox/data/JsonRestStore",
+	"dojox/charting/Chart",
+	"dojox/charting/themes/Dollar",
+	"dojox/charting/plot2d/StackedAreas",
+	"dojox/charting/plot2d/Markers",
+	"dojox/charting/axis2d/Default",
+	"dojo/domReady!"
+], function(JsonRestStore, Chart, theme){
+	   // Define the data
+	   var chartData = [10000,9200,11811,12000,7662,13887,14200,12222,12000,10009,11288,12099];
+	   var chartData2 = [3000,12000,17733,9876,12783,12899,13888,13277,14299,12345,12345,15763];
+ 
+	   // Create the chart within it's "holding" node
+	   var chart = new Chart("chartNode");
+ 
+	   // Set the theme
+	   chart.setTheme(theme);
+ 
+	   // Add the only/default plot
+	   chart.addPlot("default", {
+		   type: "StackedAreas",
+		       markers: true
+		   });
+	   // Add axes
+	   chart.addAxis("x");
+	   chart.addAxis("y", { min: 5000, max: 30000, vertical: true, fixLower: "major", fixUpper: "major" });
+	   // Add the series of data
+	   chart.addSeries("Monthly Sales - 2010",chartData);
+	   chart.addSeries("Monthly Sales - 2009",chartData2);
+	   // Render the chart!
+	   chart.render();
+});
