@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>challenge3 - ynoda</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/dojo/1.9.2/dojo/dojo.js", "data-dojo-config" => %Q(parseOnLoad: true, modulePaths: {modules: '/js'}) %>
+  <style type="text/css">
+    @import "http://ajax.googleapis.com/ajax/libs/dojo/1.9.2/dijit/themes/claro/claro.css";
+    @import "http://ajax.googleapis.com/ajax/libs/dojo/1.9.2/dijit/themes/dijit.css";
+  </style>
+</head>
+<body class="claro">
+<%= yield %>
+</body>
+</html>

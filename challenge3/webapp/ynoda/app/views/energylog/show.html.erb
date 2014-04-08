@@ -1,0 +1,32 @@
+<h1>Data set</h1>
+<h3>API</h3>
+This data can be extracted as json:
+<a href="<%= url_for(:controller => 'service', :action => 'listenergylogs', :only_path => false) %>">
+<%= url_for(:controller => 'service', :action => 'listenergylogs', :only_path => false) %>
+</a>
+<table border="1">
+<tr>
+<th bgcolor="#EE0000">ID(System generated)</th>
+<th bgcolor="#EE0000">ID</th>
+<th bgcolor="#EE0000">Label</th>
+<th bgcolor="#EE0000">House ID</th>
+<th bgcolor="#EE0000">Year</th>
+<th bgcolor="#EE0000">Month</th>
+<th bgcolor="#EE0000">Templature</th>
+<th bgcolor="#EE0000">Daylight</th>
+<th bgcolor="#EE0000">Energy Production</th>
+</tr>
+<% @energylog.each do |data| %>
+<tr style="background-color: <%= cycle '#ccc', '#fff' %>">
+	<td><%= data.id %></td>
+	<td><%= data.id2 %></td>
+	<td><%= data.label %></td>
+	<td><%= data.house_id %></td>
+	<td><%= data.year %></td>
+	<td><%= data.month %></td>
+	<td><%= data.templature %></td>
+	<td><%= data.daylight %></td>
+	<td><%= data.energyproduction %></td>
+</tr>
+<% end %>
+</table>
