@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="CambridgeApp">
+<head>
+  <title>Cambridge</title>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "challenge", :media => "all" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <script src="http://bazalt-cms.com/assets/ng-table/0.3.0/ng-table.js"></script>
+</head>
+<body>
+<div class="basic">
+<%= yield %>
+</dive>
+</body>
+</html>

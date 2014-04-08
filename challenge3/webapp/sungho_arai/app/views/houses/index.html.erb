@@ -1,0 +1,47 @@
+<%= image_tag('logo.png', :class => "logo") %>
+
+<h1>EnergyDataSimulationChallenge Challenge3!</h1>
+
+<h2 style="clear: left;">You can search for houses</h2>
+<h2>Click column name to sort houses</h2>
+<h2>Click button on the bottom to change the number of houses on the table</h2>
+<h2>Click 'show' to see charts</h2>
+<input type="text" ng-model="keyword" placeholder="Search" />
+
+<div id="chart" class="geochart" style="width: 800px; height: 400px;"></div>
+<div ng-controller="houseCtrl">
+  <table ng-table="tableParams" class="table">
+    <tr ng-repeat="house in $data | filter:keyword">
+      <td data-title="'Firstname'" sortable="'firstname'">{{house.firstname}}</td>
+      <td data-title="'Lastname'" sortable="'lastname'">{{house.lastname}}</td>
+      <td data-title="'City'" sortable="'city'">{{house.city}}</td>
+      <td data-title="'Has Child'" sortable="'haschild'">{{house.has_child}}</td>
+      <td><a href='houses/{{house.id}}'>Show</a></td>
+      <td><a href='houses/{{house.id}}/edit'>Edit</a></td>
+      <td><a href='houses/{{house.id}}'>DELETE</a></td>
+    </tr>
+  </table>
+</div>
+<br>
+
+<!-- TODO(sungho.arai): Create a controller for creating the following chart-->
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+     google.load('visualization', '1', {'packages': ['geochart']});
+     google.setOnLoadCallback(drawMarkersMap);
+
+      function drawMarkersMap() {
+      var data = google.visualization.arrayToDataTable(<%= raw @cities_for_geochart %>);
+
+      var options = {
+        region: 'GB',
+        displayMode: 'markers',
+        colorAxis: {colors: ['green', 'blue']}
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('chart'));
+      chart.draw(data, options);
+    };
+</script>
+
+<%= link_to 'New House', new_house_path %>
