@@ -12,7 +12,7 @@ require "csv"
 #Delete all data
 House.delete_all
 #Initialize auto_increment
-House.connection.execute("delete from sqlite_sequence where name='houses'")
+#House.connection.execute("delete from sqlite_sequence where name='houses'")
 #Insert data in housed_data_50_nocolumnname
 CSV.foreach('../../data/house_data_nocolumnname.csv') do |row|
         House.create(
@@ -28,7 +28,7 @@ end
 #Delete all data
 Energylog.delete_all
 #Initialize auto_increment
-Energylog.connection.execute("delete from sqlite_sequence where name='energylogs'")
+#Energylog.connection.execute("delete from sqlite_sequence where name='energylogs'")
 #Insert data in dataset_50_nocolumnname
 CSV.foreach('../../data/dataset_50_nocolumnname.csv') do |row|
         Energylog.create(
