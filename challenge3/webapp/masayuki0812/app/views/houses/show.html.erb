@@ -12,7 +12,7 @@
 
 <p>
   <strong>City:</strong>
-  <%= @house.city %>
+  <%= @house.city.name %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <strong>Has child:</strong>
-  <%= @house.has_child %>
+  <% if @house.has_child == 1 then %>Yes<% else %>No<% end %>
 </p>
 
 <div id="chart"></div>

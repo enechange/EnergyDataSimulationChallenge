@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :city %><br>
-    <%= f.text_field :city %>
+    <%= f.select :city_id, @city.map{|t| [t.name, t.id]} %>
   </div>
   <div class="field">
     <%= f.label :num_of_people %><br>
@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :has_child %><br>
-    <%= f.text_field :has_child %>
+    <%= f.select :has_child, [["Yes", 1], ["No", 0]] %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -3,9 +3,9 @@ class CreateHouses < ActiveRecord::Migration
     create_table :houses do |t|
       t.string :firstname
       t.string :lastname
-      t.string :city
+      t.integer :city_id
       t.integer :num_of_people
-      t.string :has_child
+      t.integer :has_child
 
       t.timestamps
     end

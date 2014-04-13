@@ -21,9 +21,9 @@
       <tr>
         <td><%= house.firstname %></td>
         <td><%= house.lastname %></td>
-        <td><%= house.city %></td>
+        <td><%= house.city.name %></td>
         <td><%= house.num_of_people %></td>
-        <td><%= house.has_child %></td>
+        <td><% if house.has_child == 1 then %>Yes<% else %>No<% end %></td>
         <td><%= link_to 'Show', house %></td>
         <td><%= link_to 'Edit', edit_house_path(house) %></td>
         <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
