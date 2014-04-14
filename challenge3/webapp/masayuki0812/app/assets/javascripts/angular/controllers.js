@@ -1,5 +1,18 @@
 var edsc3Controllers = angular.module('Edsc3Controllers', []);
 
+edsc3Controllers.controller('RootCtrl', ['$scope', function($scope) {
+    $scope.$on('UpdateNavBarActive', function (event, target){
+        if (target === 'house') {
+            $scope.isActiveOnHouse = true;
+            $scope.isActiveOnCity = false;
+        } else {
+            $scope.isActiveOnHouse = false;
+            $scope.isActiveOnCity = true;
+        }
+    });
+    $scope.$emit('UpdateNavBarActive', 'house');
+}]);
+
 edsc3Controllers.controller('CityListCtrl', ['$scope', 'City', function ($scope, City) {
 
     $scope.cities = City.query();
@@ -17,6 +30,7 @@ edsc3Controllers.controller('CityListCtrl', ['$scope', 'City', function ($scope,
     $scope.new = function () {
         $scope.city.$save()
             .then(function (city) {
+                city.isCreated = true;
                 $scope.cities.push($scope.city);
             })
             .catch(function () {
@@ -26,6 +40,8 @@ edsc3Controllers.controller('CityListCtrl', ['$scope', 'City', function ($scope,
                 $scope.endNew();
             });
     };
+
+    $scope.$emit('UpdateNavBarActive', 'city');
 }]);
 
 edsc3Controllers.controller('CityDetailCtrl', ['$scope', '$routeParams', 'City', function($scope, $routeParams, City) {
@@ -59,6 +75,8 @@ edsc3Controllers.controller('CityDetailCtrl', ['$scope', '$routeParams', 'City',
         }
     };
 */
+
+    $scope.$emit('UpdateNavBarActive', 'city');
 }]);
 
 edsc3Controllers.controller('HouseListCtrl', ['$scope', 'House', 'City', function ($scope, House, City) {
@@ -79,6 +97,7 @@ edsc3Controllers.controller('HouseListCtrl', ['$scope', 'House', 'City', functio
     $scope.new = function () {
         $scope.house.$save()
             .then(function (house) {
+                house.isCreated = true;
                 $scope.houses.push(house);
             })
             .catch(function () {
@@ -88,6 +107,8 @@ edsc3Controllers.controller('HouseListCtrl', ['$scope', 'House', 'City', functio
                 $scope.endNew();
             });
     };
+
+    $scope.$emit('UpdateNavBarActive', 'house');
 }]);
 
 edsc3Controllers.controller('HouseDetailCtrl', ['$scope', '$routeParams', 'House', 'City', function($scope, $routeParams, House, City) {
@@ -125,4 +146,6 @@ edsc3Controllers.controller('HouseDetailCtrl', ['$scope', '$routeParams', 'House
                 });
         }
     };
+
+    $scope.$emit('UpdateNavBarActive', 'house');
 }]);

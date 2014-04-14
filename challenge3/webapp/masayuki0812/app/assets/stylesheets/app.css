@@ -1,0 +1,13 @@
+a {
+  cursor: pointer;
+}
+
+.control-box {
+  margin-bottom: 12px;
+}
+
+.form-box {
+  background-color: #eee;
+  padding: 12px;
+  margin-bottom: 12px;
+}

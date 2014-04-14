@@ -1,28 +1,31 @@
-<table>
+<div class="control-box" ng-show="!creating">
+  <button type="button" class="btn btn-default" ng-click="startNew()">New City...</button>
+</div>
+
+<div class="form-horizontal form-box" ng-show="creating">
+  <div class="form-group">
+    <label for="inputName" class="col-sm-1 control-label">Name</label>
+    <div class="col-sm-3">
+      <input ng-model="city.name" id="inputName" class="form-control" placeholder="Name">
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" ng-click="new()">Create</button>
+  <button type="button" class="btn btn-default" ng-click="endNew()">Cancel</button>
+</div>
+
+<table class="table table-condensed">
   <thead>
     <tr>
       <th>Id</th>
       <th>Name</th>
-      <th></th>
+      <th style="width: 50px;"></th>
     </tr>
   </thead>
-
   <tbody>
-    <tr ng-repeat="city in cities">
+    <tr ng-repeat="city in cities" ng-class="{success: city.isCreated, info: city.isMouseover}" ng-mouseover="city.isMouseover=true" ng-mouseout="city.isMouseover=false">
       <td>{{ city.id }}</td>
       <td>{{ city.name }}</td>
       <td><a ng-click="open(city)">Show</a></td>
     </tr>
   </tbody>
 </table>
-
-<button ng-click="startNew()">New City</button>
-
-<div ng-show="creating">
-  <div class="field">
-    <strong>Name:</strong>
-    <input ng-model="city.name">
-  </div>
-  <button ng-click="new()">Create</button>
-  <button ng-click="endNew()">Cancel</button>
-</div>

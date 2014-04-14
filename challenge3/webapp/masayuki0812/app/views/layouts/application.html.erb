@@ -2,12 +2,26 @@
 <html ng-app="Edsc3App">
 <head>
   <title>Challenge 3</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-controller="RootCtrl">
 
-  <div ng-view></div>
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Challenge3</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li ng-class="{active: isActiveOnHouse}"><a href="/#/houses">House</a></li>
+          <li ng-class="{active: isActiveOnCity}"><a href="/#/cities">City</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+
+  <div ng-view class="container"></div>
 
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <script type="text/javascript" src="http://www.google.com/jsapi"></script>

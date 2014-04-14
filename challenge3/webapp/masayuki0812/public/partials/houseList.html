@@ -1,60 +1,62 @@
-<h1>Sample Application for EnergyDataSimulationChallenge Challenge3!</h1>
+<div class="control-box" ng-show="!creating">
+  <button type="button" class="btn btn-default" ng-click="startNew()">New House...</button>
+</div>
 
-<p>Click 'show' to see charts</p>
+<div class="form-horizontal form-box" ng-show="creating">
+  <div class="form-group">
+    <label for="inputFirstname" class="col-sm-1 control-label">Firstname</label>
+    <div class="col-sm-3">
+      <input ng-model="house.firstname" id="inputFirstname" class="form-control" placeholder="Firstname">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputLastname" class="col-sm-1 control-label">Lastname</label>
+    <div class="col-sm-3">
+      <input ng-model="house.lastname" class="form-control" placeholder="Lastname">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputCity" class="col-sm-1 control-label">City</label>
+    <div class="col-sm-3">
+      <select ng-model="house.city_id" ng-options="city.id as city.name for city in cities" class="form-control"></select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPeople" class="col-sm-1 control-label">Num of people</label>
+    <div class="col-sm-3">
+      <input ng-model="house.num_of_people" class="form-control" placeholder="Num of people">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputChild" class="col-sm-1 control-label">Has child</label>
+    <div class="col-sm-1">
+      <select ng-model="house.has_child" class="form-control">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" ng-click="new()">Create</button>
+  <button type="button" class="btn btn-default" ng-click="endNew()">Cancel</button>
+</div>
 
-<table>
+<table class="table table-condensed">
   <thead>
     <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
+      <th>Nname</th>
       <th>City</th>
       <th>Num of people</th>
       <th>Has child</th>
-      <th></th>
+      <th style="width: 50px;"></th>
     </tr>
   </thead>
-
   <tbody>
-    <tr ng-repeat="house in houses">
-      <td>{{ house.firstname }}</td>
-      <td>{{ house.lastname }}</td>
+    <tr ng-repeat="house in houses" ng-class="{success: house.isCreated, info: house.isMouseover}" ng-mouseover="house.isMouseover=true" ng-mouseout="house.isMouseover=false">
+      <td>{{ house.firstname }} {{ house.lastname }}</td>
       <td>{{ house.city.name }}</td>
       <td>{{ house.num_of_people }}</td>
-      <td>{{ house.has_child }}</td>
+      <td>{{ house.has_child ? "Yes" : "No" }}</td>
       <td><a ng-click="open(house)">Show</a></td>
     </tr>
   </tbody>
 </table>
-
-<br>
-
-<button ng-click="startNew()">New House</button>
-
-<div ng-show="creating">
-  <div class="field">
-    <strong>Firstname:</strong>
-    <input ng-model="house.firstname">
-  </div>
-  <div class="field">
-    <strong>Lastname:</strong>
-    <input ng-model="house.lastname">
-  </div>
-  <div class="field">
-    <strong>City:</strong>
-    <select ng-model="house.city_id" ng-options="city.id as city.name for city in cities"></select>
-    </select>
-  </div>
-  <div class="field">
-    <strong>Num of people:</strong>
-    <input ng-model="house.num_of_people">
-  </div>
-  <div class="field">
-    <strong>Has child:</strong>
-    <select ng-model="house.has_child">
-      <option value="0">No</option>
-      <option value="1">Yes</option>
-    </select>
-  </div>
-  <button ng-click="new()">Create</button>
-  <button ng-click="endNew()">Cancel</button>
-</div>

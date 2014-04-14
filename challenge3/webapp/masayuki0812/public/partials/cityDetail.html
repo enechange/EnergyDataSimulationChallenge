@@ -1,19 +1,32 @@
-<a href="/#/cities">Back</a>
+<ol class="breadcrumb">
+  <li><a href="/#/cities">Cities</a></li>
+  <li class="active">{{ city.name }}</li>
+</ol>
+
 <!--<p id="notice"><%= notice %></p>-->
 
-<div ng-show="!editing">
-  <p>
-    <strong>Name:</strong>
-    {{ city.name }}
-  </p>
-</div>
-<div ng-show="editing">
-  <div class="field">
-    <strong>Name:</strong>
-    <input ng-model="city.name">
-  </div>
-  <button ng-click="save()">Save</button>
-  <button ng-click="endEdit()">Cancel</button>
-</div>
+<table class="table table-condensed" ng-show="!editing">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td style="width:30px;"></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ city.name }}</td>
+      <td><a ng-click="startEdit()">Edit</a></td>
+    </tr>
+  </tbody>
+</table>
 
-<a ng-click="startEdit()">Edit</a>
+<div class="form-horizontal form-box" ng-show="editing">
+  <div class="form-group">
+    <label for="inputName" class="col-sm-1 control-label">Name</label>
+    <div class="col-sm-3">
+      <input ng-model="city.name" id="inputName" class="form-control" placeholder="Name">
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+  <button type="button" class="btn btn-default" ng-click="endEdit()">Cancel</button>
+</div>
