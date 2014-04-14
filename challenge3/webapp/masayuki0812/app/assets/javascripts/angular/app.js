@@ -3,6 +3,14 @@ var edsc3App = angular.module('Edsc3App', ['ngRoute', 'Edsc3Controllers', 'Edsc3
 edsc3App.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
+            when('/cities', {
+                templateUrl: 'partials/cityList.html',
+                controller: 'CityListCtrl'
+            }).
+            when('/city/:cityId', {
+                templateUrl: 'partials/cityDetail.html',
+                controller: 'CityDetailCtrl'
+            }).
             when('/houses', {
                 templateUrl: 'partials/houseList.html',
                 controller: 'HouseListCtrl'

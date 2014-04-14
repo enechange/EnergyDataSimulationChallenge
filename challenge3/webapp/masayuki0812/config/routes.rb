@@ -3,6 +3,8 @@ Sample::Application.routes.draw do
 
   resources :energies
 
+  resources :cities
+
   get 'houses/:id/:target' => 'houses#show'
 
   # The priority is based upon order of creation: first created -> highest priority.

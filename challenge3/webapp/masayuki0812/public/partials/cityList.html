@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="city in cities">
+      <td>{{ city.id }}</td>
+      <td>{{ city.name }}</td>
+      <td><a ng-click="open(city)">Show</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<button ng-click="startNew()">New City</button>
+
+<div ng-show="creating">
+  <div class="field">
+    <strong>Name:</strong>
+    <input ng-model="city.name">
+  </div>
+  <button ng-click="new()">Create</button>
+  <button ng-click="endNew()">Cancel</button>
+</div>
