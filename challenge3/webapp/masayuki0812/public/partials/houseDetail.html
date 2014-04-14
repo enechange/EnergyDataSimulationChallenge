@@ -1,0 +1,56 @@
+<a href="/#/house">Back</a>
+<!--<p id="notice"><%= notice %></p>-->
+
+<div ng-show="!editing">
+  <p>
+    <strong>Firstname:</strong>
+    {{ house.firstname }}
+  </p>
+  <p>
+    <strong>Lastname:</strong>
+    {{ house.lastname }}
+  </p>
+  <p>
+    <strong>City:</strong>
+    {{ house.city.name }}
+  </p>
+  <p>
+    <strong>Num of people:</strong>
+    {{ house.num_of_people }}
+  </p>
+  <p>
+    <strong>Has child:</strong>
+    {{ house.has_child }}
+  </p>
+</div>
+<div ng-show="editing">
+  <div class="field">
+    <strong>Firstname:</strong>
+    <input ng-model="house.firstname">
+  </div>
+  <div class="field">
+    <strong>Lastname:</strong>
+    <input ng-model="house.lastname">
+  </div>
+  <div class="field">
+    <strong>City:</strong>
+    
+  </div>
+  <div class="field">
+    <strong>Num of people:</strong>
+    <input ng-model="house.num_of_people">
+  </div>
+  <div class="field">
+    <strong>Has child:</strong>
+    <select ng-model="house.has_child">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+  </div>
+  <button ng-click="save()">Save</button>
+  <button ng-click="endEdit()">Cancel</button>
+</div>
+
+<div chart></div>
+
+<a ng-click="startEdit()">Edit</a> | <a ng-click="delete()">Delete</a>

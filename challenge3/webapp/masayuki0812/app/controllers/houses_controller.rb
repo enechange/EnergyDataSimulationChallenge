@@ -8,11 +8,15 @@ class HousesController < ApplicationController
     @houses = House.all
   end
 
-  # GET /houses/1
-  # GET /houses/1.json
+  # GET /houses/1(/target)
+  # GET /houses/1(/target).json
   def show
-    @energies_for_gchart = [["Date", "Energy Production"]] +
-      @house.energies.map{|e| ["#{e.year}-#{e.month}", e.energy_production]}
+    if params[:target] == 'energies'
+      @energies = {
+        data: [["Date", "Energy Production"]] + @house.energies.map{|e| ["#{e.year}-#{e.month}", e.energy_production]}
+      }
+      render :action => 'show_energies'
+    end
   end
 
   # GET /houses/new

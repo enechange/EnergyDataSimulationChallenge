@@ -1,0 +1,66 @@
+<h1>Sample Application for EnergyDataSimulationChallenge Challenge3!</h1>
+
+<p>Click 'show' to see charts</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>City</th>
+      <th>Num of people</th>
+      <th>Has child</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="house in houses">
+      <td>{{ house.firstname }}</td>
+      <td>{{ house.lastname }}</td>
+      <td>{{ house.city.name }}</td>
+      <td>{{ house.num_of_people }}</td>
+      <td>{{ house.has_child }}</td>
+      <td><a ng-click="open(house)">Show</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<button ng-click="startNew()">New House</button>
+
+<div ng-show="creating">
+  <div class="field">
+    <strong>Firstname:</strong>
+    <input ng-model="house.firstname">
+  </div>
+  <div class="field">
+    <strong>Lastname:</strong>
+    <input ng-model="house.lastname">
+  </div>
+  <div class="field">
+    <strong>City:</strong>
+    <!-- TODO: generate select from $scope.cities -->
+    <select ng-model="house.city_id">
+      <option value="1">Cambridge</option>
+      <option value="2">London</option>
+      <option value="3">Oxford</option>
+    </select>
+  </div>
+  <div class="field">
+    <strong>Num of people:</strong>
+    <input ng-model="house.num_of_people">
+  </div>
+  <div class="field">
+    <strong>Has child:</strong>
+    <select ng-model="house.has_child">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+  </div>
+  <button ng-click="new()">Create</button>
+  <button ng-click="endNew()">Cancel</button>
+</div>

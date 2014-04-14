@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Edsc3App">
 <head>
-  <title>Sample</title>
+  <title>Challenge 3</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <div ng-view></div>
 
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script>
+    google.load("visualization", "1", {packages:["corechart"]});
+  </script>
 </body>
 </html>
