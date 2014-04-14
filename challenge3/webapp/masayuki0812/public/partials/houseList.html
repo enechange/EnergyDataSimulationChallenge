@@ -41,11 +41,7 @@
   </div>
   <div class="field">
     <strong>City:</strong>
-    <!-- TODO: generate select from $scope.cities -->
-    <select ng-model="house.city_id">
-      <option value="1">Cambridge</option>
-      <option value="2">London</option>
-      <option value="3">Oxford</option>
+    <select ng-model="house.city_id" ng-options="city.id as city.name for city in cities"></select>
     </select>
   </div>
   <div class="field">

@@ -39,13 +39,11 @@ edsc3Controllers.controller('CityDetailCtrl', ['$scope', '$routeParams', 'City',
         $scope.editing = false;
     };
     $scope.save = function () {
-        City.update({cityId: $scope.city.id}, $scope.city)
-            .catch(function () {
-                // TODO: show error
-            })
-            .finally(function () {
-                $scope.endEdit();
-            });
+        City.update($scope.city, function () {
+            $scope.endEdit();
+        }, function () {
+            // TODO: show error
+        });
     };
 /*
     $scope.delete = function () {
@@ -63,9 +61,10 @@ edsc3Controllers.controller('CityDetailCtrl', ['$scope', '$routeParams', 'City',
 */
 }]);
 
-edsc3Controllers.controller('HouseListCtrl', ['$scope', 'House', function ($scope, House) {
+edsc3Controllers.controller('HouseListCtrl', ['$scope', 'House', 'City', function ($scope, House, City) {
 
     $scope.houses = House.query();
+    $scope.cities = City.query();
 
     $scope.open = function (house) {
         location.href = '/#/house/' + house.id;
@@ -91,10 +90,10 @@ edsc3Controllers.controller('HouseListCtrl', ['$scope', 'House', function ($scop
     };
 }]);
 
-edsc3Controllers.controller('HouseDetailCtrl', ['$scope', '$routeParams', 'House', function($scope, $routeParams, House) {
+edsc3Controllers.controller('HouseDetailCtrl', ['$scope', '$routeParams', 'House', 'City', function($scope, $routeParams, House, City) {
 
     $scope.house = House.get({houseId: $routeParams.houseId});
-    //$scope.city = ...
+    $scope.cities = City.query();
 
     $scope.startEdit = function () {
         $scope.editing = true;
@@ -103,13 +102,17 @@ edsc3Controllers.controller('HouseDetailCtrl', ['$scope', '$routeParams', 'House
         $scope.editing = false;
     };
     $scope.save = function () {
-        House.update({houseId: $scope.house.id}, $scope.house)
-            .catch(function () {
-                // TODO: show error
-            })
-            .finally(function () {
+        var selected = $scope.cities.filter(function (city) { return city.id === $scope.house.city.id; });
+        if (selected.length > 0) {
+            selected = selected[0];
+            $scope.house.city_id = selected.id;
+            $scope.house.city = selected;
+            House.update($scope.house, function () {
                 $scope.endEdit();
+            }, function () {
+                // TODO: show error
             });
+        }
     };
     $scope.delete = function () {
         if (confirm('Are you sure?')) {

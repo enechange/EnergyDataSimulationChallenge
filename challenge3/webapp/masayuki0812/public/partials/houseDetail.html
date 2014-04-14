@@ -34,7 +34,7 @@
   </div>
   <div class="field">
     <strong>City:</strong>
-    
+    <select ng-model="house.city.id" ng-options="city.id as city.name for city in cities"></select>
   </div>
   <div class="field">
     <strong>Num of people:</strong>
