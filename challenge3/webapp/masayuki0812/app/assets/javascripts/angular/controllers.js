@@ -15,10 +15,16 @@ edsc3Controllers.controller('CityListCtrl', ['$scope', 'City', function ($scope,
         $scope.creating = false;
     };
     $scope.new = function () {
-        $scope.city.$save();
-        // TODO: add to list with city name. it's possible to get from result of save?
-        //$scope.cities.concat($scope.city);
-        $scope.endNew();
+        $scope.city.$save()
+            .then(function (city) {
+                $scope.cities.push($scope.city);
+            })
+            .catch(function () {
+                // TODO: show error
+            })
+            .finally(function () {
+                $scope.endNew();
+            });
     };
 }]);
 
@@ -33,8 +39,13 @@ edsc3Controllers.controller('CityDetailCtrl', ['$scope', '$routeParams', 'City',
         $scope.editing = false;
     };
     $scope.save = function () {
-        City.update({cityId: $scope.city.id}, $scope.city);
-        $scope.endEdit();
+        City.update({cityId: $scope.city.id}, $scope.city)
+            .catch(function () {
+                // TODO: show error
+            })
+            .finally(function () {
+                $scope.endEdit();
+            });
     };
 /*
     $scope.delete = function () {
@@ -67,13 +78,19 @@ edsc3Controllers.controller('HouseListCtrl', ['$scope', 'House', function ($scop
         $scope.creating = false;
     };
     $scope.new = function () {
-        $scope.house.$save();
-        // TODO: add to list with city name. it's possible to get from result of save?
-        //$scope.houses.concat($scope.house);
-        $scope.endNew();
+        $scope.house.$save()
+            .then(function (house) {
+                $scope.houses.push(house);
+            })
+            .catch(function () {
+                // TODO: show error
+            })
+            .finally(function () {
+                $scope.endNew();
+            });
     };
 }]);
- 
+
 edsc3Controllers.controller('HouseDetailCtrl', ['$scope', '$routeParams', 'House', function($scope, $routeParams, House) {
 
     $scope.house = House.get({houseId: $routeParams.houseId});
@@ -86,19 +103,23 @@ edsc3Controllers.controller('HouseDetailCtrl', ['$scope', '$routeParams', 'House
         $scope.editing = false;
     };
     $scope.save = function () {
-        House.update({houseId: $scope.house.id}, $scope.house);
-        $scope.endEdit();
+        House.update({houseId: $scope.house.id}, $scope.house)
+            .catch(function () {
+                // TODO: show error
+            })
+            .finally(function () {
+                $scope.endEdit();
+            });
     };
     $scope.delete = function () {
         if (confirm('Are you sure?')) {
-            $scope.house.$delete(
-                function () {
+            $scope.house.$delete()
+                .then(function () {
                     location.href = '/#/houses'
-                },
-                function () {
+                })
+                .catch(function () {
                     // TODO: show error
-                }
-            );
+                });
         }
     };
 }]);
