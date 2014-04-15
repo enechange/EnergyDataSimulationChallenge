@@ -20,16 +20,14 @@
       <th>Name</th>
       <th>Num of house</th>
       <th>Total Energy Production</th>
-      <th style="width: 50px;"></th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="city in cities" ng-class="{success: city.isCreated, info: city.isMouseover}" ng-mouseover="city.isMouseover=true" ng-mouseout="city.isMouseover=false">
+    <tr class="clickable" ng-repeat="city in cities" ng-class="{success: city.isCreated, info: city.isMouseover}" ng-mouseover="city.isMouseover=true" ng-mouseout="city.isMouseover=false" ng-click="open(city)">
       <td>{{ city.id }}</td>
       <td>{{ city.name }}</td>
       <td>{{ city.count_house | number }}</td>
       <td>{{ city.total_energy_production | number }}</td>
-      <td><a ng-click="open(city)">Show</a></td>
     </tr>
   </tbody>
 </table>

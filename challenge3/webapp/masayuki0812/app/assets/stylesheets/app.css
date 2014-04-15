@@ -11,3 +11,7 @@ a {
   padding: 12px;
   margin-bottom: 12px;
 }
+
+tr.clickable {
+  cursor: pointer;
+}

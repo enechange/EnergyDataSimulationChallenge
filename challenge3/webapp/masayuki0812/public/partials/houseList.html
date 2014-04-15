@@ -47,16 +47,14 @@
       <th>City</th>
       <th>Num of people</th>
       <th>Has child</th>
-      <th style="width: 50px;"></th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="house in houses" ng-class="{success: house.isCreated, info: house.isMouseover}" ng-mouseover="house.isMouseover=true" ng-mouseout="house.isMouseover=false">
+    <tr class="clickable" ng-repeat="house in houses" ng-class="{success: house.isCreated, info: house.isMouseover}" ng-mouseover="house.isMouseover=true" ng-mouseout="house.isMouseover=false" ng-click="open(house)">
       <td>{{ house.firstname }} {{ house.lastname }}</td>
       <td>{{ house.city.name }}</td>
       <td>{{ house.num_of_people }}</td>
       <td>{{ house.has_child ? "Yes" : "No" }}</td>
-      <td><a ng-click="open(house)">Show</a></td>
     </tr>
   </tbody>
 </table>
