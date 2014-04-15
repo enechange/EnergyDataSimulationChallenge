@@ -15,3 +15,7 @@ a {
 tr.clickable {
   cursor: pointer;
 }
+
+.chart {
+  height: 250px;
+}

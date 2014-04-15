@@ -31,12 +31,37 @@ class City < ActiveRecord::Base
     city
   end
 
-  def self.energies(id)
-    city = find(id)
-    data = city ? city.city_energies.map{|e| ["#{e.year}-#{e.month}", e.energy_production]} : []
-    {
-      data: [["Date", "Energy Production"]] + data
-    }
+  def self.energies(id=nil)
+    if id
+      city = find(id)
+      data = city ? city.city_energies.map{|e| ["#{e.year}-#{e.month}", e.energy_production]} : []
+      {
+        data: [["date", "Energy Production"]] + data,
+      }
+    else
+      cities = all().order("id")
+      data = CityEnergy.all().order("city_id, year, month")
+
+      data_by_date = {}
+      data.each { |d|
+        key = "%d-%02d" % [d.year, d.month]
+        if not data_by_date.has_key?(key)
+          data_by_date[key] = []
+        end
+        data_by_date[key] += [d.energy_production]
+      }
+
+      header = ['date'] + cities.map { |city|
+        city.name
+      }
+      data = data_by_date.keys.sort.map { |key|
+        [key] + data_by_date[key]
+      }
+
+      {
+        data: [header] + data,
+      }
+    end
   end
 
 end

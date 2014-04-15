@@ -13,4 +13,6 @@
 //= require angular.min
 //= require angular-route.min
 //= require angular-resource.min
+//= require d3.min
+//= require c3.min
 //= require_tree .

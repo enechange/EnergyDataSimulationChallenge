@@ -13,6 +13,9 @@ class CitiesController < ApplicationController
     if params[:target] == 'energies'
       @energies = City.energies(params[:id])
       render :action => 'show_energies'
+    elsif params[:id] == 'energies'
+      @energies = City.energies()
+      render :action => 'show_energies'
     else
       @city = City.find(params[:id], with_count_house=true, with_total_energy_production=true)
     end

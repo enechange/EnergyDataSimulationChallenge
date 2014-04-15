@@ -6,7 +6,7 @@ class House < ActiveRecord::Base
     house = find(id)
     data = house ? house.energies.map{|e| ["#{e.year}-#{e.month}", e.energy_production]} : []
     {
-      data: [["Date", "Energy Production"]] + data
+      data: [["date", "Energy Production"]] + data
     }
   end
 
