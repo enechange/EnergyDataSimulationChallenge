@@ -6,6 +6,7 @@ Sample::Application.routes.draw do
   resources :cities
 
   get 'houses/:id/:target' => 'houses#show'
+  get 'cities/:id/:target' => 'cities#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

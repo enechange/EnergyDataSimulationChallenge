@@ -1,4 +1,4 @@
-var edsc3App = angular.module('Edsc3App', ['ngRoute', 'Edsc3Controllers', 'Edsc3Services', 'ChartDirective']);
+var edsc3App = angular.module('Edsc3App', ['ngRoute', 'Edsc3Controllers', 'Edsc3Services', 'Edsc3Directives']);
 
 edsc3App.config(['$routeProvider',
     function($routeProvider) {

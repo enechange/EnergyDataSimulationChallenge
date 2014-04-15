@@ -7,9 +7,13 @@ class CitiesController < ApplicationController
     @cities = City.all
   end
 
-  # GET /cities/1
-  # GET /cities/1.json
+  # GET /cities/1(/target)
+  # GET /cities/1(/target).json
   def show
+    if params[:target] == 'energies'
+      @energies = City.energies(params[:id])
+      render :action => 'show_energies'
+    end
   end
 
   # GET /cities/new

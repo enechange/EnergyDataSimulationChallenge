@@ -12,9 +12,7 @@ class HousesController < ApplicationController
   # GET /houses/1(/target).json
   def show
     if params[:target] == 'energies'
-      @energies = {
-        data: [["Date", "Energy Production"]] + @house.energies.map{|e| ["#{e.year}-#{e.month}", e.energy_production]}
-      }
+      @energies = House.energies(params[:id])
       render :action => 'show_energies'
     end
   end
