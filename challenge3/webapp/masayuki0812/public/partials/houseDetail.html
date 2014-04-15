@@ -20,7 +20,7 @@
       <td>{{ house.firstname }} {{ house.lastname }}</td>
       <td>{{ house.city.name }}</td>
       <td>{{ house.num_of_people }}</td>
-      <td>{{ house.has_child }}</td>
+      <td>{{ house.has_child ? 'Yes' : 'No' }}</td>
       <td><a ng-click="startEdit()">Edit</a></td>
     </tr>
   </tbody>
