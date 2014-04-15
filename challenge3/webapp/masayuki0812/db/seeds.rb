@@ -11,7 +11,7 @@ require 'set'
 
 def get_cities()
   cities = Set[]
-  CSV.foreach("../../data/house_data.csv", :headers => true) do |row|
+  CSV.foreach("../data/house_data.csv", :headers => true) do |row|
     cities.add(row['City'])
   end
   cities.to_a().sort()
@@ -26,7 +26,7 @@ end
 
 # House
 city_of_houses = {}
-CSV.foreach("../../data/house_data.csv", :headers => true) do |row|
+CSV.foreach("../data/house_data.csv", :headers => true) do |row|
   house = House.create!(firstname:     row['Firstname'],
                 lastname:      row['Lastname'],
                 city_id:       cities[row['City']].id,
@@ -39,7 +39,7 @@ end
 # Energy
 # Read MIAC city codes from csv file
 energy_of_cities = {}
-CSV.foreach("../../data/dataset_50.csv", :headers => true) do |row|
+CSV.foreach("../data/dataset_50.csv", :headers => true) do |row|
 
   house_id = row['House'].to_i
   city_id = city_of_houses[house_id].id
