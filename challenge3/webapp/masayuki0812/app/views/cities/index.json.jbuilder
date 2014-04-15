@@ -1,4 +1,3 @@
 json.array!(@cities) do |city|
-  json.extract! city, :id, :name
-  json.url city_url(city, format: :json)
+  json.extract! city, :id, :name, :count_house, :total_energy_production
 end

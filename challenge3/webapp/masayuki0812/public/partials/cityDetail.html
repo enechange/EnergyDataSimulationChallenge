@@ -9,12 +9,16 @@
   <thead>
     <tr>
       <td>Name</td>
+      <td>Num of houses</td>
+      <td>Total Energy Production</td>
       <td style="width:30px;"></td>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>{{ city.name }}</td>
+      <td>{{ city.count_house | number }}</td>
+      <td>{{ city.total_energy_production | number }}</td>
       <td><a ng-click="startEdit()">Edit</a></td>
     </tr>
   </tbody>

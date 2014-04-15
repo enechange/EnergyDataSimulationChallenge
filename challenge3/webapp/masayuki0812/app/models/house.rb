@@ -10,4 +10,9 @@ class House < ActiveRecord::Base
     }
   end
 
+  def self.count_by_city_id(id=nil)
+    count = House.select(:city_id).group('city_id').count()
+    id ? count[id.to_i] : count
+  end
+
 end

@@ -1,10 +1,10 @@
 class CitiesController < ApplicationController
-  before_action :set_city, only: [:show, :edit, :update, :destroy]
+  before_action :set_city, only: [:edit, :update, :destroy]
 
   # GET /cities
   # GET /cities.json
   def index
-    @cities = City.all
+    @cities = City.all(with_count_house=true, with_total_energy_production=true)
   end
 
   # GET /cities/1(/target)
@@ -13,6 +13,8 @@ class CitiesController < ApplicationController
     if params[:target] == 'energies'
       @energies = City.energies(params[:id])
       render :action => 'show_energies'
+    else
+      @city = City.find(params[:id], with_count_house=true, with_total_energy_production=true)
     end
   end
 
