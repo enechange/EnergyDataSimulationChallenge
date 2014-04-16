@@ -46,3 +46,8 @@ end
 
 # Use heroku
 gem 'rails_12factor', group: :production
+
+group :test do
+  gem "rspec"
+  gem "rspec-rails"
+end

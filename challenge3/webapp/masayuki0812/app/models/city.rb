@@ -9,15 +9,11 @@ class City < ActiveRecord::Base
     count_of_cities = with_count_house ? House.count_by_city_id() : nil
     total_energy_production_of_cities = with_total_energy_production ? CityEnergy.sum_by_city_id() : nil
     cities.collect! { |city|
-      if count_of_cities and count_of_cities.has_key?(city.id)
-        city.count_house = count_of_cities[city.id.to_i]
-      elsif
-        city.count_house = 0
+      if count_of_cities
+        city.count_house = count_of_cities.has_key?(city.id) ? count_of_cities[city.id.to_i] : 0
       end
-      if total_energy_production_of_cities and total_energy_production_of_cities.has_key?(city.id)
-        city.total_energy_production = total_energy_production_of_cities[city.id.to_i]
-      elsif
-        city.total_energy_production = 0
+      if total_energy_production_of_cities
+        city.total_energy_production = total_energy_production_of_cities.has_key?(city.id) ? total_energy_production_of_cities[city.id.to_i] : 0
       end
       city
     }
@@ -27,16 +23,12 @@ class City < ActiveRecord::Base
   def self.find(id, with_count_house=false, with_total_energy_production=false)
     city = super(id)
     if with_count_house
-      city.count_house = House.count_by_city_id(id)
-      if not city.count_house
-        city.count_house = 0
-      end
+      count_house = House.count_by_city_id(id)
+      city.count_house = count_house ? count_house : 0
     end
     if with_total_energy_production
-      city.total_energy_production = CityEnergy.sum_by_city_id(id)
-      if not city.total_energy_production
-        city.total_energy_production = 0
-      end
+      total_energy_production = CityEnergy.sum_by_city_id(id)
+      city.total_energy_production = total_energy_production ? total_energy_production : 0
     end
     city
   end
