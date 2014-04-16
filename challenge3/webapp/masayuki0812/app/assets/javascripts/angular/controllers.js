@@ -31,6 +31,8 @@ edsc3Controllers.controller('CityListCtrl', ['$scope', 'City', function ($scope,
         $scope.city.$save()
             .then(function (city) {
                 city.isCreated = true;
+                $scope.city.count_house = 0
+                $scope.city.total_energy_production = 0
                 $scope.cities.push($scope.city);
             })
             .catch(function () {
