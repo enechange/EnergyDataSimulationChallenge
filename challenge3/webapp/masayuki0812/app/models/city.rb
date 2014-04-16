@@ -68,7 +68,6 @@ class City < ActiveRecord::Base
       rows = [['date', "Energy Production"]]
       target_dates.each { |target_date|
         row = [target_date]
-        p target_date, data_by_date.has_key?(target_date)
         if data_by_date.has_key?(target_date)
           row += [data_by_date[target_date]]
         elsif
