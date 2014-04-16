@@ -43,6 +43,7 @@
 <table class="table table-condensed">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Name</th>
       <th>City</th>
       <th>Num of people</th>
@@ -51,6 +52,7 @@
   </thead>
   <tbody>
     <tr class="clickable" ng-repeat="house in houses" ng-class="{success: house.isCreated, info: house.isMouseover}" ng-mouseover="house.isMouseover=true" ng-mouseout="house.isMouseover=false" ng-click="open(house)">
+      <td>{{ house.id }}</td>
       <td>{{ house.firstname }} {{ house.lastname }}</td>
       <td>{{ house.city.name }}</td>
       <td>{{ house.num_of_people }}</td>

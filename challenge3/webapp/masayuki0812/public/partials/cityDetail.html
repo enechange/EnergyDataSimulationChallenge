@@ -8,14 +8,16 @@
 <table class="table table-condensed" ng-show="!editing">
   <thead>
     <tr>
-      <td>Name</td>
-      <td>Num of houses</td>
-      <td>Total Energy Production</td>
-      <td style="width:30px;"></td>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Num of houses</th>
+      <th>Total Energy Production</th>
+      <th style="width:30px;"></th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>{{ city.id }}</td>
       <td>{{ city.name }}</td>
       <td>{{ city.count_house | number }}</td>
       <td>{{ city.total_energy_production | number }}</td>

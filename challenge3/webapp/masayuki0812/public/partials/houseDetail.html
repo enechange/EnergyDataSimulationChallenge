@@ -8,15 +8,17 @@
 <table class="table table-condensed" ng-show="!editing">
   <thead>
     <tr>
-      <td>Name</td>
-      <td>City</td>
-      <td>Num of people</td>
-      <td>Has child</td>
-      <td style="width:30px;"><a ng-click="delete()">Delete</a></td>
+      <th>ID</th>
+      <th>Name</th>
+      <th>City</th>
+      <th>Num of people</th>
+      <th>Has child</th>
+      <th style="width:30px;"><a ng-click="delete()">Delete</a></th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>{{ house.id }}</td>
       <td>{{ house.firstname }} {{ house.lastname }}</td>
       <td>{{ house.city.name }}</td>
       <td>{{ house.num_of_people }}</td>
