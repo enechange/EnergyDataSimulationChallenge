@@ -4,7 +4,7 @@ class CitiesController < ApplicationController
   # GET /cities
   # GET /cities.json
   def index
-    @cities = City.all(with_count_house=true, with_total_energy_production=true).order('id')
+    @cities = City.all(with_count_house=true, with_total_energy_production=true)
   end
 
   # GET /cities/1(/target)

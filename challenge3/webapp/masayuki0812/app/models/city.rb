@@ -5,7 +5,7 @@ class City < ActiveRecord::Base
   attr_accessor :count_house, :total_energy_production
 
   def self.all(with_count_house=false, with_total_energy_production=false)
-    cities = super()
+    cities = super().order('id')
     count_of_cities = with_count_house ? House.count_by_city_id() : nil
     total_energy_production_of_cities = with_total_energy_production ? CityEnergy.sum_by_city_id() : nil
     cities.collect! { |city|
