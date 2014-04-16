@@ -35,6 +35,7 @@ edsc3Services.factory('Chart', function () {
             axis: {
                 x: {
                     type: 'timeseries',
+                    localtime: true,
                     tick: {
                         format: '%Y-%m',
                     }
