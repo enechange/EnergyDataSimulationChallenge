@@ -4,9 +4,9 @@ class House < ActiveRecord::Base
 
   def self.energies(id)
     house = find(id)
-    data = house ? house.energies.map{|e| ["#{e.year}-#{e.month}", e.energy_production]} : []
+    data = house ? house.energies.map{|e| ["#{e.year}-#{e.month}", e.energy_production, e.daylight]} : []
     {
-      data: [["date", "Energy Production"]] + data
+      data: [["date", "Energy Production", 'Daylight']] + data
     }
   end
 
