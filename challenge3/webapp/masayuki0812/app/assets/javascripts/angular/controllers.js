@@ -92,6 +92,9 @@ edsc3Controllers.controller('HouseListCtrl', ['$scope', 'House', 'City', functio
     $scope.startNew = function () {
         $scope.creating = true;
         $scope.house = new House();
+        $scope.house.city_id = 1;
+        $scope.house.num_of_people = 0;
+        $scope.house.has_child = 0;
     };
     $scope.endNew = function () {
         $scope.creating = false;

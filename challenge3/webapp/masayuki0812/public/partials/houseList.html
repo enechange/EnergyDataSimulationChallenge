@@ -3,16 +3,17 @@
 </div>
 
 <div class="form-horizontal form-box" ng-show="creating">
+ <form name="formHouse">
   <div class="form-group">
     <label for="inputFirstname" class="col-sm-1 control-label">Firstname</label>
     <div class="col-sm-3">
-      <input ng-model="house.firstname" id="inputFirstname" class="form-control" placeholder="Firstname">
+      <input ng-model="house.firstname" id="inputFirstname" class="form-control" placeholder="Firstname" required>
     </div>
   </div>
   <div class="form-group">
     <label for="inputLastname" class="col-sm-1 control-label">Lastname</label>
     <div class="col-sm-3">
-      <input ng-model="house.lastname" class="form-control" placeholder="Lastname">
+      <input ng-model="house.lastname" class="form-control" placeholder="Lastname" required>
     </div>
   </div>
   <div class="form-group">
@@ -24,7 +25,8 @@
   <div class="form-group">
     <label for="inputPeople" class="col-sm-1 control-label">Num of people</label>
     <div class="col-sm-3">
-      <input ng-model="house.num_of_people" class="form-control" placeholder="Num of people">
+      <select ng-model="house.num_of_people" class="form-control" ng-options="i for i in [0,1,2,3,4,5,6,7,8,9]">
+      </select>
     </div>
   </div>
   <div class="form-group">
@@ -36,8 +38,9 @@
       </select>
     </div>
   </div>
-  <button type="button" class="btn btn-primary" ng-click="new()">Create</button>
+  <button type="button" class="btn btn-primary" ng-click="new()" ng-disabled="formHouse.$invalid">Create</button>
   <button type="button" class="btn btn-default" ng-click="endNew()">Cancel</button>
+ </form>
 </div>
 
 <table class="table table-condensed">
