@@ -1,0 +1,1 @@
+json.extract! @city, :id, :name, :count_house, :total_energy_production, :created_at, :updated_at

@@ -1,0 +1,37 @@
+<h1>Sample Application for EnergyDataSimulationChallenge Challenge3!</h1>
+
+<p>Click 'show' to see charts</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>City</th>
+      <th>Num of people</th>
+      <th>Has child</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+        <td><%= house.firstname %></td>
+        <td><%= house.lastname %></td>
+        <td><%= house.city.name %></td>
+        <td><%= house.num_of_people %></td>
+        <td><% if house.has_child == 1 then %>Yes<% else %>No<% end %></td>
+        <td><%= link_to 'Show', house %></td>
+        <td><%= link_to 'Edit', edit_house_path(house) %></td>
+        <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New House', new_house_path %>

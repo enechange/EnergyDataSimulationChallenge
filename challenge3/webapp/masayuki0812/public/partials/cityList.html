@@ -1,0 +1,37 @@
+<div chart-cities></div>
+
+<div class="control-box" ng-show="!creating">
+  <button type="button" class="btn btn-default" ng-click="startNew()">New City...</button>
+</div>
+
+<div class="form-horizontal form-box" ng-show="creating">
+ <form name="formCity">
+  <div class="form-group">
+    <label for="inputName" class="col-sm-1 control-label">Name</label>
+    <div class="col-sm-3">
+      <input ng-model="city.name" id="inputName" class="form-control" placeholder="Name" required>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" ng-click="new()" ng-disabled="formCity.$invalid">Create</button>
+  <button type="button" class="btn btn-default" ng-click="endNew()">Cancel</button>
+ </form>
+</div>
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Num of house</th>
+      <th>Total Energy Production</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="clickable" ng-repeat="city in cities" ng-class="{success: city.isCreated, info: city.isMouseover}" ng-mouseover="city.isMouseover=true" ng-mouseout="city.isMouseover=false" ng-click="open(city)">
+      <td>{{ city.id }}</td>
+      <td>{{ city.name }}</td>
+      <td>{{ city.count_house | number }}</td>
+      <td>{{ city.total_energy_production | number }}</td>
+    </tr>
+  </tbody>
+</table>
