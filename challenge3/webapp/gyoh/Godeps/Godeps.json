@@ -1,0 +1,29 @@
+{
+	"ImportPath": "energydatasimulationchallenge3",
+	"GoVersion": "go1.2.1",
+	"Deps": [
+		{
+			"ImportPath": "github.com/codegangsta/inject",
+			"Rev": "9aea7a2fa5b79ef7fc00f63a575e72df33b4e886"
+		},
+		{
+			"ImportPath": "github.com/coopernurse/gorp",
+			"Comment": "v1.5",
+			"Rev": "242be3eec6e4d545d0eca24b5dc71236b71ac656"
+		},
+		{
+			"ImportPath": "github.com/go-martini/martini",
+			"Comment": "v0.1-153-gbaa4221",
+			"Rev": "baa42219288cdd775874794381aa987144012263"
+		},
+		{
+			"ImportPath": "github.com/go-sql-driver/mysql",
+			"Comment": "go1",
+			"Rev": "9a7aa3606b82e2081a13a008ada88dfdb96c20fd"
+		},
+		{
+			"ImportPath": "github.com/martini-contrib/render",
+			"Rev": "7b617783357fec5b5a6d4ecac82e747e4a14d1b5"
+		}
+	]
+}

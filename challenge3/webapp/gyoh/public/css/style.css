@@ -1,0 +1,15 @@
+body {
+  padding-top: 60px;
+}
+
+.graph-container {
+  padding: 30px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 2px #eee;
+  margin: 10px 0;
+  position: relative;
+}
+
+.graph-container .caption {
+  text-align: center;
+}
