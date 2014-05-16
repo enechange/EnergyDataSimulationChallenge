@@ -1,0 +1,56 @@
+<div>
+  <table class="table table-bordered">
+    <legend>House Details</legend>
+    <tbody>
+      <tr>
+        <th class="col-md-2">ID</th>
+        <td>{{house.Id}}</td>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <td>{{house.Firstname}} {{house.Lastname}}</td>
+      </tr>
+      <tr>
+        <th>City</th>
+        <td>{{house.City}}</td>
+      </tr>
+      <tr>
+        <th>Number of People</th>
+        <td>{{house.NumOfPeople}}</td>
+      </tr>
+      <tr>
+        <th>Has Child</th>
+        <td>{{house.HasChild}}</td>
+      </tr>
+    </tobody>
+  </table>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="graph-container">
+        <div class="caption">Energy Production</div>
+        <div id="barchart" class="graph"></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="graph-container">
+        <div class="caption">Temperature and Daylight</div>
+        <div id="linechart" class="graph"></div>
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped" ng-table="tableParams">
+    <legend>Energy Data</legend>
+    <tbody>
+      <tr ng-repeat="energy in $data|filter:query">
+        <td data-title="'ID'">{{energy.Id}}</td>
+        <td data-title="'Label'">{{energy.Label}}</td>
+        <td data-title="'House'">{{energy.House}}</td>
+        <td data-title="'Year'">{{energy.Year}}</td>
+        <td data-title="'Month'">{{energy.Month}}</td>
+        <td data-title="'Temperature'">{{energy.Temperature}}</td>
+        <td data-title="'Daylight'">{{energy.Daylight}}</td>
+        <td data-title="'Energy Production'">{{energy.EnergyProduction}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,14 @@
+<div>
+  <table class="table table-striped" ng-table="tableParams">
+    <tr ng-repeat="energy in $data|filter:searchFilter">
+      <td data-title="'ID'">{{energy.Id}}</td>
+      <td data-title="'Label'">{{energy.Label}}</td>
+      <td data-title="'House'">{{energy.House}}</td>
+      <td data-title="'Year'">{{energy.Year}}</td>
+      <td data-title="'Month'">{{energy.Month}}</td>
+      <td data-title="'Temperature'">{{energy.Temperature}}</td>
+      <td data-title="'Daylight'">{{energy.Daylight}}</td>
+      <td data-title="'Energy Production'">{{energy.EnergyProduction}}</td>
+    </tr>
+  </table>
+</div>

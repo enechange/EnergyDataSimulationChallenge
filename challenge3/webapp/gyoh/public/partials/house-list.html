@@ -1,0 +1,16 @@
+<div>
+  <p>
+    <input type="text" class="form-control" placeholder="Search for Firstname, Lastname or City" ng-model="query">
+  </p>
+  <table class="table table-striped" ng-table="tableParams">
+    <tr ng-repeat="house in $data|filter:searchFilter">
+      <td data-title="'ID'">{{house.Id}}</td>
+      <td data-title="'Firstname'">{{house.Firstname}}</td>
+      <td data-title="'Lastname'">{{house.Lastname}}</td>
+      <td data-title="'City'">{{house.City}}</td>
+      <td data-title="'Number of People'">{{house.NumOfPeople}}</td>
+      <td data-title="'Has Child'">{{house.HasChild}}</td>
+      <td><a href="#/energies/{{house.Id}}" class="btn btn-primary btn-sm" role="button">Energy</a></td>
+    </tr>
+  </table>
+</div>
