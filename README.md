@@ -170,8 +170,8 @@ But please mind that it is rough and may have some points to be fixed.
 
 For this challenge, you will be required to demonstrate your knowledge of the UK domestic energy market. Please prepare a presentation that answers the following qustion:
 
-If you were to start a energy company in the UK through Cambridge Energy Data Lab, how would you go about doing it? Please assume that only domestic/household consumers will be the customers to the service.
+If you were to start a energy retail company in the UK through Cambridge Energy Data Lab, how would you go about doing it? Please assume that only domestic/household consumers will be the customers to the service, and the company will offer both electricity and gas tariffs. Prepare as if this were a presentation for an investor looking to partner with Cambridge Energy Data Lab in creating such a service.
 
-Please limit your presentation to no more than 15 slides, including title and/or reference pages. Send your presentation to cam_all_ml@googlegroups.com. If we like your presentation and your CV, we will contact you to arrange for a final interview.
+Please limit your presentation to no more than 15 slides, including title and/or reference pages. Send your presentation to cam_all_ml@googlegroups.com. If we like your presentation and your CV, we will contact you to arrange for a final interview in Cambridge where you will make your "pitch" for us in person.
 
 
