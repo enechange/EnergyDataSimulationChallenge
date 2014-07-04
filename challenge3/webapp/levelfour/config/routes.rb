@@ -1,4 +1,14 @@
 Levelfour::Application.routes.draw do
+  get "energies/index"
+  get "energies/new"
+  get "energies/edit"
+  get "energies/list"
+  get "energies/detail"
+  get "houses/index"
+  get "houses/edit"
+  get "houses/new"
+  get "houses/list"
+  get "houses/detail"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
