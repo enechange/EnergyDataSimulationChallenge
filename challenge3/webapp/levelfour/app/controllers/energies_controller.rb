@@ -9,7 +9,7 @@ class EnergiesController < ApplicationController
   end
 
   def list
-	  @data = Energy.find(:all)
+	  @data = Energy.page params[:page]
   end
 
   def detail

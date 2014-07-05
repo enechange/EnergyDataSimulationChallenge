@@ -24,7 +24,7 @@ class HousesController < ApplicationController
   end
 
   def list
-	  @houses = House.find(:all)
+	  @houses = House.page params[:page]
   end
 
   def detail
