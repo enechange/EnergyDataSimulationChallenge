@@ -1,9 +1,11 @@
 Levelfour::Application.routes.draw do
+  match "/energies",	to: "energies#index",	via: "get"
   get "energies/index"
   get "energies/new"
   get "energies/edit"
   get "energies/list"
   get "energies/detail"
+  match "/houses",		to: "houses#index",		via: "get"
   get "houses/index"
   get "houses/edit"
   get "houses/new"
