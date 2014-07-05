@@ -10,6 +10,7 @@ Levelfour::Application.routes.draw do
   get "houses/index"
   get "houses/edit"
   get "houses/new"
+  post "houses/add"
   get "houses/list"
   get "houses/detail"
   # The priority is based upon order of creation: first created -> highest priority.

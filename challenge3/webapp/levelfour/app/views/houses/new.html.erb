@@ -1,5 +1,5 @@
 <h1>Houses#new</h1>
-<form class="form-horizontal" role="form" method="post" action="./">
+<form class="form-horizontal" role="form" method="post" action="/houses/add">
   <div class="form-group">
     <label for="name" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-4">
@@ -24,7 +24,7 @@
   <div class="form-group">
     <label for="has_child" class="col-sm-2 control-label">Has child</label>
     <div class="col-sm-8">
-      <select class="form-control">
+      <select class="form-control" name="has_child">
         <option value="0">No</option>
         <option value="1">Yes</option>
       </select>
