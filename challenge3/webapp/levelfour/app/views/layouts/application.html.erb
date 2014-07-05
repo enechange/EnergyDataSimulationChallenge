@@ -22,15 +22,15 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li class="dropdown">
+            <li class="<%= "active" if request.url == root_url %>"><a href="/">Home</a></li>
+            <li class="dropdown <%= "active" if request.url.index("houses") != nil %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Houses <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="/houses/">index</a></li>
               <li><a href="/houses/list/">list</a></li>
             </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown <%= "active" if request.url.index("energies") != nil %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Energies <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="/energies/">index</a></li>
@@ -44,7 +44,6 @@
 
     <!-- Begin page content -->
     <div class="container">
-
       <%= yield %>
     </div>
 
