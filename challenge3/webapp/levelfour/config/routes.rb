@@ -9,6 +9,7 @@ Levelfour::Application.routes.draw do
   match "/houses", :to => "houses#index", :via => "get"
   get "houses/index"
   get "houses/edit"
+  post "houses/update"
   get "houses/new"
   post "houses/add"
   get "houses/list"
