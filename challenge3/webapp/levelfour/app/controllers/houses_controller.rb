@@ -22,6 +22,13 @@ class HousesController < ApplicationController
     redirect_to :action => "detail", :id => house.id
   end
 
+  def delete
+    House.delete params[:id]
+
+    flash[:success] = "house data deleted successfully"
+    redirect_to :action => "list"
+  end
+
   def new
   end
 

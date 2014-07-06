@@ -41,6 +41,13 @@ class EnergiesController < ApplicationController
     redirect_to :action => "detail", :id => params[:id]
   end
 
+  def delete
+    Energy.delete params[:id]
+
+    flash[:success] = "house data deleted successfully"
+    redirect_to :action => "list"
+  end
+
   def list
 	  @data = Energy.page params[:page]
   end

@@ -13,7 +13,7 @@
 		</tr>
 	</thead>
 	<% @data.each do |d| %>
-		<tr>
+    <tr data-href="/energies/detail/?id=<%=d.id%>">
 			<td><%= d.id %></td>
 			<td><%= d.house_id %></td>
 			<td><%= d.label %></td>
