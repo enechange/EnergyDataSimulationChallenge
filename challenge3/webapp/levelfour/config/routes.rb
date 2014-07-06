@@ -3,6 +3,7 @@ Levelfour::Application.routes.draw do
   match "/energies", :to => "energies#index", :via => "get"
   get "energies/index"
   get "energies/new"
+  post "energies/add"
   get "energies/edit"
   get "energies/list"
   get "energies/detail"
