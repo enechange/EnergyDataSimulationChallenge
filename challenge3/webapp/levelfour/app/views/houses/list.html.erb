@@ -11,7 +11,7 @@
 		</tr>
 	</thead>
 	<% @houses.each do |h| %>
-		<tr>
+    <tr data-href="/houses/detail/?id=<%=h.id%>">
 			<td><%= h.id %></td>
 			<td><%= "#{h.last_name} #{h.first_name}" %></td>
 			<td><%= h.city %></td>

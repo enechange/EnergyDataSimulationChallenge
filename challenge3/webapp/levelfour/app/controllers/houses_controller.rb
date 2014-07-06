@@ -28,5 +28,7 @@ class HousesController < ApplicationController
   end
 
   def detail
+    @house = House.find(params[:id])
+    @data = Energy.where :house_id => params[:id]
   end
 end

@@ -1,2 +1,45 @@
 <h1>Houses#detail</h1>
-<p>Find me in app/views/houses/detail.html.erb</p>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>City</th>
+			<th>Num of People</th>
+			<th>Has child</th>
+		</tr>
+	</thead>
+    <tr>
+			<td><%= @house.id %></td>
+			<td><%= "#{@house.last_name} #{@house.first_name}" %></td>
+			<td><%= @house.city %></td>
+			<td><%= @house.num_of_people %></td>
+			<td><%= (@house.has_child == 1) %></td>
+		</tr>
+</table>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>House ID</th>
+			<th>Label</th>
+			<th>Month</th>
+			<th>Temperature</th>
+			<th>Daylight</th>
+			<th>EnergyProduction</th>
+		</tr>
+	</thead>
+	<% @data.each do |d| %>
+		<tr>
+			<td><%= d.id %></td>
+			<td><%= d.house_id %></td>
+			<td><%= d.label %></td>
+			<td><%= "#{d.month.year}-#{d.month.month}" %></td>
+			<td><%= d.temperature %></td>
+			<td><%= d.daylight %></td>
+			<td><%= d.energy_production %></td>
+		</tr>
+	<% end %>
+</table>
+
