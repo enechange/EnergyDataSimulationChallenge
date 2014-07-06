@@ -1,5 +1,6 @@
 class EnergiesController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => [:add]
+  skip_before_filter :verify_authenticity_token,
+    :only => [:add, :update]
 
   def index
   end
@@ -24,6 +25,20 @@ class EnergiesController < ApplicationController
   end
 
   def edit
+    @data = Energy.find params[:id]
+  end
+
+  def update
+    data = Energy.find params[:id]
+
+    data.month = Date.new(params[:year].to_i, params[:month].to_i)
+    data.temperature = params[:temperature]
+    data.daylight = params[:daylight]
+    data.energy_production = params[:energy_production]
+    data.save
+
+    flash[:success] = "house data updated successfully"
+    redirect_to :action => "detail", :id => params[:id]
   end
 
   def list
@@ -31,5 +46,6 @@ class EnergiesController < ApplicationController
   end
 
   def detail
+    @data = Energy.find params[:id]
   end
 end
