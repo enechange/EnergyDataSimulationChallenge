@@ -8,11 +8,25 @@ class EnergiesController < ApplicationController
     @data = []
     @category.each{|c| @data << set.select{|r| r.house.city == c}.map{|i| i.energy_production}.inject(:+)}
 
-    @graph = LazyHighCharts::HighChart.new("graph") do |f|
+    @graph1 = LazyHighCharts::HighChart.new("graph") do |f|
       f.chart(:type => "column")
       f.title(:text => "energy production in each city")
       f.xAxis(:categories => @category)
       f.series(:name => "city", :data => @data)
+    end
+
+    @category = set.map{|i| House.find(i.house_id).num_of_people}.uniq!
+    @data = []
+    @category.each{|c|
+      d = set.select{|r| r.house.num_of_people == c}
+      @data << d.map{|i| i.energy_production}.inject(:+) / d.length
+    }
+
+    @graph2 = LazyHighCharts::HighChart.new("graph") do |f|
+      f.chart(:type => "column")
+      f.title(:text => "relationship between num_of_people and energy production")
+      f.xAxis(:categories => @category)
+      f.series(:name => "num_of_people", :data => @data)
     end
   end
 
