@@ -3,6 +3,17 @@ class EnergiesController < ApplicationController
     :only => [:add, :update]
 
   def index
+    set = Energy.limit(1000)
+    @category = set.map{|i| House.find(i.house_id).city }.uniq!
+    @data = []
+    @category.each{|c| @data << set.select{|r| r.house.city == c}.map{|i| i.energy_production}.inject(:+)}
+
+    @graph = LazyHighCharts::HighChart.new("graph") do |f|
+      f.chart(:type => "column")
+      f.title(:text => "energy production in each city")
+      f.xAxis(:categories => @category)
+      f.series(:name => "city", :data => @data)
+    end
   end
 
   def new
@@ -49,7 +60,7 @@ class EnergiesController < ApplicationController
   end
 
   def list
-	  @data = Energy.page params[:page]
+    @data = Energy.page params[:page]
   end
 
   def detail

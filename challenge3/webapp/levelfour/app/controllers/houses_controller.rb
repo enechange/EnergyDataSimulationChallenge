@@ -3,6 +3,25 @@ class HousesController < ApplicationController
     :only => [:add, :update]
 
   def index
+    data = Energy.limit(500).order(:id).sort_by{|i| i.temperature}
+    category = data.map{|i| i.temperature}
+    production = data.map{|i| i.energy_production}
+
+    @temperature = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(:text => 'energy production')
+      f.xAxis(:categories => category)
+      f.series(:name => 'energy production', :data => production, :type => 'scatter')
+    end
+
+    data = Energy.limit(500).order(:id).sort_by{|i| i.daylight}
+    category = data.map{|i| i.daylight}
+    production = data.map{|i| i.energy_production}
+
+    @daylight = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(:text => 'energy production')
+      f.xAxis(:categories => category)
+      f.series(:name => 'energy production', :data => production, :type => 'scatter')
+    end
   end
 
   def edit
@@ -46,7 +65,7 @@ class HousesController < ApplicationController
   end
 
   def list
-	  @houses = House.page params[:page]
+    @houses = House.page params[:page]
   end
 
   def detail
