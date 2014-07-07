@@ -1,6 +1,7 @@
 class HousesController < ApplicationController
   skip_before_filter :verify_authenticity_token,
     :only => [:add, :update]
+  include Analysis
 
   def index
     data = Energy.limit(500).order(:id).sort_by{|i| i.temperature}
@@ -12,6 +13,8 @@ class HousesController < ApplicationController
       f.xAxis(:categories => category)
       f.series(:name => 'energy production', :data => production, :type => 'scatter')
     end
+
+    @regression = Analysis.regression(category, production)
 
     data = Energy.limit(500).order(:id).sort_by{|i| i.daylight}
     category = data.map{|i| i.daylight}

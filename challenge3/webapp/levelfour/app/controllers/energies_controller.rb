@@ -3,7 +3,7 @@ class EnergiesController < ApplicationController
     :only => [:add, :update]
 
   def index
-    set = Energy.limit(1000)
+    set = Energy.order :id
     @category = set.map{|i| House.find(i.house_id).city }.uniq!
     @data = []
     @category.each{|c|
