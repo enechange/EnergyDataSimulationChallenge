@@ -4,26 +4,32 @@ class HousesController < ApplicationController
   include Analysis
 
   def index
-    data = Energy.limit(500).order(:id).sort_by{|i| i.temperature}
+    data = Energy.order(:id).sort_by{|i| i.temperature}
     category = data.map{|i| i.temperature}
     production = data.map{|i| i.energy_production}
+    @regression1 = Analysis.regression(category, production)
+    span = (category.min.floor..category.max.ceil).to_a
 
     @temperature = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(:text => 'energy production')
-      f.xAxis(:categories => category)
-      f.series(:name => 'energy production', :data => production, :type => 'scatter')
+      f.xAxis(:categories => span)
+      f.series(:name => 'temperature',
+               :data => span.map{|i| @regression1[:alpha]+@regression1[:beta]*i},
+               :type => 'spline')
     end
 
-    @regression = Analysis.regression(category, production)
-
-    data = Energy.limit(500).order(:id).sort_by{|i| i.daylight}
+    data = Energy.order(:id).sort_by{|i| i.daylight}
     category = data.map{|i| i.daylight}
     production = data.map{|i| i.energy_production}
+    @regression2 = Analysis.regression(category, production)
+    span = (category.min.floor..category.max.ceil).to_a.delete_if{|x| x%10 != 0 }
 
     @daylight = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(:text => 'energy production')
-      f.xAxis(:categories => category)
-      f.series(:name => 'energy production', :data => production, :type => 'scatter')
+      f.xAxis(:categories => span)
+      f.series(:name => 'daylight',
+               :data => span.map{|i| @regression2[:alpha]+@regression2[:beta]*i},
+               :type => 'spline')
     end
   end
 
