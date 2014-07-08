@@ -1,4 +1,5 @@
 Levelfour::Application.routes.draw do
+  mathjax 'mathjax'
   root :to => "info#index"
   match "/energies", :to => "energies#index", :via => "get"
   get "energies/index"

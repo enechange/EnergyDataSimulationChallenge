@@ -1,5 +1,17 @@
-<h1>Houses#index</h1>
+<h3>The relationship between house temperature and energy production</h3>
+<p>
+  regession line is as follows:
+</p>
+\[
+  y=<%= @regression1[:alpha] %> + <%= @regression1[:beta] %> \cdot x
+\]
 <%= high_chart("sample1", @temperature) %>
-<%= @regression1 %>
+
+<h3>The relationship between daylight and energy production</h3>
+<p>
+  regession line is as follows:
+</p>
+\[
+  y=<%= @regression2[:alpha] %> + <%= @regression2[:beta] %> \cdot x
+\]
 <%= high_chart("sample2", @daylight) %>
-<%= @regression2 %>
