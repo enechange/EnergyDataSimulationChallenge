@@ -50,3 +50,10 @@ gem 'bootbox-rails', '~>0.3'
 gem 'kaminari'
 gem 'lazy_high_charts'
 gem 'mathjax-rails'
+
+group :deployment do
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+end
