@@ -1,0 +1,28 @@
+<h1>
+  Energies#detail
+  <button type="button" class="btn btn-default" onClick="window.location='/energies/edit/?id=<%=@data.id%>'">edit</button>
+  <button type="button" class="btn btn-default btn-delete" data-href="/energies/delete/?id=<%=@data.id%>">delete</button>
+</h1>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>House ID</th>
+			<th>Label</th>
+			<th>Month</th>
+			<th>Temperature</th>
+			<th>Daylight</th>
+			<th>EnergyProduction</th>
+		</tr>
+  </thead>
+  <tr>
+    <td><%= @data.id %></td>
+    <td><%= @data.house_id %></td>
+    <td><%= @data.label %></td>
+    <td><%= "#{@data.month.year}-#{@data.month.month}" %></td>
+    <td><%= @data.temperature %></td>
+    <td><%= @data.daylight %></td>
+    <td><%= @data.energy_production %></td>
+  </tr>
+</table>
+

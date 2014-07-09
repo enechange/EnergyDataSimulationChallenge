@@ -1,0 +1,10 @@
+@import "bootstrap";
+
+body > div.container {
+	padding-top: 60px;
+}
+
+tbody tr.clickable:hover td {
+	background: #ecf2fa;
+	cursor: pointer;
+}

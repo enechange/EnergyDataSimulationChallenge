@@ -1,0 +1,27 @@
+<h1>Energies#list</h1>
+<%= paginate @data %>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>House ID</th>
+			<th>Label</th>
+			<th>Month</th>
+			<th>Temperature</th>
+			<th>Daylight</th>
+			<th>EnergyProduction</th>
+		</tr>
+	</thead>
+	<% @data.each do |d| %>
+    <tr data-href="/energies/detail/?id=<%=d.id%>">
+			<td><%= d.id %></td>
+			<td><%= d.house_id %></td>
+			<td><%= d.label %></td>
+			<td><%= "#{d.month.year}-#{d.month.month}" %></td>
+			<td><%= d.temperature %></td>
+			<td><%= d.daylight %></td>
+			<td><%= d.energy_production %></td>
+		</tr>
+	<% end %>
+</table>
+<%= paginate @data %>

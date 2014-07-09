@@ -1,0 +1,23 @@
+<h1>Houses#list</h1>
+<%= paginate @houses %>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>City</th>
+			<th>Num of People</th>
+			<th>Has child</th>
+		</tr>
+	</thead>
+	<% @houses.each do |h| %>
+    <tr data-href="/houses/detail/?id=<%=h.id%>">
+			<td><%= h.id %></td>
+			<td><%= "#{h.last_name} #{h.first_name}" %></td>
+			<td><%= h.city %></td>
+			<td><%= h.num_of_people %></td>
+			<td><%= (h.has_child == 1) %></td>
+		</tr>
+	<% end %>
+</table>
+<%= paginate @houses %>
