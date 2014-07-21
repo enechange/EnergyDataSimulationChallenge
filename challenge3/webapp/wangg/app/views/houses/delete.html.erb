@@ -1,0 +1,41 @@
+<% @page_title="House Delete"%>
+<%= link_to("<< Back to House List",houses_path) %><br />
+<%= link_to("<< Back to Energy Record List",energies_path) %>
+
+<div class="houses delete">
+	<fieldset>
+	<legend>Update House</legend>
+
+	<%= form_for(:house, :url=>{:action=>'destroy',:id=>@house.id}) do |f| %>
+
+		<p><strong>Are you sure you want to delete this house?</strong></p>
+
+		<table class="listing" summary="House list">
+			<tr class="header">
+				<th>&nbsp;</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>City</th>
+				<th>Number of People</th>
+				<th>Has Child?</th>
+				<th>Number of Records</th>
+			</tr>
+			<tr class="<%= cycle('odd','even')%>">
+				<th>&nbsp;</th>
+				<td><%= @house.first_name%></td>
+				<td><%= @house.last_name%></td>
+				<td><%= @house.city%></td>
+				<td><%= @house.num_of_people%></td>
+				<td class="center"><%= @house.has_child ? 'Yes' : 'No' %></td>
+				<td class="center"><%= @house.energies.size%></td>
+			</tr>
+		</table>
+
+		<div>
+			<%= form_tag(house_path(@house.id),:method=>'delete') do %>
+  				<%= submit_tag('Delete House',:class=>"button") %>
+			<% end %>
+		</div>
+	<% end %>
+	</fieldset>
+</div>

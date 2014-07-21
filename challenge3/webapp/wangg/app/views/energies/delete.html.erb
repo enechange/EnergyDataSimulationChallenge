@@ -1,0 +1,43 @@
+<% @page_title="Energy Delete"%>
+<%= link_to("<< Back to Energy Record List",energies_path) %><br/>
+<%= link_to("<< Back to House List",houses_path) %>
+
+<div class="energies delete">
+	<fieldset>
+	<legend>Delete Energy</legend>
+
+	<%= form_for(:energy, :url=>{:action=>"destroy",:id=>@energy.id}) do |f| %>
+
+		<p><strong>Are you sure you want to delete this energy record?</strong></p>
+
+		<table class="listing" summary="Energy list">
+			<tr class="header">
+				<th>&nbsp;</th>
+				<th>Label</th>
+				<th>House</th>
+				<th>Year</th>
+				<th>Month</th>
+				<th>Temperature</th>
+				<th>Daylight</th>
+				<th>Energy Production</th>
+			</tr>
+			<tr class="<%= cycle('odd','even')%>">
+				<th>&nbsp;</th>
+				<td><%= @energy.label%></td>
+				<td><%= @energy.house_id%></td>
+				<td><%= @energy.year%></td>
+				<td><%= @energy.month%></td>
+				<td><%= @energy.temperature%></td>
+				<td><%= @energy.daylight%></td>
+				<td><%= @energy.energy_production%></td>
+			</tr>
+		</table>
+
+		<div class="form-buttons">
+			<%= form_tag(energy_path(@energy.id),:method=>"delete") do %>
+  				<%= submit_tag('Delete Energy Record') %>
+			<% end %>
+		</div>
+	<% end %>
+	</fieldset>
+</div>

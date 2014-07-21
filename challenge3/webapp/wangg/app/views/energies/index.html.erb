@@ -1,0 +1,39 @@
+<% @page_title="Energies"%>
+<div class="energies index">
+	<h2>Energies</h2>
+
+	<%= link_to("<< Back to House List",houses_path) %><br/>
+	<%= link_to("AdminUser Page","/access/index") %><br/>
+	<%= link_to("Add New Energy", new_energy_path)%>
+
+	<div class="notice"><%= pluralize(@energies.size,'energy record')%> found</div>
+	<table class="listing" summary="Energy list">
+		<tr class="header">
+			<th>&nbsp;</th>
+			<th>Label</th>
+			<th>House</th>
+			<th>Year</th>
+			<th>Month</th>
+			<th>Temperature</th>
+			<th>Daylight</th>
+			<th>Energy Production</th>
+			<th>Action</th>
+		</tr>
+		<% @energies.each do |energy| %>
+		<tr>
+			<td><%= energy.id%></td>
+			<td><%= energy.label%></td>
+			<td><%= energy.house_id%></td>
+			<td><%= energy.year%></td>
+			<td><%= energy.month%></td>
+			<td><%= energy.temperature%></td>
+			<td><%= energy.daylight%></td>
+			<td><%= energy.energy_production%></td>
+			<td class="actions">
+				<%= link_to("Edit",edit_energy_path(energy.id),:class=>'action edit')%>
+				<%= link_to("Delete",delete_energy_path(energy.id),:class=>'action delete')%>
+			</td>
+		</tr>
+		<% end%>
+	</table>
+</div>
