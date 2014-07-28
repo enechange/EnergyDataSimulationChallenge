@@ -1,0 +1,17 @@
+<% @page_title="House Edit"%>
+<%= link_to("<< Back to House List",houses_path) %><br />
+<%= link_to("<< Back to Energy Record List",energies_path) %>
+
+<div class="houses edit">
+	<fieldset>
+	<legend>Update House</legend>
+	<%= form_for(:house, :url=>{:action=>'update',:id=>@house.id}) do |f|%>
+		<%=render(:partial=>"form",:locals=>{:f=>f})%>
+		<div>
+			<%= form_tag(house_path(@house.id),:method=>'patch') do %>
+  				<%=submit_tag("Update House",:class=>"button")%>
+			<% end %>
+		</div>
+	<% end%>
+	</fieldset>
+</div>

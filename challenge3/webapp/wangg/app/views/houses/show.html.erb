@@ -1,0 +1,108 @@
+<% @page_title="Energy Records for One House"%>
+
+<div id="links" class="span-24 border">
+<%= link_to("<< Back to House List",houses_path) %><br/>
+<%= link_to("<< Back to Energy Record List",energies_path) %><br/>
+<%= link_to("AdminUser Page","/access/index") %><br/>
+<%= link_to("Add New Energy", new_energy_path)%>
+</div>
+
+	<div id="house_info" class="span-6 border">
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<h3>House information</h3>
+		<table summary="House information">
+			<tr>
+				<th>First Name</th>
+				<td><%= @house.first_name %></td>
+			</tr>
+			<tr>
+				<th>Last Name</th>
+				<td><%= @house.last_name %></td>
+			</tr>
+			<tr>
+				<th>City</th>
+				<td><%= @house.city %></td>
+			</tr>
+			<tr>
+				<th>Number of People</th>
+				<td><%= @house.num_of_people %></td>
+			</tr>
+			<tr>
+				<th>Has Child?</th>
+				<td><%= @house.has_child ? 'Yes' : 'No' %></td>
+			</tr>
+		</table>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+	</div>
+	<div id="chart" class="span-18 last">
+		<div id="chart1" class="span-18 last"></div>
+		<div id="chart2" class="span-18 last"></div>	
+	</div>
+	<%= content_tag :div, class: "temp_information", data: {temp: @energies} do %>
+	<% end %>	
+	<%= render(:partial=>'chart1')%>
+	<%= render(:partial=>'chart2')%>
+	<div class="span-24">
+	<h3>Energy Records</h3>
+	<div class="notice"><%= pluralize(@energies.size,'energy record')%> found</div>
+	<table class="listing" summary="Energy list">
+		<tr class="header">
+			<th>&nbsp;</th>
+			<th>Label</th>
+			<th>House</th>
+			<th>Year</th>
+			<th>Month</th>
+			<th>Temperature</th>
+			<th>Daylight</th>
+			<th>Energy Production</th>
+		</tr>
+		<% @energies.each do |energy| %>
+		<tr>
+			<th>&nbsp;</th>
+			<td><%= energy.label%></td>
+			<td><%= energy.house_id%></td>
+			<td><%= energy.year%></td>
+			<td><%= energy.month%></td>
+			<td><%= energy.temperature%></td>
+			<td><%= energy.daylight%></td>
+			<td><%= energy.energy_production%></td>
+			<td class="actions">
+				<%= link_to("Edit",edit_energy_path(energy.id),:class=>'action edit')%>
+				<%= link_to("Delete",delete_energy_path(energy.id),:class=>'action delete')%>
+			</td>
+		</tr>
+		<% end%>
+	</table>
+	</div>
+
+

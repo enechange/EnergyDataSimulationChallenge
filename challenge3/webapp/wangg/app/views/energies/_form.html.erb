@@ -1,0 +1,33 @@
+<%= error_messages_for(@energy) %>
+
+<table>
+	<tr>
+		<th><%= f.label(:label)%></th>
+		<td><%= f.text_field(:label,:class=>"text")%></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:house_id)%></th>
+		<td><%= f.text_field(:house_id,:class=>"text")%></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:year)%></th>
+		<td><%= f.select(:year,1950..2050)%></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:month)%></th>
+		<td><%= f.select(:month,1..12)%></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:temperature)%></th>
+		<td><%= f.text_field(:temperature,:class=>"text")%></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:daylight)%></th>
+		<td><%= f.text_field(:daylight,:class=>"text")%></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:energy_production)%></th>
+		<td><%= f.text_field(:energy_production,:class=>"text")%></td>
+	</tr>
+
+</table>

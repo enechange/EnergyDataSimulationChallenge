@@ -1,0 +1,61 @@
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+
+.line {
+  stroke: black;
+  fill: none;
+  stroke-width: 0.75px;
+}
+
+.line.line0 {
+  stroke: steelblue;
+}
+
+.line.line1 {
+  stroke: indianred;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: none;
+}
+
+.focus circle.y0 {
+  stroke: blue;
+}
+
+.focus circle.y1 {
+  stroke: red;
+}
+
+.focus line {
+  stroke: purple;
+  shape-rendering: crispEdges;
+}
+
+.focus line.y0 {
+  stroke: steelblue;
+  stroke-dasharray: 3 3;
+  opacity: .5;
+}
+
+.focus line.y1 {
+  stroke: indianred;
+  stroke-dasharray: 3 3;
+  opacity: .5;
+}
+
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}

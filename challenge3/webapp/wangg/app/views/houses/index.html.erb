@@ -1,0 +1,39 @@
+<% @page_title="Houses"%>
+<div class="houses index">
+	<h2>Houses</h2>
+
+	
+	<%= link_to("<< Back to Energy Record List",energies_path) %><br />
+	<%= link_to("AdminUser Page","/access/index") %><br/>
+	<%= link_to("New House", new_house_path, :class=>'action_new')%>
+
+	<div class="notice"><%= pluralize(@houses.size,'house')%> found</div>
+	<table class="listing" summary="House list">
+		<tr class="header">
+			<th>&nbsp;</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>City</th>
+			<th>Number of People</th>
+			<th>Has Child?</th>
+			<th>Number of Records</th>
+			<th>Action</th>
+		</tr>
+		<% @houses.each do |house| %>
+		<tr>
+			<td><%= house.id%></td>
+			<td><%= house.first_name%></td>
+			<td><%= house.last_name%></td>
+			<td><%= house.city%></td>
+			<td><%= house.num_of_people%></td>
+			<td class="center"><%= house.has_child ? 'Yes' : 'No' %></td>
+			<td class="center"><%= house.energies.size%></td>
+			<td class="actions">
+				<%= link_to("Edit",edit_house_path(house.id))%>
+				<%= link_to("Delete",delete_house_path(house.id))%>
+				<%= link_to("Records",house_path(house.id))%>
+			</td>
+		</tr>
+		<% end%>
+	</table>
+</div>

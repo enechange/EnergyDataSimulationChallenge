@@ -1,0 +1,231 @@
+<%= stylesheet_link_tag('chart2')%>
+
+<div id="tooltip" class="hidden">
+	<p><span id="Energy_Production">Default</span></p>
+	<p><span id="Temperature">Default</span></p>
+	<p><span id="Daylight">Default</span></p>
+	<p><span id="Date">Default</span></p>
+</div>
+<%= javascript_tag do%> 
+	//Width and height
+	var w = 720;
+	var h = 340;
+
+	var padding=70;
+
+	var x_offset=$("#chart2").offset().left;
+	var y_offset=$("#chart2").offset().top;
+
+	var data=$('.temp_information').data('temp');
+	var dataset=[];
+	var i=0;
+
+	data.forEach(function(d) {
+    	dataset[i]=d.energy_production;
+    	i++;
+  	});
+
+  	var avg=mean(dataset);
+  	var std_dev=std(dataset);
+  	var high_threshold=avg+std_dev;
+  	var low_threshold=avg-std_dev;
+
+	var xScale = d3.scale.ordinal()
+					.domain(d3.range(dataset.length))
+					.rangeRoundBands([padding, w-padding], 0.05);
+	var xScale2 = d3.scale.ordinal()
+					.domain([data[0].date, data[data.length - 1].date])
+					.rangeRoundBands([padding, w-padding], 0.05);
+
+	var yScale = d3.scale.linear()
+					.domain([0, d3.max(dataset)])
+					.range([h-padding, 0]);
+			
+	//Create SVG element
+	var svg2 = d3.select("#chart2")
+				.append("svg")
+				.attr("width", w)
+				.attr("height", h);
+
+	//Create bars
+	svg2.selectAll("rect")
+	   .data(dataset)
+	   .enter()
+	   .append("rect")
+	   .attr("x", function(d, i) {
+	   		return xScale(i);
+	   })
+	   .attr("y", function(d) {
+	   		return yScale(d);
+	   })
+	   .attr("width", xScale.rangeBand())
+	   .attr("height", function(d) {
+	   		return h-yScale(d)-padding;
+	   })
+	   .attr("fill", function(d) {
+			if (d>high_threshold) {
+				return "red";
+			}else{
+				if (d<low_threshold){
+				return "black";
+				}else{
+					return "teal";
+				}	
+			}
+	   })
+	   .attr("id","bar")
+	   .on("mouseover", function(d,i) {
+
+			//Get this bar's x/y values, then augment for the tooltip
+			var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2 + x_offset;
+			var yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2 + y_offset;
+
+			//Update the tooltip position and value
+			d3.select("#tooltip")
+				.style("left", xPosition + "px")
+				.style("top", yPosition + "px")						
+				.select("#Energy_Production")
+				.text("Energy Production: " + d);
+			d3.select("#tooltip")
+				.select("#Temperature")
+				.text("Temperature: " + data[i].temperature);
+			d3.select("#tooltip")
+				.select("#Daylight")
+				.text("Daylight: " + data[i].daylight);
+			d3.select("#tooltip")
+				.select("#Date")
+				.text("Date: " + data[i].year+"-"+data[i].month);
+
+			   
+			//Show the tooltip
+			d3.select("#tooltip").classed("hidden", false);
+
+	   })
+	   .on("mouseout", function() {
+			   
+			//Hide the tooltip
+			d3.select("#tooltip").classed("hidden", true);
+					
+	   });
+	bar_b=svg2.selectAll("rect");
+	svg2.selectAll("rect")
+		.on("click", function() {
+	   		sortBars();
+	    });
+
+	//draw axes
+	var xAxis = d3.svg.axis()
+                  .scale(xScale2)
+                  .tickFormat(d3.time.format("%Y-%m"))
+                  .orient("bottom")
+
+
+
+    var yAxis = d3.svg.axis()
+                  .scale(yScale)
+                  .orient("left")
+
+    svg2.append("g")
+    	.attr("class", "axis")
+    	.attr("transform", "translate(0," + (h - padding) + ")")  
+    	.call(xAxis);
+
+
+    svg2.append("g")
+    	.attr("class", "axis")
+    	.attr("transform", "translate(" + padding + ",0)")
+    	.call(yAxis)
+    	.append("text")
+      	.attr("transform", "rotate(-90)")
+      	.attr("y", 6)
+      	.attr("dy", ".3em")
+      	.style("text-anchor", "end")
+      	.text("Energy Production");
+
+
+
+	//Define sort order flag
+	var sortSwitch = false;
+			
+	//Define sort function
+	var sortBars = function() {
+		
+		//Flip value of sortSwitch
+	   	sortSwitch = !sortSwitch;
+		bar_now=svg2.selectAll("rect");
+		
+		// sort or un-sort?
+		if (sortSwitch){
+			bar_now.sort(function(a, b) {
+			   		return d3.ascending(a, b);
+		   	})
+		}else{
+			bar_now=bar_b;
+		}
+		   
+		bar_now.transition()
+		   		.delay(function(d, i) {
+			   		return i*50;
+		   		})
+		   		.duration(2000)
+		   		.attr("x", function(d, i) {
+		   			return xScale(i);
+		   		});
+	};			
+			
+
+	//Description
+	svg2.append("text")
+		.attr("x",w/2)
+		.attr("y",h-38)
+		.attr("font-size","16px")
+		.attr("text-anchor","middle")
+		.text("Bar Chart of Energy Productions");
+	svg2.append("text")
+		.attr("x",w/2)
+		.attr("y",h-18)
+		.attr("font-size","16px")
+		.attr("text-anchor","middle")
+		.text("(Click on any bar to sort/unsort; Hover on a bar for details)");
+	svg2.append("text")
+		.attr("x",w/2)
+		.attr("y",h)
+		.attr("font-size","13px")
+		.attr("text-anchor","middle")
+		.text("Red/Teal/Black: High/Medium/Low Production (thresholds:mean-std,mean+std)");
+
+	//Mean calculation
+	function mean(arr){
+		var len=arr.length;
+		var sum=0;
+    	for(var i=0;i<len;i++){
+    		sum=sum+parseFloat(arr[i]);
+    	}
+    	return sum/len;
+	}
+
+	//Variance calculation
+	function variance(arr) {
+    	var len=arr.length;
+    	var sum=0;
+    	for(var i=0;i<len;i++){
+    		sum=sum+parseFloat(arr[i]);
+    	}
+    	var v=0;
+    	if (len>1){
+    		var mean=sum/len;
+    		for(var i=0;i<len;i++){
+    			v=v+(arr[i]-mean)*(arr[i]-mean);
+    		}
+    		return v/len;
+    	}else{
+    		return 0;
+    	}
+	}
+
+	//Standard deviation
+	function std(arr){
+		return Math.sqrt(variance(arr));
+	}
+
+<% end %>	

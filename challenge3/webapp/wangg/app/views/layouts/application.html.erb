@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EDSC 3 | <%= @page_title || "" %></title>
+  <%= stylesheet_link_tag('screen',:media=>'screen, projection',:type=>'text/css')%>
+  <%= stylesheet_link_tag('print',:media=>'print',:type=>'text/css')%>
+  <!--[if lt IE 8]>
+	<%= stylesheet_link_tag('ie',:media=>'screen, projection',:type=>'text/css')%>
+  <![endif]-->
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+	<div id="header"><h1>Energy Data Simulation Challenge 3</h1></div>
+	<% if !flash[:notice].blank? %>
+      <div class="success">
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
+  <% if !flash[:error].blank? %>
+  		<div class="error">
+    		<%= flash[:error] %>
+  		</div>
+	<% end %>
+	
+	<%= yield %>
+
+  <div id="footer">
+    <p id="copyright">&copy;wangg</p>
+  </div>
+	
+	</div>
+  </body>
+
+</html>

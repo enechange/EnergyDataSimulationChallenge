@@ -1,0 +1,2 @@
+module EnergyHelper
+end

@@ -1,0 +1,25 @@
+<% @page_title = "Admin Login"%>
+<%= link_to("<< Back to House List",houses_path) %><br/>
+<%= link_to("<< Back to Energy Record List",energies_path) %>
+<div class="login">
+	<fieldset>
+	<legend>Log In</legend>
+	<%= form_tag(:action=>'attempt_login') do %>
+	<table>
+		<tr>
+			<td>User Name</td>
+			<td><%= text_field_tag(:username) %></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><%= password_field_tag(:password)%></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><%= submit_tag("Log In") %></td>
+		</tr>
+	</table>
+	<% end %>
+	</fieldset>
+</div>
+

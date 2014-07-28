@@ -1,0 +1,19 @@
+
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: challenge3_development
+
+test:
+  <<: *default
+  database: challenge3_test
+  
+production:
+  <<: *default
+  database: challenge3_production
+  username: challenge3
+  password: <%= ENV['CHALLENGE3_DATABASE_PASSWORD'] %>

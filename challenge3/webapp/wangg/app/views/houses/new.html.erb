@@ -1,0 +1,18 @@
+<% @page_title="New House"%>
+<%= link_to("<< Back to House List",houses_path) %></br>
+<%= link_to("<< Back to Energy Record List",energies_path) %>
+
+<div class="houses new">
+	<fieldset>
+	<legend>Create House</legend>
+	<%= form_for(:house, :url=>{:action=>'create'}) do |f|%>
+		<%=render(:partial=>"form",:locals=>{:f=>f})%>
+		<div class="form-buttons">
+			<%= form_tag(houses_path,:method=>'post') do %>
+  				<%=submit_tag("Create House")%>
+			<% end %>
+		</div>
+	<% end%>
+	</fieldset>
+</div>
+

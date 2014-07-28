@@ -1,0 +1,28 @@
+<%= error_messages_for(@house) %>
+
+<table summary="House form fields">
+	<tr>
+		<th><%= f.label(:first_name,"First Name")%></th>
+		<td><%= f.text_field(:first_name,:class=>"text")%></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:last_name,"Last name")%></th>
+		<td><%= f.text_field(:last_name,:class=>"text")%></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:city)%></th>
+		<td><%= f.text_field(:city,:class=>"text")%></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:num_of_people,"Number of People")%></th>
+		<td><%= f.select(:num_of_people,1..20)%></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:has_child,"Has Child?")%></th>
+		<td>
+			<%= f.radio_button(:has_child,true)%> Yes
+			<%= f.radio_button(:has_child,false)%> No
+		</td>
+	</tr>
+
+</table>
