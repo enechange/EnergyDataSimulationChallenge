@@ -30,19 +30,17 @@ meanvariable('Label', 'Daylight')
 meanvariable('Label', 'EnergyProduction')
 #from these we can see a very clear pattern in temperature but not in energy production and daylight
 
-df = pd.read_csv("C:/Users/Dan/Documents/GitHub/EnergyDataSimulationChallenge/challenge1/data/training_dataset_500.csv", header = 0)
+
 df = df.drop(['ID'], axis = 1)
 cols = df.columns.tolist()
 cols = cols[-1:] + cols[:-1] #move energy production to the front of the list
 df = df[cols]
 df['Daylight*Temp'] = df.Daylight * df.Temperature
-
 train_data = df.values
 
 de = pd.read_csv("C:/Users/Dan/Documents/GitHub/EnergyDataSimulationChallenge/challenge1/data/test_dataset_500.csv", header = 0)
 de = de.drop(['ID', 'EnergyProduction'], axis = 1)
 de['Daylight*Temp'] = de.Daylight * de.Temperature
-
 test_data = de.values
 
 
@@ -51,7 +49,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 # Create the random forest object which will include all the parameters
 # for the fit
-forest = RandomForestClassifier(n_estimators = 200)
+forest = RandomForestClassifier(n_estimators = 100)
 
 # Fit the training data to the Survived labels and create the decision trees
 forest = forest.fit(train_data[0::,1::],train_data[0::,0])
@@ -101,13 +99,17 @@ for e,f in zip(zipped,zipped[1:])[::2]:  #for each item pairwise in the zipped l
 
 MAPE =  np.mean(percentages)  #print the median percentage error
 print MAPE
-MAPE = ['MAPE', MAPE]
+
 
 #current error is 13%, need to miz things up, at the moment I'm only getting two values? 717 and 486...why?
-#median is 18%
-#aiming for less than 10% really
+#median is 8%
+#aiming for less than 10% MAPE really
+#put in mean values for each house, temp and daylight and see what happens when including these
+#tad more visualisation
+#move on to challenge 2
 
 csv_out = open("C:/Users/Dan/Documents/GitHub/EnergyDataSimulationChallenge/challenge1/analysis/danjones/MAPE.txt", 'wb')
 mywriter = csv.writer(csv_out)
+MAPE = ['MAPE', MAPE]
 mywriter.writerow(MAPE)
 csv_out.close()
