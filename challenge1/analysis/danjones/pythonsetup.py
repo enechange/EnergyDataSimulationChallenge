@@ -49,7 +49,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 # Create the random forest object which will include all the parameters
 # for the fit
-forest = RandomForestClassifier(n_estimators = 100)
+forest = RandomForestClassifier(n_estimators = 500)
 
 # Fit the training data to the Survived labels and create the decision trees
 forest = forest.fit(train_data[0::,1::],train_data[0::,0])
@@ -111,5 +111,6 @@ print MAPE
 csv_out = open("C:/Users/Dan/Documents/GitHub/EnergyDataSimulationChallenge/challenge1/analysis/danjones/MAPE.txt", 'wb')
 mywriter = csv.writer(csv_out)
 MAPE = ['MAPE', MAPE]
-mywriter.writerow(MAPE)
+for row in MAPE:
+    mywriter.writerow(MAPE)
 csv_out.close()
