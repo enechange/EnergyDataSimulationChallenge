@@ -49,7 +49,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 # Create the random forest object which will include all the parameters
 # for the fit
-forest = RandomForestClassifier(n_estimators = 500)
+forest = RandomForestClassifier(n_estimators = 300)
 
 # Fit the training data to the Survived labels and create the decision trees
 forest = forest.fit(train_data[0::,1::],train_data[0::,0])
@@ -103,14 +103,11 @@ print MAPE
 
 #current error is 13%, need to miz things up, at the moment I'm only getting two values? 717 and 486...why?
 #median is 8%
-#aiming for less than 10% MAPE really
-#put in mean values for each house, temp and daylight and see what happens when including these
-#tad more visualisation
+#tidy up and add readme
 #move on to challenge 2
 
 csv_out = open("C:/Users/Dan/Documents/GitHub/EnergyDataSimulationChallenge/challenge1/analysis/danjones/MAPE.txt", 'wb')
 mywriter = csv.writer(csv_out)
-MAPE = ['MAPE', MAPE]
-for row in MAPE:
-    mywriter.writerow(MAPE)
+mywriter.writerow(['MAPE'])
+mywriter.writerow([MAPE])
 csv_out.close()
