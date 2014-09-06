@@ -29,19 +29,19 @@ meanvariable('Label', 'Temperature')  #call the funcion with the 3 variables
 meanvariable('Label', 'Daylight')  
 meanvariable('Label', 'EnergyProduction')
 #from these we can see a very clear pattern in temperature but not in energy production and daylight
+#it might be expected that combining daylight and temperature and plotting on a 3d graph may help to see a pattern
 
-
-df = df.drop(['ID'], axis = 1)
-cols = df.columns.tolist()
+df = df.drop(['ID'], axis = 1)  #drop ID from dataset (useless identifier)
+cols = df.columns.tolist() #put the columns of the dataset into a list called cols
 cols = cols[-1:] + cols[:-1] #move energy production to the front of the list
-df = df[cols]
-df['Daylight*Temp'] = df.Daylight * df.Temperature
-train_data = df.values
+df = df[cols] #relabel the dataset columns
+df['Daylight*Temp'] = df.Daylight * df.Temperature  #create a new column with the variable that combines daylight and temp
+train_data = df.values #store the dataset values into train data 
 
 de = pd.read_csv("C:/Users/Dan/Documents/GitHub/EnergyDataSimulationChallenge/challenge1/data/test_dataset_500.csv", header = 0)
-de = de.drop(['ID', 'EnergyProduction'], axis = 1)
-de['Daylight*Temp'] = de.Daylight * de.Temperature
-test_data = de.values
+de = de.drop(['ID', 'EnergyProduction'], axis = 1)  #drop ID and EnergyProduction (as we are predicting energy production)
+de['Daylight*Temp'] = de.Daylight * de.Temperature 
+test_data = de.values  #store dataset as test data
 
 
 # Import the random forest package
@@ -49,7 +49,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 # Create the random forest object which will include all the parameters
 # for the fit
-forest = RandomForestClassifier(n_estimators = 300)
+forest = RandomForestClassifier(n_estimators = 300)  #300 estimators gives required accuracy without taking too long
 
 # Fit the training data to the Survived labels and create the decision trees
 forest = forest.fit(train_data[0::,1::],train_data[0::,0])
@@ -61,11 +61,11 @@ output = forest.predict(test_data)
 
 #need to convert array to a list to add the titles back in
 output = output.tolist()
-output = ['EnergyProduction']+output
-energy = output
-Housenumber = ['House'] + range(1,500)
-##TURN BACK INTO CSV FILE 
+output = ['EnergyProduction']+output #add column title back in
+energy = output  #rename as energy for clarity
+Housenumber = ['House'] + range(1,500)  #match with housenumbers
 
+##Now turn back into CSV file
 
 # open a file for writing.
 csv_out = open("C:/Users/Dan/Documents/GitHub/EnergyDataSimulationChallenge/challenge1/analysis/danjones/myresults.csv", 'wb')
@@ -77,10 +77,17 @@ mywriter = csv.writer(csv_out)
 for row in zip(Housenumber,energy):
     mywriter.writerow(row)
 
-# always make sure that you close the file.
-# otherwise you might find that it is empty.
+#colse the newly created csv file to avoid data loss
 csv_out.close()
+#end of predictor code
 
+
+
+
+
+
+
+#code below is code to find the MAPE value
 dataset = pd.read_csv("C:/Users/Dan/Documents/GitHub/EnergyDataSimulationChallenge/challenge1/analysis/danjones/myresults.csv", header = 0) #read in he results to a pandas dataset
 dg = pd.read_csv("C:/Users/Dan/Documents/GitHub/EnergyDataSimulationChallenge/challenge1/data/test_dataset_500.csv", header = 0)
 
@@ -95,17 +102,13 @@ for elem in zip(dg['EnergyProduction'], results):   #for each element in prices 
 
 percentages = []  #create an empty list to store the percentage errors
 for e,f in zip(zipped,zipped[1:])[::2]:  #for each item pairwise in the zipped list (prices then results)
-    percentages.append(abs(((e-f)/e)))  #append the percentage error 
+    percentages.append(abs(((e-f)/e)))  #append the error 
 
 MAPE =  np.mean(percentages)  #print the median percentage error
 print MAPE
 
 
-#current error is 13%, need to miz things up, at the moment I'm only getting two values? 717 and 486...why?
-#median is 8%
-#tidy up and add readme
-#move on to challenge 2
-
+#code to write MAPE value to txt file automatically
 csv_out = open("C:/Users/Dan/Documents/GitHub/EnergyDataSimulationChallenge/challenge1/analysis/danjones/MAPE.txt", 'wb')
 mywriter = csv.writer(csv_out)
 mywriter.writerow(['MAPE'])
