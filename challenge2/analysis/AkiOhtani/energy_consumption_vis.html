@@ -1688,7 +1688,7 @@ div#notebook {
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[9]:
+In&nbsp;[12]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1712,7 +1712,7 @@ In&nbsp;[9]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[10]:
+In&nbsp;[13]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1747,7 +1747,7 @@ In&nbsp;[10]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[11]:
+In&nbsp;[14]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1768,7 +1768,7 @@ In&nbsp;[11]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[11]:</div>
+    Out[14]:</div>
 
 <div class="output_html rendered_html output_subarea output_pyout">
 <div style="max-height:1000px;max-width:1500px;overflow:auto;">
@@ -1812,6 +1812,56 @@ In&nbsp;[11]:
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[39]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">dataFrame</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[39]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+Energy    915.761634
+Name: 2011-04-18 14:22:00, dtype: float64
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[35]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="err">??</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">()</span>
+</pre></div>
+
+</div>
 </div>
 </div>
 
@@ -6305,7 +6355,7 @@ qaL/B5vKfpg1ejN4AAAAAElFTkSuQmCC
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[61]:
+In&nbsp;[40]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -6320,388 +6370,12 @@ In&nbsp;[61]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[68]:
+In&nbsp;[133]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">myJson</span> <span class="o">=</span><span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Aromas&quot;</span><span class="p">,</span>
-    <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Enzymatic&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Flowery&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Floral&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Coffee Blossom&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f9f0ab&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tea Rose&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e8e596&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Fragrant&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Cardamon Caraway&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f0e2a3&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Coriander Seeds&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ede487&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Fruity&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Citrus&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Lemon&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#efd580&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Apple&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f1cb82&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Berry-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Apricot&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f1c298&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Blackberry&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e8b598&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Herby&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Alliaceous&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Onion&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#d5dda1&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Garlic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#c9d2b5&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Leguminous&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Cucumber&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#aec1ad&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Garden Peas&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a7b8a8&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Sugar Browning&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nutty&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nut-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Peanuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b49a3d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Walnuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b28647&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Malt-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Balsamic Rice&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a97d32&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Toast&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b68334&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Carmelly&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Candy-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Hazelnut&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#d6a680&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Almond&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dfad70&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Syrup-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Honey&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a2765d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Maple Syrup&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9f6652&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolatey&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolate-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bakers&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b9763f&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Dark Chocolate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#bf6e5d&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Vanilla-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Swiss&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#af643c&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Butter&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9b4c3f&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Saturday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Resinous&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Turpeny&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Piney&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#72659d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Blackcurrant-like&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#8a6e9e&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Medicinal&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Camphoric&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#8f5c85&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Cineolic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#934b8b&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Spicy&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Warming&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Cedar&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9d4e87&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pepper&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#92538c&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pungent&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Clove&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#8b6397&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Thyme&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#716084&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Carbony&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Smokey&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tarry&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#2e6093&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pipe Tobacco&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#3a5988&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ashy&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Burnt&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#4a5072&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Charred&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#393e64&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">},</span>
-  <span class="p">{</span>
-    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tastes&quot;</span><span class="p">,</span>
-    <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bitter&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pungent&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Creosol&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#aaa1cc&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Phenolic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e0b5c9&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Harsh&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Caustic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e098b0&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Alkaline&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ee82a2&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Salt&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Sharp&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Astringent&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ef91ac&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Rough&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eda994&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bland&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Neutral&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eeb798&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Soft&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ecc099&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Sweet&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mellow&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Delicate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f6d5aa&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mild&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f0d48a&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Acidy&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nippy&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#efd95f&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Piquant&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eee469&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Sour&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Winey&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tangy&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dbdc7f&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tart&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dfd961&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Soury&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Hard&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ebe378&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Acrid&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f5e351&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;energy.json&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">myJson</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -6712,1087 +6386,11 @@ In&nbsp;[68]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[129]:
+In&nbsp;[178]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">myJson</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">{</span>
-    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;low&quot;</span><span class="p">,</span>
-    <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Sunday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Flowery&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Floral&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Coffee Blossom&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f9f0ab&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tea Rose&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e8e596&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Fragrant&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Cardamon Caraway&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f0e2a3&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Coriander Seeds&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ede487&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Fruity&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Citrus&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Lemon&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#efd580&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Apple&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f1cb82&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Berry-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Apricot&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f1c298&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Blackberry&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e8b598&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Herby&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Alliaceous&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Onion&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#d5dda1&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Garlic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#c9d2b5&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Leguminous&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Cucumber&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#aec1ad&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Garden Peas&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a7b8a8&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Monday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nutty&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nut-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Peanuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b49a3d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Walnuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b28647&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Malt-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Balsamic Rice&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a97d32&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Toast&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b68334&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Carmelly&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Candy-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Hazelnut&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#d6a680&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Almond&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dfad70&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Syrup-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Honey&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a2765d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Maple Syrup&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9f6652&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolatey&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolate-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bakers&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b9763f&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Dark Chocolate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#bf6e5d&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Vanilla-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Swiss&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#af643c&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Butter&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9b4c3f&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tuesday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nutty&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nut-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Peanuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b49a3d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Walnuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b28647&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Malt-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Balsamic Rice&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a97d32&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Toast&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b68334&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Carmelly&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Candy-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Hazelnut&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#d6a680&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Almond&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dfad70&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Syrup-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Honey&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a2765d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Maple Syrup&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9f6652&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolatey&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolate-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bakers&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b9763f&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Dark Chocolate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#bf6e5d&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Vanilla-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Swiss&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#af643c&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Butter&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9b4c3f&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Wednesday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nutty&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nut-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Peanuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b49a3d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Walnuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b28647&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Malt-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Balsamic Rice&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a97d32&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Toast&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b68334&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Carmelly&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Candy-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Hazelnut&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#d6a680&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Almond&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dfad70&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Syrup-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Honey&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a2765d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Maple Syrup&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9f6652&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolatey&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolate-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bakers&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b9763f&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Dark Chocolate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#bf6e5d&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Vanilla-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Swiss&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#af643c&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Butter&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9b4c3f&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Thursday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nutty&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nut-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Peanuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b49a3d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Walnuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b28647&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Malt-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Balsamic Rice&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a97d32&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Toast&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b68334&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Carmelly&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Candy-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Hazelnut&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#d6a680&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Almond&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dfad70&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Syrup-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Honey&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a2765d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Maple Syrup&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9f6652&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolatey&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolate-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bakers&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b9763f&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Dark Chocolate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#bf6e5d&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Vanilla-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Swiss&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#af643c&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Butter&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9b4c3f&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Friday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nutty&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nut-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Peanuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b49a3d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Walnuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b28647&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Malt-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Balsamic Rice&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a97d32&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Toast&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b68334&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Carmelly&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Candy-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Hazelnut&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#d6a680&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Almond&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dfad70&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Syrup-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Honey&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a2765d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Maple Syrup&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9f6652&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolatey&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolate-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bakers&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b9763f&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Dark Chocolate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#bf6e5d&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Vanilla-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Swiss&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#af643c&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Butter&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9b4c3f&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Sugar Browning&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nutty&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nut-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Peanuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b49a3d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Walnuts&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b28647&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Malt-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Balsamic Rice&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a97d32&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Toast&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b68334&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Carmelly&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Candy-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Hazelnut&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#d6a680&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Roasted Almond&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dfad70&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Syrup-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Honey&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#a2765d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Maple Syrup&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9f6652&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolatey&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chocolate-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bakers&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#b9763f&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Dark Chocolate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#bf6e5d&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Vanilla-like&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Swiss&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#af643c&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Butter&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9b4c3f&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Dry Distillation&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Resinous&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Turpeny&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Piney&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#72659d&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Blackcurrant-like&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#8a6e9e&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Medicinal&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Camphoric&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#8f5c85&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Cineolic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#934b8b&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Spicy&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Warming&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Cedar&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#9d4e87&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pepper&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#92538c&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pungent&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Clove&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#8b6397&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Thyme&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#716084&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Carbony&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Smokey&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tarry&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#2e6093&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pipe Tobacco&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#3a5988&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ashy&quot;</span><span class="p">,</span>
-                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Burnt&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#4a5072&quot;</span>
-                  <span class="p">},</span>
-                  <span class="p">{</span>
-                    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Charred&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#393e64&quot;</span>
-                  <span class="p">}</span>
-                <span class="p">]</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">},</span>
-  <span class="p">{</span>
-    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;middle&quot;</span><span class="p">,</span>
-    <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Sunday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pungent&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Creosol&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#aaa1cc&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Phenolic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e0b5c9&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Harsh&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Caustic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e098b0&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Alkaline&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ee82a2&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Monday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pungent&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Creosol&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#aaa1cc&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Phenolic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e0b5c9&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Harsh&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Caustic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e098b0&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Alkaline&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ee82a2&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tuesday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pungent&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Creosol&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#aaa1cc&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Phenolic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e0b5c9&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Harsh&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Caustic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e098b0&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Alkaline&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ee82a2&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Wednesday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pungent&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Creosol&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#aaa1cc&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Phenolic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e0b5c9&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Harsh&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Caustic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e098b0&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Alkaline&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ee82a2&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Thursday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Sharp&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Astringent&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ef91ac&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Rough&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eda994&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bland&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Neutral&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eeb798&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Soft&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ecc099&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Friday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mellow&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Delicate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f6d5aa&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mild&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f0d48a&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Acidy&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nippy&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#efd95f&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Piquant&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eee469&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Saturday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Winey&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tangy&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dbdc7f&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tart&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dfd961&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Soury&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Hard&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ebe378&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Acrid&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f5e351&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">},</span>
-  <span class="p">{</span>
-    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;large&quot;</span><span class="p">,</span>
-    <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Sunday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Pungent&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Creosol&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#aaa1cc&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Phenolic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e0b5c9&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Harsh&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Caustic&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#e098b0&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Alkaline&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ee82a2&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Monday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Sharp&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Astringent&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ef91ac&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Rough&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eda994&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bland&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Neutral&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eeb798&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Soft&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ecc099&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tuesday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mellow&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Delicate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f6d5aa&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mild&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f0d48a&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Acidy&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nippy&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#efd95f&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Piquant&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eee469&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Wednesday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mellow&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Delicate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f6d5aa&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mild&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f0d48a&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Acidy&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nippy&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#efd95f&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Piquant&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eee469&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Thursday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mellow&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Delicate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f6d5aa&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mild&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f0d48a&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Acidy&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nippy&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#efd95f&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Piquant&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eee469&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Friday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mellow&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Delicate&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f6d5aa&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Mild&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f0d48a&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Acidy&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Nippy&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#efd95f&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Piquant&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#eee469&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Saturday&quot;</span><span class="p">,</span>
-        <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Winey&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tangy&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dbdc7f&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tart&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#dfd961&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">},</span>
-          <span class="p">{</span>
-            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Soury&quot;</span><span class="p">,</span>
-            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Hard&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#ebe378&quot;</span>
-              <span class="p">},</span>
-              <span class="p">{</span>
-                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Acrid&quot;</span><span class="p">,</span> <span class="s">&quot;colour&quot;</span><span class="p">:</span> <span class="s">&quot;#f5e351&quot;</span>
-              <span class="p">}</span>
-            <span class="p">]</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight"><pre><span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">u&#39;high&#39;</span>
 </pre></div>
 
 </div>
@@ -7803,12 +6401,360 @@ In&nbsp;[129]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[130]:
+In&nbsp;[179]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;energy.json&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">myJson</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight"><pre><span class="o">!</span>ls
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<span class="ansired">clusters.py</span>                  energy.json.buf              energy_consumption_vis.ipynb <span class="ansired">sunburst.html</span>                test.py
+energy.json                  energy_consumption_vis.html  font.otf                     test.ipynb
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[180]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[180]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+[{u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+   {u&apos;name&apos;: &apos;1&apos;},
+   {u&apos;name&apos;: &apos;2&apos;},
+   {u&apos;name&apos;: &apos;3&apos;},
+   {u&apos;name&apos;: &apos;4&apos;},
+   {u&apos;name&apos;: &apos;5&apos;},
+   {u&apos;name&apos;: &apos;6&apos;},
+   {u&apos;name&apos;: &apos;7&apos;},
+   {u&apos;name&apos;: &apos;8&apos;},
+   {u&apos;name&apos;: &apos;9&apos;},
+   {u&apos;name&apos;: &apos;10&apos;},
+   {u&apos;name&apos;: &apos;11&apos;},
+   {u&apos;name&apos;: &apos;12&apos;},
+   {u&apos;name&apos;: &apos;13&apos;},
+   {u&apos;name&apos;: &apos;14&apos;},
+   {u&apos;name&apos;: &apos;15&apos;},
+   {u&apos;name&apos;: &apos;16&apos;},
+   {u&apos;name&apos;: &apos;17&apos;},
+   {u&apos;name&apos;: &apos;18&apos;},
+   {u&apos;name&apos;: &apos;19&apos;},
+   {u&apos;name&apos;: &apos;20&apos;},
+   {u&apos;name&apos;: &apos;21&apos;},
+   {u&apos;name&apos;: &apos;22&apos;},
+   {u&apos;name&apos;: &apos;23&apos;}],
+  u&apos;name&apos;: u&apos;Sunday&apos;},
+ {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+   {u&apos;name&apos;: &apos;1&apos;},
+   {u&apos;name&apos;: &apos;2&apos;},
+   {u&apos;name&apos;: &apos;3&apos;},
+   {u&apos;name&apos;: &apos;4&apos;},
+   {u&apos;name&apos;: &apos;5&apos;},
+   {u&apos;name&apos;: &apos;6&apos;},
+   {u&apos;name&apos;: &apos;7&apos;},
+   {u&apos;name&apos;: &apos;8&apos;},
+   {u&apos;name&apos;: &apos;9&apos;},
+   {u&apos;name&apos;: &apos;10&apos;},
+   {u&apos;name&apos;: &apos;11&apos;},
+   {u&apos;name&apos;: &apos;12&apos;},
+   {u&apos;name&apos;: &apos;13&apos;},
+   {u&apos;name&apos;: &apos;14&apos;},
+   {u&apos;name&apos;: &apos;15&apos;},
+   {u&apos;name&apos;: &apos;16&apos;},
+   {u&apos;name&apos;: &apos;17&apos;},
+   {u&apos;name&apos;: &apos;18&apos;},
+   {u&apos;name&apos;: &apos;19&apos;},
+   {u&apos;name&apos;: &apos;20&apos;},
+   {u&apos;name&apos;: &apos;21&apos;},
+   {u&apos;name&apos;: &apos;22&apos;},
+   {u&apos;name&apos;: &apos;23&apos;}],
+  u&apos;name&apos;: u&apos;Monday&apos;},
+ {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+   {u&apos;name&apos;: &apos;1&apos;},
+   {u&apos;name&apos;: &apos;2&apos;},
+   {u&apos;name&apos;: &apos;3&apos;},
+   {u&apos;name&apos;: &apos;4&apos;},
+   {u&apos;name&apos;: &apos;5&apos;},
+   {u&apos;name&apos;: &apos;6&apos;},
+   {u&apos;name&apos;: &apos;7&apos;},
+   {u&apos;name&apos;: &apos;8&apos;},
+   {u&apos;name&apos;: &apos;9&apos;},
+   {u&apos;name&apos;: &apos;10&apos;},
+   {u&apos;name&apos;: &apos;11&apos;},
+   {u&apos;name&apos;: &apos;12&apos;},
+   {u&apos;name&apos;: &apos;13&apos;},
+   {u&apos;name&apos;: &apos;14&apos;},
+   {u&apos;name&apos;: &apos;15&apos;},
+   {u&apos;name&apos;: &apos;16&apos;},
+   {u&apos;name&apos;: &apos;17&apos;},
+   {u&apos;name&apos;: &apos;18&apos;},
+   {u&apos;name&apos;: &apos;19&apos;},
+   {u&apos;name&apos;: &apos;20&apos;},
+   {u&apos;name&apos;: &apos;21&apos;},
+   {u&apos;name&apos;: &apos;22&apos;},
+   {u&apos;name&apos;: &apos;23&apos;}],
+  u&apos;name&apos;: u&apos;Tuesday&apos;},
+ {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+   {u&apos;name&apos;: &apos;1&apos;},
+   {u&apos;name&apos;: &apos;2&apos;},
+   {u&apos;name&apos;: &apos;3&apos;},
+   {u&apos;name&apos;: &apos;4&apos;},
+   {u&apos;name&apos;: &apos;5&apos;},
+   {u&apos;name&apos;: &apos;6&apos;},
+   {u&apos;name&apos;: &apos;7&apos;},
+   {u&apos;name&apos;: &apos;8&apos;},
+   {u&apos;name&apos;: &apos;9&apos;},
+   {u&apos;name&apos;: &apos;10&apos;},
+   {u&apos;name&apos;: &apos;11&apos;},
+   {u&apos;name&apos;: &apos;12&apos;},
+   {u&apos;name&apos;: &apos;13&apos;},
+   {u&apos;name&apos;: &apos;14&apos;},
+   {u&apos;name&apos;: &apos;15&apos;},
+   {u&apos;name&apos;: &apos;16&apos;},
+   {u&apos;name&apos;: &apos;17&apos;},
+   {u&apos;name&apos;: &apos;18&apos;},
+   {u&apos;name&apos;: &apos;19&apos;},
+   {u&apos;name&apos;: &apos;20&apos;},
+   {u&apos;name&apos;: &apos;21&apos;},
+   {u&apos;name&apos;: &apos;22&apos;},
+   {u&apos;name&apos;: &apos;23&apos;}],
+  u&apos;name&apos;: u&apos;Wednesday&apos;},
+ {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+   {u&apos;name&apos;: &apos;1&apos;},
+   {u&apos;name&apos;: &apos;2&apos;},
+   {u&apos;name&apos;: &apos;3&apos;},
+   {u&apos;name&apos;: &apos;4&apos;},
+   {u&apos;name&apos;: &apos;5&apos;},
+   {u&apos;name&apos;: &apos;6&apos;},
+   {u&apos;name&apos;: &apos;7&apos;},
+   {u&apos;name&apos;: &apos;8&apos;},
+   {u&apos;name&apos;: &apos;9&apos;},
+   {u&apos;name&apos;: &apos;10&apos;},
+   {u&apos;name&apos;: &apos;11&apos;},
+   {u&apos;name&apos;: &apos;12&apos;},
+   {u&apos;name&apos;: &apos;13&apos;},
+   {u&apos;name&apos;: &apos;14&apos;},
+   {u&apos;name&apos;: &apos;15&apos;},
+   {u&apos;name&apos;: &apos;16&apos;},
+   {u&apos;name&apos;: &apos;17&apos;},
+   {u&apos;name&apos;: &apos;18&apos;},
+   {u&apos;name&apos;: &apos;19&apos;},
+   {u&apos;name&apos;: &apos;20&apos;},
+   {u&apos;name&apos;: &apos;21&apos;},
+   {u&apos;name&apos;: &apos;22&apos;},
+   {u&apos;name&apos;: &apos;23&apos;}],
+  u&apos;name&apos;: u&apos;Thursday&apos;},
+ {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+   {u&apos;name&apos;: &apos;1&apos;},
+   {u&apos;name&apos;: &apos;2&apos;},
+   {u&apos;name&apos;: &apos;3&apos;},
+   {u&apos;name&apos;: &apos;4&apos;},
+   {u&apos;name&apos;: &apos;5&apos;},
+   {u&apos;name&apos;: &apos;6&apos;},
+   {u&apos;name&apos;: &apos;7&apos;},
+   {u&apos;name&apos;: &apos;8&apos;},
+   {u&apos;name&apos;: &apos;9&apos;},
+   {u&apos;name&apos;: &apos;10&apos;},
+   {u&apos;name&apos;: &apos;11&apos;},
+   {u&apos;name&apos;: &apos;12&apos;},
+   {u&apos;name&apos;: &apos;13&apos;},
+   {u&apos;name&apos;: &apos;14&apos;},
+   {u&apos;name&apos;: &apos;15&apos;},
+   {u&apos;name&apos;: &apos;16&apos;},
+   {u&apos;name&apos;: &apos;17&apos;},
+   {u&apos;name&apos;: &apos;18&apos;},
+   {u&apos;name&apos;: &apos;19&apos;},
+   {u&apos;name&apos;: &apos;20&apos;},
+   {u&apos;name&apos;: &apos;21&apos;},
+   {u&apos;name&apos;: &apos;22&apos;},
+   {u&apos;name&apos;: &apos;23&apos;}],
+  u&apos;name&apos;: u&apos;Friday&apos;},
+ {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+   {u&apos;name&apos;: &apos;1&apos;},
+   {u&apos;name&apos;: &apos;2&apos;},
+   {u&apos;name&apos;: &apos;3&apos;},
+   {u&apos;name&apos;: &apos;4&apos;},
+   {u&apos;name&apos;: &apos;5&apos;},
+   {u&apos;name&apos;: &apos;6&apos;},
+   {u&apos;name&apos;: &apos;7&apos;},
+   {u&apos;name&apos;: &apos;8&apos;},
+   {u&apos;name&apos;: &apos;9&apos;},
+   {u&apos;name&apos;: &apos;10&apos;},
+   {u&apos;name&apos;: &apos;11&apos;},
+   {u&apos;name&apos;: &apos;12&apos;},
+   {u&apos;name&apos;: &apos;13&apos;},
+   {u&apos;name&apos;: &apos;14&apos;},
+   {u&apos;name&apos;: &apos;15&apos;},
+   {u&apos;name&apos;: &apos;16&apos;},
+   {u&apos;name&apos;: &apos;17&apos;},
+   {u&apos;name&apos;: &apos;18&apos;},
+   {u&apos;name&apos;: &apos;19&apos;},
+   {u&apos;name&apos;: &apos;20&apos;},
+   {u&apos;name&apos;: &apos;21&apos;},
+   {u&apos;name&apos;: &apos;22&apos;},
+   {u&apos;name&apos;: &apos;23&apos;}],
+  u&apos;name&apos;: u&apos;Saturday&apos;}]
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[181]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[181]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+u&apos;Sunday&apos;
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[182]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[182]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+u&apos;Monday&apos;
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[183]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">myJson</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">],</span> <span class="n">myJson</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">],</span> <span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Sunday Sunday Sunday
+Monday Monday Monday
+Tuesday Tuesday Tuesday
+Wednesday Wednesday Wednesday
+Thursday Thursday Thursday
+Friday Friday Friday
+Saturday Saturday Saturday
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[184]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+        <span class="n">myJson</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">myJson</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -7819,7 +6765,1216 @@ In&nbsp;[130]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[131]:
+In&nbsp;[185]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+        <span class="k">del</span> <span class="n">myJson</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="mi">7</span><span class="p">:]</span>
+        <span class="k">del</span> <span class="n">myJson</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="mi">7</span><span class="p">:]</span>
+        <span class="k">del</span> <span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="mi">7</span><span class="p">:]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[186]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">myJson</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[186]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+[{u&apos;children&apos;: [{u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Sunday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Monday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Tuesday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Wednesday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Thursday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Friday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Saturday&apos;}],
+  u&apos;name&apos;: u&apos;low&apos;},
+ {u&apos;children&apos;: [{u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Sunday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Monday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Tuesday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Wednesday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Thursday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Friday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Saturday&apos;}],
+  u&apos;name&apos;: u&apos;middle&apos;},
+ {u&apos;children&apos;: [{u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Sunday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Monday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Tuesday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Wednesday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Thursday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Friday&apos;},
+   {u&apos;children&apos;: [0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23],
+    u&apos;name&apos;: u&apos;Saturday&apos;}],
+  u&apos;name&apos;: u&apos;high&apos;}]
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[187]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">24</span><span class="p">):</span>
+        <span class="n">myJson</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&#39;name&#39;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)}</span>
+        <span class="n">myJson</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&#39;name&#39;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)}</span>
+        <span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&#39;name&#39;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[188]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">myJson</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[188]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+[{u&apos;children&apos;: [{u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Sunday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Monday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Tuesday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Wednesday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Thursday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Friday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Saturday&apos;}],
+  u&apos;name&apos;: u&apos;low&apos;},
+ {u&apos;children&apos;: [{u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Sunday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Monday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Tuesday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Wednesday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Thursday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Friday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Saturday&apos;}],
+  u&apos;name&apos;: u&apos;middle&apos;},
+ {u&apos;children&apos;: [{u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Sunday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Monday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Tuesday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Wednesday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Thursday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Friday&apos;},
+   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
+     {u&apos;name&apos;: &apos;1&apos;},
+     {u&apos;name&apos;: &apos;2&apos;},
+     {u&apos;name&apos;: &apos;3&apos;},
+     {u&apos;name&apos;: &apos;4&apos;},
+     {u&apos;name&apos;: &apos;5&apos;},
+     {u&apos;name&apos;: &apos;6&apos;},
+     {u&apos;name&apos;: &apos;7&apos;},
+     {u&apos;name&apos;: &apos;8&apos;},
+     {u&apos;name&apos;: &apos;9&apos;},
+     {u&apos;name&apos;: &apos;10&apos;},
+     {u&apos;name&apos;: &apos;11&apos;},
+     {u&apos;name&apos;: &apos;12&apos;},
+     {u&apos;name&apos;: &apos;13&apos;},
+     {u&apos;name&apos;: &apos;14&apos;},
+     {u&apos;name&apos;: &apos;15&apos;},
+     {u&apos;name&apos;: &apos;16&apos;},
+     {u&apos;name&apos;: &apos;17&apos;},
+     {u&apos;name&apos;: &apos;18&apos;},
+     {u&apos;name&apos;: &apos;19&apos;},
+     {u&apos;name&apos;: &apos;20&apos;},
+     {u&apos;name&apos;: &apos;21&apos;},
+     {u&apos;name&apos;: &apos;22&apos;},
+     {u&apos;name&apos;: &apos;23&apos;}],
+    u&apos;name&apos;: u&apos;Saturday&apos;}],
+  u&apos;name&apos;: u&apos;high&apos;}]
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[189]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">myJson</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[189]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+&apos;0&apos;
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[190]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;energy.json&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">myJson</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[175]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -7834,7 +7989,7 @@ In&nbsp;[131]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[132]:
+In&nbsp;[176]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -7849,7 +8004,7 @@ In&nbsp;[132]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[133]:
+In&nbsp;[177]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -7865,7 +8020,7 @@ In&nbsp;[133]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[133]:</div>
+    Out[177]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
