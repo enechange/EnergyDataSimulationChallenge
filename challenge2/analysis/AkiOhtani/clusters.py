@@ -2,26 +2,17 @@ from PIL import Image,ImageDraw
 import pandas as pd
 
 def readfile(filename):
-  dataFrame = pd.read_csv('../../data/total_watt.csv',
+  dataFrame = pd.read_csv(filename,
                             parse_dates=['Timestamp'],
                             names=['Timestamp','Energy'],
                             header=0,
                             index_col='Timestamp')
 
-  data = dataFrame['Energy']
-  # lines=[line for line in file(filename)]
+  data = dataFrame['Energy'].values.tolist()
+  rownames = dataFrame.index.values.tolist()
+  colnames = dataFrame.columns.values.tolist()
 
-  # colnames=['Timestamp', 'Energy']
-  # rownames=[]
-  # data=[]
-  # for line in lines[1:]:
-  #   p=line.strip().split('\t')
-  #   # First column in each row is the rowname
-  #   rownames.append(p[0])
-  #   # The data for this row is the remainder of the row
-  #   data.append([float(x) for x in p[1:]])
   return rownames,colnames,data
-
 
 from math import sqrt
 
