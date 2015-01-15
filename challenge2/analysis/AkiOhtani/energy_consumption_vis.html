@@ -6895,7 +6895,7 @@ In&nbsp;[163]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[167]:
+In&nbsp;[171]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -6910,9 +6910,7 @@ In&nbsp;[167]:
                         <span class="n">myJson</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">one_day</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">h</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&#39;name&#39;</span><span class="p">:</span> <span class="n">one_date</span> <span class="o">+</span> <span class="s">&#39;</span><span class="si">%d</span><span class="s">:22:00&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="s">&#39;colour&#39;</span><span class="p">:</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">myJson</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">one_day</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">h</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&#39;name&#39;</span><span class="p">:</span> <span class="n">one_date</span> <span class="o">+</span> <span class="s">&#39;</span><span class="si">%d</span><span class="s">:22:00&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="s">&#39;colour&#39;</span><span class="p">:</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span>
-                <span class="k">except</span><span class="p">:</span>
-                    <span class="k">continue</span>
-                <span class="k">try</span><span class="p">:</span>
+
                     <span class="k">if</span> <span class="n">ward</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">df_dataFrame</span><span class="o">.</span><span class="n">at_time</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">:52:00&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="p">))</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">one_date</span><span class="p">:</span><span class="n">one_date</span><span class="o">+</span><span class="s">&#39; </span><span class="si">%d</span><span class="s">:52:00&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="p">)]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
                         <span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">one_day</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">h</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&#39;name&#39;</span><span class="p">:</span> <span class="n">one_date</span> <span class="o">+</span> <span class="s">&#39;</span><span class="si">%d</span><span class="s">:52:00&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="s">&#39;colour&#39;</span><span class="p">:</span> <span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span>
                     <span class="k">elif</span> <span class="n">ward</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">df_dataFrame</span><span class="o">.</span><span class="n">at_time</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">:52:00&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="p">))</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">one_energy</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -6931,7 +6929,7 @@ In&nbsp;[167]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[168]:
+In&nbsp;[172]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -6947,7 +6945,7 @@ In&nbsp;[168]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[168]:</div>
+    Out[172]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -6965,7 +6963,7 @@ In&nbsp;[168]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[169]:
+In&nbsp;[173]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -6981,7 +6979,7 @@ In&nbsp;[169]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[169]:</div>
+    Out[173]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
