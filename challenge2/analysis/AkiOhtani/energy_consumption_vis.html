@@ -6690,7 +6690,7 @@ qaL/B5vKfpg1ejN4AAAAAElFTkSuQmCC
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[115]:
+In&nbsp;[152]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -6705,7 +6705,7 @@ In&nbsp;[115]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[116]:
+In&nbsp;[153]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -6721,7 +6721,7 @@ In&nbsp;[116]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[117]:
+In&nbsp;[154]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -6753,7 +6753,7 @@ clusters.pyc                 energy.json.buf              energy_consumption_vis
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[118]:
+In&nbsp;[155]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -6771,7 +6771,7 @@ In&nbsp;[118]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[119]:
+In&nbsp;[156]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -6809,14 +6809,14 @@ Saturday Saturday Saturday
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[120]:
+In&nbsp;[160]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
-        <span class="n">myJson</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">myJson</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span class="c">#for i in xrange(7):</span>
+        <span class="c">#myJson[0][&#39;children&#39;][i][&#39;children&#39;] = range(0, 24, 1)</span>
+        <span class="c">#myJson[1][&#39;children&#39;][i][&#39;children&#39;] = range(0, 24, 1)</span>
+        <span class="c">#myJson[2][&#39;children&#39;][i][&#39;children&#39;] = range(0, 24, 1)</span>
 </pre></div>
 
 </div>
@@ -6827,15 +6827,15 @@ In&nbsp;[120]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[121]:
+In&nbsp;[161]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">24</span><span class="p">):</span>
-        <span class="n">myJson</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&#39;name&#39;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)}</span>
-        <span class="n">myJson</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&#39;name&#39;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)}</span>
-        <span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&#39;name&#39;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)}</span>
+<div class="highlight"><pre><span class="c">#for i in xrange(7):</span>
+    <span class="c">#for j in xrange(24):</span>
+        <span class="c">#myJson[0][&#39;children&#39;][i][&#39;children&#39;][j] = {u&#39;name&#39; : str(j)}</span>
+        <span class="c">#myJson[1][&#39;children&#39;][i][&#39;children&#39;][j] = {u&#39;name&#39; : str(j)}</span>
+        <span class="c">#myJson[2][&#39;children&#39;][i][&#39;children&#39;][j] = {u&#39;name&#39; : str(j)}</span>
 </pre></div>
 
 </div>
@@ -6846,76 +6846,7 @@ In&nbsp;[121]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[122]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">myJson</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[122]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&apos;0&apos;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[123]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">one_date</span> <span class="o">=</span> <span class="n">myDate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s">&#39;</span><span class="p">)</span>
-<span class="n">dataFrame</span><span class="p">[</span><span class="n">one_date</span><span class="p">:</span><span class="n">one_date</span><span class="o">+</span><span class="s">&#39; 01:00:00&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[123]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-[]
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[124]:
+In&nbsp;[162]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -6930,7 +6861,7 @@ In&nbsp;[124]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[127]:
+In&nbsp;[163]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -6946,7 +6877,7 @@ In&nbsp;[127]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[127]:</div>
+    Out[163]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -6964,14 +6895,14 @@ In&nbsp;[127]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[130]:
+In&nbsp;[164]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">one_date</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">myDate</span><span class="p">[:]):</span>
     <span class="n">one_date</span> <span class="o">=</span> <span class="n">one_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s">&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">one_day</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">24</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">24</span><span class="p">):</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">ward</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">df_dataFrame</span><span class="o">.</span><span class="n">at_time</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">:22:00&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="p">))</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">one_date</span><span class="p">:</span><span class="n">one_date</span><span class="o">+</span><span class="s">&#39; </span><span class="si">%d</span><span class="s">:22:00&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="p">)]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
                         <span class="n">myJson</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">one_day</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s">&#39;children&#39;</span><span class="p">][</span><span class="n">h</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">u&#39;name&#39;</span><span class="p">:</span> <span class="n">one_date</span> <span class="o">+</span> <span class="s">&#39;</span><span class="si">%d</span><span class="s">:22:00&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="p">)}</span>
@@ -7000,7 +6931,41 @@ In&nbsp;[130]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[131]:
+In&nbsp;[145]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">one_day</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[145]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+6
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[165]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -7016,537 +6981,537 @@ In&nbsp;[131]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[131]:</div>
+    Out[165]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-[{u&apos;children&apos;: [{u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+[{u&apos;children&apos;: [{u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Sunday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Monday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Tuesday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Wednesday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Thursday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Friday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FFEE99&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Saturday&apos;}],
   u&apos;name&apos;: u&apos;low&apos;},
- {u&apos;children&apos;: [{u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+ {u&apos;children&apos;: [{u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Sunday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Monday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Tuesday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Wednesday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Thursday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Friday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF9922&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Saturday&apos;}],
   u&apos;name&apos;: u&apos;middle&apos;},
- {u&apos;children&apos;: [{u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+ {u&apos;children&apos;: [{u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Sunday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Monday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Tuesday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Wednesday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Thursday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Friday&apos;},
-   {u&apos;children&apos;: [{u&apos;name&apos;: &apos;0&apos;},
-     {u&apos;name&apos;: &apos;1&apos;},
-     {u&apos;name&apos;: &apos;2&apos;},
-     {u&apos;name&apos;: &apos;3&apos;},
-     {u&apos;name&apos;: &apos;4&apos;},
-     {u&apos;name&apos;: &apos;5&apos;},
-     {u&apos;name&apos;: &apos;6&apos;},
-     {u&apos;name&apos;: &apos;7&apos;},
-     {u&apos;name&apos;: &apos;8&apos;},
-     {u&apos;name&apos;: &apos;9&apos;},
-     {u&apos;name&apos;: &apos;10&apos;},
-     {u&apos;name&apos;: &apos;11&apos;},
-     {u&apos;name&apos;: &apos;12&apos;},
-     {u&apos;name&apos;: &apos;13&apos;},
-     {u&apos;name&apos;: &apos;14&apos;},
-     {u&apos;name&apos;: &apos;15&apos;},
-     {u&apos;name&apos;: &apos;16&apos;},
-     {u&apos;name&apos;: &apos;17&apos;},
-     {u&apos;name&apos;: &apos;18&apos;},
-     {u&apos;name&apos;: &apos;19&apos;},
-     {u&apos;name&apos;: &apos;20&apos;},
-     {u&apos;name&apos;: &apos;21&apos;},
-     {u&apos;name&apos;: &apos;22&apos;},
-     {u&apos;name&apos;: &apos;23&apos;}],
+   {u&apos;children&apos;: [{&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;0&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;1&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;2&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;3&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;4&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;5&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;6&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;7&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;8&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;9&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;10&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;11&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;12&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;13&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;14&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;15&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;16&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;17&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;18&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;19&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;20&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;21&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;22&apos;},
+     {&apos;colour&apos;: &apos;#FF4422&apos;, u&apos;name&apos;: u&apos;23&apos;}],
     u&apos;name&apos;: u&apos;Saturday&apos;}],
   u&apos;name&apos;: u&apos;high&apos;}]
 </pre>
@@ -7561,7 +7526,7 @@ In&nbsp;[131]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[32]:
+In&nbsp;[166]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -7577,7 +7542,7 @@ In&nbsp;[32]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[24]:
+In&nbsp;[159]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -7592,7 +7557,7 @@ In&nbsp;[24]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[25]:
+In&nbsp;[148]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -7607,7 +7572,7 @@ In&nbsp;[25]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[26]:
+In&nbsp;[149]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -7623,7 +7588,7 @@ In&nbsp;[26]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[26]:</div>
+    Out[149]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
