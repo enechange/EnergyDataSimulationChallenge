@@ -11202,7 +11202,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
@@ -11215,7 +11215,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># -*- coding:utf-8 -*-</span>
@@ -11236,7 +11236,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c">#read data-set</span>
@@ -11252,7 +11252,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c">#plot house1 data</span>
@@ -11272,11 +11272,11 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x111ab0450&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x113006a90&gt;</pre>
 </div>
 
 </div>
@@ -11767,7 +11767,7 @@ ERERqSolniIiIiIiIlJVSjxFRERERESkqv4fL+pQ85qw0hsAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c">#least-squares solution</span>
@@ -11800,7 +11800,7 @@ ERERqSolniIiIiIiIlJVSjxFRERERESkqv4fL+pQ85qw0hsAAAAASUVORK5CYII=
     <span class="n">exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span> 
     <span class="n">b0</span><span class="p">,</span> <span class="n">bx</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="n">stat</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">exp</span><span class="p">)</span>
     <span class="n">data_est</span> <span class="o">=</span> <span class="n">b0</span><span class="o">+</span><span class="n">bx</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">by</span><span class="o">*</span><span class="n">y</span>
-    <span class="n">est_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">data_est</span><span class="p">])</span>
+    <span class="n">est_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">data_est</span><span class="p">])</span>
     <span class="n">S</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">data_est</span> <span class="o">-</span> <span class="n">data_test</span><span class="o">.</span><span class="n">EnergyProduction</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">data_test</span><span class="o">.</span><span class="n">EnergyProduction</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">sum0</span> <span class="o">+=</span> <span class="n">S</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
