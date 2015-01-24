@@ -11202,7 +11202,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
@@ -11215,7 +11215,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># -*- coding:utf-8 -*-</span>
@@ -11227,6 +11227,7 @@ div#notebook {
 <span class="kn">from</span> <span class="nn">statsmodels.sandbox.regression.predstd</span> <span class="kn">import</span> <span class="n">wls_prediction_std</span>
 <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="kn">as</span> <span class="nn">sm</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span> <span class="k">as</span> <span class="n">dt</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 
 </div>
@@ -11236,7 +11237,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c">#read data-set</span>
@@ -11252,7 +11253,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c">#plot house1 data</span>
@@ -11272,11 +11273,11 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x113006a90&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x110f97a50&gt;</pre>
 </div>
 
 </div>
@@ -11767,21 +11768,10 @@ ERERqSolniIiIiIiIlJVSjxFRERERESkqv4fL+pQ85qw0hsAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c">#least-squares solution</span>
-<span class="k">def</span> <span class="nf">stat</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
-
-    <span class="n">n</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-    <span class="n">exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">exp</span><span class="p">])</span> 
-
-    <span class="n">coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">obj</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
-
-    <span class="k">return</span> <span class="n">coef</span>
-
-<span class="n">sum0</span> <span class="o">=</span> <span class="mi">0</span>
+<div class=" highlight hl-ipython2"><pre><span class="n">sum0</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">S</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="c">#open and writing file</span>
@@ -11793,19 +11783,24 @@ ERERqSolniIiIiIiIlJVSjxFRERERESkqv4fL+pQ85qw0hsAAAAASUVORK5CYII=
 <span class="c">#train the data-set</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">501</span><span class="p">):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="n">data_train</span><span class="o">.</span><span class="n">House</span><span class="o">==</span><span class="n">i</span><span class="p">][[</span><span class="s">&#39;EnergyProduction&#39;</span><span class="p">,</span><span class="s">&#39;Daylight&#39;</span><span class="p">,</span><span class="s">&#39;Temperature&#39;</span><span class="p">]]</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Daylight</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Temperature</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">EnergyProduction</span>
-    <span class="n">obj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> 
-    <span class="n">exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span> 
-    <span class="n">b0</span><span class="p">,</span> <span class="n">bx</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="n">stat</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">exp</span><span class="p">)</span>
-    <span class="n">data_est</span> <span class="o">=</span> <span class="n">b0</span><span class="o">+</span><span class="n">bx</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">by</span><span class="o">*</span><span class="n">y</span>
-    <span class="n">est_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">data_est</span><span class="p">])</span>
-    <span class="n">S</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">data_est</span> <span class="o">-</span> <span class="n">data_test</span><span class="o">.</span><span class="n">EnergyProduction</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">data_test</span><span class="o">.</span><span class="n">EnergyProduction</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">sum0</span> <span class="o">+=</span> <span class="n">S</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">data_t</span> <span class="o">=</span> <span class="n">data_test</span><span class="p">[</span><span class="n">data_test</span><span class="o">.</span><span class="n">House</span><span class="o">==</span><span class="n">i</span><span class="p">][[</span><span class="s">&#39;EnergyProduction&#39;</span><span class="p">,</span><span class="s">&#39;Daylight&#39;</span><span class="p">,</span><span class="s">&#39;Temperature&#39;</span><span class="p">]]</span>
+    <span class="n">d_ln</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">23</span><span class="p">]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">d_ln</span><span class="p">[[</span><span class="s">&#39;Daylight&#39;</span><span class="p">,</span> <span class="s">&#39;Temperature&#39;</span><span class="p">]]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">prepend</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">d_ln</span><span class="p">[</span><span class="s">&#39;EnergyProduction&#39;</span><span class="p">]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="c">#predict</span>
+    <span class="n">d_pd</span> <span class="o">=</span> <span class="n">data_t</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">del</span> <span class="n">d_pd</span><span class="p">[</span><span class="s">&#39;EnergyProduction&#39;</span><span class="p">]</span>
+    <span class="n">d_pd</span><span class="p">[</span><span class="s">&#39;const&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">d_pd</span><span class="p">)</span>
+    <span class="n">est_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">pred</span><span class="p">])</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">pred</span> <span class="o">-</span> <span class="n">data_test</span><span class="o">.</span><span class="n">EnergyProduction</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">data_test</span><span class="o">.</span><span class="n">EnergyProduction</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">sum0</span> <span class="o">+=</span> <span class="n">S</span>
 
 <span class="c">#calculate MAPE</span>
-<span class="n">mape</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">sum0</span><span class="o">/</span><span class="mi">500</span><span class="o">/</span><span class="mi">23</span> <span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">mape</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">sum0</span><span class="o">/</span><span class="mi">500</span> <span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">mape</span><span class="p">)</span>
 <span class="n">file_mape</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">mape</span><span class="p">))</span>
 <span class="n">file_est</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -11822,7 +11817,18 @@ ERERqSolniIiIiIiIlJVSjxFRERERESkqv4fL+pQ85qw0hsAAAAASUVORK5CYII=
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>0.12
+<pre>0.139
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python2.7/site-packages/IPython/kernel/__main__.py:23: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
 </pre>
 </div>
 </div>
@@ -11837,23 +11843,10 @@ ERERqSolniIiIiIiIlJVSjxFRERERESkqv4fL+pQ85qw0hsAAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this challenge, least-square solution is utilized because the time series data is not stationary and has trend components and seasonal components. Moreover, both Daylight and Temperature information should be utilized to predict the energy production.
-From the result, MAPE is 0.12.</p>
+From the result, MAPE is 0.139.</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
