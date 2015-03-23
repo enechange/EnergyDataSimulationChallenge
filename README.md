@@ -155,15 +155,15 @@ ID  Firstname  Lastname  City       num_of_people  has_child
 
 dataset_50.csv is almost same to Challenge1's Input. It is smaller and its ID starts with 1 rather than 0. Please refer to Challenge1.
 house_data.csv is household data related to dataset_50.csv.
-The first line gives the format name. 'ID' is 'House' of dataset_50.csv. 'City' includes 'London', 'Cambridge' and 'Oxford'. 'has_child' has only 'Yes' or 'No'.
+The first line gives the format name. `ID` column values in this file are same to `House` column values in dataset_50.csv. `City` column includes 'London', 'Cambridge' and 'Oxford'. `has_child` column has only 'Yes' or 'No'.
 
 ### Output
 
-1. Please set All source codes in challenge3/webapp/YOURNAME/
+1. Please set ALL source codes in challenge3/webapp/YOURNAME/
 2. Write deployed URL in Pull Request Comment.
 
 You can refer to sample implementation in challenge3/webapp/sample/
-But please mind that it is rough and may have some points to be fixed.
+But please mind that it is rough and may have some parts to be fixed.
 
 
 # Challenge 4 - Business Analyst Task
