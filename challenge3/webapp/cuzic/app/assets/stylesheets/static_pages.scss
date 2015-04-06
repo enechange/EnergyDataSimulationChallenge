@@ -1,0 +1,19 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#pie, #line {
+  float: none;
+  margin-left: auto;
+}
+.dc-chart .pie-slice {
+  font-size: 18px;
+}
+
+.dc-chart > svg {
+  overflow: visible;
+}
+
+.dc-chart .tick text {
+  font-size: 18px;
+}
