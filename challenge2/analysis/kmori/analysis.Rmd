@@ -1,0 +1,155 @@
+---
+title: "EnergyDataSimulationChallenge"
+author: "Kiyotaka Mori"
+date: "2015-07-12"
+output: html_document
+---
+
+This is my answer of the Github Challenge.
+
+I used two extra packages, "ggplot2" and "dplyr".
+So, if you didn't install it, please type it without "#".
+```{r}
+#install.packages(c("ggplot2", "dplyr"))
+```
+
+First of all, read the data(total_watt.csv).
+
+```{r}
+setwd("~/Desktop/analysis")
+data <- read.csv("total_watt.csv", header=F)
+colnames(data) <- c("time_stamp", "energy_consumption")
+date <- as.POSIXlt(data$time_stamp)
+data <- data.frame(date, data$energy_consumption)
+colnames(data) <- c("time_stamp", "energy_consumption")
+```
+
+# Visualise the data-set
+
+Visualise the data-set using line graph.
+
+```{r fig.width=15, fig.height=15}
+library(ggplot2)
+vis1 <- ggplot(data, aes(x = data$time_stamp, y = data$energy_consumption, group = 1)) + geom_line() + 
+xlab("time stamp") + ylab("energy consumption") + ggtitle("Visualise the data-set")
+
+plot(vis1)
+```
+
+# Visualise the data-set as values per day
+
+The time-stamp data is reading as string, so I change the type of it to date.
+The time_stamp is divided "date" and "time".
+
+Finally, I define four time zone.
+
+Time  | Time zone
+------------- | -------------
+0:00 - 6:00  | late-night
+6:00 - 12:00  | morning
+12:00 - 18:00  | afternoon
+18:00 - 0:00  | night
+
+Apply them for data.
+
+```{r}
+library(dplyr)
+date <- format(data$time_stamp, "%m/%d")
+time <- format(data$time_stamp, "%H:%M:%S")
+hour <- as.numeric(format(data$time_stamp, "%H"))
+data_divide <- data.frame(date, time, hour, data$energy_consumption)
+colnames(data_divide) <- c("date", "time", "hour", "energy_consumption")
+
+data_divide <- data_divide %>% 
+  mutate(timezone = ifelse(hour < 6, "late-night", 
+                           ifelse(hour < 12, "morning", 
+                                  ifelse(hour < 18, "afternoon", 
+                                         ifelse(hour < 24, "night", "other")
+                                        )
+                                  )
+                           )
+         )
+data_perday <- data_divide %>% group_by(date, timezone) %>% summarise(sum=sum(energy_consumption))
+```
+
+Visualize the data per day including timezone.
+
+```{r fig.width=15, fig.height=15}
+vis2 <- ggplot(data_perday, aes(x = data_perday$date, y = data_perday$sum, fill=timezone)) + geom_bar(stat = "identity") + 
+  xlab("date") + ylab("energy consumption") + ggtitle("Visualise the data-set as values per day")
+
+plot(vis2)
+```
+
+# Cluster the values per day into 3 groups: low, medium, and high energy consumption
+
+Check the numbers which contains value, because want to decide the base line.
+
+```{r}
+data_perday2 <- data_divide %>% group_by(date) %>% summarise(sum_all=sum(energy_consumption))
+
+sum(data_perday2$sum_all<10000)
+sum(data_perday2$sum_all<20000)
+sum(data_perday2$sum_all<30000)
+sum(data_perday2$sum_all<40000)
+sum(data_perday2$sum_all<50000)
+sum(data_perday2$sum_all<60000)
+sum(data_perday2$sum_all<70000)
+```
+
+From these results, make three cluster.
+
+* low (energy consumption < 20000)
+* middle (20000 <= energy consumption < 40000)
+* high (40000 <= energy consumption)
+
+Apply these clusters.
+
+```{r}
+data_perday2 <- data_perday2 %>% mutate(cluster = ifelse(sum_all < 20000, 1, 
+                                                       ifelse(40000 < sum_all, 3, 2)
+                                                       )
+                                      )
+```
+
+# Visualise the clusters
+
+First, I arrange the data to apply.
+```{r}
+cluster_high <- data_perday %>% inner_join(data_perday2, by="date") %>% filter(cluster == 3) %>% 
+  group_by(timezone) %>% summarise(sum=sum(sum))
+cluster_middle <- data_perday %>% inner_join(data_perday2, by="date") %>% filter(cluster == 2) %>% 
+  group_by(timezone) %>% summarise(sum=sum(sum))
+cluster_low <- data_perday %>% inner_join(data_perday2, by="date") %>% filter(cluster == 1) %>% 
+  group_by(timezone) %>% summarise(sum=sum(sum))
+```
+
+Show the pie chart of high energy consumption.
+```{r fig.width=10, fig.height=10}
+vis3_1 <- ggplot(cluster_high, aes(x = "", y = sum, fill = timezone)) + geom_bar(width=1, stat="identity") + 
+  coord_polar(theta = "y") + ggtitle("Visualise the cluster high energy consumption")
+plot(vis3_1)
+```
+
+Show the pie chart of middle energy consumption.
+```{r fig.width=10, fig.height=10}
+vis3_2 <- ggplot(cluster_middle, aes(x = "", y = sum, fill = timezone)) + geom_bar(width=1, stat="identity") + 
+  coord_polar(theta = "y") + ggtitle("Visualise the cluster middle energy consumption")
+plot(vis3_2)
+```
+
+Show the pie chart of low energy consumption.
+```{r fig.width=10, fig.height=10}
+vis3_3 <- ggplot(cluster_low, aes(x = "", y = sum, fill = timezone)) + geom_bar(width=1, stat="identity") + 
+  coord_polar(theta = "y") + ggtitle("Visualise the cluster low energy consumption")
+plot(vis3_3)
+```
+
+From this results, I know these features.
+
+* high energy consumption mainly uses on night
+* middle energy consumption mainly uses on late-night
+* low energy consumption mainly uses on morning
+
+# Addition
+In this data, there are some lacking data. If I have a time, I should estimate them using time series estimation.
