@@ -1,7 +1,9 @@
 # About
 
 EnergyDataSimulationChallenge
+
 author: kmori a.k.a Kiyotaka Mori
+
 E-Mail: kiyotaka.forest@gmail.com / mori.kiyotaka@ci.i.u-tokyo.ac.jp
 
 # Files
