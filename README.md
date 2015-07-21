@@ -236,12 +236,14 @@ sample-consumption.json plans.json
   }
 }
 ```
-  "Day time" and "Night time" values are
-  array [ from kWh, to kWh, unit price tax included ]
-  ex) [ null, 120, 19.43 ] :
-      the unit price is ¥19.43 per kilo watt hour upto initial 120 kWh.
-      [ 300, null, 29.93 ] :
-      the unit price is ¥29.93 when the energy consumption is larger than 300 kWh.
+  "Day time" and "Night time" values are array [ from kWh, to kWh, unit price tax included ]
+
+```  
+[ null, 120, 19.43 ] :
+means the unit price is ¥19.43 per kilo watt hour upto initial 120 kWh.
+[ 300, null, 29.93 ] :
+means the unit price is ¥29.93 when the energy consumption is larger than 300 kWh.
+```
 
   When "Night time" attribute is null, the plan has only day time.
   "Night time range" is 24 boolean values which represent 24 hours night time and day time.
