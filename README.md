@@ -165,6 +165,97 @@ The first line gives the format name. `ID` column values in this file are same t
 You can refer to sample implementation in challenge3/webapp/sample/
 But please mind that it is rough and may have some parts to be fixed.
 
+## Challenge 4 - WEB-API Server
+
+Please create a web api server to calculate electricity charges.
+
+1. see TEPCO's explanation of electricity charges.
+  - http://www.tepco.co.jp/e-rates/individual/data/chargelist/chargelist04-j.html
+  - http://www.tepco.co.jp/e-rates/individual/menu/home/home02-j.html
+  - http://www.tepco.co.jp/e-rates/individual/menu/home/home08-j.html
+  - http://www.tepco.co.jp/en/customer/guide/ratecalc-e.html
+
+2. you have to calculate `Energy Charge` of "Meter-Rate Lighting B" and "Yoru Toku Plan",
+   and write WEB-API server with your favorite web framework ( Ruby on Rails preferred )
+   `Energy Charge` grows when the energy consumption ( kWh ) is bigger.
+
+3. deploy it to somewhere ( AWS, heroku, your own server, etc...)
+
+We will see basic programming skill, API design and performance.
+
+### Input
+
+Input dataset files are in challenge4/data/ directory as follows.
+
+```
+  $ ls data/
+sample-consumption.json plans.json
+
+  $ cat data/sample-consumption.json
+[
+  [ 0.2, 0.3, 0.2, ... ], # 24 values for 1st day, 1 am, 2 am .. 12 am, 1 pm ..  12 pm
+  [ 0.2, 0.3, 0.2, ... ], # 24 values for 2nd day
+  ...
+  [ 0.2, 0.3, 0.2, ... ]  # 24 values for 31st day
+]
+```
+
+   sample-consumptions.json is a JSON array of arrays of float values.
+   Each float value is a energy consumption(kWh).
+   First value of a day is a consumption from 0 am to 1 am.
+
+```
+  $ cat data/plans.json
+{
+  "Meter-Rate Lighting B": {
+    "Day time": [
+      [ null, 120, 19.43],
+      [ 120, 300, 25.91],
+      [ 300, null, 29.93]
+    ],
+    "Night time": null,
+    "Night time range": null
+  },
+
+  "Yoru Toku Plan": {
+    "Day time": [
+      [ null, 90, 24.03],
+      [ 90, 230, 32.03],
+      [ 230, null, 37.00]
+    ],
+    "Night time": [
+      [ null, null, 12.48]
+    ],
+    "Night time range":
+      [ true, true, true, true,
+        true, false, false, false,
+        false, false, false, false,
+        false, false, false, false,
+        false, false, false, false,
+        false, true, true, true ]
+  }
+}
+```
+  "Day time" and "Night time" values are array [ from kWh, to kWh, unit price tax included ]
+
+```  
+[ null, 120, 19.43 ] :
+means the unit price is ¥19.43 per kilo watt hour upto initial 120 kWh.
+[ 300, null, 29.93 ] :
+means the unit price is ¥29.93 when the energy consumption is larger than 300 kWh.
+```
+
+  When "Night time" attribute is null, the plan has only day time.
+  "Night time range" is 24 boolean values which represent 24 hours night time and day time.
+
+  (Yoru Toku Plan offers discount rate in night time.)
+
+ Output of the API is just one float number of `Energy Charge` with tax.
+
+### Output
+
+1. Please set ALL source codes in challenge4/webapp/YOURNAME/
+2. Write deployed URL in Pull Request Comment.
 
 ## Challenge 5 - Business Analyst Task
 
