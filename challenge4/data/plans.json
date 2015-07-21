@@ -1,0 +1,30 @@
+{
+  "Meter-Rate Lighting B": {
+    "Day time": [
+      [ null, 120, 19.43],
+      [ 120, 300, 25.91],
+      [ 300, null, 29.93]
+    ],
+    "Night time": null,
+    "Night time range": null
+  },
+
+ "Yoru Toku Plan": {
+    "Day time": [
+      [ null, 90, 24.03],
+      [ 90, 230, 32.03],
+      [ 230, null, 37.00]
+    ],
+    "Night time": [
+      [ null, null, 12.48]
+    ],
+    "Night time range":
+      [ false, false, false, false,
+        false, true, true, true,
+        true, true, true, true,
+        true, true, true, true,
+        true, true, true, true,
+        true, false, false, false ]
+  }
+}
+
