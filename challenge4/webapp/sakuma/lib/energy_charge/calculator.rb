@@ -30,8 +30,7 @@ module EnergyCharge
     end
 
     def calc_night_time(consumption)
-      # TODO
-      0
+      BigDecimal(@plan.night_time_unit.to_s) * BigDecimal(consumption.to_s)
     end
   end
 end
