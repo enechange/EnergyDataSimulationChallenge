@@ -4,7 +4,7 @@ RSpec.describe Plan, type: :model do
 
   let(:only_day_time_plan) do
     Plan.new(
-      name: "Day time only",
+      name: "Day time only Plan",
       day_time: [ [ nil, 120, 19.43], [ 120, 300, 25.91], [ 300, nil, 29.93] ],
       night_time: nil,
       night_time_range: nil,
@@ -13,7 +13,7 @@ RSpec.describe Plan, type: :model do
 
   let(:night_plan) do
     Plan.new(
-      name: "Day time only",
+      name: "Yoru Toku Plan",
       day_time: [ [ nil, 90, 24.03], [ 90, 230, 32.03], [ 230, nil, 37.00] ],
       night_time: [ nil, nil, 12.48] ,
       night_time_range: [
