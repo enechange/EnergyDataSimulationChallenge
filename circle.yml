@@ -1,0 +1,9 @@
+machine:
+  ruby:
+    version: 2.2.2
+
+test:
+  pre:
+    - cd challenge4/webapp/sakuma && bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+  override:
+    - cd challenge4/webapp/sakuma && bundle exec rake spec
