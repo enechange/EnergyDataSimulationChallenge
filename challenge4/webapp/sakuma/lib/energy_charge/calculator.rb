@@ -25,8 +25,28 @@ module EnergyCharge
     private
 
     def calc_day_time(consumption)
-      # TODO
-      0
+      return 0 if consumption.zero?
+      cons = BigDecimal(consumption.to_s)
+      units = @plan.day_time_unit
+
+      if cons <= units[:first][:to]
+        return units[:first][:unit] * cons
+      else
+        units[:first][:cons] = units[:first][:to]
+        current_cons = cons - units[:first][:to]
+      end
+
+      if units[:second][:from] < cons && cons <= units[:second][:to]
+        return (units[:first][:unit] * units[:first][:cons]) +
+          (units[:second][:unit] * current_cons)
+      else
+        units[:second][:cons] = (units[:second][:to] - units[:second][:from])
+        current_cons = cons - units[:second][:to]
+      end
+
+      (units[:first][:unit] * units[:first][:cons]) +
+        (units[:second][:unit] * units[:second][:cons]) +
+        (units[:third][:unit] * current_cons)
     end
 
     def calc_night_time(consumption)

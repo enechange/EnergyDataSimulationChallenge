@@ -17,9 +17,9 @@ class Plan
 
   def day_time_unit
     {
-      first:  {from: day_time[0][0], to: day_time[0][1], unit: day_time[0][2], cons: 0.0},
-      second: {from: day_time[1][0], to: day_time[1][1], unit: day_time[1][2], cons: 0.0},
-      third:  {from: day_time[2][0], to: day_time[2][1], unit: day_time[2][2], cons: 0.0},
+      first:  {from: day_time[0][0], to: day_time[0][1], unit: BigDecimal(day_time[0][2].to_s), cons: 0.0},
+      second: {from: day_time[1][0], to: day_time[1][1], unit: BigDecimal(day_time[1][2].to_s), cons: 0.0},
+      third:  {from: day_time[2][0], to: day_time[2][1], unit: BigDecimal(day_time[2][2].to_s), cons: 0.0},
     }
   end
 
