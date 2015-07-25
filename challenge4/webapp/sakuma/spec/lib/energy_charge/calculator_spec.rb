@@ -22,12 +22,26 @@ RSpec.describe EnergyCharge::Calculator, type: :lib do
       ]
     )
   end
-  let(:calculator) { EnergyCharge::Calculator.new(plan: plan, consumptions: [[]]) }
+  let(:calculator) { EnergyCharge::Calculator.new(plan: plan, consumptions: consumptions) }
 
   describe '#calc' do
+    let(:consumptions) { YAML.load_file(Rails.root.join('spec/support/sample_consumptions', '127.yml')) }
+    subject { calculator.calc }
+    context 'about day time only plan' do
+      let(:plan) { only_day_time_plan }
+
+      it { is_expected.to eq BigDecimal("2532.647188660744643775") }
+    end
+
+    context 'about night time plan' do
+      let(:plan) { night_plan }
+
+      it { is_expected.to eq BigDecimal("2621.1016944400269048135") }
+    end
   end
 
   describe '#calc_day_time (private)' do
+    let(:consumptions) { [] }
 
     subject { calculator.send(:calc_day_time, consumption) }
 
@@ -131,6 +145,7 @@ RSpec.describe EnergyCharge::Calculator, type: :lib do
   end
 
   describe '#calc_night_time (private)' do
+    let(:consumptions) { [] }
 
     subject { calculator.send(:calc_night_time, consumption) }
 
