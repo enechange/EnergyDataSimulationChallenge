@@ -53,10 +53,11 @@ RSpec.describe Plan, type: :model do
       let(:this_plan) { night_plan }
 
       it_should_behave_like 'should be night', 1
-      it_should_behave_like 'should be night', 5
+      it_should_behave_like 'should be night', 4
+      it_should_behave_like 'should not be night', 5
       it_should_behave_like 'should not be night', 6
       it_should_behave_like 'should not be night', 13
-      it_should_behave_like 'should not be night', 21
+      it_should_behave_like 'should be night', 21
       it_should_behave_like 'should be night', 22
       it_should_behave_like 'should be night', 24
 

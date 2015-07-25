@@ -9,9 +9,10 @@ class Plan
 
   def night_time?(hour)
     return false unless has_night_plan?
-    return false if hour.to_i < 1
-    array_index = hour.to_i - 1
-    night_time_range[array_index].present?
+    return false unless hour.is_a?(Integer)
+    return false unless (1..24).include?(hour)
+    array_index = (hour == 24) ? 0 : hour
+    night_time_range[array_index]
   end
 
   def day_time_unit
