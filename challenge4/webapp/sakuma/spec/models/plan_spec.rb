@@ -106,4 +106,19 @@ RSpec.describe Plan, type: :model do
     end
   end
 
+  describe '#night_time_unit' do
+
+    subject { plan.night_time_unit }
+
+    context 'abount only day time plan' do
+      let(:plan) { only_day_time_plan }
+      it { is_expected.to be_zero }
+    end
+
+    context 'abount night time plan' do
+      let(:plan) { night_plan}
+      it { is_expected.to eq 12.48 }
+    end
+  end
+
 end

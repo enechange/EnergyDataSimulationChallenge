@@ -22,4 +22,9 @@ class Plan
     }
   end
 
+  def night_time_unit
+    return 0 unless has_night_plan?
+    night_time[2]
+  end
+
 end
