@@ -30,13 +30,13 @@ RSpec.describe EnergyCharge::Calculator, type: :lib do
     context 'about day time only plan' do
       let(:plan) { only_day_time_plan }
 
-      it { is_expected.to eq BigDecimal("2532.647188660744643775") }
+      it { is_expected.to eq 2532 }
     end
 
     context 'about night time plan' do
       let(:plan) { night_plan }
 
-      it { is_expected.to eq BigDecimal("2621.1016944400269048135") }
+      it { is_expected.to eq 2620 }
     end
   end
 

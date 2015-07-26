@@ -16,8 +16,8 @@ module EnergyCharge
         monthly_day_time_cons += day_time_cons
         monthly_night_time_cons += night_time_cons
       end
-      result = calc_day_time(monthly_day_time_cons)
-      result += calc_night_time(monthly_night_time_cons) if @plan.has_night_plan?
+      result = calc_day_time(monthly_day_time_cons).floor
+      result += calc_night_time(monthly_night_time_cons).floor if @plan.has_night_plan?
 
       result
     end
