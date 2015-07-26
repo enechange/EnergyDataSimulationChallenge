@@ -1,20 +1,15 @@
 class ChargesController < ApplicationController
 
+  protect_from_forgery with: :null_session
+
   def index
     respond_to do |format|
       format.html
       format.json {
-        @energy_charges = mock_response
+        service = EnergyChargeService.new(request)
+        @charge_response = service.serve!
       }
     end
   end
 
-  private
-
-  def mock_response
-    [
-      OpenStruct.new(plan_name: "A", price: 3210),
-      OpenStruct.new(plan_name: "B", price: 2345),
-    ]
-  end
 end

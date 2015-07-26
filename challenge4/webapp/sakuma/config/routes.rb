@@ -2,5 +2,5 @@ Rails.application.routes.draw do
 
   root to: "welcome#index"
 
-  resources :charge, controller: 'charges', only: :index
+  match 'charge', to: 'charges#index', via: [:get, :post], as: :charge_index
 end

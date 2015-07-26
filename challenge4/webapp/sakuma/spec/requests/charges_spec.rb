@@ -4,12 +4,8 @@ RSpec.describe "Charges", type: :request do
 
   describe "GET /charge" do
 
-    before { get charge_index_path, body, headers }
-
     context 'html format' do
-      let(:headers) { nil }
-      let(:body) { nil }
-
+      before { get charge_index_path }
       it "works!" do
         expect(response.body).to be_include "Please access JSON request"
       end
@@ -22,22 +18,21 @@ RSpec.describe "Charges", type: :request do
           'ACCEPT' => 'application/json',
         }
       }
-      let(:body) { {}.to_json }
+      let(:body) { YAML.load_file(Rails.root.join("spec/support/sample_consumptions/127.yml")).to_json }
+      before { post charge_index_path, body, headers }
 
       it { expect(response).to have_http_status(200) }
 
-      it "valid response json body" do
-        expect(JSON.parse(response.body, symbolize_names: true)).to eq(
-          {
-            status: 200,
-            message: 'Successful HTTP requests.',
-            request_id: request.uuid,
-            energy_charges: [
-              {plan_name: 'A', price: 3210},
-              {plan_name: 'B', price: 2345},
-            ]
-          }
-        )
+      it "valid response JSON body" do
+        expect(JSON.parse(response.body, symbolize_names: true)).to eq({
+          status: 200,
+          message: 'Successful HTTP requests.',
+          request_id: request.uuid,
+          energy_charges: [
+            {plan_name: 'Meter-Rate Lighting B', price: 2532},
+            {plan_name: 'Yoru Toku Plan', price: 2135},
+          ]
+        })
       end
     end
 
