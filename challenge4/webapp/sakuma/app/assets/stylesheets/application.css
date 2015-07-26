@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+pre.request-info {
+  background-color: #f7f7f7;
+  padding: 30px;
+  font-size: larger;
+  overflow: auto;
+  border-radius: 3px;
+  margin: 30px;
+}
