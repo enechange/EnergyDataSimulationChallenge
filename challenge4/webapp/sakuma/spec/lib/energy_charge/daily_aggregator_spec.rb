@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe EnergyCharge::DailySession, type: :lib do
+RSpec.describe EnergyCharge::DailyAggregator, type: :lib do
 
   let(:only_day_time_plan) do
     Plan.new(
@@ -27,7 +27,7 @@ RSpec.describe EnergyCharge::DailySession, type: :lib do
   describe '#aggregate' do
     let(:sample_daily_consumption) { [0.101] * 24 }
     let(:daily_session) do
-      EnergyCharge::DailySession.new(
+      EnergyCharge::DailyAggregator.new(
         plan: target_plan, daily_cons: sample_daily_consumption
       )
     end
