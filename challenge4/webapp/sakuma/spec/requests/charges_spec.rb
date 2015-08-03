@@ -7,7 +7,7 @@ RSpec.describe "Charges", type: :request do
     context 'html format' do
       before { get charge_index_path }
       it "works!" do
-        expect(response.body).to be_include "Please access JSON request"
+        expect(response.body).to be_include "Please access POST request"
       end
     end
 
