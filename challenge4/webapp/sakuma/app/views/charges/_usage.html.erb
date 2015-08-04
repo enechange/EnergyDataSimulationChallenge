@@ -1,0 +1,24 @@
+<h2>URL</h2>
+
+<pre class="request-info">
+  <strong>POST</strong>  <%= URI.join(ENV.fetch('URL_BASE', 'http://localhost:3000'), charge_index_path ) %>
+</pre>
+
+<h2>Request Header</h2>
+
+<pre class="request-info">
+  Accept: application/json
+  Content-Type: application/json
+</pre>
+
+<h2>Request Body</h2>
+
+※ sample
+<pre  class="request-info">
+[
+  [ 0.2, 0.3, 0.2, ... ], # 24 values for 1st day, 1 am, 2 am .. 12 am, 1 pm ..  12 pm
+  [ 0.2, 0.3, 0.2, ... ], # 24 values for 2nd day
+  ...
+  [ 0.2, 0.3, 0.2, ... ]  # 24 values for 31st day
+]
+</pre>
