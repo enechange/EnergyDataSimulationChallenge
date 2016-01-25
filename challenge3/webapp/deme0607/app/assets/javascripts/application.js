@@ -13,3 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require d3
+//= require c3
+//= require bootstrap/dist/js/bootstrap
