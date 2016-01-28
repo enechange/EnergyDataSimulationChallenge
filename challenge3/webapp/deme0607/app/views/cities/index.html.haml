@@ -1,0 +1,18 @@
+%section.container
+  %div.row
+    %div.col-lg-12
+      %h1 Cities
+  %div.row
+    %div.col-lg-12
+      = select("city", "id", @cities.map {|c| [c.name, c.id]}, {}, {class: "form-control"})
+  %div.row
+    %div.col-lg-12
+      %h2 Month - Energy Production
+      %div#time-chart
+  %div.row
+    %div.col-lg-6
+      %h3 Dailight - Energy Production
+      %div#daylight-chart
+    %div.col-lg-6
+      %h3 Temperature - Energy Production
+      %div#temperature-chart
