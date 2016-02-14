@@ -1,0 +1,253 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+  <div class="col s12">
+
+    <div class="section">
+      <h5 class="center-align">Monthly average energy production</h5>
+      <div id='monthly_average_energy_production'></div>
+      <a href="/dashboard/monthly_average_energy_production">Download CSV</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h5 class="center-align">Average energy production and daylight</h5>
+      <div id='monthly_average_energy_production_and_daylight'></div>
+      <a href="/dashboard/monthly_average_energy_production_and_daylight">Download CSV</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h5 class="center-align">Average energy production and temperature</h5>
+      <div id='monthly_average_energy_production_and_temperature'></div>
+      <a href="/dashboard/monthly_average_energy_production_and_temperature">Download CSV</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h5 class="center-align">Yearly energy production by city</h5>
+      <div id='yearly_average_energy_production_by_city'></div>
+      <a href="/dashboard/yearly_average_energy_production_by_city">Download CSV</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <h5 class="center-align">5 highest and 5 lowest energy producing houses</h5>
+      <div id='highest_and_lowest_average_energy_producers'></div>
+      <a href="/dashboard/highest_and_lowest_average_energy_producers">Download CSV</a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s6">
+    <div>
+      <h5>Highest average energy producers</h5>
+      <table>
+        <thead>
+          <tr>
+            <td>House ID</td>
+            <td>Average energy production</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for house in highest_producing_houses %}
+          <tr>
+            <td><a href="{{ house.get_absolute_url }}">{{ house.id }}</a></td>
+            <td>{{ house.average_energy_production|floatformat:2 }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col s6">
+    <div>
+      <h5>Lowest average energy producers</h5>
+      <table>
+        <thead>
+          <tr>
+            <td>House ID</td>
+            <td>Average energy production</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for house in lowest_producing_houses %}
+          <tr>
+            <td><a href="{{ house.get_absolute_url }}">{{ house.id }}</a></td>
+            <td>{{ house.average_energy_production|floatformat:2 }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  var monthly_average_energy_production = c3.generate({
+    bindto: '#monthly_average_energy_production',
+    data: {
+      x: 'Month',
+      url: '/dashboard/monthly_average_energy_production',
+      type: 'bar',
+    },
+    axis: {
+      x: {
+        label: {
+          text: 'Month',
+          position: 'outer-center',
+        },
+        type: 'category'
+      },
+      y: {
+        label: {
+          text: 'Energy production',
+          position: 'outer-middle',
+        },
+      }
+    },
+    grid: {
+      y: {
+        show: true,
+      },
+      focus: {
+        show: false,
+      },
+    },
+    legend: {
+      show: false,
+    },
+  });
+  var monthly_average_energy_production_and_daylight = c3.generate({
+    bindto: '#monthly_average_energy_production_and_daylight',
+    data: {
+      x: 'Date',
+      xFormat: '%Y-%m',
+      url: '/dashboard/monthly_average_energy_production_and_daylight',
+      axes: {
+        'Average energy production': 'y',
+        'Average daylight': 'y2',
+      },
+    },
+    axis: {
+      x: {
+        type: 'timeseries',
+        tick: {
+          format: '%Y-%m'
+        }
+      },
+      y: {
+        label: {
+          text: 'Energy production',
+          position: 'outer-middle',
+        },
+      },
+      y2: {
+        label: {
+          text: 'Daylight',
+          position: 'outer-middle',
+        },
+        show: true,
+      }
+    },
+  });
+  var monthly_average_energy_production_and_temperature = c3.generate({
+    bindto: '#monthly_average_energy_production_and_temperature',
+    data: {
+      x: 'Date',
+      xFormat: '%Y-%m',
+      url: '/dashboard/monthly_average_energy_production_and_temperature',
+      axes: {
+        'Average energy production': 'y',
+        'Average temperature': 'y2',
+      },
+    },
+    axis: {
+      x: {
+        type: 'timeseries',
+        tick: {
+          format: '%Y-%m'
+        }
+      },
+      y: {
+        label: {
+          text: 'Energy production',
+          position: 'outer-middle',
+        },
+      },
+      y2: {
+        label: {
+          text: 'Temperature',
+          position: 'outer-middle',
+        },
+        show: true,
+      }
+    }
+  });
+  var yearly_average_energy_production_by_city = c3.generate({
+    bindto: '#yearly_average_energy_production_by_city',
+    data: {
+      x: 'City',
+      url: '/dashboard/yearly_average_energy_production_by_city',
+      type: 'bar',
+    },
+    axis: {
+      x: {
+        type: 'category'
+      },
+      y: {
+        label: {
+          text: 'Energy production',
+          position: 'outer-middle',
+        },
+      }
+    },
+    grid: {
+      y: {
+        show: true,
+      },
+      focus: {
+        show: false,
+      },
+    }
+  });
+  var highest_and_lowest_average_energy_producers = c3.generate({
+    bindto: '#highest_and_lowest_average_energy_producers',
+    data: {
+      x: 'Date',
+      xFormat: '%Y-%m',
+      url: '/dashboard/highest_and_lowest_average_energy_producers',
+    },
+    axis: {
+      x: {
+        type: 'timeseries',
+        tick: {
+          format: '%Y-%m'
+        }
+      },
+      y: {
+        label: {
+          text: 'Energy production',
+          position: 'outer-middle',
+        },
+      }
+    },
+    grid: {
+      y: {
+        show: true,
+      },
+      focus: {
+        show: false,
+      },
+    }
+  });
+</script>
+
+{% endblock %}

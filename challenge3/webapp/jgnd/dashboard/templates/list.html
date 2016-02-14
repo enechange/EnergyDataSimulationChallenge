@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block content %}
+
+<div class="row">
+  <div class="col s12">
+    <h3>House list</h3>
+
+    <div>
+      <p>Click table headers to sort</p>
+      <table class="sortable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Number of people</th>
+            <th>Has child?</th>
+            <th>Average energy production</th>
+            <th>Average daylight</th>
+            <th>Average temperature</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for house in houses %}
+          <tr>
+            <td><a href="{{ house.get_absolute_url }}">{{ house.id }}</a></td>
+            <td>{{ house.fullname }}</td>
+            <td>{{ house.city }}</td>
+            <td>{{ house.number_of_people }}</td>
+            <td>{{ house.has_child_string }}</td>
+            <td>{{ house.average_energy_production|floatformat:2 }}</td>
+            <td>{{ house.average_daylight|floatformat:2 }}</td>
+            <td>{{ house.average_temperature|floatformat:2 }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<script src="{% static 'js/sorttable.js' %}" charset="utf-8"></script>
+
+{% endblock %}
