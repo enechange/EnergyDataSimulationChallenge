@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/c3.min.css' %}" />
+  <script src="{% static 'js/d3.min.js' %}" charset="utf-8"></script>
+  <script src="{% static 'js/c3.min.js' %}" charset="utf-8"></script>
+  <title>Energy Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #FEFEFE;
+    }
+    
+    .sortable th {
+      cursor: pointer;
+    }
+    
+    .graph {
+      text-align: center;
+    }
+    
+    .c3-ygrid {
+      stroke-dasharray: 0 !important;
+    }
+    
+    .c3-grid line {
+      stroke: #DEDEDE !important;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper deep-orange darken-4">
+      <ul id="nav-mobile" class="left">
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/dashboard/house/list">House list</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    {% block content %} {% endblock %}
+  </div>
+</body>
+
+</html>
