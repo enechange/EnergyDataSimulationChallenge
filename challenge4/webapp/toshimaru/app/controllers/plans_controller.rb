@@ -1,5 +1,10 @@
 class PlansController < ApplicationController
-  def index
-    render json: "hello world"
+  def calculate
+    render text: "hello world!"
   end
+
+  private
+
+    def data_param
+    end
 end
