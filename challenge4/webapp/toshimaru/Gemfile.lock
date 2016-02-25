@@ -43,6 +43,7 @@ GEM
     arel (7.0.0)
     builder (3.2.2)
     byebug (8.2.2)
+    coderay (1.1.0)
     concurrent-ruby (1.0.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
@@ -61,6 +62,12 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     puma (2.16.0)
     rack (2.0.0.alpha)
       json
@@ -109,6 +116,7 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
+    slop (3.6.0)
     spring (1.6.3)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -131,6 +139,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  pry-rails
   puma
   rails (>= 5.0.0.beta2, < 5.1)
   rspec-rails
