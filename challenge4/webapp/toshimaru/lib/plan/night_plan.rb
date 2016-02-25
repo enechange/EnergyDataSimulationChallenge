@@ -6,7 +6,8 @@ module Plan
       @night_time_range = plan["Night time range"]
     end
 
-    def calc
+    def calc(usage)
+      puts "night plan! #{usage}"
     end
   end
 end

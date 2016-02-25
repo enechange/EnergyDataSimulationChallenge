@@ -4,7 +4,8 @@ module Plan
       @day_time = plan["Day time"]
     end
 
-    def calc
+    def calc(usage)
+      puts "basic plan! #{usage}"
     end
   end
 end
