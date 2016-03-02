@@ -2,6 +2,8 @@ require "observer"
 
 module Plans
   class Loader
+    attr_reader :plans
+
     include Observable
 
     PLANS_DATA_PATH = Rails.root.join("data", "plans.json")
@@ -11,6 +13,7 @@ module Plans
     alias_method :add_plan, :add_observer
 
     def initialize
+      @plans = []
     end
 
     def self.load
@@ -20,11 +23,12 @@ module Plans
     end
 
     def load
-      add_plan(::Plan::Loader.load(plan_data[PLAN_B]), :calc)
-      add_plan(::Plan::Loader.load(plan_data[PLAN_YORU_TOKU]), :calc)
+      @plans << ::Plan::Loader.load(plan_data[PLAN_B])
+      @plans << ::Plan::Loader.load(plan_data[PLAN_YORU_TOKU])
+      @plans.each {|p| add_plan(p, :calc) }
     end
 
-    def usage_data=(usage_data)
+    def usage=(usage_data)
       changed
       notify_observers(usage_data)
     end
