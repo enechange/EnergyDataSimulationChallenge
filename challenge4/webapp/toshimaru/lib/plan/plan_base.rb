@@ -7,8 +7,8 @@ module Plan
       raise NotImplementedError
     end
 
-    def to_s
-      name
+    def as_json(options={})
+      { name => result }
     end
   end
 end

@@ -39,7 +39,7 @@ module Plans
     end
 
     def as_json(options={})
-      @plans.map(&:to_s)
+      @plans
     end
 
     private
