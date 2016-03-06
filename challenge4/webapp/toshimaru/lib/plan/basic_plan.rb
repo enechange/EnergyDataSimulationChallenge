@@ -1,14 +1,10 @@
 module Plan
   class BasicPlan < PlanBase
-    attr_reader :result
-
     def initialize(plan)
       parse_price_ranges(plan["Day time"])
     end
 
     def calc(usage)
-      # puts "basic plan! #{usage}"
-
       total_usage = calc_total_usage(usage)
       puts "total_usage = #{total_usage}"
 

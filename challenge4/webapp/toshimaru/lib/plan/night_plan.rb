@@ -4,6 +4,7 @@ module Plan
       @day_time = plan["Day time"]
       @night_time = plan["Night time"]
       @night_time_range = plan["Night time range"]
+      result = 0
     end
 
     def calc(usage)

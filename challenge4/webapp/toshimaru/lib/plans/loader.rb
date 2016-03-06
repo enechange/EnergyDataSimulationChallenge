@@ -7,8 +7,10 @@ module Plans
     include Observable
 
     PLANS_DATA_PATH = Rails.root.join("data", "plans.json")
-    PLAN_B = "Meter-Rate Lighting B"
-    PLAN_YORU_TOKU = "Yoru Toku Plan"
+    PLAN_NAMES = [
+      "Meter-Rate Lighting B",
+      "Yoru Toku Plan",
+    ]
 
     alias_method :add_plan, :add_observer
 
@@ -23,14 +25,21 @@ module Plans
     end
 
     def load
-      @plans << ::Plan::Loader.load(plan_data[PLAN_B])
-      @plans << ::Plan::Loader.load(plan_data[PLAN_YORU_TOKU])
-      @plans.each {|p| add_plan(p, :calc) }
+      PLAN_NAMES.each do |plan_name|
+        plan = ::Plan::Loader.load(plan_data[plan_name])
+        plan.name = plan_name
+        add_plan(plan, :calc)
+        @plans << plan
+      end
     end
 
     def usage=(usage_data)
       changed
       notify_observers(usage_data)
+    end
+
+    def as_json(options={})
+      @plans.map(&:to_s)
     end
 
     private
