@@ -8,7 +8,7 @@ module Plan
     end
 
     def as_json(options={})
-      { name => result }
+      { name => result.to_i }
     end
   end
 end
