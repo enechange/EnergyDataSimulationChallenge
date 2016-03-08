@@ -1,7 +1,7 @@
 module Plan
   class PlanBase
     attr_accessor :name
-    attr_reader :result
+    attr_reader :price
 
     def calc
       raise NotImplementedError
@@ -10,7 +10,7 @@ module Plan
     def as_json(options={})
       {
         name: name,
-        price: result.to_i,
+        price: price.to_i,
       }
     end
 

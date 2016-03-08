@@ -6,9 +6,8 @@ module Plan
 
     def calc(usage)
       total_usage = calc_total_usage(usage)
-      puts "total_usage = #{total_usage}"
 
-      @result = calc_price(total_usage)
+      @price = calc_price(total_usage)
     end
 
     private
