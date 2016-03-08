@@ -1,16 +1,14 @@
 class PlansController < ApplicationController
   def calculate
     plans = Plans::Loader.load
-    plans.usage = usage_data
+    plans.usage = usage_param
     render json: plans
   end
 
   private
 
-    def data_param
+    def usage_param
+      params.require :usage
     end
 
-    def usage_data
-      [([0.1] * 24)] * 30
-    end
 end
