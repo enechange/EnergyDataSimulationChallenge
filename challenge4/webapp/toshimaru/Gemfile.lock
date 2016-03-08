@@ -143,7 +143,6 @@ DEPENDENCIES
   rspec-rails
   spring
   sqlite3
-  tzinfo-data
 
 BUNDLED WITH
    1.11.2

@@ -4,8 +4,6 @@ gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 # Use Puma as the app server
 gem 'puma'
 gem 'sqlite3'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.0'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
@@ -20,6 +18,3 @@ group :development do
   gem 'spring'
   gem 'pry-rails'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
