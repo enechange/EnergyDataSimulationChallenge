@@ -19,5 +19,21 @@ RSpec.describe PlansController, :type => :controller do
       post :calculate, input_json
       expect(response.header['Content-Type']).to include 'application/json'
     end
+
+    describe "Response body" do
+      before do
+        post :calculate, input_json
+        @res = JSON.parse(response.body)
+      end
+
+      it "returns Array of Hash" do
+        expect(@res).to be_a Array
+        expect(@res.first).to be_a Hash
+      end
+
+      it "returns Array of Hash" do
+        expect(@res.count).to be 2
+      end
+    end
   end
 end
