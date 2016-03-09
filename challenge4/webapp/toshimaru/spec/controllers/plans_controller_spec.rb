@@ -7,7 +7,7 @@ RSpec.describe PlansController, :type => :controller do
       request.env["HTTP_ACCEPT"]  = 'application/json'
     end
 
-    let(:input) { [([0.3] * 24)] * 30 }
+    let(:input) { [([0.1] * 24)] * 30 }
     let(:input_json) { {usage: input}.to_json }
 
     it "returns 200" do
@@ -34,6 +34,10 @@ RSpec.describe PlansController, :type => :controller do
       it "returns Array of Hash" do
         expect(@res.count).to be 2
       end
+    end
+
+    describe "with fixture" do
+      let(:input) { puts "fixture_path #{fixture_path}" }
     end
   end
 end
