@@ -25,23 +25,23 @@ module Plan
       @middle_range = middle_min..middle_max
       @high_range = middle_max..Float::INFINITY
 
-      puts "#{@low_range} => #{@low_price}"
-      puts "#{@middle_range} => #{@middle_price}"
-      puts "#{@high_range} => #{@high_price}"
+      Rails.logger.debug "#{@low_range} => #{@low_price}"
+      Rails.logger.debug "#{@middle_range} => #{@middle_price}"
+      Rails.logger.debug "#{@high_range} => #{@high_price}"
     end
 
     def calc_price(usage)
       case usage
       when @low_range
-        puts "low!"
+        Rails.logger.debug "low!"
         @low_price * usage
       when @middle_range
-        puts "middle!"
+        Rails.logger.debug "middle!"
         base_price = @low_price * @middle_range.min
         remaining_price = @middle_price * (usage - @middle_range.min)
         base_price + remaining_price
       when @high_range
-        puts "high!"
+        Rails.logger.debug "high!"
         base_price = @low_price * @middle_range.min
         base_price2 = @middle_price * (@middle_range.max - @middle_range.min)
         remaining_price = @high_price * (usage - @middle_range.max)
