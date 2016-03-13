@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe PlansController, :type => :controller do
-  describe "#calculate" do
-    before do
-      request.env["CONTENT_TYPE"] = 'application/json'
-      request.env["HTTP_ACCEPT"]  = 'application/json'
-    end
+  before do
+    request.env["CONTENT_TYPE"] = 'application/json'
+    request.env["HTTP_ACCEPT"]  = 'application/json'
+  end
 
+  describe "#calculate" do
     let(:input) { [([0.1] * 24)] * 30 }
     let(:input_json) { {usage: input}.to_json }
 
@@ -37,7 +37,13 @@ RSpec.describe PlansController, :type => :controller do
     end
 
     describe "with fixture" do
-      let(:input) { puts "fixture_path #{fixture_path}" }
+      let(:input_path) { "#{fixture_path}/input" }
+      let(:sample_input) { File.read("#{input_path}/sample-input.json") }
+
+      it "WIP" do
+        post :calculate, sample_input
+        puts "output: #{response.body}"
+      end
     end
   end
 end
