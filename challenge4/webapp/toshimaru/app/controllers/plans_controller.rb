@@ -1,6 +1,6 @@
 class PlansController < ApplicationController
   def calculate
-    plans = Plans::Loader.load
+    plans = Loader::PlansLoader.load
     plans.usage = usage_param
     render json: plans
   end

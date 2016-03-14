@@ -1,7 +1,7 @@
 require "observer"
 
-module Plans
-  class Loader
+module Loader
+  class PlansLoader
     attr_reader :plans
 
     include Observable
@@ -26,7 +26,7 @@ module Plans
 
     def load
       PLAN_NAMES.each do |plan_name|
-        plan = ::Plan::Loader.load(plan_data[plan_name])
+        plan = ::Loader::PlanLoader.load(plan_data[plan_name])
         plan.name = plan_name
         add_plan(plan, :calc)
         @plans << plan

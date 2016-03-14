@@ -1,5 +1,5 @@
-module Plan
-  class Loader
+module Loader
+  class PlanLoader
     attr_reader :plan
 
     def initialize(plan)
@@ -12,9 +12,9 @@ module Plan
 
     def load
       if plan["Night time"]
-        NightPlan.new(plan)
+        ::Plan::NightPlan.new(plan)
       else
-        BasicPlan.new(plan)
+        ::Plan::BasicPlan.new(plan)
       end
     end
   end
