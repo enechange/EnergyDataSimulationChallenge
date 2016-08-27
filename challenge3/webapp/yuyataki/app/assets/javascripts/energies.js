@@ -30,4 +30,3 @@ $(function() {
     chart.draw(data, options);
   }
 })
-
