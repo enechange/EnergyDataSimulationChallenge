@@ -46,3 +46,14 @@ end
 
 # Use heroku
 gem 'rails_12factor', group: :production
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+end
+
+gem 'activerecord-import'
+gem 'draper'
+gem 'gon'

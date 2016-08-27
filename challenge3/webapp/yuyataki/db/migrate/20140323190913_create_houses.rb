@@ -5,7 +5,7 @@ class CreateHouses < ActiveRecord::Migration
       t.string :lastname
       t.string :city
       t.integer :num_of_people
-      t.string :has_child
+      t.boolean :has_child, default: false, null: false
 
       t.timestamps
     end

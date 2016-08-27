@@ -6,6 +6,11 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+  2.2.4
+
+* setup datas
+  rake import_data:dataset_50
+  rake import_data:house_data
 
 * System dependencies
 
