@@ -16,7 +16,7 @@ test:
 
 
 production:
-  adapter: mysql2
+  adapter: postgresql
   encoding: unicode
   database:
   pool: 5

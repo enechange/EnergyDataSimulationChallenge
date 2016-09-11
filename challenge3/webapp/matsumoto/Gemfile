@@ -65,3 +65,7 @@ gem "slim-rails"
 
 # drawgraph
 gem 'lazy_high_charts'
+
+group :production do
+  gem 'pg'
+end

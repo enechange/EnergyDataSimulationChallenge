@@ -3,7 +3,7 @@ namespace :csv_data do
   desc 'import houses data from csv file'
   task :import_house_data => :environment do
 
-    FILE_PATH = '../../data/house_data.csv'.freeze
+    FILE_PATH = './data/house_data.csv'.freeze
     COLUMN_HAS_CHILD_YES = 'Yes'.freeze
 
     csv_table  = CSV.table(FILE_PATH)
@@ -26,7 +26,7 @@ namespace :csv_data do
 
   desc 'import energies data from csv file'
   task :import_energy_data => :environment do
-    FILE_PATH = '../../data/dataset_50.csv'
+    FILE_PATH = './data/dataset_50.csv'
     
     csv_table = CSV.table(FILE_PATH)
 
