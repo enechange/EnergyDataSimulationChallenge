@@ -16,7 +16,9 @@ test:
 
 
 production:
-  <<: *default
-  database: matsumoto_production
-  username: matsumoto
-  password: <%= ENV['PRODUCTION_DB_PASSWORD'] %>
+  adapter: mysql2
+  encoding: unicode
+  database:
+  pool: 5
+  username:
+  password:
