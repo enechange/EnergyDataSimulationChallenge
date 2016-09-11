@@ -6,19 +6,16 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
+2.3.1
+* Rails version
+5.0.0
 
 * Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+bundle exec rake db:create
+bundle exec rake db:migrate
+bundle exec rake csv_data:import_house_data
+bundle exec rake csv_data:import_energy_data
+```
+* Heroku Deployment
+https://limitless-ocean-41754.herokuapp.com
