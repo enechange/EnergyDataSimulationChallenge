@@ -1,0 +1,22 @@
+p
+  strong ID:
+  = @energy.id
+p
+  strong Label:
+  = @energy.label
+p
+  strong House:
+  = @energy.house_id
+p
+  strong Date:
+  = @energy.record_at
+p
+  strong Temperature:
+  = @energy.temperature
+p
+  strong Daylight:
+  = @energy.daylight
+p
+  strong Energy production:
+  = @energy.energy_production
+= link_to 'Back', energies_path
