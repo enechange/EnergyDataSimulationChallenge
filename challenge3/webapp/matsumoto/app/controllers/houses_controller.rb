@@ -1,5 +1,5 @@
 class HousesController < ApplicationController
   def energies
-    @chart = GraphService::Houses.person_num_pie
+    @houses_graph = GraphService::Houses.person_num_pie
   end
 end
