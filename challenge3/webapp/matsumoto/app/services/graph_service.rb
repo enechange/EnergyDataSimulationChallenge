@@ -24,12 +24,8 @@ module GraphService
     def person_num_pie
       chart = LazyHighCharts::HighChart.new('pie') do |f|
         f.chart({ :defaultSeriesType => "pie", :margin => [50, 200, 60, 170] })
-        energies_by_person_num = Energy.includes(:house).all.group_by { |e| e.house.num_of_people }
-        # ep[0]: num of persons
-        # ep[1]: energy array of specific person num (sum up for pie graph)
-        data                   = energies_by_person_num.map do |ep|
-          ["#{ep[0]} persons", ep[1].reduce(0) { |sum, e| sum + e.energy_production }]
-        end
+        energies_by_person_num = Energy.joins(:house).group(:num_of_people).sum(:energy_production)
+        data = energies_by_person_num.map {|num, sum| ["#{num} persons", sum]}
         series                 = ({
             type: 'pie',
             name: "energy productions",
