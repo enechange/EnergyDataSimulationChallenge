@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  num_of_people: 1
+  has_child: false
+
+two:
+  first_name: MyString
+  last_name: MyString
+  num_of_people: 1
+  has_child: false

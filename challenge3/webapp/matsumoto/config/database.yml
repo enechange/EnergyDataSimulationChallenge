@@ -1,0 +1,24 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: matsumoto_development
+
+test:
+  <<: *default
+  database: matsumoto_test
+
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database:
+  pool: 5
+  username:
+  password:

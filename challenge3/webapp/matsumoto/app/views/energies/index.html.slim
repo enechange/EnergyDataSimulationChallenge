@@ -1,0 +1,24 @@
+h1 Listing energies
+h2 = link_to 'Cities Scatter Plot Graph', cities_energies_path, {'data-no-turbolink' => true}
+h2 = link_to 'Houses Persons Pie Graph', houses_energies_path, {'data-no-turbolink' => true}
+table
+  thead
+    tr
+      th ID
+      th Label
+      th House
+      th Date
+      th Temperature
+      th Daylight
+      th Energy production
+  tbody
+    - @energies.each do |energy|
+      tr
+        th= energy.id
+        td= energy.label
+        td= energy.house_id
+        td= energy.record_at
+        td= energy.temperature
+        td= energy.daylight
+        td= energy.energy_production
+        td= link_to 'Show', energy

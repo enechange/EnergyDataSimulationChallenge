@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  label: 1
+  record_at: 2016-09-11
+  temperature: 1.5
+  daylight: 1.5
+  energy_production: 1
+
+two:
+  label: 1
+  record_at: 2016-09-11
+  temperature: 1.5
+  daylight: 1.5
+  energy_production: 1
