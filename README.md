@@ -3,7 +3,7 @@
 Welcome to EnergyDataSimulationChallenge!
 This project is to challenge the analysis/development of big energy production data.
 We prepared several challenges.
-You can try either of them or maybe all :)
+You can try one of them or maybe all :)
 Your pull-request is always welcome.
 
 ## Instructions
