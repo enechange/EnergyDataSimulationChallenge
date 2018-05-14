@@ -1,9 +1,9 @@
 # EnergyDataSimulationChallenge
 
 Welcome to EnergyDataSimulationChallenge!
-This project is to challenge the analysis of big energy production data.
+This project is to challenge the analysis/development of big energy production data.
 We prepared several challenges.
-You can try either of them or maybe all :)
+You can try one of them or maybe all :)
 Your pull-request is always welcome.
 
 ## Instructions
@@ -24,10 +24,13 @@ Your pull-request is always welcome.
 
 ### Reward
 
-* Winner will be kindly offered the position for Paid Internship. (3-month programme, competitive salary.)
-* Accommodation (private room) and your desk at Co-Working space in Cambridge, UK will be provided for FREE if you wish to work with us here.
-* Or, you can still work from your own place remotely.
-* After Successful 3-month programme, we could offer other positions (permanent position, longer contract, additional intern etc.)
+* For Full-Time Employment
+    * Chance to final interview with CTO and engineers.
+* For Paid Internship
+    * Winner will be kindly offered the position for Paid Internship. (3-month programme, competitive salary.)
+    * Accommodation (private room) and your desk at Co-Working space in London will be provided for FREE if you wish to work with us here.
+    * Or, you can still work from your own place remotely.
+    * After Successful 3-month programme, we could offer other positions (permanent position, longer contract, additional intern etc.)
 
 ## Challenge 1 - Energy Production Data Simulation
 
@@ -238,7 +241,7 @@ sample-consumption.json plans.json
 ```
   "Day time" and "Night time" values are array [ from kWh, to kWh, unit price tax included ]
 
-```  
+```
 [ null, 120, 19.43 ] :
 means the unit price is ¥19.43 per kilo watt hour upto initial 120 kWh.
 [ 300, null, 29.93 ] :
@@ -264,5 +267,3 @@ For this challenge, you will be required to demonstrate your knowledge of the UK
 If you were to start a energy retail company in the UK through Cambridge Energy Data Lab, how would you go about doing it? Please assume that only domestic/household consumers will be the customers to the service, and the company will offer both electricity and gas tariffs. Prepare as if this were a presentation for an investor looking to partner with Cambridge Energy Data Lab in creating such a service.
 
 Please limit your presentation to no more than 15 slides, including title and/or reference pages. Send your presentation to cam_all_ml@googlegroups.com. If we like your presentation and your CV, we will contact you to arrange for a final interview in Cambridge where you will make your "pitch" for us in person.
-
-
