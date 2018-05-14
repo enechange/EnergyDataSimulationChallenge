@@ -24,10 +24,13 @@ Your pull-request is always welcome.
 
 ### Reward
 
-* Winner will be kindly offered the position for Paid Internship. (3-month programme, competitive salary.)
-* Accommodation (private room) and your desk at Co-Working space in Cambridge, UK will be provided for FREE if you wish to work with us here.
-* Or, you can still work from your own place remotely.
-* After Successful 3-month programme, we could offer other positions (permanent position, longer contract, additional intern etc.)
+* For Full-Time Employment
+    * Chance to final interview with CTO and engineers.
+* For Paid Internship
+    * Winner will be kindly offered the position for Paid Internship. (3-month programme, competitive salary.)
+    * Accommodation (private room) and your desk at Co-Working space in Cambridge, UK will be provided for FREE if you wish to work with us here.
+    * Or, you can still work from your own place remotely.
+    * After Successful 3-month programme, we could offer other positions (permanent position, longer contract, additional intern etc.)
 
 ## Challenge 1 - Energy Production Data Simulation
 
