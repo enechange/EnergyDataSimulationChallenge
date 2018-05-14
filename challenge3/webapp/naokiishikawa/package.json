@@ -1,0 +1,21 @@
+{
+  "name": "naokiishikawa",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^3.0.1",
+    "vue": "^2.4.4",
+    "vue-loader": "^13.0.4",
+    "vue-template-compiler": "^2.4.4",
+    "chart.js": "^2.7.0",
+    "vue-chartjs": "^2.8.7",
+    "vuex": "^2.4.0",
+    "axios": "^0.16.2"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.7.1"
+  },
+  "engines": {
+    "yarn": "1.0.0",
+    "npm": "5.3.0"
+  }
+}
