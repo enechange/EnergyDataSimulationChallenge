@@ -2,7 +2,7 @@
 
 Welcome to EnergyDataSimulationChallenge!
 
-This project allows applicants to demonstrate their ability to analyze and develop software the makes use of big energy production data. Please complete one (or more) of the several challenges we have prepared. Pull-requests are also welcome.
+This project allows applicants to demonstrate their ability to analyze and develop software that makes use of big energy production data. Please complete one (or more) of the several challenges we have prepared. Pull-requests are also welcome.
 
 ## Instructions
 
