@@ -25,10 +25,10 @@ This project allows applicants to demonstrate their ability to analyze and devel
 * For Full-Time Employment
     * A chance at a final interview with the CTO and engineers.
 * For Paid Internship
-    * A paid internship offer (3 month internship program with competitive salary)
+    * A paid internship offer (3 month internship programme with competitive salary)
     * Includes FREE accommodation (private room) and own desk at coworking space in London if you wish to work with us here.
     * Optionally, you may work remotely from a location of your choice.
-    * After successful 3 month program, you may be offered an extension, or another position (permanent, longer contract, additional intern, etc..)
+    * After successful 3 month programme, you may be offered an extension, or another position (permanent, longer contract, additional intern, etc..)
 
 ## Challenge 1 - Energy Production Data Simulation
 
