@@ -1,6 +1,6 @@
 <h1>データ表示の方向性</h1>
 <p>その1 ： 政府、電力会社、小売業者といった供給側が、政策や供給、販売戦略の立案のため各都市や各家庭の生産量の分布や差異を見る</p>
-<p>その2 ： 一般消費者が、自身の生産量を相対的に把握するため、同一条件の家庭とを比較する</p>
+<p>その2 ： 一般消費者が、自身の生産量を相対的に把握するため、同一条件の家庭と比較する</p>
 <p>ここでは、「その1.」を採用した。</p>
 <p>理由は、家庭単位で見る場合、世帯年収や職業等のパラメータが大きな役割を持つ可能性が高いため、サンプルデータだけで分析してもあまり有益な情報は得られないと判断したため。</p>
 
@@ -58,7 +58,11 @@
       <tr>
         <td><%= energy.cityname %></td>
         <td><%= energy.num_of_people %></td>
-        <td><%= energy.has_child ? 'Yes' : 'No' %></td>
+        <% if Rails.env.development? %>
+          <td><%= energy.has_child ? 'Yes' : 'No' %></td>
+        <% elsif Rails.env.production? %>
+          <td><%= energy.has_child == 't' ? 'Yes' : 'No' %></td>
+        <% end %>
     <% end %>
     <td>
       <%= energy.energy_production.round(1) %>
