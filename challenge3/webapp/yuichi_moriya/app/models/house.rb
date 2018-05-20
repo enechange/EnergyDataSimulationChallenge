@@ -10,12 +10,12 @@ class House < ApplicationRecord
     House
       .joins(:energies)
       .select("
-        houses.cityname cityname, 
-        energies.year year,
-        energies.month month,
-        avg(energies.temperature) temperature,
-        avg(energies.daylight) daylight,
-        avg(energies.energy_production) energy_production
+        houses.cityname as cityname, 
+        energies.year as year,
+        energies.month as month,
+        avg(energies.temperature) as temperature,
+        avg(energies.daylight) as daylight,
+        avg(energies.energy_production) as energy_production
       ")
       .group('houses.cityname, energies.year, energies.month')
       .order('houses.cityname, energies.year, energies.month')
@@ -25,11 +25,11 @@ class House < ApplicationRecord
     House
       .joins(:energies)
       .select("
-        houses.cityname cityname, 
-        houses.num_of_people num_of_people,
-        houses.has_child has_child,
-        energies.year year,
-        energies.month month,
+        houses.cityname as cityname, 
+        houses.num_of_people as num_of_people,
+        houses.has_child as has_child,
+        energies.year as year,
+        energies.month as month,
         avg(energies.energy_production) energy_production
       ")
       .group('houses.cityname, houses.num_of_people, houses.has_child, energies.year, energies.month')
