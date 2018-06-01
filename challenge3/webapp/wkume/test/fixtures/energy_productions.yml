@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  label: 1
+  house_id: 1
+  year: 2000
+  month: 1
+  temperature: 1.5
+  daylight: 1.5
+  energy_production: 1.5
+
+two:
+  label: 2
+  house: 2
+  year: 2002
+  month: 2
+  temperature: 1.5
+  daylight: 1.5
+  energy_production: 1.5
