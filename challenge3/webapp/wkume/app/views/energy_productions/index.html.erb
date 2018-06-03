@@ -1,6 +1,8 @@
 <h1>EnergyDataSimulationChallenge#3</h1>
 <div style="width: 70%;">
+  <h2>都市ごとの戸数比較</h2>
   <canvas id="bar_chart"></canvas>
+  <h2>平均エネルギー量/戸数の月推移を都市ごとに比較</h2>
   <canvas id="line_chart"></canvas>
 </div>
 
@@ -24,15 +26,20 @@ var bar_chart = new Chart(ctx_bar, {
     options: {
         title:  {
             display: true,
-            text: "Number of house by Cities"
+            text: "Number of house by Cities",
+            fontSize: 16,
         },
         scales: {
             yAxes: [{
                 ticks: {
                     beginAtZero:true,
-                }
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'num of house',
+                },
             }]
-        }
+        },
     }
 });
 
@@ -70,7 +77,8 @@ var line_chart = new Chart(ctx_line, {
     options: {
         title:  {
             display: true,
-            text: "Energy Production (Average, per house) trend by Cities"
+            text: "Energy Production (Average, per house) trend by Cities",
+            fontSize: 16,
         },
         scales: {
             yAxes: [{
