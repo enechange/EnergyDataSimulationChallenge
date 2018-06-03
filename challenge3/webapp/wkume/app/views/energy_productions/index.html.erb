@@ -1,27 +1,76 @@
-<h1>EnergyProductions#index</h1>
-<p>Find me in app/views/energy_productions/index.html.erb</p>
+<h1>EnergyDataSimulationChallenge#3</h1>
 <%= debug(params) if Rails.env.development? %>
 
-<canvas id="myChart" width="450" height="200"></canvas>
+<canvas id="bar_chart" width="450" height="200"></canvas>
+<canvas id="line_chart" width="450" height="200"></canvas>
+  
 <script>
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
+var labels_bar = gon.labels_bar;
+var data_bar = gon.data_bar;
+var ctx_bar = document.getElementById("bar_chart").getContext('2d');
+var bar_chart = new Chart(ctx_bar, {
     type: 'bar',
     data: {
-        labels: [1,2,3,4,5],
+        labels: labels_bar,
         datasets: [{
-            label: "サンプル",
-            data: [1,2,3,4,5],
-            backgroundColor: 'rgba(255, 99, 132, 1.0)',
-            borderColor: 'rgba(255, 50, 132, 1.0)',
-            fill: false
+            data: data_bar,
+            label: "Number of house",
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
         }]
     },
     options: {
         title:  {
-          display: true,
-          text: "タイトル"
+            display: true,
+            text: "Number of house by Cities"
+        },
+        
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                }
+            }]
         }
     }
 });
+
+var labels_line = gon.labels_line;
+var ctx_line = document.getElementById("line_chart").getContext('2d');
+var line_chart = new Chart(ctx_line, {
+    type: 'line',
+    data: {
+        labels: labels_line,
+        datasets: [
+            {
+                label: "London",
+                data: <%= @data_line['London'] %>,
+                backgroundColor: 'rgba(255, 99, 132, 1.0)',
+                borderColor: 'rgba(255, 50, 132, 1.0)',
+                fill: false
+            },
+            {
+                label: "Cambridge",
+                data: <%= @data_line['Cambridge'] %>,
+                backgroundColor: 'rgba(99, 255, 132, 1.0)',
+                borderColor: 'rgba(50, 255, 132, 1.0)',
+                fill: false
+            },
+            {
+                label: "Oxford",
+                data: <%= @data_line['Oxford'] %>,
+                backgroundColor: 'rgba(99, 132, 255, 1.0)',
+                borderColor: 'rgba(50, 132, 255, 1.0)',
+                fill: false
+            },
+        ]
+    },
+    options: {
+        title:  {
+            display: true,
+            text: "Energy Production (Average, per house) trend by Cities"
+        }
+    }
+});
+
 </script>
