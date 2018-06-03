@@ -16,45 +16,24 @@ class EnergyProductionsController < ApplicationController
     
     
     # prepare labels for line chart
-    labels = energy_production.select(:label).distinct
+    label_list = energy_production.distinct.pluck(:label).sort
     
-    label_list = []
-    labels.each do |l|
-      label_list << l.label
-    end
-    label_list = label_list.sort
     # pass labels
     gon.labels_line = self.class.label_month_converter(energy_production, label_list)
     
     
     # prepare city list for grouping
-    cities = House.select(:city).distinct
-    city_list = []
-    cities.each do |c|
-      city_list << c.city
-    end
+    city_list = House.distinct.pluck(:city)
     
     # prepare data for line chart
-    @data_line = {}
+    gon.data_line = {}
     city_list.each do |city|
       
       eph_h = energy_production_house.where(houses: { city: city })
       
-      production = []
-      label_list.each do |label|
-        
-        eph_h_l = eph_h.where(label: label)
-        
-        ep_list = []
-        eph_h_l.each do |e|
-          ep_list << e.energy_production
-        end
-        # calculate average of energy production
-        ep_ave = ave_calc(ep_list) 
-        production << ep_ave
-      end
       # pass data
-      @data_line[city] = production
+      production = eph_h.group("label").average("energy_production")
+      gon.data_line[city] = production.values.map{ |v| v.round(1)}
     end
     
   end

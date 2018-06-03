@@ -1,13 +1,15 @@
 <h1>EnergyDataSimulationChallenge#3</h1>
-<%= debug(params) if Rails.env.development? %>
+<div style="width: 70%;">
+  <canvas id="bar_chart"></canvas>
+  <canvas id="line_chart"></canvas>
+</div>
 
-<canvas id="bar_chart" width="450" height="200"></canvas>
-<canvas id="line_chart" width="450" height="200"></canvas>
-  
+<%= debug(params) if Rails.env.development? %>
 <script>
 var labels_bar = gon.labels_bar;
 var data_bar = gon.data_bar;
 var ctx_bar = document.getElementById("bar_chart").getContext('2d');
+ctx_bar.width = 500;
 var bar_chart = new Chart(ctx_bar, {
     type: 'bar',
     data: {
@@ -24,7 +26,6 @@ var bar_chart = new Chart(ctx_bar, {
             display: true,
             text: "Number of house by Cities"
         },
-        
         scales: {
             yAxes: [{
                 ticks: {
@@ -36,6 +37,7 @@ var bar_chart = new Chart(ctx_bar, {
 });
 
 var labels_line = gon.labels_line;
+var data_line = gon.data_line;
 var ctx_line = document.getElementById("line_chart").getContext('2d');
 var line_chart = new Chart(ctx_line, {
     type: 'line',
@@ -44,21 +46,21 @@ var line_chart = new Chart(ctx_line, {
         datasets: [
             {
                 label: "London",
-                data: <%= @data_line['London'] %>,
+                data: data_line['London'],
                 backgroundColor: 'rgba(255, 99, 132, 1.0)',
                 borderColor: 'rgba(255, 50, 132, 1.0)',
                 fill: false
             },
             {
                 label: "Cambridge",
-                data: <%= @data_line['Cambridge'] %>,
+                data: data_line['Cambridge'],
                 backgroundColor: 'rgba(99, 255, 132, 1.0)',
                 borderColor: 'rgba(50, 255, 132, 1.0)',
                 fill: false
             },
             {
                 label: "Oxford",
-                data: <%= @data_line['Oxford'] %>,
+                data: data_line['Oxford'],
                 backgroundColor: 'rgba(99, 132, 255, 1.0)',
                 borderColor: 'rgba(50, 132, 255, 1.0)',
                 fill: false
@@ -69,6 +71,13 @@ var line_chart = new Chart(ctx_line, {
         title:  {
             display: true,
             text: "Energy Production (Average, per house) trend by Cities"
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                }
+            }]
         }
     }
 });
