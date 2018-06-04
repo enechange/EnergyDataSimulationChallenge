@@ -1,0 +1,31 @@
+<h1>Charts</h1>
+
+<%= column_chart @data_for_multiple_culumn_chart,
+  title: "Regional average energy production by number of family members",
+  xtitle: "Num of Family Menbers",
+  ytitle: "Average Energy Production" %>
+
+<%= bar_chart @data_for_bar_chart,
+    title: "Number of Houses by City",
+    xtitle: "Number of Houses",
+    ytitle: "City" %>
+
+    <h2>仮説</h2>
+
+    <ul>
+    <li>データの項目にDaylightやEnergyProductionがあり、またhouse_dataというファイルもあるため、太陽光発電関連である</li>
+
+    <li>家族の人数（Number of People）が多ければ住宅に設置できるソーラーパネルの面積も広くなり、発電量も多くなる</li>
+
+    <li>地域による発電量の差もあると考えられるため、地域別に検証する</li>
+    </ul>
+
+    <h2>考察</h2>
+
+    <ul>
+    <li>家族の人数（Number of People）の違いによる発電量の差の有意性はほとんどないと言える</li>
+
+    <li>また、今回の検証では家庭（House）の合計サンプル数を50としたため、OxfordやCambridgeのサンプル数が10前後となってしまい、個の影響が大きくなった</li>
+
+    <li>このデータが顧客ユーザー一覧だとすると、全体の半数以上がLondonであり、非常に高い割合を占めている</li>
+    </ul>

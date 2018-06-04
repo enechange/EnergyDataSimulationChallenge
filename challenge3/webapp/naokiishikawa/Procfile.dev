@@ -1,0 +1,4 @@
+web: bundle exec rails s -p 3000
+db: /usr/local/bin/mysqld --gdb
+# watcher: ./bin/webpack-watcher
+hot: ./bin/webpack-dev-server

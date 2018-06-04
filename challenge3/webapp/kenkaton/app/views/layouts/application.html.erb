@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EnergyDataSimulationChallenge</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+  </head>
+
+  <header class="navbar navbar-default">
+      <div class="container">
+        <%= link_to "EnergyDataSimulationChallenge", root_path, class: "h1" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Charts",   root_path %></li>
+            <li><%= link_to "Houses",   'houses' %></li>
+            <li><%= link_to "Energies", 'energies' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  <body>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </body>
+</html>
