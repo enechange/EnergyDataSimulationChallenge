@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<head>
+  <title>Enechange Challenge</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= Gon::Base.render_data %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+
+<body>
+  <%= yield %>
+</body>
+
+<%= javascript_include_tag 'application' %>
+</html>

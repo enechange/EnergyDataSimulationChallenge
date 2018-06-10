@@ -1,0 +1,7 @@
+bundle exec rails g scaffold house first_name:string last_name:string city:string num_of_people:integer has_child:boolean
+bundle exec rails g scaffold energy_production label:integer house:integer year:integer month:integer temperature:float daylight:float energy_production:float
+bundle exec rake db:create
+bundle exec rake db:migrate
+bundle exec rake db:seed
+bundle install
+bundle exec rails generate jquery:datatables:install
