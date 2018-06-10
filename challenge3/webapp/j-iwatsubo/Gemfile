@@ -5,7 +5,7 @@ gem 'rails', '5.2.0'
 gem 'bootsnap'
 gem 'listen'
 gem 'pg'
-gem 'sqlite3'
+gem 'sqlite3', group: :development
 gem 'annotate'
 gem 'better_errors'
 gem 'byebug'
