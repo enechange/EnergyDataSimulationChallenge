@@ -1,0 +1,93 @@
+<h1>EnergyDataSimulationChallenge#3</h1>
+<div style="width: 70%;">
+  <h2>都市ごとの戸数比較</h2>
+  <canvas id="bar_chart"></canvas>
+  <h2>平均エネルギー量/戸数の月推移を都市ごとに比較</h2>
+  <canvas id="line_chart"></canvas>
+</div>
+
+<%= debug(params) if Rails.env.development? %>
+<script>
+var labels_bar = gon.labels_bar;
+var data_bar = gon.data_bar;
+var ctx_bar = document.getElementById("bar_chart").getContext('2d');
+ctx_bar.width = 500;
+var bar_chart = new Chart(ctx_bar, {
+    type: 'bar',
+    data: {
+        labels: labels_bar,
+        datasets: [{
+            data: data_bar,
+            label: "Number of house",
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+        }]
+    },
+    options: {
+        title:  {
+            display: true,
+            text: "Number of house by Cities",
+            fontSize: 16,
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'num of house',
+                },
+            }]
+        },
+    }
+});
+
+var labels_line = gon.labels_line;
+var data_line = gon.data_line;
+var ctx_line = document.getElementById("line_chart").getContext('2d');
+var line_chart = new Chart(ctx_line, {
+    type: 'line',
+    data: {
+        labels: labels_line,
+        datasets: [
+            {
+                label: "London",
+                data: data_line['London'],
+                backgroundColor: 'rgba(255, 99, 132, 1.0)',
+                borderColor: 'rgba(255, 50, 132, 1.0)',
+                fill: false
+            },
+            {
+                label: "Cambridge",
+                data: data_line['Cambridge'],
+                backgroundColor: 'rgba(99, 255, 132, 1.0)',
+                borderColor: 'rgba(50, 255, 132, 1.0)',
+                fill: false
+            },
+            {
+                label: "Oxford",
+                data: data_line['Oxford'],
+                backgroundColor: 'rgba(99, 132, 255, 1.0)',
+                borderColor: 'rgba(50, 132, 255, 1.0)',
+                fill: false
+            },
+        ]
+    },
+    options: {
+        title:  {
+            display: true,
+            text: "Energy Production (Average, per house) trend by Cities",
+            fontSize: 16,
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                }
+            }]
+        }
+    }
+});
+
+</script>
