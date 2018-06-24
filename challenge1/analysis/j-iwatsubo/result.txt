@@ -1,0 +1,5 @@
+< Test Result >
+- N = 500
+- MAPE = 6.501(%)
+- C = 8
+- gamma = 5e-05

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Houses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>City</th>
+      <th>Num of people</th>
+      <th>Has child</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+        <td><%= house.id %></td>
+        <td><%= house.first_name %></td>
+        <td><%= house.last_name %></td>
+        <td><%= house.city %></td>
+        <td><%= house.num_of_people %></td>
+        <td><%= house.has_child %></td>
+        <td><%= link_to 'Show', house %></td>
+        <!--
+        <td><%= link_to 'Edit', edit_house_path(house) %></td>
+        <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New House', new_house_path %>

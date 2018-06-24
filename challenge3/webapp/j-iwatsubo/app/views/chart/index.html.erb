@@ -1,0 +1,34 @@
+<head>
+  <title>Energy Production</title>
+</head>
+<body>
+  <h2>Challenge3 Data Viewer</h2>
+  <div id="tabs" style="width: 100%; height: 100%;">
+    <!-- Tabs -->
+    <ul>
+      <li><a href="#challenge3_tabs-1">House</a></li>
+      <li><a href="#challenge3_tabs-2">Energy Production</a></li>
+      <li><a href="#challenge3_tabs-3">Chart</a></li>
+    </ul>
+
+    <!-- House Data Search -->
+    <div id="challenge3_tabs-1">
+      <%= render partial: 'house_data_table',
+                 locals: {house: @house} =%>
+    </div>
+
+    <!-- Energy Production Data Search -->
+    <div id="challenge3_tabs-2">
+      <%= render partial: 'energy_production_data_table',
+                 locals: {energy_production: @energy_production} =%>
+    </div>
+
+    <!-- Chart -->
+    <div id="challenge3_tabs-3">
+      <%= render partial: 'data_chart',
+          locals: {limit: @limit.to_s,
+                   house_ave_list: @house_ave_list,
+                   house_max_list: @house_max_list} =%>
+    </div>
+  </div>
+</body>

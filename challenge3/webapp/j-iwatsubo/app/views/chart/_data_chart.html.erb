@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="left_wrap">
+    <h3># Average Production Top<%= limit %></h3>
+    <canvas id="house_ave_chart" height="250"></canvas>
+    <table class="data_chart_table">
+      <thead>
+        <th>Rank</th>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>City</th>
+        <th>Average</th>
+      </thead>
+      <tbody>
+        <% house_ave_list.each_with_index do |item, i| %>
+        <% h = item[0] %>
+        <% ave = item[1] %>
+        <tr>
+          <td align="center"><%= i + 1 %></td>
+          <td align="center"><%= h[:id] %></td>
+          <td align="center"><%= h[:first_name] %></td>
+          <td align="center"><%= h[:last_name] %></td>
+          <td align="center"><%= h[:city] %></td>
+          <td align="center"><%= ave %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="right_wrap">
+    <h3># Max Production Top<%= limit %></h3>
+    <canvas id="house_max_chart" height="250"></canvas>
+    <table class="data_chart_table">
+      <thead>
+        <th>Rank</th>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>City</th>
+        <th>Year</th>
+        <th>Month</th>
+        <th>Max</th>
+      </thead>
+      <tbody>
+        <% house_max_list.each_with_index do |item, i| %>
+        <% h = item[0] %>
+        <% e = item[1] %>
+        <% max = item[2] %>
+        <tr>
+          <td align="center"><%= i + 1 %></td>
+          <td align="center"><%= h[:id] %></td>
+          <td align="center"><%= h[:first_name] %></td>
+          <td align="center"><%= h[:last_name] %></td>
+          <td align="center"><%= h[:city] %></td>
+          <td align="center"><%= e[:year] %></td>
+          <td align="center"><%= e[:month] %></td>
+          <td align="center"><%= max %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
