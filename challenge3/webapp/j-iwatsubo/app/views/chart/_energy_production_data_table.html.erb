@@ -1,0 +1,26 @@
+<table id="energy_production_data_table">
+  <thead>
+    <th>ID</th>
+    <th>Label</th>
+    <th>House</th>
+    <th>Year</th>
+    <th>Month</th>
+    <th>Temperature</th>
+    <th>Daylight</th>
+    <th>Energy Production</th>
+  </thead>
+  <tbody>
+    <% energy_production.each do |e| %>
+    <tr>
+      <td align="center"><%= e[:id] %></td>
+      <td align="center"><%= e[:label] %></td>
+      <td align="center"><%= e[:house_id] %></td>
+      <td align="center"><%= e[:year] %></td>
+      <td align="center"><%= e[:month] %></td>
+      <td align="center"><%= e[:temperature] %></td>
+      <td align="center"><%= e[:daylight] %></td>
+      <td align="center"><%= e[:energy_production] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

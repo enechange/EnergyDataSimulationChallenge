@@ -1,0 +1,21 @@
+<table id="house_data_table">
+  <thead>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Num of People</th>
+    <th>City</th>
+  </thead>
+  <tbody>
+    <% house.each do |h| %>
+    <tr>
+      <td align="center"><%= h[:id] %></td>
+      <td align="center"><%= h[:first_name] %></td>
+      <td align="center"><%= h[:last_name] %></td>
+      <td align="center"><%= h[:num_of_people] %></td>
+      <td align="center"><%= h[:city] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+

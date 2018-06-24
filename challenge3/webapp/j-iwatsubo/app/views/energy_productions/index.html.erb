@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Energy Productions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Label</th>
+      <th>House</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Temperature</th>
+      <th>Daylight</th>
+      <th>Energy production</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @energy_productions.each do |energy_production| %>
+      <tr>
+        <td><%= energy_production.id %></td>
+        <td><%= energy_production.label %></td>
+        <td><%= energy_production.house %></td>
+        <td><%= energy_production.year %></td>
+        <td><%= energy_production.month %></td>
+        <td><%= energy_production.temperature %></td>
+        <td><%= energy_production.daylight %></td>
+        <td><%= energy_production.energy_production %></td>
+        <td><%= link_to 'Show', energy_production %></td>
+        <!--
+        <td><%= link_to 'Edit', edit_energy_production_path(energy_production) %></td>
+        <td><%= link_to 'Destroy', energy_production, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Energy Production', new_energy_production_path %>
