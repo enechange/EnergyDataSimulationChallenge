@@ -3,3 +3,7 @@
 
 # data files
 data/user/user_*.csv
+
+# ruby/python version
+.ruby-version
+.python-version
