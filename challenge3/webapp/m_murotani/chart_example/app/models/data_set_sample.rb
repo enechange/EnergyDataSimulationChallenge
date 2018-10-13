@@ -1,0 +1,2 @@
+class DataSetSample < ApplicationRecord
+end
