@@ -6,7 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
-/vendor/bundler/
+/vendor/bundle/
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -16,7 +16,6 @@
 
 # Ignore uploaded files in development
 /storage/*
-!/storage/.keep
 
 /node_modules
 /yarn-error.log
@@ -27,4 +26,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# ruby mine
 .idea
+
+chart_example_
