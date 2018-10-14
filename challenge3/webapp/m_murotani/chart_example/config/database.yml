@@ -52,5 +52,6 @@ test:
 production:
   <<: *default
   database: chart_example_production
-  username: <%= ENV['CHART_EXAMPLE_DATABASE_USER'] %>
-  password: <%= ENV['CHART_EXAMPLE_DATABASE_PASSWORD'] %>
+  database: heroku_bf4bb435da33fe1
+  username: b6ea43bdff65fc
+  password: <%= ENV['DATABASE_PASSWORD'] %>
