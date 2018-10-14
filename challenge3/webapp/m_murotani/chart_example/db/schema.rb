@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_10_13_131553) do
     t.integer "month"
     t.float "temperature"
     t.float "day_light"
+    t.integer "engery_production"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["month"], name: "index_data_set_samples_on_month"
