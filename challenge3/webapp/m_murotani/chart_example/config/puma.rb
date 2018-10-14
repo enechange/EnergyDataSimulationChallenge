@@ -32,3 +32,4 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+bind "unix://~/EnergyDataSimulationChallenge/challenge3/webapp/m_murotani/chart_example/tmp/sockets/puma.sock"
