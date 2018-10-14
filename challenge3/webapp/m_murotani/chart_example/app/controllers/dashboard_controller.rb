@@ -2,7 +2,8 @@ class DashboardController < ApplicationController
   def index
   end
   def show
-    personal = {'name': 'Yamada', 'old': 28}
-    render json: personal
+    city_sum = HouseData.group(:city).sum(:num_of_people)
+    temperature_avg = DataSetSample.group(:year).sum(:temperature)
+    render json: {city_sum: city_sum, temperature_avg: temperature_avg}
   end
 end
