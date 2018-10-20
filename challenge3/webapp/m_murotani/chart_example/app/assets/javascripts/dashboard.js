@@ -59,7 +59,7 @@ window.dashbords.dataHandler = function(svname) {
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: Object.values(result["temperature_avg"]),
+                    labels: Object.keys(result["temperature_avg"]),
                     datasets: [
                         {
                             label: 'Average of tempreture of each year',
