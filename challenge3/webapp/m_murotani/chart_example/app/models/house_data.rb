@@ -7,6 +7,11 @@ class HouseData < ApplicationRecord
   validates :city, presence: true
   validates :num_of_people, presence: true, numericality: { only_integer: true }
   validates :has_child, presence: true
+
+  def self.get_average_tempreture
+    HouseData.group(:city).sum(:num_of_people)
+  end
+
   def self.import(file)
     begin
       CSV.foreach(file, headers: true) do |row|
@@ -27,4 +32,5 @@ class HouseData < ApplicationRecord
       p 'Error has occoured, check the format of csv'
     end
   end
+
 end

@@ -7,6 +7,11 @@ class DataSetSample < ApplicationRecord
   validates :month, presence: true, numericality: { only_integer: true }, length: { in: 1..2 }
   validates :temperature, presence: true, numericality: { only_integer: false }
   validates :day_light, presence: true, numericality: { only_integer: false }
+
+  def self.get_average_data
+    DataSetSample.group(:year).average(:temperature)
+  end
+
   def self.import(file)
     begin
       CSV.foreach(file, headers: true) do |row|
