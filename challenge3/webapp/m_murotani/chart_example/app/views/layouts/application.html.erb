@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChartExample</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js' %>
+    <%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.js' %>
+
+
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
