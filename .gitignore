@@ -8,10 +8,10 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+#/log/*
+#/tmp/*
+#!/log/.keep
+#!/tmp/.keep
 
 
 .byebug_history
@@ -40,14 +40,14 @@
 
 ### Node ###
 # Logs
-logs
+# logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 # Runtime data
-pids
+# pids
 *.pid
 *.seed
 *.pid.lock
@@ -152,10 +152,8 @@ Temporary Items
 *.rbc
 capybara-*.html
 .rspec
-/log
-/tmp
-/db/*.sqlite3
-/db/*.sqlite3-journal
+# /log
+# /tmp
 /public/system
 /coverage/
 /spec/tmp
@@ -174,7 +172,7 @@ pickle-email-*.html
 
 ## Environment normalization:
 /.bundle
-/vendor/bundle
+# /vendor/bundle
 
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
@@ -216,26 +214,10 @@ bower.json
 /spec/examples.txt
 /test/tmp/
 /test/version_tmp/
-/tmp/
+# /tmp/
 
 # Used by dotenv library to load environment variables.
 # .env
-
-## Specific to RubyMotion:
-.dat*
-.repl_history
-build/
-*.bridgesupport
-build-iPhoneOS/
-build-iPhoneSimulator/
-
-## Specific to RubyMotion (use of CocoaPods):
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# vendor/Pods/
 
 ## Documentation cache and generated files:
 /.yardoc/
