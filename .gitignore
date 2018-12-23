@@ -8,10 +8,10 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-#/log/*
-#/tmp/*
-#!/log/.keep
-#!/tmp/.keep
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
 
 
 .byebug_history
@@ -172,7 +172,7 @@ pickle-email-*.html
 
 ## Environment normalization:
 /.bundle
-# /vendor/bundle
+/vendor/bundle
 
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
@@ -214,7 +214,6 @@ bower.json
 /spec/examples.txt
 /test/tmp/
 /test/version_tmp/
-# /tmp/
 
 # Used by dotenv library to load environment variables.
 # .env
