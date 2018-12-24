@@ -1,0 +1,12 @@
+#container
+script type="text/javascript"
+  == %Q[chart_title = "#{I18n.t('charts.highchart.title')}"]
+script type="text/javascript"
+  == "seasons = %s" % @data_sets.map { |d| I18n.l(d.collect_date, format: '%Y/%m') }.to_json
+script type="text/javascript"
+  == "temperatures = %s" % series_temperatures(@data_sets).to_json
+script type="text/javascript"
+  == "daylights = %s" % series_daylights(@data_sets).to_json
+script type="text/javascript"
+  == "energy_productions = %s" % series_energy_productions(@data_sets).to_json
+script src="assets/javascripts/highchart.js?#{Time.current.to_i}"
