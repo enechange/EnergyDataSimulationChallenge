@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/', to: 'graphs#index'
+  get 'scatter', to: 'graphs#scatter'
+  get 'line', to: 'graphs#line'
 end
