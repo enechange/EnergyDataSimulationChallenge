@@ -13,4 +13,12 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require Chart.min
+//= require jquery
+//= require jquery_ujs
+//= require draw_chart.js
+//= require google-palette/palette.js
+//= require foundation
 //= require_tree .
+
+$(function(){ $(document).foundation(); });
