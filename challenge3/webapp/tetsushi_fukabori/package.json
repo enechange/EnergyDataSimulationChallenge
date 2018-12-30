@@ -1,5 +1,7 @@
 {
   "name": "tetsushi_fukabori",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "google-palette": "^1.1.0"
+  }
 }

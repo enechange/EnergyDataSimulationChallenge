@@ -62,3 +62,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'activerecord-import'
+gem 'chart-js-rails'
+gem 'jquery-rails'
+gem 'foundation-rails'
+gem 'sprockets-es6'
