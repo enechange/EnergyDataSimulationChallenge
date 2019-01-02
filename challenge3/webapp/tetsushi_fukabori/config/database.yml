@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: eds_challenge3_production
-  username: tetsushi_fukabori
-  password: <%= ENV['TETSUSHI_FUKABORI_DATABASE_PASSWORD'] %>
+  host: <%= Rails.application.credentials.db[:host] %>
+  database: <%= Rails.application.credentials.db[:database] %>
+  username: <%= Rails.application.credentials.db[:username] %>
+  password: <%= Rails.application.credentials.db[:password] %>
