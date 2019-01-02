@@ -33,6 +33,11 @@ class Energy < ApplicationRecord
                has_child,
                daylight,
                production")
+             .order("
+               date,
+               city,
+               num_of_people,
+               has_child")
     data.each do |dat|
       label = SCATTER_KEY_LIST.include?(key) ? dat.send(key.to_sym) : 'all'
       label = House.cities.invert[label].capitalize if key == 'city'
@@ -52,9 +57,9 @@ class Energy < ApplicationRecord
     date_axis = []
     grouping_key = LINE_KEY_LIST.include?(key) ? key.to_s : "\'all\'"
     selection = "CONCAT(year, '-', LPAD(month, 2, '0')) AS date, #{grouping_key} AS grouping_key, AVG(production) AS production"
-    grouping = "date, #{grouping_key}"
+    grouping = "date, grouping_key"
 
-    data = joins(:house).select(selection).group(grouping).order('date')
+    data = joins(:house).select(selection).group(grouping).order("date, grouping_key")
     prev_date = ''
     data.each do |dat|
       label = dat.grouping_key
