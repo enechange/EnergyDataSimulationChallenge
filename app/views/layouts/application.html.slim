@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title HelloEnergy
+    = csrf_meta_tags
+    = csp_meta_tag
+    script src='assets/javascripts/lib/highcharts.js'
+    script src='assets/javascripts/lib/series-label.js'
+    script src='assets/javascripts/lib/exporting.js'
+    script src='assets/javascripts/lib/export-data.js'
+  body
+    = yield
