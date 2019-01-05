@@ -23,6 +23,9 @@
 class DataSet < ApplicationRecord
   belongs_to :house
 
+  scope :with_house_ids, ->(hids) { hids.size > 0 ? where(house_id: hids) : self }
+  scope :order_by_date, -> { order(:year).order(:month) }
+
   def collect_date
     @collect_date ||= Time.zone.parse("%04d/%02d/01" % [year, month])
   end
