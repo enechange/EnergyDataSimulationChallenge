@@ -31,3 +31,11 @@
 
 en:
   hello: "Hello world"
+  charts:
+    highchart:
+      title: "Electrical energy usage"
+  models:
+    data_set:
+      temperature: "temperature"
+      daylight: "daylight"
+      energy_production: "energy_production"
