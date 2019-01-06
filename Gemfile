@@ -20,14 +20,16 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'fast_jsonapi'
 gem 'activerecord-import'
 gem 'slim-rails'
 
 group :development, :test do
+  gem 'annotate'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug'
+  gem 'pry-rails'
   # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'annotate'
 end
 
 group :development do
@@ -40,8 +42,11 @@ group :development do
 end
 
 group :test do
+  gem 'factory_bot_rails'
+  gem 'guard-rspec'
+  gem 'rspec-parameterized'
   gem 'rspec-rails'
-  gem 'factory_bot'
+
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
