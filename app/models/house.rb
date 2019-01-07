@@ -17,6 +17,6 @@
 #
 
 class House < ApplicationRecord
-  scope :with_city, ->(c) { c.length > 0 ? where(city: c) : self }
-  scope :with_num_of_people, ->(n) { n > 0 ? where(num_of_people: n) : self }
+  scope :with_city, ->(c = '') { (!c.blank?) ? where(city: c) : self }
+  scope :with_num_of_people, ->(n = 0) { n.to_i > 0 ? where(num_of_people: n) : self }
 end
