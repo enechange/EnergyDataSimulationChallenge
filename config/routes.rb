@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :highchart, only: [:index] do
     collection do
-      get ':city', to: 'highchart#index'
+      get ":city", to: "highchart#index"
     end
   end
 end
