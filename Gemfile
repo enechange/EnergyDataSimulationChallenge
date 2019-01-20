@@ -23,6 +23,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'fast_jsonapi'
 gem 'activerecord-import'
 gem 'slim-rails'
+gem 'health_check'
 
 group :development, :test do
   gem 'annotate'
@@ -36,6 +37,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'capistrano-rbenv'
   gem 'capistrano-rails'
+  gem 'capistrano3-puma'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
