@@ -12,8 +12,8 @@ class HousesController < ApplicationController
           meta: {
             cities: houses.map(&:city).uniq.compact,
             num_of_peoples: houses.map(&:num_of_people).uniq.compact,
-          }
-        }
+          },
+        },
       ).serializable_hash
     end
 end
