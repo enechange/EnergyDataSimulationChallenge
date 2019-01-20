@@ -48,7 +48,7 @@ Rake::Task['deploy:clobber_assets'].clear
 Rake::Task['deploy:normalize_assets'].clear
 Rake::Task['deploy:rollback_assets'].clear
 namespace :deploy do
-  task :cleanup_assets do
+  task :cleanup_uncompile_assets do
     on roles(:web) do
       subdirs = Dir.glob('app/assets/javascripts/**/**.js').map { |f| shared_path.join(File.dirname(f.gsub(/\Aapp/, 'public'))) }.uniq
       subdirs.each do |f|
@@ -58,32 +58,17 @@ namespace :deploy do
     end
   end
 
-  task :clobber_assets do
+  task :deliver_uncompile_assets do
     on roles(:web) do
-    end
-  end
-
-  task :normalize_assets do
-    on roles(:web) do
-    end
-  end
-
-  task :rollback_assets do
-    on roles(:web) do
-    end
-  end
-
-  namespace :assets do
-    desc "Precompile assets locally and then rsync to web servers"
-    task :precompile do
-      on roles(:web) do
-        Dir.glob('app/assets/javascripts/**/**.js').each do |f|
-          subdir = shared_path.join(File.dirname(f.gsub(/\Aapp/, 'public')))
-          execute :mkdir, "-p", subdir
-          info "Uploading #{f} to public"
-          upload! File.open(f), subdir.join(File.basename(f))
-        end
+      Dir.glob('app/assets/javascripts/**/**.js').each do |f|
+        subdir = shared_path.join(File.dirname(f.gsub(/\Aapp/, 'public')))
+        execute :mkdir, "-p", subdir
+        info "Uploading #{f} to public"
+        upload! File.open(f), subdir.join(File.basename(f))
       end
     end
   end
 end
+
+after 'deploy:symlink:release', 'deploy:cleanup_uncompile_assets'
+after 'deploy:cleanup_uncompile_assets', 'deploy:deliver_uncompile_assets'
