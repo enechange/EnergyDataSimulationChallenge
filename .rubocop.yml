@@ -1,0 +1,21 @@
+inherit_gem:
+  onkcop:
+    - "config/rubocop.yml"
+    - "config/rails.yml"
+    - "config/rspec.yml"
+
+AllCops:
+  TargetRubyVersion: 2.5
+  Exclude:
+    - "bin/*"
+    - "config/deploy.rb"
+    - "config/deploy/**/*"
+    - "db/schema.rb"
+    - "db/seeds/*"
+    - "Gemfile"
+    - "Gemfile.lock"
+    - "log/**/*"
+    - "node_modules/**/*"
+    - "public/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
