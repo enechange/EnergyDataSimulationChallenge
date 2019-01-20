@@ -6,17 +6,18 @@ class Highchart::IndexService
   end
 
   def execute
-    house_ids = House.with_city(form.cap_city)
-                     .with_num_of_people(form.num_of_people)
-                     .pluck(:id)
+    house_ids = House.with_city(form.cap_city).
+                  with_num_of_people(form.num_of_people).
+                  pluck(:id)
 
-    data_sets = DataSet.with_house_ids(house_ids)
-                       .order_by_date
-                       .group_by(&:collect_date)
-                       .map do |collect_date, data_sets_per_month|
-                         next unless form.in_time?(collect_date)
-                         calc_avg(init_avg_data_set(collect_date), data_sets_per_month)
-                       end
+    data_sets = DataSet.with_house_ids(house_ids).
+                  order_by_date.
+                  group_by(&:collect_date).
+                  map do |collect_date, data_sets_per_month|
+                    next unless form.in_time?(collect_date)
+
+                    calc_avg(init_avg_data_set(collect_date), data_sets_per_month)
+                  end
 
     data_sets.compact
   end
