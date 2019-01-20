@@ -1,9 +1,9 @@
 HealthCheck.setup do |config|
   # uri prefix (no leading slash)
-  config.uri = 'health_check'
+  config.uri = "health_check"
 
   # Text output upon success
-  config.success = 'success'
+  config.success = "success"
 
   # Timeout in seconds used when checking smtp server
   config.smtp_timeout = 60.0

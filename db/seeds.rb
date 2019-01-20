@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'csv'
+require "csv"
 
 class Seed
   attr_reader :logger
@@ -21,10 +21,11 @@ class Seed
     @std_logger.info(msg)
   end
 
+  # rubocop:disable Metrics/AbcSize, Lint/UselessAssignment
   def execute
-    Dir.glob(Rails.root.join('db', 'seeds', '*')).each do |f, i|
-      model_klass = File.basename(f, '.csv').classify.constantize
-      log_info('------------------------------')
+    Dir.glob(Rails.root.join("db", "seeds", "*")).each do |f, _i|
+      model_klass = File.basename(f, ".csv").classify.constantize
+      log_info("------------------------------")
       log_info("truncate: #{model_klass.table_name}")
       rs = ApplicationRecord.connection.execute "TRUNCATE TABLE #{model_klass.table_name};"
 
@@ -37,6 +38,7 @@ class Seed
       log_info("updated: #{model_klass.table_name} #{rs.inspect}")
     end
   end
+  # rubocop:enable Metrics/AbcSize, Lint/UselessAssignment
 end
 
 Seed.new.execute

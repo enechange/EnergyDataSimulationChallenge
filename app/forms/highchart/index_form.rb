@@ -22,6 +22,7 @@ class Highchart::IndexForm
   TRACKS.each do |k|
     define_method k do
       return if params[k].blank?
+
       ivar_key = "@#{k}".to_sym
       instance_variable_get(ivar_key) || instance_variable_set(ivar_key, Time.zone.parse("#{params[k]}01"))
     end
@@ -30,6 +31,7 @@ class Highchart::IndexForm
   def in_time?(collect_date)
     return false if track_from && track_from > collect_date
     return false if track_to && track_to < collect_date
+
     true
   end
 end

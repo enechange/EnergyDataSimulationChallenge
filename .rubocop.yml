@@ -21,3 +21,6 @@ AllCops:
     - "spec/spec_helper.rb"
     - "tmp/**/*"
     - "vendor/**/*"
+
+Layout/SpaceInsideBlockBraces:
+  SpaceBeforeBlockParameters: true
