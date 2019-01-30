@@ -171,6 +171,22 @@ The first line gives the format name. `ID` column values in this file are same t
 You can refer to sample implementation in `challenge3/webapp/sample/`
 But please bear in mind that it is a rough implementation and may be broken in some places.
 
+
+## Challenge 3-2 - Web Application
+
+For those who would like challenging one, we prepared more complex data.
+
+### Input
+
+Input dataset files are in the `challenge3/data-2/` directory. Data format is same.
+
+### Output
+
+1. Please place ALL source code in `challenge3/webapp/YOURNAME/`
+2. Write deployed URL in Pull Request Comment.
+3. **Document any technical decisions, trade-offs, problems etc. in `challenge3/webapp/YOURNAME/REPORT.md` in English or Japanese.**
+
+
 ## Challenge 4 - WEB-API Server
 
 Please create a web api server to calculate electricity charges.
