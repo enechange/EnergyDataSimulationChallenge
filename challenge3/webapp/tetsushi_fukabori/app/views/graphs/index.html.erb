@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Graphs</h1>
+<div class="grid-container">
+  <div class="grid-x">
+    <div class="cell large-6">
+      Key:
+      <%= select :graph, :key, @keys, include_blank: true %>
+    </div>
+  </div>
+  <div class="grid-x">
+    <h2>Scatter: Daylight v.s. Production</h2>
+    <div id="scatter_area" class="cell large-12">
+      <canvas id="scatter_chart" width="500" height="500"></canvas>
+    </div>
+  </div>
+  <div class="grid-x">
+    <h2>Line: Date v.s. Average Production</h2>
+    <div id="line_area" class="cell large-12">
+      <canvas id="line_chart" width="1500" height="500"></canvas>
+    </div>
+  </div>
+</div>
