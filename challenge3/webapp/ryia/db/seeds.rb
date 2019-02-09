@@ -5,3 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "csv"
+
+CSV.foreach('db/house_data.csv', headers: true) do |row|
+  flag = 0;
+  flag = 1 if row['has_child'] == 'Yes';
+  House.create(firstname: row['Firstname'],
+                  lastname: row['Lastname'],
+                  city: row['City'],
+                  num_of_people: row['num_of_people'],
+                  has_child: flag
+                  )
+end
+
+CSV.foreach('db/dataset_50.csv', headers: true) do |row|
+  Energy.create(label: row['Label'],
+                  house_id: row['House'],
+                  year: row['Year'],
+                  month: row['Month'],
+                  temperature: row['Temperature'],
+                  daylight: row['Daylight'],
+                  energy_production: row['EnergyProduction'],
+                  )
+end
