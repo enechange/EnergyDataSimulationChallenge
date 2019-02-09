@@ -1,1 +1,12 @@
-<h1>Test</h1>
+<h1 style="text-align:center;">EnergyDataSimulationChallenge3</h1>
+
+<h2 style="text-align:center;">都市別の総エネルギー生産量</h2>
+<%= line_chart @sum_energy_production, xtitle: "City", ytitle: "Total Energy Production" %>
+
+<h2 style="text-align:center;">月別の平均日照時間、平均エネルギー生産量、平均気温</h2>
+<%= column_chart [
+  { name: "日照時間", data: @avg_daylight },
+  { name: "エネルギー生産量", data: @avg_energy_production },
+  { name: "気温", data: @avg_temperature },
+  ]
+%>
