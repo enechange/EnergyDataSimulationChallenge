@@ -1,0 +1,12 @@
+<h1><%= @house_energy_usage.firstname %> <%= @house_energy_usage.lastname %>さんのエネルギー使用量</h1>
+<table>
+  <tr>
+    <th>Year</th>
+    <th>Month</th>
+    <th>Temperature</th>
+    <th>Daylight</th>
+    <th>EnergyProduction</th>
+  </tr>
+  <%= render partial: 'house_energy_usages/show/energy_production',
+             collection: @house_energy_usage.energy_productions %>
+</table>

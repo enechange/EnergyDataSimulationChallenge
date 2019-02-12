@@ -1,0 +1,13 @@
+<h1>家庭エネルギー使用量 一覧</h1>
+<table>
+  <tr>
+    <th></th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>City</th>
+    <th>num_of_people</th>
+    <th>has_child</th>
+  </tr>
+  <%= render partial: 'house_energy_usages/index/house_energy_usage',
+             collection: @house_energy_usages %>
+</table>
