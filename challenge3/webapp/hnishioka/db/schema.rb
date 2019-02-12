@@ -10,6 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_02_12_002026) do
+
+  create_table "energy_productions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "label"
+    t.integer "house"
+    t.integer "year"
+    t.integer "month"
+    t.float "temperature"
+    t.float "daylight"
+    t.integer "energy_production"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house"], name: "index_energy_productions_on_house"
+  end
+
+  create_table "house_energy_usages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "city"
+    t.integer "num_of_people"
+    t.boolean "has_child"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
