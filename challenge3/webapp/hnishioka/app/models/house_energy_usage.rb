@@ -1,5 +1,5 @@
 class HouseEnergyUsage < ApplicationRecord
-  has_many :energy_production, foreign_key: 'house'
+  has_many :energy_productions, foreign_key: 'house'
 
   def self.import(path)
     require 'csv'
