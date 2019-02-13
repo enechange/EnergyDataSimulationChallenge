@@ -1,3 +1,29 @@
-// Place all the styles related to the house_energy_usages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.container {
+  width :100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 1200px){
+  .container {
+    max-width: 1140px;
+  }
+}
+
+
+table {
+  text-align: center;
+  table-layout: fixed;
+  width: 100%;
+  .number-cell {
+    text-align: right;
+  }
+}
+
+.return-link-button {
+  display: block;
+  text-align: right;
+  margin-top: 1em;
+}
