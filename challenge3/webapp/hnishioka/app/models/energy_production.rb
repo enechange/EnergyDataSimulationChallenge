@@ -13,4 +13,8 @@ class EnergyProduction < ApplicationRecord
       create!(row.to_h)
     end
   end
+
+  def date_label
+    "#{year}/#{month}"
+  end
 end
