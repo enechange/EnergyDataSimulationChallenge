@@ -52,3 +52,4 @@ production:
   database: energy_data_simulator_production
   username: energy_data_simulator
   password: <%= ENV['ENERGY_DATA_SIMULATOR_DATABASE_PASSWORD'] %>
+  host: localhost
