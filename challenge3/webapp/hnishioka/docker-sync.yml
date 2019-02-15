@@ -1,0 +1,5 @@
+version: '2'
+syncs:
+  energy_data_simulator-web-sync:
+    src: '.'
+    sync_excludes: ['.git']

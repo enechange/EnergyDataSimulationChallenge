@@ -1,0 +1,9 @@
+<tr>
+  <td><%= house_energy_usage.id %></td>
+  <td><%= house_energy_usage.firstname %></td>
+  <td><%= house_energy_usage.lastname %></td>
+  <td><%= house_energy_usage.city %></td>
+  <td class="number-cell"><%= house_energy_usage.num_of_people %></td>
+  <td><%= boolean_decorator(house_energy_usage.has_child) %></td>
+  <td><%= link_to 'データを見る', house_energy_usage_path(house_energy_usage) %></td>
+</tr>

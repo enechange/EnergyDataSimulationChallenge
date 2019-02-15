@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  db:
+    image: mysql:latest
+    container_name: energy_data_simulator_db
+    env_file:
+      - ./etc/.env.docker
+    volumes:
+      - ./etc/default_authentication.cnf:/etc/mysql/conf.d/default_authentication.cnf
+      - store:/var/lib/mysql
+    ports:
+      - '3300:3306'
+  web:
+    build: .
+    container_name: energy_data_simulator_web
+    command: /bin/bash -c 'rm -rf tmp/pids/server.pid && bundle exec rails s -p 3000 -b 0.0.0.0'
+    env_file:
+      - ./etc/.env.docker
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=webpack
+    volumes:
+      - .:/energy_data_simulator
+    ports:
+      - "127.0.0.1:3000:3000"
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+
+volumes:
+  store:
+    driver: local
