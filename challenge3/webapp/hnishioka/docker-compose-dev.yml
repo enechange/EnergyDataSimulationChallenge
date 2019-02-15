@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  web:
+    volumes:
+      - energy_data_simulator-web-sync:/energy_data_simulator:nocopy
+
+volumes:
+  energy_data_simulator-web-sync:
+    external: true
