@@ -5,7 +5,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+
+    <%= Gon::Base.render_data %>
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
