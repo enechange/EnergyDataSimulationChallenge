@@ -1,6 +1,6 @@
 require 'csv'
 
-house_csv = CSV.read("#{Rails.root.to_s}/tmp/house_data.csv", headers: true)
+house_csv = CSV.read("#{Rails.root.to_s}/data/house_data.csv", headers: true)
 House.import(house_csv.map{|r|
   House.new(
     csv_house_id:  r['ID'].to_i,
@@ -11,7 +11,7 @@ House.import(house_csv.map{|r|
     has_child:     r['has_child'] == 'Yes')
 })
 
-energy_csv = CSV.read("#{Rails.root.to_s}/tmp/dataset_50.csv", headers: true)
+energy_csv = CSV.read("#{Rails.root.to_s}/data/dataset_50.csv", headers: true)
 Energy.import(energy_csv.map{|r|
   Energy.new(
     csv_energy_id:     r['ID'],

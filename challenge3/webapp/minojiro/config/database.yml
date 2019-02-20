@@ -18,5 +18,4 @@ test:
   database: <%= ENV.fetch('APP_DATABASE_NAME') { 'app_test' } %>
 
 production:
-  <<: *default
-  database: <%= ENV.fetch('APP_DATABASE_NAME') { 'app_production' } %>
+  url: <%= ENV['DATABASE_URL'] %>
