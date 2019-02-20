@@ -10,3 +10,16 @@ house_csv.map{|r|
     num_of_people: r['num_of_people'].to_i,
     has_child:     r['has_child'] == 'Yes')
 }
+
+energy_csv = CSV.read("#{Rails.root.to_s}/tmp/dataset_50.csv", headers: true)
+energy_csv.map{|r|
+  Energy.create(
+    csv_energy_id:     r['ID'],
+    label:             r['Label'],
+    year:              r['Year'],
+    month:             r['Month'],
+    temperature:       r['Temperature'],
+    daylight:          r['Daylight'],
+    energy_production: r['EnergyProduction'],
+    house:             House.find_by(csv_house_id: r['House']))
+}
