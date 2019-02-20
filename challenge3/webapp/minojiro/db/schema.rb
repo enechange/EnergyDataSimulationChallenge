@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_02_20_114031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "houses", force: :cascade do |t|
+    t.integer "csv_house_id", null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.string "city"
+    t.integer "num_of_people"
+    t.boolean "has_child"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["csv_house_id"], name: "index_houses_on_csv_house_id", unique: true
+  end
 
 end
