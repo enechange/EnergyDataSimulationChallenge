@@ -5,6 +5,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= include_gon %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <%= javascript_include_tag 'home' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
 
