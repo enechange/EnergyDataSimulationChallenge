@@ -1,0 +1,42 @@
+<h1><%= "#{@house.full_name}'s Energy" %></h1>
+
+<table>
+  <tr align='left'>
+    <th>City:</th>
+    <td><%= @house.city %></td>
+  </tr>
+  <tr align='left'>
+    <th>Num of people:</th>
+    <td><%= @house.num_of_people %></td>
+  </tr>
+  <tr align='left'>
+    <th>Child:</th>
+    <td><%= @house.has_child %></td>
+  </tr>
+</table>
+
+<h2>Monthly Energy Porduction Chart</h2>
+<div id='house_chart'></div>
+
+<table>
+  <tr>
+    <th>Year</th>
+    <th>Month</th>
+    <th>Temperature</th>
+    <th>Daylight</th>
+    <th>Energy Production</th>
+  </tr>
+  <%- @energies.each do |energy| %>
+    <tr>
+      <td><%= energy.year %></td>
+      <td><%= energy.month %></td>
+      <td><%= energy.temperature %></td>
+      <td><%= energy.daylight %></td>
+      <td><%= energy.energy_production %></td>
+    </tr>
+  <%- end %>
+</table>
+
+<%= link_to 'All Houses Data', houses_path %>
+
+<%= javascript_include_tag 'house_chart' %>
