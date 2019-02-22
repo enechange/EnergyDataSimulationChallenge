@@ -33,3 +33,6 @@ yarn-debug.log*
 
 # Ignore .idea
 /.idea/
+
+# Ignore bundle
+/vendor/bundle/
