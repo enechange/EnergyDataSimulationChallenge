@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_22_151908) do
+ActiveRecord::Schema.define(version: 2019_02_22_155040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "energy_records", force: :cascade do |t|
+    t.bigint "house_id"
+    t.integer "energy_records", null: false
+    t.integer "origin_id", null: false
+    t.integer "label", null: false
+    t.integer "house", null: false
+    t.integer "year", null: false
+    t.integer "month", null: false
+    t.float "temperature", null: false
+    t.float "daylight", null: false
+    t.integer "energy_production", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_energy_records_on_house_id"
+  end
 
   create_table "houses", force: :cascade do |t|
     t.boolean "houses", default: false, null: false
@@ -27,4 +43,5 @@ ActiveRecord::Schema.define(version: 2019_02_22_151908) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "energy_records", "houses"
 end
