@@ -1,19 +1,35 @@
 <div class="container">
   <h1 class="app-title">Energy Data Simulation Challenge #3</h1>
-
-  <div class="chart">
-    <h2 class="chart-title">1. Energy production / City</h2>
-    <div class="chart-wrap">
+  <div class="card">
+    <h2 class="card-title">1. Energy production / City</h2>
+    <div class="card-body">
       <canvas id="city_production"></canvas>
     </div>
   </div>
-
-  <div class="chart">
-    <h2 class="chart-title">2. Energy production / Daylight</h2>
-    <div class="chart-wrap">
+  <div class="card">
+    <h2 class="card-title">2. Energy production / Daylight</h2>
+    <div class="card-body">
       <canvas id="daylight_production"></canvas>
     </div>
   </div>
-
-  <p class="repository"><a href="https://github.com/camenergydatalab/EnergyDataSimulationChallenge" target="_blank">repository</a></p>
+  <table class="table">
+    <tr>
+      <th>id</th>
+      <th>fullname</th>
+      <th>city</th>
+      <th>num of people</th>
+      <th>has child</th>
+      <th></th>
+    </tr>
+    <% @houses.each do |house| %>
+      <tr>
+        <td><%= house.csv_house_id %></td>
+        <td><%= house.fullname %></td>
+        <td><%= house.city %></td>
+        <td><%= house.num_of_people %></td>
+        <td><%= house.has_child ? 'Yes' : 'No' %></td>
+        <td><a href="/<%= house.id %>">show energies</a></td>
+      </tr>
+    <% end %>
+  </table>
 </div>

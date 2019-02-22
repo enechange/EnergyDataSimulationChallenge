@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="card">
+    <h2 class="card-title"><%= "#{@house.id}. #{@house.fullname}" %></h2>
+    <div class="card-body">
+      <table class="table">
+        <tr>
+          <th>id</th>
+          <th>fullname</th>
+          <th>city</th>
+          <th>num of people</th>
+          <th>has child</th>
+        </tr>
+        <tr>
+          <td><%= @house.csv_house_id %></td>
+          <td><%= @house.fullname %></td>
+          <td><%= @house.city %></td>
+          <td><%= @house.num_of_people %></td>
+          <td><%= @house.has_child ? 'Yes' : 'No' %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <h2 class="card-title">energies</h2>
+    <div class="card-body">
+      <table class="table">
+        <tr>
+          <th>id</th>
+          <th>label</th>
+          <th>year</th>
+          <th>month</th>
+          <th>temperature</th>
+          <th>daylight</th>
+          <th>energy production</th>
+        </tr>
+        <% @house.energies.each do |energy| %>
+          <tr>
+            <td><%= energy.csv_energy_id %></td>
+            <td><%= energy.label %></td>
+            <td><%= energy.year %></td>
+            <td><%= energy.month %></td>
+            <td><%= energy.temperature %></td>
+            <td><%= energy.daylight %></td>
+            <td><%= energy.energy_production %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <p class="bottom-link"><a href="/">back</a></p>
+</div>

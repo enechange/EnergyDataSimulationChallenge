@@ -31,19 +31,19 @@ p {
   }
 }
 
-.chart {
+.card {
   margin-bottom: 35px;
   padding: 35px 25px;
   background: #ffffff;
 }
 
-.chart-title {
+.card-title {
   margin-bottom: 1em;
   text-align: center;
   font-size: 1.2rem;
 }
 
-.repository {
+.bottom-link {
   margin: 6em 0;
   text-align: center;
 }
@@ -51,4 +51,13 @@ p {
 .container {
   max-width: 800px;
   margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+
+  th, td {
+    text-align: left;
+    padding: 0.5em 0;
+  }
 }
