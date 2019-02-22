@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @houses = House.all
-    gon.energies = Energy.all.map(&:chart_data)
+    gon.daylight_energy_production = Energy.daylight_energy_production
     gon.city_energy_production = Energy.city_energy_production
   end
 

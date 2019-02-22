@@ -64,5 +64,5 @@ var drawDaylightProductionChart = function (id, data) {
 
 window.onload = function () {
   drawCityProductionChart('city_production', gon.city_energy_production);
-  drawDaylightProductionChart('daylight_production', gon.energies);
+  drawDaylightProductionChart('daylight_production', gon.daylight_energy_production);
 };
