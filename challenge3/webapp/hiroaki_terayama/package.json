@@ -3,7 +3,10 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "axios": "^0.18.0",
+    "chart.js": "^2.7.3",
     "vue": "^2.6.7",
+    "vue-chartjs": "^3.4.0",
     "vue-loader": "14.2.2",
     "vue-template-compiler": "^2.6.7"
   },
