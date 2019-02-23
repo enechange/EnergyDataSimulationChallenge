@@ -1,0 +1,10 @@
+<%= form_with url: houses_path, method: :post, multipart: true do |f| %>
+  <div class="field">
+    <%= f.label "CSVファイルを選択" %><br>
+    <%= f.file_field :csv_file %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "CSVファイルを読み込む"%>
+  </div>
+<% end %>
