@@ -13,20 +13,32 @@ class House < ApplicationRecord
 
   def self.import_csv(path)
     begin
+      data_array = []
       CSV.foreach(path, headers: true) do |row|
         data = House.find_by(origin_id: row['ID'].to_i) || new
-        data.attributes = {
-            origin_id: row['ID'].to_i,
-            firstname: row['Firstname'],
-            lastname: row['Lastname'],
-            city: row['City'],
-            num_of_people: row['num_of_people'].to_i,
-            has_child: row['has_child']
-        }
-        data.save!
+        if data.id
+          set_attributes(data, row)
+          data.save!
+        else
+          data_array << set_attributes(data, row)
+        end
       end
+      self.import(data_array)
     end
-  rescue
+  rescue => e
     # TODO: 例外処理する
+    p e
   end
+
+  private
+    def self.set_attributes(data, row)
+      data.attributes = {
+          origin_id: row['ID'].to_i,
+          firstname: row['Firstname'],
+          lastname: row['Lastname'],
+          city: row['City'],
+          num_of_people: row['num_of_people'].to_i,
+          has_child: row['has_child']
+      }
+    end
 end

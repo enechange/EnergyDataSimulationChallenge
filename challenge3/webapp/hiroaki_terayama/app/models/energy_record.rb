@@ -13,24 +13,37 @@ class EnergyRecord < ApplicationRecord
   validates :energy_production, presence: true
 
   def self.import_csv(path)
+    # TODO: houseと関係付ける必要ある？
     begin
+      data_array = []
       CSV.foreach(path, headers: true) do |row|
         data = EnergyRecord.find_by(origin_id: row['ID'].to_i) || new
-        data.attributes = {
-            origin_id: row['ID'].to_i,
-            label: row['Label'].to_i,
-            house_origin_id: row['House'].to_i,
-            year: row['Year'].to_i,
-            month: row['Month'].to_i,
-            temperature: row['Temperature'].to_f,
-            daylight: row['Daylight'].to_f,
-            energy_production: row['EnergyProduction'].to_i,
-            house_id: House.find_by(origin_id: row['House'].to_i)&.id
-        }
-        data.save!
+        if data.id
+          set_attributes(data, row)
+          data.save!
+        else
+          data_array << set_attributes(data, row)
+        end
       end
+      self.import(data_array)
     end
-  rescue
+  rescue => e
     # TODO: 例外処理する
+    p e
   end
+
+  private
+    def self.set_attributes(data, row)
+      data.attributes = {
+          origin_id: row['ID'].to_i,
+          label: row['Label'].to_i,
+          house_origin_id: row['House'].to_i,
+          year: row['Year'].to_i,
+          month: row['Month'].to_i,
+          temperature: row['Temperature'].to_f,
+          daylight: row['Daylight'].to_f,
+          energy_production: row['EnergyProduction'].to_i,
+          house_id: House.find_by(origin_id: row['House'].to_i)&.id
+      }
+    end
 end
