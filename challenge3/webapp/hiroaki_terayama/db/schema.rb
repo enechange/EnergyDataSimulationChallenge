@@ -17,10 +17,9 @@ ActiveRecord::Schema.define(version: 2019_02_22_155040) do
 
   create_table "energy_records", force: :cascade do |t|
     t.bigint "house_id"
-    t.integer "energy_records", null: false
     t.integer "origin_id", null: false
     t.integer "label", null: false
-    t.integer "house", null: false
+    t.integer "house_origin_id", null: false
     t.integer "year", null: false
     t.integer "month", null: false
     t.float "temperature", null: false
@@ -32,7 +31,6 @@ ActiveRecord::Schema.define(version: 2019_02_22_155040) do
   end
 
   create_table "houses", force: :cascade do |t|
-    t.boolean "houses", default: false, null: false
     t.integer "origin_id", null: false
     t.string "firstname", null: false
     t.string "lastname", null: false

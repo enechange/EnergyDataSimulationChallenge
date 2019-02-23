@@ -1,11 +1,36 @@
+require 'csv'
 class EnergyRecord < ApplicationRecord
+  # TODO: origin_idを主キーにする(?)
   belongs_to :house
 
-  validates :origin_id, presence: true, numericality: { only_integer: true }
+  validates :origin_id, presence: true, uniqueness: true, numericality: { only_integer: true }
   validates :label, presence: true, numericality: { only_integer: true }
-  validates :house, presence: true, numericality: { only_integer: true }
+  validates :house_origin_id, presence: true, numericality: { only_integer: true }
   validates :year, presence: true, numericality: { only_integer: true }, length: { is: 4 }
   validates :month, presence: true, numericality: { only_integer: true }, length: { in: 1..2 }
   validates :temperature, presence: true, numericality: { only_integer: false }
-  validates :day_light, presence: true, numericality: { only_integer: false }
+  validates :daylight, presence: true, numericality: { only_integer: false }
+  validates :energy_production, presence: true
+
+  def self.import_csv(path)
+    begin
+      CSV.foreach(path, headers: true) do |row|
+        data = EnergyRecord.find_by(origin_id: row['ID'].to_i) || new
+        data.attributes = {
+            origin_id: row['ID'].to_i,
+            label: row['Label'].to_i,
+            house_origin_id: row['House'].to_i,
+            year: row['Year'].to_i,
+            month: row['Month'].to_i,
+            temperature: row['Temperature'].to_f,
+            daylight: row['Daylight'].to_f,
+            energy_production: row['EnergyProduction'].to_i,
+            house_id: House.find_by(origin_id: row['House'].to_i)&.id
+        }
+        data.save!
+      end
+    end
+  rescue
+    # TODO: 例外処理する
+  end
 end
