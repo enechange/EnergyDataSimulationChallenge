@@ -49,6 +49,8 @@ GEM
     bootsnap (1.4.0)
       msgpack (~> 1.0)
     builder (3.2.3)
+    bulma-rails (0.7.4)
+      sass (~> 3.5)
     byebug (11.0.0)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -182,6 +184,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import
   bootsnap (>= 1.1.0)
+  bulma-rails
   byebug
   coffee-rails (~> 4.2)
   foreman

@@ -8,6 +8,6 @@ class ChartsController < ApplicationController
 
   private
     def search_params
-      params.require(:q).permit(:city, :num_of_people, :has_child) if params[:q]
+      params.require(:q).permit(:city) if params[:q]
     end
 end
