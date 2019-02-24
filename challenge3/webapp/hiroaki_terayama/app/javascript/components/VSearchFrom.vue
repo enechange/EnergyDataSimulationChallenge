@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>あなたのお住まいの地域を選んでください。</div>
+    <div class="subtitle">Which area do you live in ?</div>
     <form @change.prevent="exec">
       <div v-for="cityName in cityList" :key="cityName">
         <input type="radio" :id="cityName" :value="cityName" v-model="params['q']['city']">

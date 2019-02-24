@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: hiroaki_terayama_production
-  username: hiroaki_terayama
-  password: <%= ENV['HIROAKI_TERAYAMA_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
