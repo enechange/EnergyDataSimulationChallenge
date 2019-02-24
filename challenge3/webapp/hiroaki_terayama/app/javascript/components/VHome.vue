@@ -4,7 +4,13 @@
     <div class="section">
       <div class="container">
         <v-search-form @search="search"></v-search-form>
-        <line-chart v-if="!isLoading" :defaultData="defaultData" :dataAry="dataAry"></line-chart>
+        <div>
+          <div>判定</div>
+          <div>You will get <span class="has-text-primary">{{ judge() }}</span> energy than average !</div>
+        </div>
+        <line-chart v-if="!isLoading" :allData="allData" :selectedData="selectedData"></line-chart>
+        <v-table :allData="allData" :selectedData="selectedData"
+                 :aveAll="aveAll" :aveSelected="aveSelected"></v-table>
       </div>
     </div>
   </div>
@@ -16,35 +22,41 @@
   import VHeader from './VHeader'
   import LineChart from './LineChart'
   import VSearchForm from '../components/VSearchFrom'
+  import VTable from '../components/VTable'
   const paramsSerializer = (params) => qs.stringify(params)
 
   export default {
     components: {
-      VHeader, LineChart, VSearchForm
+      VHeader, LineChart, VSearchForm, VTable
     },
     data () {
       return {
         isLoading: true,
         charts: [],
-        dataAry: [],
-        defaultData: [],
+        selectedData: [],
+        allData: [],
+        aveAll: 0,
+        aveSelected: 0,
       }
     },
     watch: {
       charts (data) {
         this.setAry(this.convertToAry(data))
       },
-      dataAry () {
-        if (this.dataAry.length < 1) alert('Sorry, there is not enough data yet.')
+      allData (data) {
+        this.aveAll = this.ave_ary(data)
+      },
+      selectedData (data) {
+        this.aveSelected = this.ave_ary(data)
       }
     },
     methods: {
       init () {
-        this.fetchCharts({ q: { } } )
+        this.fetchCharts( { q: { } } )
       },
       fetchCharts (params) {
         axios
-            .get('/charts', { params: params , paramsSerializer })
+            .get('/charts', { params: params , paramsSerializer } )
             .then(response => {
               this.charts = response.data
               if (this.isLoading === true) this.showGraph()
@@ -53,10 +65,10 @@
         })
       },
       setAry (ary) {
-        if (this.defaultData.length < 1) {
-          this.defaultData = ary
+        if (this.allData.length < 1) {
+          this.allData = ary
         } else {
-          this.dataAry = ary
+          this.selectedData = ary
         }
       },
       convertToAry (data) {
@@ -72,6 +84,23 @@
       search (params) {
         this.fetchCharts(params)
       },
+      ave_ary (ary) {
+        if (ary.length > 0) {
+          return Math.round(this.sum_ary(ary) / ary.length * 100) / 100
+        }
+      },
+      sum_ary (ary) {
+        return ary.reduce(function(prev, current, i, ary) {
+          return prev + current
+        })
+      },
+      judge () {
+        if (this.aveAll < this.aveSelected) {
+          return 'more'
+        } else {
+          return 'less'
+        }
+      }
     },
     created () {
       this.init()

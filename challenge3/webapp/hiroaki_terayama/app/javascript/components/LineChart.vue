@@ -4,15 +4,15 @@
   export default {
     mixins: [Line, mixins.reactiveData],
     name: 'LineChart',
-    props: ['defaultData', 'dataAry'],
+    props: ['allData', 'selectedData'],
     data () {
       return {
         chartData: {
-          labels: [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ] ,
+          labels: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ] ,
           datasets: [
             {
               label: 'energy_production / month(your area)',
-              backgroundColor: 'red',
+              backgroundColor: '#ff3860',
               pointBackgroundColor: 'white',
               borderWidth: 1,
               pointBorderColor: '#249EBF',
@@ -53,19 +53,19 @@
       }
     },
     watch: {
-      dataAry () {
+      selectedData () {
         this.updateChart()
       }
     },
     methods: {
       updateChart () {
         const newChartData = Object.assign({}, this.chartData)
-        newChartData.datasets[0].data = this.dataAry
+        newChartData.datasets[0].data = this.selectedData
         this.chartData = newChartData
       },
       setDefault () {
         const newChartData = Object.assign({}, this.chartData)
-        newChartData.datasets[1].data  = this.defaultData
+        newChartData.datasets[1].data  = this.allData
         this.chartData = newChartData
       }
     },
