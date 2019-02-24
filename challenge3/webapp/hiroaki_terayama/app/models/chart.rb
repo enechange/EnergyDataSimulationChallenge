@@ -15,6 +15,6 @@ class Chart
         hash[e[0]] = e[1]
       end
     end
-    hash.each { |key, value| hash[key] =  value / (ary.size / 12) }
+    Hash[ hash.each { |key, value| hash[key] =  value / (ary.size / 12) }.sort ]
   end
 end
