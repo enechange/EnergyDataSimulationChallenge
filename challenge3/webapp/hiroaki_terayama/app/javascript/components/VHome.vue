@@ -1,20 +1,26 @@
 <template>
   <div>
-    <v-search-form @search="search"></v-search-form>
-    <line-chart v-if="!isLoading" :defaultData="defaultData" :dataAry="dataAry"></line-chart>
+    <v-header></v-header>
+    <div class="section">
+      <div class="container">
+        <v-search-form @search="search"></v-search-form>
+        <line-chart v-if="!isLoading" :defaultData="defaultData" :dataAry="dataAry"></line-chart>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
   import axios from 'axios'
   import qs from 'qs'
-  import LineChart from './charts/LineChart'
+  import VHeader from './VHeader'
+  import LineChart from './LineChart'
   import VSearchForm from '../components/VSearchFrom'
   const paramsSerializer = (params) => qs.stringify(params)
 
   export default {
     components: {
-      LineChart, VSearchForm
+      VHeader, LineChart, VSearchForm
     },
     data () {
       return {
@@ -29,7 +35,7 @@
         this.setAry(this.convertToAry(data))
       },
       dataAry () {
-        if (this.dataAry.length < 1) alert('Sorry, there is not enough data.')
+        if (this.dataAry.length < 1) alert('Sorry, there is not enough data yet.')
       }
     },
     methods: {
