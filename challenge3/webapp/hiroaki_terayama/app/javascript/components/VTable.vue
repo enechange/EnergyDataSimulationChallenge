@@ -3,19 +3,19 @@
     <table class="table">
       <thead>
         <tr>
-          <th>which area</th>
+          <th>area</th>
           <th v-for="month in labels" :key="month">{{ month }}</th>
           <th>Average</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>all area</td>
+          <td>energy production(all area)</td>
           <td v-for="data in allData">{{ data }}</td>
           <td>{{ aveAll }}</td>
         </tr>
         <tr>
-          <td>your area</td>
+          <td>energy production(your area)</td>
           <td v-for="data in selectedData">{{ data }}</td>
           <td>{{ aveSelected }}</td>
         </tr>

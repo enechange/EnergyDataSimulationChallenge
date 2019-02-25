@@ -4,7 +4,11 @@ class EnergyRecordsController < ApplicationController
   end
 
   def create
-    EnergyRecord.import_csv(params[:csv_file].path)
-    redirect_to new_energy_record_path, flash: { success: 'インポート完了！' }
+    errors = EnergyRecord.import_csv(params[:csv_file].path)
+    if !errors
+      redirect_to new_energy_record_path, flash: { success: 'インポート成功！' }
+    else
+      render :new
+    end
   end
 end

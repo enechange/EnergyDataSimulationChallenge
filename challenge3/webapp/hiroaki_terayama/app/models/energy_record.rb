@@ -14,11 +14,8 @@ class EnergyRecord < ApplicationRecord
 
   scope :with_house, -> { joins(:house) }
   scope :search_by_city, -> (city) { with_house.where('houses.city = ?', city) }
-  scope :search_by_num_of_people, -> (num_of_people) { with_house.where('houses.num_of_people = ?', num_of_people) }
-  scope :search_by_has_child, -> (has_child) { with_house.where('houses.has_child = ?', has_child) }
 
   def self.import_csv(path)
-    # TODO: houseと関係付ける必要ある？
     begin
       data_array = []
       CSV.foreach(path, headers: true) do |row|
@@ -33,8 +30,8 @@ class EnergyRecord < ApplicationRecord
       self.import(data_array)
     end
   rescue => e
-    # TODO: 例外処理する
     p e
+    e
   end
 
   private
