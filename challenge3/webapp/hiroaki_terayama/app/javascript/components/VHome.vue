@@ -3,14 +3,17 @@
     <v-header></v-header>
     <div class="section">
       <div class="container">
-        <v-search-form @search="search"></v-search-form>
-        <div>
-          <div>判定</div>
-          <div>You will get <span class="has-text-primary">{{ judge() }}</span> energy than average !</div>
+        <div class="columns is-parent">
+          <div class="column is-6 is-child">
+            <v-search-form @search="search"></v-search-form>
+          </div>
+          <div class="column is-6 is-child">
+            <v-judge :aveAll="aveAll" :aveSelected="aveSelected"></v-judge>
+          </div>
         </div>
-        <line-chart v-if="!isLoading" :allData="allData" :selectedData="selectedData"></line-chart>
         <v-table :allData="allData" :selectedData="selectedData"
                  :aveAll="aveAll" :aveSelected="aveSelected"></v-table>
+        <line-chart v-if="!isLoading" :allData="allData" :selectedData="selectedData"></line-chart>
       </div>
     </div>
   </div>
@@ -23,11 +26,12 @@
   import LineChart from './LineChart'
   import VSearchForm from '../components/VSearchFrom'
   import VTable from '../components/VTable'
+  import VJudge from '../components/VJudge'
   const paramsSerializer = (params) => qs.stringify(params)
 
   export default {
     components: {
-      VHeader, LineChart, VSearchForm, VTable
+      VHeader, LineChart, VSearchForm, VTable, VJudge
     },
     data () {
       return {
@@ -48,7 +52,7 @@
       },
       selectedData (data) {
         this.aveSelected = this.ave_ary(data)
-      }
+      },
     },
     methods: {
       init () {
@@ -94,13 +98,6 @@
           return prev + current
         })
       },
-      judge () {
-        if (this.aveAll < this.aveSelected) {
-          return 'more'
-        } else {
-          return 'less'
-        }
-      }
     },
     created () {
       this.init()

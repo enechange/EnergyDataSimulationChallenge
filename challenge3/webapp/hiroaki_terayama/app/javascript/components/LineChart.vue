@@ -32,7 +32,7 @@
           scales: {
             yAxes: [{
               ticks: {
-                beginAtZero: true
+                beginAtZero: false
               },
               gridLines: {
                 display: true
@@ -63,14 +63,14 @@
         newChartData.datasets[0].data = this.selectedData
         this.chartData = newChartData
       },
-      setDefault () {
+      setAllData () {
         const newChartData = Object.assign({}, this.chartData)
         newChartData.datasets[1].data  = this.allData
         this.chartData = newChartData
       }
     },
     mounted () {
-      this.setDefault()
+      this.setAllData()
       this.renderChart(this.chartData, this.options)
     }
   }

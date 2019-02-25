@@ -1,10 +1,13 @@
+<div class="subtitle">dataset_50インポート</div>
 <%= form_with url: energy_records_path, method: :post, multipart: true do |f| %>
+  <%= flash[:success] %>
   <div class="field">
     <%= f.label "CSVファイルを選択" %><br>
     <%= f.file_field :csv_file %>
   </div>
 
   <div class="actions">
-    <%= f.submit "CSVファイルを読み込む"%>
+    <%= f.submit "CSVファイルを読み込む", class: "button is-primary is-text-weight-bold"%>
   </div>
+  <%= link_to '→house_dataをインポートする', new_house_path %>
 <% end %>
