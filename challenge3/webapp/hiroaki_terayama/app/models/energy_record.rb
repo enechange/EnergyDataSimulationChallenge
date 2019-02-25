@@ -1,6 +1,5 @@
 require 'csv'
 class EnergyRecord < ApplicationRecord
-  # TODO: origin_idを主キーにする(?)
   belongs_to :house
 
   validates :origin_id, presence: true, uniqueness: true, numericality: { only_integer: true }
