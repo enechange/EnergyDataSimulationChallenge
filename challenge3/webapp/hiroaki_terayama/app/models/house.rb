@@ -26,7 +26,6 @@ class House < ApplicationRecord
       self.import(data_array)
     end
   rescue => e
-    # TODO: 例外処理する
     p e
     e
   end
