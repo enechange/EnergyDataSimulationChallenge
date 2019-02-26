@@ -2,7 +2,7 @@ class ChartsController < ApplicationController
 
   def index
     energy_records = SearchEnergyRecord.new(search_params).search
-    @hash = Chart.call_energy_per_month(energy_records)
+    @hash = Chart.fetch_energy_per_month(energy_records)
     render 'index', status: '200', formats: 'json', handlers: 'jbuilder'
   end
 
