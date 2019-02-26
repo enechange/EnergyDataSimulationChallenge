@@ -11,7 +11,7 @@
           labels: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ] ,
           datasets: [
             {
-              label: 'energy_production / month(your area)',
+              label: 'energy production / month(your area)',
               backgroundColor: '#ff3860',
               pointBackgroundColor: 'white',
               borderWidth: 1,
@@ -19,7 +19,7 @@
               data: [],
             },
             {
-              label: 'energy_production / month(all area)',
+              label: 'energy production / month(all area)',
               backgroundColor: 'grey',
               pointBackgroundColor: 'white',
               borderWidth: 1,
