@@ -24,10 +24,11 @@ class House < ApplicationRecord
         end
       end
       self.import(data_array)
+      true
     end
   rescue => e
     p e
-    e
+    false
   end
 
   private
