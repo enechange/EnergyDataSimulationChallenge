@@ -36,7 +36,7 @@
     data () {
       return {
         isLoading: true,
-        charts: [],
+        chartData: [],
         selectedData: [],
         allData: [],
         aveAll: 0,
@@ -44,7 +44,7 @@
       }
     },
     watch: {
-      charts (data) {
+      chartData (data) {
         this.setAry(this.convertToAry(data))
       },
       allData (data) {
@@ -56,13 +56,13 @@
     },
     methods: {
       init () {
-        this.fetchCharts( { q: { } } )
+        this.fetchChartData( { q: { } } )
       },
-      fetchCharts (params) {
+      fetchChartData (params) {
         axios
             .get('/charts', { params: params , paramsSerializer } )
             .then(response => {
-              this.charts = response.data
+              this.chartData = response.data
               if (this.isLoading === true) this.showGraph()
             }).catch(errors => {
           console.log(errors)
@@ -86,7 +86,7 @@
         this.isLoading = false
       },
       search (params) {
-        this.fetchCharts(params)
+        this.fetchChartData(params)
       },
       ave_ary (ary) {
         if (ary.length > 0) {
