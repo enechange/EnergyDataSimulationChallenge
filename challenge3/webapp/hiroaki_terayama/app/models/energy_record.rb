@@ -27,6 +27,7 @@ class EnergyRecord < ApplicationRecord
         end
       end
       self.import(data_array)
+      true
     end
   rescue => e
     p e
