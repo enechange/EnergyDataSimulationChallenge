@@ -12,7 +12,7 @@
     <th>Temperature</th>
     <th>Daylight</th>
     <th>Energy Production</th>
-    <th>Detail</th>
+    <th>Show</th>
     <th>Edit</th>
     <th>Delete</th>
   </tr>
@@ -28,7 +28,7 @@
       <td><%= energy.temperature %></td>
       <td><%= energy.daylight %></td>
       <td><%= energy.energy_production %></td>
-      <td><%= link_to "detail", energy %></td>
+      <td><%= link_to "show", energy %></td>
       <td><%= link_to "edit", energy %></td>
       <td><%= link_to "delete", energy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
