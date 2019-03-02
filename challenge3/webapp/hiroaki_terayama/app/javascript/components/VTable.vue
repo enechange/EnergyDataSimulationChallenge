@@ -11,12 +11,12 @@
       <tbody>
         <tr>
           <td>energy production(all area)</td>
-          <td v-for="data in allData">{{ data }}</td>
+          <td v-for="data in allData">{{ round(data) }}</td>
           <td>{{ aveAll }}</td>
         </tr>
         <tr>
           <td>energy production(your area)</td>
-          <td v-for="data in selectedData">{{ data }}</td>
+          <td v-for="data in selectedData">{{ round(data) }}</td>
           <td>{{ aveSelected }}</td>
         </tr>
       </tbody>
@@ -33,6 +33,11 @@
       return {
         labels: Labels.monthLabels,
       }
-    }
+    },
+    methods: {
+      round (value) {
+        return Math.round(value * 10) / 10
+      }
+    },
   }
 </script>

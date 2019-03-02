@@ -48,10 +48,10 @@
         this.setAry(this.convertToAry(data))
       },
       allData (data) {
-        this.aveAll = this.ave_ary(data)
+        this.aveAll = this.ave_ary(data.map(Number))
       },
       selectedData (data) {
-        this.aveSelected = this.ave_ary(data)
+        this.aveSelected = this.ave_ary(data.map(Number))
       },
     },
     methods: {
