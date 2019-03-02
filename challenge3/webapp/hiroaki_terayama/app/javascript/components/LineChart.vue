@@ -1,5 +1,6 @@
 <script>
   import { Line, mixins } from 'vue-chartjs'
+  import Labels from '../shared/labels'
 
   export default {
     mixins: [Line, mixins.reactiveData],
@@ -8,7 +9,7 @@
     data () {
       return {
         chartData: {
-          labels: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ] ,
+          labels: Labels.monthLabels ,
           datasets: [
             {
               label: 'energy production / month(your area)',
