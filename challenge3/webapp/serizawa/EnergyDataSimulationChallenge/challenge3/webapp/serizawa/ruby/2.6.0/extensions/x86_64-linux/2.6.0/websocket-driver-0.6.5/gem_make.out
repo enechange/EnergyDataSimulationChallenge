@@ -1,0 +1,15 @@
+current directory: /home/ec2-user/environment/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/ruby/2.6.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+/home/ec2-user/.rvm/rubies/ruby-2.6.0/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-2.6.0/lib/ruby/2.6.0 -r ./siteconf20190302-4169-13yd168.rb extconf.rb
+creating Makefile
+
+current directory: /home/ec2-user/environment/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/ruby/2.6.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/ec2-user/environment/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/ruby/2.6.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/ec2-user/environment/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/ruby/2.6.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20190302-4169-12cgfvj

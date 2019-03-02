@@ -1,0 +1,15 @@
+current directory: /home/ec2-user/environment/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/ruby/2.6.0/gems/bindex-0.5.0/ext/bindex
+/home/ec2-user/.rvm/rubies/ruby-2.6.0/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-2.6.0/lib/ruby/2.6.0 -r ./siteconf20190302-4169-pq0u0k.rb extconf.rb
+creating Makefile
+
+current directory: /home/ec2-user/environment/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/ruby/2.6.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /home/ec2-user/environment/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/ruby/2.6.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.so
+
+current directory: /home/ec2-user/environment/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/EnergyDataSimulationChallenge/challenge3/webapp/serizawa/ruby/2.6.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20190302-4169-1nu3ter/bindex
