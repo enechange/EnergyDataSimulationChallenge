@@ -76,11 +76,7 @@
         }
       },
       convertToAry (data) {
-        let ary = []
-        Object.keys(data).forEach(function (key) {
-          ary.push(data[key])
-        }.bind(this))
-        return ary
+        return Object.keys(data).map(function (key) { return data[key] })
       },
       showGraph () {
         this.isLoading = false
