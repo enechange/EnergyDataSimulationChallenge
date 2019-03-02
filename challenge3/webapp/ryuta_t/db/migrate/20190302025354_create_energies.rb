@@ -5,7 +5,7 @@ class CreateEnergies < ActiveRecord::Migration[5.2]
       t.integer :house_id
       t.integer :year
       t.integer :month
-      t.float :temperture
+      t.float :temperature
       t.float :daylight
       t.integer :energy_production
 

@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_03_02_025908) do
     t.integer "house_id"
     t.integer "year"
     t.integer "month"
-    t.float "temperture"
+    t.float "temperature"
     t.float "daylight"
     t.integer "energy_production"
     t.datetime "created_at", null: false
