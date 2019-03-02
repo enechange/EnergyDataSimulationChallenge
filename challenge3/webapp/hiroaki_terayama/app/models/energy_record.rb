@@ -12,7 +12,7 @@ class EnergyRecord < ApplicationRecord
   validates :energy_production, presence: true
 
   scope :with_house, -> { joins(:house) }
-  scope :search_by_city, -> (city) { with_house.where('houses.city = ?', city) }
+  scope :search_by_city, -> (city) { with_house.merge(House.where(city: city)) }
 
   def self.import_csv(path)
     begin
