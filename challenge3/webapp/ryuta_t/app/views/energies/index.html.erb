@@ -29,7 +29,7 @@
       <td><%= energy.daylight %></td>
       <td><%= energy.energy_production %></td>
       <td><%= link_to "show", energy %></td>
-      <td><%= link_to "edit", energy %></td>
+      <td><%= link_to "edit", edit_energy_path(energy) %></td>
       <td><%= link_to "delete", energy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
