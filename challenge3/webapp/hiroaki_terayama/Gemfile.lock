@@ -52,13 +52,6 @@ GEM
     bulma-rails (0.7.4)
       sass (~> 3.5)
     byebug (11.0.0)
-    coffee-rails (4.2.2)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
     dotenv (0.7.0)
@@ -186,7 +179,6 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bulma-rails
   byebug
-  coffee-rails (~> 4.2)
   foreman
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
