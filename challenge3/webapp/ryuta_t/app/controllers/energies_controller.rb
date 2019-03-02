@@ -38,6 +38,10 @@ class EnergiesController < ApplicationController
     end
   end
 
+  def destroy
+
+  end
+
   private
 
     def energy_params
