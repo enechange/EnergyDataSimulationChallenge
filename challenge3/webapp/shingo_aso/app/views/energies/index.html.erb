@@ -1,0 +1,5 @@
+<h1>年別エネルギー生成量</h1>
+<%= column_chart Energy.group(:year).sum(:energy_production) %>
+
+<h1>月別平均日射量</h1>
+<%= column_chart Energy.group(:month).average(:daylight) %>
