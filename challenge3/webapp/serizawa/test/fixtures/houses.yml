@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  firstname: kohei
+  lastname: serizawa
+  city: city1
+  num_of_people: 1
+  has_child: "No"
+
+two:
+  id: 2
+  firstname: firstname2
+  lastname: lastname2
+  city: city2
+  num_of_people: 1
+  has_child: "Yes"

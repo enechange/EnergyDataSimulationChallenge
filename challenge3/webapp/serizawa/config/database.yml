@@ -17,10 +17,12 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: ec2-user
+  password: password
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
+  template: template0
 development:
   <<: *default
   database: serizawa_development
