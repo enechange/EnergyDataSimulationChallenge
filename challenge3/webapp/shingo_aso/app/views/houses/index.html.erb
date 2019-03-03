@@ -1,0 +1,32 @@
+<h1>家庭別エネルギー総生成量</h1>
+<%= column_chart @house_data %>
+
+<h3>CSVデータ取り込み</h3>
+<div class="import">
+    <%= form_tag import_houses_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "ファイル取り込みスタート" %>
+    <% end %>
+</div>
+
+<h3>house_data</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Fistname</th>
+        <th>Lastname</th>
+        <th>City</th>
+        <th>num_of_people</th>
+        <th>has_child</th>
+    </tr>
+    <% @houses.each do |house| %>
+    <tr>
+        <td><%= house.id %></td>
+        <td><%= house.first_name %></td>
+        <td><%= house.last_name %></td>
+        <td><%= house.city %></td>
+        <td><%= house.num_of_people %></td>
+        <td><%= house.has_child %></td>
+    </tr>
+    <% end %>
+</table>
