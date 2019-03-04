@@ -5,7 +5,7 @@ module Admins
     end
 
     def create
-      if House.import_csv(params[:csv_file].path)
+      if CsvHandler.import_csv(params[:csv_file].path, House)
         redirect_to new_admins_house_path, flash: { success: 'インポート成功！' }
       else
         render :new
