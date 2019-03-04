@@ -1,4 +1,3 @@
-require 'csv'
 class House < ApplicationRecord
   enum has_child: { Yes: true, No: false }
 
@@ -11,35 +10,14 @@ class House < ApplicationRecord
   validates :num_of_people, presence: true, numericality: { only_integer: true }
   validates :has_child, presence: true
 
-  def self.import_csv(path)
-    begin
-      data_array = []
-      CSV.foreach(path, headers: true) do |row|
-        data = House.find_by(origin_id: row['ID'].to_i)
-        if data
-          data.attributes = set_attributes(row)
-          data.save!
-        else
-          data_array << set_attributes(row)
-        end
-      end
-      self.import(data_array)
-      true
-    end
-  rescue => e
-    p e
-    false
-  end
-
-  private
-    def self.set_attributes(row)
-      {
+  def self.get_attributes(row)
+    {
         origin_id: row['ID'].to_i,
         firstname: row['Firstname'],
         lastname: row['Lastname'],
         city: row['City'],
         num_of_people: row['num_of_people'].to_i,
         has_child: row['has_child']
-      }
-    end
+    }
+  end
 end

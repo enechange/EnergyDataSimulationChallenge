@@ -1,4 +1,3 @@
-require 'csv'
 class EnergyRecord < ApplicationRecord
   belongs_to :house
 
@@ -14,29 +13,8 @@ class EnergyRecord < ApplicationRecord
   scope :with_house, -> { joins(:house) }
   scope :search_by_city, -> (city) { with_house.merge(House.where(city: city)) }
 
-  def self.import_csv(path)
-    begin
-      data_array = []
-      CSV.foreach(path, headers: true) do |row|
-        data = EnergyRecord.find_by(origin_id: row['ID'].to_i)
-        if data
-          data.attributes = set_attributes(row)
-          data.save!
-        else
-          data_array << set_attributes(row)
-        end
-      end
-      self.import(data_array)
-      true
-    end
-  rescue => e
-    p e
-    e
-  end
-
-  private
-    def self.set_attributes(row)
-      {
+  def self.get_attributes(row)
+    {
         origin_id: row['ID'].to_i,
         label: row['Label'].to_i,
         house_origin_id: row['House'].to_i,
@@ -46,6 +24,6 @@ class EnergyRecord < ApplicationRecord
         daylight: row['Daylight'].to_f,
         energy_production: row['EnergyProduction'].to_i,
         house_id: House.find_by(origin_id: row['House'].to_i)&.id
-      }
-    end
+    }
+  end
 end
