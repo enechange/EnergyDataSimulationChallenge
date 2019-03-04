@@ -18,12 +18,12 @@ class EnergyRecord < ApplicationRecord
     begin
       data_array = []
       CSV.foreach(path, headers: true) do |row|
-        data = EnergyRecord.find_by(origin_id: row['ID'].to_i) || new
-        if data.id
-          set_attributes(data, row)
+        data = EnergyRecord.find_by(origin_id: row['ID'].to_i)
+        if data
+          data.attributes = set_attributes(row)
           data.save!
         else
-          data_array << set_attributes(data, row)
+          data_array << set_attributes(row)
         end
       end
       self.import(data_array)
@@ -35,17 +35,17 @@ class EnergyRecord < ApplicationRecord
   end
 
   private
-    def self.set_attributes(data, row)
-      data.attributes = {
-          origin_id: row['ID'].to_i,
-          label: row['Label'].to_i,
-          house_origin_id: row['House'].to_i,
-          year: row['Year'].to_i,
-          month: row['Month'].to_i,
-          temperature: row['Temperature'].to_f,
-          daylight: row['Daylight'].to_f,
-          energy_production: row['EnergyProduction'].to_i,
-          house_id: House.find_by(origin_id: row['House'].to_i)&.id
+    def self.set_attributes(row)
+      {
+        origin_id: row['ID'].to_i,
+        label: row['Label'].to_i,
+        house_origin_id: row['House'].to_i,
+        year: row['Year'].to_i,
+        month: row['Month'].to_i,
+        temperature: row['Temperature'].to_f,
+        daylight: row['Daylight'].to_f,
+        energy_production: row['EnergyProduction'].to_i,
+        house_id: House.find_by(origin_id: row['House'].to_i)&.id
       }
     end
 end
