@@ -48,10 +48,10 @@
         this.setAry(this.convertToAry(data))
       },
       allData (data) {
-        this.aveAll = this.ave_ary(data.map(Number))
+        this.aveAll = this.aveAry(data.map(Number))
       },
       selectedData (data) {
-        this.aveSelected = this.ave_ary(data.map(Number))
+        this.aveSelected = this.aveAry(data.map(Number))
       },
     },
     methods: {
@@ -84,12 +84,12 @@
       search (params) {
         this.fetchChartData(params)
       },
-      ave_ary (ary) {
+      aveAry (ary) {
         if (ary.length > 0) {
-          return Math.round(this.sum_ary(ary) / ary.length * 100) / 100
+          return Math.round(this.sumAry(ary) / ary.length * 100) / 100
         }
       },
-      sum_ary (ary) {
+      sumAry (ary) {
         return ary.reduce(function(prev, current, i, ary) {
           return prev + current
         })
