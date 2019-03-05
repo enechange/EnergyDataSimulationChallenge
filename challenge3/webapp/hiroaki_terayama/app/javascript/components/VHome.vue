@@ -36,7 +36,6 @@
     data () {
       return {
         isLoading: true,
-        chartData: [],
         selectedData: [],
         allData: [],
         aveAll: 0,
@@ -44,9 +43,6 @@
       }
     },
     watch: {
-      chartData (data) {
-        this.setAry(this.convertToAry(data))
-      },
       allData (data) {
         this.aveAll = this.aveAry(data.map(Number))
       },
@@ -62,7 +58,7 @@
         axios
             .get('/charts', { params: params , paramsSerializer } )
             .then(response => {
-              this.chartData = response.data
+              this.setAry(this.convertToAry(response.data))
               if (this.isLoading === true) this.showGraph()
             }).catch(errors => {
           console.log(errors)
