@@ -1,4 +1,4 @@
-<div style="width: 80%">
+<div style="width: 80%; margin: auto">
   <canvas id="myChart"></canvas>
 </div>
 <script>
@@ -67,7 +67,7 @@
                 yAxisID: "y-axis-1"
             },
                 {
-                    label: 'House figure:London',
+                    label: 'Amount:London',
                     type: "line",
                     fill: false,
                     data: [
@@ -78,7 +78,7 @@
                     borderColor: "rgb(255, 0, 0)",
                     yAxisID: "y-axis-2"
                 },{
-                    label: 'House figure:Oxford',
+                    label: 'Amount:Oxford',
                     type: "line",
                     fill: false,
                     data: [
@@ -90,7 +90,7 @@
                     borderColor: "rgb(54, 105, 235)",
                     yAxisID: "y-axis-2"
                 },{
-                    label: 'House figure:Cambridge',
+                    label: 'Amount:Cambridge',
                     type: "line",
                     fill: false,
                     data: [
@@ -108,10 +108,18 @@
             scales: {
                 yAxes: [{
                     id: "y-axis-1",
+                    scaleLabel: {
+                      display: true,
+                      labelString: "EnergyProduction/per year"
+                    },
                     type: "linear",
                     position: "left"
-                }, {
+                    },{
                     id: "y-axis-2",
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Amount"
+                    },
                     type: "linear",
                     position: "right",
                     ticks: {
