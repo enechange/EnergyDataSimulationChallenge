@@ -1,0 +1,130 @@
+<div style="width: 80%">
+  <canvas id="myChart"></canvas>
+</div>
+<script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["2011", "2012", "2013"],
+            datasets: [{
+                label: 'London',
+                data: [
+                    <% 2011.upto(2013) do |i| %>
+                    <%= @houses.akamai("London", i, :energy_production) %>,
+                    <% end %>
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(255,99,132, 1)',
+                    'rgba(255,99,132, 1)'
+                ],
+                borderWidth: 1,
+                yAxisID: "y-axis-1"
+            }, {
+                label: 'Oxford',
+                data: [
+                    <% 2011.upto(2013) do |i| %>
+                    <%= @houses.akamai("Oxford", i, :energy_production) %>,
+                    <% end %>
+                ],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+
+                borderWidth: 1,
+                yAxisID: "y-axis-1"
+            }, {
+                label: 'Cambridge',
+                data: [
+                    <% 2011.upto(2013) do |i| %>
+                    <%= @houses.akamai("Cambridge", i, :energy_production) %>,
+                    <% end %>
+                ],
+                backgroundColor: [
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 206, 86,1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1,
+                yAxisID: "y-axis-1"
+            },
+                {
+                    label: 'House figure:London',
+                    type: "line",
+                    fill: false,
+                    data: [
+                        <% 2011.upto(2013) do |i| %>
+                        <%= @houses.create_chart("London", i, :id).count %>,
+                        <% end %>
+                    ],
+                    borderColor: "rgb(255, 0, 0)",
+                    yAxisID: "y-axis-2"
+                },{
+                    label: 'House figure:Oxford',
+                    type: "line",
+                    fill: false,
+                    data: [
+                        <% 2011.upto(2013) do |i| %>
+                        <%= @houses.create_chart("Oxford", i, :id).count %>,
+                        <% end %>
+
+                    ],
+                    borderColor: "rgb(54, 105, 235)",
+                    yAxisID: "y-axis-2"
+                },{
+                    label: 'House figure:Cambridge',
+                    type: "line",
+                    fill: false,
+                    data: [
+                        <% 2011.upto(2013) do |i| %>
+                        <%= @houses.create_chart("Cambridge", i, :id).count %>,
+                        <% end %>
+
+                    ],
+                    borderColor: "rgb(255, 200, 0)",
+                    yAxisID: "y-axis-2"
+                }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    id: "y-axis-1",
+                    type: "linear",
+                    position: "left"
+                }, {
+                    id: "y-axis-2",
+                    type: "linear",
+                    position: "right",
+                    ticks: {
+                        max: 100,
+                        min: 0,
+                        stepSize: 5
+                    },
+                    gridLines: {
+                        drawOnChartArea: false
+                    }
+                }
+                ]
+            }
+        }
+    });
+</script>

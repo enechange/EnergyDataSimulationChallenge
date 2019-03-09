@@ -1,6 +1,6 @@
 class HousesController < ApplicationController
   def index
-    @houses = House.all
+    @houses = House.all.includes(:energies)
   end
 
   def show

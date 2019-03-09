@@ -3,6 +3,8 @@
 <%= link_to "Energies Data List", energies_path %><br/>
 <%= link_to "Add New House Data", new_house_path %>
 
+<%= render 'charts/house_index_chart' %>
+
 <table style="text-align: center; margin: auto; border: 5px solid #1a1a1a">
   <caption>House Data List</caption>
 
@@ -34,10 +36,3 @@
   <% end %>
   </tbody>
 </table>
-
-House.create(
-firstname:     row['Firstname'],
-lastname:      row['Lastname'],
-city:          row['City'],
-num_of_people: row['num_of_people'],
-has_child:     row['has_child']
