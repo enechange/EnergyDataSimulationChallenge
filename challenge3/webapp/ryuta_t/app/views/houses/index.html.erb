@@ -3,36 +3,6 @@
 <%= link_to "Energies Data List", energies_path %><br/>
 <%= link_to "Add New House Data", new_house_path %>
 
-<%= render 'charts/house_index_chart' %>
+<%= render partial: 'charts/house_index_chart', locals: { houses: @houses} %>
 
-<table style="text-align: center; margin: auto; border: 5px solid #1a1a1a">
-  <caption>House Data List</caption>
-
-  <thead>
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>City</th>
-    <th>Num Of People</th>
-    <th>has child</th>
-    <th>Show</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @houses.each do |house| %>
-    <tr>
-      <td><%= house.firstname %></td>
-      <td><%= house.lastname %></td>
-      <td><%= house.city %></td>
-      <td><%= house.num_of_people %></td>
-      <td><%= house.has_child %></td>
-      <td><%= link_to "show", house %></td>
-      <td><%= link_to "edit", edit_house_path(house) %></td>
-      <td><%= link_to "delete", house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= render partial: 'tables/house_index_table', locals: { houses: @houses} %>

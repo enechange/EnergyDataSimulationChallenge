@@ -1,56 +1,10 @@
 <h1>House Data</h1>
 
-<table style="text-align: center; margin: auto; border: 5px solid #1a1a1a">
-  <caption>House Data List</caption>
+<%= link_to "Energies Data List", energies_path %><br/>
+<%= link_to "Add New House Data", new_house_path %>
 
-  <thead>
-  <tr>
-    <th>FirstName</th>
-    <th>LastName</th>
-    <th>City</th>
-    <th>Num Of People</th>
-    <th>has child?</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <tr>
-    <td><%= @house.firstname %></td>
-    <td><%= @house.lastname %></td>
-    <td><%= @house.city %></td>
-    <td><%= @house.num_of_people %></td>
-    <td><%= @house.has_child %></td>
-    <td><%= link_to "edit", edit_house_path %></td>
-    <td><%= link_to "delete", house_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-  </tbody>
-</table>
+<%= render 'tables/house_show_table' %>
 
 <%= render 'charts/house_chart' %>
 
-<table style="text-align: center; margin: auto; border: 5px solid #1a1a1a">
-  <caption>House Data List Details</caption>
-  <thead>
-  <tr>
-    <th>Year</th>
-    <th>Month</th>
-    <th>Temperature</th>
-    <th>Daylight</th>
-    <th>EnergyProduction</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @house.energies.each do |house| %>
-    <tr>
-      <td><%= house.year %></td>
-      <td><%= house.month %></td>
-      <td><%= house.temperature %></td>
-      <td><%= house.daylight %></td>
-      <td><%= house.energy_production %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= render partial: 'tables/house_data_details', locals: { house: @house} %>

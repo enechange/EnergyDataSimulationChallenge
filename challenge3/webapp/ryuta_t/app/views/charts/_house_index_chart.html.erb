@@ -11,7 +11,7 @@
                 label: 'London',
                 data: [
                     <% 2011.upto(2013) do |i| %>
-                    <%= @houses.production_average("London", i, :energy_production) %>,
+                    <%= houses.production_average("London", i, :energy_production) %>,
                     <% end %>
                 ],
                 backgroundColor: [
@@ -30,7 +30,7 @@
                 label: 'Oxford',
                 data: [
                     <% 2011.upto(2013) do |i| %>
-                    <%= @houses.production_average("Oxford", i, :energy_production) %>,
+                    <%= houses.production_average("Oxford", i, :energy_production) %>,
                     <% end %>
                 ],
                 backgroundColor: [
@@ -50,7 +50,7 @@
                 label: 'Cambridge',
                 data: [
                     <% 2011.upto(2013) do |i| %>
-                    <%= @houses.production_average("Cambridge", i, :energy_production) %>,
+                    <%= houses.production_average("Cambridge", i, :energy_production) %>,
                     <% end %>
                 ],
                 backgroundColor: [
@@ -72,7 +72,7 @@
                     fill: false,
                     data: [
                         <% 2011.upto(2013) do |i| %>
-                        <%= @houses.extract_chart_data("London", i, :id).count %>,
+                        <%= houses.extract_chart_data("London", i, :id).count %>,
                         <% end %>
                     ],
                     borderColor: "rgb(255, 0, 0)",
@@ -83,7 +83,7 @@
                     fill: false,
                     data: [
                         <% 2011.upto(2013) do |i| %>
-                        <%= @houses.extract_chart_data("Oxford", i, :id).count %>,
+                        <%= houses.extract_chart_data("Oxford", i, :id).count %>,
                         <% end %>
 
                     ],
@@ -95,7 +95,7 @@
                     fill: false,
                     data: [
                         <% 2011.upto(2013) do |i| %>
-                        <%= @houses.extract_chart_data("Cambridge", i, :id).count %>,
+                        <%= houses.extract_chart_data("Cambridge", i, :id).count %>,
                         <% end %>
 
                     ],

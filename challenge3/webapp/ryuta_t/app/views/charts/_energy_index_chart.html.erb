@@ -10,7 +10,7 @@
                     {
                         label: '2011',
                         data: [
-                            <% @energies.chart_bubble(2011).each do |nd| %>
+                            <% energies.chart_bubble(2011).each do |nd| %>
                             {x: <%= nd[1] %>, y: <%= nd[2] %>, r: <%= nd[0] %>},
                             <% end %>
                         ],
@@ -19,7 +19,7 @@
                     },{
                         label: '2012',
                         data: [
-                            <% @energies.chart_bubble(2012).each do |nd| %>
+                            <% energies.chart_bubble(2012).each do |nd| %>
                             {x: <%= nd[1] %>, y: <%= nd[2] %>, r: <%= nd[0] %>},
                             <% end %>
                         ],
@@ -28,7 +28,7 @@
                     },{
                         label: '2013',
                         data: [
-                            <% @energies.chart_bubble(2013).each do |nd| %>
+                            <% energies.chart_bubble(2013).each do |nd| %>
                             {x: <%= nd[1] %>, y: <%= nd[2] %>, r: <%= nd[0] %>},
                             <% end %>
                         ],
