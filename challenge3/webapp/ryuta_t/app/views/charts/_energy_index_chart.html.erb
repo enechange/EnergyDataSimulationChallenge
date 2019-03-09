@@ -6,7 +6,6 @@
     var EnergyIndexChart = new Chart(ctx, {
             type: 'bubble',
             data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
                 datasets: [
                     {
                         label: '2011',
@@ -37,7 +36,31 @@
                         borderColor: "rgb(200, 200, 200)"
                     }
                 ]
-            }
+            },
+        options: {
+            tooltips: {
+                mode: 'nearest',
+                intersect: false,
+            },
+            responsive: true,
+            scales: {
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Daylight"
+                    }
+                }],
+                yAxes: [{
+                    id: "y-axis-1",
+                    scaleLabel: {
+                        display: true,
+                        labelString: "EnergyProduction"
+                    },
+                    type: "linear",
+                    position: "left"
+                    }]
+                },
+            },
         })
     ;
 </script>

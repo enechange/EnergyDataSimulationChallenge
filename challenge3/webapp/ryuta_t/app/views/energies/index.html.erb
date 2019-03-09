@@ -3,53 +3,7 @@
 <%= link_to "Houses Data List", houses_path %><br/>
 <%= link_to "Add New Energy Data", new_energy_path %>
 
-
-
-
-<div style="width: 90%; margin: auto">
-  <canvas id="myBubbleChart"></canvas>
-</div>
-<script>
-    var ctx = document.getElementById("myBubbleChart");
-    // For a bubble chart
-    var myChart = new Chart(ctx, {
-            type: 'bubble',
-            data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                datasets: [
-                    {
-                        label: '2011',
-                        data: [
-                            <% @energies.chart_bubble(2011).each do |nd| %>
-                            {x: <%= nd[1] %>, y: <%= nd[2] %>, r: <%= nd[0] %>},
-                            <% end %>
-                        ],
-                        backgroundColor: "rgb(255, 0, 0, 0.1)",
-                        borderColor: "rgb(255, 0, 0)",
-                    },{
-                        label: '2012',
-                        data: [
-                            <% @energies.chart_bubble(2012).each do |nd| %>
-                            {x: <%= nd[1] %>, y: <%= nd[2] %>, r: <%= nd[0] %>},
-                            <% end %>
-                        ],
-                        backgroundColor: "rgb(54, 162, 235, 0.1)",
-                        borderColor: "rgb(54, 162, 235)"
-                    },{
-                        label: '2013',
-                        data: [
-                            <% @energies.chart_bubble(2013).each do |nd| %>
-                            {x: <%= nd[1] %>, y: <%= nd[2] %>, r: <%= nd[0] %>},
-                            <% end %>
-                        ],
-                        backgroundColor: "rgb(200, 200, 200, 0.1)",
-                        borderColor: "rgb(200, 200, 200)"
-                    }
-                ]
-            }
-        })
-    ;
-</script>
+<%= render 'charts/energy_index_chart' %>
 
 <table style="text-align: center; margin: auto; border: 5px solid #1a1a1a">
   <caption>Energy Data List</caption>
