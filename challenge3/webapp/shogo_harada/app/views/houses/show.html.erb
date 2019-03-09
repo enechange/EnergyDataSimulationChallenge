@@ -1,0 +1,167 @@
+<div class="container">
+  <div class="w-50 mt-5 mx-auto">
+    <table class="table table-sm">
+      <tbody>
+        <tr>
+          <th>Firstname</th>
+          <td><%= @house.firstname %></td>
+        </tr>
+        <tr>
+          <th>Lastname</th>
+          <td><%= @house.lastname %></td>
+        </tr>
+        <tr>
+          <th>City</th>
+          <td><%= @house.city %></td>
+        </tr>
+        <tr>
+          <th>Num of people</th>
+          <td><%= @house.num_of_people %></td>
+        </tr>
+        <tr>
+          <th>Has child</th>
+          <td><%= @house.has_child? %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="w-100 my-5">
+    <canvas id="myChart1">
+      Canvas not supported...
+    </canvas>
+  </div>
+
+  <div class="w-100 mb-5">
+    <canvas id="myChart2"></canvas>
+  </div>
+
+  <div class="text-center my-5">
+    <button type="button" class="btn btn-outline-primary px-3 mr-5" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      View detailed information
+    </button>
+    <%= link_to 'Back', houses_path, class: 'btn btn-outline-secondary px-3 ml-5' %>
+  </div>
+
+  <div class="collapse" id="collapseExample">
+    <table class="my-5 table table-sm table-bordered text-center">
+      <thead class="thead-light">
+        <tr>
+          <th>Year</th>
+          <th>Month</th>
+          <th>Temperature</th>
+          <th>Daylight</th>
+          <th>Energy production</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @show_energies.each do |energy| %>
+          <tr>
+            <td><%= energy.year %></td>
+            <td><%= energy.month %></td>
+            <td><%= energy.temperature %></td>
+            <td><%= energy.daylight %></td>
+            <td><%= energy.energyproduction %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script>
+  (function() {
+    'use strict';
+
+    var type = 'line';
+    var data = {
+      labels: <%= @show_energies.pluck(:year, :month) %>,
+      datasets: [{
+        label: 'You',
+        data: <%= @show_energies.pluck(:energyproduction) %>,
+        borderColor: 'blue',
+        backgroundColor: 'rgba(0, 0, 255, 0.1)'
+      }, {
+        label: 'Average',
+        data: <%= avg_energy_production(@show_energies, @all_energies) %>,
+        borderColor: 'orange',
+        fill: false,
+      }]
+    };
+    var options = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            suggestedMin: 0,
+            stepSize: 100,
+          }
+        }]
+      },
+      title: {
+        display: true,
+        text: 'Energy Production',
+        fontSize: 30,
+      },
+      animation: {
+        duration: 0
+      },
+    }
+    var ctx = document.getElementById('myChart1').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: type,
+      data: data,
+      options: options
+    });
+  })();
+
+  (function() {
+    'use strict';
+
+    var type = 'bar';
+    var data = {
+      labels: <%= @show_energies.pluck(:year, :month) %>,
+      datasets: [{
+        label: 'Temperature',
+        data: <%= @show_energies.pluck(:temperature) %>,
+        borderColor: 'red',
+        backgroundColor: 'rgba(255, 0, 0, 0.6)'
+      }, {
+        label: 'Daylight',
+        data: <%= @show_energies.pluck(:daylight) %>,
+        borderColor: 'green',
+        backgroundColor: 'rgba(0, 255, 0, 0.6)'
+      }, {
+        label: 'Energy Production',
+        data: <%= @show_energies.pluck(:energyproduction) %>,
+        borderColor: 'blue',
+        backgroundColor: 'rgba(0, 0, 255, 0.6)'
+      }]
+    };
+    var options = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            suggestedMin: 0,
+            stepSize: 100,
+          }
+        }]
+      },
+      title: {
+        display: true,
+        text: 'Temperature / Daylight / Energy Production',
+        fontSize: 30,
+      },
+      animation: {
+        duration: 0
+      },
+    }
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: type,
+      data: data,
+      options: options
+    });
+  })();
+</script>
