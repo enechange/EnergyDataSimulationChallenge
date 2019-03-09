@@ -1,19 +1,11 @@
 class House < ApplicationRecord
   has_many :energies
 
-  def self.create_chart(city, year, column)
-    where(city: city).map { |y| y.energies.where(year: year).map(&column) }
-  end
+  scope :create_chart, ->(city, year, column){where(city: city).map { |y| y.energies.where(year: year).map(&column) }}
 
-  def self.chart_sum(city, year, column)
-    create_chart(city, year, column).sum.sum
-  end
+  scope :chart_sum, ->(city, year, column){create_chart(city, year, column).sum.sum}
 
-  def self.chart_count(city, year, column)
-    create_chart(city, year, column).flatten!.count
-  end
+  scope :chart_count, ->(city, year, column){create_chart(city, year, column).flatten!.count}
 
-  def self.akamai(city, year, column)
-    chart_sum(city, year, column) / chart_count(city, year, column)
-  end
+  scope :akamai, ->(city, year, column){chart_sum(city, year, column) / chart_count(city, year, column)}
 end
