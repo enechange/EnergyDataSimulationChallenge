@@ -1,0 +1,31 @@
+<div class="container my-5">
+  <h1>House Energy Usage</h1>
+  <p>Click 'show' to see charts</p>
+  <div class="my-5">
+    <table class="table table-sm table-bordered text-center table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>City</th>
+          <th>num_of_people</th>
+          <th>has_child</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @houses.each do |house| %>
+          <tr>
+            <td><%= house.firstname %></td>
+            <td><%= house.lastname %></td>
+            <td><%= house.city %></td>
+            <td><%= house.num_of_people %></td>
+            <td><%= house.has_child? %></td>
+            <td><%= link_to 'Show', house %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
