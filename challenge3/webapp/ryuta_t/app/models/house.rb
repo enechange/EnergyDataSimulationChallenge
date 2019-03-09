@@ -14,6 +14,6 @@ class House < ApplicationRecord
   end
 
   def self.akamai(city, year, column)
-    chart_sum(city, year, column)/chart_count(city, year, column)
+    chart_sum(city, year, column) / chart_count(city, year, column)
   end
 end

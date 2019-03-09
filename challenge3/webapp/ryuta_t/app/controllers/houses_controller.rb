@@ -5,10 +5,6 @@ class HousesController < ApplicationController
 
   def show
     @house  = House.find(params[:id])
-    @labels = @house.energies.map(&:month)
-    @data1  = @house.energies.map(&:energy_production)
-    @data2  = @house.energies.map(&:temperature)
-    @data3  = @house.energies.map(&:daylight)
   end
 
   def new

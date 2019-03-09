@@ -6,12 +6,12 @@
     var EnergyDataChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: <%= @labels %>,
+            labels: <%= @house.energies.map(&:month) %>,
             datasets: [{
                 label: 'EnergyProduction',
                 type: "bar",
                 fill: false,
-                data: <%= @data1 %>,
+                data: <%= @house.energies.map(&:energy_production) %>,
                 backgroundColor: "rgb(200, 200, 200, 0.5)",
                 borderColor: "rgb(200, 200, 200)",
                 yAxisID: "y-axis-1",
@@ -19,7 +19,7 @@
                 label: 'Temperature',
                 type: "line",
                 fill: false,
-                data: <%= @data2 %>,
+                data: <%= @house.energies.map(&:temperature) %>,
                 backgroundColor: "rgb(54, 162, 235)",
                 borderColor: "rgb(54, 162, 235)",
                 yAxisID: "y-axis-2",
@@ -27,7 +27,7 @@
                 label: 'Daylight',
                 type: "line",
                 fill: false,
-                data: <%= @data3 %>,
+                data: <%= @house.energies.map(&:daylight) %>,
                 backgroundColor: "rgb(255, 0, 0)",
                 borderColor: "rgb(255, 0, 0)",
                 yAxisID: "y-axis-3",
