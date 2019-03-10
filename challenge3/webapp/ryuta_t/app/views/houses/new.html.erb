@@ -1,2 +1,28 @@
-<h1>Houses#new</h1>
-<p>Find me in app/views/houses/new.html.erb</p>
+<%= form_for(@house) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div>
+    <%= f.label :firstname %><br>
+    <%= f.text_field :firstname %>
+  </div>
+  <div>
+    <%= f.label :lastname %><br>
+    <%= f.text_field :lastname %>
+  </div>
+  <div>
+    <%= f.label :city %><br>
+    <%= f.select :city, ["London", "Oxford", "Cambridge"] %>
+  </div>
+  <div>
+    <%= f.label :Num_of_People %><br>
+    <%= f.number_field :num_of_people, min: 0 %>
+  </div>
+  <div>
+    <%= f.label :has_child %><br>
+    <%= f.select :has_child, ["Yes", "No"] %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

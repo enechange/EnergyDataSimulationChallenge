@@ -15,11 +15,11 @@
 
   <tbody>
   <tr>
-    <td><%= @house.firstname %></td>
-    <td><%= @house.lastname %></td>
-    <td><%= @house.city %></td>
-    <td><%= @house.num_of_people %></td>
-    <td><%= @house.has_child %></td>
+    <td><%= house.firstname %></td>
+    <td><%= house.lastname %></td>
+    <td><%= house.city %></td>
+    <td><%= house.num_of_people %></td>
+    <td><%= house.has_child %></td>
     <td><%= link_to "edit", edit_house_path %></td>
     <td><%= link_to "delete", house_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
