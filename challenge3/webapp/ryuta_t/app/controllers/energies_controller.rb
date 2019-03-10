@@ -2,6 +2,7 @@ class EnergiesController < ApplicationController
 
   def index
     @energies = Energy.all
+    @energies_pagination = @energies.page(params[:page]).per(200)
   end
 
   def show

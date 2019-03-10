@@ -5,4 +5,4 @@
 <%= link_to "Add New House Data", new_house_path %>
 
 <%= render partial: 'charts/energy_index_chart', locals: { energies: @energies} %>
-<%= render partial: 'tables/energy_index_table', locals: { energies: @energies} %>
+<%= render partial: 'tables/energy_index_table', locals: { energies: @energies_pagination} %>
