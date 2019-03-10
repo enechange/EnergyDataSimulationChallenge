@@ -4,12 +4,19 @@ class House < ApplicationRecord
   validates :firstname, :lastname, :city, :num_of_people, :has_child, presence: true
   validates :firstname, :lastname, length: { maximum: 20 }
 
-  scope :extract_chart_data, ->(city, year, column) { where(city: city).map { |y| y.energies.where(year: year).map(&column) } }
+  def self.include_data_for_chart(city, year, data)
+    where(city: city).map { |e| e.energies.where(year: year).pluck(data) }
+  end
 
-  scope :production_average, ->(city, year, column) { production_sum(city, year, column) / house_amount(city, year, column) }
+  def self.average_production(city, year, data)
+    sum_production(city, year, data) / count_houses(city, year, data)
+  end
 
-  scope :production_sum, ->(city, year, column) { extract_chart_data(city, year, column).sum.sum }
+  def self.count_houses(city, year, data)
+    include_data_for_chart(city, year, data).flatten!.count
+  end
 
-  scope :house_amount, ->(city, year, column) { extract_chart_data(city, year, column).flatten!.count }
-
+  def self.sum_production(city, year, data)
+    include_data_for_chart(city, year, data).sum.sum
+  end
 end
