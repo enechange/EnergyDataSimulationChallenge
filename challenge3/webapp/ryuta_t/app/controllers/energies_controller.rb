@@ -40,7 +40,10 @@ class EnergiesController < ApplicationController
   end
 
   def destroy
-
+    @energy = Energy.find(params[:id])
+    @energy.destroy
+    flash[:success] = "データを削除しました"
+    redirect_to energies_url
   end
 
   private
