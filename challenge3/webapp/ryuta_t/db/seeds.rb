@@ -8,7 +8,7 @@
 
 require 'csv'
 
-CSV.foreach('../../data/dataset_50.csv', headers: true) do |row|
+CSV.foreach('db/data/dataset_50.csv', headers: true) do |row|
   Energy.create(
       label:             row['Label'],
       house_id:          row['House'],
@@ -20,7 +20,7 @@ CSV.foreach('../../data/dataset_50.csv', headers: true) do |row|
   )
 end
 
-CSV.foreach('../../data/house_data.csv', headers: true) do |row|
+CSV.foreach('db/data/house_data.csv', headers: true) do |row|
   House.create(
       firstname:     row['Firstname'],
       lastname:      row['Lastname'],

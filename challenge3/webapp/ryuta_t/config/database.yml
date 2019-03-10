@@ -81,5 +81,4 @@ test:
 production:
   <<: *default
   database: ryuta_t_production
-  username: ryuta_t
   password: <%= ENV['RYUTA_T_DATABASE_PASSWORD'] %>
