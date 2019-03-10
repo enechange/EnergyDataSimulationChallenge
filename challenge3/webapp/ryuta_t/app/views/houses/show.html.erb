@@ -4,9 +4,9 @@
 <%= link_to "Add New Energy Data", new_energy_path %><br/>
 <%= link_to "Add New House Data", new_house_path %>
 
-<%= render 'tables/house_show_table' %>
+<%= render partial: 'tables/house_show_table', locals: { house: @house } %>
 
-<%= render 'charts/house_chart' %>
+<%= render partial: 'charts/house_chart', locals: { house: @house } %>
 
 <%= render partial: 'tables/house_data_details', locals: { house: @house } %>
 
