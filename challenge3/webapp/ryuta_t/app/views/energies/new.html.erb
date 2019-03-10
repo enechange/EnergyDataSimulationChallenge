@@ -1,2 +1,36 @@
-<h1>Energies#new</h1>
-<p>Find me in app/views/energies/new.html.erb</p>
+<%= form_for(@energy) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div>
+    <%= f.label :label %><br>
+    <%= f.number_field :label, min: 0 %>
+  </div>
+  <div>
+    <%= f.label :house_id %><br>
+    <%= f.number_field :house_id, min: 0 %>
+  </div>
+  <div>
+    <%= f.label :year %><br>
+    <%= f.number_field :year, min: 2000 %>
+  </div>
+  <div>
+    <%= f.label :month %><br>
+    <%= f.number_field :month, min: 1, max: 12 %>
+  </div>
+  <div>
+    <%= f.label :temperature %><br>
+    <%= f.number_field :temperature, step: 0.1 %>
+  </div>
+  <div>
+    <%= f.label :daylight %><br>
+    <%= f.number_field :daylight, step: 0.1, min: 0 %>
+  </div>
+  <div>
+    <%= f.label :energy_production %><br>
+    <%= f.number_field :energy_production, min: 0 %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

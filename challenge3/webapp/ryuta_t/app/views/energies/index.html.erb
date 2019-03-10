@@ -1,7 +1,8 @@
 <h1>Energy Data</h1>
 
-<%= link_to "Houses Data List", houses_path %><br/>
-<%= link_to "Add New Energy Data", new_energy_path %>
+<%= link_to "House Data List", houses_path %><br/>
+<%= link_to "Add New Energy Data", new_energy_path %><br/>
+<%= link_to "Add New House Data", new_house_path %>
 
 <%= render partial: 'charts/energy_index_chart', locals: { energies: @energies} %>
 <%= render partial: 'tables/energy_index_table', locals: { energies: @energies} %>

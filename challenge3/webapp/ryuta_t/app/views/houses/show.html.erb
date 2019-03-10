@@ -1,10 +1,16 @@
 <h1>House Data</h1>
 
-<%= link_to "Energies Data List", energies_path %><br/>
+<%= link_to "Energy Data List", energies_path %><br/>
+<%= link_to "Add New Energy Data", new_energy_path %><br/>
 <%= link_to "Add New House Data", new_house_path %>
 
 <%= render 'tables/house_show_table' %>
 
 <%= render 'charts/house_chart' %>
 
-<%= render partial: 'tables/house_data_details', locals: { house: @house} %>
+<%= render partial: 'tables/house_data_details', locals: { house: @house } %>
+
+<div style="text-align: center">
+  <%= link_to 'Edit', edit_house_path(@house) %> |
+  <%= link_to 'Back', houses_path %>
+</div>
