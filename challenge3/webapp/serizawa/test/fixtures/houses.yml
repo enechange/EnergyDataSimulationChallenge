@@ -13,5 +13,5 @@ two:
   firstname: firstname2
   lastname: lastname2
   city: city2
-  num_of_people: 1
+  num_of_people: 2
   has_child: "Yes"
