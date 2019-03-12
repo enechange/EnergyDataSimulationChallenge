@@ -1,0 +1,27 @@
+<%= form_for(@house) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="field">
+    <%= f.label :firstname %><br>
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :lastname %><br>
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :num_of_people %><br>
+    <%= f.number_field :num_of_people %>
+  </div>
+  <div class="field">
+    <%= f.label :has_child %><br>
+    <%= f.text_field :has_child %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

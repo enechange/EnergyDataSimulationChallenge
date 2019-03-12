@@ -30,10 +30,6 @@ class HousesController < ApplicationController
     redirect_to root_path 
   end
   
-  
-  
-  
-  
   private 
   
     def house_id_params
