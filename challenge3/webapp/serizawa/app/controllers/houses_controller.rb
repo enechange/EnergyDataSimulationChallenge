@@ -7,6 +7,8 @@ class HousesController < ApplicationController
 
   def show
     @house = House.find(params[:id])
+    energy_chart = Energy.where(house_id: @house.id)
+    @chart = chart(energy_chart)
   end
   
   def new

@@ -43,6 +43,7 @@ GEM
     bindex (0.5.0)
     builder (3.2.3)
     byebug (11.0.0)
+    chartkick (3.0.2)
     coderay (1.1.2)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
@@ -186,6 +187,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  chartkick
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)
   jbuilder (~> 2.5)
