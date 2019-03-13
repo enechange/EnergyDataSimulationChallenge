@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EnergiesControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get energies_new_url
+    get new_energy_url
     assert_response :success
   end
 
