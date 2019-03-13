@@ -129,12 +129,12 @@ Please place output files in `challenge2/analysis/YOURNAME/`.
 
 ## Challenge 3 - Web Application
 
-Please create a web application to show house energy usage.
+Please create a web application to show house energy production.
 
 1. Insert csv files into SQL database. (MySQL, postgreSQL, etc..)
 2. Load data from DB and show it on the web with a web framework. (Rails preferred)
 3. Show 1 or 2 types of charts of the data. (no more than 2 types)
-4. (Option) Deploy it to somewhere. (AWS, Heroku, your own server, etc...)
+4. (Option) Deploy it somewhere. (AWS, Heroku, your own server, etc...)
 
 We will review basic programming skill, data modelling and what to show. We will **not** review your web design skill.
 
