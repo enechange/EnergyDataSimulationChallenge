@@ -5,10 +5,9 @@ module ApplicationHelper
       chart = []
       energy_chart.each do |num|
         val1  =  "#{num.year}-#{num.month}"
-        val2  =  num.energy_production。
+        val2  =  num.energy_production
         chart << [val1, val2]
       end
       return  chart
   end
-  
 end

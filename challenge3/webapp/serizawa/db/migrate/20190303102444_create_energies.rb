@@ -2,7 +2,7 @@ class CreateEnergies < ActiveRecord::Migration[5.0]
   def change
     create_table :energies do |t|
       t.integer :label
-      t.integer :house_id
+      t.references :house, foreign_key: true
       t.integer :year
       t.integer :month
       t.decimal :temperature

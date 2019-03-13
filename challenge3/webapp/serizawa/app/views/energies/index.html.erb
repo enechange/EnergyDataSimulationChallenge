@@ -1,5 +1,8 @@
 <h1>Energy_data</h1>
 
+<%= link_to 'Houses_data', houses_path %>
+<br>
+<br>
 <%= link_to 'New', new_energy_path %>
 
 <table>
@@ -20,18 +23,20 @@
 
   <tbody>
     <% @energies.each do |energy| %>
-      <tr>
-        <td><%= energy.label %></td>
-        <td><%= energy.house_id %></td>
-        <td><%= energy.year %></td>
-        <td><%= energy.month %></td>
-        <td><%= energy.temperature %></td>
-        <td><%= energy.daylight %></td>
-        <td><%= energy.energy_production %></td>
-        <td><%= link_to 'Show', energy %></td>
-        <td><%= link_to 'Edit', edit_energy_path(energy) %></td>
-        <td><%= link_to 'Destroy', energy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% cache energy do %>
+        <tr>
+          <td><%= energy.label %></td>
+          <td><%= energy.house_id %></td>
+          <td><%= energy.year %></td>
+          <td><%= energy.month %></td>
+          <td><%= energy.temperature %></td>
+          <td><%= energy.daylight %></td>
+          <td><%= energy.energy_production %></td>
+          <td><%= link_to 'Show', energy %></td>
+          <td><%= link_to 'Edit', edit_energy_path(energy) %></td>
+          <td><%= link_to 'Destroy', energy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
