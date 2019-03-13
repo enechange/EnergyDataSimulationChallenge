@@ -1,0 +1,35 @@
+<%= form_for(@energy) do |f| %>
+   <%= render 'shared/error_messages', object: f.object %>
+
+ <div class="field">
+    <%= f.label :label %><br>
+    <%= f.number_field :label %>
+  </div>
+  <div class="field">
+    <%= f.label :house_id %><br>
+    <%= f.number_field :house_id %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :month %><br>
+    <%= f.number_field :month %>
+  </div>
+  <div class="field">
+    <%= f.label :temperature %><br>
+    <%= f.text_field :temperature %>
+  </div>
+  <div class="field">
+    <%= f.label :daylight %><br>
+    <%= f.text_field :daylight %>
+  </div>
+  <div class="field">
+    <%= f.label :energy_production %><br>
+    <%= f.number_field :energy_production %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

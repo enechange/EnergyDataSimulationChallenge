@@ -21,7 +21,7 @@ class EnergiesController < ApplicationController
   end
   
   def edit
-    @energy =Energy..find(params[:id])
+    @energy =Energy.find(params[:id])
   end
   
   def update
@@ -42,7 +42,7 @@ class EnergiesController < ApplicationController
   private 
   #Strong Parameters
     def energy_params
-      params.require(:energy).permit(:firstname, :lastname, :city, :num_of_people, :has_child)
+      params.require(:energy).permit(:label, :house_id, :year, :month, :temperature,:daylight,:energy_production)
     end
 end
 
