@@ -50,6 +50,7 @@ class HousesController < ApplicationController
       params.require(:house).permit(:firstname, :lastname, :city, :num_of_people, :has_child)
     end
     
+  #house_idが存在するかの判定  
     def existence_of_house_id
       if House.find_by(id: params[:id]).nil?
          redirect_to(root_url)
