@@ -26,8 +26,10 @@ class HousesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url 
   end
 
-  test "destroyアクションを存在しないhouse_idで実行するとリダイレクトされるか" do
-    delete house_url(3)
+  test "destroyアクションを存在しないhouse_idで実行すると、削除が実行されず、リダイレクトされるか" do
+    assert_no_difference 'House.count' do
+      delete house_url(3)
+    end
     assert_redirected_to root_url 
   end
 
