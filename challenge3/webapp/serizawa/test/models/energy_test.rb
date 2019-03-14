@@ -6,76 +6,76 @@ class EnergyTest < ActiveSupport::TestCase
    @energy = energies(:one)
   end
 
-  test "should be valid" do
+  test "サニティーチェック" do
     assert @energy.valid?
   end
   
-  test "label should be present" do
+  test "label の存在性のテスト" do
   @energy.label = " "
   assert_not @energy.valid?
   end
   
-  test "label should be only integer" do
+  test "label は小数点を受け付けない" do
   @energy.label = 1.1
   assert_not @energy.valid?
   end
   
-  test "house_id should be present" do
+  test "house_idは存在しなければならない" do
   @energy.house_id = " "
   assert_not @energy.valid?
   end
   
-  test "house_id should be only integer" do
+  test "house_id は小数点を受け付けない" do
   @energy.house_id = 1.1
   assert_not @energy.valid?
   end
   
-    test "year should be present" do
+    test "year は存在しなければならない" do
   @energy.year = " "
   assert_not @energy.valid?
   end
   
-  test "year should be only integer" do
+  test "year は小数点を受け付けない" do
   @energy.year = 1.1
   assert_not @energy.valid?
   end
   
-  test "month should be present" do
+  test "month は存在しなければならない" do
   @energy.month = " "
   assert_not @energy.valid?
   end
   
-  test "month should be only integer" do
+  test "monthは小数点を受け付けない" do
   @energy.month = 1.1
   assert_not @energy.valid?
   end
   
-  test "temperature should be present" do
+  test "temperature は存在しなければならない" do
   @energy.temperature = " "
   assert_not @energy.valid?
   end
   
-  test "temperature should be numerical" do
+  test "temperature は数値でなければならない" do
   @energy.temperature = "a"
   assert_not @energy.valid?
   end
   
-    test "daylight should be present" do
+    test "daylight は存在しなければならない" do
   @energy.daylight = " "
   assert_not @energy.valid?
   end
   
-  test "daylight should be numerical" do
+  test "daylightは数値でなければならない" do
   @energy.daylight = "a"
   assert_not @energy.valid?
   end
   
-  test "energy_production should be present" do
+  test "energy_production は存在しなければならない" do
   @energy.energy_production = " "
   assert_not @energy.valid?
   end
   
-  test "energy_production should be only integer" do
+  test "energy_production は小数点を受け付けない" do
   @energy.energy_production = 1.1
   assert_not @energy.valid?
   end
