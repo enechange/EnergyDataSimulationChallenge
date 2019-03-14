@@ -9,7 +9,6 @@ class HousesIndexTest < ActionDispatch::IntegrationTest
   test "houses_data(rootページ)ページに関するテスト" do
     get root_path
     assert_template 'houses/index'
-    assert_match "yamada", response.body
     assert_match "firstname", response.body
     assert_match "lastname", response.body
     assert_match "city", response.body
