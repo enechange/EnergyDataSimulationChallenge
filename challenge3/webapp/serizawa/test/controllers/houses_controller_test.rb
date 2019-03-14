@@ -1,9 +1,34 @@
 require 'test_helper'
 
 class HousesControllerTest < ActionDispatch::IntegrationTest
-  test "should get new" do
+  
+  def setup
+    @house = houses(:one)
+  end
+  
+  test "new_house_urlにgetアクセスすると成功するか" do
     get new_house_url
     assert_response :success
+  end
+  
+  test "showアクションを存在しないhouse_idで実行するとリダイレクトされるか" do
+    get house_url(3)
+    assert_redirected_to root_url 
+  end
+  
+  test "editアクションを存在しないhouse_idで実行するとリダイレクトされるか" do
+    get edit_house_url(3)
+    assert_redirected_to root_url 
+  end
+  
+  test "updateアクションを存在しないhouse_idで実行するとリダイレクトされるか" do
+    patch house_url(3)
+    assert_redirected_to root_url 
+  end
+
+  test "destroyアクションを存在しないhouse_idで実行するとリダイレクトされるか" do
+    delete house_url(3)
+    assert_redirected_to root_url 
   end
 
 end

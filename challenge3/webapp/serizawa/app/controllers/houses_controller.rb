@@ -1,5 +1,5 @@
 class HousesController < ApplicationController
-
+ before_action :existence_of_house_id, only: [:show, :edit, :update, :destroy]
 
   def index
     @houses = House.all
@@ -44,8 +44,15 @@ class HousesController < ApplicationController
   end
   
   private 
+  
   #Strong Parameters
     def house_params
       params.require(:house).permit(:firstname, :lastname, :city, :num_of_people, :has_child)
+    end
+    
+    def existence_of_house_id
+      if House.find_by(id: params[:id]).nil?
+         redirect_to(root_url)
+      end
     end
 end

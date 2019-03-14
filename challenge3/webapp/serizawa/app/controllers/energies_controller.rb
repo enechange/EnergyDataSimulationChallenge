@@ -1,4 +1,6 @@
 class EnergiesController < ApplicationController
+ before_action :existence_of_energy_id, only: [:show, :edit, :update, :destroy]  
+  
   def index
     @energies = Energy.all
   end
@@ -43,6 +45,12 @@ class EnergiesController < ApplicationController
   #Strong Parameters
     def energy_params
       params.require(:energy).permit(:label, :house_id, :year, :month, :temperature,:daylight,:energy_production)
+    end
+    
+    def existence_of_energy_id
+      if Energy.find_by(id: params[:id]).nil?
+         redirect_to energies_path 
+      end
     end
 end
 
