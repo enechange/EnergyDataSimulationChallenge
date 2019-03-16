@@ -32,14 +32,14 @@ ActiveRecord::Schema.define(version: 2019_03_16_072616) do
     t.index ["city_id"], name: "index_houses_on_city_id"
   end
 
-  create_table "monthly_house_energy_productions", force: :cascade do |t|
-    t.integer "label"
+  create_table "monthly_house_energy_productions", comment: "Monthly House Energy Production Data", force: :cascade do |t|
+    t.integer "label", comment: "Label"
     t.bigint "house_id"
-    t.integer "year"
-    t.integer "month"
-    t.float "temperature"
-    t.float "daylight"
-    t.integer "energy_production"
+    t.integer "year", comment: "Production Year"
+    t.integer "month", comment: "Production Month"
+    t.float "temperature", comment: "Temperature"
+    t.float "daylight", comment: "Label"
+    t.integer "energy_production", comment: "Label"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["house_id"], name: "index_monthly_house_energy_productions_on_house_id"
