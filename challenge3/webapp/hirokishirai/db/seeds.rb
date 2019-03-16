@@ -46,10 +46,10 @@ require 'activerecord-import'
 require 'activerecord-import/base'
 require 'activerecord-import/active_record/adapters/postgresql_adapter'
 
-citis = {}
+cities = {}
 CSV.foreach('../../data/house_data.csv', :headers => true) do |row|
-  citis[row['City']] ||= City.new(name: row['City'])
-  citis[row['City']].houses.build(
+  cities[row['City']] ||= City.new(name: row['City'])
+  cities[row['City']].houses.build(
     id: row['ID'].to_i,
     firstname:     row['Firstname'],
     lastname:      row['Lastname'],
@@ -57,7 +57,7 @@ CSV.foreach('../../data/house_data.csv', :headers => true) do |row|
     has_child:     row['has_child'] == 'Yes',
   )
 end
-City.import citis.values, recursive: true
+City.import cities.values, recursive: true
 
 monthly_house_energy_productions = []
 CSV.foreach('../../data/dataset_50.csv', :headers => true) do |row|
