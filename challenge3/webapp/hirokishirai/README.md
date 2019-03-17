@@ -1,5 +1,14 @@
 # Challange3 Hirokishirai
 
+Deployed to: https://enedatasimulation-hirokishirai.herokuapp.com
+
+# 画面一覧
+
+- [都市(City)一覧](https://enedatasimulation-hirokishirai.herokuapp.com/cities)
+- [都市(City)ごとのサマリページ](https://enedatasimulation-hirokishirai.herokuapp.com/cities/1)
+- [都市(City)ごとの住居一覧](https://enedatasimulation-hirokishirai.herokuapp.com/houses?city_id=1)
+- [住居(House)ごとのサマリページ](https://enedatasimulation-hirokishirai.herokuapp.com/houses/1)
+
 # TODO LIST
 - classつける __TODO__ [app/views/shared/_monthly_house_energy_productions_table.html.slim](app/views/shared/_monthly_house_energy_productions_table.html.slim)
 - define_method系ほとんど同じような内容なのでリファクタする __TODO__ [app/models/city.rb](app/models/city.rb)
