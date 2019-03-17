@@ -142,6 +142,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails-i18n (6.0.0.beta1)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0.beta1, < 7)
     railties (6.0.0.beta3)
       actionpack (= 6.0.0.beta3)
       activesupport (= 6.0.0.beta3)
@@ -226,6 +229,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 6.0.0.beta3)
+  rails-i18n (~> 6.0.0.beta1)
   sassc-rails
   selenium-webdriver
   slim-rails

@@ -28,6 +28,9 @@ gem 'jbuilder', '~> 2.5'
 
 # For Calculate Median
 gem 'active_median'
+
+gem 'rails-i18n', '~> 6.0.0.beta1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

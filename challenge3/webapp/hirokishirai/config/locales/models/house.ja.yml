@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      house: お客様
+    attributes:
+      house:
+        fullname: 代表居住者氏名
+        firstname: 代表居住者名前
+        lastname: 代表居住者苗字
+        num_of_people: 居住人数
+        has_child: 子供
+    formats:
+      house:
+        fullname: "%{lastname} %{firstname}"
+    boolean:
+      house:
+        has_child:
+          "true": 有
+          "false": 無
