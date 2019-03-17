@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MonthlyHouseEnergyProduction < ApplicationRecord
   belongs_to :house
 

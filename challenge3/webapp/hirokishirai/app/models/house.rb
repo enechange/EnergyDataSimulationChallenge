@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class House < ApplicationRecord
   belongs_to :city
   # NOTE: 日照量と発電量など単体でも有益の可能性があるので dependent: :nullify

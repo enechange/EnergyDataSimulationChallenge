@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateMonthlyHouseEnergyProductions < ActiveRecord::Migration[6.0]
   def change
     create_table :monthly_house_energy_productions, comment: 'Monthly House Energy Production Data' do |t|
