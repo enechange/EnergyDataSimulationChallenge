@@ -1,0 +1,21 @@
+html {
+  font-size: 62.5%;
+}
+* {
+  a {
+    text-decoration: none;
+  }
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+table, thead, tbody, th, td {
+  border: solid 1px #000;
+}
+
+th, td {
+  padding: .2rem;
+}
