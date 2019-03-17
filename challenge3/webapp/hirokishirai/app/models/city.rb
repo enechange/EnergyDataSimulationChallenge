@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# TODO: ユニットテスト書く
-# TODO: define_method系ほとんど同じような内容なのでリファクタする
+# TODO ユニットテスト書く
+# TODO define_method系ほとんど同じような内容なのでリファクタする
 
 class City < ApplicationRecord
   # NOTE: 世帯情報など単体でも有益の可能性があるので dependent: :nullify
