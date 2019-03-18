@@ -1,0 +1,50 @@
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '2.5.5'
+gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
+
+# TODO: バージョン指定をしていないものはする
+gem 'unicorn', '~> 5.5.0'
+gem 'sassc-rails', '~> 2.1.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'turbolinks', '~> 5'
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'dotenv-rails', '~> 2.7.1'
+gem 'slim-rails'
+gem 'gon'
+gem 'bugsnag'
+
+group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-coolline'
+  gem 'pry-doc'
+  gem 'byebug'
+  gem 'awesome_print'
+end
+
+group :development do
+  gem 'erd'
+  gem 'brakeman'
+  gem 'rubocop-rails_config', '~> 0.4.3'
+  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'capistrano-rails', '~> 1.4.0'
+  gem 'capistrano-rails-console', require: false
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-yarn'
+end
+
+group :test do
+  gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'factory_bot_rails'
+end
