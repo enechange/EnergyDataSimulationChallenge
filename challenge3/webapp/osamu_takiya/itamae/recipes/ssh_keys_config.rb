@@ -1,4 +1,4 @@
-USERNAME        = ENV['USERNAME'].freeze
+USERNAME        = ENV['USERNAME']
 HOME_DIRECTORY  = "/home/#{USERNAME}".freeze
 
 execute 'Create a .ssh directory if it does not exist' do
@@ -27,6 +27,6 @@ end
 file "#{HOME_DIRECTORY}/.ssh/config" do
   action :edit
   block do |content|
-    content.gsub!('IDENTITY_FILE_PATH', "~/.ssh/github.pem")
+    content.gsub!('IDENTITY_FILE_PATH', '~/.ssh/github.pem')
   end
 end

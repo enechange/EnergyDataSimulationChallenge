@@ -1,4 +1,4 @@
-USERNAME        = ENV['USERNAME'].freeze
+USERNAME        = ENV['USERNAME']
 HOME_DIRECTORY  = "/home/#{USERNAME}".freeze
 
 %w(zsh).each do |pkg|

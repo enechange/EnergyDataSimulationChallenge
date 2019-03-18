@@ -1,6 +1,6 @@
-USERNAME        = ENV['USERNAME'].freeze
+USERNAME        = ENV['USERNAME']
 HOME_DIRECTORY  = "/home/#{USERNAME}".freeze
-RUBY_VERSION    = '2.5.5'
+RUBY_VERSION    = '2.5.5'.freeze
 
 execute 'Build Ruby' do
   user USERNAME

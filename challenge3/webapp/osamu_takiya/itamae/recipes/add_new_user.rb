@@ -1,5 +1,5 @@
-USERNAME        = ENV['USERNAME'].freeze
-PASSWORD        = ENV['PASSWORD'].freeze
+USERNAME        = ENV['USERNAME']
+PASSWORD        = ENV['PASSWORD']
 HOME_DIRECTORY  = "/home/#{USERNAME}".freeze
 
 user 'Create a new user account' do

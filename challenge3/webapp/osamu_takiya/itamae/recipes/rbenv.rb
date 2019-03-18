@@ -1,4 +1,4 @@
-USERNAME        = ENV['USERNAME'].freeze
+USERNAME        = ENV['USERNAME']
 HOME_DIRECTORY  = "/home/#{USERNAME}".freeze
 
 git "#{HOME_DIRECTORY}/.rbenv" do

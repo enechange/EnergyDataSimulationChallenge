@@ -26,7 +26,7 @@ Style/MixinUsage:
   Enabled: false
 
 Metrics/LineLength:
-  Max: 180 # 数字に特に根拠はない
+  Max: 200 # 数字に特に根拠はない
 
 Style/NumericLiterals:
   Enabled: false

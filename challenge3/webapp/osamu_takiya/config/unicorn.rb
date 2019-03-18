@@ -1,3 +1,5 @@
+require 'dotenv/load'
+
 worker_processes 2
 listen ENV['UNICORN_LISTEN']
 timeout 30
@@ -22,7 +24,7 @@ before_fork do |server, _worker|
 end
 
 before_exec do |_server|
-  ENV['BUNDLE_GEMFILE'] = "#{Rails.root.join('Gemfile')}"
+  ENV['BUNDLE_GEMFILE'] = Rails.root.join('Gemfile').to_s
 end
 
 after_fork do |_server, _worker|
