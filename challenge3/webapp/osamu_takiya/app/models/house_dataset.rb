@@ -1,16 +1,16 @@
 class HouseDataset < ApplicationRecord
-  has_many :energy_production_datasets
+  has_many :energy_production_datasets, dependent: :destroy
 
   validates :firstname,
-    presence: true
+            presence: true
   validates :lastname,
-    presence: true
+            presence: true
   validates :city,
-    presence: true,
-    inclusion: { in: ['London', 'Cambridge', 'Oxford'] }
+            presence: true,
+            inclusion: { in: %w(London Cambridge Oxford) }
   validates :num_of_people,
-    presence: true,
-    numericality: { only_integer: true }
+            presence: true,
+            numericality: { only_integer: true }
   validates :has_child,
-    inclusion: { in: [true, false] }
+            inclusion: { in: [true, false] }
 end
