@@ -55,3 +55,5 @@ Rails/Output:
 Metrics/BlockLength:
   Enabled: false # ブロック引数部分がある程度長くなることもある
 
+Lint/HandleExceptions:
+  Enabled: false
