@@ -1,0 +1,57 @@
+Rails:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false # 有効にすると見た目がいいレイアウトにした際に怒られるため無効にする
+  # EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false # 有効にすると見た目がいいレイアウトにした際に怒られるため無効にする
+  # EnforcedStyleForMultiline: consistent_comma
+
+Style/BracesAroundHashParameters:
+  Enabled: false # 有効にすると見た目がいいレイアウトにした際に怒られるため無効にする
+  # EnforcedStyle: context_dependent
+
+Layout/TrailingBlankLines:
+  Enabled: false # 有効にした場合、コメントが最終行だとどんな設定にしてても怒られるため無効にする
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/MixinUsage:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 180 # 数字に特に根拠はない
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: '()'
+    '%i': '[]'
+    '%I': '[]'
+    '%r': '{}'
+    '%w': '()'
+    '%W': '[]'
+
+Style/Documentation:
+  Enabled: false # 一行目に class って書いてもいいでしょ
+
+Style/ClassAndModuleChildren:
+  Enabled: false # 暫定的に false にする（名前空間関連）
+
+Metrics/MethodLength:
+  Enabled: false # メソッドの長さが長いと怒られる（有用なので後で調整すること）
+
+Rails/Output:
+  Enabled: false # プリントデバッグに使いたいので勘弁してくれ
+
+Metrics/BlockLength:
+  Enabled: false # ブロック引数部分がある程度長くなることもある
+
