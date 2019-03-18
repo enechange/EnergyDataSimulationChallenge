@@ -27,7 +27,7 @@ filters:
     columns:
       ID: id
       Label: label
-      House: house
+      House: house_dataset_id
       Year: year
       Month: month
       Temperature: temperature

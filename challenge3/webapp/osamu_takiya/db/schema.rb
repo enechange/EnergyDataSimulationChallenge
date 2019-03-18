@@ -11,25 +11,29 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_03_18_092633) do
-  create_table 'energy_production_datasets', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci', force: :cascade do |t|
-    t.integer 'label'
-    t.integer 'house'
-    t.integer 'year'
-    t.integer 'month'
-    t.decimal 'temperature', precision: 10, scale: 1
-    t.decimal 'daylight', precision: 10, scale: 1
-    t.integer 'energy_production'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+
+  create_table "energy_production_datasets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.integer "label", null: false
+    t.bigint "house_dataset_id", null: false
+    t.integer "year", null: false
+    t.integer "month", null: false
+    t.decimal "temperature", precision: 10, scale: 1, null: false
+    t.decimal "daylight", precision: 10, scale: 1, null: false
+    t.integer "energy_production", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_dataset_id"], name: "index_energy_production_datasets_on_house_dataset_id"
   end
 
-  create_table 'house_datasets', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci', force: :cascade do |t|
-    t.string 'firstname'
-    t.string 'lastname'
-    t.string 'city'
-    t.integer 'num_of_people'
-    t.boolean 'has_child'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "house_datasets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.string "firstname", null: false
+    t.string "lastname", null: false
+    t.string "city", null: false
+    t.integer "num_of_people", null: false
+    t.boolean "has_child", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "energy_production_datasets", "house_datasets"
 end
