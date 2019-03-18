@@ -1,0 +1,60 @@
+in:
+  type: file
+  path_prefix: ../../../data/dataset_50.csv
+  parser:
+    charset: UTF-8
+    newline: CRLF
+    type: csv
+    delimiter: ','
+    quote: '"'
+    escape: '"'
+    trim_if_not_quoted: false
+    skip_header_lines: 1
+    allow_extra_columns: false
+    allow_optional_columns: false
+    columns:
+    - {name: ID, type: long}
+    - {name: Label, type: long}
+    - {name: House, type: long}
+    - {name: Year, type: long}
+    - {name: Month, type: long}
+    - {name: Temperature, type: double}
+    - {name: Daylight, type: double}
+    - {name: EnergyProduction, type: long}
+
+filters:
+  - type: rename
+    columns:
+      ID: id
+      Label: label
+      House: house
+      Year: year
+      Month: month
+      Temperature: temperature
+      Daylight: daylight
+      EnergyProduction: energy_production
+  - type: column
+    add_columns:
+      - {name: created_at, type: timestamp, default: "1970-01-01 00:00:00", format: '%Y-%m-%d %H:%M:%S'}
+      - {name: updated_at, type: timestamp, default: "1970-01-01 00:00:00", format: '%Y-%m-%d %H:%M:%S'}
+  - type: ruby_proc
+    columns:
+      - name: created_at
+        proc: |
+          -> (created_at) do
+            Time.now.utc
+          end
+      - name: updated_at
+        proc: |
+          -> (updated_at) do
+            Time.now.utc
+          end
+
+out:
+  type: mysql
+  host: localhost
+  user: enechange
+  database: enechange_development
+  mode: merge
+  table: energy_production_datasets
+  options: { useLegacyDatetimeCode: false, serverTimezone: UTC }
