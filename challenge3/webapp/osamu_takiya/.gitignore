@@ -14,3 +14,9 @@
 /config/master.key
 vendor/
 .env
+
+# 秘匿情報を含むファイル
+/itamae/source_files/chsh_to_zsh.sh
+/itamae/source_files/enechange.pem
+/itamae/source_files/github.pem
+/itamae/source_files/sudoers
