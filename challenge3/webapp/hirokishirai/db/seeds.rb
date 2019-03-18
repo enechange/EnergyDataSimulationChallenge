@@ -17,7 +17,7 @@ target_models = [City, House, MonthlyHouseEnergyProduction]
 
 if target_models.map(&:any?).include?(true)
   decision = nil
-  while %w(Y n).exclude?(decision)
+  while %w[Y n].exclude?(decision)
     print <<~ALERT.chomp
       ======================
       There are some data.
@@ -49,29 +49,29 @@ require 'activerecord-import/base'
 require 'activerecord-import/active_record/adapters/postgresql_adapter'
 
 cities = {}
-CSV.foreach('../../data/house_data.csv', :headers => true) do |row|
+CSV.foreach('../../data/house_data.csv', headers: true) do |row|
   cities[row['City']] ||= City.new(name: row['City'])
   cities[row['City']].houses.build(
     id: row['ID'].to_i,
-    firstname:     row['Firstname'],
-    lastname:      row['Lastname'],
+    firstname: row['Firstname'],
+    lastname: row['Lastname'],
     num_of_people: row['num_of_people'].to_i,
-    has_child:     row['has_child'] == 'Yes',
+    has_child: row['has_child'] == 'Yes'
   )
 end
 City.import cities.values, recursive: true
 
 monthly_house_energy_productions = []
-CSV.foreach('../../data/dataset_50.csv', :headers => true) do |row|
+CSV.foreach('../../data/dataset_50.csv', headers: true) do |row|
   monthly_house_energy_productions << MonthlyHouseEnergyProduction.new(
-    id:                row['ID'].to_i,
-    label:             row['Label'].to_i,
-    house_id:          row['House'].to_i,
-    year:              row['Year'].to_i,
-    month:             row['Month'].to_i,
-    temperature:       row['Temperature'].to_f,
-    daylight:          row['Daylight'].to_f,
-    energy_production: row['EnergyProduction'].to_i,
+    id: row['ID'].to_i,
+    label: row['Label'].to_i,
+    house_id: row['House'].to_i,
+    year: row['Year'].to_i,
+    month: row['Month'].to_i,
+    temperature: row['Temperature'].to_f,
+    daylight: row['Daylight'].to_f,
+    energy_production: row['EnergyProduction'].to_i
   )
 end
 MonthlyHouseEnergyProduction.import monthly_house_energy_productions

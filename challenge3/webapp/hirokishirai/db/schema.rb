@@ -12,41 +12,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_16_072616) do
-
+ActiveRecord::Schema.define(version: 20_190_316_072_616) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "cities", comment: "City Data", force: :cascade do |t|
-    t.string "name", comment: "City Name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'cities', comment: 'City Data', force: :cascade do |t|
+    t.string 'name', comment: 'City Name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "houses", comment: "House Data", force: :cascade do |t|
-    t.string "firstname", comment: "Resident First Name"
-    t.string "lastname", comment: "Resident Last Name"
-    t.bigint "city_id"
-    t.integer "num_of_people", comment: "Number of Residents"
-    t.boolean "has_child", comment: "Child flag"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["city_id"], name: "index_houses_on_city_id"
+  create_table 'houses', comment: 'House Data', force: :cascade do |t|
+    t.string 'firstname', comment: 'Resident First Name'
+    t.string 'lastname', comment: 'Resident Last Name'
+    t.bigint 'city_id'
+    t.integer 'num_of_people', comment: 'Number of Residents'
+    t.boolean 'has_child', comment: 'Child flag'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['city_id'], name: 'index_houses_on_city_id'
   end
 
-  create_table "monthly_house_energy_productions", comment: "Monthly House Energy Production Data", force: :cascade do |t|
-    t.integer "label", comment: "Label"
-    t.bigint "house_id"
-    t.integer "year", comment: "Production Year"
-    t.integer "month", comment: "Production Month"
-    t.float "temperature", comment: "Temperature"
-    t.float "daylight", comment: "Label"
-    t.integer "energy_production", comment: "Label"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["house_id"], name: "index_monthly_house_energy_productions_on_house_id"
+  create_table 'monthly_house_energy_productions', comment: 'Monthly House Energy Production Data', force: :cascade do |t|
+    t.integer 'label', comment: 'Label'
+    t.bigint 'house_id'
+    t.integer 'year', comment: 'Production Year'
+    t.integer 'month', comment: 'Production Month'
+    t.float 'temperature', comment: 'Temperature'
+    t.float 'daylight', comment: 'Label'
+    t.integer 'energy_production', comment: 'Label'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['house_id'], name: 'index_monthly_house_energy_productions_on_house_id'
   end
 
-  add_foreign_key "houses", "cities"
-  add_foreign_key "monthly_house_energy_productions", "houses"
+  add_foreign_key 'houses', 'cities'
+  add_foreign_key 'monthly_house_energy_productions', 'houses'
 end

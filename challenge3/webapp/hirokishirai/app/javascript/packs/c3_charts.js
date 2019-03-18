@@ -80,13 +80,13 @@ document.addEventListener("turbolinks:load", async function(){
       },
       axis: {
         x: {
-          label: 'Temperature',
+          label: '気温',
           tick: {
               fit: false
           }
         },
         y: {
-          label: 'Energy Production'
+          label: 'エネルギー生産量'
         }
       }
     })
