@@ -1,0 +1,2 @@
+class EnergyProductionDataset < ApplicationRecord
+end

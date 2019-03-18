@@ -1,0 +1,2 @@
+class HouseDataset < ApplicationRecord
+end
