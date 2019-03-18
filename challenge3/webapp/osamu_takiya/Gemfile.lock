@@ -149,6 +149,7 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.9)
     multi_json (1.13.1)
+    mysql2 (0.5.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (5.2.0)
@@ -319,6 +320,7 @@ DEPENDENCIES
   factory_bot_rails
   gon
   listen (>= 3.0.5, < 3.2)
+  mysql2
   pry-byebug
   pry-coolline
   pry-doc
