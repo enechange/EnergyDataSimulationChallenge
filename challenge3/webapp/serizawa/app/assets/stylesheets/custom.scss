@@ -1,0 +1,9 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+table, th, td {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  padding: 10px;
+  line-height: 1.5;
+}
