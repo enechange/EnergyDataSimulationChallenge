@@ -1,2 +1,12 @@
 %h1 Houses#index
-%p Find me in app/views/houses/index.html.haml
+%table
+  %tbody
+    %tr
+      %th First Name
+      %th Last Name
+  %tbody
+  - @houses.each do |h|
+    %tr
+      %td= h.firstname
+      %td= h.lastname
+      %td= link_to 'Detail', house_path(h)
