@@ -1,0 +1,55 @@
+# target_version:
+#   rubocop v0.34.2
+
+AllCops:
+  Exclude:
+    - "vendor/**/*" # rubocop config/default.yml
+    - 'node_modules/**/*'
+    - "bin/*"
+    - "db/schema.rb"
+    - "db/migrate/*"
+  DisplayCopNames: true
+  TargetRubyVersion: 2.5.3
+Style/AsciiComments:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+AndOr:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/LineLength:
+  Max: 160
+  Exclude:
+    - "db/migrate/*.rb"
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "db/migrate/*.rb"
+
+Bundler/OrderedGems:
+  Enabled: ture
+
+Metrics/BlockLength:
+  Exclude:
+    - "db/seeds.rb"
+    - "spec/**/*"
+
+Layout/ExtraSpacing:
+  Exclude:
+    - "spec/**/*"
+
+Layout/SpaceAroundOperators:
+  Exclude:
+    - "spec/**/*"
