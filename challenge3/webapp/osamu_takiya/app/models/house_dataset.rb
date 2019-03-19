@@ -13,4 +13,21 @@ class HouseDataset < ApplicationRecord
             numericality: { only_integer: true }
   validates :has_child,
             inclusion: { in: [true, false] }
+
+  scope :energy_production_whether_has_child_or_not, lambda { |has_child_or_not, period_unit|
+    joins(:energy_production_datasets)
+      .where(has_child: has_child_or_not)
+      .group(period_unit)
+      .sum(:energy_production)
+  }
+
+  scope :energy_production_in_each_city, lambda { |city_name, what_year|
+    joins(:energy_production_datasets)
+      .where(
+        city: city_name,
+        energy_production_datasets: { year: what_year }
+      )
+      .group(:year)
+      .sum(:energy_production)
+  }
 end

@@ -1,0 +1,10 @@
+p
+  = 'いろいろ Charts'
+hr
+  = column_chart @energy_production_per_month_whether_has_child_or_not
+hr
+  p
+    = '年ごとの3つの都市の比較'
+  - @energy_production_in_cities_in_years.each do |year, energy_production_in_cities|
+    = "#{year} 年"
+    = pie_chart energy_production_in_cities
