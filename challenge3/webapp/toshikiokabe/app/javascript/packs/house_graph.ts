@@ -25,7 +25,7 @@ const options = {
       { type: 'linear', position: 'left', ticks: { beginAtZero:true } },
       { type: 'linear', position: 'right', ticks: { beginAtZero:true } },
     ],
-  }      };
+  }
 }
 
 function graph_init() {
