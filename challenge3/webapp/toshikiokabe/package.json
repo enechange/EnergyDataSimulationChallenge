@@ -3,6 +3,8 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^4.0.2",
+    "@types/chartjs": "^0.0.31",
+    "chart.js": "^2.8.0",
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.3333"
   },
