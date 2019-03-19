@@ -44,7 +44,6 @@ end
 # ============================
 
 require 'csv'
-require 'activerecord-import'
 require 'activerecord-import/base'
 require 'activerecord-import/active_record/adapters/postgresql_adapter'
 
