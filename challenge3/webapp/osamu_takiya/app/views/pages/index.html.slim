@@ -1,10 +1,33 @@
-p
-  = 'いろいろ Charts'
-hr
-  = column_chart @energy_production_per_month_whether_has_child_or_not
-hr
-  p
-    = '年ごとの3つの都市の比較'
-  - @energy_production_in_cities_in_years.each do |year, energy_production_in_cities|
-    = "#{year} 年"
-    = pie_chart energy_production_in_cities
+.container
+  .content
+    p
+      h1
+        = 'Challenge 3 - Web Application'
+    hr
+
+    p
+      h3
+        = 'Chart 1'
+    p
+      h5
+        = '子供の「あり/なし」による、各月のenergy_production（2011年〜2013年）'
+    p
+      = column_chart @energy_production_per_month_whether_has_child_or_not
+    hr
+
+    p
+      h3
+        = 'Chart 2'
+    p
+      h5
+        = '3つの都市別の、各年のenergy_production（2011年〜2013年）'
+    p
+      .columns
+        - @energy_production_in_cities_in_years.each do |year, energy_production_in_cities|
+          .column.is-one-third
+            = "#{year} 年"
+            = pie_chart energy_production_in_cities
+    hr
+      p
+        = 'By Osamu Takiya'
+      p

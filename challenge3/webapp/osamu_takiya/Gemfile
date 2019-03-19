@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 # TODO: バージョン指定をしていないものはする
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bugsnag'
+gem 'bulma-rails'
 gem 'chartkick'
 gem 'dotenv-rails', '~> 2.7.1'
 gem 'gon'
