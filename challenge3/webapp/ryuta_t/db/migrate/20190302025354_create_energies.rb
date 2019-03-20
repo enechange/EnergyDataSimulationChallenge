@@ -8,7 +8,6 @@ class CreateEnergies < ActiveRecord::Migration[5.2]
       t.float :temperature
       t.float :daylight
       t.integer :energy_production
-      t.references :house, foreign_key: true
 
       t.timestamps
     end

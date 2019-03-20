@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2019_03_02_025908) do
   end
 
   create_table "houses", force: :cascade do |t|
-    t.integer "original_id"
     t.string "firstname"
     t.string "lastname"
     t.string "city"
