@@ -10,6 +10,7 @@ require 'csv'
 
 CSV.foreach('db/data/dataset_50.csv', headers: true) do |row|
   Energy.create(
+      original_id:       row['Id'].to_i,
       label:             row['Label'],
       house_id:          row['House'],
       year:              row['Year'],
@@ -22,6 +23,7 @@ end
 
 CSV.foreach('db/data/house_data.csv', headers: true) do |row|
   House.create(
+      original_id:   row['Id'].to_i,
       firstname:     row['Firstname'],
       lastname:      row['Lastname'],
       city:          row['City'],
