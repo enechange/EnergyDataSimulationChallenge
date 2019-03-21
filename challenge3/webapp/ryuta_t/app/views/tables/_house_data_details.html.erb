@@ -13,15 +13,15 @@
   </thead>
 
   <tbody>
-  <% house.energies.each do |house| %>
+  <% house.energies.order('label').each do |h| %>
     <tr>
-      <td><%= house.label %></td>
-      <td><%= house.house_id %></td>
-      <td><%= house.year %></td>
-      <td><%= house.month %></td>
-      <td><%= house.temperature %></td>
-      <td><%= house.daylight %></td>
-      <td><%= house.energy_production %></td>
+      <td><%= h.label %></td>
+      <td><%= h.house_id %></td>
+      <td><%= h.year %></td>
+      <td><%= h.month %></td>
+      <td><%= h.temperature %></td>
+      <td><%= h.daylight %></td>
+      <td><%= h.energy_production %></td>
     </tr>
   <% end %>
   </tbody>

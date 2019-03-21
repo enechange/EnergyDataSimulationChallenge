@@ -1,19 +1,26 @@
 class HousesController < ApplicationController
   def index
     @houses       = House.all
-    @house_data   = House.all.includes(:energies).take_energy_average
-    @house_amount = House.all.includes(:energies).take_house_amount
-    @data_term   = Energy.all.pluck(:year).uniq.sort
-    @data_city   = House.all.pluck(:city).uniq.sort
+    @house_data   = @houses.includes(:energies).take_energy_average
+    @house_amount = @houses.includes(:energies).take_house_amount
+    @data_term    = Energy.all.pluck(:year).uniq.sort
+    @data_city    = @houses.pluck(:city).uniq.sort
 
-    gon.data_city = @data_city
-    gon.data_term = @data_term
-    gon.house_data = @data_city.map { |city| @house_data[city].values }
-    gon.house_amount = @data_city.map{|city| @house_amount[city].values}
+    gon.data_city    = @data_city
+    gon.data_term    = @data_term
+    gon.house_data   = @data_city.map { |city| @house_data[city].values }
+    gon.house_amount = @data_city.map { |city| @house_amount[city].values }
   end
 
   def show
     @house = House.find(params[:id])
+    @house_eneriges = @house.energies.order('label')
+
+    gon.data_month       = @house_eneriges.pluck(:month)
+    gon.data_energyprod  = @house_eneriges.pluck(:energy_production)
+    gon.data_temperature = @house_eneriges.pluck(:temperature)
+    gon.data_daylight    = @house_eneriges.pluck(:daylight)
+
   end
 
   def new
