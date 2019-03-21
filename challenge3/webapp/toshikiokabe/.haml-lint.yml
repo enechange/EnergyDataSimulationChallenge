@@ -1,0 +1,13 @@
+skip_frontmatter: false
+exclude:
+  - 'vendor/**/*'
+  - 'spec/**/*'
+linters:
+  AltText:
+    enabled: true
+
+  InlineStyles:
+    enabled: false
+
+  LineLength:
+    enabled: false
