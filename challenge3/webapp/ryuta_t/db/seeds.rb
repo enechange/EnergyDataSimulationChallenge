@@ -10,7 +10,6 @@ require 'csv'
 
 CSV.foreach('db/data/house_data.csv', headers: true) do |row|
   House.create(
-      original_id:   row['Id'],
       firstname:     row['Firstname'],
       lastname:      row['Lastname'],
       city:          row['City'],
