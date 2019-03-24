@@ -1,0 +1,27 @@
+<table style="text-align: center; margin: auto; border: 5px solid #1a1a1a">
+  <caption>House Data</caption>
+
+  <thead>
+  <tr>
+    <th>FirstName</th>
+    <th>LastName</th>
+    <th>City</th>
+    <th>Num Of People</th>
+    <th>has child?</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <td><%= house.firstname %></td>
+    <td><%= house.lastname %></td>
+    <td><%= house.city %></td>
+    <td><%= house.num_of_people %></td>
+    <td><%= house.has_child %></td>
+    <td><%= link_to "edit", edit_house_path %></td>
+    <td><%= link_to "delete", house_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  </tbody>
+</table>

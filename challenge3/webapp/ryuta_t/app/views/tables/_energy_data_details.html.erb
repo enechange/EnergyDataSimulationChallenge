@@ -1,0 +1,32 @@
+<table style="text-align: center; margin: auto; border: 5px solid #1a1a1a">
+  <caption>Energy Data List</caption>
+
+  <thead>
+  <tr>
+    <th>Label</th>
+    <th>House ID</th>
+    <th>Year</th>
+    <th>Month</th>
+    <th>Temperature</th>
+    <th>Daylight</th>
+    <th>Energy Production</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <td><%= energy.label %></td>
+    <td><%= energy.house_id %></td>
+    <td><%= energy.year %></td>
+    <td><%= energy.month %></td>
+    <td><%= energy.temperature %></td>
+    <td><%= energy.daylight %></td>
+    <td><%= energy.energy_production %></td>
+    <td><%= link_to "edit", edit_energy_path %></td>
+    <td><%= link_to "delete", energy_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  </tbody>
+</table>

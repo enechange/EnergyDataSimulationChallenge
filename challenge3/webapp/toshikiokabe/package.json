@@ -1,0 +1,17 @@
+{
+  "name": "toshikiokabe",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^4.0.2",
+    "@types/chartjs": "^0.0.31",
+    "chart.js": "^2.8.0",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.3333"
+  },
+  "devDependencies": {
+    "tslint": "^5.14.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-loader": "^3.5.4",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
