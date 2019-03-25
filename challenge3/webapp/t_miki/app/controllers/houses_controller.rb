@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class HousesController < ApplicationController
   def index
     @houses = House.all
   end

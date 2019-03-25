@@ -11,6 +11,6 @@ class DatasController < ApplicationController
 
   private
   def set_house
-    @house = House.find(params[:user_id])
+    @house = House.find(params[:house_id])
   end
 end
