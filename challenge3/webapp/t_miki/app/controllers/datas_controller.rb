@@ -1,6 +1,14 @@
 class DatasController < ApplicationController
+  before_action :set_house, only: [:index]
+
   def index
-    @city = House.group(:city).count
-    @num_of_people = House.group(:num_of_people).count
+    @datas = @house.datasets.pluck(:Label, :Temperature, :Year, :Month, :Daylight, :EnergyProduction)
+    @labels = @datas.map(&:first)
+    @temperatures = @datas.map(&:second)
+  end
+
+  private
+  def set_house
+    @house = House.find(params[:user_id])
   end
 end

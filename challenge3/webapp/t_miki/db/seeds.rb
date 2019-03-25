@@ -9,7 +9,7 @@
 
 require "csv"
 
-CSV.foreach('db/house_data.csv') do |row|
+CSV.foreach('db/house_data.csv', headers: true) do |row|
   House.create(:id => row[0],
                :Firstname => row[1],
                :Lastname => row[2],
@@ -18,7 +18,7 @@ CSV.foreach('db/house_data.csv') do |row|
                :has_child => row[5])
 end
 
-CSV.foreach('db/dataset_50.csv') do |row|
+CSV.foreach('db/dataset_50.csv', headers: true) do |row|
   Dataset.create(:id => row[0],
                  :Label => row[1],
                  :house_id => row[2],

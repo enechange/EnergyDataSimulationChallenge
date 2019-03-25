@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root "datas#index"
-  resources :datas, only: [:index] do
-    resources :users, only: [:index]
+  root "users#index"
+  resources :users, only: [:index, :show] do
+    resources :datas, only: [:index]
   end
 end

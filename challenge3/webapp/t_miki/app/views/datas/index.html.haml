@@ -1,2 +1,24 @@
-= pie_chart @city
-= pie_chart @num_of_people
+%canvas#myChart{height: "200", width: "400"}
+:javascript
+  var ctx = document.getElementById('myChart');
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels:  #{@labels.to_json.html_safe},
+          datasets: [{
+              label: 'Temperature of #{@house.City}',
+              data: #{@temperatures},
+              borderColor: 'rgba(255, 50, 132, 1.0)',
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
+= link_to '<< Back', root_path
