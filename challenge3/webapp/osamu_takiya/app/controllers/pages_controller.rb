@@ -12,8 +12,8 @@ class PagesController < ApplicationController
   private
 
   def energy_production_per_month_whether_has_child_or_not
-    energy_production_per_month_with_child    = HouseDataset.energy_production_whether_has_child_or_not(1, :month)
-    energy_production_per_month_without_child = HouseDataset.energy_production_whether_has_child_or_not(0, :month)
+    energy_production_per_month_with_child    = HouseDataset.energy_production_whether_has_child_or_not(1, :month).sum(:energy_production)
+    energy_production_per_month_without_child = HouseDataset.energy_production_whether_has_child_or_not(0, :month).sum(:energy_production)
 
     [
       { name: '子供あり', data: energy_production_per_month_with_child },
@@ -23,18 +23,20 @@ class PagesController < ApplicationController
 
   # 戻り値の例: { "2011"=>{"Oxford"=>30985, "Cambridge"=>37528, "London"=>104348}, "2012"=>{"Oxford"=>66529, "Cambridge"=>80867, "London"=>224915},...
   def energy_production_per_year_in_each_city(target_years_range:, target_cities:)
-    # HACK: ネストが臭う
+    # HACK: ネストが臭う（Hashie などを使ったほうがいい？）
     energy_production_in_cities_in_years = {}
 
     target_years_range.each do |target_year|
       hash_in_hash = {}
 
       target_cities.each do |target_city|
-        hash_in_hash[target_city] = HouseDataset.energy_production_in_each_city(
-          target_city,
-          target_year
-        )
-                                                .values[0] # TODO: ハードコーディングすぎる
+        hash_in_hash[target_city] = HouseDataset
+          .energy_production_in_each_city(
+            target_city,
+            target_year
+          )
+          .sum(:energy_production)
+          .values[0] # TODO: 戻り値のハッシュの要素が「一つ（{2013=>36249} など）」であると断定した上で 0 と決め打ちしており、ハードコーディングすぎる
       end
 
       energy_production_in_cities_in_years[target_year.to_s] = hash_in_hash

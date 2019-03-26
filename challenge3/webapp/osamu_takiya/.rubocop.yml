@@ -19,6 +19,9 @@ Style/BracesAroundHashParameters:
 Layout/TrailingBlankLines:
   Enabled: false # 有効にした場合、コメントが最終行だとどんな設定にしてても怒られるため無効にする
 
+Layout/MultilineMethodCallIndentation:
+  Enabled: false # メソッドチェーンの書き方によってはインデントが深くなってしまうために無効に
+
 Style/AsciiComments:
   Enabled: false
 

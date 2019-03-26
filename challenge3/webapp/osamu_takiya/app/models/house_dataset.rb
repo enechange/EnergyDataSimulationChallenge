@@ -17,8 +17,7 @@ class HouseDataset < ApplicationRecord
   scope :energy_production_whether_has_child_or_not, lambda { |has_child_or_not, period_unit|
     joins(:energy_production_datasets)
       .where(has_child: has_child_or_not)
-      .group(period_unit)
-      .sum(:energy_production)
+      .group(period_unit) # 「年」単位や「月」単位などの「単位」を指定する
   }
 
   scope :energy_production_in_each_city, lambda { |city_name, what_year|
@@ -28,6 +27,5 @@ class HouseDataset < ApplicationRecord
         energy_production_datasets: { year: what_year }
       )
       .group(:year)
-      .sum(:energy_production)
   }
 end
