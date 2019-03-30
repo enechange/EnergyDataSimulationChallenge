@@ -1,0 +1,35 @@
+body {
+  background-color: #F8F8FF;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+  border: 1.5px solid $black;
+  background-color: #FFFFF0;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid $black;
+}
+
+th {
+  font-weight: bold;
+  padding: 3px;
+}
+
+td {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+  &:hover {
+    color: #A9A9A9;
+  }
+}
