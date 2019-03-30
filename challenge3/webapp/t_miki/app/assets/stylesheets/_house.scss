@@ -52,3 +52,15 @@ a {
   margin-left: 20px;
   flex: 1;
 }
+
+.familytable {
+  width: 760px;
+  margin: 0 auto;
+  & table {
+    margin: 0 auto;
+  }
+  & a {
+    text-align: center;
+    display: block;
+  }
+}
