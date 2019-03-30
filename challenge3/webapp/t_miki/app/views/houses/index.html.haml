@@ -1,19 +1,28 @@
 %h2 Select your name to check the Energy Production
 %h3 if you check the information, to select 'More'
-%table
-  %thead
-    %tr
-      %th No.
-      %th Family Name
-      %th Information
-  %tbody
-    - @houses.each do |house|
+.somedatas
+  %table
+    %thead
       %tr
-        %td
-          =house.id
-        %td
-          = link_to house_datas_path(house_id: house.id) do
-            =house.Lastname
-        %td
-          = link_to house_path(id: house.id) do
-            More
+        %th No.
+        %th Family Name
+        %th Information
+    %tbody
+      - @houses.each do |house|
+        %tr
+          %td
+            =house.id
+          %td
+            = link_to house_datas_path(house_id: house.id) do
+              =house.Lastname
+          %td
+            = link_to house_path(id: house.id) do
+              More
+  .chart
+    %h3 Users Map
+    %p Where do you live?
+    = pie_chart @houses.group(:City).count
+    %p How many people do you have?
+    = pie_chart @houses.group(:num_of_people).count
+    %p Do you have child?
+    = pie_chart @houses.group(:has_child).count
