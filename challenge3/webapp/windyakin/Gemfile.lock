@@ -82,6 +82,10 @@ GEM
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gon (6.2.1)
+      actionpack (>= 3.0)
+      multi_json
+      request_store (>= 1.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -155,6 +159,8 @@ GEM
       ffi (~> 1.0)
     ref (2.0.0)
     regexp_parser (1.4.0)
+    request_store (1.4.1)
+      rack (>= 1.4)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     sass (3.7.4)
@@ -218,6 +224,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   dotenv-rails
+  gon
   jbuilder (~> 2.5)
   lambda_driver
   listen (>= 3.0.5, < 3.2)
