@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_06_065656) do
+ActiveRecord::Schema.define(version: 2019_04_06_072359) do
 
   create_table "datasets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "label", null: false
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2019_04_06_065656) do
     t.float "temperature", null: false
     t.float "daylight", null: false
     t.integer "energy_production", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "house_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "firstname", null: false
+    t.string "lastname", null: false
+    t.string "city", null: false
+    t.integer "num_of_people", default: 1, null: false
+    t.boolean "has_child", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
