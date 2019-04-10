@@ -1,0 +1,31 @@
+ruby:
+  average_sets = {
+    temperature: monthly_house_energy_productions.group_by_month.average(:temperature),
+    daylight: monthly_house_energy_productions.group_by_month.average(:daylight),
+    energy_production: monthly_house_energy_productions.group_by_month.average(:energy_production),
+  }
+/ TODO classつける
+table.c-table
+  thead
+    tr
+      th
+        = I18n.t('activerecord.attributes.monthly_house_energy_production.year')
+        | /
+        = I18n.t('activerecord.attributes.monthly_house_energy_production.month')
+      th
+        = I18n.t('activerecord.attributes.monthly_house_energy_production.temperature')
+      th
+        = I18n.t('activerecord.attributes.monthly_house_energy_production.daylight')
+      th
+        = I18n.t('activerecord.attributes.monthly_house_energy_production.energy_production')
+  tbody
+    - average_sets[:temperature].count.times do |index|
+      tr
+        td
+          = average_sets[:temperature].keys[index].join('/')
+        td
+          = average_sets[:temperature].values[index].round(2)
+        td
+          = average_sets[:daylight].values[index].round(2)
+        td
+          = average_sets[:energy_production].values[index].round(2)

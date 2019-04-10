@@ -1,0 +1,25 @@
+inherit_from: rubocop-todo.yml
+Style/AsciiComments:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - node_modules/**/*
+    - tmp/**/*
+    - bin/**/*

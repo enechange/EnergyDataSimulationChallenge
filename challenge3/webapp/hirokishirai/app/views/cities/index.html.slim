@@ -1,0 +1,32 @@
+.l-cities-summary-container
+  table.c-table.p-cities-summary-container--table
+    thead.p-cities-summary-container--table--header
+      tr.p-cities-summary-container--table--header--row
+        th.p-cities-summary-container--table--header--row__th rowspan=2
+          - # 空白
+        - @cities.each do |city|
+          th.p-cities-summary-container--table--header--row__th colspan=(MonthlyHouseEnergyProduction::TARGET_AGGREGATION_COLUMNS.count)
+            = city.name
+            = link_to '(詳細)', city_path(city)
+        th.p-cities-summary-container--table--header--row__th colspan=(MonthlyHouseEnergyProduction::TARGET_AGGREGATION_COLUMNS.count)
+          | 全地域
+      tr.p-cities-summary-container--table--header--row
+        - @cities.each do |city|
+          - MonthlyHouseEnergyProduction::TARGET_AGGREGATION_COLUMNS.each do |target_aggregation_column_name|
+            th.p-cities-summary-container--table--header--row__th
+              = I18n.t("activerecord.attributes.monthly_house_energy_production.#{target_aggregation_column_name}")
+        - MonthlyHouseEnergyProduction::TARGET_AGGREGATION_COLUMNS.each do |target_aggregation_column_name|
+          th.p-cities-summary-container--table--header--row__th
+            = I18n.t("activerecord.attributes.monthly_house_energy_production.#{target_aggregation_column_name}")
+    tbody.p-cities-summary-container--table--body
+      - @calcs.each do |calc|
+        tr.p-cities-summary-container--table--body--row
+          th.p-cities-summary-container--table--body--row__th
+            = calc[:friendly_name]
+          - @cities.each do |city|
+            - MonthlyHouseEnergyProduction::TARGET_AGGREGATION_COLUMNS.each do |target_aggregation_column_name|
+              td.p-cities-summary-container--table--body--row__td
+                = city.send("total_#{calc[:method_name_prefix]}_#{target_aggregation_column_name}")
+          - MonthlyHouseEnergyProduction::TARGET_AGGREGATION_COLUMNS.each do |target_aggregation_column_name|
+            td.p-cities-summary-container--table--body--row__td
+              = @cities.send("total_#{calc[:method_name_prefix]}_#{target_aggregation_column_name}")

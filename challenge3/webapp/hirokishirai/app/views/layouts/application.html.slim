@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title
+      | Hirokishirai
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css"
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .l-container
+      = yield
+    = yield(:additional_javascripts)

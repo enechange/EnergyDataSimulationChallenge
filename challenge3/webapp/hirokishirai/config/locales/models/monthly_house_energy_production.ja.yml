@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      monthly_house_energy_production: 月別エネルギー生産量
+    attributes:
+      monthly_house_energy_production:
+        label: Label
+        year: 年
+        month: 月
+        temperature: 気温
+        daylight: 日照量
+        energy_production: エネルギー生産量

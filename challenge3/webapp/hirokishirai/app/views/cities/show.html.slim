@@ -1,0 +1,9 @@
+p
+  = link_to '都市一覧に戻る', cities_path
+  |  | 
+  = link_to "#{@city.name}の住居一覧", houses_path(city_id: @city)
+h2 #{@city.name}の月別平均気温、平均日照時間、平均エネルギー生産量
+#summary-timeseries-chart
+h2 #{@city.name}の月別平均気温と平均エネルギー生産量の散布図
+#temperature-energy_production-scatter-chart
+= render 'shared/monthly_house_energy_productions_table', monthly_house_energy_productions: @city.monthly_house_energy_productions.order_by_month

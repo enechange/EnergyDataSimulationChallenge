@@ -1,0 +1,10 @@
+p = link_to '住居一覧に戻る', houses_path(city_id: @house.city)
+h2
+  = I18n.t('activerecord.formats.house.fullname', firstname: @house.firstname, lastname: @house.lastname)
+  | 宅の月別平均気温、平均日照時間、平均エネルギー生産量
+#summary-timeseries-chart
+h2
+  = I18n.t('activerecord.formats.house.fullname', firstname: @house.firstname, lastname: @house.lastname)
+  | 宅の月別平均気温と平均エネルギー生産量の散布図
+#temperature-energy_production-scatter-chart
+= render 'shared/monthly_house_energy_productions_table', monthly_house_energy_productions: @house.monthly_house_energy_productions.order_by_month

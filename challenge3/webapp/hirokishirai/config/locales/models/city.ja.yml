@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      city: 都市
+    attributes:
+      city:
+        name: 都市名

@@ -1,0 +1,23 @@
+p = link_to '都市一覧に戻る', cities_path
+table.c-table.p-houses-table
+  thead.p-houses-table--header
+    tr.p-houses-table--header--row
+      th.p-houses-table--header--row__th
+        = I18n.t('activerecord.attributes.house.fullname')
+      th.p-houses-table--header--row__th
+        = I18n.t('activerecord.attributes.house.num_of_people')
+      th.p-houses-table--header--row__th
+        = I18n.t('activerecord.attributes.house.has_child')
+      th.p-houses-table--header--row__th
+        | 住居ごとのデータを確認する
+  tbody.p-houses-table--body
+    - @houses.each do |house|
+      tr.p-houses-table--body--row
+        td.p-houses-table--header--row__td
+          = I18n.t('activerecord.formats.house.fullname', firstname: house.firstname, lastname: house.lastname)
+        td.p-houses-table--header--row__td
+          = house.num_of_people
+        td.p-houses-table--header--row__td
+          = I18n.t("activerecord.boolean.house.has_child.#{house.has_child.to_s}")
+        td.p-houses-table--header--row__td
+          = link_to '詳細', house
