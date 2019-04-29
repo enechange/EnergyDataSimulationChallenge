@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'activerecord-import'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'chart-js-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
