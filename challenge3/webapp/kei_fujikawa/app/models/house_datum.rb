@@ -1,0 +1,2 @@
+class HouseDatum < ApplicationRecord
+end
