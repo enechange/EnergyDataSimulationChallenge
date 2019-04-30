@@ -12,6 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/vendor/bundle
+*~
 
 # Ignore uploaded files in development
 /storage/*
