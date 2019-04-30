@@ -8,4 +8,6 @@ class EnergyDatum < ApplicationRecord
   validates :daylight, presence: true
   validates :energy_production, presence: true
 
+
+
 end

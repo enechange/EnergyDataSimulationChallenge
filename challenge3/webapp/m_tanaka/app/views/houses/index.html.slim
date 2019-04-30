@@ -1,0 +1,25 @@
+h1 House List
+.house-list
+  table border="1" cellspacing="0"
+    tr
+      th ID
+      th First Name
+      th Last Name
+      th City
+      th Num of People
+      th Children
+      th Details
+
+    - @houses.each do |h|
+      tr
+        td = h.id
+        td = h.first_name
+        td = h.last_name
+        td = h.city
+        td = h.num_of_people
+        td = h.has_child
+        td = link_to "Show", house_path(h)
+
+
+
+
