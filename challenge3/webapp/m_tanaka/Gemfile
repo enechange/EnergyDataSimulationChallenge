@@ -38,6 +38,7 @@ gem 'chartkick'
 gem 'gon'
 gem 'html2slim'
 gem 'slim-rails'
+gem 'seed-fu'
 
 
 group :development, :test do
