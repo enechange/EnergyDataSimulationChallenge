@@ -1,0 +1,43 @@
+<h1>Energy #<%= @energy.id %></h1>
+
+<p>
+  <strong>id:</strong>
+  <%= @energy.id %>
+</p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @energy.label %>
+</p>
+
+<p>
+  <strong>House:</strong>
+  <%= @energy.house_id %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @energy.year %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @energy.month %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @energy.temperature %>
+</p>
+
+<p>
+  <strong>Daylight:</strong>
+  <%= @energy.daylight %>
+</p>
+
+<p>
+  <strong>Energy production:</strong>
+  <%= @energy.energy_production %>
+</p>
+
+<%= link_to 'Back', energies_path %>
