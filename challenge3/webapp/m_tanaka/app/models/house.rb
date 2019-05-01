@@ -6,4 +6,5 @@ class House < ApplicationRecord
   validates :city, presence: true
   validates :num_of_people, presence: true
   validates :has_child, inclusion: { in: [true, false] }
+
 end
