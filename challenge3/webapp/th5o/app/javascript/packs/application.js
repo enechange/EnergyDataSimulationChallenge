@@ -16,3 +16,14 @@
 // const imagePath = (name) => images(name, true)
 
 console.log('Hello World from Webpacker')
+
+// javascript
+// installed via yarn
+import 'd3/dist/d3.js'
+import 'c3/c3.js'
+// make available outside webpack
+global.c3 = require('c3')
+
+// CSS
+// installed via yarn
+import 'c3/c3.css'
