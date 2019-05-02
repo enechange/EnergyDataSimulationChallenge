@@ -39,6 +39,7 @@ gem 'gon'
 gem 'html2slim'
 gem 'slim-rails'
 gem 'seed-fu'
+gem 'ransack'
 
 
 group :development, :test do

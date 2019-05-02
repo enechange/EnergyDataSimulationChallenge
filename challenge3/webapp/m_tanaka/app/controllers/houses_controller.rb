@@ -1,6 +1,7 @@
 class HousesController < ApplicationController
   def index
-    @houses = House.all
+    @q = House.all.ransack(params[:q])
+    @houses = @q.result(distinct: true)
     # x軸、y軸に表示したいDBのカラムをシンボルで渡す
     @scatter_data = EnergyDatum.scatter_data(x: :daylight, y: :energy_production)
   end
