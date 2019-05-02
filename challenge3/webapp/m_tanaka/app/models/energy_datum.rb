@@ -36,5 +36,7 @@ class EnergyDatum < ApplicationRecord
     with_house.where_house(id).group_date.average_energy
   }
 
-
+  scope :scatter_data, -> (x:, y:) {
+    pluck(x, y)
+  }
 end
