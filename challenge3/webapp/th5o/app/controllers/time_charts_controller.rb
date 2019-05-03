@@ -1,11 +1,11 @@
 class TimeChartsController < ApplicationController
 
   def show
-    whole = Energy.group(:year_month).average(:energy_production).sort.to_h
+    data = Energy.group(:year_month).average(:energy_production).sort.to_h
 
     @c3_columns = []
-    @c3_columns.push c3_header(whole)
-    @c3_columns.push c3_data('whole household', whole)
+    @c3_columns.push c3_header(data)
+    @c3_columns.push c3_data('whole household', data)
 
     # optional data
     ary = optional_data(params[:show_with])
@@ -15,9 +15,9 @@ class TimeChartsController < ApplicationController
   private
 
   # ['x', '2011-07-01', '2011-08-01', '2011-09-01', '2011-10-01', '2011-11-01', '2011-12-01']
-  def c3_header(whole)
+  def c3_header(data)
     ary = ['x']
-    whole.keys.map do |year_month|
+    data.keys.map do |year_month|
       str = year_month.to_s
       ary.push "#{str[0,4]}-#{str[4,2]}-01"
     end
