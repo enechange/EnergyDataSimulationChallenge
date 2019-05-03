@@ -19,16 +19,16 @@ var chart = c3.generate({
     columns: <%= raw @c3_columns %>
   },
   axis: {
-    y: {
-      label: {
-        text: 'Energy Production (Average)',
-        position: 'outer-middle'
-      }
-    },
     x: {
       type: 'timeseries',
       tick: {
         format: '%Y-%m'
+      }
+    },
+    y: {
+      label: {
+        text: 'Energy Production (Average)',
+        position: 'outer-middle'
       }
     }
   }

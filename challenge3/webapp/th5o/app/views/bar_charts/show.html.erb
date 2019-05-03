@@ -6,6 +6,11 @@
     options_for_select([["Number of people", :num_of_people], ["Has child", :has_child], ["City", :city]], selected: params[:category]),
     onchange: "this.form.submit();")
   %>
+
+  <label>
+  Focus on details:
+  <%= check_box_tag "focus", true, params[:focus], { onchange: "this.form.submit();" } %>
+  </label>
 <% end %>
 
 <div id="chart"></div>
@@ -22,15 +27,16 @@ var chart = c3.generate({
   // Category Axis
   // https://c3js.org/samples/categorized.html
   axis: {
+    x: {
+      type: 'category',
+      categories: <%= raw @c3_categories %>
+    },
     y: {
+      <%= raw @c3_minmax %>
       label: {
         text: 'Energy Production (Average)',
         position: 'outer-middle'
       },
-    },
-    x: {
-      type: 'category',
-      categories: <%= raw @c3_categories %>
     }
   }
 });

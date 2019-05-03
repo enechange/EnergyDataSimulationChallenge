@@ -5,6 +5,7 @@ class BarChartsController < ApplicationController
 
     @c3_columns = hash[:columns]
     @c3_categories = hash[:categories]
+    @c3_minmax = c3_minmax(hash[:data]) if (params['focus'] || false)
   end
 
   private
@@ -14,6 +15,12 @@ class BarChartsController < ApplicationController
     ary = [label]
     ary.push(*data)
     ary
+  end
+
+  # "min: 610, max: 630,"
+  def c3_minmax(data)
+    min, max = data.minmax
+    "min: #{min.to_i}, max: #{max.to_i},"
   end
 
   def category_data(category)
@@ -38,7 +45,8 @@ class BarChartsController < ApplicationController
 
     {
       columns: c3_data('category: num_of_people', ary),
-      categories: nums
+      categories: nums,
+      data: ary
     }
   end
 
@@ -51,7 +59,8 @@ class BarChartsController < ApplicationController
 
     {
       columns: c3_data('category: has_child', ary),
-      categories: bools
+      categories: bools,
+      data: ary
     }
   end
 
@@ -64,7 +73,8 @@ class BarChartsController < ApplicationController
 
     {
       columns: c3_data('category: city', ary),
-      categories: names
+      categories: names,
+      data: ary
     }
   end
 
