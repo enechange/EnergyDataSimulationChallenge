@@ -27,7 +27,7 @@ class LineChartsController < ApplicationController
   # ['data1', 30, 200, 100, 400, 150, 250]
   def c3_data(label, data)
     ary = [label]
-    ary.push *data.values
+    ary.push(*data.values)
     ary
   end
 
@@ -64,9 +64,9 @@ class LineChartsController < ApplicationController
 
   def energy_data_segmented_by_city
     ary = []
-    cities = City.all
-    cities.each do |name, val|
-      ary.push c3_data(name.to_s, Energy.cities(val).group(:year_month).average(:energy_production).sort.to_h)
+    names = City.names
+    names.each do |name|
+      ary.push c3_data(name.to_s, Energy.cities(name).group(:year_month).average(:energy_production).sort.to_h)
     end
     ary
   end

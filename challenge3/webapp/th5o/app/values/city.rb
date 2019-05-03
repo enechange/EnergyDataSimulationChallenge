@@ -18,12 +18,16 @@ class City
   #
   # Class Methods
   #
-  def self.id(label)
-    CITIES[label.to_sym]
+  def self.id(name)
+    CITIES[name.to_sym]
   end
 
-  def self.label(id)
+  def self.name(id)
     CITIES.key(id).to_s
+  end
+
+  def self.names
+    CITIES.keys.map {|sym| sym.to_s }
   end
 
   def self.all
