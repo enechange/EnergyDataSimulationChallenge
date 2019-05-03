@@ -1,24 +1,58 @@
-# README
+# README for Challenge 3 - Web Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Describe the operating environment and how to up and run this Sample application.
 
-Things you may want to cover:
+## Runtime Environment
+
+* PostgreSQL version
+```
+$ psql --version
+psql (PostgreSQL) 10.3
+```
 
 * Ruby version
+```
+$ ruby -v
+ruby 2.6.3p62
+```
 
-* System dependencies
+* Yarn version
+```
+$ yarn --version
+1.12.3
+```
 
-* Configuration
+## Initialize application
 
-* Database creation
+* Install gems
+```
+$ bundle install --path vendor/bundle
+```
 
-* Database initialization
+* Install javascript packages
+```
+$ yarn install
+```
 
-* How to run the test suite
+* Create database user
+```
+$ createuser -a -d -U postgres -P <username>
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+* Create and migrate database
+```
+$ bundle exec rails db:create
+$ bundle exec rails db:migrate
+```
 
-* Deployment instructions
+* Initialize seed data
+```
+$ bundle exec rails db:seed
+```
 
-* ...
+## Start application
+
+* Rails application
+```
+$ bundle exec rails server
+
