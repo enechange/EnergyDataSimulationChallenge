@@ -1,4 +1,4 @@
-class LineChartsController < ApplicationController
+class TimeChartsController < ApplicationController
 
   def show
     whole = Energy.group(:year_month).average(:energy_production).sort.to_h
