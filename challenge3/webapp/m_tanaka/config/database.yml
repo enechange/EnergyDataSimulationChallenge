@@ -49,6 +49,8 @@ test:
 #
 production:
   <<: *default
-  database: m_tanaka_production
-  username: m_tanaka
-  password: <%= ENV['M_TANAKA_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  database: db/production.postgresql
+  encoding: unicode
+  pool: 5
+  url: <%= ENV['DATABASE_URL'] %>
