@@ -1,24 +1,17 @@
-# README
+# EnergyDataSimulationChallenge/challenge3
+This is a web application to show house and city energy production with some charts.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## URL
+https://young-sea-48109.herokuapp.com/
 
-Things you may want to cover:
+## Dev Environment
+- ruby 2.4.4
+- rails 5.2.3
+- mysql 5.6(heroku: PostgreSQL)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Installing library
+- chartkick
+- seed_fu
+- ransack
+- slim-rails
+  etc
