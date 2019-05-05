@@ -1,4 +1,4 @@
-h1 = "Energy date(#{@house.first_name} #{@house.last_name})"
+h1 = "Energy date report(#{@house.first_name} #{@house.last_name})"
 h2 Average energy_production
 = line_chart [{ name: 'London', data: @london_average },
         { name: 'Oxford', data: @oxford_average },
@@ -18,7 +18,7 @@ h2 = "Structure of #{@house.first_name} #{@house.last_name}'s family"
       td = @house.city
       td = @house.num_of_people
       td = @house.has_child
-  = link_to "Back to top", root_path
+  = link_to "Back to HOME", root_path
 
 h2 = "Energy data details of #{@house.first_name} #{@house.last_name}'s house"
 .house-list
@@ -37,4 +37,4 @@ h2 = "Energy data details of #{@house.first_name} #{@house.last_name}'s house"
         td = e.temperature
         td = e.daylight
         td = e.energy_production
-  = link_to "Back to top", root_path
+  = link_to "Back to HOME", root_path
