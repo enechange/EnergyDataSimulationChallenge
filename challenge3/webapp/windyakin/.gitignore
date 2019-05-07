@@ -1,0 +1,6 @@
+vendor
+log
+tmp
+.bundle
+.idea
+.env
