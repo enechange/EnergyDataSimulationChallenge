@@ -1,0 +1,16 @@
+default: &default
+  adapter: mysql2
+  host: localhost
+  username: enechange
+
+development:
+  <<: *default
+  database: enechange_development
+
+production:
+  <<: *default
+  database: enechange_production
+
+test:
+  <<: *default
+  database: enechange_test

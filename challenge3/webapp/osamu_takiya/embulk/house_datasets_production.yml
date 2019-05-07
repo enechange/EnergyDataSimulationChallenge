@@ -1,0 +1,67 @@
+in:
+  type: file
+  path_prefix: ../../../data/house_data.csv
+  parser:
+    charset: UTF-8
+    newline: CRLF
+    type: csv
+    delimiter: ','
+    quote: '"'
+    escape: '"'
+    trim_if_not_quoted: false
+    skip_header_lines: 1
+    allow_extra_columns: false
+    allow_optional_columns: false
+    columns:
+    - {name: ID, type: long}
+    - {name: Firstname, type: string}
+    - {name: Lastname, type: string}
+    - {name: City, type: string}
+    - {name: num_of_people, type: long}
+    - {name: has_child, type: boolean}
+
+filters:
+  - type: rename
+    columns:
+      ID: id
+      Firstname: firstname
+      Lastname: lastname
+      City: city
+      num_of_people: num_of_people
+      has_child: has_child
+  - type: column
+    add_columns:
+      - {name: created_at, type: timestamp, default: "1970-01-01 00:00:00", format: '%Y-%m-%d %H:%M:%S'}
+      - {name: updated_at, type: timestamp, default: "1970-01-01 00:00:00", format: '%Y-%m-%d %H:%M:%S'}
+  - type: ruby_proc
+    columns:
+      - name: created_at
+        proc: |
+          -> (created_at) do
+            Time.now.utc
+          end
+      - name: updated_at
+        proc: |
+          -> (updated_at) do
+            Time.now.utc
+          end
+
+      # もしバリデーションを Embulk の側で実装するならばこのような感じになる
+      - name: city
+        proc: |
+          -> (city) do
+            return city if ['London', 'Cambridge', 'Oxford'].include?(city)
+
+            raise 'Validation Error!'
+          end
+
+out:
+  type: mysql
+  host: localhost
+  user: enechange
+  database: enechange_production
+  mode: merge
+  table: house_datasets
+  options: { useLegacyDatetimeCode: false, serverTimezone: UTC }
+  column_options:
+    has_child: {type: 'TINYINT(1)'}

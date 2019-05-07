@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title
+      = 'Challenge 3 - Web Application by Osamu Takiya'
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+
+    link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+    meta content="width=device-width, initial-scale=1.0" name="viewport"
+
+  body
+    = yield
