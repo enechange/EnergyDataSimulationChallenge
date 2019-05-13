@@ -1,0 +1,130 @@
+div.top
+  div.wrapper1
+    canvas#EnergyProductionInEachCity
+  div.wrapper2
+    canvas#RelationOfEnergyproductionWithDaylight
+
+
+javascript:
+  Chart.defaults.global.defaultFontColor = '#333';
+  Chart.defaults.global.defaultFontSize = 18;
+  var ctx = document.getElementById("EnergyProductionInEachCity").getContext('2d');
+  var cty = document.getElementById("RelationOfEnergyproductionWithDaylight").getContext('2d');
+
+
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ["London", "Cambridge", "Oxford"],
+          datasets: [{
+            data: #{@energydata_cities_json},
+            backgroundColor: 'rgba(255, 99, 132, 1.0)',
+            borderColor: 'rgba(255, 50, 132, 1.0)',
+            fill: false
+          }]
+      },
+      options: {
+        title:  {
+          display: true,
+          fontSize: 24,
+          text: "各都市に属する各家庭の1人あたりエネルギー産生量"
+        },
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'エネルギー産生量',
+            },
+            ticks: {
+              min: 0,
+              max: 300,
+              stepSize: 100
+            },
+            gridLines: {
+              display:false,
+            },
+          }],
+          xAxes: [{
+            display: true,
+            barPercentage: 0.4,
+            categoryPercentage: 1,
+            scaleLabel: {
+              display: true,
+              labelString: '都市',
+            },
+            gridLines: {
+              display:false,
+            },
+          }],
+        },
+      }
+  });
+
+  var myChart = new Chart(cty, {
+      type: 'scatter',
+      data: {
+        datasets: [{
+          data: createDataset(),
+          backgroundColor: 'rgba(255, 99, 132, 1.0)',
+        }]
+      },
+      options: {
+        title:  {
+          display: true,
+          fontSize: 24,
+          text: "日射量と各家庭の1人あたりエネルギー産生量との関係"
+        },
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'エネルギー産生量',
+            },
+            ticks: {
+              min: 0,
+              max: 500,
+              stepSize: 100
+            },
+            gridLines: {
+              display:false,
+            },
+          }],
+          xAxes: [{
+            display: true,
+            ticks: {
+              min: 170,
+              max: 210,
+              stepSize: 10
+            },
+            scaleLabel: {
+              display: true,
+              labelString: '日射量',
+            },
+            gridLines: {
+              display:false,
+            },
+          }],
+        },
+      }
+  });
+
+  function createDataset(){
+    var size = #{@daylight_array_all.length};
+    var daylight = #{@daylight_data_all_json};
+    var energy = #{@energy_data_all_json};
+    var data = [];
+    for(var i=0; i<size; i++) {
+      var x = daylight[i];
+      var y = energy[i];
+      data.push({x:x, y:y});
+    }
+    return data;
+  };
