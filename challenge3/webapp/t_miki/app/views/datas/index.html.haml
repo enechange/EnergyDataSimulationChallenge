@@ -1,0 +1,81 @@
+%canvas#myChart01{height: "200", width: "400"}
+:javascript
+  var ctx = document.getElementById('myChart01');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels:  #{@months.to_json.html_safe},
+      datasets: [{
+        label: 'Energy Production of #{@house.Lastname} Family',
+        data: #{@energyproductions},
+        borderColor: 'rgba(51, 0, 255, 1.0)',
+        fill: false,
+        yAxisID: 'y1'
+      }, {
+        label: 'daylight of #{@house.City}',
+        data: #{@daylights},
+        borderColor: 'rgba(255, 153, 102, 1.0)',
+        fill: false,
+        yAxisID: 'y2'
+      }, {
+        label: 'Temperature of #{@house.City}',
+        data: #{@temperatures},
+        borderColor: 'rgba(255, 50, 132, 1.0)',
+        fill: false,
+        yAxisID: 'y3'
+      }]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Month',
+          }
+        }],
+        yAxes: [{
+          id: 'y1',
+          position: 'left',
+          ticks: {
+              max: 1200,
+              min: 200,
+              stepSize: 100
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Energy Production',
+            fontColor: 'rgb(51, 0, 255)'
+          },
+        }, {
+          id: 'y2',
+          position: 'right',
+          ticks: {
+              max: 280,
+              min: 80,
+              stepSize: 20
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Daylight',
+            fontColor: 'rgb(255, 153, 102)'
+          }
+        }, {
+          id: 'y3',
+          position: 'right',
+          ticks: {
+              max: 35,
+              min: -15,
+              stepSize: 5
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Temperature',
+            fontColor: 'rgb(255, 50, 132)'
+          }
+        }]
+      }
+    }
+  });
+
+= link_to '<< Back', root_path
+

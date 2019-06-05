@@ -1,0 +1,66 @@
+body {
+  background-color: #F8F8FF;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+p {
+  margin-top: 25px;
+  margin-bottom: 0;
+  // &:firts-child {
+  //   margin-bottom: 0;
+  // }
+}
+
+.somedatas {
+  display: flex;
+  width: 760px;
+  margin: 0 auto;
+}
+
+table {
+  border: 1.5px solid $black;
+  background-color: #FFFFF0;
+  border-collapse: collapse;
+  flex:1;
+}
+
+th, td {
+  border: 1px solid $black;
+}
+
+th {
+  font-weight: bold;
+  padding: 3px;
+}
+
+td {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+  &:hover {
+    color: #A9A9A9;
+  }
+}
+
+.chart {
+  margin-left: 20px;
+  flex: 1;
+}
+
+.familytable {
+  width: 760px;
+  margin: 0 auto;
+  & table {
+    margin: 0 auto;
+  }
+  & a {
+    text-align: center;
+    display: block;
+  }
+}

@@ -1,0 +1,24 @@
+%h2 registration information
+.familytable
+  %table
+    %tr
+      %th First Name
+      %td
+        = @house.Firstname
+    %tr
+      %th Last Name
+      %td
+        = @house.Lastname
+    %tr
+      %th City
+      %td
+        = @house.City
+    %tr
+      %th Num of People
+      %td
+        = @house.num_of_people
+    %tr
+      %th Has Child
+      %td
+        = @house.has_child
+  = link_to '<< Back', root_path
