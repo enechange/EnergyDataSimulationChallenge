@@ -1,0 +1,28 @@
+h1 Top
+h2 Scatter plot for Energy productions and daylights
+= scatter_chart @scatter_data, xtitle: "Daylight", ytitle: "Energy Production"
+h2 House List
+= form_with
+.house-list
+  table border="1" cellspacing="0"
+    tr
+      th = sort_link(@q, :id)
+      th = sort_link(@q, :first_name)
+      th = sort_link(@q, :last_name)
+      th = sort_link(@q, :city)
+      th = sort_link(@q, :num_of_people)
+      th = sort_link(@q, :has_child)
+      th Show
+
+    - @houses.each do |h|
+      tr
+        td = h.id
+        td = h.first_name
+        td = h.last_name
+        td = h.city
+        td = h.num_of_people
+        td = h.has_child
+        td = link_to "Show", house_path(h)
+
+
+
