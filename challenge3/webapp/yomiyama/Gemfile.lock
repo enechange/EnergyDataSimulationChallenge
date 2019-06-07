@@ -66,6 +66,8 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    chart-js-rails (0.1.6)
+      railties (> 3.1)
     childprocess (1.0.1)
       rake (< 13.0)
     chromedriver-helper (2.1.1)
@@ -223,6 +225,7 @@ DEPENDENCIES
   bootstrap
   byebug
   capybara (>= 2.15)
+  chart-js-rails
   chromedriver-helper
   coffee-rails (~> 4.2)
   html2slim
