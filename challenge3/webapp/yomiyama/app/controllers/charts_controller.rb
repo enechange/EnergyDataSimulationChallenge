@@ -29,7 +29,12 @@ class ChartsController < ApplicationController
       @oxford_daylight_average
     ].to_json
 
-    puts @energy_average_json
+    # 各世帯の人数
+    num_of_people = array_num_of_people()
+
+    # 各世帯の一人あたり発電量
+    per_person_energy = array_per_person_energy(num_of_people)
+    @per_person_energy_json = per_person_energy.to_json
   end
 
   private
@@ -46,5 +51,17 @@ class ChartsController < ApplicationController
   def city_daylight_average(house_ids)
     daylight = house_ids.map {|house_id| (Dataset.where(house: house_id).pluck(:daylight).sum)}
     daylight.sum / daylight.size
+  end
+
+  # 各世帯人数の配列
+  def array_num_of_people
+    HouseDatum.pluck(:num_of_people)
+  end
+
+  # 各世帯一人あたり発電量の配列
+  def array_per_person_energy(num)
+    house_ids = Dataset.pluck(:house).uniq
+    house_energy = house_ids.map {|house_id| (Dataset.where(house: house_id).pluck(:energyproduction).sum)}
+    house_energy.zip(num).map {|e, n| {x:n, y: (e / n)}}
   end
 end

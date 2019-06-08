@@ -64,25 +64,31 @@ javascript:
     type: 'scatter',
     data: {
       datasets: [{
-        label: 'Scatter Dataset',
-        data: [{
-          x: -10,
-          y: 0
-        }, {
-          x: 0,
-          y: 10
-        }, {
-          x: 10,
-          y: 5
-        }]
+        label: '一人あたり発電量と世帯人数の関係',
+        data: #{{@per_person_energy_json}}
       }]
     },
     options: {
       scales: {
         xAxes: [{
+          position: 'bottom',
+          ticks: {
+            max: 8,
+            min: 0,
+            stepSize: 1,
+          }
+        }],
+        yAxes: [{
           type: 'linear',
-          position: 'bottom'
-        }]
+          position: 'bottom',
+          ticks: {
+            max: 10000,
+            min: 2000,
+            stepSize: 500,
+          }
+        }]        
       }
     }
   })
+
+
