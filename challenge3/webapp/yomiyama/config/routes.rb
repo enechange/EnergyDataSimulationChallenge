@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get 'charts/index'
+  root 'charts#index'
 end
