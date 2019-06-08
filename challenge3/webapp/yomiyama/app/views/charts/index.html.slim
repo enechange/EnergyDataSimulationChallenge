@@ -1,35 +1,34 @@
 div
-  .chart1
-    canvas#SampleChart
+  div.container
+    canvas#EnergyProduction
+  
 
 javascript:
-  let ctx = document.getElementById("SampleChart").getContext('2d');
+  let ctx = document.getElementById("EnergyProduction").getContext('2d');
 
   let SampleChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ["Red", "Blue", "Yellow"],
+      labels: ["London", "Cambridge", "Oxford"],
       datasets: [{
-        label: '# of Votes',
-        data: [12,19,3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-        ],
+        label:"各都市世帯平均発電量",
+        data: #{@energy_average_json},
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
       }]
     },
     option: {
       scales: {
         yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: "世帯平均発電量"
+          },
           ticks: {
-            beginAtZero: true
+            min: 0,
+            stepSize: 5000
           }
         }]
       }
