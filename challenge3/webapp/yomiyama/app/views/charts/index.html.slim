@@ -1,12 +1,15 @@
 div
-  div.container
+  .container
     canvas#EnergyProduction
+  .container
+    canvas#PerPersonEnergyProduction
   
 
 javascript:
-  let ctx = document.getElementById("EnergyProduction").getContext('2d');
+  let ctx1 = document.getElementById("EnergyProduction").getContext('2d');
+  let ctx2 = document.getElementById("PerPersonEnergyProduction").getContext('2d');
 
-  let SampleChart = new Chart(ctx, {
+  let Chart1 = new Chart(ctx1, {
     type: 'bar',
     data: {
       labels: ["London", "Cambridge", "Oxford"],
@@ -52,6 +55,33 @@ javascript:
             min: 4450,
             stepSize: 10
           }
+        }]
+      }
+    }
+  })
+
+  let Chart2 = new Chart(ctx2, {
+    type: 'scatter',
+    data: {
+      datasets: [{
+        label: 'Scatter Dataset',
+        data: [{
+          x: -10,
+          y: 0
+        }, {
+          x: 0,
+          y: 10
+        }, {
+          x: 10,
+          y: 5
+        }]
+      }]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          type: 'linear',
+          position: 'bottom'
         }]
       }
     }
