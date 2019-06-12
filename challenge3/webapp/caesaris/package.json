@@ -2,16 +2,7 @@
   "name": "caesaris",
   "private": true,
   "scripts": {
-    "build": "bundle exec ./bin/webpack",
-    "watch": "bundle exec ./bin/webpack-dev-server --watch --colors --progress"
-  },
-  "dependencies": {
-    "@rails/webpacker": "^4.0.7",
-    "vue": "^2.6.10",
-    "vue-loader": "^15.7.0",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "devDependencies": {
-    "webpack-dev-server": "^3.7.1"
+    "build": "echo 'TODO: build'",
+    "watch": "echo 'TODO: watch'"
   }
 }
