@@ -23,5 +23,23 @@ class DataLoader
         end
       end
     end
+
+    def load_cities
+      city_texts = House.group(:city_text).select(:city_text).map(&:city_text)
+      ActiveRecord::Base.transaction do
+        city_texts.each do |city_text|
+          city = City.where(name: city_text).first
+          if city.blank?
+            city = City.new(name: city_text)
+            city.save!
+          end
+        end
+      end
+    end
+
+    def sync_cities_houses
+      
+    end
+
   end
 end
