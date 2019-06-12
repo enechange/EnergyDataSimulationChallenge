@@ -38,7 +38,13 @@ class DataLoader
     end
 
     def sync_cities_houses
-      
+      cities = City.all
+      ActiveRecord::Base.transaction do
+        cities.each do |city|
+          houses = House.where(city_text: city.name)
+          houses.update_all(city_id: city.id)
+        end
+      end
     end
 
   end

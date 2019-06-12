@@ -1,4 +1,7 @@
 class House < ApplicationRecord
+  belongs_to :city, optional: true
+  validates_presence_of :firstname, :lastname, :city_text, :num_of_people, :has_child
+
   enum has_child: {
     Yes: true,
     No: false,
@@ -6,4 +9,4 @@ class House < ApplicationRecord
 end
 
 # Columns:
-# id, firstname, lastname, city_text, city_id, num_of_people, has_child, , 
+# firstname, lastname, city_text, city_id, num_of_people, has_child
