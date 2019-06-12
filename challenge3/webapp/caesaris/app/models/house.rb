@@ -1,4 +1,5 @@
 class House < ApplicationRecord
+  has_many :datasets
   belongs_to :city, optional: true
   validates_presence_of :firstname, :lastname, :city_text, :num_of_people, :has_child
 

@@ -4,12 +4,7 @@ require 'open-uri'
 class DataLoader
   class << self
     def load_houses(uri)
-      file = nil
-      if uri !~ /^https?|^ftp\:\/\//
-        file = File.open(uri, 'r')
-      else
-        file = open(uri)
-      end
+      file = load_file_as_stream(uri)
       labels = %w(Firstname Lastname num_of_people has_child)
       ActiveRecord::Base.transaction do
         CSV.new(file, :headers => :first_row).each do |line|
@@ -45,6 +40,32 @@ class DataLoader
           houses.update_all(city_id: city.id)
         end
       end
+    end
+
+    def load_dataset(uri)
+      file = load_file_as_stream(uri)
+      labels = %w(Label Year Month Temperature Daylight EnergyProduction)
+      ActiveRecord::Base.transaction do
+        CSV.new(file, :headers => :first_row).each do |line|
+          dataset = Dataset.new
+          dataset.id = line['ID'] # TODO: deal with adding new files
+          dataset.house_id = line['House']
+          labels.each do |label|
+            dataset[label.underscore.to_sym] = line[label]
+          end
+          dataset.save!
+        end
+      end
+    end
+
+    def load_file_as_stream(uri)
+      file = nil
+      if uri !~ /^https?|^ftp\:\/\//
+        file = File.open(uri, 'r')
+      else
+        file = open(uri)
+      end
+      file
     end
 
   end
