@@ -34,6 +34,7 @@ default: &default
     - .woff2
 
   extensions:
+    - .vue
     - .mjs
     - .js
     - .sass
@@ -59,8 +60,8 @@ development:
   dev_server:
     https: false
     host: localhost
-    port: 3035
-    public: localhost:3035
+    port: 18035
+    public: localhost:18035
     hmr: false
     # Inline should be set to true if using HMR
     inline: true
