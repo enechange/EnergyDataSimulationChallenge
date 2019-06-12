@@ -1,5 +1,14 @@
 {
   "name": "caesaris",
   "private": true,
-  "dependencies": {}
+  "scripts": {
+    "build": "bundle exec ./bin/webpack",
+    "watch": "bundle exec ./bin/webpack-dev-server --watch --colors --progress"
+  },
+  "dependencies": {
+    "@rails/webpacker": "^4.0.7"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.7.1"
+  }
 }
