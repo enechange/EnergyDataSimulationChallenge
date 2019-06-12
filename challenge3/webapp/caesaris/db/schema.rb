@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_073015) do
+ActiveRecord::Schema.define(version: 2019_06_12_075751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,25 @@ ActiveRecord::Schema.define(version: 2019_06_12_073015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_cities_on_name"
+  end
+
+  create_table "datasets", force: :cascade do |t|
+    t.integer "label"
+    t.integer "house_id"
+    t.integer "year"
+    t.integer "month"
+    t.float "temperature"
+    t.float "daylight"
+    t.integer "energy_production"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["daylight"], name: "index_datasets_on_daylight"
+    t.index ["energy_production"], name: "index_datasets_on_energy_production"
+    t.index ["house_id"], name: "index_datasets_on_house_id"
+    t.index ["label"], name: "index_datasets_on_label"
+    t.index ["month"], name: "index_datasets_on_month"
+    t.index ["temperature"], name: "index_datasets_on_temperature"
+    t.index ["year"], name: "index_datasets_on_year"
   end
 
   create_table "houses", force: :cascade do |t|
