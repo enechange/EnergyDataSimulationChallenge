@@ -8,6 +8,7 @@ module Types
     field :city, Types::CityType, null: false
     field :num_of_people, Integer, null: false
     field :has_child, String, null: false
+    field :has_child_bool, Boolean, null: false
     field :datasets, [Types::DatasetType], null: true
   end
 end

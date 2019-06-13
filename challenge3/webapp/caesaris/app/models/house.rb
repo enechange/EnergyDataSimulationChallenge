@@ -7,6 +7,11 @@ class House < ApplicationRecord
     Yes: true,
     No: false,
   }
+
+  def has_child_bool
+    has_child_before_type_cast
+  end
+
 end
 
 # Columns:
