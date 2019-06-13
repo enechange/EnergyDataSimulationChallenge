@@ -45,11 +45,16 @@ module Types
     end
 
     field :cities, [CityType], null: true do
-      argument :queries, [String], required: false
+      argument :query_json, String, required: false
     end
-    def cities(queries: nil)
-      p queries
-      City.all.order(:id)
+    def cities(query_json: nil)
+      if query_json.present?
+        City.includes(:houses, :datasets)
+          .ransack(JSON.parse(query_json))
+          .result.order(:id).distinct
+      else
+        City.all.order(:id)
+      end
     end
 
   end
