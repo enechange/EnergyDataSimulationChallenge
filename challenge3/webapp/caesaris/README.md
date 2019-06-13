@@ -15,11 +15,12 @@
 ```
 
 ## GraphQL
-**Query**
+**Query**  
+*both `camelCase` and `snack_case` are OK in ransack json*
 
 ```graphql
 {
-  datasets(queryJson: "{\"house_city_name_cont\":\"Oxford\", \"energy_production_gteq\": 1000}") {
+  datasets(queryJson: "{\"houseCityNameCont\":\"Oxford\", \"energy_production_gteq\": 1000}") {
     city {name},
     energyProduction
   }

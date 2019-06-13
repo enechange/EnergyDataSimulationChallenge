@@ -27,8 +27,9 @@ module Types
     end
     def houses(city: nil, query_json: nil)
       if query_json.present?
+        # when search on `has_child`, use `{"hasChildEq": false}`
         House.includes(:datasets).joins(:city)
-          .ransack(JSON.parse(query_json))
+          .ransack(Util.form_ransack_params(query_json))
           .result.order(:id).distinct
       elsif city.present?
         House.joins(:city).where(cities: {name: city.capitalize}).order(:id)
@@ -50,7 +51,7 @@ module Types
     def cities(query_json: nil)
       if query_json.present?
         City.includes(:houses, :datasets)
-          .ransack(JSON.parse(query_json))
+          .ransack(Util.form_ransack_params(query_json))
           .result.order(:id).distinct
       else
         City.all.order(:id)
@@ -64,7 +65,7 @@ module Types
       if query_json.present?
         # when search at `cities`, use `{house_city_name_cont: "London"}`
         Dataset.includes(house: :city)
-          .ransack(JSON.parse(query_json))
+          .ransack(Util.form_ransack_params(query_json))
           .result.order(:id).distinct
       else
         Dataset.all.order(:id)
