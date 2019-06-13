@@ -25,10 +25,25 @@ module Types
     end
     def houses(city: nil)
       if city.present?
-        House.joins(:city).where(cities: {name: city}).order(:id)
+        House.joins(:city).where(cities: {name: city.capitalize}).order(:id)
       else
         House.all.order(:id)
       end
+    end
+
+    field :city, CityType, null: true do
+      argument :name, String, required: true
+    end
+    def city(name:)
+      City.find_by(name: name.capitalize)
+    end
+
+    field :cities, [CityType], null: true do
+      argument :queries, [String], required: false
+    end
+    def cities(queries: nil)
+      p queries
+      City.all.order(:id)
     end
 
   end
