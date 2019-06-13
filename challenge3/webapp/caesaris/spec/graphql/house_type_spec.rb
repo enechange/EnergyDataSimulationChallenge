@@ -24,6 +24,18 @@ RSpec.describe 'GraphQL on HouseType' do
     expect(data.dig('house', 'city', 'name')).to eq city.name
   end
 
+  it "Should find houses by city" do
+    city = City.all.first
+    query = "
+      {
+        houses(city: \"#{city.name}\") { id, firstname }
+      }
+    "
+    data = Util.graphql_query(query)
+    house_num = city.houses.size
+    expect(data['houses'].size).to eq house_num
+  end
+
   it "Should find houses by ransack like query" do
     query = '
       {
