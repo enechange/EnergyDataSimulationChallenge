@@ -21,10 +21,16 @@ module Types
     end
 
     field :houses, [HouseType], null: true do
+      description "Find a houses ransack"
       argument :city, String, required: false
+      argument :query_json, String, required: false
     end
-    def houses(city: nil)
-      if city.present?
+    def houses(city: nil, query_json: nil)
+      if query_json.present?
+        House.includes(:datasets).joins(:city)
+          .ransack(JSON.parse(query_json))
+          .result.order(:id).distinct
+      elsif city.present?
         House.joins(:city).where(cities: {name: city.capitalize}).order(:id)
       else
         House.all.order(:id)
