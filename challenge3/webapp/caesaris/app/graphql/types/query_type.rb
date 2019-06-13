@@ -57,5 +57,18 @@ module Types
       end
     end
 
+    field :datasets, [DatasetType], null: true do
+      argument :query_json, String, required: false
+    end
+    def datasets(query_json: nil)
+      if query_json.present?
+        # when search at `cities`, use `{house_city_name_cont: "London"}`
+        Dataset.includes(house: :city)
+          .ransack(JSON.parse(query_json))
+          .result.order(:id).distinct
+      else
+        Dataset.all.order(:id)
+      end
+    end
   end
 end
