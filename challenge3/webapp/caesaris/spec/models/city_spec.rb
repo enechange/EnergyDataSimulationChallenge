@@ -5,9 +5,15 @@ RSpec.describe City, type: :model do
     @city = City.first
   end
 
-  it "should create find a city" do
-    p "++AAAAAAAAAAA" 
-    p @city
-    p "--AAAAAAAAAAA"
+  it "Should find a city" do
+    expect(@city).to be_truthy
+  end
+
+  it "Should have relations on houses" do
+    expect(@city.houses).to be_truthy
+  end
+
+  it "Should have relations on datasets" do
+    expect(@city.datasets).to be_truthy
   end
 end
