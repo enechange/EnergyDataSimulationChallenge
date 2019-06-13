@@ -14,5 +14,14 @@ class Util
       end
       param_res
     end
+
+    def graphql_query(query_string, raise_err = true)
+      result = CaesarisSchema.execute(query_string)
+      if result["errors"].present? && raise_err
+        raise result["errors"][0]["message"]
+      else
+        result["data"]
+      end
+    end
   end
 end
