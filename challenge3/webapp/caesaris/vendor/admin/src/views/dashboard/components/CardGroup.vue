@@ -1,28 +1,27 @@
 <template lang="pug">
   el-row(:gutter="8")
-    el-col.card-box-col(:xs="{span: 24}", :sm="{span: 12}",
+    el-col.card-box-col(v-for="(cardInfo, index) of cardInfos",
+      :key="index", :xs="{span: 24}", :sm="{span: 12}",
       :md="{span: 12}", :lg="{span: 6}" ,:xl="{span: 6}")
-      box-card
-    el-col.card-box-col(:xs="{span: 24}", :sm="{span: 12}",
-      :md="{span: 12}", :lg="{span: 6}" ,:xl="{span: 6}")
-      box-card
-    el-col.card-box-col(:xs="{span: 24}", :sm="{span: 12}",
-      :md="{span: 12}", :lg="{span: 6}" ,:xl="{span: 6}")
-      box-card
-    el-col.card-box-col(:xs="{span: 24}", :sm="{span: 12}",
-      :md="{span: 12}", :lg="{span: 6}" ,:xl="{span: 6}")
-      box-card
+      router-link(v-if="cardInfo.target", :to="cardInfo.target")
+        box-card(:card-info="cardInfo")
+      a(v-else, href="javascript:void(0)", @click="noFeature()")
+        box-card(:card-info="cardInfo")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 import BoxCard from './BoxCard.vue'
 
 @Component({
   components: { BoxCard }
 })
 export default class CardGroup extends Vue {
+  @Prop({ default: [] }) private cardInfos!: [{ title: string, target: string }];
 
+  private noFeature() {
+    alert('This Feature Is Under Development.')
+  }
 }
 </script>
 

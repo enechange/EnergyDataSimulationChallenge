@@ -1,23 +1,29 @@
-<template>
-  <el-card class="box-card-component">
-    <div
-      slot="header"
-      class="box-card-header"
-    >
-      <img src="https://picsum.photos/600/400/?random">
-    </div>
-    <div style="position:relative;">
-      AAAAA
-    </div>
-  </el-card>
+<template lang="pug">
+  el-card.box-card-component(:class="{'card-disabled': notReadyFlg}")
+    .box-card-header(slot="header")
+      img(src="https://picsum.photos/600/400/?random")
+    .box-card-body
+      p {{ title }}
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 
 @Component
 export default class BoxCard extends Vue {
+  @Prop({ default: {} }) private cardInfo!: { title: string, target: string };
 
+  get notReadyFlg() {
+    return !this.cardInfo.target
+  }
+
+  get title() {
+    if (this.notReadyFlg) {
+      return `${this.cardInfo.title} (Not Ready)`
+    } else {
+      return this.cardInfo.title
+    }
+  }
 }
 </script>
 
@@ -28,10 +34,13 @@ export default class BoxCard extends Vue {
   }
 }
 </style>
+
 <style lang="scss" scoped>
 .box-card-component {
   margin-left:8px;
-
+  &.card-disabled {
+    opacity: .6;
+  }
   .box-card-header {
     position: relative;
     height: 220px;
@@ -44,6 +53,9 @@ export default class BoxCard extends Vue {
         filter: contrast(130%);
       }
     }
+  }
+  .box-card-body {
+    position:relative;
   }
 }
 </style>

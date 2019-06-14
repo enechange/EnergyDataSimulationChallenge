@@ -9,7 +9,7 @@
         :key="role"
       >{{ role }}</span>
     </div>
-    <card-group />
+    <card-group :card-infos="cardInfos" />
   </div>
 </template>
 
@@ -17,6 +17,13 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { UserModule } from '@/store/modules/user'
 import CardGroup from './components/CardGroup.vue'
+
+const cardInfos = [
+  { title: 'Challenge 1', target: '/form/index' },
+  { title: 'Challenge 2', target: '/nested/menu2' },
+  { title: 'Challenge 3', target: '' },
+  { title: 'Challenge 4', target: '' }
+]
 
 @Component({
   components: { CardGroup }
@@ -28,6 +35,10 @@ export default class Dashboard extends Vue {
 
   get roles() {
     return UserModule.roles
+  }
+
+  get cardInfos() {
+    return cardInfos
   }
 }
 </script>
