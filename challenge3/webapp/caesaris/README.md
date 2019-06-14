@@ -48,3 +48,17 @@
   }
 }
 ```
+
+## Init Admin Page
+**Web page is a submodule in `vendor/admin`**
+
+```sh
+$ cd vendor/admin
+$ yarn install
+
+# for development
+$ yarn serve
+
+# for production
+$ yarn build
+```
