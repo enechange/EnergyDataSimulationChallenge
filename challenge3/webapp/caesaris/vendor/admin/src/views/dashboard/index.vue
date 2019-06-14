@@ -1,16 +1,9 @@
-<template>
-  <div class="dashboard-container">
-    <div class="dashboard-text">
-      name:{{ name }}
-    </div>
-    <div class="dashboard-text">
-      roles:<span
-        v-for="role in roles"
-        :key="role"
-      >{{ role }}</span>
-    </div>
-    <card-group :card-infos="cardInfos" />
-  </div>
+<template lang="pug">
+  .dashboard-container
+    h1.dashboard-text Energy Data Simulation Challenges
+    //.dashboard-text
+      span(v-for="role in roles", :key="role") {{ role }}
+    card-group(:card-infos="cardInfos")
 </template>
 
 <script lang="ts">
@@ -19,7 +12,7 @@ import { UserModule } from '@/store/modules/user'
 import CardGroup from './components/CardGroup.vue'
 
 const cardInfos = [
-  { title: 'Challenge 1', target: '/form/index' },
+  { title: 'Challenge 1', target: '' },
   { title: 'Challenge 2', target: '/nested/menu2' },
   { title: 'Challenge 3', target: '' },
   { title: 'Challenge 4', target: '' }
@@ -51,6 +44,10 @@ export default class Dashboard extends Vue {
     background-color: rgb(240, 242, 245);
     position: relative;
     min-height: calc(100vh - 50px);
+    h1 {
+      margin-top: 0;
+      color: #303133;
+    }
   }
 
   &-text {

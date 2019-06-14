@@ -39,7 +39,7 @@ export default class BoxCard extends Vue {
 .box-card-component {
   margin-left:8px;
   &.card-disabled {
-    opacity: .6;
+    opacity: .4;
   }
   .box-card-header {
     position: relative;
