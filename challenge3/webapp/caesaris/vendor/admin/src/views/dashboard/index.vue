@@ -9,59 +9,17 @@
         :key="role"
       >{{ role }}</span>
     </div>
-
-    <el-row :gutter="8">
-      <el-col
-        :xs="{span: 24}"
-        :sm="{span: 12}"
-        :md="{span: 12}"
-        :lg="{span: 6}"
-        :xl="{span: 6}"
-        class="card-box-col"
-      >
-        <box-card />
-      </el-col>
-      <el-col
-        :xs="{span: 24}"
-        :sm="{span: 12}"
-        :md="{span: 12}"
-        :lg="{span: 6}"
-        :xl="{span: 6}"
-        class="card-box-col"
-      >
-        <box-card />
-      </el-col>
-      <el-col
-        :xs="{span: 24}"
-        :sm="{span: 12}"
-        :md="{span: 12}"
-        :lg="{span: 6}"
-        :xl="{span: 6}"
-        class="card-box-col"
-      >
-        <box-card />
-      </el-col>
-      <el-col
-        :xs="{span: 24}"
-        :sm="{span: 12}"
-        :md="{span: 12}"
-        :lg="{span: 6}"
-        :xl="{span: 6}"
-        class="card-box-col"
-      >
-        <box-card />
-      </el-col>
-    </el-row>
+    <card-group />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import BoxCard from './components/BoxCard.vue'
 import { UserModule } from '@/store/modules/user'
+import CardGroup from './components/CardGroup.vue'
 
 @Component({
-  components: { BoxCard }
+  components: { CardGroup }
 })
 export default class Dashboard extends Vue {
   get name() {
@@ -88,9 +46,5 @@ export default class Dashboard extends Vue {
     font-size: 30px;
     line-height: 46px;
   }
-}
-
-.card-box-col {
-  margin-bottom:30px;
 }
 </style>
