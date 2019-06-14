@@ -40,6 +40,7 @@ export default new Router({
       component: Layout,
       redirect: '/dashboard',
       name: 'Dashboard',
+      // meta: { title: 'Dashboard', icon: 'dashboard' },
       meta: { hidden: true },
       children: [{
         path: 'dashboard',

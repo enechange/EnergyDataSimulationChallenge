@@ -1,5 +1,9 @@
 /* Sidebar */
 $sideBarWidth: 180px;
+$menuBg:#304156;
+$menuHover:#263445;
+$menuText:#bfcbd9;
+$menuActiveText:#409EFF;
 $subMenuBg:#1f2d3d;
 $subMenuHover:#001528;
 $subMenuActiveText:#f4f4f5;
@@ -8,3 +12,14 @@ $subMenuActiveText:#f4f4f5;
 $loginBg: #2d3a4b;
 $lightGray: #eee;
 $darkGray:#889aa4;
+
+:export {
+  sideBarWidth: $sideBarWidth;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  subMenuActiveText: $subMenuActiveText;
+}
