@@ -48,23 +48,23 @@ export default new Router({
       }]
     },
     {
-      path: '/example',
+      path: '/challenges',
       component: Layout,
-      redirect: '/example/table',
-      name: 'Example',
-      meta: { title: 'Example', icon: 'example' },
+      redirect: '/challenges/challenge-2',
+      name: 'Challenges',
+      meta: { title: 'Challenges', icon: 'tree' },
       children: [
         {
-          path: 'table',
-          name: 'Table',
+          path: 'challenge-1',
+          name: 'Challenge 1',
           component: () => import(/* webpackChunkName: "table" */ '@/views/table/index.vue'),
-          meta: { title: 'Table', icon: 'table' }
+          meta: { title: 'Challenge 1', icon: 'example', hidden: true }
         },
         {
-          path: 'tree',
-          name: 'Tree',
+          path: 'challenge-2',
+          name: 'Challenge 2',
           component: () => import(/* webpackChunkName: "tree" */ '@/views/tree/index.vue'),
-          meta: { title: 'Tree', icon: 'tree' }
+          meta: { title: 'Challenge 2', icon: 'example' }
         }
       ]
     },
