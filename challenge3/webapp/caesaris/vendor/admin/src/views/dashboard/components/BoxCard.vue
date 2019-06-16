@@ -3,7 +3,9 @@
     .box-card-header(slot="header")
       img(:src="imgUrl")
     .box-card-body
-      p {{ title }}
+      p.body-ttl
+        b {{ title }}
+      p.body-txt {{ title }}
 </template>
 
 <script lang="ts">
@@ -66,6 +68,15 @@ export default class BoxCard extends Vue {
   }
   .box-card-body {
     position:relative;
+    .body-ttl {
+      margin-top: 5px;
+      font-size: 1.25em;
+      margin-bottom: 10px;
+    }
+    .body-txt {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
   }
 }
 </style>
