@@ -1,0 +1,20 @@
+h1 = "#{@city.name}の詳細情報"
+h2 "#{@city.name}の日照量とエネルギー産出量"
+= scatter_chart @chart_data, xtitle: '日射量', ytitle: 'エネルギー生産量'
+= link_to "戻る", root_path
+h2 "#{@city.name}に住む各家庭の情報"
+= form_with
+.house-list
+  table border="1" cellspacing="0"
+    tr
+      th 名前
+      th 苗字
+      th 世帯人数
+      th 子供有無
+
+    - @houses.each do |house|
+      tr
+        td = house.first_name
+        td = house.last_name
+        td = house.num_of_people
+        td = house.has_child
