@@ -16,4 +16,13 @@
 
 class Energy < ApplicationRecord
   belongs_to :house
+
+  scope :with_house, -> { joins(:house) }
+  scope :search_with_city_id , ->(city_id) { where(houses: {city_id: city_id}) }
+  scope :order_date, -> { order(:year,:month) }
+  scope :group_date, -> { group(:year, :month) }
+  scope :average_energy_production, -> { average(:energy_production) }
+  scope :average_city_energy , -> (city_id) {
+    with_house.search_with_city_id(city_id).order_date.group_date.average_energy_production
+  }
 end

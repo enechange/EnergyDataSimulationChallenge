@@ -1,17 +1,12 @@
 class CitiesController < ApplicationController
   def index
     @cities = City.all
-
-    @average_energies_by_city = []
-    @cities.each do |city|
-      avg = Energy.joins(:house).where(houses: {city_id: city.id}).order(:year,:month).group(:year, :month).average(:energy_production)
-      @average_energies_by_city << { name: city.name, data: avg }
-    end
+    @average_energies = City.average_energies_in_all_city
   end
 
   def show
     @city = City.find(params[:id])
     @houses = @city.houses
-    @chart_data = @houses.joins(:energies).pluck(:daylight, :energy_production)
+    @chart_data = @houses.with_house.pluck(:daylight, :energy_production)
   end
 end
