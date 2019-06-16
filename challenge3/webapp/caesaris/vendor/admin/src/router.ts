@@ -50,21 +50,34 @@ export default new Router({
     {
       path: '/challenges',
       component: Layout,
-      redirect: '/challenges/challenge-2',
+      redirect: '/challenges/challenge-3', // TODO: change to `challenge-1`
       name: 'Challenges',
       meta: { title: 'Challenges', icon: 'tree' },
       children: [
         {
           path: 'challenge-1',
           name: 'Challenge 1',
-          component: () => import(/* webpackChunkName: "table" */ '@/views/table/index.vue'),
+          // component: Layout,
+          component: () => import(/* webpackChunkName: "challenge-1" */ '@/views/challenges/challenge-1/index.vue'),
           meta: { title: 'Challenge 1', icon: 'example', hidden: true }
         },
         {
           path: 'challenge-2',
           name: 'Challenge 2',
-          component: () => import(/* webpackChunkName: "tree" */ '@/views/tree/index.vue'),
-          meta: { title: 'Challenge 2', icon: 'example' }
+          component: () => import(/* webpackChunkName: "challenge-2" */ '@/views/challenges/challenge-2/index.vue'),
+          meta: { title: 'Challenge 2', icon: 'example', hidden: true }
+        },
+        {
+          path: 'challenge-3',
+          name: 'Challenge 3',
+          component: () => import(/* webpackChunkName: "challenge-3" */ '@/views/challenges/challenge-3/index.vue'),
+          meta: { title: 'Challenge 3', icon: 'example' }
+        },
+        {
+          path: 'challenge-4',
+          name: 'Challenge 4',
+          component: () => import(/* webpackChunkName: "challenge-4" */ '@/views/challenges/challenge-4/index.vue'),
+          meta: { title: 'Challenge 4', icon: 'example', hidden: true }
         }
       ]
     },
