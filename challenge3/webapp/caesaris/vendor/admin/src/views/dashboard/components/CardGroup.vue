@@ -18,7 +18,7 @@ import BoxCard from './BoxCard.vue'
 })
 export default class CardGroup extends Vue {
   @Prop({ default: [] }) private cardInfos!: [{
-    title: string, target: string, imgUrl?: string
+    title: string, text: string, target: string, imgUrl?: string
   }];
 
   private noFeature() {

@@ -5,7 +5,7 @@
     .box-card-body
       p.body-ttl
         b {{ title }}
-      p.body-txt {{ title }}
+      p.body-txt {{ text }}
 </template>
 
 <script lang="ts">
@@ -14,7 +14,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 @Component
 export default class BoxCard extends Vue {
   @Prop({ default: {} }) private cardInfo!: {
-    title: string, target: string, imgUrl?: string
+    title: string, text: string, target: string, imgUrl?: string
   };
 
   get notReadyFlg() {
@@ -35,6 +35,10 @@ export default class BoxCard extends Vue {
     } else {
       return 'https://picsum.photos/400/300/?random'
     }
+  }
+
+  get text() {
+    return this.cardInfo.text
   }
 }
 </script>
@@ -76,6 +80,8 @@ export default class BoxCard extends Vue {
     .body-txt {
       margin-top: 10px;
       margin-bottom: 5px;
+      font-size: .95em;
+      opacity: .8;
     }
   }
 }
