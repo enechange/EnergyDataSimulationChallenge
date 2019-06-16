@@ -1,7 +1,7 @@
 <template lang="pug">
   el-card.box-card-component(:class="{'card-disabled': notReadyFlg}")
     .box-card-header(slot="header")
-      img(src="https://picsum.photos/600/400/?random")
+      img(:src="imgUrl")
     .box-card-body
       p {{ title }}
 </template>
@@ -11,7 +11,9 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 
 @Component
 export default class BoxCard extends Vue {
-  @Prop({ default: {} }) private cardInfo!: { title: string, target: string };
+  @Prop({ default: {} }) private cardInfo!: {
+    title: string, target: string, imgUrl?: string
+  };
 
   get notReadyFlg() {
     return !this.cardInfo.target
@@ -22,6 +24,14 @@ export default class BoxCard extends Vue {
       return `${this.cardInfo.title} (Not Ready)`
     } else {
       return this.cardInfo.title
+    }
+  }
+
+  get imgUrl() {
+    if (this.cardInfo.imgUrl) {
+      return this.cardInfo.imgUrl.toString()
+    } else {
+      return 'https://picsum.photos/400/300/?random'
     }
   }
 }
