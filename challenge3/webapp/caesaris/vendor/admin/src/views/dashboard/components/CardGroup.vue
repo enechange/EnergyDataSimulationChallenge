@@ -17,7 +17,9 @@ import BoxCard from './BoxCard.vue'
   components: { BoxCard }
 })
 export default class CardGroup extends Vue {
-  @Prop({ default: [] }) private cardInfos!: [{ title: string, target: string }];
+  @Prop({ default: [] }) private cardInfos!: [{
+    title: string, text: string, target: string, imgUrl?: string
+  }];
 
   private noFeature() {
     alert('This Feature Is Under Development.')

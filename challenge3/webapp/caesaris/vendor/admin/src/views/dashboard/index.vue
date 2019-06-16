@@ -12,10 +12,29 @@ import { UserModule } from '@/store/modules/user'
 import CardGroup from './components/CardGroup.vue'
 
 const cardInfos = [
-  { title: 'Challenge 1', target: '' },
-  { title: 'Challenge 2', target: '/nested/menu2' },
-  { title: 'Challenge 3', target: '' },
-  { title: 'Challenge 4', target: '' }
+  {
+    title: 'Challenge 1',
+    text: 'Energy Production Data Simulation',
+    target: '',
+    imgUrl: 'https://picsum.photos/id/830/400/300'
+  },
+  {
+    title: 'Challenge 2',
+    text: 'Visualization of Energy Consumptions',
+    target: '',
+    imgUrl: 'https://picsum.photos/id/603/400/300'
+  },
+  { title: 'Challenge 3',
+    text: 'Web Application',
+    target: '/challenges/challenge-3',
+    imgUrl: 'https://picsum.photos/id/18/400/300'
+  },
+  {
+    title: 'Challenge 4',
+    text: 'WEB-API Server',
+    target: '',
+    imgUrl: 'https://picsum.photos/id/909/400/300'
+  }
 ]
 
 @Component({
