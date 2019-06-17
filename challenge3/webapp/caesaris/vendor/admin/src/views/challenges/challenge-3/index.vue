@@ -2,8 +2,7 @@
   div.contents-area(style='padding:30px;')
     h1.challenge-ttl Challenge 3
     p.challenge-txt Web Application
-    //el-alert(:closable='false', title='Challenge 3')
-    <tab-area />
+    tab-area
 </template>
 
 <script lang="ts">
