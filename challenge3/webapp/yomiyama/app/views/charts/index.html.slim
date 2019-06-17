@@ -1,0 +1,94 @@
+div
+  .container
+    canvas#EnergyProduction
+  .container
+    canvas#PerPersonEnergyProduction
+  
+
+javascript:
+  let ctx1 = document.getElementById("EnergyProduction").getContext('2d');
+  let ctx2 = document.getElementById("PerPersonEnergyProduction").getContext('2d');
+
+  let Chart1 = new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: ["London", "Cambridge", "Oxford"],
+      datasets: [
+        {
+          type: 'bar',
+          label:"世帯平均発電量",
+          data: #{@energy_average_json},
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1,
+          yAxisID: '1'
+        },
+        {
+          type: 'line',
+          label: "世帯平均日射量",
+          data: #{@daylight_average_json},
+          borderColor: 'rgba(54, 162, 235, 0.2)',
+          borderWidth: 1,
+          fill: false,
+          yAxisID: '2'
+        }
+      ]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          id: '1',
+          type: 'linear',
+          position: 'left',
+          ticks: {
+            max: 15100,
+            min: 14500,
+            stepSize: 3000
+          }
+        },
+        {
+          id: '2',
+          type: 'linear',
+          position: 'right',
+          ticks: {
+            max: 4490,
+            min: 4450,
+            stepSize: 10
+          }
+        }]
+      }
+    }
+  })
+
+  let Chart2 = new Chart(ctx2, {
+    type: 'scatter',
+    data: {
+      datasets: [{
+        label: '一人あたり発電量と世帯人数の関係',
+        data: #{{@per_person_energy_json}}
+      }]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          position: 'bottom',
+          ticks: {
+            max: 8,
+            min: 0,
+            stepSize: 1,
+          }
+        }],
+        yAxes: [{
+          type: 'linear',
+          position: 'bottom',
+          ticks: {
+            max: 10000,
+            min: 2000,
+            stepSize: 500,
+          }
+        }]        
+      }
+    }
+  })
+
+
