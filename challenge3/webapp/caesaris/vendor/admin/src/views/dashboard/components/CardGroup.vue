@@ -11,6 +11,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
+import { MessageBox } from 'element-ui'
 import BoxCard from './BoxCard.vue'
 
 @Component({
@@ -22,7 +23,10 @@ export default class CardGroup extends Vue {
   }];
 
   private noFeature() {
-    alert('This Feature Is Under Development.')
+    MessageBox.alert('This Feature Is Under Development.', {
+      confirmButtonText: 'OK'
+    })
+    // alert('This Feature Is Under Development.')
   }
 }
 </script>
