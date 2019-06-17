@@ -1,0 +1,36 @@
+<h1>TimeChart</h1>
+
+<%= form_with url: time_chart_path, :method => :get do |form| %>
+  Show with:
+  <%= select_tag("show_with",
+    options_for_select([["Number of people", :num_of_people], ["Has child", :has_child], ["City", :city]], selected: params[:show_with]),
+    include_blank: true,
+    onchange: "this.form.submit();")
+  %>
+<% end %>
+
+<div id="chart"></div>
+
+<script type="text/javascript">
+var chart = c3.generate({
+  bindto: '#chart',
+  data: {
+    x: 'x',
+    columns: <%= raw @c3_columns %>
+  },
+  axis: {
+    x: {
+      type: 'timeseries',
+      tick: {
+        format: '%Y-%m'
+      }
+    },
+    y: {
+      label: {
+        text: 'Energy Production (Average)',
+        position: 'outer-middle'
+      }
+    }
+  }
+});
+</script>
