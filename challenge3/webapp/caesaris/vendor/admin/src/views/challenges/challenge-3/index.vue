@@ -12,9 +12,7 @@ import TabArea from './TabArea.vue'
 @Component({
   components: { TabArea }
 })
-export default class Challenge3 extends Vue {
-
-}
+export default class Challenge3 extends Vue { }
 </script>
 
 <style lang="scss" scoped>
