@@ -1,5 +1,7 @@
 <template lang="pug">
-  .chart(:id="id", style="width: 100%;height:400px;")
+  section
+    h3.chart-ttl Average Energy Production Per House
+    .chart(:id="id", style="width: 100%;height:400px;")
 </template>
 
 <script lang="ts">
@@ -7,6 +9,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 import { Component as C } from 'vue'
 import { fetchGraphql } from '@/api/graphql.ts'
 import * as echarts from 'echarts'
+import { barData, createBarOption } from './ChartHelper'
 const gql = String.raw // Dummy gql
 
 const xAxisData = []
@@ -83,12 +86,15 @@ const option: echarts.EChartOption = {
 export default class BarChart extends Vue {
   @Prop({ default: 'BarChart' }) private id!: string
   chart: echarts.ECharts | null = null
+  cities: string[] = []
+  labels: string[] = []
+  dataSets: barData = {}
 
   beforeCreate() {
     console.log('BarChart', 'beforeCreate')
-    fetchGraphql(
-      gql`{ house(id: 1) { datasets { id } } }`
-    ).then(res => res)
+    // fetchGraphql(
+    //   gql`{ house(id: 1) { datasets { id } } }`
+    // ).then(res => res)
   }
 
   beforeMount() {
@@ -97,7 +103,14 @@ export default class BarChart extends Vue {
 
   mounted() {
     console.log('BarChart', 'mounted')
-    this.initChart()
+    this.fetchData().then(res => {
+      console.log(res)
+      this.cities = res['cities'].map((city: {name: string}) => city['name'])
+      this.labels = res['dataSeries']['dateLabels']
+      this.dataSets = res['dataSeries']['houseEnergyProd']
+      console.log(this.dataSets)
+      this.initChart()
+    })
   }
 
   beforeUpdate() {
@@ -115,9 +128,31 @@ export default class BarChart extends Vue {
   initChart() {
     const el = document.getElementById(this.id)
     this.chart = echarts.init(el as HTMLDivElement)
-    this.chart.setOption(option)
-    console.log(el)
+    const opt = createBarOption(this.dataSets, this.labels, this.cities)
+    // this.chart.setOption(option)
+    this.chart.setOption(opt)
+    console.log(opt)
+    // console.log(el)
     console.log(this.chart)
+  }
+
+  async fetchData() {
+    const query = gql`{
+      cities { name },
+      dataSeries { dateLabels, houseEnergyProd }
+    }`
+    const res = await fetchGraphql(query)
+    return res['data']
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.chart-ttl {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+</style>
