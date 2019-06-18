@@ -64,5 +64,12 @@ module Types
         Dataset.all.order(:id)
       end
     end
+
+    field :data_series, DataSeriesType, null: true do
+    end
+    def data_series
+      DataSeriesService.new
+    end
+
   end
 end
