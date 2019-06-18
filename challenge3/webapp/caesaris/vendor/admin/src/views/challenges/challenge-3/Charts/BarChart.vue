@@ -88,7 +88,9 @@ export default class BarChart extends Vue {
   chart: echarts.ECharts | null = null
   cities: string[] = []
   labels: string[] = []
-  dataSets: barData = {}
+  energyData: barData = {}
+  tempData: barData = {}
+  daylightData: barData = {}
 
   beforeCreate() {
     console.log('BarChart', 'beforeCreate')
@@ -107,8 +109,9 @@ export default class BarChart extends Vue {
       console.log(res)
       this.cities = res['cities'].map((city: {name: string}) => city['name'])
       this.labels = res['dataSeries']['dateLabels']
-      this.dataSets = res['dataSeries']['houseEnergyProd']
-      console.log(this.dataSets)
+      this.energyData = res['dataSeries']['houseEnergyProd']
+      this.tempData = res['dataSeries']['temperature']
+      this.daylightData = res['dataSeries']['daylight']
       this.initChart()
     })
   }
@@ -128,18 +131,18 @@ export default class BarChart extends Vue {
   initChart() {
     const el = document.getElementById(this.id)
     this.chart = echarts.init(el as HTMLDivElement)
-    const opt = createBarOption(this.dataSets, this.labels, this.cities)
-    // this.chart.setOption(option)
+    // const opt = createBarOption(this.energyData, this.tempData, this.labels, this.cities)
+    const opt = createBarOption(this.energyData, this.daylightData, this.labels, this.cities)
     this.chart.setOption(opt)
-    console.log(opt)
+    // console.log(opt)
     // console.log(el)
-    console.log(this.chart)
+    // console.log(this.chart)
   }
 
   async fetchData() {
     const query = gql`{
       cities { name },
-      dataSeries { dateLabels, houseEnergyProd }
+      dataSeries { dateLabels, houseEnergyProd, daylight, temperature }
     }`
     const res = await fetchGraphql(query)
     return res['data']
