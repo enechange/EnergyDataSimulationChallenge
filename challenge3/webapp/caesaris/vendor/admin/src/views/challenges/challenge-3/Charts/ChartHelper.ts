@@ -1,4 +1,5 @@
 /* eslint-disable comma-dangle */
+/* eslint-disable */
 import * as echarts from 'echarts'
 import * as _ from 'lodash'
 
@@ -33,7 +34,10 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
     // title: {},
     legend: {
       data: cities,
-      align: 'left'
+      align: 'left',
+      textStyle: {
+        fontSize: 14
+      }
     },
     dataZoom: [
       {
@@ -139,6 +143,64 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
     animationDelayUpdate: (idx: number) => {
       return idx * 5
     }
+  }
+  return option
+}
+
+export const createScatterOption = () => {
+  const option: echarts.EChartOption = {
+    legend: {
+      y: 'top',
+      data: ['data', 'data2'],
+      textStyle: {
+        fontSize: 14
+      }
+    },
+    xAxis: {},
+    yAxis: {},
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross'
+      },
+      // formatter: '{a0}: {c0}',
+    },
+    series: [{
+      name: 'data',
+      symbolSize: 20,
+      data: [
+        [10.0, 8.04],
+        [8.0, 6.95],
+        [13.0, 7.58],
+        [9.0, 8.81],
+        [11.0, 8.33],
+        [14.0, 9.96],
+        [6.0, 7.24],
+        [4.0, 4.26],
+        [12.0, 10.84],
+        [7.0, 4.82],
+        [5.0, 5.68]
+      ],
+      type: 'scatter',
+    },
+    {
+      // symbolSize: 20,
+      name: 'data2',
+      data: [
+        [10.0, 8.04],
+        [8.0, 6.95],
+        [13.0, 7.58],
+        [9.0, 8.81],
+        [11.0, 8.33],
+        [14.0, 9.96],
+        [6.0, 7.24],
+        [4.0, 4.26],
+        [12.0, 10.84],
+        [7.0, 4.82],
+        [5.0, 5.68]
+      ].map(arr => _.reverse(arr)),
+      type: 'scatter'
+    }]
   }
   return option
 }
