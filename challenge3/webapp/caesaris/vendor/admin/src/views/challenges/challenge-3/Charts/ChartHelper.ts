@@ -1,5 +1,4 @@
 /* eslint-disable comma-dangle */
-/* eslint-disable */
 import * as echarts from 'echarts'
 import * as _ from 'lodash'
 
@@ -147,17 +146,26 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
   return option
 }
 
-export const createScatterOption = () => {
+export const createScatterOption = (dataList: (number | string)[][][], labels: string[], daylightRange: number[]) => {
   const option: echarts.EChartOption = {
     legend: {
       y: 'top',
-      data: ['data', 'data2'],
+      data: labels,
       textStyle: {
         fontSize: 14
       }
     },
-    xAxis: {},
-    yAxis: {},
+    xAxis: {
+      type: 'value',
+      name: 'Daylight',
+      ...calcAxisRange(daylightRange),
+      axisLabel: { formatter: '{value} h' }
+    },
+    yAxis: {
+      type: 'value',
+      name: 'Temp.',
+      axisLabel: { formatter: '{value} ℃' }
+    },
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -165,44 +173,57 @@ export const createScatterOption = () => {
       },
       // formatter: '{a0}: {c0}',
     },
-    series: [{
-      name: 'data',
-      symbolSize: 20,
-      data: [
-        [10.0, 8.04],
-        [8.0, 6.95],
-        [13.0, 7.58],
-        [9.0, 8.81],
-        [11.0, 8.33],
-        [14.0, 9.96],
-        [6.0, 7.24],
-        [4.0, 4.26],
-        [12.0, 10.84],
-        [7.0, 4.82],
-        [5.0, 5.68]
-      ],
-      type: 'scatter',
-    },
-    {
-      // symbolSize: 20,
-      name: 'data2',
-      data: [
-        [10.0, 8.04],
-        [8.0, 6.95],
-        [13.0, 7.58],
-        [9.0, 8.81],
-        [11.0, 8.33],
-        [14.0, 9.96],
-        [6.0, 7.24],
-        [4.0, 4.26],
-        [12.0, 10.84],
-        [7.0, 4.82],
-        [5.0, 5.68]
-      ].map(arr => _.reverse(arr)),
-      type: 'scatter'
-    }]
+    series: labels.map((city, i) => {
+      return {
+        name: city,
+        type: 'scatter',
+        // symbolSize: 20,
+        data: dataList[i]
+      }
+    })
   }
   return option
+}
+
+export interface scatterGraphqlData {
+  cities: [{
+    name: string,
+    datasets: [{
+      dateStr: string,
+      temperature: number,
+      daylight: number,
+      house: { fullName: string }
+    }]
+  }]
+}
+
+export const formatScatterGraphqlData = (rawData: scatterGraphqlData) => {
+  const cities = rawData.cities
+  const labels: string[] = []
+  const dataList: (number | string)[][][] = []
+  let daylightMax: number = 0
+  let daylightMin: number = Number.MAX_VALUE
+
+  cities.forEach((c, i) => {
+    labels[i] = c.name
+    const dataColumn = c.datasets.map(ds => {
+      if (daylightMax < ds.daylight) {
+        daylightMax = ds.daylight
+      }
+      if (daylightMin > ds.daylight) {
+        daylightMin = ds.daylight
+      }
+      return [
+        ds.daylight,
+        ds.temperature,
+        ds.house.fullName,
+        ds.dateStr
+      ]
+    })
+    dataList[i] = dataColumn
+  })
+
+  return { labels, dataList, daylightRange: [daylightMin, daylightMax] }
 }
 
 function calcAxisRange(dataArray: number[], scale = 10, stepNum = 5) {

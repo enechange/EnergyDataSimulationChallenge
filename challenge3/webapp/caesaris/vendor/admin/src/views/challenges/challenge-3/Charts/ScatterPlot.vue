@@ -1,7 +1,7 @@
 <template lang="pug">
   section
     h3.chart-ttl Scatter Plot
-    .chart(:id="id", style="width: 100%;height: 400px;")
+    .chart(:id="id", style="width: 100%;height: 500px;")
 </template>
 
 <script lang="ts">
@@ -9,19 +9,19 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 import { Component as C } from 'vue'
 import * as echarts from 'echarts'
 import { fetchGraphql } from '@/api/graphql.ts'
-import { createScatterOption } from './ChartHelper'
+import { createScatterOption, formatScatterGraphqlData } from './ChartHelper'
 const gql = String.raw // Dummy gql
 
 @Component
 export default class ScatterPlot extends Vue {
   @Prop({ default: 'ScatterPlot' }) private id!: string
   chart: echarts.ECharts | null = null
+  dataList: (number | string)[][][] = []
+  labels: string[] = []
+  daylightRange: number[] = []
 
   beforeCreate() {
     console.log('ScatterPlot', 'beforeCreate')
-    // fetchGraphql(
-    //   gql`{ house(id: 1) { datasets { id } } }`
-    // ).then(res => { this.graphRes = res })
   }
 
   beforeMount() {
@@ -31,7 +31,14 @@ export default class ScatterPlot extends Vue {
   mounted() {
     console.log('BarChart', 'mounted')
     this.initChart()
-    this.updateChart()
+    this.fetchData().then(res => {
+      console.log(res)
+      const { labels, dataList, daylightRange } = formatScatterGraphqlData(res)
+      this.labels = labels
+      this.dataList = dataList
+      this.daylightRange = daylightRange
+      this.updateChart()
+    })
   }
 
   beforeUpdate() {
@@ -55,9 +62,36 @@ export default class ScatterPlot extends Vue {
   updateChart() {
     if (this.chart) {
       this.chart.hideLoading()
-      const opt = createScatterOption()
+      const opt = createScatterOption(this.dataList, this.labels, this.daylightRange)
+      console.log(opt)
       this.chart.setOption(opt)
     }
   }
+
+  async fetchData() {
+    const query = gql`{
+      cities {
+        name,
+        datasets {
+          dateStr,
+          temperature,
+          daylight,
+          house { fullName }
+        }
+      }
+    }`
+    const res = await fetchGraphql(query)
+    return res['data']
+  }
 }
 </script>
+
+<style lang="scss" scoped>
+.chart-ttl {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+</style>
