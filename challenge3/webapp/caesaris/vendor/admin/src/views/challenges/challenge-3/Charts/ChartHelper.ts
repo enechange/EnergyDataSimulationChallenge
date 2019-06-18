@@ -30,13 +30,28 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
   })
 
   const option: echarts.EChartOption = {
-    // title: {
-    //   text: '柱状图动画延迟'
-    // },
+    // title: {},
     legend: {
       data: cities,
       align: 'left'
     },
+    dataZoom: [
+      {
+        show: true,
+        // start: 50,
+        // end: 100
+      },
+      {
+        show: true,
+        type: 'inside',
+      },
+      {
+        show: true,
+        yAxisIndex: 0,
+        filterMode: 'empty',
+        left: '93%'
+      }
+    ],
     toolbox: {
       // y: 'bottom',
       feature: {

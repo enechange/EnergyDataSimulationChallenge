@@ -19,15 +19,10 @@ import PolarArea from './Charts/PolarArea.vue'
   components: { BarChart, ScatterPlot, PolarArea }
 })
 export default class TabArea extends Vue {
-  activeName: string = 'scatter-plot'
+  activeName: string = 'bar-chart'
 
   beforeCreate() {
     console.log(this.$route)
-    fetch('http://localhost:18000/api/city_list')
-      .then(res => res.json())
-      .then(json => {
-        console.log(json)
-      })
   }
 
   handleClick(tab: C, event: MouseEvent) {
