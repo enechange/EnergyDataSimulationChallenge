@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import * as echarts from 'echarts'
 import * as _ from 'lodash'
 
@@ -8,7 +9,6 @@ export interface barData {
 }
 
 export const createBarOption = (barData: barData, lineData: barData, labels: string[], cities: string[]) => {
-  console.log(barData, lineData, labels, cities)
   const xAxisData = labels
   const barDataList: (number | null)[][] = []
   const lineDataList: (number | null)[][] = []
@@ -66,8 +66,9 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
           }
         },
         dataView: {
-          title: 'Data View',
-          lang: ['Chart', 'Close', 'Refresh']
+          show: false,
+          // title: 'Data View',
+          // lang: ['Chart', 'Close', 'Refresh']
         },
         saveAsImage: {
           title: 'Save',
@@ -92,7 +93,7 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
       {
         type: 'value',
         name: 'Energy Prod.',
-        ...calcAxisRange(_.flatten(barDataList) as number[]),
+        min: calcAxisRange(_.flatten(barDataList) as number[]).min,
         axisLabel: { formatter: '{value} kWh' }
       },
       {
