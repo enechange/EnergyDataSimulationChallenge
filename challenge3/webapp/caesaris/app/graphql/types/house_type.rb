@@ -3,6 +3,7 @@ module Types
     field :id, ID, null: false
     field :firstname, String, null: false
     field :lastname, String, null: false
+    field :full_name, String, null: false
     # field :city_text, String, null: false
     # field :city_id, Integer, null: false
     field :city, Types::CityType, null: false

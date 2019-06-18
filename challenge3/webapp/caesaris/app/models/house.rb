@@ -12,6 +12,10 @@ class House < ApplicationRecord
     has_child_before_type_cast
   end
 
+  def full_name
+    "#{firstname} #{lastname}"
+  end
+
 end
 
 # Columns:
