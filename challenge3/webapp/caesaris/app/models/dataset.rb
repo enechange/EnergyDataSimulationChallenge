@@ -3,7 +3,7 @@ class Dataset < ApplicationRecord
   delegate :city, to: :house
   validates_presence_of :label, :year, :month, :temperature, :daylight, :energy_production
 
-  default_scope { order(:year, :month) }
+  scope :order_by_date, -> { order(:year, :month) }
 
   def date_str
     "#{year}-#{month}"
