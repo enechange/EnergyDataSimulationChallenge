@@ -1,7 +1,8 @@
 <template lang="pug">
   section
-    h3.chart-ttl Scatter Plot
-    .chart(:id="id", style="width: 100%;height: 500px;")
+    h3.chart-ttl Energy Production
+    p.sub-ttl Plotted On Temperature And Daylight
+    .chart(:id="id", style="width: 100%;height: 550px;")
 </template>
 
 <script lang="ts">
@@ -20,29 +21,16 @@ export default class ScatterPlot extends Vue {
   labels: string[] = []
   daylightRange: number[] = []
 
-  beforeCreate() {
-    console.log('ScatterPlot', 'beforeCreate')
-  }
-
-  beforeMount() {
-    console.log('ScatterPlot', 'beforeMount')
-  }
-
   mounted() {
     console.log('BarChart', 'mounted')
     this.initChart()
     this.fetchData().then(res => {
-      console.log(res)
       const { labels, dataList, daylightRange } = formatScatterGraphqlData(res)
       this.labels = labels
       this.dataList = dataList
       this.daylightRange = daylightRange
       this.updateChart()
     })
-  }
-
-  beforeUpdate() {
-    console.log('ScatterPlot', 'beforeUpdate')
   }
 
   beforeDestroy() {
@@ -63,7 +51,6 @@ export default class ScatterPlot extends Vue {
     if (this.chart) {
       this.chart.hideLoading()
       const opt = createScatterOption(this.dataList, this.labels, this.daylightRange)
-      console.log(opt)
       this.chart.setOption(opt)
     }
   }
@@ -91,8 +78,12 @@ export default class ScatterPlot extends Vue {
 .chart-ttl {
   text-align: center;
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: .7rem;
   font-size: 1.5rem;
   color: #333;
+}
+.sub-ttl {
+  margin-top: 0;
+  text-align: center;
 }
 </style>

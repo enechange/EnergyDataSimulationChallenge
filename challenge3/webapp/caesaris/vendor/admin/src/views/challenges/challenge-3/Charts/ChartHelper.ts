@@ -173,6 +173,18 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
       name: 'Temp.',
       axisLabel: { formatter: '{value} ℃' }
     },
+    toolbox: {
+      top: 0,
+      feature: {
+        dataView: {
+          show: false,
+        },
+        saveAsImage: {
+          title: 'Save',
+          pixelRatio: 2
+        }
+      }
+    },
     tooltip: {
       // trigger: 'axis',
       axisPointer: {
@@ -185,7 +197,7 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
     },
     visualMap: [{
       left: 'right',
-      top: '5%',
+      top: '7.5%',
       dimension: 2,
       min: 200,
       max: 1100,
