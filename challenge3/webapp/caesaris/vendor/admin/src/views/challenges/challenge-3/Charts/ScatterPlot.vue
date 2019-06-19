@@ -76,6 +76,7 @@ export default class ScatterPlot extends Vue {
           dateStr,
           temperature,
           daylight,
+          energyProduction,
           house { fullName }
         }
       }

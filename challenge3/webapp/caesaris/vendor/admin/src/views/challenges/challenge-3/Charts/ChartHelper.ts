@@ -171,13 +171,25 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
       axisPointer: {
         type: 'cross'
       },
-      // formatter: '{a0}: {c0}',
     },
     series: labels.map((city, i) => {
       return {
         name: city,
         type: 'scatter',
-        // symbolSize: 20,
+        symbolSize: (val: (number | string)[], param: {}) => {
+          const energyProd = val[2] as number // 1088 ~ 254
+          const size = 1.8 * (energyProd / 250) ** 2
+          return size
+        },
+        itemStyle: {
+          normal: {
+            opacity: 0.18,
+            shadowBlur: 1,
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.15)'
+          }
+        },
         data: dataList[i]
       }
     })
@@ -192,6 +204,7 @@ export interface scatterGraphqlData {
       dateStr: string,
       temperature: number,
       daylight: number,
+      energyProduction: number,
       house: { fullName: string }
     }]
   }]
@@ -216,6 +229,7 @@ export const formatScatterGraphqlData = (rawData: scatterGraphqlData) => {
       return [
         ds.daylight,
         ds.temperature,
+        ds.energyProduction,
         ds.house.fullName,
         ds.dateStr
       ]
