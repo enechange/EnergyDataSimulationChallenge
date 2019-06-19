@@ -147,6 +147,13 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
 }
 
 export const createScatterOption = (dataList: (number | string)[][][], labels: string[], daylightRange: number[]) => {
+  const schema = [
+    { name: 'daylight', index: 0, text: 'Daylight', unit: 'h' },
+    { name: 'temperature', index: 0, text: 'Temp.', unit: '℃' },
+    { name: 'energyProduction', index: 0, text: 'Nrg. Prod.', unit: 'kWh' },
+    { name: 'fullName', index: 0, text: 'Name' },
+    { name: 'dateStr', index: 0, text: 'Date' },
+  ]
   const option: echarts.EChartOption = {
     legend: {
       y: 'top',
@@ -167,19 +174,23 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
       axisLabel: { formatter: '{value} ℃' }
     },
     tooltip: {
-      trigger: 'axis',
+      // trigger: 'axis',
       axisPointer: {
         type: 'cross'
       },
+      formatter: (data) => {
+        // console.log(data)
+        return formatScatterTooltip([data] as tooltipData[], schema)
+      }
     },
     visualMap: [{
       left: 'right',
       top: '5%',
       dimension: 2,
-      min: 150,
-      max: 1500,
+      min: 200,
+      max: 1100,
       precision: 0,
-      text: ['Size: Energy Prod.'],
+      text: ['Size: Nrg. Prod.(kWh)'],
       textGap: 20,
       textStyle: {
         fontSize: 11,
@@ -205,12 +216,12 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
         type: 'scatter',
         symbolSize: (val: (number | string)[], param: {}) => {
           const energyProd = val[2] as number // 1088 ~ 254
-          const size = 1.8 * (energyProd / 250) ** 2
+          const size = 1.9 * (energyProd / 250) ** 2
           return size
         },
         itemStyle: {
           normal: {
-            opacity: 0.18,
+            opacity: 0.2,
             shadowBlur: 1,
             shadowOffsetX: 0,
             shadowOffsetY: 0,
@@ -265,6 +276,44 @@ export const formatScatterGraphqlData = (rawData: scatterGraphqlData) => {
   })
 
   return { labels, dataList, daylightRange: [daylightMin, daylightMax] }
+}
+
+interface tooltipData {
+  color: string,
+  data: (number | string)[],
+  marker: string,
+  seriesName: string,
+}
+
+interface dataSchema {
+  name: string,
+  index: number,
+  text: string,
+  unit?: string,
+}
+
+function formatScatterTooltip(dataList: tooltipData[], schema: dataSchema[]) {
+  const outerHtml = dataList.map(dataSet => {
+    const ttlStyle = 'display: block;font-size: 14px;font-weight: bold;'
+    const listStyle = 'display: block;font-size: 12px;font-weight: normal;padding-left: 15px;'
+    const name = dataSet.data[3]
+    const date = dataSet.data[4]
+    const city = dataSet.seriesName
+    let html = `
+    <div>
+      <span style="${ttlStyle}">
+        ${dataSet.marker}${name} [ ${city} ]
+      </span>
+      <span style="${listStyle}">Date: ${date}</span>
+      ${[0, 1, 2].map(i => `
+        <span style="${listStyle}">
+          ${schema[i].text}: ${dataSet.data[i]} ${schema[i].unit || ''}
+        </span>`).join('')}
+    </div>
+    `
+    return html
+  }).join('<hr>')
+  return outerHtml
 }
 
 function calcAxisRange(dataArray: number[], scale = 10, stepNum = 5) {
