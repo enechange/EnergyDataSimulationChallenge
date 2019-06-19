@@ -1,7 +1,7 @@
 <template lang="pug">
   section
     h3.chart-ttl Average Energy Production Per House
-    .chart(:id="id", style="width: 100%;height: 400px;")
+    .chart(:id="id", style="width: 100%;height: 450px;")
 </template>
 
 <script lang="ts">

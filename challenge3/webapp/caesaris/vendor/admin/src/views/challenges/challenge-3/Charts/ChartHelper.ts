@@ -41,18 +41,17 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
     dataZoom: [
       {
         show: true,
-        // start: 50,
-        // end: 100
+        type: 'inside',
       },
       {
         show: true,
-        type: 'inside',
+        bottom: 0,
       },
       {
         show: true,
         yAxisIndex: 0,
         filterMode: 'empty',
-        left: '93%'
+        right: '1%',
       }
     ],
     toolbox: {
@@ -83,6 +82,11 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
       trigger: 'axis',
       axisPointer: {
         type: 'cross'
+      },
+      formatter: (data) => {
+        console.log(data)
+        return formatBarTooltip(data as tooltipData[])
+        // return formatScatterTooltip([data] as tooltipData[], schema)
       }
     },
     xAxis: {
@@ -162,6 +166,13 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
         fontSize: 14
       }
     },
+    // dataZoom: [
+    //   {
+    //     show: true,
+    //     type: 'inside',
+    //     orient: 'vertical',
+    //   },
+    // ],
     xAxis: {
       type: 'value',
       name: 'Daylight',
@@ -294,7 +305,9 @@ interface tooltipData {
   color: string,
   data: (number | string)[],
   marker: string,
+  name: string,
   seriesName: string,
+  seriesType: string,
 }
 
 interface dataSchema {
@@ -304,10 +317,45 @@ interface dataSchema {
   unit?: string,
 }
 
+function formatBarTooltip(dataList: tooltipData[]) {
+  const ttlStyle = 'display: block;font-size: 15px;font-weight: bold;text-align: center;'
+  const subTtlStyle = 'display: inline-block;font-size: 13px;font-weight: bold;padding-left: 5px;'
+  const listStyle = 'display: inline-block;font-size: 12px;font-weight: normal;padding-left: 10px;'
+  let date = ''
+  let barDataHtml = `<div><span style="${subTtlStyle}">Average Energy Prod.</span><br>`
+  barDataHtml += dataList.filter(dataSet => dataSet.seriesType.toLowerCase() === 'bar').map(dataSet => {
+    date = dataSet.name
+    const city = dataSet.seriesName
+    const energyProd = dataSet.data.toString()
+    return `
+      <span style="${listStyle}">${dataSet.marker}${city}: ${energyProd} kWh</span>
+    `
+  }).join('<br>')
+  barDataHtml += '</div>'
+
+  let lineDataHtml = `<div><span style="${subTtlStyle}">Average Daylight</span><br>`
+  lineDataHtml += dataList.filter(dataSet => dataSet.seriesType.toLowerCase() === 'line').map(dataSet => {
+    const city = dataSet.seriesName
+    const daylight = dataSet.data.toString()
+    return `
+      <span style="${listStyle}">${dataSet.marker}${city}: ${daylight} h</span>
+    `
+  }).join('<br>')
+  lineDataHtml += '</div>'
+
+  const outerHtml = `
+    <div>
+      <span style="${ttlStyle}">Date: ${date}</span><hr>
+      ${[barDataHtml, lineDataHtml].join('<br>')}
+    </div>
+  `
+  return outerHtml
+}
+
 function formatScatterTooltip(dataList: tooltipData[], schema: dataSchema[]) {
+  const ttlStyle = 'display: block;font-size: 14px;font-weight: bold;'
+  const listStyle = 'display: block;font-size: 12px;font-weight: normal;padding-left: 15px;'
   const outerHtml = dataList.map(dataSet => {
-    const ttlStyle = 'display: block;font-size: 14px;font-weight: bold;'
-    const listStyle = 'display: block;font-size: 12px;font-weight: normal;padding-left: 15px;'
     const name = dataSet.data[3]
     const date = dataSet.data[4]
     const city = dataSet.seriesName
