@@ -23,7 +23,6 @@ export default class BarChart extends Vue {
   daylightData: barData = {}
 
   mounted() {
-    console.log('BarChart', 'mounted')
     this.initChart()
     this.fetchData().then(res => {
       this.cities = res['cities'].map((city: {name: string}) => city['name'])

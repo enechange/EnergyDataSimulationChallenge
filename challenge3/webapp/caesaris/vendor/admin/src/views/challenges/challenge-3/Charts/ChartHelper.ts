@@ -84,9 +84,7 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
         type: 'cross'
       },
       formatter: (data) => {
-        console.log(data)
         return formatBarTooltip(data as tooltipData[])
-        // return formatScatterTooltip([data] as tooltipData[], schema)
       }
     },
     xAxis: {
@@ -346,7 +344,7 @@ function formatBarTooltip(dataList: tooltipData[]) {
   const outerHtml = `
     <div>
       <span style="${ttlStyle}">Date: ${date}</span><hr>
-      ${[barDataHtml, lineDataHtml].join('<br>')}
+      ${[barDataHtml, lineDataHtml].join('')}
     </div>
   `
   return outerHtml
