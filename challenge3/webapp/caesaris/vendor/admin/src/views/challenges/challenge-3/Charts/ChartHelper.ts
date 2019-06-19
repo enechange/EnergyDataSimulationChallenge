@@ -172,6 +172,33 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
         type: 'cross'
       },
     },
+    visualMap: [{
+      left: 'right',
+      top: '5%',
+      dimension: 2,
+      min: 150,
+      max: 1500,
+      precision: 0,
+      text: ['Size: Energy Prod.'],
+      textGap: 20,
+      textStyle: {
+        fontSize: 11,
+        width: 5,
+      },
+      padding: 0,
+      inRange: {},
+      outOfRange: {
+        symbolSize: [10, 70],
+      },
+      controller: {
+        inRange: {
+          color: ['rgba(194, 53, 49, .6)']
+        },
+        outOfRange: {
+          color: ['rgba(0, 0, 0, .0)']
+        }
+      }
+    }],
     series: labels.map((city, i) => {
       return {
         name: city,
