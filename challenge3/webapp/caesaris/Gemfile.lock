@@ -80,6 +80,8 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.3)
     docile (1.3.2)
+    easy_settings (0.1.2)
+      hashie (~> 3.4.3)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.11.1)
@@ -89,6 +91,7 @@ GEM
       railties
       sprockets-rails
     graphql (1.9.6)
+    hashie (3.4.6)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
@@ -271,6 +274,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   coffee-rails (~> 4.2)
   devise
+  easy_settings
   graphiql-rails
   graphql
   jbuilder (~> 2.5)

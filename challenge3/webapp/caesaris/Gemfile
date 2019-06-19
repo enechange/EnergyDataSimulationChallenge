@@ -24,7 +24,10 @@ gem 'graphql'
 gem 'ransack'
 
 gem "letter_opener", :group => :development
+
 gem 'devise'
+
+gem 'easy_settings'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

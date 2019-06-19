@@ -1,0 +1,14 @@
+default: &default
+  default_user:
+    email: admin@example.com
+    password: admin2019
+
+development:
+  <<: *default
+test:
+  <<: *default
+production:
+  <<: *default
+  default_user:
+    email: <%= ENV['DEFAULT_USER_EMAIL'] %>
+    password: <%= ENV['DEFAULT_USER_PASSWORD'] %>
