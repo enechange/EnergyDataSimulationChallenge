@@ -26,6 +26,7 @@ gem 'ransack'
 gem "letter_opener", :group => :development
 
 gem 'devise'
+gem 'devise-jwt', '~> 0.5.9'
 
 gem 'easy_settings'
 

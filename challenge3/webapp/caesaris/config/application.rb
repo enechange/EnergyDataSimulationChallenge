@@ -13,10 +13,14 @@ module Caesaris
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
+        # origins EasySettings.allow_origins # for `credentials: true`
         origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :options]
-        # origins 'localhost:8080'
-        # resource 'localhost:8080', headers: :any, methods: [:get, :post, :options]
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head],
+          expose: ['Authorization'] # for JWT
+          # credentials: true,
+          # max_age: 86400
       end
     end
     # Settings in config/environments/* take precedence over those specified here.
