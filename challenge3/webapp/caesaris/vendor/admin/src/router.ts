@@ -98,8 +98,8 @@ export default new Router({
       component: Layout,
       children: [
         {
-          path: 'https://github.com/Armour/vue-typescript-admin-template',
-          meta: { title: 'External Link', icon: 'link' }
+          path: 'https://qiita.com/jerrywdlee',
+          meta: { title: 'Qiita', icon: 'link' }
         }
       ]
     },
