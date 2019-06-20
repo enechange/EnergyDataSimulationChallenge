@@ -62,3 +62,23 @@ $ yarn serve
 # for production
 $ yarn build
 ```
+
+## Deploy
+### Set Environment Variables!
+
+*eg:*
+
+```dotenv
+# For Rails(API)
+ENV=production
+RAILS_ENV=production
+SHOW_DEFAULT_USER=1
+DEFAULT_USER_EMAIL=admin@example.com
+DEFAULT_USER_PASSWORD=admin2019
+RAILS_MASTER_KEY=XXXXXXXXXXXXXXX
+# SECRET_KEY_BASE=XXXXXXXXXXXXXXX # under rails 5.1
+
+# For Node(Admin)
+NODE_ENV=production
+VUE_APP_NAME=Iuliana Challenges
+```
