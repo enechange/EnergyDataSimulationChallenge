@@ -1,11 +1,10 @@
-const rootPath = process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:18000/'
+import request from '@/utils/request'
 
-export const fetchGraphql = (query: string) =>
-  fetch(`${rootPath}graphql`, {
-    method: 'POST',
-    body: JSON.stringify({ query }),
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }
-  }).then(res => res.json())
+export const fetchGraphql = async (query: string) => {
+  const { data } = await request({
+    url: '/graphql',
+    method: 'post',
+    data: { query }
+  })
+  return data
+}

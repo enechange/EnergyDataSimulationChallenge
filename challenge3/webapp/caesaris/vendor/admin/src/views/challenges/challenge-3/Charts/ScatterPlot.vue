@@ -22,7 +22,6 @@ export default class ScatterPlot extends Vue {
   daylightRange: number[] = []
 
   mounted() {
-    console.log('BarChart', 'mounted')
     this.initChart()
     this.fetchData().then(res => {
       const { labels, dataList, daylightRange } = formatScatterGraphqlData(res)
