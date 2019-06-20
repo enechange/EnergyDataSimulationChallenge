@@ -82,14 +82,14 @@ export default new Router({
       ]
     },
     {
-      path: '/form',
+      path: '/graphiql',
       component: Layout,
       children: [
         {
           path: 'index',
-          name: 'Form',
-          component: () => import(/* webpackChunkName: "form" */ '@/views/form/index.vue'),
-          meta: { title: 'Form', icon: 'form' }
+          name: 'Graphiql',
+          component: () => import(/* webpackChunkName: "graphiql" */ '@/views/graphiql/index.vue'),
+          meta: { title: 'Graphiql', icon: 'form' }
         }
       ]
     },
