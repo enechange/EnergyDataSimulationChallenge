@@ -28,11 +28,11 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def xhr_success
-    render json: { result: true }
+    render json: { result: true, code: 20000 }
   end
 
   def xhr_failure
-    render json: { result: false, errors: ["Login failed."] }
+    render json: { result: false, code: 50008, errors: ["Login failed."] }
   end
 
   # protected

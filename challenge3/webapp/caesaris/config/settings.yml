@@ -2,6 +2,7 @@ default: &default
   allow_origins:
     - localhost:8080
   default_user:
+    show: true
     email: admin@example.com
     password: admin2019
 
@@ -12,5 +13,6 @@ test:
 production:
   <<: *default
   default_user:
+    show: <%= ENV['SHOW_DEFAULT_USER'] %>
     email: <%= ENV['DEFAULT_USER_EMAIL'] %>
     password: <%= ENV['DEFAULT_USER_PASSWORD'] %>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     collection do
       get :city_list
       get :user_info
+      get :default_user
     end
   end
 
