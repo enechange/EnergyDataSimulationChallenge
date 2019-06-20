@@ -1,5 +1,9 @@
 <template lang="pug">
   .dashboard-container
+    github-corner(
+      size=65,
+      url="https://github.com/jerrywdlee/EnergyDataSimulationChallenge"
+    )
     h1.dashboard-text Energy Data Simulation Challenges
     //.dashboard-text
       span(v-for="role in roles", :key="role") {{ role }}
@@ -10,6 +14,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { UserModule } from '@/store/modules/user'
 import CardGroup from './components/CardGroup.vue'
+import GithubCorner from '@/components/GithubCorner/index.vue'
 
 const cardInfos = [
   {
@@ -38,7 +43,7 @@ const cardInfos = [
 ]
 
 @Component({
-  components: { CardGroup }
+  components: { CardGroup, GithubCorner }
 })
 export default class Dashboard extends Vue {
   get name() {
@@ -73,5 +78,12 @@ export default class Dashboard extends Vue {
     font-size: 30px;
     line-height: 46px;
   }
+}
+
+.github-corner {
+  position: absolute;
+  top: 0;
+  border: 0;
+  right: 0;
 }
 </style>
