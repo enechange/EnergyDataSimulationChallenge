@@ -1,6 +1,6 @@
 class GraphqlController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!
+  before_action :authenticate_user!, unless: :from_graphiql?
 
   def execute
     variables = ensure_hash(params[:variables])
@@ -43,4 +43,12 @@ class GraphqlController < ApplicationController
 
     render json: { error: { message: e.message, backtrace: e.backtrace }, data: {} }, status: 500
   end
+
+  def from_graphiql?
+    referrer = request.referer
+    if Rails.env.development? && referrer =~ /\/graphiql/
+      return true
+    end
+  end
+
 end
