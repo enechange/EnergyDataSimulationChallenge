@@ -23,5 +23,17 @@ class Util
         result["data"]
       end
     end
+
+    def auth_binary(code, mask)
+      _code = code.is_a?(String) ? code.to_i(2) : code.to_i
+      _mask = mask.is_a?(String) ? mask.to_i(2) : mask.to_i
+      (_code & _mask) == _mask
+    end
+
+    def set_binary_codes(mask_list)
+      mask_list.map do |mask|
+        mask.is_a?(String) ? mask.to_i(2) : mask.to_i
+      end.reduce(:|)
+    end
   end
 end

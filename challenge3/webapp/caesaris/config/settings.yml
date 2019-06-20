@@ -1,6 +1,11 @@
 default: &default
   allow_origins:
     - localhost:8080
+  user_roles:
+    admin:    1 # 0001
+    editor:   2 # 0010
+    observer: 4 # 0100
+
   default_user:
     show: true
     email: admin@example.com

@@ -33,6 +33,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      # User Infos
+      t.string  :img_url,           null: false, default: ""
+      t.integer :roles_code,        null: false, default: 0
 
       t.timestamps null: false
     end
@@ -42,6 +45,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
     add_index :users, :jti,                  unique: true
+    add_index :users, :roles_code
 
     # create User `Admin`
     ActiveRecord::Base.transaction do
@@ -50,7 +54,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
         email: EasySettings.default_user.email,
         password: EasySettings.default_user.password,
         password_confirmation: EasySettings.default_user.password,
-        jti: SecureRandom.uuid
+        jti: SecureRandom.uuid,
+        img_url: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+        roles: ['admin']
       )
     end
   end
