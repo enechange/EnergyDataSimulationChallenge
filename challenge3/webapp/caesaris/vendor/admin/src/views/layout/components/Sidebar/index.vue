@@ -1,6 +1,6 @@
 <template lang="pug">
   div(:class="{'has-logo': showLogo}")
-    logo(v-if='showLogo', :collapse='isCollapse', title='Iuliana Caesaris')
+    logo(v-if='showLogo', :collapse='isCollapse', :title='appName')
     el-scrollbar(wrap-class='scrollbar-wrapper')
       el-menu(
         :show-timeout='200', :default-active='$route.path', :collapse='isCollapse',
@@ -25,6 +25,7 @@ import variables from '@/styles/variables.scss'
 })
 export default class SideBar extends Vue {
   @Prop({ default: false }) private collapse!: boolean;
+  private appName = process.env.VUE_APP_NAME || 'Iuliana Challenges'
 
   get sidebar() {
     return AppModule.sidebar
