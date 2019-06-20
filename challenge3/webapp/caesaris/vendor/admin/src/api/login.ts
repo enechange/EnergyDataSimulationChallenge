@@ -2,23 +2,31 @@ import request from '@/utils/request'
 
 export const login = (username: string, password: string) =>
   request({
-    url: '/user/login',
+    url: '/users/sign_in',
     method: 'post',
     data: {
-      username,
-      password
+      user: {
+        email: username,
+        password
+      }
     }
   })
 
 export const getUserInfo = (token: string) =>
   request({
-    url: '/user/info',
+    url: '/api/user_info',
     method: 'get',
-    params: { token }
+    params: { }
+  })
+
+export const getDefaultUser = () =>
+  request({
+    url: '/api/default_user',
+    method: 'get'
   })
 
 export const logout = () =>
   request({
-    url: '/user/logout',
-    method: 'post'
+    url: '/users/sign_out',
+    method: 'delete'
   })

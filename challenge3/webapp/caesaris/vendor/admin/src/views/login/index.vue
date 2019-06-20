@@ -1,82 +1,49 @@
-<template>
-  <div class="login-container">
-    <el-form
-      ref="loginForm"
-      :model="loginForm"
-      :rules="loginRules"
-      class="login-form"
-      auto-complete="on"
-      label-position="left"
-    >
-      <h3 class="title">
-        vue-typescript-admin-template
-      </h3>
-      <el-form-item prop="username">
-        <span class="svg-container">
-          <svg-icon name="user" />
-        </span>
-        <el-input
-          v-model="loginForm.username"
-          name="username"
-          type="text"
-          auto-complete="on"
-          placeholder="username"
-        />
-      </el-form-item>
-      <el-form-item prop="password">
-        <span class="svg-container">
-          <svg-icon name="password" />
-        </span>
-        <el-input
-          v-model="loginForm.password"
-          :type="pwdType"
-          name="password"
-          auto-complete="on"
-          placeholder="password"
-          @keyup.enter.native="handleLogin"
-        />
-        <span
-          class="show-pwd"
-          @click="showPwd"
-        >
-          <svg-icon :name="pwdType === 'password' ? 'eye-off' : 'eye-on'" />
-        </span>
-      </el-form-item>
-      <el-form-item>
-        <el-button
-          :loading="loading"
-          type="primary"
-          style="width:100%;"
-          @click.native.prevent="handleLogin"
-        >
-          Sign in
-        </el-button>
-      </el-form-item>
-      <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: admin</span>
-      </div>
-    </el-form>
-  </div>
+<template lang="pug">
+  .login-container
+    el-form.login-form(ref='loginForm', :model='loginForm', :rules='loginRules',
+      auto-complete='on', label-position='left')
+      h3.title
+        | Iuliana Challenges
+      el-form-item(prop='username')
+        span.svg-container
+          svg-icon(name='user')
+        el-input(v-model='loginForm.username', name='username', type='text',
+          auto-complete='on', placeholder='username')
+      el-form-item(prop='password')
+        span.svg-container
+          svg-icon(name='password')
+        el-input(v-model='loginForm.password', :type='pwdType', name='password',
+          auto-complete='on', placeholder='password', @keyup.enter.native='handleLogin')
+          span.show-pwd(@click='showPwd')
+            svg-icon(:name="pwdType === 'password' ? 'eye-off' : 'eye-on'")
+      el-form-item
+        el-button(:loading='loading', type='primary', style='width:100%;', @click.native.prevent='handleLogin')
+          | Sign in
+      .tips(v-if="defaultUser")
+        span(style='margin-right:20px;')
+          i <b>username:</b> {{ defaultUser.username }}
+        span
+          i <b>password:</b> {{ defaultUser.password }}
 </template>
 
 <script lang="ts">
 import { isValidUsername } from '@/utils/validate'
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { UserModule } from '@/store/modules/user'
+import { getDefaultUser } from '@/api/login'
 import { Route } from 'vue-router'
 import { Form as ElForm } from 'element-ui'
 
 const validateUsername = (rule: any, value: string, callback: any) => {
   if (!isValidUsername(value)) {
-    callback(new Error('请输入正确的用户名'))
+    callback(new Error('Enter an Email'))
   } else {
     callback()
   }
 }
 const validatePass = (rule: any, value: string, callback: any) => {
-  if (value.length < 5) {
-    callback(new Error('密码不能小于5位'))
+  if (value.length < 6) {
+    callback(new Error('Password must longer than 6'))
   } else {
     callback()
   }
@@ -85,16 +52,17 @@ const validatePass = (rule: any, value: string, callback: any) => {
 @Component
 export default class Login extends Vue {
   private loginForm = {
-    username: 'admin',
-    password: 'admin'
-  };
+    username: '',
+    password: ''
+  }
+  private defaultUser: { username: string, password: string } | null = null
   private loginRules = {
     username: [{ required: true, trigger: 'blur', validator: validateUsername }],
     password: [{ required: true, trigger: 'blur', validator: validatePass }]
-  };
-  private loading = false;
-  private pwdType = 'password';
-  private redirect: string | undefined = undefined;
+  }
+  private loading = false
+  private pwdType = 'password'
+  private redirect: string | undefined = undefined
 
   @Watch('$route', { immediate: true })
   private OnRouteChange(route: Route) {
@@ -123,6 +91,22 @@ export default class Login extends Vue {
         })
       } else {
         return false
+      }
+    })
+  }
+
+  private beforeMount() {
+    getDefaultUser().then(res => {
+      const { data } = res
+      if (data && data['email'] && data['password']) {
+        this.defaultUser = {
+          username: data['email'],
+          password: data['password']
+        }
+        if (process.env.NODE_ENV === 'development') {
+          this.loginForm.username = data['email']
+          this.loginForm.password = data['password']
+        }
       }
     })
   }

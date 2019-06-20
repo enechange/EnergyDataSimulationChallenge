@@ -12,7 +12,7 @@ export interface IUserState {
 
 @Module({ dynamic: true, store, name: 'user' })
 class User extends VuexModule implements IUserState {
-  public token = '';
+  public token = getToken() || '';
   public name = '';
   public avatar = '';
   public roles = [];
@@ -20,9 +20,18 @@ class User extends VuexModule implements IUserState {
   @Action({ commit: 'SET_TOKEN' })
   public async Login(userInfo: { username: string, password: string}) {
     const username = userInfo.username.trim()
-    const { data } = await login(username, userInfo.password)
-    setToken(data.token)
-    return data.token
+    const { data, headers } = await login(username, userInfo.password)
+
+    // setToken(headers['authorization'])
+    return headers['authorization']
+  }
+
+  @Action({ commit: 'SET_TOKEN' })
+  public RefreshToken(token?: string) {
+    if (!token) {
+      token = getToken()
+    }
+    return token || ''
   }
 
   @Action({ commit: 'SET_TOKEN' })
