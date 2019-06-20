@@ -34,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       # User Infos
+      t.string  :name,              null: false, default: ""
       t.string  :img_url,           null: false, default: ""
       t.integer :roles_code,        null: false, default: 0
 
@@ -45,6 +46,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
     add_index :users, :jti,                  unique: true
+    add_index :users, :name
     add_index :users, :roles_code
 
     # create User `Admin`
@@ -55,6 +57,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
         password: EasySettings.default_user.password,
         password_confirmation: EasySettings.default_user.password,
         jti: SecureRandom.uuid,
+        name: EasySettings.default_user.name,
         img_url: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
         roles: ['admin']
       )

@@ -8,6 +8,7 @@ default: &default
 
   default_user:
     show: true
+    name: Admin
     email: admin@example.com
     password: admin2019
 
@@ -19,5 +20,6 @@ production:
   <<: *default
   default_user:
     show: <%= ENV['SHOW_DEFAULT_USER'] %>
+    name: <%= ENV['DEFAULT_USER_NAME'] || 'Admin' %>
     email: <%= ENV['DEFAULT_USER_EMAIL'] %>
     password: <%= ENV['DEFAULT_USER_PASSWORD'] %>
