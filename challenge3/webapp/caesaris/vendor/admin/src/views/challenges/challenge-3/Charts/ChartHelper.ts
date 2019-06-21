@@ -237,7 +237,9 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
         type: 'scatter',
         symbolSize: (val: (number | string)[], param: {}) => {
           const energyProd = val[2] as number // 1088 ~ 254
-          const size = 1.9 * (energyProd / 250) ** 2
+          // const size = 1.9 * (energyProd / 250) ** 2
+          // Use exponential func. to amplify delta
+          const size = 0.85 * Math.exp(energyProd / 250)
           return size
         },
         itemStyle: {
