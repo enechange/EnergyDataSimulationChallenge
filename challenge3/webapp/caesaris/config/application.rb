@@ -18,7 +18,7 @@ module Caesaris
         resource '*',
           headers: :any,
           methods: [:get, :post, :put, :patch, :delete, :options, :head],
-          expose: ['Authorization'] # for JWT
+          expose: ['Authorization', 'x-authenticity-token'] # for JWT
           # credentials: true,
           # max_age: 86400
       end

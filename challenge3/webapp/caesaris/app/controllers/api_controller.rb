@@ -1,6 +1,9 @@
+require 'nokogiri'
+
 class ApiController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, except: [:default_user]
+  before_action :set_authenticity_token
 
   def default_user
     if EasySettings.default_user.show
@@ -69,6 +72,27 @@ class ApiController < ApplicationController
     rescue => e
       render json: { error: e.message }, status: 500
     end
+  end
+
+  private
+
+  def generate_form_meta
+    form_tag = view_context.form_tag '/' do
+    end
+    doc = Nokogiri::HTML.parse(form_tag, nil, 'utf-8')
+    result = {}
+    %w(utf8 authenticity_token).each do |attr|
+      val = doc.css("form [name=#{attr}]").first&.attribute('value')&.value
+      result[attr] = val if val.present?
+    end
+    result
+  end
+
+  def set_authenticity_token
+    auth_token = generate_form_meta['authenticity_token']
+    p generate_form_meta
+    p auth_token
+    response.set_header('x-authenticity-token', auth_token) if auth_token.present?
   end
 
 end
