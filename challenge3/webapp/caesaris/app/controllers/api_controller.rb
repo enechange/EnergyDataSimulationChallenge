@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-  # skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
   before_action :authenticate_user!, except: [:default_user]
 
   def default_user
@@ -17,5 +17,25 @@ class ApiController < ApplicationController
       avatar: user.img_url,
       name: user.name
     }
+  end
+
+  def load_csv
+    case params[:key]
+    when "challenge-3"
+      begin
+        ActiveRecord::Base.connection.execute("TRUNCATE TABLE houses")
+        ActiveRecord::Base.connection.execute("TRUNCATE TABLE cities")
+        ActiveRecord::Base.connection.execute("TRUNCATE TABLE datasets")
+        DataLoader.load_houses(params[:house_data_url])
+        DataLoader.load_cities
+        DataLoader.sync_cities_houses
+        DataLoader.load_dataset(params[:dataset_url])
+        render json: { result: 'ok' }
+      rescue => e
+        render json: { error: e.message }, status: 500
+      end
+    else
+      render json: { error: 'key not found' }, status: 400
+    end
   end
 end

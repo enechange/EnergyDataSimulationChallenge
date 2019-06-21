@@ -27,31 +27,30 @@
       h2.inner-container-ttl Load Data
       h3.inner-container-subttl Challenge 3
       el-form(ref='challenge3Data', :model='challenge3Data', label-width='120px')
-        el-col(:span='20')
+        el-col(:span='23')
           el-form-item(label='House Data')
-            el-input(v-model='challenge3Data.houseData.url',
+            el-input(v-model='challenge3Data.houseDataUrl', :disabled='challenge3Data.onloadFlg'
               placeholder='https://example.org/house_data.csv')
-        el-col.inline-btn(:span='4')
-          el-button(type='primary', :loading='challenge3Data.houseData.onloadFlg'
-            @click='loadData(challenge3Data.houseData, $event)')
-            | {{ challenge3Data.houseData.onloadFlg ? 'Loading...' : 'Load' }}
-        el-col(:span='20')
+        el-col(:span='23')
           el-form-item(label='Dataset')
-            el-input(v-model='challenge3Data.dataset.url',
+            el-input(v-model='challenge3Data.datasetUrl', :disabled='challenge3Data.onloadFlg'
               placeholder='https://example.org/dataset_50.csv')
-        el-col.inline-btn(:span='4')
-          el-button(type='primary', :loading='challenge3Data.dataset.onloadFlg',
-            @click='loadData(challenge3Data.dataset, $event)')
-            | {{ challenge3Data.dataset.onloadFlg ? 'Loading...' : 'Load' }}
+        el-col(:span='24')
+          el-form-item
+            el-button(type='primary', :loading='challenge3Data.onloadFlg',
+              @click='loadChallenge3Data')
+              | {{ challenge3Data.onloadFlg ? 'Loading...' : 'Load CSV' }}
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { MessageBox, Loading } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
+import request from '@/utils/request'
 
 interface loadDataItem {
-  name: string
+  name: string,
+  key: string,
   url: string,
   onloadFlg: boolean,
 }
@@ -65,17 +64,11 @@ export default class Form extends Vue {
     roleList: [ 'admin', 'editor', 'observer' ],
   }
 
-  private challenge3Data: { [key: string]: loadDataItem } = {
-    houseData: {
-      name: 'Challenge 3: House Data',
-      url: 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/house_data.csv',
-      onloadFlg: false,
-    },
-    dataset: {
-      name: 'Challenge 3: Dataset',
-      url: 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv',
-      onloadFlg: false
-    },
+  private challenge3Data = {
+    key: 'challenge-3',
+    houseDataUrl: 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/house_data.csv',
+    datasetUrl: 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv',
+    onloadFlg: false,
   }
 
   private form = {
@@ -100,11 +93,32 @@ export default class Form extends Vue {
     }
   }
 
-  private loadData(item: loadDataItem, event: MouseEvent) {
-    const btn = event.currentTarget as HTMLButtonElement
-    item.onloadFlg = true
-    this.$message(`Loading ${item.name}`)
+  private loadChallenge3Data(event: MouseEvent) {
+    this.challenge3Data.onloadFlg = true
+    this.$message(`Loading Challenge 3 Data`)
 
+    request({
+      url: '/api/load_csv',
+      method: 'post',
+      data: {
+        key: this.challenge3Data.key,
+        house_data_url: this.challenge3Data.houseDataUrl,
+        dataset_url: this.challenge3Data.datasetUrl,
+      }
+    })
+    .then(res => {
+      const { data } = res
+      if (data.result === 'ok') {
+        this.$message({
+          message: 'Challenge 3 Data Loaded!',
+          type: 'success',
+        });
+      }
+      this.challenge3Data.onloadFlg = false
+    }).catch(err => {
+      console.log(err)
+      this.challenge3Data.onloadFlg = false
+    })
     event.preventDefault()
   }
 

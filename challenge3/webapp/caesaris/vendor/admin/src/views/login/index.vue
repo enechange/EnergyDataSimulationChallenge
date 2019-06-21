@@ -96,7 +96,6 @@ export default class Login extends Vue {
       msg = 'Enter an Email'
       validFlg = isValidUsername(value)
     }
-    console.log(rule)
 
     if (!validFlg) {
       callback(new Error(msg))

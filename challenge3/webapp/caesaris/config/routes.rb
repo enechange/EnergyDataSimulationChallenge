@@ -8,8 +8,9 @@ Rails.application.routes.draw do
 
   resources :api, only: [] do
     collection do
-      get :user_info
       get :default_user
+      get :user_info
+      post :load_csv
     end
   end
 
