@@ -3,25 +3,26 @@
     h1.module-ttl Active Console
     .inner-container
       h2.inner-container-ttl Create User
-      el-form(ref='userForm', :model='userForm', label-width='120px')
+      el-form(ref='userForm', :model='userForm', label-width='120px', :rules='userFormRules')
         el-col(:span='8')
-          el-form-item(label='User name')
+          el-form-item(label='User name', prop='email')
             el-input(v-model='userForm.email', type='email',
-              name='email', placeholder='user@example.org')
+              name='email', placeholder='user@example.org', :disabled='userForm.onloadFlg')
         el-col(:span='8')
-          el-form-item(label='Password')
+          el-form-item(label='Password', prop='password')
             el-input(v-model='userForm.password', show-password,
-              name='password', placeholder='P@ssword')
+              name='password', placeholder='P@ssword', :disabled='userForm.onloadFlg')
         el-col(:span='8')
-          el-form-item(label='Roles')
-            el-select(v-model='userForm.roles', placeholder='Select Roles', multiple, collapse-tags)
+          el-form-item(label='Roles', prop='roles')
+            el-select(v-model='userForm.roles', placeholder='Select Roles',
+              :disabled='userForm.onloadFlg', multiple, collapse-tags)
               el-option(v-for='role in userForm.roleList',
                 :label='role.toUpperCase()', :key='role', :value='role')
         el-col(:span='24')
           el-form-item
-            el-button(type='primary', @click='onSubmit')
-              | Create
-            el-button(@click='onCancel')
+            el-button(type='primary', @click='createUser', :loading='challenge3Data.onloadFlg')
+              | Create User
+            // el-button(@click='onCancel')
               | Cancel
     .inner-container
       h2.inner-container-ttl Load Data
@@ -48,14 +49,8 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { MessageBox, Loading, Form as ElForm } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
+import { isValidUsername } from '@/utils/validate'
 import request from '@/utils/request'
-
-interface loadDataItem {
-  name: string,
-  key: string,
-  url: string,
-  onloadFlg: boolean,
-}
 
 @Component
 export default class Form extends Vue {
@@ -64,6 +59,13 @@ export default class Form extends Vue {
     password: '',
     roles: [],
     roleList: [ 'admin', 'editor', 'observer' ],
+    onloadFlg: false,
+  }
+
+  private userFormRules = {
+    email: [{ required: true, trigger: 'blur', validator: this.emailValidator }],
+    password: [{ required: true, trigger: 'blur', validator: this.passwordValidator }],
+    roles: [{ required: true, trigger: 'change', validator: this.rolesValidator }],
   }
 
   private challenge3Data = {
@@ -87,6 +89,48 @@ export default class Form extends Vue {
         this.$router.push({ path: '/' })
       })
     }
+  }
+
+  private createUser(event: MouseEvent) {
+    event.preventDefault()
+
+    const userForm = this.$refs.userForm as ElForm
+    const postData = {
+      url: '/api/create_user',
+      method: 'post',
+      data: {
+        email: this.userForm.email,
+        password: this.userForm.password,
+        roles: this.userForm.roles,
+      }
+    }
+
+    userForm.validate(async (valid: boolean) => {
+      if (valid) {
+        this.userForm.onloadFlg = true
+        this.$message(`Loading Challenge 3 Data`)
+        try {
+          const { data } = await request(postData)
+          if (data.id) {
+            this.$message.success(`User [${data.id}] Created!`)
+          }
+        } catch (e) {
+          console.error(e)
+        } finally {
+          this.userForm.onloadFlg = false
+        }
+      } else {
+        this.$message.error('Invalid Data!')
+        return false
+      }
+    })
+  }
+
+  private onCancel() {
+    this.$message({
+      message: 'cancel!',
+      type: 'warning'
+    })
   }
 
   private loadChallenge3Data(event: MouseEvent) {
@@ -117,7 +161,7 @@ export default class Form extends Vue {
           }
           this.challenge3Data.onloadFlg = false
         }).catch(err => {
-          console.log(err)
+          console.error(err)
           this.challenge3Data.onloadFlg = false
         })
         return true
@@ -131,23 +175,37 @@ export default class Form extends Vue {
     })
   }
 
-  private onSubmit(event: MouseEvent) {
-    this.$message('submit!')
-  }
-
-  private onCancel() {
-    this.$message({
-      message: 'cancel!',
-      type: 'warning'
-    })
-  }
-
   private urlValidator(rule: any, value: string, callback: any) {
     const urlRegExp = /(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)/
     if (urlRegExp.test(value)) {
       callback()
     } else {
       callback(new Error('Invalid URL!'))
+    }
+  }
+
+  private emailValidator(rule: any, value: string, callback: any) {
+    if (isValidUsername(value)) {
+      callback()
+    } else {
+      callback(new Error('Enter an Email!'))
+    }
+  }
+
+  private passwordValidator(rule: any, value: string, callback: any) {
+    const passwordSizeMin = 6
+    if (value.length >= passwordSizeMin) {
+      callback()
+    } else {
+      callback(new Error(`Must has ${passwordSizeMin} or more`))
+    }
+  }
+
+  private rolesValidator(rule: any, value: [string], callback: any) {
+    if (value.length >= 1) {
+      callback()
+    } else {
+      callback(new Error('Select at least 1 role'))
     }
   }
 }

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get :default_user
       get :user_info
       post :load_csv
+      post :create_user
     end
   end
 
