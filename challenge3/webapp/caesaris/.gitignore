@@ -44,5 +44,5 @@ public/favicon.*
 public/robots.txt
 public/index.html
 public/manifest.json
-public/service-worker.js
+public/*.js
 public/precache-manifest.*
