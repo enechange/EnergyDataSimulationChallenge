@@ -29,24 +29,32 @@
       el-form(ref='challenge3Data', :model='challenge3Data', label-width='120px')
         el-col(:span='20')
           el-form-item(label='House Data')
-            el-input(v-model='challenge3Data.houseDataUrl',
+            el-input(v-model='challenge3Data.houseData.url',
               placeholder='https://example.org/house_data.csv')
         el-col.inline-btn(:span='4')
-          el-button(type='primary', @click='onSubmit')
-            | Load
+          el-button(type='primary', :loading='challenge3Data.houseData.onloadFlg'
+            @click='loadData(challenge3Data.houseData, $event)')
+            | {{ challenge3Data.houseData.onloadFlg ? 'Loading...' : 'Load' }}
         el-col(:span='20')
           el-form-item(label='Dataset')
-            el-input(v-model='challenge3Data.datasetUrl',
+            el-input(v-model='challenge3Data.dataset.url',
               placeholder='https://example.org/dataset_50.csv')
         el-col.inline-btn(:span='4')
-          el-button(type='primary', @click='onSubmit')
-            | Load
+          el-button(type='primary', :loading='challenge3Data.dataset.onloadFlg',
+            @click='loadData(challenge3Data.dataset, $event)')
+            | {{ challenge3Data.dataset.onloadFlg ? 'Loading...' : 'Load' }}
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { MessageBox } from 'element-ui'
+import { MessageBox, Loading } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
+
+interface loadDataItem {
+  name: string
+  url: string,
+  onloadFlg: boolean,
+}
 
 @Component
 export default class Form extends Vue {
@@ -54,12 +62,22 @@ export default class Form extends Vue {
     email: '',
     password: '',
     roles: [],
-    roleList: [ 'admin', 'editor', 'observer' ]
+    roleList: [ 'admin', 'editor', 'observer' ],
   }
-  private challenge3Data = {
-    houseDataUrl: 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/house_data.csv',
-    datasetUrl: 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv',
+
+  private challenge3Data: { [key: string]: loadDataItem } = {
+    houseData: {
+      name: 'Challenge 3: House Data',
+      url: 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/house_data.csv',
+      onloadFlg: false,
+    },
+    dataset: {
+      name: 'Challenge 3: Dataset',
+      url: 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv',
+      onloadFlg: false
+    },
   }
+
   private form = {
     name: '',
     region: '',
@@ -82,7 +100,16 @@ export default class Form extends Vue {
     }
   }
 
-  private onSubmit() {
+  private loadData(item: loadDataItem, event: MouseEvent) {
+    const btn = event.currentTarget as HTMLButtonElement
+    item.onloadFlg = true
+    this.$message(`Loading ${item.name}`)
+
+    event.preventDefault()
+  }
+
+  private onSubmit(event: MouseEvent) {
+    console.log(event)
     this.$message('submit!')
   }
 
