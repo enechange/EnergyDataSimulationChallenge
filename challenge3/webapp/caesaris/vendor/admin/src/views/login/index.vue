@@ -4,12 +4,12 @@
       auto-complete='on', label-position='left')
       h3.title
         | Iuliana Challenges
-      el-form-item(prop='username')
+      el-form-item(prop='username', :class="[formErrors.username ? 'is-error' : '']")
         span.svg-container
           svg-icon(name='user')
-        el-input(v-model='loginForm.username', name='username', type='text',
-          auto-complete='on', placeholder='username')
-      el-form-item(prop='password')
+        el-input(v-model='loginForm.username', name='username',
+          type='text', auto-complete='on', placeholder='username')
+      el-form-item(prop='password', :class="[formErrors.password ? 'is-error' : '']")
         span.svg-container
           svg-icon(name='password')
         el-input(v-model='loginForm.password', :type='pwdType', name='password',
@@ -34,21 +34,6 @@ import { getDefaultUser } from '@/api/login'
 import { Route } from 'vue-router'
 import { Form as ElForm } from 'element-ui'
 
-const validateUsername = (rule: any, value: string, callback: any) => {
-  if (!isValidUsername(value)) {
-    callback(new Error('Enter an Email'))
-  } else {
-    callback()
-  }
-}
-const validatePass = (rule: any, value: string, callback: any) => {
-  if (value.length < 6) {
-    callback(new Error('Password must longer than 6'))
-  } else {
-    callback()
-  }
-}
-
 @Component
 export default class Login extends Vue {
   private loginForm = {
@@ -57,12 +42,13 @@ export default class Login extends Vue {
   }
   private defaultUser: { username: string, password: string } | null = null
   private loginRules = {
-    username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-    password: [{ required: true, trigger: 'blur', validator: validatePass }]
+    username: [{ required: true, trigger: 'blur', validator: this.validateInput }],
+    password: [{ required: true, trigger: 'blur', validator: this.validateInput }]
   }
   private loading = false
   private pwdType = 'password'
   private redirect: string | undefined = undefined
+  private formErrors = { username: false, password: false }
 
   @Watch('$route', { immediate: true })
   private OnRouteChange(route: Route) {
@@ -80,7 +66,8 @@ export default class Login extends Vue {
   }
 
   private handleLogin() {
-    (this.$refs.loginForm as ElForm).validate((valid: boolean) => {
+    const loginForm = this.$refs.loginForm as ElForm
+    loginForm.validate((valid: boolean) => {
       if (valid) {
         this.loading = true
         UserModule.Login(this.loginForm).then(() => {
@@ -88,11 +75,36 @@ export default class Login extends Vue {
           this.$router.push({ path: this.redirect || '/' })
         }).catch(() => {
           this.loading = false
+          this.formErrors.username = true
+          this.formErrors.password = true
         })
       } else {
         return false
       }
     })
+  }
+
+  private validateInput(rule: any, value: string, callback: any) {
+    const field = rule.field as 'username' | 'password'
+    let msg: string
+    let validFlg: boolean
+    if (field === 'password') {
+      const passwordSizeMin = 6
+      msg = `Password must longer than ${passwordSizeMin}`
+      validFlg = value.length >= passwordSizeMin
+    } else {
+      msg = 'Enter an Email'
+      validFlg = isValidUsername(value)
+    }
+    console.log(rule)
+
+    if (!validFlg) {
+      callback(new Error(msg))
+      this.formErrors[field] = true
+    } else {
+      callback()
+      this.formErrors[field] = false
+    }
   }
 
   private beforeMount() {
@@ -163,6 +175,9 @@ export default class Login extends Vue {
     background: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     color: #454545;
+    &.is-error {
+      border: 1px solid #F56C6C;
+    }
   }
 
   .tips {

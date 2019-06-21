@@ -67,14 +67,16 @@ service.interceptors.response.use(
     }
   },
   (error) => {
+    const { response } = error
+    const { data } = response
+    const code = response.status
+    const message: string = data.error || error.message
     Message({
-      message: error.message,
+      message: message,
       type: 'error',
       duration: 5 * 1000
     })
-    const { response } = error
-    const code = response.status
-    handleResponseError(code, error.message)
+    handleResponseError(code, message)
     return Promise.reject(error)
   }
 )
@@ -85,7 +87,7 @@ function handleResponseError(statusCode: number, message = 'System Error!') {
     type: 'error',
     duration: 5 * 1000
   })
-  if (authFailed(statusCode)) {
+  if (authFailed(statusCode, message)) {
     MessageBox.confirm(
       'You need to login before continuing.',
       'Logout',
@@ -102,9 +104,15 @@ function handleResponseError(statusCode: number, message = 'System Error!') {
   }
 }
 
-function authFailed(statusCode: number) {
+function authFailed(statusCode: number, errorMsg = '') {
   const codes = [50008, 50012, 50014, 401, 422]
   if (codes.includes(statusCode)) {
+    if (errorMsg) {
+      errorMsg = errorMsg.toLowerCase()
+      if (errorMsg.includes('email') || errorMsg.includes('password')) {
+        return
+      }
+    }
     return true
   }
 }
