@@ -1,24 +1,11 @@
-<template>
-  <el-breadcrumb
-    class="app-breadcrumb"
-    separator="/"
-  >
-    <transition-group name="breadcrumb">
-      <el-breadcrumb-item
-        v-for="(item, index) in breadcrumbs"
-        :key="item.path"
-      >
-        <span
+<template lang="pug">
+  el-breadcrumb.app-breadcrumb(separator='/')
+    transition-group(name='breadcrumb')
+      el-breadcrumb-item(v-for='(item, index) in breadcrumbs', :key='item.path')
+        span.no-redirect(
           v-if="item.redirect === 'noredirect' || index === breadcrumbs.length-1"
-          class="no-redirect"
-        >{{ item.meta.title }}</span>
-        <a
-          v-else
-          @click.prevent="handleLink(item)"
-        >{{ item.meta.title }}</a>
-      </el-breadcrumb-item>
-    </transition-group>
-  </el-breadcrumb>
+        ) {{ item.meta.title }}
+        a(v-else='', @click.prevent='handleLink(item)') {{ item.meta.title }}
 </template>
 
 <script lang="ts">
