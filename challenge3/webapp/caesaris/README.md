@@ -72,17 +72,37 @@ $ npx vsvg -s ./src/icons/svg -t ./src/icons/components --ext ts --es6
 
 *eg:*
 
-```dotenv
-# For Rails(API)
+```sh
+#### For Rails(API) ####
 ENV=production
 RAILS_ENV=production
+
 SHOW_DEFAULT_USER=1
 DEFAULT_USER_EMAIL=admin@example.com
 DEFAULT_USER_PASSWORD=admin2019
-RAILS_MASTER_KEY=XXXXXXXXXXXXXXX
-# SECRET_KEY_BASE=XXXXXXXXXXXXXXX # under rails 5.1
 
-# For Node(Admin)
-NODE_ENV=production
+# RAILS_MASTER_KEY=XXXXXXXXXXXXXXX # upper than rails 5.2
+# use `bundle exec rake secret` to generate one
+SECRET_KEY_BASE=XXXXXXXXXXXXXXX
+
+RAILS_SERVE_STATIC_FILES=1 # Unless serve static files by your own
+
+#### For Node(Admin) ####
+# NODE_ENV=production
 VUE_APP_NAME=Iuliana Challenges
+
+#### For Docker Dev ####
+POSTGRES_PASSWORD=XXXXXXXXXXXXXXX
+```
+
+### Migration
+```sh
+$ docker-compose run web bundle exec rake db:create db:migrate
+```
+
+### debug
+```sh
+$ docker-compose run web bundle exec rails c
+$ docker-compose run web bin/bash
+$ docker-compose exec web bash
 ```
