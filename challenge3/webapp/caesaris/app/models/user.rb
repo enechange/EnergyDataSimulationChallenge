@@ -12,6 +12,9 @@ class User < ApplicationRecord
     role_code = EasySettings.user_roles[role].to_i
     where('roles_code & ? = ?', role_code, role_code)
   }
+
+  before_create :set_default_role, :set_default_img, :set_default_name
+
   # attr_accessor :roles
   @roles
 
@@ -41,6 +44,26 @@ class User < ApplicationRecord
   end
 
   private
+
+  def set_default_role
+    if roles.blank?
+      self.roles = [EasySettings.user_roles.keys.last]
+    end
+  end
+
+  def set_default_img
+    if img_url.blank?
+      self.img_url = EasySettings.default_user.img_url_tmp.gsub(/\<@email@\>/, email)
+    end
+  end
+
+  def set_default_name
+    if name.blank?
+      self.name = email.split(/@/).map do |str|
+        "#{str.slice(0, 3)}.".upcase_first
+      end.join(' ')
+    end
+  end
 
   def self.role_list_to_code(role_list)
     role_ids = role_list.map do |role|

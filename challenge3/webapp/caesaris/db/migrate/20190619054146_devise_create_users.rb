@@ -56,10 +56,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
         email: EasySettings.default_user.email,
         password: EasySettings.default_user.password,
         password_confirmation: EasySettings.default_user.password,
-        jti: SecureRandom.uuid,
-        name: EasySettings.default_user.name,
-        img_url: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-        roles: ['admin']
+        # jti: SecureRandom.uuid,
+        roles: [EasySettings.user_roles.keys.first]
       )
     end
   end
