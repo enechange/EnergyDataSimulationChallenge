@@ -1,59 +1,17 @@
-<template>
-  <div
-    v-if="!item.meta || !item.meta.hidden"
-    :class="['menu-wrapper', collapse ? 'simple-mode' : 'full-mode', {'first-level': !isNest}]"
-  >
-    <template v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children || onlyOneChild.meta.noShowingChildren)">
-      <app-link :to="resolvePath(onlyOneChild.path)">
-        <el-menu-item
-          :index="resolvePath(onlyOneChild.path)"
-          :class="{'submenu-title-noDropdown': !isNest}"
-        >
-          <svg-icon
-            v-if="onlyOneChild.meta && onlyOneChild.meta.icon"
-            :name="onlyOneChild.meta.icon"
-          />
-          <svg-icon
-            v-else-if="item.meta && item.meta.icon"
-            :name="item.meta.icon"
-          />
-          <span
-            v-if="onlyOneChild.meta && onlyOneChild.meta.title"
-            slot="title"
-          >{{ onlyOneChild.meta.title }}</span>
-          <span
-            v-else-if="item.meta && item.meta.title"
-            slot="title"
-          >{{ item.meta.title }}</span>
-        </el-menu-item>
-      </app-link>
-    </template>
-    <el-submenu
-      v-else
-      :index="resolvePath(item.path)"
-      popper-append-to-body
-    >
-      <template slot="title">
-        <svg-icon
-          v-if="item.meta && item.meta.icon"
-          :name="item.meta.icon"
-        />
-        <span
-          v-if="item.meta && item.meta.title"
-          slot="title"
-        >{{ item.meta.title }}</span>
-      </template>
-      <sidebar-item
-        v-for="child in item.children"
-        :key="child.path"
-        :is-nest="true"
-        :item="child"
-        :base-path="resolvePath(child.path)"
-        :collapse="collapse"
-        class="nest-menu"
-      />
-    </el-submenu>
-  </div>
+<template lang="pug">
+  div(v-if='!item.meta || !item.meta.hidden', :class="['menu-wrapper', collapse ? 'simple-mode' : 'full-mode', {'first-level': !isNest}]")
+    template(v-if='hasOneShowingChild(item.children, item) && (!onlyOneChild.children || onlyOneChild.meta.noShowingChildren)')
+      app-link(:to='resolvePath(onlyOneChild.path)')
+        el-menu-item(:index='resolvePath(onlyOneChild.path)', :class="{'submenu-title-noDropdown': !isNest}")
+          svg-icon(v-if='onlyOneChild.meta && onlyOneChild.meta.icon', :name='onlyOneChild.meta.icon')
+          svg-icon(v-else-if='item.meta && item.meta.icon', :name='item.meta.icon')
+          span(v-if='onlyOneChild.meta && onlyOneChild.meta.title', slot='title') {{ onlyOneChild.meta.title }}
+          span(v-else-if='item.meta && item.meta.title', slot='title') {{ item.meta.title }}
+    el-submenu(v-else='', :index='resolvePath(item.path)', popper-append-to-body='')
+      template(slot='title')
+        svg-icon(v-if='item.meta && item.meta.icon', :name='item.meta.icon')
+        span(v-if='item.meta && item.meta.title', slot='title') {{ item.meta.title }}
+      sidebar-item.nest-menu(v-for='child in item.children', :key='child.path', :is-nest='true', :item='child', :base-path='resolvePath(child.path)', :collapse='collapse')
 </template>
 
 <script lang="ts">

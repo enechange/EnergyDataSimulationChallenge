@@ -89,17 +89,27 @@ export default new Router({
           path: 'index',
           name: 'Graphiql',
           component: () => import(/* webpackChunkName: "graphiql" */ '@/views/graphiql/index.vue'),
-          meta: { title: 'Graphiql', icon: 'form' }
+          meta: { title: 'Graphiql', icon: 'graphql' }
         }
       ]
     },
     {
-      path: 'external-link',
+      path: 'github-link',
+      component: Layout,
+      children: [
+        {
+          path: 'https://github.com/jerrywdlee',
+          meta: { title: 'Github', icon: 'github' }
+        }
+      ]
+    },
+    {
+      path: 'qiita-link',
       component: Layout,
       children: [
         {
           path: 'https://qiita.com/jerrywdlee',
-          meta: { title: 'Qiita', icon: 'link' }
+          meta: { title: 'Qiita', icon: 'international' }
         }
       ]
     },
