@@ -61,6 +61,10 @@ $ yarn serve
 
 # for production
 $ yarn build
+
+# add new svg icon
+$ cp YOUR_ICON.svg ./src/icons/svg
+$ npx vsvg -s ./src/icons/svg -t ./src/icons/components --ext ts --es6
 ```
 
 ## Deploy
