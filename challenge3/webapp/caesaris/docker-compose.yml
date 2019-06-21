@@ -1,0 +1,30 @@
+version: '3.5'
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  web:
+    build:
+      context: .
+      args:
+        ENV: ${ENV}
+        RAILS_ENV: ${RAILS_ENV}
+        # NODE_ENV: ${NODE_ENV}
+        DEFAULT_USER_EMAIL: ${DEFAULT_USER_EMAIL}
+        DEFAULT_USER_EMAIL: ${DEFAULT_USER_PASSWORD}
+        RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        VUE_APP_NAME: ${VUE_APP_NAME}
+    env_file:
+      - .env
+    environment:
+      TZ: Asia/Tokyo
+      RAILS_SERVE_STATIC_FILES: 1
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "38000:3000"
+    depends_on:
+      - db

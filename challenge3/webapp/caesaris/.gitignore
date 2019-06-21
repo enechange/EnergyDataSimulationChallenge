@@ -33,6 +33,7 @@
 yarn-debug.log*
 .yarn-integrity
 coverage/
+.bash_history
 
 # Built from admin
 public/img/

@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  host: db
   database: caesaris_production
-  username: caesaris
-  password: <%= ENV['CAESARIS_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
