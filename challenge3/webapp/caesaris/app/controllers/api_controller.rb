@@ -20,6 +20,10 @@ class ApiController < ApplicationController
   end
 
   def load_csv
+    if params[:house_data_url].blank? || params[:dataset_url].blank?
+      render json: { error: 'url not found' }, status: 400 and return
+    end
+
     case params[:key]
     when "challenge-3"
       begin

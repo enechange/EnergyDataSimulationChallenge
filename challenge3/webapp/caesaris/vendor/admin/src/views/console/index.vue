@@ -26,13 +26,13 @@
     .inner-container
       h2.inner-container-ttl Load Data
       h3.inner-container-subttl Challenge 3
-      el-form(ref='challenge3Data', :model='challenge3Data', label-width='120px')
+      el-form(ref='challenge3Data', :model='challenge3Data', label-width='120px', :rules='challenge3DataRules')
         el-col(:span='23')
-          el-form-item(label='House Data')
+          el-form-item(label='House Data', prop='houseDataUrl')
             el-input(v-model='challenge3Data.houseDataUrl', :disabled='challenge3Data.onloadFlg'
               placeholder='https://example.org/house_data.csv')
         el-col(:span='23')
-          el-form-item(label='Dataset')
+          el-form-item(label='Dataset', prop='datasetUrl')
             el-input(v-model='challenge3Data.datasetUrl', :disabled='challenge3Data.onloadFlg'
               placeholder='https://example.org/dataset_50.csv')
         el-col(:span='24')
@@ -43,8 +43,10 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable no-useless-escape */
+/* eslint-disable comma-dangle */
 import { Component, Vue } from 'vue-property-decorator'
-import { MessageBox, Loading } from 'element-ui'
+import { MessageBox, Loading, Form as ElForm } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
 import request from '@/utils/request'
 
@@ -71,16 +73,10 @@ export default class Form extends Vue {
     onloadFlg: false,
   }
 
-  private form = {
-    name: '',
-    region: '',
-    date1: '',
-    date2: '',
-    delivery: false,
-    type: [],
-    resource: '',
-    desc: ''
-  };
+  private challenge3DataRules = {
+    houseDataUrl: [{ required: true, trigger: 'blur', validator: this.urlValidator }],
+    datasetUrl: [{ required: true, trigger: 'blur', validator: this.urlValidator }],
+  }
 
   mounted() {
     const roles = UserModule.roles.map((r: string) => r.toString().toLowerCase())
@@ -94,10 +90,10 @@ export default class Form extends Vue {
   }
 
   private loadChallenge3Data(event: MouseEvent) {
-    this.challenge3Data.onloadFlg = true
-    this.$message(`Loading Challenge 3 Data`)
+    event.preventDefault()
 
-    request({
+    const challenge3Data = this.$refs.challenge3Data as ElForm
+    const postData = {
       url: '/api/load_csv',
       method: 'post',
       data: {
@@ -105,25 +101,37 @@ export default class Form extends Vue {
         house_data_url: this.challenge3Data.houseDataUrl,
         dataset_url: this.challenge3Data.datasetUrl,
       }
-    })
-    .then(res => {
-      const { data } = res
-      if (data.result === 'ok') {
+    }
+
+    challenge3Data.validate((valid: boolean) => {
+      if (valid) {
+        this.challenge3Data.onloadFlg = true
+        this.$message(`Loading Challenge 3 Data`)
+        request(postData).then(res => {
+          const { data } = res
+          if (data.result === 'ok') {
+            this.$message({
+              message: 'Challenge 3 Data Loaded!',
+              type: 'success',
+            })
+          }
+          this.challenge3Data.onloadFlg = false
+        }).catch(err => {
+          console.log(err)
+          this.challenge3Data.onloadFlg = false
+        })
+        return true
+      } else {
         this.$message({
-          message: 'Challenge 3 Data Loaded!',
-          type: 'success',
-        });
+          message: 'Invalid Data!',
+          type: 'error'
+        })
+        return false
       }
-      this.challenge3Data.onloadFlg = false
-    }).catch(err => {
-      console.log(err)
-      this.challenge3Data.onloadFlg = false
     })
-    event.preventDefault()
   }
 
   private onSubmit(event: MouseEvent) {
-    console.log(event)
     this.$message('submit!')
   }
 
@@ -132,6 +140,15 @@ export default class Form extends Vue {
       message: 'cancel!',
       type: 'warning'
     })
+  }
+
+  private urlValidator(rule: any, value: string, callback: any) {
+    const urlRegExp = /(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)/
+    if (urlRegExp.test(value)) {
+      callback()
+    } else {
+      callback(new Error('Invalid URL!'))
+    }
   }
 }
 </script>
