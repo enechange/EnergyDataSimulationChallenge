@@ -38,6 +38,7 @@
 </template>
 
 <script lang="ts">
+// TODO: Use this https://github.com/graphql/graphiql/tree/master/packages/codemirror-graphql#readme
 import { Component, Vue } from 'vue-property-decorator'
 import { MessageBox } from 'element-ui'
 
