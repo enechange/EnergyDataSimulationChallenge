@@ -22,7 +22,6 @@ class User extends VuexModule implements IUserState {
     const username = userInfo.username.trim()
     const { data, headers } = await login(username, userInfo.password)
 
-    // setToken(headers['authorization'])
     return headers['authorization']
   }
 

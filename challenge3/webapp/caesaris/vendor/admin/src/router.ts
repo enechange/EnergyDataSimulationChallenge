@@ -81,6 +81,18 @@ export default new Router({
         }
       ]
     },
+    {
+      path: '/console',
+      component: Layout,
+      children: [
+        {
+          path: 'index',
+          name: 'Console',
+          component: () => import(/* webpackChunkName: "graphiql" */ '@/views/console/index.vue'),
+          meta: { title: 'Console', icon: 'dashboard' }
+        }
+      ]
+    },
     // {
     //   path: '/graphiql',
     //   component: Layout,
