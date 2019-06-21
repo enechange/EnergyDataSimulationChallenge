@@ -16,18 +16,5 @@ export default class Challenge3 extends Vue { }
 </script>
 
 <style lang="scss" scoped>
-.contents-area {
-  padding:30px;
-  .challenge-ttl {
-    font-size: 1.5em;
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: #333;
-  }
-
-  .challenge-txt {
-    margin-top: 10px;
-    color: #333;
-  }
-}
+@import "src/styles/challenges.scss";
 </style>

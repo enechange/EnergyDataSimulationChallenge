@@ -74,11 +74,9 @@ export default class BarChart extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import "src/styles/challenges.scss";
+
 .chart-ttl {
-  text-align: center;
-  margin-top: 0;
   margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-  color: #333;
 }
 </style>

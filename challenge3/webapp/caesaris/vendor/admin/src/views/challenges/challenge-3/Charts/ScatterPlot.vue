@@ -1,7 +1,7 @@
 <template lang="pug">
   section
     h3.chart-ttl Energy Production
-    p.sub-ttl Plotted On Temperature And Daylight
+    p.chart-sub-ttl Plotted On Temperature And Daylight
     .chart(:id="id", style="width: 100%;height: 550px;")
 </template>
 
@@ -74,15 +74,9 @@ export default class ScatterPlot extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import "src/styles/challenges.scss";
+
 .chart-ttl {
-  text-align: center;
-  margin-top: 0;
   margin-bottom: .7rem;
-  font-size: 1.5rem;
-  color: #333;
-}
-.sub-ttl {
-  margin-top: 0;
-  text-align: center;
 }
 </style>
