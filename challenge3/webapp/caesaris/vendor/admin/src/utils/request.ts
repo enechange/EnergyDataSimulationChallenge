@@ -28,13 +28,13 @@ service.interceptors.request.use(
     // Add X-Token header to every request, you can add other custom headers here
     config.headers['X-Requested-With'] = 'XMLHttpRequest'
 
-    const method = (config.method || '').toLowerCase()
-    if (method === 'post' && config.data) {
-      const csrfAuthToken = getCsrfToken()
-      if (csrfAuthToken) {
-        config.data['authenticity_token'] = csrfAuthToken
-      }
-    }
+    // const method = (config.method || '').toLowerCase()
+    // if (method === 'post' && config.data) {
+    //   const csrfAuthToken = getCsrfToken()
+    //   if (csrfAuthToken) {
+    //     config.data['authenticity_token'] = csrfAuthToken
+    //   }
+    // }
 
     if (UserModule.token) {
       // For JWT Authorization
@@ -66,8 +66,8 @@ service.interceptors.response.use(
       setToken(newToken)
       UserModule.RefreshToken(newToken)
     }
-    const CsrfAuthToken: string = headers['x-authenticity-token']
-    setCsrfToken(CsrfAuthToken)
+    // const CsrfAuthToken: string = headers['x-authenticity-token']
+    // setCsrfToken(CsrfAuthToken)
     if (res.code !== 20000 && response.status !== 200) {
       const code = res.code || response.status
       handleResponseError(code, res.message)
