@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Message, MessageBox } from 'element-ui'
-import { getToken, setToken } from '@/utils/auth'
+import { getToken, setToken, getCsrfToken, setCsrfToken } from '@/utils/auth'
 import { UserModule } from '@/store/modules/user'
 
 let baseURL = process.env.VUE_APP_MOCK_API
@@ -27,6 +27,14 @@ service.interceptors.request.use(
   (config) => {
     // Add X-Token header to every request, you can add other custom headers here
     config.headers['X-Requested-With'] = 'XMLHttpRequest'
+
+    const method = (config.method || '').toLowerCase()
+    if (method === 'post' && config.data) {
+      const csrfAuthToken = getCsrfToken()
+      if (csrfAuthToken) {
+        config.data['authenticity_token'] = csrfAuthToken
+      }
+    }
 
     if (UserModule.token) {
       // For JWT Authorization
@@ -58,6 +66,8 @@ service.interceptors.response.use(
       setToken(newToken)
       UserModule.RefreshToken(newToken)
     }
+    const CsrfAuthToken: string = headers['x-authenticity-token']
+    setCsrfToken(CsrfAuthToken)
     if (res.code !== 20000 && response.status !== 200) {
       const code = res.code || response.status
       handleResponseError(code, res.message)
