@@ -1,4 +1,4 @@
-export interface variables_scss {
+export interface variablesScss {
   sideBarWidth: string;
   menuBg: string;
   menuHover: string;
@@ -9,6 +9,6 @@ export interface variables_scss {
   subMenuActiveText: string;
 }
 
-export const styles: variables_scss;
+export const styles: variablesScss
 
-export default styles;
+export default styles

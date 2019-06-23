@@ -14,7 +14,7 @@ localVue.use(SvgIcon, {
 describe('Hamburger.vue', () => {
   const wrapper = mount(Hamburger, {
     localVue,
-    propsData: { toggleClick: () => null },
+    propsData: { toggleClick: () => null }
   })
 
   it('GithubCorner should hide', () => {
