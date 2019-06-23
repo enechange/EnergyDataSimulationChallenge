@@ -76,21 +76,21 @@ class ApiController < ApplicationController
 
   private
 
-  def generate_form_meta
-    form_tag = view_context.form_tag '/' do
-    end
-    doc = Nokogiri::HTML.parse(form_tag, nil, 'utf-8')
-    result = {}
-    %w(utf8 authenticity_token).each do |attr|
-      val = doc.css("form [name=#{attr}]").first&.attribute('value')&.value
-      result[attr] = val if val.present?
-    end
-    result
-  end
+  # def generate_form_meta
+  #   form_tag = view_context.form_tag '/' do
+  #   end
+  #   doc = Nokogiri::HTML.parse(form_tag, nil, 'utf-8')
+  #   result = {}
+  #   %w(utf8 authenticity_token).each do |attr|
+  #     val = doc.css("form [name=#{attr}]").first&.attribute('value')&.value
+  #     result[attr] = val if val.present?
+  #   end
+  #   result
+  # end
 
-  def set_authenticity_token
-    auth_token = generate_form_meta['authenticity_token']
-    response.set_header('x-authenticity-token', auth_token) if auth_token.present?
-  end
+  # def set_authenticity_token
+  #   auth_token = generate_form_meta['authenticity_token']
+  #   response.set_header('x-authenticity-token', auth_token) if auth_token.present?
+  # end
 
 end
