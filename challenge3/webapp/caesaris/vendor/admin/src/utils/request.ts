@@ -6,14 +6,15 @@ import { UserModule } from '@/store/modules/user'
 let baseURL = process.env.VUE_APP_MOCK_API
 
 switch (process.env.NODE_ENV) {
-  case 'production':
-    baseURL = process.env.RAILS_API_URL || ''
+  case 'development':
+    baseURL = 'http://localhost:18000/'
     break
   case 'test':
     baseURL = process.env.VUE_APP_MOCK_API
     break
+  case 'production':
   default:
-    baseURL = 'http://localhost:18000/'
+    baseURL = process.env.RAILS_API_URL || ''
     break
 }
 

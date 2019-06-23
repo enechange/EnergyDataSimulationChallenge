@@ -76,7 +76,8 @@ Devise.setup do |config|
   config.http_authenticatable_on_xhr = true
 
   config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.config[:secret_key_base]
+    secret_key_base = Rails.application.credentials.config[:secret_key_base] || ENV["SECRET_KEY_BASE"]
+    jwt.secret = secret_key_base || SecureRandom.hex(64)
     jwt.expiration_time = 3600 * 24 # one day
   end
 

@@ -1,8 +1,9 @@
 <h1 align="center">Iuliana Challenges</h1>
-===  
+
 This is a web app for exhibiting **[EnergyDataSimulationChallenge](https://github.com/camenergydatalab/EnergyDataSimulationChallenge)** challenges
 
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Ruby](https://img.shields.io/badge/ruby-%3E%3D2.6-red.svg)](Ruby)
 
 ## Introduction
@@ -65,7 +66,7 @@ $ bundle exec rspec
 *Set `EnergyDataSimulationChallenge/challenge3/webapp/caesaris/vendor/admin` As Root Path*
 
 ```sh
-$ yarn test:unit # 94.12%
+$ yarn test:unit
 # Coverage in `tests/unit/coverage`
 # Coverage(2019-06-24): 94.12%, WIP
 ```
@@ -97,7 +98,8 @@ $ echo "POSTGRES_PASSWORD=${YOUR_DB_PASSWORD}" >> .env
 $ echo "SECRET_KEY_BASE=`bundle exec rake secret`" >> .env
 $ docker-compose build
 # Run Database Migration in Docker
-$ docker-compose run web bundle exec rake db:create && bundle exec db:migrate
+$ docker-compose run web bundle exec rake db:create
+$ docker-compose run web bundle exec rake db:migrate
 $ docker-compose up -d
 # bond nginx to `localhost:38000`
 # Admin(Vue.js) will be built and serve by Rails server

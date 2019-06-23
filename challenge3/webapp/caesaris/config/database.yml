@@ -82,5 +82,5 @@ production:
   <<: *default
   host: db
   database: caesaris_production
-  username: postgres
+  username: <%= ENV['POSTGRES_USERNAME'] || 'postgres' %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>
