@@ -1,0 +1,8 @@
+{
+  "name": "caesaris",
+  "private": true,
+  "scripts": {
+    "build": "echo 'TODO: build'",
+    "watch": "echo 'TODO: watch'"
+  }
+}

@@ -1,0 +1,33 @@
+@for $i from 1 through 6 {
+  h#{7 - $i} {
+    color: #333;
+  }
+}
+
+p {
+  color: #333;
+}
+
+.contents-area {
+  padding:30px;
+  .challenge-ttl {
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .challenge-txt {
+    margin-top: 10px;
+  }
+}
+
+.chart-ttl {
+  margin-top: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.chart-sub-ttl {
+  margin-top: 0;
+  text-align: center;
+}

@@ -1,0 +1,25 @@
+default: &default
+  allow_origins:
+    - localhost:8080
+  user_roles:
+    admin:    1 # 0001
+    editor:   2 # 0010
+    observer: 4 # 0100
+
+  default_user:
+    show: true
+    email: admin@example.com
+    password: admin2019
+    img_url_tmp: https://api.adorable.io/avatars/150/<@email@>.png
+
+development:
+  <<: *default
+test:
+  <<: *default
+production:
+  <<: *default
+  default_user:
+    show: <%= ENV['SHOW_DEFAULT_USER'] %>
+    email: <%= ENV['DEFAULT_USER_EMAIL'] %>
+    password: <%= ENV['DEFAULT_USER_PASSWORD'] %>
+    img_url_tmp: https://api.adorable.io/avatars/150/<@email@>.png
