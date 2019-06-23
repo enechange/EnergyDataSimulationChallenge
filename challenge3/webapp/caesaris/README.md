@@ -1,108 +1,125 @@
-# README
+<h1 align="center">Iuliana Challenges</h1>
+===  
+This is a web app for exhibiting **[EnergyDataSimulationChallenge](https://github.com/camenergydatalab/EnergyDataSimulationChallenge)** challenges
 
-# Memo:
-## Load Houses
-```rb
-# Load House
-> uri = "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/house_data.csv"
-> DataLoader.load_houses(uri)
-> DataLoader.load_cities
-> DataLoader.sync_cities_houses
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![Ruby](https://img.shields.io/badge/ruby-%3E%3D2.6-red.svg)](Ruby)
 
-# Load Dataset
-> uri = "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv"
-> DataLoader.load_dataset(uri)
-```
+## Introduction
+### Local Install (development)
+#### Dependencies
+- postgresql >= 10.2
+- ruby: >= 2.6.1
+- bundler: >= 2.0.0
+- nodejs: >= 8.0
+- yarn: >= 1.13.0
+- docker: >= 17.12.0
 
-## GraphQL
-**Query**  
-*both `camelCase` and `snack_case` are OK in ransack json*
-
-```graphql
-{
-  datasets(queryJson: "{\"houseCityNameCont\":\"Oxford\", \"energy_production_gteq\": 1000}") {
-    city {name},
-    energyProduction
-  }
-}
-```
-**Results**
-
-```json
-{
-  "data": {
-    "datasets": [
-      {
-        "city": {
-          "name": "Oxford"
-        },
-        "energyProduction": 1030
-      },
-      {
-        "city": {
-          "name": "Oxford"
-        },
-        "energyProduction": 1046
-      }
-    ]
-  }
-}
-```
-
-## Init Admin Page
-**Web page is a submodule in `vendor/admin`**
+#### Command Cheat Sheet
+##### Setup Rails Part
+*Set `EnergyDataSimulationChallenge/challenge3/webapp/caesaris` As Root Path*
 
 ```sh
-$ cd vendor/admin
+$ bundle install
+$ bundle exec rails db:create
+$ bundle exec rails db:migrate
+$ bundle exec rails s
+# page will shown on localhost:18000
+```
+
+**Default User**  
+
+```
+Username: admin@example.com
+Password: admin2019
+```
+
+##### Setup Admin(Vue.js) Part
+Admin part is based on [Vue Element Admin](https://github.com/PanJiaChen/vue-element-admin) and [Vue Typescript Admin Template](https://github.com/Armour/vue-typescript-admin-template), special thanks.
+
+*Set `EnergyDataSimulationChallenge/challenge3/webapp/caesaris/vendor/admin` As Root Path*
+
+```sh
 $ yarn install
-
-# for development
 $ yarn serve
+# page will shown on localhost:8080
+```
 
-# for production
-$ yarn build
+**Add New SVG Icons**  
 
-# add new svg icon
+```sh
 $ cp YOUR_ICON.svg ./src/icons/svg
 $ npx vsvg -s ./src/icons/svg -t ./src/icons/components --ext ts --es6
 ```
 
-## Deploy
-### Set Environment Variables!
-
-*eg:*
+##### Tests on Rails Part
+*Set `EnergyDataSimulationChallenge/challenge3/webapp/caesaris` As Root Path*
 
 ```sh
-#### For Rails(API) ####
-ENV=production
-RAILS_ENV=production
-
-SHOW_DEFAULT_USER=1
-DEFAULT_USER_EMAIL=admin@example.com
-DEFAULT_USER_PASSWORD=admin2019
-
-# RAILS_MASTER_KEY=XXXXXXXXXXXXXXX # upper than rails 5.2
-# use `bundle exec rake secret` to generate one
-SECRET_KEY_BASE=XXXXXXXXXXXXXXX
-
-RAILS_SERVE_STATIC_FILES=1 # Unless serve static files by your own
-
-#### For Node(Admin) ####
-# NODE_ENV=production
-VUE_APP_NAME=Iuliana Challenges
-
-#### For Docker Dev ####
-POSTGRES_PASSWORD=XXXXXXXXXXXXXXX
+$ bundle exec rspec
+# Coverage in `caesaris/coverage`
+# Coverage(2019-06-24): 97.51%
 ```
 
-### Migration
+##### Tests on Admin(Vue.js) Part
+*Set `EnergyDataSimulationChallenge/challenge3/webapp/caesaris/vendor/admin` As Root Path*
+
 ```sh
-$ docker-compose run web bundle exec rake db:create db:migrate
+$ yarn test:unit # 94.12%
+# Coverage in `tests/unit/coverage`
+# Coverage(2019-06-24): 94.12%, WIP
 ```
 
-### debug
+### Deployment (production)
+#### Deploy Directly
+*Set `EnergyDataSimulationChallenge/challenge3/webapp/caesaris` As Root Path*
+
+- Install Postgres and set `POSTGRES_USERNAME`, `POSTGRES_PASSWORD`
+- Set `SECRET_KEY_BASE` by `bundle exec rake secret`
+
 ```sh
-$ docker-compose run web bundle exec rails c
-$ docker-compose run web bin/bash
-$ docker-compose exec web bash
+$ bundle install
+$ cd vendor/admin; yarn install; cd -
+$ bundle exec rails db:create
+$ bundle exec rails db:migrate
+$ bundle exec rake assets:precompile
+$ bundle exec rails s -b 0.0.0.0
+# bond nginx to `localhost:18000`
+# Admin(Vue.js) will be built and serve by Rails server
 ```
+
+#### Deploy By Docker
+*Set `EnergyDataSimulationChallenge/challenge3/webapp/caesaris` As Root Path*
+
+```sh
+$ echo "POSTGRES_USERNAME=${YOUR_DB_USERNAME}" >> .env
+$ echo "POSTGRES_PASSWORD=${YOUR_DB_PASSWORD}" >> .env
+$ echo "SECRET_KEY_BASE=`bundle exec rake secret`" >> .env
+$ docker-compose build
+# Run Database Migration in Docker
+$ docker-compose run web bundle exec rake db:create && bundle exec db:migrate
+$ docker-compose up -d
+# bond nginx to `localhost:38000`
+# Admin(Vue.js) will be built and serve by Rails server
+```
+
+## Challenges
+
+### Challenges 1
+***WIP***
+
+### Challenges 2
+***WIP***
+
+### Challenges 3
+#### Abstract
+![documents/challenge-3/challenges-3-0.gif](documents/challenge-3/challenges-3-0.gif)
+
+#### Init Datasets
+![documents/challenge-3/challenges-3-1.png](documents/challenge-3/challenges-3-1.png)
+
+### Challenges 4
+***WIP***
+
+## [MIT LICENSE](vendor/admin/LICENSE)
+Copyright (c) 2019 Iuliana Caesaris Augusta
