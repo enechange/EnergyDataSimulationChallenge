@@ -101,4 +101,12 @@ describe('Breadcrumb.vue', () => {
     const redirectBreadcrumb = breadcrumbArray.at(3)
     expect(redirectBreadcrumb.contains('a')).toBe(false)
   })
+
+  it('click breadcrumb', () => {
+    router.push('/menu/menu1/menu1-2/menu1-2-1')
+    const dashboardLink = wrapper.find('.el-breadcrumb__inner a')
+    dashboardLink.trigger('click') // redirect to dashboard
+    const redirectedBreadcrumb = wrapper.findAll('.el-breadcrumb__inner')
+    expect(redirectedBreadcrumb.length).toBe(1)
+  })
 })
