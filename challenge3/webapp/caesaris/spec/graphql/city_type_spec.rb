@@ -16,7 +16,7 @@ RSpec.describe 'GraphQL on CityType' do
     city = House.find(1).city
     query = '
       {
-        cities(queryJson: "{\"houses_id_eq\": 1}") { id, name }
+        cities(q: {housesIdEq: 1}) { id, name }
       }
     '
     data = Util.graphql_query(query)
@@ -32,5 +32,21 @@ RSpec.describe 'GraphQL on CityType' do
     '
     data = Util.graphql_query(query)
     expect(data['cities'].size).to eq city_num
+  end
+
+  it "Should find cities with multiple conditions" do
+    query = '
+      {
+        cities(q: {
+          m: "or",
+          g: [
+            { name_cont: "Lon" },
+            { name_cont: "Ox" },
+          ]
+        }) { id, name }
+      }
+    '
+    data = Util.graphql_query(query)
+    expect(data['cities'].size).to eq 2
   end
 end

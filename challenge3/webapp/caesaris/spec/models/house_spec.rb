@@ -22,4 +22,11 @@ RSpec.describe House, type: :model do
     expect(@house.has_child).to eq "Yes"
     expect(@house.has_child_bool).to eq true
   end
+
+  it "Should return full name" do
+    @house = House.last
+    expect(@house.full_name).to include @house.firstname
+    expect(@house.full_name).to include @house.lastname
+  end
+  
 end

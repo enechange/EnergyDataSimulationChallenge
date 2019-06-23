@@ -39,7 +39,7 @@ RSpec.describe 'GraphQL on HouseType' do
   it "Should find houses by ransack like query" do
     query = '
       {
-        houses(queryJson: "{\"idEq\": 3}") { id, firstname }
+        houses(q: { idEq: 3 }) { id, firstname }
       }
     '
     data = Util.graphql_query(query)
