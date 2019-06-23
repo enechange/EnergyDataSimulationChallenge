@@ -16,14 +16,15 @@ module Types
     field :houses, [HouseType], null: true do
       description "Find a houses ransack"
       argument :city, String, required: false
-      argument :query_json, String, required: false
+      argument :q, BaseScalar, required: false
     end
-    def houses(city: nil, query_json: nil)
-      if query_json.present?
-        # when search on `has_child`, use `{"hasChildEq": false}`
-        House.includes(:datasets).joins(:city)
-          .ransack(Util.form_ransack_params(query_json))
-          .result.order(:id).distinct
+    def houses(q: nil, city: nil)
+      if q.present?
+        # when search on `has_child`, use `{hasChildEq: false}`
+        @q = House.includes(:datasets, :city).joins(:city, :datasets)
+          .ransack(Util.form_ransack_params(q))
+        @q.sorts = 'id asc' if @q.sorts.blank?
+        @q.result.distinct
       elsif city.present?
         House.joins(:city).where(cities: {name: city.capitalize}).order(:id)
       else
@@ -39,27 +40,35 @@ module Types
     end
 
     field :cities, [CityType], null: true do
-      argument :query_json, String, required: false
+      argument :q, BaseScalar, required: false
     end
-    def cities(query_json: nil)
-      if query_json.present?
-        City.includes(:houses, :datasets)
-          .ransack(Util.form_ransack_params(query_json))
-          .result.order(:id).distinct
+    def cities(q: nil)
+      if q.present?
+        @q = City.includes(:houses, :datasets).joins(:houses, :datasets)
+          .ransack(Util.form_ransack_params(q))
+        @q.sorts = 'id asc' if @q.sorts.blank?
+        @q.result(distinct: true)
       else
         City.all.order(:id)
       end
     end
 
     field :datasets, [DatasetType], null: true do
-      argument :query_json, String, required: false
+      argument :q, BaseScalar, required: false
+      argument :page, Integer, required: false
+      argument :per, Integer, required: false
     end
-    def datasets(query_json: nil)
-      if query_json.present?
+    def datasets(q: nil, page: nil, per: nil)
+      if q.present?
         # when search at `cities`, use `{house_city_name_cont: "London"}`
-        Dataset.includes(house: :city)
-          .ransack(Util.form_ransack_params(query_json))
-          .result.order(:id).distinct
+        @q = Dataset.includes(house: :city).joins(house: :city)
+          .ransack(Util.form_ransack_params(q))
+        @q.sorts = 'id asc' if @q.sorts.blank?
+        if per.nil? && page.nil?
+          @q.result(distinct: true)
+        else
+          @q.result(distinct: true).page(page).per(per)
+        end
       else
         Dataset.all.order(:id)
       end

@@ -10,7 +10,19 @@ class Util
       end
       param_org.each do |key, val|
         key = key.to_s.underscore
-        param_res[key] = val
+        if (key == 's' || key == 'sorts') && val.instance_of?(String)
+          param_res[key] = val.split(/\s+/).map(&:underscore).join(' ').strip
+        elsif (key == 's' || key == 'sorts') && val.instance_of?(Array)
+          param_res[key] = val.map{|v| v.split(/\s+/).map(&:underscore).join(' ').strip }
+        elsif (key == 'g' || key == 'groupings') && (val.instance_of?(Hash) || val.instance_of?(Array))
+          if val.instance_of?(Hash)
+            param_res[key] = val.values.map{|v| Util.form_ransack_params(v) }
+          else
+            param_res[key] = val.map{|v| Util.form_ransack_params(v) }
+          end
+        else
+          param_res[key] = val
+        end
       end
       param_res
     end
