@@ -7,6 +7,8 @@
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
 threads threads_count, threads_count
 
+preload_app!
+
 # Specifies the `port` that Puma will listen on to receive requests; default is 18000.
 #
 port        ENV.fetch("PORT") { 18000 }
