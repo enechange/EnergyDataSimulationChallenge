@@ -7,6 +7,9 @@ This is a web app for exhibiting **[EnergyDataSimulationChallenge](https://githu
 [![Ruby](https://img.shields.io/badge/ruby-%3E%3D2.6-red.svg)](Ruby)
 
 ## Introduction
+
+**DEMO: https://iuliana-challenges.herokuapp.com**
+
 ### Local Install (development)
 #### Dependencies
 - postgresql >= 10.2
@@ -84,7 +87,7 @@ $ cd vendor/admin; yarn install; cd -
 $ bundle exec rails db:create
 $ bundle exec rails db:migrate
 $ bundle exec rake assets:precompile
-$ bundle exec rails s -b 0.0.0.0
+$ bundle exec puma -C config/puma.rb
 # bond nginx to `localhost:18000`
 # Admin(Vue.js) will be built and serve by Rails server
 ```

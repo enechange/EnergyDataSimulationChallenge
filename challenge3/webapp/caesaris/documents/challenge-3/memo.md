@@ -145,3 +145,31 @@ $ bundle exec rspec # 97.51%
 $ cd vendor/admin
 $ yarn test:unit # 94.12%, not completed
 ```
+
+### Heroku
+```sh
+heroku login
+heroku create iuliana-challenges
+heroku container:login
+heroku addons:create heroku-postgresql:hobby-dev -a iuliana-challenges
+heroku container:push web -a iuliana-challenges
+heroku container:release web -a iuliana-challenges
+heroku run bundle exec rails db:migrate -a iuliana-challenges
+
+### ENV ###
+heroku config:set RAILS_ENV=production -a iuliana-challenges
+heroku config:set DEFAULT_USER_EMAIL="USERNAME@example.com" -a iuliana-challenges
+heroku config:set DEFAULT_USER_PASSWORD="PASSWORD" -a iuliana-challenges
+heroku config:set SECRET_KEY_BASE="XXXXXXXXXX" -a iuliana-challenges
+heroku config:set TZ=Asia/Tokyo -a iuliana-challenges
+heroku config:set RAILS_SERVE_STATIC_FILES=1 -a iuliana-challenges
+
+### Debug ###
+heroku logs --tail -a iuliana-challenges
+heroku run bash -a iuliana-challenges
+# heroku run bundle exec rails c -a iuliana-challenges
+```
+
+```Dockerfile
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+```

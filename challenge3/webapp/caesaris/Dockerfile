@@ -42,4 +42,6 @@ ADD . $HOME
 RUN cd /usr/src/app/vendor/admin && yarn install
 RUN bundle exec rake assets:precompile
 
-CMD ["bundle", "exec", "rails", "server", "-p", "3000", "-b", "0.0.0.0"]
+RUN rm -rf /usr/src/app/vendor/admin
+
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
