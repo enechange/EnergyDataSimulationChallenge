@@ -60,7 +60,7 @@ export default class Form extends Vue {
       confirmButtonText: 'OK'
     }).then(() => {
       this.$router.push({ path: '/' })
-    })
+    }).catch(() => { /* Handle `cancel` Action */ })
   }
 
   private onSubmit() {
