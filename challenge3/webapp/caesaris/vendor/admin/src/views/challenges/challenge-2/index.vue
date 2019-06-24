@@ -11,7 +11,8 @@
           :data-set-label='histogramClusterLabels',
           id='histogram-per-day', title='Energy Consumption Per Day')
       el-tab-pane.tab-panel(label='Cluster Plot', name='cluster-plot', lazy=true)
-        // cluster-plot
+        cluster-plot(v-if='dataLoadedFlg', :data-list='totalWattsTime')
+        // ClusterPlot
 </template>
 
 <script lang="ts">
@@ -26,16 +27,18 @@ import {
   totalWattTime
 } from './Charts/StatChartHelper'
 import Histogram from './Charts/Histogram.vue'
+import ClusterPlot from './Charts/ClusterPlot.vue'
 
 // TODO: load from `api/app_config`
 const totalWattUrl = 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge2/data/total_watt.csv'
 
 @Component({
-  components: { Histogram }
+  components: { Histogram, ClusterPlot }
 })
 export default class Challenge2 extends Vue {
   private activeName: string = 'histogram-per-30mins'
   private totalWatts: totalWatt[] = []
+  private totalWattsTime: totalWattTime[] = []
   private totalWattsClusted: totalWattTime[][] = []
   private histogramClusterLabels: string[] = ['Low', 'Mid', 'High']
   private dataLoadedFlg: boolean = false
@@ -45,8 +48,9 @@ export default class Challenge2 extends Vue {
       if (totalWatts) {
         this.totalWatts = totalWatts as totalWatt[]
         const totalWattsTime = aveTotalWattsByTime(this.totalWatts)
-        console.log(totalWattsTime)
+        this.totalWattsTime = totalWattsTime
         const clusterRes = totalWattClusterForHist(totalWattsTime, 3)
+        console.log(clusterRes)
         this.totalWattsClusted = createTotalWattsCluster(totalWattsTime, clusterRes)
         console.log(this.totalWattsClusted)
 

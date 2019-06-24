@@ -3,13 +3,21 @@
 ```rb
 # Load House
 > uri = "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/house_data.csv"
+# Now in AppConfig.challenge_3[:house_data_url]
 > DataLoader.load_houses(uri)
 > DataLoader.load_cities
 > DataLoader.sync_cities_houses
 
 # Load Dataset
 > uri = "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv"
+# Now in AppConfig.challenge_3[:dataset_url]
 > DataLoader.load_dataset(uri)
+```
+
+## Load Total Watt
+```rb
+uri = "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge2/data/total_watt.csv"
+# AppConfig.challenge_2[:total_watt_url]
 ```
 
 ## GraphQL

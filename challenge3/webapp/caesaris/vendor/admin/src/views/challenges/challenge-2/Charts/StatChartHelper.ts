@@ -14,10 +14,6 @@ export interface totalWatt extends totalWattTime {
   date: Date,
 }
 
-export interface totalWattTimeWithLabel extends totalWattTime {
-  clusterLabelIndex: number
-}
-
 export const fetchTotalWattCsv = async (url: string) => {
   const res = await fetch(url).then(res => res.text())
   const results = res.split(/\n|\r\n|\r/).map(res => {
@@ -177,6 +173,127 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
     }
   }
   return opt
+}
+
+export const formTotalWattTimeWithTimeOffset = (dataList: totalWattTime[]) => {
+  const results: number[][] = []
+  dataList.forEach((totalWattTime, i) => {
+    const { time, watt } = totalWattTime
+    const [hour, min, sec] = time.split(':')
+
+    const timeNum = 3600 * parseInt(hour) + 60 * parseInt(min) + parseInt(sec)
+    results[i] = [timeNum, watt]
+  })
+  return results
+}
+
+export const getClusterStep = (dataList: totalWattTime[], clusterNumber = 4) => {
+  const data = formTotalWattTimeWithTimeOffset(dataList)
+  const step = ecStat.clustering.hierarchicalKMeans(data, clusterNumber, true)
+  return step
+}
+
+export const createPlotOption = () => {
+  return {
+    timeline: {
+      top: 'center',
+      right: 35,
+      height: 300,
+      width: 10,
+      inverse: true,
+      playInterval: 3000,
+      symbol: 'none',
+      orient: 'vertical',
+      axisType: 'category',
+      autoPlay: true,
+      label: {
+        normal: {
+          show: false
+        }
+      },
+      data: []
+    },
+    baseOption: {
+      xAxis: {
+        type: 'value',
+        max: 3600 * 24,
+        axisLabel: {
+          formatter: (data: number) => {
+            const timeZoneOffsetSec = (new Date()).getTimezoneOffset() * 60
+            const dateOffset = new Date((data + timeZoneOffsetSec) * 1000)
+            return `${dateOffset.getHours()}:${dateOffset.getMinutes()}`
+          }
+        }
+      },
+      yAxis: {
+        type: 'value',
+        name: 'Energy         \nConsumption',
+        axisLabel: {
+          formatter: (data: number) => {
+            return `${data / 1000} kWh`
+          }
+        }
+      },
+      series: [{
+        type: 'scatter'
+      }]
+    },
+    options: []
+  }
+}
+
+export function getOption(result: ecStat.clustering.Result, k: number) {
+  const clusterAssment = result.clusterAssment
+  const centroids = result.centroids
+  const ptsInCluster = result.pointsInCluster
+  const color = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3']
+  const series = []
+  for (let i = 0; i < k; i++) {
+    series.push({
+      name: 'Cluster' + i,
+      type: 'scatter',
+      animation: false,
+      data: ptsInCluster[i],
+      markPoint: {
+        symbolSize: 29,
+        label: {
+          normal: {
+            show: false
+          },
+          emphasis: {
+            show: true,
+            position: 'top',
+            formatter: function (params: { data: { coord: number[]}}) {
+              return Math.round(params.data.coord[0] * 100) / 100 + '  ' +
+                Math.round(params.data.coord[1] * 100) / 100 + ' '
+            },
+            textStyle: {
+              color: '#000'
+            }
+          }
+        },
+        itemStyle: {
+          normal: {
+            opacity: 0.7
+          }
+        },
+        data: [{
+          coord: centroids[i]
+        }]
+      }
+    })
+  }
+
+  return {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross'
+      }
+    },
+    series: series,
+    color: color
+  }
 }
 
 const toISODateString = (date: Date) => date.toISOString().split('T')[0]
