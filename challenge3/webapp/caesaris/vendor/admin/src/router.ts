@@ -65,7 +65,7 @@ export default new Router({
           path: 'challenge-2',
           name: 'Challenge 2',
           component: () => import(/* webpackChunkName: "challenge-2" */ '@/views/challenges/challenge-2/index.vue'),
-          meta: { title: 'Challenge 2', icon: 'example', hidden: true }
+          meta: { title: 'Challenge 2', icon: 'example' }
         },
         {
           path: 'challenge-3',
