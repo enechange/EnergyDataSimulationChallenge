@@ -9,7 +9,6 @@
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { Component as C } from 'vue'
 import {
-  formTotalWattTimeWithTimeOffset,
   getClusterStep,
   createPlotOption,
   getOption,
@@ -22,7 +21,7 @@ import * as ecStat from 'echarts-stat'
 @Component
 export default class ClusterPlot extends Vue {
   @Prop({ default: 'ClusterPlot' }) private id!: string
-  @Prop({ default: [] }) private dataList!: totalWattTime[]
+  @Prop({ default: [] }) private dataList!: totalWattTime[] | totalWatt[]
   chart: echarts.ECharts | null = null
 
   mounted() {
@@ -40,7 +39,7 @@ export default class ClusterPlot extends Vue {
     if (this.chart) {
       this.chart.hideLoading()
       const option = createPlotOption()
-      const step = getClusterStep(this.dataList) as any
+      const step = getClusterStep(this.dataList, 4) as any
       let result
 
       for (var i = 0; !(result = step.next()).isEnd; i++) {

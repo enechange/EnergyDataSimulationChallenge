@@ -9,9 +9,9 @@
       el-tab-pane.tab-panel(label='Per Day', name='histogram-per-day', lazy=true)
         histogram(:data-list='totalWattsClusted',
           :data-set-label='histogramClusterLabels', id='histogram-per-day',
-          title='Energy Consumption Per Day', sub-ttl='Clustered By KMeans')
+          title='Average Energy Consumption Per Day', sub-ttl='Clustered By KMeans')
       el-tab-pane.tab-panel(label='Cluster Plot', name='cluster-plot', lazy=true)
-        cluster-plot(:data-list='totalWattsTime')
+        cluster-plot(:data-list='totalWatts')
 </template>
 
 <script lang="ts">

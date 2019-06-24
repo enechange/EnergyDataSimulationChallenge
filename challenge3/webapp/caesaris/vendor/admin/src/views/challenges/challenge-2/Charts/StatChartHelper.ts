@@ -184,7 +184,7 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
   return opt
 }
 
-export const formTotalWattTimeWithTimeOffset = (dataList: totalWattTime[]) => {
+export const formTotalWattTimeWithTimeOffset = (dataList: totalWattTime[] | totalWatt[]) => {
   const results: number[][] = []
   dataList.forEach((totalWattTime, i) => {
     const { time, watt } = totalWattTime
@@ -196,7 +196,7 @@ export const formTotalWattTimeWithTimeOffset = (dataList: totalWattTime[]) => {
   return results
 }
 
-export const getClusterStep = (dataList: totalWattTime[], clusterNumber = 4) => {
+export const getClusterStep = (dataList: totalWattTime[] | totalWatt[], clusterNumber = 4) => {
   const data = formTotalWattTimeWithTimeOffset(dataList)
   const step = ecStat.clustering.hierarchicalKMeans(data, clusterNumber, true)
   return step
@@ -244,7 +244,8 @@ export const createPlotOption = () => {
         }
       },
       series: [{
-        type: 'scatter'
+        type: 'scatter',
+        symbolSize: 5,
       }]
     },
     options: []
@@ -261,6 +262,7 @@ export function getOption(result: ecStat.clustering.Result, k: number) {
     series.push({
       name: 'Cluster' + i,
       type: 'scatter',
+      symbolSize: 5,
       animation: false,
       data: ptsInCluster[i],
       markPoint: {
