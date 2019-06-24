@@ -3,17 +3,19 @@
 /* eslint-disable comma-dangle */
 import * as _ from 'lodash'
 import * as echarts from 'echarts'
-import clustering from 'echarts-stat'
-
-export interface totalWatt {
-  date: Date,
-  time: string,
-  watt: number,
-}
+import * as ecStat from 'echarts-stat'
 
 export interface totalWattTime {
   time: string,
   watt: number,
+}
+
+export interface totalWatt extends totalWattTime {
+  date: Date,
+}
+
+export interface totalWattTimeWithLabel extends totalWattTime {
+  clusterLabelIndex: number
 }
 
 export const fetchTotalWattCsv = async (url: string) => {
@@ -45,6 +47,49 @@ export const aveTotalWattsByTime = (watts: totalWatt[]) => {
     }
   })
   return _.sortBy(results, ['time'])
+}
+
+export const totalWattClusterForHist = (dataList: totalWattTime[], clusterNumber: number) => {
+  const data = dataList.map(totalWatt => {
+    // const timeOffset = toISODateString(new Date(0))
+    // const timeNum = Date.parse(`${timeOffset} ${totalWatt.time}`) as number
+    return [0, totalWatt.watt]
+  })
+  return ecStat.clustering.hierarchicalKMeans(data, clusterNumber, false)
+}
+
+export const createTotalWattsCluster = (dataList: totalWattTime[], clusteringResult: ecStat.clustering.Result) => {
+  const pointsInCluster = clusteringResult.pointsInCluster
+  // BUG: ecStat.clustering.Result.pointsInCluster is number[][][] but .d.ts said it is number[][]
+  const thresholds = _.sortBy(pointsInCluster.map(pointSet => {
+    const resultSet = pointSet.map((point: any) => {
+      const value = point as number[]
+      return value[1]
+    })
+    return {
+      min: _.min(resultSet) as number,
+      max: _.max(resultSet) as number
+    }
+  }), ['min', 'max'])
+  const resultTotalWattsTimeSet: totalWattTime[][] = []
+  dataList.forEach((totalWattTime, i) => {
+    const { watt } = totalWattTime
+    let clusterLabelIndex = 0
+    thresholds.forEach((threshold, j) => {
+      const { max, min } = threshold
+      if (watt >= Math.floor(min) && watt <= Math.ceil(max)) {
+        clusterLabelIndex = j
+      }
+    })
+    if (resultTotalWattsTimeSet[clusterLabelIndex]) {
+      resultTotalWattsTimeSet[clusterLabelIndex][i] = totalWattTime
+    } else {
+      resultTotalWattsTimeSet[clusterLabelIndex] = []
+      resultTotalWattsTimeSet[clusterLabelIndex][i] = totalWattTime
+    }
+  })
+  console.log(thresholds)
+  return resultTotalWattsTimeSet
 }
 
 export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], dataSetLabel: string[]) => {
@@ -94,6 +139,7 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
       bottom: 80,
     },
     xAxis: {
+      // type: 'time',
       data: xAxisData,
       silent: false,
       splitLine: {
@@ -117,9 +163,6 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
           name: `${dataSetLabel[i]}`,
           type: 'bar',
           data: totalWatts.map(totalWatt => {
-            if (totalWatt.watt > 5000) {
-              console.log(totalWatt)
-            }
             return totalWatt.watt.toFixed(2)
           }),
           animationDelay: (idx: number) => {

@@ -20,7 +20,6 @@ export default class Histogram extends Vue {
 
   mounted() {
     this.initChart()
-    // console.log(this.dataList)
     this.updateChart()
   }
 
