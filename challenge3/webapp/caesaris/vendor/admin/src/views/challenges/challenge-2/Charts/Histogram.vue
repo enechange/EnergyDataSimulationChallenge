@@ -1,11 +1,12 @@
 <template lang="pug">
   section
     h3.chart-ttl {{ title }}
+    p.chart-sub-ttl(v-if="subTtl") {{ subTtl }}
     .chart(:id="id", style="width: 100%;height: 450px;")
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import { Component as C } from 'vue'
 import { createHistOption, totalWatt, totalWattTime } from './StatChartHelper'
 import * as echarts from 'echarts'
@@ -16,6 +17,7 @@ export default class Histogram extends Vue {
   @Prop({ default: [] }) private dataList!: totalWatt[][] | totalWattTime[][]
   @Prop({ default: () => [''] }) private dataSetLabel!: string[]
   @Prop({ default: '' }) private title!: string
+  @Prop({ default: '' }) private subTtl!: string
   chart: echarts.ECharts | null = null
 
   mounted() {
@@ -37,8 +39,13 @@ export default class Histogram extends Vue {
     this.chart.showLoading()
   }
 
+  @Watch('dataList')
+  onValueChange(newValue: string, oldValue: string): void {
+    this.updateChart()
+  }
+
   updateChart() {
-    if (this.chart) {
+    if (this.chart && this.dataList.flat().length > 0) {
       this.chart.hideLoading()
       // const opt = createBarOption(this.energyData, this.tempData, this.labels, this.cities)
       const opt = createHistOption(this.dataList, this.dataSetLabel)

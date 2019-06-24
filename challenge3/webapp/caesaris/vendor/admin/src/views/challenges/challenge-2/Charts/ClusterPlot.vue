@@ -1,7 +1,7 @@
 <template lang="pug">
   section
     h3.chart-ttl Energy Consumption Per Day
-    p.chart-sub-ttl Clusters From 2 To 4
+    p.chart-sub-ttl Clustered By KMeans From 2 To 4
     .chart(:id="id", style="width: 100%;height: 450px;")
 </template>
 

@@ -54,7 +54,7 @@ export const totalWattClusterForHist = (dataList: totalWattTime[], clusterNumber
   return ecStat.clustering.hierarchicalKMeans(data, clusterNumber, false)
 }
 
-export const createTotalWattsCluster = (dataList: totalWattTime[], clusteringResult: ecStat.clustering.Result) => {
+export const getThresholdsfromClusteringResult = (clusteringResult: ecStat.clustering.Result) => {
   const pointsInCluster = clusteringResult.pointsInCluster
   // BUG: ecStat.clustering.Result.pointsInCluster is number[][][] but .d.ts said it is number[][]
   const thresholds = _.sortBy(pointsInCluster.map(pointSet => {
@@ -67,6 +67,11 @@ export const createTotalWattsCluster = (dataList: totalWattTime[], clusteringRes
       max: _.max(resultSet) as number
     }
   }), ['min', 'max'])
+  return thresholds
+}
+
+export const createTotalWattsCluster = (dataList: totalWattTime[], clusteringResult: ecStat.clustering.Result) => {
+  const thresholds = getThresholdsfromClusteringResult(clusteringResult)
   const resultTotalWattsTimeSet: totalWattTime[][] = []
   dataList.forEach((totalWattTime, i) => {
     const { watt } = totalWattTime
@@ -80,11 +85,10 @@ export const createTotalWattsCluster = (dataList: totalWattTime[], clusteringRes
     if (resultTotalWattsTimeSet[clusterLabelIndex]) {
       resultTotalWattsTimeSet[clusterLabelIndex][i] = totalWattTime
     } else {
-      resultTotalWattsTimeSet[clusterLabelIndex] = []
+      resultTotalWattsTimeSet[clusterLabelIndex] = new Array(dataList.length)
       resultTotalWattsTimeSet[clusterLabelIndex][i] = totalWattTime
     }
   })
-  console.log(thresholds)
   return resultTotalWattsTimeSet
 }
 
@@ -158,8 +162,13 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
         return {
           name: `${dataSetLabel[i]}`,
           type: 'bar',
+          stack: true,
           data: totalWatts.map(totalWatt => {
-            return totalWatt.watt.toFixed(2)
+            if (totalWatt) {
+              return totalWatt.watt.toFixed(2)
+            } else {
+              return '-'
+            }
           }),
           animationDelay: (idx: number) => {
             return idx * 0.5 + 10 * i

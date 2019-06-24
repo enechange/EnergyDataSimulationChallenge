@@ -4,15 +4,14 @@
     p.challenge-txt Visualization of Energy Consumptions
     el-tabs(v-model='activeName', @tab-click='handleClick')
       el-tab-pane.tab-panel(label='Per 30mins', name='histogram-per-30mins', lazy=true)
-        histogram(v-if='dataLoadedFlg', :data-list='[totalWatts]',
-          id='histogram-per-30mins', title='Energy Consumption Per 30mins')
+        histogram(:data-list='[totalWatts]', id='histogram-per-30mins',
+          title='Energy Consumption Per 30mins')
       el-tab-pane.tab-panel(label='Per Day', name='histogram-per-day', lazy=true)
-        histogram(v-if='dataLoadedFlg', :data-list='totalWattsClusted',
-          :data-set-label='histogramClusterLabels',
-          id='histogram-per-day', title='Energy Consumption Per Day')
+        histogram(:data-list='totalWattsClusted',
+          :data-set-label='histogramClusterLabels', id='histogram-per-day',
+          title='Energy Consumption Per Day', sub-ttl='Clustered By KMeans')
       el-tab-pane.tab-panel(label='Cluster Plot', name='cluster-plot', lazy=true)
-        cluster-plot(v-if='dataLoadedFlg', :data-list='totalWattsTime')
-        // ClusterPlot
+        cluster-plot(:data-list='totalWattsTime')
 </template>
 
 <script lang="ts">
@@ -23,6 +22,7 @@ import {
   aveTotalWattsByTime,
   totalWattClusterForHist,
   createTotalWattsCluster,
+  getThresholdsfromClusteringResult,
   totalWatt,
   totalWattTime
 } from './Charts/StatChartHelper'
@@ -50,12 +50,13 @@ export default class Challenge2 extends Vue {
         const totalWattsTime = aveTotalWattsByTime(this.totalWatts)
         this.totalWattsTime = totalWattsTime
         const clusterRes = totalWattClusterForHist(totalWattsTime, 3)
-        console.log(clusterRes)
+        const thresholds = getThresholdsfromClusteringResult(clusterRes)
+        thresholds.forEach((threshold, i) => {
+          const { min, max } = threshold
+          this.histogramClusterLabels[i] =
+            `${this.histogramClusterLabels[i]} (${Math.floor(min)} ~ ${Math.ceil(max)})`
+        })
         this.totalWattsClusted = createTotalWattsCluster(totalWattsTime, clusterRes)
-        console.log(this.totalWattsClusted)
-
-        // console.log(totalWattClusterForHist(totalWattsTime, 3))
-
         this.dataLoadedFlg = true
       }
     })
