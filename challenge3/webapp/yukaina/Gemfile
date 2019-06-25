@@ -45,6 +45,7 @@ group :development do
   # https://github.com/onk/onkcop/pull/62
   gem 'onkcop', require: false, git: 'https://github.com/sue445/onkcop' , branch: 'rubocop_0.68.0'
   gem 'rubocop-rails'
+  gem 'rubocop-performance'
   gem 'pry-rails'
   gem 'rack-mini-profiler', require: false
   gem 'better_errors'
