@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/sue445/onkcop
+  revision: 6256494c1f860f62df6a4d57c81a4c200beee53b
+  branch: rubocop_0.68.0
+  specs:
+    onkcop (0.53.0.3)
+      rubocop (>= 0.53.0)
+      rubocop-rspec (>= 1.24.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -104,9 +113,6 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
-    onkcop (0.53.0.3)
-      rubocop (>= 0.53.0)
-      rubocop-rspec (>= 1.24.0)
     parallel (1.17.0)
     parser (2.6.3.0)
       ast (~> 2.4.0)
@@ -224,7 +230,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
-  onkcop
+  onkcop!
   pry-rails
   puma (~> 3.11)
   rack-mini-profiler
