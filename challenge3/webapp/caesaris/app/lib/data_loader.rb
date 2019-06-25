@@ -3,6 +3,7 @@ require 'open-uri'
 
 class DataLoader
   class << self
+    ### For Challenge 3 ###
     def load_houses(uri)
       file = load_file_as_stream(uri)
       labels = %w(Firstname Lastname num_of_people has_child)
