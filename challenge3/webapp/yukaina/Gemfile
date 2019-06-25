@@ -54,3 +54,8 @@ group :development do
   gem 'bullet'
   gem 'rails_best_practices'
 end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+end
