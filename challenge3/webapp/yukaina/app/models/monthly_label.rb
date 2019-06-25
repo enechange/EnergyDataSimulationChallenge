@@ -1,0 +1,2 @@
+class MonthlyLabel < ApplicationRecord
+end
