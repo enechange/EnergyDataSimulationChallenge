@@ -26,7 +26,13 @@ export default class ClusterPlot extends Vue {
 
   mounted() {
     this.initChart()
-    this.updateChart()
+    setTimeout(() => {
+      this.updateChart().then(res => {
+        if (this.chart) {
+          this.chart.hideLoading()
+        }
+      })
+    }, 500)
   }
 
   initChart() {
@@ -35,9 +41,8 @@ export default class ClusterPlot extends Vue {
     this.chart.showLoading()
   }
 
-  updateChart() {
+  async updateChart() {
     if (this.chart) {
-      this.chart.hideLoading()
       const option = createPlotOption()
       const step = getClusterStep(this.dataList, 4) as any
       let result
