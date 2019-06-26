@@ -69,6 +69,7 @@ GEM
       uniform_notifier (~> 1.11)
     byebug (11.0.1)
     c3-rails (0.4.18)
+    choice (0.2.0)
     code_analyzer (0.4.8)
       sexp_processor
     coderay (1.1.2)
@@ -152,6 +153,11 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-erd (1.6.0)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
     rails_best_practices (1.19.4)
@@ -205,6 +211,7 @@ GEM
       rubocop (>= 0.70.0)
     rubocop-rspec (1.33.0)
       rubocop (>= 0.60.0)
+    ruby-graphviz (1.2.4)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     sass (3.7.4)
@@ -266,6 +273,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rack-mini-profiler
   rails (~> 5.2.3)
+  rails-erd
   rails_best_practices
   rspec-rails
   rubocop-performance
