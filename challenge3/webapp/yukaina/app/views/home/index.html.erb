@@ -1,0 +1,99 @@
+<div class="well">
+  <span>月別エネルギー生産量</span>
+  <div id="chart_per_month"></div>
+  <span>都市別エネルギー生産量</span>
+  <div id="chart_city"></div>
+</div>
+
+<script type="text/javascript">
+    var chart01 =  c3.generate({
+        bindto: '#chart_per_month',
+        data: {
+            x: 'x',
+            columns: [
+                ['x',
+                    <% @monthly_energy_logs.each do|log| %>
+                    "<%= "#{log.monthly_label.year}-#{log.monthly_label.month.to_s.rjust(2, '0')}-01" %>",
+                    <% end %>
+                ],
+                ['avarage_production_volume',
+                    <% @monthly_energy_logs.each do|log| %>
+                    <%= log['avarage_production_volume'] %>,
+                    <% end %>
+                ],
+                ['avarage_temperature',
+                    <% @monthly_energy_logs.each do|log| %>
+                    <%= log['avarage_temperature'].floor(2).to_f %>,
+                    <% end %>
+                ],
+                ['avarage_daylight',
+                    <% @monthly_energy_logs.each do|log| %>
+                    <%= log['avarage_daylight'].floor(2).to_f %>,
+                    <% end %>
+                ]
+            ],
+            axes: {
+                avarage_production_volume: 'y',
+                avarage_temperature: 'y2',
+                avarage_daylight: 'y'
+            }
+        },
+        axis: {
+            x: {
+                type: 'timeseries',
+                tick: {
+                    format: '%Y-%m'
+                }
+            },
+            y2: {
+                show: true
+            }
+        }
+    });
+    var chart02 =  c3.generate({
+        bindto: '#chart_city',
+        data: {
+            x: 'x',
+            columns: [
+                ['x',
+                    <% @energies_by_city.each do|log| %>
+                    "<%= "#{log['city_name']}" %>",
+                    <% end %>
+                ],
+                ['total_production_volume',
+                    <% @energies_by_city.each do|log| %>
+                    <%= log['total_production_volume'] %>,
+                    <% end %>
+                ],
+                ['total_temperature',
+                    <% @energies_by_city.each do|log| %>
+                    <%= log['total_temperature'].floor(2).to_f %>,
+                    <% end %>
+                ],
+                ['total_daylight',
+                    <% @energies_by_city.each do|log| %>
+                    <%= log['total_daylight'].floor(2).to_f %>,
+                    <% end %>
+                ],
+            ],
+            type: 'bar',
+            axes: {
+                total_production_volume: 'y',
+                total_temperature: 'y2',
+                total_daylight: 'y'
+            }        },
+        bar: {
+            width: {
+                ratio: 0.3
+            }
+        },
+        axis: {
+            x: {
+                type: 'category'
+            },
+            y2: {
+                show: true
+            }
+        }
+    });
+</script>

@@ -13,3 +13,5 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+//= require d3
+//= require c3
