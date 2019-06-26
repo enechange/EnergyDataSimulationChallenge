@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe MonthlyEnergyLogsFinder do
+  # rubocop:disable Naming/VariableNumber
   before do
     monthly_label_00 = FactoryBot.create(:monthly_label, id: 0, year: 2011, month: 7)
     monthly_label_01 = FactoryBot.create(:monthly_label, id: 1, year: 2011, month: 8)
@@ -11,42 +12,43 @@ RSpec.describe MonthlyEnergyLogsFinder do
     house_01 = FactoryBot.create(:house, city: city_01, family: family_01)
     house_02 = FactoryBot.create(:house, city: city_02, family: family_02)
     FactoryBot.create(
-        :monthly_energy_log,
-        monthly_label: monthly_label_00,
-        house: house_01,
-        family: house_01.family,
-        temperature: 10.0,
-        daylight: 20.0,
-        production_volume: 100,
-      )
+      :monthly_energy_log,
+      monthly_label: monthly_label_00,
+      house: house_01,
+      family: house_01.family,
+      temperature: 10.0,
+      daylight: 20.0,
+      production_volume: 100,
+    )
     FactoryBot.create(
-        :monthly_energy_log,
-        monthly_label: monthly_label_00,
-        house: house_02,
-        family: house_02.family,
-        temperature: 10.2,
-        daylight: 20.2,
-        production_volume: 102,
-        )
+      :monthly_energy_log,
+      monthly_label: monthly_label_00,
+      house: house_02,
+      family: house_02.family,
+      temperature: 10.2,
+      daylight: 20.2,
+      production_volume: 102,
+    )
     FactoryBot.create(
-        :monthly_energy_log,
-        monthly_label: monthly_label_01,
-        house: house_01,
-        family: house_01.family,
-        temperature: 20.1,
-        daylight: 30.1,
-        production_volume: 111,
-      )
+      :monthly_energy_log,
+      monthly_label: monthly_label_01,
+      house: house_01,
+      family: house_01.family,
+      temperature: 20.1,
+      daylight: 30.1,
+      production_volume: 111,
+    )
     FactoryBot.create(
-        :monthly_energy_log,
-        monthly_label: monthly_label_01,
-        house: house_02,
-        family: house_02.family,
-        temperature: 20.3,
-        daylight: 30.3,
-        production_volume: 113,
-      )
+      :monthly_energy_log,
+      monthly_label: monthly_label_01,
+      house: house_02,
+      family: house_02.family,
+      temperature: 20.3,
+      daylight: 30.3,
+      production_volume: 113,
+    )
   end
+  # rubocop:enable Naming/VariableNumber
 
   describe "averages" do
     it "temperature, daylight, temperature の平均が出力されること" do
