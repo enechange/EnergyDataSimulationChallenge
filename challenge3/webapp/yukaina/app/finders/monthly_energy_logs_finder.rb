@@ -20,6 +20,7 @@ class MonthlyEnergyLogsFinder
         "cities.name AS city_name",
       ).
       joins(house: :city).
-      group("city_id")
+      group("city_name, cities.id").
+      order("cities.id")
   end
 end
