@@ -60,7 +60,7 @@ class User < ApplicationRecord
   def set_default_name
     if name.blank?
       self.name = email.split(/@/).map do |str|
-        "#{str.slice(0, 3)}.".upcase_first
+        "#{str.first(3)}.".upcase_first
       end.join(' ')
     end
   end
