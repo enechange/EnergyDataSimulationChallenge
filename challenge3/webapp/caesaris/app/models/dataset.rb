@@ -6,7 +6,7 @@ class Dataset < ApplicationRecord
   scope :order_by_date, -> { order(:year, :month) }
 
   def date_str
-    "#{year}-#{month}"
+    DataProcess.date_str(year, month)
   end
 
 end

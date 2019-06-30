@@ -71,6 +71,9 @@ class DataProcess
       results
     end
 
+    def date_str(year, month)
+      "#{year}-#{month.to_s.rjust(2, '0')}"
+    end
   end
 end
 
