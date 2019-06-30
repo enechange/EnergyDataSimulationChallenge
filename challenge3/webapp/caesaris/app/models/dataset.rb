@@ -1,6 +1,6 @@
 class Dataset < ApplicationRecord
   belongs_to :house
-  delegate :city, to: :house
+  has_one :city, through: :house
   validates_presence_of :label, :year, :month, :temperature, :daylight, :energy_production
 
   scope :order_by_date, -> { order(:year, :month) }
