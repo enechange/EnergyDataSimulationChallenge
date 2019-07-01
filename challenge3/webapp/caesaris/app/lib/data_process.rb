@@ -1,26 +1,8 @@
 class DataProcess
   class << self
     # calc average energy_production per house for cities
-    # res: { "Oxford" => { "2011-07" => [min, avg, max] } }
     def house_energy_prod_time_series
-      en_prods = Dataset.arel_table[:energy_production]
-      max = en_prods.maximum.as('max')
-      min = en_prods.minimum.as('min')
-      avg = en_prods.average.as('avg')
-
-      City.all.each_with_object({}) do |city, results|
-        results[city.name] = city.datasets
-          .select(:year, :month, max, min, avg)
-          .group(:year, :month).order(:year, :month)
-          .each_with_object({}) do |sql_res, dataset_list|
-            date_str = DataProcess.date_str(sql_res.year, sql_res.month)
-            dataset_list[date_str] = [
-              sql_res.min.to_f,
-              sql_res.avg.to_f,
-              sql_res.max.to_f,
-            ]
-          end
-      end
+      DataProcess.cities_datasets_time_series(:energy_production)
     end
 
     # calc average energy_production per person for cities
@@ -55,24 +37,30 @@ class DataProcess
 
     # key: [:daylight, :temperature]
     def weather_time_series(key)
-      results = {}
-      City.all.each do |city|
-        res_ttl = {}
-        res_ave = {}
-        city.datasets.order(:year, :month).each do |dataset|
-          res_ttl[dataset.date_str] = [] if res_ttl[dataset.date_str].nil?
-          res_ttl[dataset.date_str] << dataset[key].to_f
-        end
-        res_ttl.each do |date_str, weather_infos|
-          res_ave[date_str] = [
-            weather_infos.min,
-            weather_infos.sum / weather_infos.size.to_f,
-            weather_infos.max
-          ]
-        end
-        results[city.name] = res_ave
+      DataProcess.cities_datasets_time_series(key)
+    end
+
+    # key: [:daylight, :temperature, :energy_production]
+    # res: { "Oxford" => { "2011-07" => [min, avg, max] } }
+    def cities_datasets_time_series(key)
+      data_selector = Dataset.arel_table[key]
+      max = data_selector.maximum.as('max')
+      min = data_selector.minimum.as('min')
+      avg = data_selector.average.as('avg')
+
+      City.all.each_with_object({}) do |city, results|
+        results[city.name] = city.datasets
+          .select(:year, :month, max, min, avg)
+          .group(:year, :month).order(:year, :month)
+          .each_with_object({}) do |sql_res, dataset_list|
+            date_str = DataProcess.date_str(sql_res.year, sql_res.month)
+            dataset_list[date_str] = [
+              sql_res.min.to_f,
+              sql_res.avg.to_f,
+              sql_res.max.to_f,
+            ]
+          end
       end
-      results
     end
 
     def date_str(year, month)
@@ -80,5 +68,3 @@ class DataProcess
     end
   end
 end
-
-
