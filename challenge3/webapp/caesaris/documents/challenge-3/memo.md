@@ -27,7 +27,8 @@ uri = "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChalleng
 ```graphql
 {
   datasets(q: {
-    houseCityNameCont: "Oxford",
+    # houseCityNameCont: "Oxford",
+    cityNameCont: "Oxford",
     energy_production_gteq: 600,
     s: "cityName desc",
   }, page: 2, per: 20) {

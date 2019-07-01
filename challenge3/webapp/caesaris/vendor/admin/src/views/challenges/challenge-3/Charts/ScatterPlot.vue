@@ -58,13 +58,17 @@ export default class ScatterPlot extends Vue {
     const query = gql`{
       cities {
         name,
+        houses {
+          id,
+          fullName,
+        },
         datasets {
           dateStr,
           temperature,
           daylight,
           energyProduction,
-          house { fullName }
-        }
+          houseId,
+        },
       }
     }`
     const res = await fetchGraphql(query)
