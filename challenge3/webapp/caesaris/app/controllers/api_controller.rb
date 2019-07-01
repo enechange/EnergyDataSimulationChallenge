@@ -10,14 +10,6 @@ class ApiController < ApplicationController
     end
   end
 
-  def app_config
-    result = {}
-    %i(challenge_2 challenge_3).each do |key|
-      result[key] = AppConfig.send(key)
-    end
-    render json: result
-  end
-
   def user_info
     user = current_user
     render json: {

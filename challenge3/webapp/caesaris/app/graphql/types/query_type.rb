@@ -80,5 +80,11 @@ module Types
       DataSeriesService.new
     end
 
+    field :app_configs, AppConfigType, null: true do
+    end
+    def app_configs
+      AppConfig
+    end
+
   end
 end
