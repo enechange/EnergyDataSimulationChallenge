@@ -2,7 +2,7 @@ module Types
   class DatasetType < Types::BaseObject
     field :id, ID, null: false
     field :label, Integer, null: false
-    # field :house_id, Integer, null: false
+    field :house_id, Integer, null: false
     field :house, Types::HouseType, null: false
     field :city, Types::CityType, null: false
     field :year, Integer, null: false

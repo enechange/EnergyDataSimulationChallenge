@@ -3,7 +3,7 @@ require "json"
 class Util
   class << self
     def form_ransack_params(params)
-      param_org = params
+      param_org = params.deep_dup
       param_res = {}
       if param_org.instance_of?(String)
         param_org = JSON.parse(param_org)
@@ -11,9 +11,9 @@ class Util
       param_org.each do |key, val|
         key = key.to_s.underscore
         if (key == 's' || key == 'sorts') && val.instance_of?(String)
-          param_res[key] = val.split(/\s+/).map(&:underscore).join(' ').strip
+          param_res[key] = val.squish.underscore
         elsif (key == 's' || key == 'sorts') && val.instance_of?(Array)
-          param_res[key] = val.map{|v| v.split(/\s+/).map(&:underscore).join(' ').strip }
+          param_res[key] = val.map{|v| v.squish.underscore }
         elsif (key == 'g' || key == 'groupings') && (val.instance_of?(Hash) || val.instance_of?(Array))
           if val.instance_of?(Hash)
             param_res[key] = val.values.map{|v| Util.form_ransack_params(v) }
@@ -43,9 +43,9 @@ class Util
     end
 
     def set_binary_codes(mask_list)
-      mask_list.map do |mask|
-        mask.is_a?(String) ? mask.to_i(2) : mask.to_i
-      end.reduce(:|)
+      mask_list.reduce(0) do |result, mask|
+        result |= mask.is_a?(String) ? mask.to_i(2) : mask.to_i
+      end
     end
   end
 end

@@ -1,7 +1,9 @@
 class DataSeriesService
   def date_labels
-    Dataset.select(:year, :month).group(:year, :month)
-      .order(:year, :month).map(&:date_str)
+    Dataset.order(:year, :month).distinct
+      .pluck(:year, :month).map do |year, month|
+      DataProcess.date_str(year, month)
+    end
   end
 
   def house_energy_prod
