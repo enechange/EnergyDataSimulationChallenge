@@ -111,7 +111,7 @@ function handleResponseError(statusCode: number, message = 'System Error!') {
       UserModule.FedLogOut().then(() => {
         location.reload() // To prevent bugs from vue-router
       })
-    })
+    }).catch(() => { /* Handle `cancel` Action */ })
   }
 }
 

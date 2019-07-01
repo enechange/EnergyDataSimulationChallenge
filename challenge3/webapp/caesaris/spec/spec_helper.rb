@@ -52,10 +52,9 @@ RSpec.configure do |config|
   config.after(:suite) do
     p "Clean up database"
     ActiveRecord::Base.transaction do
-      %w(cities datasets houses users).each do |table_name|
-        sql = "TRUNCATE TABLE #{table_name};"
-        ActiveRecord::Base.connection.execute(sql);
-      end
+      table_names = %w(cities datasets houses users)
+      sql = "TRUNCATE TABLE #{table_names.join(',')}"
+      ActiveRecord::Base.connection.execute(sql)
     end
   end
 

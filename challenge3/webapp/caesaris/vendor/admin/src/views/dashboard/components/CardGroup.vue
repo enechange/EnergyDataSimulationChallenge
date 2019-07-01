@@ -25,7 +25,7 @@ export default class CardGroup extends Vue {
   private noFeature() {
     MessageBox.alert('This Feature Is Under Development.', {
       confirmButtonText: 'OK'
-    })
+    }).catch(() => { /* Handle `cancel` Action */ })
     // alert('This Feature Is Under Development.')
   }
 }

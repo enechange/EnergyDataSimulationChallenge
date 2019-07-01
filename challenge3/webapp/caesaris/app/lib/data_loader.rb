@@ -5,16 +5,17 @@ class DataLoader
   class << self
     def load_houses(uri)
       file = load_file_as_stream(uri)
-      labels = %w(Firstname Lastname num_of_people has_child)
       ActiveRecord::Base.transaction do
-        CSV.new(file, :headers => :first_row).each do |line|
-          house = House.new
-          house.id = line['ID'] # TODO: deal with adding new files
-          house.city_text = line['City'] # City for City class
-          labels.each do |label|
-            house[label.underscore.to_sym] = line[label]
-          end
-          house.save!
+        CSV.new(file, **csv_options).each do |line|
+          # CSV headers:
+          # :id, :firstname, :lastname, :city, :num_of_people, :has_child
+          house_params = line.to_hash
+          House.create!(
+            **house_params.except(:id, :city),
+            city_text: house_params[:city],
+            # House ID is used by Datasets, must use csv's ID
+            id: house_params[:id], # TODO: deal with IDs when adding new files
+          )
         end
       end
     end
@@ -44,16 +45,16 @@ class DataLoader
 
     def load_dataset(uri)
       file = load_file_as_stream(uri)
-      labels = %w(Label Year Month Temperature Daylight EnergyProduction)
       ActiveRecord::Base.transaction do
-        CSV.new(file, :headers => :first_row).each do |line|
-          dataset = Dataset.new
-          dataset.id = line['ID'] # TODO: deal with adding new files
-          dataset.house_id = line['House']
-          labels.each do |label|
-            dataset[label.underscore.to_sym] = line[label]
-          end
-          dataset.save!
+        CSV.new(file, **csv_options).each do |line|
+          # CSV headers:
+          # :id, :label, :house, :year, :month, :temperature, :daylight, :energy_production
+          dataset_params = line.to_hash
+          Dataset.create!(
+            **dataset_params.except(:id, :house),
+            house_id: dataset_params[:house],
+            id: dataset_params[:id], # TODO: deal with IDs when adding new files
+          )
         end
       end
     end
@@ -66,6 +67,15 @@ class DataLoader
         file = open(uri)
       end
       file
+    end
+
+    def csv_options
+      {
+        headers: :first_row,
+        header_converters: lambda { |h| h.underscore.to_sym },
+        converters: :all,
+        skip_blanks: true,
+      }
     end
 
   end

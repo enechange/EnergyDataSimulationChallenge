@@ -261,12 +261,16 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
 export interface scatterGraphqlData {
   cities: [{
     name: string,
+    houses: [{
+      id: string | number,
+      fullName: string,
+    }]
     datasets: [{
       dateStr: string,
       temperature: number,
       daylight: number,
       energyProduction: number,
-      house: { fullName: string }
+      houseId: number,
     }]
   }]
 }
@@ -287,12 +291,14 @@ export const formatScatterGraphqlData = (rawData: scatterGraphqlData) => {
       if (daylightMin > ds.daylight) {
         daylightMin = ds.daylight
       }
+      const house = findHouseById(ds.houseId, c.houses)
+      const fullName = house ? house.fullName : ''
       return [
         ds.daylight,
         ds.temperature,
         ds.energyProduction,
-        ds.house.fullName,
-        ds.dateStr
+        fullName,
+        ds.dateStr,
       ]
     })
     dataList[i] = dataColumn
@@ -374,6 +380,15 @@ function formatScatterTooltip(dataList: tooltipData[], schema: dataSchema[]) {
     return html
   }).join('<hr>')
   return outerHtml
+}
+
+interface house {
+  id: string | number,
+  fullName: string,
+}
+
+function findHouseById(id: number, houses: [house]) {
+  return _.find(houses, _.matchesProperty('id', id.toString()))
 }
 
 function calcAxisRange(dataArray: number[], scale = 10, stepNum = 5) {

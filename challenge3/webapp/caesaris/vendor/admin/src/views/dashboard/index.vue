@@ -2,7 +2,7 @@
   .dashboard-container
     github-corner(
       size=65,
-      url="https://github.com/jerrywdlee/EnergyDataSimulationChallenge"
+      url="https://github.com/jerrywdlee/EnergyDataSimulationChallenge/tree/challenge3/iuliana_caesaris/challenge3/webapp/caesaris"
     )
     h1.dashboard-text Energy Data Simulation Challenges
     //.dashboard-text
@@ -26,7 +26,7 @@ const cardInfos = [
   {
     title: 'Challenge 2',
     text: 'Visualization of Energy Consumptions',
-    target: '',
+    target: '/challenges/challenge-2',
     imgUrl: 'https://picsum.photos/id/603/400/300'
   },
   { title: 'Challenge 3',

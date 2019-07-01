@@ -12,13 +12,13 @@ RSpec.describe 'GraphQL on DatasetType' do
   end
 
   it "Should find datasets by ransack" do
-    query = '
+    dataset = Dataset.last
+    query = "
       {
-        datasets(q: { idEq: 3 }) { id, daylight }
+        datasets(q: { idEq: #{dataset.id} }) { id, daylight }
       }
-    '
+    "
     data = Util.graphql_query(query)
-    dataset = Dataset.find(3)
     expect(data['datasets'][0]["daylight"]).to eq dataset.daylight
   end
 
