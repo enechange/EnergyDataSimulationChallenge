@@ -2,20 +2,26 @@ import { VuexModule, Module, MutationAction, Mutation, Action, getModule } from 
 import { login, logout, getUserInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import store from '@/store'
+import { appConfigs, getAppConfig } from '@/api/config.ts'
 
 export interface IUserState {
-  token: string;
-  name: string;
-  avatar: string;
-  roles: string[];
+  token: string
+  name: string
+  avatar: string
+  roles: string[]
+  appConfigs: appConfigs
 }
 
 @Module({ dynamic: true, store, name: 'user' })
 class User extends VuexModule implements IUserState {
-  public token = getToken() || '';
-  public name = '';
-  public avatar = '';
-  public roles = [];
+  public token = getToken() || ''
+  public name = ''
+  public avatar = ''
+  public roles = []
+  public appConfigs = {
+    challenge2: { totalWattUrl: '' },
+    challenge3: { houseDataUrl: '', datasetUrl: '' }
+  }
 
   @Action({ commit: 'SET_TOKEN' })
   public async Login(userInfo: { username: string, password: string}) {
@@ -55,6 +61,12 @@ class User extends VuexModule implements IUserState {
     } else {
       throw Error('GetUserInfo: roles must be a non-null array!')
     }
+  }
+
+  @MutationAction({ mutate: ['appConfigs'] })
+  public async UpdateAppConfigs() {
+    const appConfigs = await getAppConfig()
+    return { appConfigs }
   }
 
   @MutationAction({ mutate: ['token', 'roles'] })

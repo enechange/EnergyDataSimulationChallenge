@@ -19,6 +19,7 @@ router.beforeEach((to: Route, from: Route, next: any) => {
     } else {
       if (UserModule.roles.length === 0) {
         UserModule.GetUserInfo().then(() => {
+          UserModule.UpdateAppConfigs().then()
           next()
         }).catch((err) => {
           UserModule.FedLogOut().then(() => {
