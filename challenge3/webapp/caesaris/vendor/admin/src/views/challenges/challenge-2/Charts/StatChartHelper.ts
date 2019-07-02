@@ -221,14 +221,22 @@ export const createPlotOption = () => {
       data: [],
     },
     baseOption: {
+      tooltip: {
+        show: true,
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+        },
+        formatter: (data: any) => {
+          return formatScatterTooltip(data)
+        },
+      },
       xAxis: {
         type: 'value',
         max: 3600 * 24,
         axisLabel: {
           formatter: (data: number) => {
-            const timeZoneOffsetSec = (new Date()).getTimezoneOffset() * 60
-            const dateOffset = new Date((data + timeZoneOffsetSec) * 1000)
-            return `${dateOffset.getHours()}:${dateOffset.getMinutes()}`
+            return timeStampToTimeStr(data)
           },
         },
       },
@@ -266,7 +274,7 @@ export function getOption(result: ecStat.clustering.Result, k: number) {
       animation: false,
       data: ptsInCluster[i],
       markPoint: {
-        symbolSize: 29,
+        symbolSize: 35,
         label: {
           normal: {
             show: false,
@@ -275,11 +283,15 @@ export function getOption(result: ecStat.clustering.Result, k: number) {
             show: true,
             position: 'top',
             formatter: function (params: { data: { coord: number[]}}) {
-              return Math.round(params.data.coord[0] * 100) / 100 + '  ' +
-                Math.round(params.data.coord[1] * 100) / 100 + ' '
+              const timeStr = timeStampToTimeStr(Math.round(params.data.coord[0]))
+              const energyStr = (params.data.coord[1] / 1000).toFixed(3) + ' kWh'
+              return `${timeStr}  ${energyStr}`
+              // return Math.round(params.data.coord[0] * 100) / 100 + '  ' +
+              //   Math.round(params.data.coord[1] * 100) / 100 + ' '
             },
             textStyle: {
               color: '#000',
+              fontWeight: 'bold',
             },
           },
         },
@@ -307,6 +319,48 @@ export function getOption(result: ecStat.clustering.Result, k: number) {
   }
 }
 
+interface tooltipData {
+  color: string,
+  data: number[],
+  marker: string,
+  name: string,
+  seriesName: string,
+  seriesIndex: number,
+  seriesType: string,
+}
+function formatScatterTooltip(dataList: tooltipData[]) {
+  const ttlStyle = 'display: block;font-size: 14px;font-weight: bold;padding-left: 10px;'
+  const listStyle = 'display: block;font-size: 12px;font-weight: normal;padding-left: 5px;'
+
+  const dataSet = dataList[0]
+  const timeStampList = dataList.map(data => data.data[0])
+  const energyList = dataList.map(data => data.data[1])
+  const [timeStampMin, timeStampMax] = [_.min(timeStampList), _.max(timeStampList)]
+  const energyMin = (_.min(energyList) as number / 1000).toFixed(3)
+  const energyMax = (_.max(energyList) as number / 1000).toFixed(3)
+
+  const seriesTtl = `Cluster ${dataSet.seriesIndex + 1}`
+  const timeStr = `${timeStampToTimeStr(timeStampMin)} ~ ${timeStampToTimeStr(timeStampMax)}`
+  const energyStr = `${energyMin} kwh ~ ${energyMax} kwh`
+
+  const outerHtml = `
+    <div>
+      <span style="${ttlStyle}">${dataSet.marker} ${seriesTtl}</span><hr>
+      <span style="${listStyle}">Time  : ${timeStr}</span>
+      <span style="${listStyle}">Energy: ${energyStr}</span>
+    </div>
+  `
+  return outerHtml
+}
+
 const toISODateString = (date: Date) => date.toISOString().split('T')[0]
 const toISOTimeString = (date: Date) =>
   date.toISOString().split('T')[1].replace('Z', '').split('.')[0]
+
+const formatTimeStr = (hour: number, min = 0) =>
+  `${_.padStart(hour.toString(), 2, '0')}:${_.padStart(min.toString(), 2, '0')}`
+const timeStampToTimeStr = (timeStamp = 0) => {
+  const timeZoneOffsetSec = (new Date()).getTimezoneOffset() * 60
+  const dateOffset = new Date((timeStamp + timeZoneOffsetSec) * 1000)
+  return formatTimeStr(dateOffset.getHours(), dateOffset.getMinutes())
+}
