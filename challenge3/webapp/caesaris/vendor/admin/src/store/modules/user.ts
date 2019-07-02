@@ -6,6 +6,7 @@ import { appConfigs, getAppConfig } from '@/api/config.ts'
 
 export interface IUserState {
   token: string
+  userId: null | number
   name: string
   avatar: string
   roles: string[]
@@ -15,6 +16,7 @@ export interface IUserState {
 @Module({ dynamic: true, store, name: 'user' })
 class User extends VuexModule implements IUserState {
   public token = getToken() || ''
+  public userId: null | number = null
   public name = ''
   public avatar = ''
   public roles = []
@@ -45,7 +47,7 @@ class User extends VuexModule implements IUserState {
     return ''
   }
 
-  @MutationAction({ mutate: ['roles', 'name', 'avatar'] })
+  @MutationAction({ mutate: ['roles', 'userId', 'name', 'avatar'] })
   public async GetUserInfo() {
     const token = getToken()
     if (token === undefined) {
@@ -54,6 +56,7 @@ class User extends VuexModule implements IUserState {
     const { data } = await getUserInfo(token)
     if (data.roles && data.roles.length > 0) {
       return {
+        userId: data.userId,
         roles: data.roles,
         name: data.name,
         avatar: data.avatar,

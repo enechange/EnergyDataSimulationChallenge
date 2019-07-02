@@ -13,6 +13,7 @@ class ApiController < ApplicationController
   def user_info
     user = current_user
     render json: {
+      userId: user.id,
       roles: user.roles,
       avatar: user.img_url,
       name: user.name
