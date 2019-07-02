@@ -26,7 +26,23 @@
               | Cancel
     .inner-container
       h2.inner-container-ttl Load Data
-      h3.inner-container-subttl Challenge 3
+      h3.inner-container-subttl
+        | Challenge 2
+        p.inner-container-des Set Total Watt CSV Path
+      el-form(ref='challenge2Data', :model='challenge2Data', label-width='120px', :rules='challenge2DataRules')
+        el-col(:span='23')
+          el-form-item(label='Total Watt', prop='totalWattUrl')
+            el-input(v-model='challenge2Data.totalWattUrl', :disabled='challenge2Data.onloadFlg'
+              placeholder='https://example.org/total_watt.csv')
+        el-col(:span='24')
+          el-form-item
+            el-button(type='primary', :loading='challenge2Data.onloadFlg',
+              @click='setChallenge2Url')
+              | {{ challenge2Data.onloadFlg ? 'Loading...' : 'Setup Data URL' }}
+      br/
+      h3.inner-container-subttl
+        | Challenge 3
+        p.inner-container-des Load Data From CSV Files
       el-form(ref='challenge3Data', :model='challenge3Data', label-width='120px', :rules='challenge3DataRules')
         el-col(:span='23')
           el-form-item(label='House Data', prop='houseDataUrl')
@@ -40,7 +56,7 @@
           el-form-item
             el-button(type='primary', :loading='challenge3Data.onloadFlg',
               @click='loadChallenge3Data')
-              | {{ challenge3Data.onloadFlg ? 'Loading...' : 'Load CSV' }}
+              | {{ challenge3Data.onloadFlg ? 'Loading...' : 'Load Data From CSV' }}
 </template>
 
 <script lang="ts">
@@ -51,6 +67,7 @@ import { MessageBox, Loading, Form as ElForm } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
 import { isValidUsername } from '@/utils/validate'
 import request from '@/utils/request'
+import { getAppConfig } from '@/api/config.ts'
 
 @Component
 export default class Form extends Vue {
@@ -68,10 +85,20 @@ export default class Form extends Vue {
     roles: [{ required: true, trigger: 'change', validator: this.rolesValidator }],
   }
 
+  private challenge2Data = {
+    key: 'challenge-2',
+    totalWattUrl: '',
+    onloadFlg: false,
+  }
+
+  private challenge2DataRules = {
+    totalWattUrl: [{ required: true, trigger: 'blur', validator: this.urlValidator }],
+  }
+
   private challenge3Data = {
     key: 'challenge-3',
-    houseDataUrl: 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/house_data.csv',
-    datasetUrl: 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv',
+    houseDataUrl: '',
+    datasetUrl: '',
     onloadFlg: false,
   }
 
@@ -88,7 +115,15 @@ export default class Form extends Vue {
       }).then(() => {
         this.$router.push({ path: '/' })
       }).catch(() => { /* Handle `cancel` Action */ })
+    } else {
+      this.updateAppConfigs()
     }
+  }
+
+  private updateAppConfigs() {
+    const { challenge2, challenge3 } = UserModule.appConfigs
+    Object.assign(this.challenge2Data, challenge2)
+    Object.assign(this.challenge3Data, challenge3)
   }
 
   private createUser(event: MouseEvent) {
@@ -133,10 +168,23 @@ export default class Form extends Vue {
     })
   }
 
+  private setChallenge2Url(event: MouseEvent) {
+    event.preventDefault()
+
+    const challenge2DataForm = this.$refs.challenge2Data as ElForm
+    challenge2DataForm.validate((valid: boolean) => {
+      if (valid) {
+        console.log(this.challenge3Data)
+      } else {
+        this.$message.error('Invalid Data!')
+        return false
+      }
+    })
+  }
+
   private loadChallenge3Data(event: MouseEvent) {
     event.preventDefault()
 
-    const challenge3Data = this.$refs.challenge3Data as ElForm
     const postData = {
       url: '/api/load_csv',
       method: 'post',
@@ -147,7 +195,8 @@ export default class Form extends Vue {
       }
     }
 
-    challenge3Data.validate((valid: boolean) => {
+    const challenge3DataForm = this.$refs.challenge3Data as ElForm
+    challenge3DataForm.validate((valid: boolean) => {
       if (valid) {
         this.challenge3Data.onloadFlg = true
         this.$message(`Loading Challenge 3 Data`)
@@ -234,6 +283,14 @@ h1, h2, h3, h4, p {
   }
   .inner-container-subttl {
     margin-top: 10px;
+  }
+  .inner-container-des {
+    padding-left: 20px;
+    display: inline-block;
+    margin-top: 0;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: italic;
   }
   .el-form {
     display: block;
