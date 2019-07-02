@@ -1,6 +1,4 @@
 // StatChartHelper.ts
-
-/* eslint-disable comma-dangle */
 import * as _ from 'lodash'
 import * as echarts from 'echarts'
 import * as ecStat from 'echarts-stat'
@@ -64,7 +62,7 @@ export const getThresholdsfromClusteringResult = (clusteringResult: ecStat.clust
     })
     return {
       min: _.min(resultSet) as number,
-      max: _.max(resultSet) as number
+      max: _.max(resultSet) as number,
     }
   }), ['min', 'max'])
   return thresholds
@@ -110,7 +108,7 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
   const opt: echarts.EChartOption = {
     legend: {
       data: dataSetLabel,
-      align: 'left'
+      align: 'left',
     },
     dataZoom: [
       {
@@ -126,14 +124,14 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
         yAxisIndex: 0,
         filterMode: 'empty',
         right: '6%',
-      }
+      },
     ],
     toolbox: {},
     tooltip: {
       trigger: 'axis',
       axisPointer: {
-        type: 'cross'
-      }
+        type: 'cross',
+      },
     },
     grid: {
       bottom: 80,
@@ -143,8 +141,8 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
       data: xAxisData,
       silent: false,
       splitLine: {
-        show: false
-      }
+        show: false,
+      },
     },
     yAxis: [
       {
@@ -153,8 +151,8 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
         axisLabel: {
           formatter: (data: number) => {
             return `${data / 1000} kWh`
-          }
-        }
+          },
+        },
       },
     ],
     series: [
@@ -172,14 +170,14 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
           }),
           animationDelay: (idx: number) => {
             return idx * 0.5 + 10 * i
-          }
+          },
         }
-      })
+      }),
     ],
     animationEasing: 'elasticOut',
     animationDelayUpdate: (idx: number) => {
       return idx * 0.5
-    }
+    },
   }
   return opt
 }
@@ -217,10 +215,10 @@ export const createPlotOption = () => {
       autoPlay: true,
       label: {
         normal: {
-          show: false
-        }
+          show: false,
+        },
       },
-      data: []
+      data: [],
     },
     baseOption: {
       xAxis: {
@@ -231,8 +229,8 @@ export const createPlotOption = () => {
             const timeZoneOffsetSec = (new Date()).getTimezoneOffset() * 60
             const dateOffset = new Date((data + timeZoneOffsetSec) * 1000)
             return `${dateOffset.getHours()}:${dateOffset.getMinutes()}`
-          }
-        }
+          },
+        },
       },
       yAxis: {
         type: 'value',
@@ -240,23 +238,25 @@ export const createPlotOption = () => {
         axisLabel: {
           formatter: (data: number) => {
             return `${data / 1000} kWh`
-          }
-        }
+          },
+        },
       },
       series: [{
         type: 'scatter',
         symbolSize: 5,
-      }]
+      }],
     },
-    options: []
+    options: [],
   }
 }
 
 export function getOption(result: ecStat.clustering.Result, k: number) {
-  const clusterAssment = result.clusterAssment
+  // const clusterAssment = result.clusterAssment
   const centroids = result.centroids
   const ptsInCluster = result.pointsInCluster
-  const color = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3']
+  const color = [
+    '#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83',
+  ]
   const series = []
   for (let i = 0; i < k; i++) {
     series.push({
@@ -269,7 +269,7 @@ export function getOption(result: ecStat.clustering.Result, k: number) {
         symbolSize: 29,
         label: {
           normal: {
-            show: false
+            show: false,
           },
           emphasis: {
             show: true,
@@ -279,19 +279,19 @@ export function getOption(result: ecStat.clustering.Result, k: number) {
                 Math.round(params.data.coord[1] * 100) / 100 + ' '
             },
             textStyle: {
-              color: '#000'
-            }
-          }
+              color: '#000',
+            },
+          },
         },
         itemStyle: {
           normal: {
-            opacity: 0.7
-          }
+            opacity: 0.7,
+          },
         },
         data: [{
-          coord: centroids[i]
-        }]
-      }
+          coord: centroids[i],
+        }],
+      },
     })
   }
 
@@ -299,11 +299,11 @@ export function getOption(result: ecStat.clustering.Result, k: number) {
     tooltip: {
       trigger: 'axis',
       axisPointer: {
-        type: 'cross'
-      }
+        type: 'cross',
+      },
     },
     series: series,
-    color: color
+    color: color,
   }
 }
 

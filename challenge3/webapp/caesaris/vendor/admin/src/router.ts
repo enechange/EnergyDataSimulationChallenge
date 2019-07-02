@@ -28,12 +28,12 @@ export default new Router({
     {
       path: '/login',
       component: () => import(/* webpackChunkName: "login" */ '@/views/login/index.vue'),
-      meta: { hidden: true }
+      meta: { hidden: true },
     },
     {
       path: '/404',
       component: () => import(/* webpackChunkName: "404" */ '@/views/404.vue'),
-      meta: { hidden: true }
+      meta: { hidden: true },
     },
     {
       path: '/',
@@ -44,8 +44,8 @@ export default new Router({
       meta: { hidden: true },
       children: [{
         path: 'dashboard',
-        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue')
-      }]
+        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'),
+      }],
     },
     {
       path: '/challenges',
@@ -59,27 +59,27 @@ export default new Router({
           name: 'Challenge 1',
           // component: Layout,
           component: () => import(/* webpackChunkName: "challenge-1" */ '@/views/challenges/challenge-1/index.vue'),
-          meta: { title: 'Challenge 1', icon: 'example', hidden: true }
+          meta: { title: 'Challenge 1', icon: 'example', hidden: true },
         },
         {
           path: 'challenge-2',
           name: 'Challenge 2',
           component: () => import(/* webpackChunkName: "challenge-2" */ '@/views/challenges/challenge-2/index.vue'),
-          meta: { title: 'Challenge 2', icon: 'example' }
+          meta: { title: 'Challenge 2', icon: 'example' },
         },
         {
           path: 'challenge-3',
           name: 'Challenge 3',
           component: () => import(/* webpackChunkName: "challenge-3" */ '@/views/challenges/challenge-3/index.vue'),
-          meta: { title: 'Challenge 3', icon: 'example' }
+          meta: { title: 'Challenge 3', icon: 'example' },
         },
         {
           path: 'challenge-4',
           name: 'Challenge 4',
           component: () => import(/* webpackChunkName: "challenge-4" */ '@/views/challenges/challenge-4/index.vue'),
-          meta: { title: 'Challenge 4', icon: 'example', hidden: true }
-        }
-      ]
+          meta: { title: 'Challenge 4', icon: 'example', hidden: true },
+        },
+      ],
     },
     {
       path: '/console',
@@ -89,9 +89,9 @@ export default new Router({
           path: 'index',
           name: 'Console',
           component: () => import(/* webpackChunkName: "console" */ '@/views/console/index.vue'),
-          meta: { title: 'Console', icon: 'dashboard' }
-        }
-      ]
+          meta: { title: 'Console', icon: 'dashboard' },
+        },
+      ],
     },
     // {
     //   path: '/graphiql',
@@ -111,9 +111,9 @@ export default new Router({
       children: [
         {
           path: 'https://github.com/jerrywdlee',
-          meta: { title: 'Github', icon: 'github' }
-        }
-      ]
+          meta: { title: 'Github', icon: 'github' },
+        },
+      ],
     },
     {
       path: 'qiita-link',
@@ -121,14 +121,14 @@ export default new Router({
       children: [
         {
           path: 'https://qiita.com/jerrywdlee',
-          meta: { title: 'Qiita', icon: 'international' }
-        }
-      ]
+          meta: { title: 'Qiita', icon: 'international' },
+        },
+      ],
     },
     {
       path: '*',
       redirect: '/404',
-      meta: { hidden: true }
-    }
-  ]
+      meta: { hidden: true },
+    },
+  ],
 })

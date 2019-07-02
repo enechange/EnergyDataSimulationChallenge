@@ -61,7 +61,6 @@
 
 <script lang="ts">
 /* eslint-disable no-useless-escape */
-/* eslint-disable comma-dangle */
 import { Component, Vue } from 'vue-property-decorator'
 import { MessageBox, Loading, Form as ElForm } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
@@ -111,7 +110,7 @@ export default class Form extends Vue {
     const roles = UserModule.roles.map((r: string) => r.toString().toLowerCase())
     if (!roles.includes('admin')) {
       MessageBox.alert('Only Admin User Are Allowed.', {
-        confirmButtonText: 'OK'
+        confirmButtonText: 'OK',
       }).then(() => {
         this.$router.push({ path: '/' })
       }).catch(() => { /* Handle `cancel` Action */ })
@@ -137,7 +136,7 @@ export default class Form extends Vue {
         email: this.userForm.email,
         password: this.userForm.password,
         roles: this.userForm.roles,
-      }
+      },
     }
 
     userForm.validate(async (valid: boolean) => {
@@ -164,7 +163,7 @@ export default class Form extends Vue {
   private onCancel() {
     this.$message({
       message: 'cancel!',
-      type: 'warning'
+      type: 'warning',
     })
   }
 
@@ -192,7 +191,7 @@ export default class Form extends Vue {
         key: this.challenge3Data.key,
         house_data_url: this.challenge3Data.houseDataUrl,
         dataset_url: this.challenge3Data.datasetUrl,
-      }
+      },
     }
 
     const challenge3DataForm = this.$refs.challenge3Data as ElForm
@@ -217,7 +216,7 @@ export default class Form extends Vue {
       } else {
         this.$message({
           message: 'Invalid Data!',
-          type: 'error'
+          type: 'error',
         })
         return false
       }

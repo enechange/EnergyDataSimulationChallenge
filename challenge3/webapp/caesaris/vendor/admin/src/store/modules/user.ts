@@ -20,7 +20,7 @@ class User extends VuexModule implements IUserState {
   public roles = []
   public appConfigs = {
     challenge2: { totalWattUrl: '' },
-    challenge3: { houseDataUrl: '', datasetUrl: '' }
+    challenge3: { houseDataUrl: '', datasetUrl: '' },
   }
 
   @Action({ commit: 'SET_TOKEN' })
@@ -56,7 +56,7 @@ class User extends VuexModule implements IUserState {
       return {
         roles: data.roles,
         name: data.name,
-        avatar: data.avatar
+        avatar: data.avatar,
       }
     } else {
       throw Error('GetUserInfo: roles must be a non-null array!')
@@ -78,7 +78,7 @@ class User extends VuexModule implements IUserState {
     removeToken()
     return {
       token: '',
-      roles: []
+      roles: [],
     }
   }
 

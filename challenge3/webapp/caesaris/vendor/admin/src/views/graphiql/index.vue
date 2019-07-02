@@ -52,12 +52,12 @@ export default class Form extends Vue {
     delivery: false,
     type: [],
     resource: '',
-    desc: ''
+    desc: '',
   };
 
   mounted() {
     MessageBox.alert('This Feature Is Under Development.', {
-      confirmButtonText: 'OK'
+      confirmButtonText: 'OK',
     }).then(() => {
       this.$router.push({ path: '/' })
     }).catch(() => { /* Handle `cancel` Action */ })
@@ -70,7 +70,7 @@ export default class Form extends Vue {
   private onCancel() {
     this.$message({
       message: 'cancel!',
-      type: 'warning'
+      type: 'warning',
     })
   }
 }

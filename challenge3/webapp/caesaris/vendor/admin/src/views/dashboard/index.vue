@@ -21,29 +21,29 @@ const cardInfos = [
     title: 'Challenge 1',
     text: 'Energy Production Data Simulation',
     target: '',
-    imgUrl: 'https://picsum.photos/id/830/400/300'
+    imgUrl: 'https://picsum.photos/id/830/400/300',
   },
   {
     title: 'Challenge 2',
     text: 'Visualization of Energy Consumptions',
     target: '/challenges/challenge-2',
-    imgUrl: 'https://picsum.photos/id/603/400/300'
+    imgUrl: 'https://picsum.photos/id/603/400/300',
   },
   { title: 'Challenge 3',
     text: 'Web Application',
     target: '/challenges/challenge-3',
-    imgUrl: 'https://picsum.photos/id/18/400/300'
+    imgUrl: 'https://picsum.photos/id/18/400/300',
   },
   {
     title: 'Challenge 4',
     text: 'WEB-API Server',
     target: '',
-    imgUrl: 'https://picsum.photos/id/909/400/300'
-  }
+    imgUrl: 'https://picsum.photos/id/909/400/300',
+  },
 ]
 
 @Component({
-  components: { CardGroup, GithubCorner }
+  components: { CardGroup, GithubCorner },
 })
 export default class Dashboard extends Vue {
   get name() {

@@ -26,8 +26,8 @@ import AppLink from './Link.vue'
   // See https://medium.com/haiiro-io/element-component-name-with-vue-class-component-f3b435656561 for detail
   name: 'SidebarItem',
   components: {
-    AppLink
-  }
+    AppLink,
+  },
 })
 export default class SidebarItem extends Vue {
   @Prop({ required: true }) private item!: Route;

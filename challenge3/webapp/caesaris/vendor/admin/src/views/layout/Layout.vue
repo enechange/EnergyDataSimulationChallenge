@@ -18,8 +18,8 @@ import { DeviceType, AppModule } from '@/store/modules/app'
   components: {
     Navbar,
     Sidebar,
-    AppMain
-  }
+    AppMain,
+  },
 })
 export default class Layout extends mixins(ResizeMixin) {
   get classObj() {
@@ -27,7 +27,7 @@ export default class Layout extends mixins(ResizeMixin) {
       hideSidebar: !this.sidebar.opened,
       openSidebar: this.sidebar.opened,
       withoutAnimation: this.sidebar.withoutAnimation,
-      mobile: this.device === DeviceType.Mobile
+      mobile: this.device === DeviceType.Mobile,
     }
   }
 

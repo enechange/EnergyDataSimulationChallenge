@@ -24,7 +24,7 @@ import {
   createTotalWattsCluster,
   getThresholdsfromClusteringResult,
   totalWatt,
-  totalWattTime
+  totalWattTime,
 } from './Charts/StatChartHelper'
 import Histogram from './Charts/Histogram.vue'
 import ClusterPlot from './Charts/ClusterPlot.vue'
@@ -33,7 +33,7 @@ import ClusterPlot from './Charts/ClusterPlot.vue'
 const totalWattUrl = 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge2/data/total_watt.csv'
 
 @Component({
-  components: { Histogram, ClusterPlot }
+  components: { Histogram, ClusterPlot },
 })
 export default class Challenge2 extends Vue {
   private activeName: string = 'histogram-per-30mins'
