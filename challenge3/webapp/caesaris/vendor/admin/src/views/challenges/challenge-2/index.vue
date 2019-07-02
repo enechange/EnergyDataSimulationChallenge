@@ -17,6 +17,8 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { Component as C } from 'vue'
+import { MessageBox } from 'element-ui'
+import { UserModule } from '@/store/modules/user'
 import {
   fetchTotalWattCsv,
   aveTotalWattsByTime,
@@ -28,9 +30,6 @@ import {
 } from './Charts/StatChartHelper'
 import Histogram from './Charts/Histogram.vue'
 import ClusterPlot from './Charts/ClusterPlot.vue'
-
-// TODO: load from `api/app_config`
-const totalWattUrl = 'https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge2/data/total_watt.csv'
 
 @Component({
   components: { Histogram, ClusterPlot },
@@ -44,6 +43,7 @@ export default class Challenge2 extends Vue {
   private dataLoadedFlg: boolean = false
 
   mounted() {
+    const { totalWattUrl } = UserModule.appConfigs.challenge2
     fetchTotalWattCsv(totalWattUrl).then(async totalWatts => {
       if (totalWatts) {
         this.totalWatts = totalWatts as totalWatt[]
@@ -59,6 +59,13 @@ export default class Challenge2 extends Vue {
         this.totalWattsClusted = createTotalWattsCluster(totalWattsTime, clusterRes)
         this.dataLoadedFlg = true
       }
+    }).catch(error => {
+      console.error(error)
+      MessageBox.alert('Challenge 2 CSV URL Errored', {
+        confirmButtonText: 'Setup URL',
+      }).then(() => {
+        this.$router.push({ path: '/console/index' })
+      }).catch(() => { /* Handle `cancel` Action */ })
     })
   }
 

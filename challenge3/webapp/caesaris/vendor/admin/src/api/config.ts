@@ -11,18 +11,43 @@ export interface appConfigs {
   },
 }
 
-export const getAppConfig = async (queryString = null) => {
+export const appConfigsQuery = gql`
+  appConfigs {
+    challenge2 {
+      totalWattUrl,
+    },
+    challenge3 {
+      houseDataUrl,
+      datasetUrl,
+    },
+  }
+`
+
+export const getAppConfig = async (queryString?: string) => {
   const query = queryString || gql`{
-    appConfigs {
-      challenge2 {
-        totalWattUrl,
-      },
-      challenge3 {
-        houseDataUrl,
-        datasetUrl,
-      },
+    ${appConfigsQuery}
+  }`
+  const res = await fetchGraphql(query)
+  if (res['errors']) {
+    throw Error(`${res['errors'][0].message}`)
+  }
+  return res['data']['appConfigs'] as appConfigs
+}
+
+export const setAppConfig = async (updateQuerySnippet = '', queryString?: string) => {
+  const query = queryString || gql`
+  mutation {
+    updateAppConfig(
+      input: {
+        appConfigs: { ${updateQuerySnippet} }
+      }
+    ) {
+      ${appConfigsQuery}
     }
   }`
   const res = await fetchGraphql(query)
-  return res['data']['appConfigs'] as appConfigs
+  if (res['errors']) {
+    throw Error(`${res['errors'][0].message}`)
+  }
+  return res['data']['updateAppConfig']['appConfigs'] as appConfigs
 }

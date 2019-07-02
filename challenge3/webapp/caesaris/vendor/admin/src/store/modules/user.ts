@@ -64,8 +64,10 @@ class User extends VuexModule implements IUserState {
   }
 
   @MutationAction({ mutate: ['appConfigs'] })
-  public async UpdateAppConfigs() {
-    const appConfigs = await getAppConfig()
+  public async UpdateAppConfigs(appConfigs?: appConfigs) {
+    if (!appConfigs) {
+      appConfigs = await getAppConfig()
+    }
     return { appConfigs }
   }
 

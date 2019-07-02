@@ -66,7 +66,7 @@ import { MessageBox, Loading, Form as ElForm } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
 import { isValidUsername } from '@/utils/validate'
 import request from '@/utils/request'
-import { getAppConfig } from '@/api/config.ts'
+import { getAppConfig, setAppConfig } from '@/api/config.ts'
 
 @Component
 export default class Form extends Vue {
@@ -171,9 +171,21 @@ export default class Form extends Vue {
     event.preventDefault()
 
     const challenge2DataForm = this.$refs.challenge2Data as ElForm
-    challenge2DataForm.validate((valid: boolean) => {
+    challenge2DataForm.validate(async (valid: boolean) => {
       if (valid) {
-        console.log(this.challenge3Data)
+        const { totalWattUrl } = this.challenge2Data
+        const querySnippet = `
+          challenge2: {
+            totalWattUrl: "${totalWattUrl}"
+          }
+        `
+        try {
+          const appConfigs = await setAppConfig(querySnippet)
+          UserModule.UpdateAppConfigs(appConfigs)
+          this.$message.success('Challenge 2 Total Watt Url Saved!')
+        } catch (error) {
+          this.$message.error(error.message)
+        }
       } else {
         this.$message.error('Invalid Data!')
         return false
