@@ -47,5 +47,12 @@ class Util
         result |= mask.is_a?(String) ? mask.to_i(2) : mask.to_i
       end
     end
+
+    def auth_user_graphql(user)
+      return true if Rails.env.development?
+      if user.blank? || !user.admin?
+        raise GraphQL::ExecutionError.new("GraphQL: Need admin user")
+      end
+    end
   end
 end

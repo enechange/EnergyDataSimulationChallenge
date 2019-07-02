@@ -8,6 +8,7 @@ module Mutations
 
     # resolve method
     def resolve(app_configs:)
+      Util.auth_user_graphql(context[:current_user])
       app_conf = app_configs.to_h
       app_conf.each do |fld, val|
         method_name = "#{fld}="
