@@ -9,7 +9,7 @@ module Types
   end
 
   class AppConfigType < Types::BaseObject
-    field :challenge_2, Challenge2Type, null: false
-    field :challenge_3, Challenge3Type, null: false
+    field :challenge2, Challenge2Type, null: false
+    field :challenge3, Challenge3Type, null: false
   end
 end
