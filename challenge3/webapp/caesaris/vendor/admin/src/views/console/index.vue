@@ -272,37 +272,9 @@ export default class Form extends Vue {
 </script>
 
 <style lang="scss" scoped>
-h1, h2, h3, h4, p {
-  color: #333
-}
-
-.module-ttl {
-  text-align: center;
-  margin-top: 5px;
-  margin-bottom: 20px;
-}
+@import "src/styles/console.scss";
 
 .inner-container {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  .inner-container-ttl, .inner-container-subttl {
-    display: block;
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .inner-container-subttl {
-    margin-top: 10px;
-  }
-  .inner-container-des {
-    padding-left: 20px;
-    display: inline-block;
-    margin-top: 0;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: italic;
-  }
   .el-form {
     display: block;
     width: 100%;
@@ -311,9 +283,5 @@ h1, h2, h3, h4, p {
     padding-left: 25px;
     padding-right: 25px;
   }
-}
-
-.line {
-  text-align: center;
 }
 </style>
