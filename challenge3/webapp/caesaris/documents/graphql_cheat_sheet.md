@@ -109,3 +109,37 @@ mutation {
   }
 }
 ```
+
+### Add New User
+```graphql
+mutation {
+  newUser (
+    input: {
+      user: {
+        email: "new-user@example.org",
+        password: "p@ssw0rd",
+        roles: ["observer"]
+      }
+  }) {
+    user {
+      id, email, name, roles, imgUrl
+    }
+  }
+}
+```
+
+### Update User Info
+```graphql
+mutation {
+  updateUser (
+    input: {
+      id: 1,
+      user: {
+        name: "New Name"
+        roles: ["admin", "editor"]
+      }
+  }) {
+    user { id, email, name, roles }
+  }
+}
+```
