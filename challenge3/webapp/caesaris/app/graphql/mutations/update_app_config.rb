@@ -1,10 +1,12 @@
 module Mutations
   class UpdateAppConfig < BaseMutation
     # return fields
+    description "Update application configs"
     field :app_configs, Types::AppConfigType, null: false
 
     # arguments
-    argument :app_configs, Types::AppConfigInputType, required: true
+    argument :app_configs, Types::AppConfigInputType, required: true,
+      description: "App configs, Partial update availble"
 
     # resolve method
     def resolve(app_configs:)
