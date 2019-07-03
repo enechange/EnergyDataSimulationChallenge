@@ -99,9 +99,9 @@ export default new Router({
       children: [
         {
           path: 'index',
-          name: 'Graphiql',
+          name: 'GraphiQL',
           component: () => import(/* webpackChunkName: "graphiql" */ '@/views/graphiql/index.vue'),
-          meta: { title: 'Graphiql', icon: 'graphql' },
+          meta: { title: 'GraphiQL', icon: 'graphql' },
         },
       ],
     },

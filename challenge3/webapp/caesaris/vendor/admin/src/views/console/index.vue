@@ -109,7 +109,7 @@ export default class Form extends Vue {
   mounted() {
     const roles = UserModule.roles.map((r: string) => r.toString().toLowerCase())
     if (!roles.includes('admin')) {
-      MessageBox.alert('Only Admin User Are Allowed.', {
+      MessageBox.alert('Only Admin Users Are Allowed.', {
         confirmButtonText: 'OK',
       }).then(() => {
         this.$router.push({ path: '/' })
