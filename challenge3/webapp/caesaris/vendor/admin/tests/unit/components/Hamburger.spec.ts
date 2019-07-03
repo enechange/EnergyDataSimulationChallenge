@@ -8,13 +8,13 @@ localVue.use(ElementUI)
 localVue.use(SvgIcon, {
   tagName: 'svg-icon',
   defaultWidth: '1em',
-  defaultHeight: '1em'
+  defaultHeight: '1em',
 })
 
 describe('Hamburger.vue', () => {
   const wrapper = mount(Hamburger, {
     localVue,
-    propsData: { toggleClick: () => null }
+    propsData: { toggleClick: () => null },
   })
 
   it('GithubCorner should hide', () => {

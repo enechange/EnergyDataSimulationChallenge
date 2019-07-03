@@ -7,26 +7,26 @@ export const login = (username: string, password: string) =>
     data: {
       user: {
         email: username,
-        password
-      }
-    }
+        password,
+      },
+    },
   })
 
 export const getUserInfo = (token: string) =>
   request({
     url: '/api/user_info',
     method: 'get',
-    params: { }
+    params: { },
   })
 
 export const getDefaultUser = () =>
   request({
     url: '/api/default_user',
-    method: 'get'
+    method: 'get',
   })
 
 export const logout = () =>
   request({
     url: '/users/sign_out',
-    method: 'delete'
+    method: 'delete',
   })

@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 import * as echarts from 'echarts'
 import * as _ from 'lodash'
 
@@ -35,8 +34,8 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
       data: cities,
       align: 'left',
       textStyle: {
-        fontSize: 14
-      }
+        fontSize: 14,
+      },
     },
     dataZoom: [
       {
@@ -52,7 +51,7 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
         yAxisIndex: 0,
         filterMode: 'empty',
         right: '1%',
-      }
+      },
     ],
     toolbox: {
       // y: 'bottom',
@@ -64,8 +63,8 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
             stack: 'Stack',
             tiled: 'Tiled',
             line: 'Line',
-            bar: 'Bar'
-          }
+            bar: 'Bar',
+          },
         },
         dataView: {
           show: false,
@@ -74,39 +73,39 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
         },
         saveAsImage: {
           title: 'Save',
-          pixelRatio: 2
-        }
-      }
+          pixelRatio: 2,
+        },
+      },
     },
     tooltip: {
       trigger: 'axis',
       axisPointer: {
-        type: 'cross'
+        type: 'cross',
       },
       formatter: (data) => {
         return formatBarTooltip(data as tooltipData[])
-      }
+      },
     },
     xAxis: {
       data: xAxisData,
       silent: false,
       splitLine: {
-        show: false
-      }
+        show: false,
+      },
     },
     yAxis: [
       {
         type: 'value',
         name: 'Energy Prod.',
         min: calcAxisRange(_.flatten(barDataList) as number[]).min,
-        axisLabel: { formatter: '{value} kWh' }
+        axisLabel: { formatter: '{value} kWh' },
       },
       {
         type: 'value',
         name: 'Daylight',
         // ...calcAxisRange(_.flatten(lineDataList) as number[]),
-        axisLabel: { formatter: '{value} h' }
-      }
+        axisLabel: { formatter: '{value} h' },
+      },
     ],
     series: [
       ...barDataList.map((data, i) => {
@@ -122,7 +121,7 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
           }),
           animationDelay: (idx: number) => {
             return idx * 10 + 100 * i
-          }
+          },
         }
       }),
       ...lineDataList.map((data, i) => {
@@ -136,14 +135,14 @@ export const createBarOption = (barData: barData, lineData: barData, labels: str
             } else {
               return datum.toFixed(2)
             }
-          })
+          }),
         }
-      })
+      }),
     ],
     animationEasing: 'elasticOut',
     animationDelayUpdate: (idx: number) => {
       return idx * 5
-    }
+    },
   }
   return option
 }
@@ -161,8 +160,8 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
       y: 'top',
       data: labels,
       textStyle: {
-        fontSize: 14
-      }
+        fontSize: 14,
+      },
     },
     // dataZoom: [
     //   {
@@ -175,12 +174,12 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
       type: 'value',
       name: 'Daylight',
       ...calcAxisRange(daylightRange),
-      axisLabel: { formatter: '{value} h' }
+      axisLabel: { formatter: '{value} h' },
     },
     yAxis: {
       type: 'value',
       name: 'Temp.',
-      axisLabel: { formatter: '{value} ℃' }
+      axisLabel: { formatter: '{value} ℃' },
     },
     toolbox: {
       top: 0,
@@ -190,19 +189,19 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
         },
         saveAsImage: {
           title: 'Save',
-          pixelRatio: 2
-        }
-      }
+          pixelRatio: 2,
+        },
+      },
     },
     tooltip: {
       // trigger: 'axis',
       axisPointer: {
-        type: 'cross'
+        type: 'cross',
       },
       formatter: (data) => {
         // console.log(data)
         return formatScatterTooltip([data] as tooltipData[], schema)
-      }
+      },
     },
     visualMap: [{
       left: 'right',
@@ -224,12 +223,12 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
       },
       controller: {
         inRange: {
-          color: ['rgba(194, 53, 49, .6)']
+          color: ['rgba(194, 53, 49, .6)'],
         },
         outOfRange: {
-          color: ['rgba(0, 0, 0, .0)']
-        }
-      }
+          color: ['rgba(0, 0, 0, .0)'],
+        },
+      },
     }],
     series: labels.map((city, i) => {
       return {
@@ -248,12 +247,12 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
             shadowBlur: 1,
             shadowOffsetX: 0,
             shadowOffsetY: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.15)'
-          }
+            shadowColor: 'rgba(0, 0, 0, 0.15)',
+          },
         },
-        data: dataList[i]
+        data: dataList[i],
       }
-    })
+    }),
   }
   return option
 }
@@ -261,12 +260,16 @@ export const createScatterOption = (dataList: (number | string)[][][], labels: s
 export interface scatterGraphqlData {
   cities: [{
     name: string,
+    houses: [{
+      id: string | number,
+      fullName: string,
+    }]
     datasets: [{
       dateStr: string,
       temperature: number,
       daylight: number,
       energyProduction: number,
-      house: { fullName: string }
+      houseId: number,
     }]
   }]
 }
@@ -287,12 +290,14 @@ export const formatScatterGraphqlData = (rawData: scatterGraphqlData) => {
       if (daylightMin > ds.daylight) {
         daylightMin = ds.daylight
       }
+      const house = findHouseById(ds.houseId, c.houses)
+      const fullName = house ? house.fullName : ''
       return [
         ds.daylight,
         ds.temperature,
         ds.energyProduction,
-        ds.house.fullName,
-        ds.dateStr
+        fullName,
+        ds.dateStr,
       ]
     })
     dataList[i] = dataColumn
@@ -376,15 +381,24 @@ function formatScatterTooltip(dataList: tooltipData[], schema: dataSchema[]) {
   return outerHtml
 }
 
+interface house {
+  id: string | number,
+  fullName: string,
+}
+
+function findHouseById(id: number, houses: [house]) {
+  return _.find(houses, _.matchesProperty('id', id.toString()))
+}
+
 function calcAxisRange(dataArray: number[], scale = 10, stepNum = 5) {
   const [min, max] = [
     Math.ceil((_.min(dataArray) as number) / scale),
-    Math.floor((_.max(dataArray) as number) / scale)
+    Math.floor((_.max(dataArray) as number) / scale),
   ]
   const step = Math.ceil((max - min) / stepNum)
   return {
     min: (min - step / 2) * scale,
     max: (max + step / 2) * scale,
-    interval: step * scale
+    interval: step * scale,
   }
 }

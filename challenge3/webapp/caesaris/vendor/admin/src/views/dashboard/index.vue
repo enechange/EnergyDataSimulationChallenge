@@ -2,7 +2,7 @@
   .dashboard-container
     github-corner(
       size=65,
-      url="https://github.com/jerrywdlee/EnergyDataSimulationChallenge"
+      url="https://github.com/jerrywdlee/EnergyDataSimulationChallenge/tree/challenge3/iuliana_caesaris/challenge3/webapp/caesaris"
     )
     h1.dashboard-text Energy Data Simulation Challenges
     //.dashboard-text
@@ -21,29 +21,29 @@ const cardInfos = [
     title: 'Challenge 1',
     text: 'Energy Production Data Simulation',
     target: '',
-    imgUrl: 'https://picsum.photos/id/830/400/300'
+    imgUrl: 'https://picsum.photos/id/830/400/300',
   },
   {
     title: 'Challenge 2',
     text: 'Visualization of Energy Consumptions',
-    target: '',
-    imgUrl: 'https://picsum.photos/id/603/400/300'
+    target: '/challenges/challenge-2',
+    imgUrl: 'https://picsum.photos/id/603/400/300',
   },
   { title: 'Challenge 3',
     text: 'Web Application',
     target: '/challenges/challenge-3',
-    imgUrl: 'https://picsum.photos/id/18/400/300'
+    imgUrl: 'https://picsum.photos/id/18/400/300',
   },
   {
     title: 'Challenge 4',
     text: 'WEB-API Server',
     target: '',
-    imgUrl: 'https://picsum.photos/id/909/400/300'
-  }
+    imgUrl: 'https://picsum.photos/id/909/400/300',
+  },
 ]
 
 @Component({
-  components: { CardGroup, GithubCorner }
+  components: { CardGroup, GithubCorner },
 })
 export default class Dashboard extends Vue {
   get name() {

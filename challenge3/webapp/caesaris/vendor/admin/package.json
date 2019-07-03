@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "lint:fix": "vue-cli-service lint --fix",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
   },
@@ -15,6 +16,7 @@
     "axios": "^0.18.0",
     "core-js": "2",
     "echarts": "^4.2.1",
+    "echarts-stat": "^1.1.1",
     "element-ui": "^2.6.3",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.11",

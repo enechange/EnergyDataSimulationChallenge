@@ -13,6 +13,9 @@ class User < ApplicationRecord
     where('roles_code & ? = ?', role_code, role_code)
   }
 
+  validates :email, presence: true,
+    format: { with: /\A([\w+\-]\.?)+@[\w\d\-]+(\.[\w\d\-]+)*\.[a-z]+\z/i }
+
   before_create :set_default_role, :set_default_img, :set_default_name
 
   # attr_accessor :roles
@@ -43,6 +46,10 @@ class User < ApplicationRecord
     }
   end
 
+  def self.ransackable_scopes(auth_object = nil)
+    %i(has_role)
+  end
+
   private
 
   def set_default_role
@@ -60,7 +67,7 @@ class User < ApplicationRecord
   def set_default_name
     if name.blank?
       self.name = email.split(/@/).map do |str|
-        "#{str.slice(0, 3)}.".upcase_first
+        "#{str.first(3)}.".upcase_first
       end.join(' ')
     end
   end

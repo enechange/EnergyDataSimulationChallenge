@@ -9,7 +9,7 @@ describe('GithubCorner.vue', () => {
   it('GithubCorner should shown', () => {
     const wrapper = mount(GithubCorner, {
       localVue,
-      propsData: { url: 'https://example.com' }
+      propsData: { url: 'https://example.com' },
     })
     const githubCorner = wrapper.find('.github-corner')
     expect(githubCorner).toBeTruthy()
@@ -18,7 +18,7 @@ describe('GithubCorner.vue', () => {
   it('GithubCorner should hide', () => {
     const wrapper = mount(GithubCorner, {
       localVue,
-      propsData: { url: '' }
+      propsData: { url: '' },
     })
     const githubCorner = wrapper.findAll('.github-corner')
     expect(githubCorner.length).toBe(0)

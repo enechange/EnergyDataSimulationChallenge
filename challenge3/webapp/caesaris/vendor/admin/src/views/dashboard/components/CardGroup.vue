@@ -15,7 +15,7 @@ import { MessageBox } from 'element-ui'
 import BoxCard from './BoxCard.vue'
 
 @Component({
-  components: { BoxCard }
+  components: { BoxCard },
 })
 export default class CardGroup extends Vue {
   @Prop({ default: [] }) private cardInfos!: [{
@@ -24,8 +24,8 @@ export default class CardGroup extends Vue {
 
   private noFeature() {
     MessageBox.alert('This Feature Is Under Development.', {
-      confirmButtonText: 'OK'
-    })
+      confirmButtonText: 'OK',
+    }).catch(() => { /* Handle `cancel` Action */ })
     // alert('This Feature Is Under Development.')
   }
 }
