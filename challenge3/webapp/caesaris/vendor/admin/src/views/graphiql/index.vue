@@ -24,14 +24,21 @@ export default class Form extends Vue {
 
   mounted() {
     const roles = UserModule.roles.map((r: string) => r.toString().toLowerCase())
+    const { appConfigs } = UserModule
     if (!roles.includes('admin')) {
-      MessageBox.alert('Only Admin User Are Allowed.', {
+      MessageBox.alert('Only Admin Users Are Allowed.', {
         confirmButtonText: 'OK',
       }).then(() => {
         this.$router.push({ path: '/' })
       }).catch(() => { /* Handle `cancel` Action */ })
-    } else if (false) {
-      // TODO: check appConfigs
+    } else if (!appConfigs.general.allowGraphiql) {
+      this.ifameReadyFlg = false
+      this.graphiglUrl = ''
+      MessageBox.alert('GraphiQL is Unavailable. Turn on GraphiQL in Console', {
+        confirmButtonText: 'OK',
+      }).then(() => {
+        this.$router.push({ path: '/console/index' })
+      }).catch(() => { /* Handle `cancel` Action */ })
     }
   }
 

@@ -2,7 +2,10 @@ import { VuexModule, Module, MutationAction, Mutation, Action, getModule } from 
 import { login, logout, getUserInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import store from '@/store'
-import { appConfigs, getAppConfig } from '@/api/config.ts'
+import {
+  appConfigs, getAppConfig,
+  initEmptyAppConfigs,
+} from '@/api/config.ts'
 
 export interface IUserState {
   token: string
@@ -20,10 +23,7 @@ class User extends VuexModule implements IUserState {
   public name = ''
   public avatar = ''
   public roles = []
-  public appConfigs = {
-    challenge2: { totalWattUrl: '' },
-    challenge3: { houseDataUrl: '', datasetUrl: '' },
-  }
+  public appConfigs = initEmptyAppConfigs()
 
   @Action({ commit: 'SET_TOKEN' })
   public async Login(userInfo: { username: string, password: string}) {

@@ -2,6 +2,9 @@ import { fetchGraphql } from '@/api/graphql.ts'
 const gql = String.raw // Dummy gql
 
 export interface appConfigs {
+  general: {
+    allowGraphiql: boolean,
+  },
   challenge2: {
     totalWattUrl: string,
   },
@@ -11,15 +14,26 @@ export interface appConfigs {
   },
 }
 
+export const initEmptyAppConfigs = () => {
+  return {
+    general: { allowGraphiql: false },
+    challenge2: { totalWattUrl: '' },
+    challenge3: { houseDataUrl: '', datasetUrl: '' },
+  } as appConfigs
+}
+
 export const appConfigsQuery = gql`
   appConfigs {
+    general {
+      allowGraphiql
+    }
     challenge2 {
-      totalWattUrl,
-    },
+      totalWattUrl
+    }
     challenge3 {
-      houseDataUrl,
-      datasetUrl,
-    },
+      houseDataUrl
+      datasetUrl
+    }
   }
 `
 
