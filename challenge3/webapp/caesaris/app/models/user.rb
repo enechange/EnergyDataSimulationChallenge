@@ -13,6 +13,9 @@ class User < ApplicationRecord
     where('roles_code & ? = ?', role_code, role_code)
   }
 
+  validates :email, presence: true,
+    format: { with: /\A([\w+\-]\.?)+@[\w\d\-]+(\.[\w\d\-]+)*\.[a-z]+\z/i }
+
   before_create :set_default_role, :set_default_img, :set_default_name
 
   # attr_accessor :roles

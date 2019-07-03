@@ -1,6 +1,6 @@
 module Mutations
   class UpdateUser < BaseMutation
-    description "Update User info"
+    description "Update User Info"
     # return fields
     field :user, Types::UserType, null: false
 
