@@ -84,6 +84,44 @@ uri = "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChalleng
 }
 ```
 
+**Mutation**
+```graphql
+mutation {
+  updateAppConfig(
+    input: {
+      appConfigs: {
+        challenge2: {
+          totalWattUrl: "https://example.org/sample.csv"
+        }
+      }
+    }
+  ) {
+    appConfigs {
+      challenge2 { totalWattUrl }
+    }
+  }
+}
+```
+
+**Results**
+
+```json
+{
+  "data": {
+    "updateAppConfig": {
+      "appConfigs": {
+        "challenge2": {
+          "totalWattUrl": "https://example.org/sample.csv"
+        }
+      }
+    }
+  }
+}
+```
+
+***TODO: try GraphQL subscription***
+
+
 ## Init Admin Page
 **Web page is a submodule in `vendor/admin`**
 

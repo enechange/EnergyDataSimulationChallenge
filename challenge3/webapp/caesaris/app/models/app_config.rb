@@ -2,6 +2,11 @@
 class AppConfig < RailsSettings::Base
   cache_prefix { "v1" }
 
+  field :general, type: :hash, default: {
+    allow_graphiql: true
+    # allow_graphiql: Rails.env.development?
+  }
+
   field :challenge2, type: :hash, default: {
     total_watt_url: "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge2/data/total_watt.csv",
   }
@@ -12,6 +17,6 @@ class AppConfig < RailsSettings::Base
   }
 
   def self.fields
-    %i(challenge2 challenge3)
+    %i(general challenge2 challenge3)
   end
 end

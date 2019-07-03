@@ -11,8 +11,12 @@ module Mutations
       Util.auth_user_graphql(context[:current_user])
       app_conf = app_configs.to_h
       app_conf.each do |fld, val|
+        value_origin = AppConfig.try(fld)
+        next if value_origin.nil? || val.blank?
+        value_to_update = value_origin.is_a?(Hash) ?
+          value_origin.deep_merge(val) : val
         method_name = "#{fld}="
-        AppConfig.try(method_name, val) if val.present?
+        AppConfig.try(method_name, value_to_update)
       end
       { app_configs: AppConfig }
     end
