@@ -18,6 +18,10 @@ switch (process.env.NODE_ENV) {
     break
 }
 
+export const getBaseURL = () => {
+  return baseURL || ''
+}
+
 const service = axios.create({
   baseURL,
   timeout: 5000,

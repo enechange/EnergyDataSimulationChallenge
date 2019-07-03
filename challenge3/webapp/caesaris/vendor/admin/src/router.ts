@@ -93,18 +93,18 @@ export default new Router({
         },
       ],
     },
-    // {
-    //   path: '/graphiql',
-    //   component: Layout,
-    //   children: [
-    //     {
-    //       path: 'index',
-    //       name: 'Graphiql',
-    //       component: () => import(/* webpackChunkName: "graphiql" */ '@/views/graphiql/index.vue'),
-    //       meta: { title: 'Graphiql', icon: 'graphql' }
-    //     }
-    //   ]
-    // },
+    {
+      path: '/graphiql',
+      component: Layout,
+      children: [
+        {
+          path: 'index',
+          name: 'Graphiql',
+          component: () => import(/* webpackChunkName: "graphiql" */ '@/views/graphiql/index.vue'),
+          meta: { title: 'Graphiql', icon: 'graphql' },
+        },
+      ],
+    },
     {
       path: 'github-link',
       component: Layout,
