@@ -51,6 +51,35 @@ fragment InputValue on __InputValue {
 }
 ```
 
+### Search Users By Role
+```graphql
+{
+  users (q: { hasRole: "admin" }) {
+    id
+    name
+    roles
+  }
+}
+```
+
+**Result**
+
+```json
+{
+  "data": {
+    "users": [
+      {
+        "id": "1",
+        "name": "Adm. Exa.",
+        "roles": [
+          "admin"
+        ]
+      }
+    ]
+  }
+}
+```
+
 ## Mutation
 ### Update AppConfigs
 ```graphql

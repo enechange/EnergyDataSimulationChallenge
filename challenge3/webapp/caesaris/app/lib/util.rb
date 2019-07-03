@@ -48,9 +48,9 @@ class Util
       end
     end
 
-    def auth_user_graphql(user)
+    def auth_user_graphql(user, role = 'admin')
       return true if Rails.env.development?
-      if user.blank? || !user.admin?
+      if user.blank? || !user.try("#{role}?")
         raise GraphQL::ExecutionError.new("GraphQL: Need admin user")
       end
     end

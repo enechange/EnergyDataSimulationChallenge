@@ -36,6 +36,7 @@ module Types
     end
 
     field :city, CityType, null: true do
+      description "Get city by city name"
       argument :name, String, required: true,
         description: "City name"
     end
@@ -96,6 +97,22 @@ module Types
     end
     def app_configs
       AppConfig
+    end
+
+    field :users, [UserType], null: true do
+      description "Find users by ransack"
+      argument :q, BaseScalar, required: false,
+        description: "Ransack params"
+    end
+    def users(q: nil)
+      Util.auth_user_graphql(context[:current_user])
+      if q.present?
+        @q = User.ransack(Util.form_ransack_params(q))
+        @q.sorts = 'id asc' if @q.sorts.blank?
+        @q.result(distinct: true)
+      else
+        User.all.order(:id)
+      end
     end
 
   end

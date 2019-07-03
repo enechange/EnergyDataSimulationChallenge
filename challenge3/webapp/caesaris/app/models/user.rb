@@ -43,6 +43,10 @@ class User < ApplicationRecord
     }
   end
 
+  def self.ransackable_scopes(auth_object = nil)
+    %i(has_role)
+  end
+
   private
 
   def set_default_role
