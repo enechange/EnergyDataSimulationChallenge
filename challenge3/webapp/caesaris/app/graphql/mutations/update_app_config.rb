@@ -1,7 +1,7 @@
 module Mutations
   class UpdateAppConfig < BaseMutation
-    # return fields
     description "Update application configs"
+    # return fields
     field :app_configs, Types::AppConfigType, null: false
 
     # arguments
