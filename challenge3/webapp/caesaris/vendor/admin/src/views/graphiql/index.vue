@@ -1,6 +1,9 @@
 <template lang="pug">
   .app-container
-    h2.module-ttl Try GraphQL Queries Here!
+    h2.module-ttl
+      | Try GraphQL Queries Here!
+      el-button.cheat-sheet-btn(@click='openCheatSheet', type='text', icon='el-icon-question')
+        | Cheat Sheet
     .inner-container
       .graphql-area(v-loading='!ifameReadyFlg')
         iframe.graphql-iframe(:src='graphiglUrl', :onload='ifameReady()')
@@ -42,6 +45,11 @@ export default class Form extends Vue {
     }
   }
 
+  private openCheatSheet() {
+    const url = 'https://github.com/jerrywdlee/EnergyDataSimulationChallenge/blob/master/challenge3/webapp/caesaris/documents/graphql_cheat_sheet.md'
+    const win = window.open(url)
+  }
+
   private ifameReady() {
     if (this.graphiglUrl) {
       this.ifameReadyFlg = true
@@ -80,5 +88,15 @@ export default class Form extends Vue {
     border-radius: 5px;
     min-height: calc(100vh - 165px);
   }
+}
+
+.module-ttl {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.cheat-sheet-btn {
+  float: right;
+  margin-left: -105px;
 }
 </style>

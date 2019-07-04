@@ -62,7 +62,7 @@ $ npx vsvg -s ./src/icons/svg -t ./src/icons/components --ext ts --es6
 ```sh
 $ bundle exec rspec
 # Coverage in `caesaris/coverage`
-# Coverage(2019-06-24): 97.51%
+# Coverage(2019-07-04): 918 / 930 LOC (98.71%)
 ```
 
 ##### Tests on Admin(Vue.js) Part
@@ -114,7 +114,16 @@ $ docker-compose up -d
 ***WIP***
 
 ### Challenges 2
-***WIP***
+#### Energy Consumption Per 30mins
+![documents/challenge-2/challenges-2-0.gif](documents/challenge-2/challenges-2-0.gif)
+
+#### Average Energy Consumption Per Day
+**Clustered By KMeans**  
+![documents/challenge-2/challenges-2-1.gif](documents/challenge-2/challenges-2-1.gif)
+
+#### Energy Consumption Per Day
+**Clustered By KMeans From 2 To 4**  
+![documents/challenge-2/challenges-2-2.gif](documents/challenge-2/challenges-2-2.gif)
 
 ### Challenges 3
 #### Abstract

@@ -52,6 +52,8 @@ fragment InputValue on __InputValue {
 ```
 
 ### Search Users By Role
+*Need Current User as Admin*
+
 ```graphql
 {
   users (q: { hasRole: "admin" }) {
@@ -82,6 +84,8 @@ fragment InputValue on __InputValue {
 
 ## Mutation
 ### Update AppConfigs
+*Need Current User as Admin*
+
 ```graphql
 mutation {
   updateAppConfig(
@@ -106,6 +110,44 @@ mutation {
       challenge2 { totalWattUrl }
       challenge3 { houseDataUrl, datasetUrl }
     }
+  }
+}
+```
+
+### Add New User
+*Need Current User as Admin*
+
+```graphql
+mutation {
+  newUser (
+    input: {
+      user: {
+        email: "new-user@example.org",
+        password: "p@ssw0rd",
+        roles: ["observer"]
+      }
+  }) {
+    user {
+      id, email, name, roles, imgUrl
+    }
+  }
+}
+```
+
+### Update User Info
+*Need Current User as Admin*
+
+```graphql
+mutation {
+  updateUser (
+    input: {
+      id: 1,
+      user: {
+        name: "New Name"
+        roles: ["admin", "editor"]
+      }
+  }) {
+    user { id, email, name, roles }
   }
 }
 ```
