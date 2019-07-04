@@ -52,6 +52,8 @@ fragment InputValue on __InputValue {
 ```
 
 ### Search Users By Role
+*Need Current User as Admin*
+
 ```graphql
 {
   users (q: { hasRole: "admin" }) {
@@ -82,6 +84,8 @@ fragment InputValue on __InputValue {
 
 ## Mutation
 ### Update AppConfigs
+*Need Current User as Admin*
+
 ```graphql
 mutation {
   updateAppConfig(
@@ -111,6 +115,8 @@ mutation {
 ```
 
 ### Add New User
+*Need Current User as Admin*
+
 ```graphql
 mutation {
   newUser (
@@ -129,6 +135,8 @@ mutation {
 ```
 
 ### Update User Info
+*Need Current User as Admin*
+
 ```graphql
 mutation {
   updateUser (
