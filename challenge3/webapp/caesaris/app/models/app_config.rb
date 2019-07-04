@@ -3,8 +3,8 @@ class AppConfig < RailsSettings::Base
   cache_prefix { "v1" }
 
   field :general, type: :hash, default: {
-    allow_graphiql: true
-    # allow_graphiql: Rails.env.development?
+    # allow_graphiql: true
+    allow_graphiql: Rails.env.development?
   }
 
   field :challenge2, type: :hash, default: {

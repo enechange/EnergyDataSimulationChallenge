@@ -4,6 +4,11 @@ GraphiQL::Rails.config.headers['Authorization'] = -> (context) {
 
   unless AppConfig.general[:allow_graphiql]
     # will cause http status 400
+    # ActionView::Template::Error: ActionController::BadRequest
+    raise ActionController::BadRequest
+  end
+
+  if !Rails.env.development? && context.params['auth'].blank?
     raise ActionController::BadRequest
   end
 
