@@ -37,12 +37,12 @@ RSpec.describe 'Test GraphiQL Page Shown', type: :request do
 
     expect{
       get graphiql_rails_path(auth: URI.encode(auth_headers['Authorization']))
-    }.to raise_error(ActionView::Template::Error)
+    }.to raise_error(ActionController::BadRequest)
   end
 
   it "Should Reject GraphiQL if no `auth` field" do
     expect{
       get graphiql_rails_path
-    }.to raise_error(ActionView::Template::Error)
+    }.to raise_error(ActionController::BadRequest)
   end
 end
