@@ -21,14 +21,10 @@ class DataLoader
     end
 
     def load_cities
-      city_texts = House.group(:city_text).select(:city_text).map(&:city_text)
+      city_texts = House.distinct.pluck(:city_text)
       ActiveRecord::Base.transaction do
         city_texts.each do |city_text|
-          city = City.where(name: city_text).first
-          if city.blank?
-            city = City.new(name: city_text)
-            city.save!
-          end
+          City.find_or_create_by!(name: city_text)
         end
       end
     end
