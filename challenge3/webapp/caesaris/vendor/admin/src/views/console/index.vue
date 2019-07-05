@@ -25,6 +25,18 @@
             // el-button(@click='onCancel')
               | Cancel
     .inner-container
+      h2.inner-container-ttl General Settings
+      el-form(ref='generalData', :model='generalData', label-width='120px', :rules='generalDataRules')
+        el-col(:span='8')
+          el-form-item(label='GraphiQL', prop='allowGraphiql')
+            el-switch(v-model='generalData.allowGraphiql', :disabled='generalData.onloadFlg',
+              active-text='Allow', inactive-text='Disallow')
+        el-col(:span='24')
+          el-form-item
+            el-button(type='primary', :loading='generalData.onloadFlg',
+              @click='updateGeneral')
+              | {{ generalData.onloadFlg ? 'Loading...' : 'Update General Settings' }}
+    .inner-container
       h2.inner-container-ttl Load Data
       h3.inner-container-subttl
         | Challenge 2
@@ -66,7 +78,13 @@ import { MessageBox, Loading, Form as ElForm } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
 import { isValidUsername } from '@/utils/validate'
 import request from '@/utils/request'
-import { getAppConfig, setAppConfig } from '@/api/config.ts'
+import { getAppConfig, setAppConfig, obj2Snippet } from '@/api/config.ts'
+
+type cbFunc = () => void | Promise<void>
+interface formData {
+  [key: string]: any
+  onloadFlg: boolean
+}
 
 @Component
 export default class Form extends Vue {
@@ -82,6 +100,15 @@ export default class Form extends Vue {
     email: [{ required: true, trigger: 'blur', validator: this.emailValidator }],
     password: [{ required: true, trigger: 'blur', validator: this.passwordValidator }],
     roles: [{ required: true, trigger: 'change', validator: this.rolesValidator }],
+  }
+
+  private generalData = {
+    ...UserModule.appConfigs.general,
+    onloadFlg: false,
+  }
+
+  private generalDataRules = {
+    allowGraphiql: [{ required: true, trigger: 'change' }],
   }
 
   private challenge2Data = {
@@ -123,6 +150,17 @@ export default class Form extends Vue {
     const { challenge2, challenge3 } = UserModule.appConfigs
     Object.assign(this.challenge2Data, challenge2)
     Object.assign(this.challenge3Data, challenge3)
+  }
+
+  private updateGeneral(event: MouseEvent) {
+    event.preventDefault()
+    const generalDataForm = this.$refs.generalData as ElForm
+    const queryObj = { general: this.generalData }
+    delete queryObj.general.onloadFlg
+    const querySnippet = obj2Snippet(queryObj)
+    this.uploadAppConfigs(generalDataForm, this.generalData, querySnippet, () => {
+      this.$message.success('General Settings Updated!')
+    })
   }
 
   private createUser(event: MouseEvent) {
@@ -169,25 +207,35 @@ export default class Form extends Vue {
 
   private setChallenge2Url(event: MouseEvent) {
     event.preventDefault()
-
     const challenge2DataForm = this.$refs.challenge2Data as ElForm
-    challenge2DataForm.validate(async (valid: boolean) => {
+    const { totalWattUrl } = this.challenge2Data
+    const querySnippet = `
+      challenge2: {
+        totalWattUrl: "${totalWattUrl}"
+      }
+    `
+    this.uploadAppConfigs(challenge2DataForm, this.challenge2Data, querySnippet, () => {
+      this.$message.success('Challenge 2 Total Watt Url Saved!')
+    })
+  }
+
+  private uploadAppConfigs(form: ElForm, data: formData, qrySnpt: string, onSucc: cbFunc) {
+    form.validate(async (valid: boolean) => {
       if (valid) {
-        const { totalWattUrl } = this.challenge2Data
-        const querySnippet = `
-          challenge2: {
-            totalWattUrl: "${totalWattUrl}"
-          }
-        `
         try {
-          const appConfigs = await setAppConfig(querySnippet)
-          UserModule.UpdateAppConfigs(appConfigs)
-          this.$message.success('Challenge 2 Total Watt Url Saved!')
+          data.onloadFlg = true
+          const appConfigs = await setAppConfig(qrySnpt)
+          await UserModule.UpdateAppConfigs(appConfigs)
+          this.updateAppConfigs()
+          await onSucc()
         } catch (error) {
           this.$message.error(error.message)
+        } finally {
+          data.onloadFlg = false
         }
       } else {
         this.$message.error('Invalid Data!')
+        data.onloadFlg = false
         return false
       }
     })
