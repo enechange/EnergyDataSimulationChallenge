@@ -22,7 +22,7 @@ RSpec.describe 'GraphQL Mutation on AppConfigs' do
   it "Should update challenge2" do
     context = { current_user: User.admin.first }
     dummy_url = "https://example.org/total_watt_url.csv"
-    query = <<-GQL
+    query = <<~GQL
       mutation {
         updateAppConfig(
           input: {
@@ -39,7 +39,7 @@ RSpec.describe 'GraphQL Mutation on AppConfigs' do
   it "Should update challenge3 partial" do
     context = { current_user: User.admin.first }
     dummy_url = "https://example.com/house_data_url.csv"
-    query = <<-GQL
+    query = <<~GQL
       mutation {
         updateAppConfig(
           input: {
@@ -56,7 +56,7 @@ RSpec.describe 'GraphQL Mutation on AppConfigs' do
 
   it "Should throw error if user is not admin" do
     context = { current_user: User.observer.first }
-    query = <<-GQL
+    query = <<~GQL
       mutation {
         updateAppConfig( input: { appConfigs: {} }) {
           appConfigs { challenge2 { totalWattUrl } }

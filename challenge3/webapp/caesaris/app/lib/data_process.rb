@@ -12,7 +12,7 @@ class DataProcess
       avg = Arel.sql('AVG(per_person)').as('avg')
 
       City.all.each_with_object({}) do |city, results|
-        sql = <<-SQL
+        sql = <<~SQL
           (SELECT year, month,
             (CAST(energy_production AS FLOAT) / CAST(num_of_people AS FLOAT)) AS per_person
           FROM datasets, houses

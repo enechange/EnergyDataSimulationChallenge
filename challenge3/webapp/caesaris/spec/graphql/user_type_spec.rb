@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'GraphQL on User' do
   it "Should get all users" do
-    query = <<-GQL
+    query = <<~GQL
       {
         users {
           id, email, name, roles
@@ -17,7 +17,7 @@ RSpec.describe 'GraphQL on User' do
 
   it "Should search user by id" do
     @user = User.last
-    query = <<-GQL
+    query = <<~GQL
       {
         users (q: { idEq: #{@user.id} }) {
           id, email, name, roles
@@ -35,7 +35,7 @@ RSpec.describe 'GraphQL on User' do
   end
 
   it "Should search user by email" do
-    query = <<-GQL
+    query = <<~GQL
       {
         users (q: { emailCont: "@", s: "id desc"}) {
           id, email, name, roles
@@ -52,7 +52,7 @@ RSpec.describe 'GraphQL on User' do
 
   it "Should search user by role: admin" do
     role = "admin"
-    query = <<-GQL
+    query = <<~GQL
       {
         users (q: { hasRole: "#{role}"}) {
           id, roles
@@ -70,7 +70,7 @@ RSpec.describe 'GraphQL on User' do
 
   it "Should search user by role: observer" do
     role = "observer"
-    query = <<-GQL
+    query = <<~GQL
       {
         users (q: { hasRole: "#{role}"}) {
           id, roles
@@ -87,7 +87,7 @@ RSpec.describe 'GraphQL on User' do
   end
 
   it "Should throw error if user is not admin" do
-    query = <<-GQL
+    query = <<~GQL
       {
         users (q: { idEq: 1 }) {
           id, email, name, roles
