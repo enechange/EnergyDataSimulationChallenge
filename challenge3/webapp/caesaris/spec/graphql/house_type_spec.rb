@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'GraphQL on HouseType' do
   it "Should exec house query" do
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         house(id: 1) { firstname, lastname }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     house = House.find(1)
     expect(data.dig('house', 'firstname')).to eq house.firstname
@@ -14,11 +14,11 @@ RSpec.describe 'GraphQL on HouseType' do
   end
 
   it "Should find city from house query" do
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         house(id: 2) { city { name } }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     city = House.find(2).city
     expect(data.dig('house', 'city', 'name')).to eq city.name
@@ -37,11 +37,11 @@ RSpec.describe 'GraphQL on HouseType' do
   end
 
   it "Should find houses by ransack like query" do
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         houses(q: { idEq: 3 }) { id, firstname }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     house = House.find(3)
     expect(data['houses'][0]['firstname']).to eq house.firstname

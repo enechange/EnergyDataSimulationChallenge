@@ -2,28 +2,28 @@ require 'rails_helper'
 
 RSpec.describe 'GraphQL on AppConfigType' do
   it "Should Get total_watt_url from challenge2" do
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         appConfigs { challenge2 { totalWattUrl } }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)['appConfigs']
     expect(data.dig('challenge2', 'totalWattUrl')).to be_truthy
   end
 
   it "Should Get house_data_url and dataset_url from challenge3" do
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         appConfigs { challenge3 { houseDataUrl, datasetUrl } }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)['appConfigs']
     expect(data.dig('challenge3', 'houseDataUrl')).to be_truthy
     expect(data.dig('challenge3', 'datasetUrl')).to be_truthy
   end
 
   it "Should return all app_configs" do
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         appConfigs {
           general { allowGraphiql }
@@ -32,7 +32,7 @@ RSpec.describe 'GraphQL on AppConfigType' do
           fieldKeys
         }
       }
-    GQL
+    GRAPHQL
 
     data = Util.graphql_query(query).deep_symbolize_keys
     data = data[:appConfigs]

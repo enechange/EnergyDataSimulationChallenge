@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'GraphQL on DatasetType' do
   it "Should return all datasets" do
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         datasets { id }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     expect(data['datasets'].size).to be > 0
   end
@@ -23,25 +23,25 @@ RSpec.describe 'GraphQL on DatasetType' do
   end
 
   it "Should find datasets sorted and with pagination" do
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         datasets(q: { s: "energyProduction desc" }, page: 2, per: 20) {
           id, energyProduction
         }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     expect(data['datasets'].size).to eq 20
   end
 
   it "Should find datasets sorted by multiple conditions" do
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         datasets(q: { s: ["temperature desc", "daylight asc"] }, page: 1) {
           id
         }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     expect(data['datasets'].size).to be > 0
   end

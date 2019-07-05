@@ -56,13 +56,13 @@ RSpec.describe 'GraphQL Mutation on AppConfigs' do
 
   it "Should throw error if user is not admin" do
     context = { current_user: User.observer.first }
-    query = <<~GQL
+    query = <<~GRAPHQL
       mutation {
         updateAppConfig( input: { appConfigs: {} }) {
           appConfigs { challenge2 { totalWattUrl } }
         }
       }
-    GQL
+    GRAPHQL
 
     expect{ Util.graphql_query(query) }.to raise_error "GraphQL: Need admin user"
   end

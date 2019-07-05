@@ -14,28 +14,28 @@ RSpec.describe 'GraphQL on CityType' do
 
   it "Should find city by ransack like query" do
     city = House.find(1).city
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         cities(q: {housesIdEq: 1}) { id, name }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     expect(data['cities'][0]['name']).to eq city.name
   end
 
   it "Should return all cities" do
     city_num = City.all.size
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         cities { id, name }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     expect(data['cities'].size).to eq city_num
   end
 
   it "Should find cities with multiple conditions" do
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         cities(q: {
           m: "or",
@@ -45,7 +45,7 @@ RSpec.describe 'GraphQL on CityType' do
           ]
         }) { id, name }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     expect(data['cities'].size).to eq 2
   end
