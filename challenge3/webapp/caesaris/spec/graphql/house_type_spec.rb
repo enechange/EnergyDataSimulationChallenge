@@ -44,6 +44,22 @@ RSpec.describe 'GraphQL on HouseType' do
     '
     data = Util.graphql_query(query)
     house = House.find(3)
-    expect(data['houses'][0]["firstname"]).to eq house.firstname
+    expect(data['houses'][0]['firstname']).to eq house.firstname
+  end
+
+  it "Should find houses by ransack in json" do
+    city = City.first
+    houses = city.houses
+    query = <<-GQL
+      {
+        houses(q: "{ \\"cityNameCont\\": \\"#{city.name}\\"}") {
+          id, fullName, city { name }
+        }
+      }
+    GQL
+    data = Util.graphql_query(query)
+    house = House.find(3)
+    expect(data['houses'].size).to eq houses.size
+    expect(data.dig('houses', 0, 'city', 'name')).to eq city.name
   end
 end

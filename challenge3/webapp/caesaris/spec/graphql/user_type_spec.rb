@@ -1,6 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe 'GraphQL on User' do
+  it "Should get all users" do
+    query = <<-GQL
+      {
+        users {
+          id, email, name, roles
+        }
+      }
+    GQL
+
+    context = { current_user: User.admin.first }
+    data = Util.graphql_query(query, context: context)['users']
+    expect(data.size).to eq User.count
+  end
+
   it "Should search user by id" do
     @user = User.last
     query = <<-GQL
