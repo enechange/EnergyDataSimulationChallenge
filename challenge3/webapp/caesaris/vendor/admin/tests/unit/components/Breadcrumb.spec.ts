@@ -13,8 +13,8 @@ const routes = [
     name: 'home',
     children: [{
       path: 'dashboard',
-      name: 'dashboard'
-    }]
+      name: 'dashboard',
+    }],
   },
   {
     path: '/menu',
@@ -26,7 +26,7 @@ const routes = [
       children: [{
         path: 'menu1-1',
         name: 'menu1-1',
-        meta: { title: 'menu1-1' }
+        meta: { title: 'menu1-1' },
       },
       {
         path: 'menu1-2',
@@ -36,24 +36,24 @@ const routes = [
         children: [{
           path: 'menu1-2-1',
           name: 'menu1-2-1',
-          meta: { title: 'menu1-2-1' }
+          meta: { title: 'menu1-2-1' },
         },
         {
           path: 'menu1-2-2',
-          name: 'menu1-2-2'
-        }]
-      }]
-    }]
+          name: 'menu1-2-2',
+        }],
+      }],
+    }],
   }]
 
 const router = new VueRouter({
-  routes
+  routes,
 })
 
 describe('Breadcrumb.vue', () => {
   const wrapper = mount(Breadcrumb, {
     localVue,
-    router
+    router,
   })
 
   it('dashboard', () => {

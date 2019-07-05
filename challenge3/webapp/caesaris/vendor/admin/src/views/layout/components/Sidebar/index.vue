@@ -20,8 +20,8 @@ import variables from '@/styles/variables.scss'
 
 @Component({
   components: {
-    Logo, SidebarItem
-  }
+    Logo, SidebarItem,
+  },
 })
 export default class SideBar extends Vue {
   @Prop({ default: false }) private collapse!: boolean;

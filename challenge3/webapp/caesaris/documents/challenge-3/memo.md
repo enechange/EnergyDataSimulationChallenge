@@ -10,14 +10,14 @@
 
 # Load Dataset
 > uri = "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv"
-# Now in AppConfig.challenge_3[:dataset_url]
+# Now in AppConfig.challenge3[:dataset_url]
 > DataLoader.load_dataset(uri)
 ```
 
 ## Load Total Watt
 ```rb
 uri = "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge2/data/total_watt.csv"
-# AppConfig.challenge_2[:total_watt_url]
+# AppConfig.challenge2[:total_watt_url]
 ```
 
 ## GraphQL
@@ -83,6 +83,44 @@ uri = "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChalleng
   }
 }
 ```
+
+**Mutation**
+```graphql
+mutation {
+  updateAppConfig(
+    input: {
+      appConfigs: {
+        challenge2: {
+          totalWattUrl: "https://example.org/sample.csv"
+        }
+      }
+    }
+  ) {
+    appConfigs {
+      challenge2 { totalWattUrl }
+    }
+  }
+}
+```
+
+**Results**
+
+```json
+{
+  "data": {
+    "updateAppConfig": {
+      "appConfigs": {
+        "challenge2": {
+          "totalWattUrl": "https://example.org/sample.csv"
+        }
+      }
+    }
+  }
+}
+```
+
+***TODO: try GraphQL subscription***
+
 
 ## Init Admin Page
 **Web page is a submodule in `vendor/admin`**
@@ -170,6 +208,7 @@ heroku config:set RAILS_ENV=production -a iuliana-challenges
 heroku config:set DEFAULT_USER_EMAIL="USERNAME@example.com" -a iuliana-challenges
 heroku config:set DEFAULT_USER_PASSWORD="PASSWORD" -a iuliana-challenges
 heroku config:set SECRET_KEY_BASE="XXXXXXXXXX" -a iuliana-challenges
+heroku config:set ALLOW_GRAPHIQL=1 -a iuliana-challenges
 heroku config:set TZ=Asia/Tokyo -a iuliana-challenges
 heroku config:set RAILS_SERVE_STATIC_FILES=1 -a iuliana-challenges
 

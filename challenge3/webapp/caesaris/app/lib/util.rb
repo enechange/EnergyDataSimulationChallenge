@@ -27,8 +27,8 @@ class Util
       param_res
     end
 
-    def graphql_query(query_string, raise_err = true)
-      result = CaesarisSchema.execute(query_string)
+    def graphql_query(query_string, raise_err = true, context: {})
+      result = CaesarisSchema.execute(query_string, context: context)
       if result["errors"].present? && raise_err
         raise result["errors"][0]["message"]
       else
@@ -45,6 +45,13 @@ class Util
     def set_binary_codes(mask_list)
       mask_list.reduce(0) do |result, mask|
         result |= mask.is_a?(String) ? mask.to_i(2) : mask.to_i
+      end
+    end
+
+    def auth_user_graphql(user, role = 'admin')
+      return true if Rails.env.development?
+      if user.blank? || !user.try("#{role}?")
+        raise GraphQL::ExecutionError.new("GraphQL: Need admin user")
       end
     end
   end

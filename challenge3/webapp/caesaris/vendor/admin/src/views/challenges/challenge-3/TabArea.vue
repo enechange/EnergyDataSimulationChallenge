@@ -13,7 +13,7 @@ import BarChart from './Charts/BarChart.vue'
 import ScatterPlot from './Charts/ScatterPlot.vue'
 
 @Component({
-  components: { BarChart, ScatterPlot }
+  components: { BarChart, ScatterPlot },
 })
 export default class TabArea extends Vue {
   activeName: string = 'bar-chart'

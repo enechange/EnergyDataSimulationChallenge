@@ -2,20 +2,28 @@ import { VuexModule, Module, MutationAction, Mutation, Action, getModule } from 
 import { login, logout, getUserInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import store from '@/store'
+import {
+  appConfigs, getAppConfig,
+  initEmptyAppConfigs,
+} from '@/api/config.ts'
 
 export interface IUserState {
-  token: string;
-  name: string;
-  avatar: string;
-  roles: string[];
+  token: string
+  userId: null | number
+  name: string
+  avatar: string
+  roles: string[]
+  appConfigs: appConfigs
 }
 
 @Module({ dynamic: true, store, name: 'user' })
 class User extends VuexModule implements IUserState {
-  public token = getToken() || '';
-  public name = '';
-  public avatar = '';
-  public roles = [];
+  public token = getToken() || ''
+  public userId: null | number = null
+  public name = ''
+  public avatar = ''
+  public roles = []
+  public appConfigs = initEmptyAppConfigs()
 
   @Action({ commit: 'SET_TOKEN' })
   public async Login(userInfo: { username: string, password: string}) {
@@ -39,7 +47,7 @@ class User extends VuexModule implements IUserState {
     return ''
   }
 
-  @MutationAction({ mutate: ['roles', 'name', 'avatar'] })
+  @MutationAction({ mutate: ['roles', 'userId', 'name', 'avatar'] })
   public async GetUserInfo() {
     const token = getToken()
     if (token === undefined) {
@@ -48,13 +56,22 @@ class User extends VuexModule implements IUserState {
     const { data } = await getUserInfo(token)
     if (data.roles && data.roles.length > 0) {
       return {
+        userId: data.userId,
         roles: data.roles,
         name: data.name,
-        avatar: data.avatar
+        avatar: data.avatar,
       }
     } else {
       throw Error('GetUserInfo: roles must be a non-null array!')
     }
+  }
+
+  @MutationAction({ mutate: ['appConfigs'] })
+  public async UpdateAppConfigs(appConfigs?: appConfigs) {
+    if (!appConfigs) {
+      appConfigs = await getAppConfig()
+    }
+    return { appConfigs }
   }
 
   @MutationAction({ mutate: ['token', 'roles'] })
@@ -66,7 +83,7 @@ class User extends VuexModule implements IUserState {
     removeToken()
     return {
       token: '',
-      roles: []
+      roles: [],
     }
   }
 

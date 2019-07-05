@@ -13,7 +13,7 @@ import {
   createPlotOption,
   getOption,
   totalWatt,
-  totalWattTime
+  totalWattTime,
 } from './StatChartHelper'
 import * as echarts from 'echarts'
 import * as ecStat from 'echarts-stat'

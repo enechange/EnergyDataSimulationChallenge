@@ -16,9 +16,11 @@ Rails.application.routes.draw do
   end
 
   # GraphiQL
-  if Rails.env.development?
+  # See `config/initializers/graphiql.rb`
+  constraints GraphiQLAuthenticate.new do
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
+
   post "/graphql", to: "graphql#execute"
 
 end

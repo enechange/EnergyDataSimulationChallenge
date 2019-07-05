@@ -13,7 +13,46 @@ This is a web app for exhibiting **[EnergyDataSimulationChallenge](https://githu
 **Attention: Source Codes of Challenge 2 placed in [`challenge3/webapp/caesaris`](../../../challenge3/webapp/caesaris)**
 
 And *Challenge 2 Special Logics* are mainly in  
-[`challenge3/webapp/caesaris/vendor/admin/src/views/challenges/challenge-2/`](https://github.com/jerrywdlee/EnergyDataSimulationChallenge/tree/master/challenge3/webapp/caesaris/vendor/admin/src/views/challenges/challenge-2)
+[`challenge3/webapp/caesaris/vendor/admin/src/views/challenges/challenge-2/`](../../../challenge3/webapp/caesaris/vendor/admin/src/views/challenges/challenge-2)
+
+### Locate Application
+```sh
+EnergyDataSimulationChallenge/
+  ├─ README.md
+  ├─ challenge1/
+  ├─ challenge2/
+  │    ├─ data/
+  │    └─ analysis/
+  │         └─ caesaris/ # <= You Are Here Now!
+  │
+  ├─ challenge3/
+  │    ├─ data/
+  │    └─ webapp/
+  │         └─ caesaris/ # <= Try To Go Here!
+  │
+  └─ challenge4/
+
+vendor/admin
+```
+
+### Locate Challenge 2 Logics
+The root path is `EnergyDataSimulationChallenge/challenge3/webapp/caesaris`
+
+```sh
+caesaris/
+  ├─ README.md
+  ├─ app/
+  │ # ... A lot of Rails Files
+  └─ vendor/
+      └─ admin/
+          ├─ package.json
+          │ # ... A lot of JS Files
+          └─ src/
+              └─ views/
+                  └─ challenges
+                      └─ challenge-2 # <= Challenge 2 Mainly In Here
+```
+
 
 ## Challenges
 ### Challenges 2

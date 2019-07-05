@@ -50,8 +50,8 @@ import { UserModule } from '@/store/modules/user'
 @Component({
   components: {
     Breadcrumb,
-    Hamburger
-  }
+    Hamburger,
+  },
 })
 export default class Navbar extends Vue {
   get sidebar() {

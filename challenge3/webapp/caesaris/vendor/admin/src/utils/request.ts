@@ -18,9 +18,13 @@ switch (process.env.NODE_ENV) {
     break
 }
 
+export const getBaseURL = () => {
+  return baseURL || ''
+}
+
 const service = axios.create({
   baseURL,
-  timeout: 5000
+  timeout: 5000,
 })
 
 // Request interceptors
@@ -85,7 +89,7 @@ service.interceptors.response.use(
     Message({
       message: message,
       type: 'error',
-      duration: 5 * 1000
+      duration: 5 * 1000,
     })
     handleResponseError(code, message)
     return Promise.reject(error)
@@ -96,7 +100,7 @@ function handleResponseError(statusCode: number, message = 'System Error!') {
   Message({
     message,
     type: 'error',
-    duration: 5 * 1000
+    duration: 5 * 1000,
   })
   if (authFailed(statusCode, message)) {
     MessageBox.confirm(
@@ -105,7 +109,7 @@ function handleResponseError(statusCode: number, message = 'System Error!') {
       {
         confirmButtonText: 'Login',
         cancelButtonText: 'Cancel',
-        type: 'warning'
+        type: 'warning',
       }
     ).then(() => {
       UserModule.FedLogOut().then(() => {

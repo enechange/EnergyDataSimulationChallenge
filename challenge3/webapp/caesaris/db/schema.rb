@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_054146) do
+ActiveRecord::Schema.define(version: 2019_06_24_065530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 2019_06_19_054146) do
     t.index ["has_child"], name: "index_houses_on_has_child"
     t.index ["lastname"], name: "index_houses_on_lastname"
     t.index ["num_of_people"], name: "index_houses_on_num_of_people"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string "var", null: false
+    t.text "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["var"], name: "index_settings_on_var", unique: true
   end
 
   create_table "users", force: :cascade do |t|

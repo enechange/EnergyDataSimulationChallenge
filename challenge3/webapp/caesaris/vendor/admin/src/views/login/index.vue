@@ -38,12 +38,12 @@ import { Form as ElForm } from 'element-ui'
 export default class Login extends Vue {
   private loginForm = {
     username: '',
-    password: ''
+    password: '',
   }
   private defaultUser: { username: string, password: string } | null = null
   private loginRules = {
     username: [{ required: true, trigger: 'blur', validator: this.validateInput }],
-    password: [{ required: true, trigger: 'blur', validator: this.validateInput }]
+    password: [{ required: true, trigger: 'blur', validator: this.validateInput }],
   }
   private loading = false
   private pwdType = 'password'
@@ -112,7 +112,7 @@ export default class Login extends Vue {
       if (data && data['email'] && data['password']) {
         this.defaultUser = {
           username: data['email'],
-          password: data['password']
+          password: data['password'],
         }
         if (process.env.NODE_ENV === 'development') {
           this.loginForm.username = data['email']

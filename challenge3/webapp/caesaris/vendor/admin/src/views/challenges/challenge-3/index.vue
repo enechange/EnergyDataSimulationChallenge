@@ -10,7 +10,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 import TabArea from './TabArea.vue'
 
 @Component({
-  components: { TabArea }
+  components: { TabArea },
 })
 export default class Challenge3 extends Vue { }
 </script>

@@ -1,6 +1,4 @@
 // StatChartHelper.ts
-
-/* eslint-disable comma-dangle */
 import * as _ from 'lodash'
 import * as echarts from 'echarts'
 import * as ecStat from 'echarts-stat'
@@ -64,7 +62,7 @@ export const getThresholdsfromClusteringResult = (clusteringResult: ecStat.clust
     })
     return {
       min: _.min(resultSet) as number,
-      max: _.max(resultSet) as number
+      max: _.max(resultSet) as number,
     }
   }), ['min', 'max'])
   return thresholds
@@ -110,7 +108,7 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
   const opt: echarts.EChartOption = {
     legend: {
       data: dataSetLabel,
-      align: 'left'
+      align: 'left',
     },
     dataZoom: [
       {
@@ -126,14 +124,14 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
         yAxisIndex: 0,
         filterMode: 'empty',
         right: '6%',
-      }
+      },
     ],
     toolbox: {},
     tooltip: {
       trigger: 'axis',
       axisPointer: {
-        type: 'cross'
-      }
+        type: 'cross',
+      },
     },
     grid: {
       bottom: 80,
@@ -143,8 +141,8 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
       data: xAxisData,
       silent: false,
       splitLine: {
-        show: false
-      }
+        show: false,
+      },
     },
     yAxis: [
       {
@@ -153,8 +151,8 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
         axisLabel: {
           formatter: (data: number) => {
             return `${data / 1000} kWh`
-          }
-        }
+          },
+        },
       },
     ],
     series: [
@@ -172,14 +170,14 @@ export const createHistOption = (dataList: totalWatt[][] | totalWattTime[][], da
           }),
           animationDelay: (idx: number) => {
             return idx * 0.5 + 10 * i
-          }
+          },
         }
-      })
+      }),
     ],
     animationEasing: 'elasticOut',
     animationDelayUpdate: (idx: number) => {
       return idx * 0.5
-    }
+    },
   }
   return opt
 }
@@ -217,22 +215,30 @@ export const createPlotOption = () => {
       autoPlay: true,
       label: {
         normal: {
-          show: false
-        }
+          show: false,
+        },
       },
-      data: []
+      data: [],
     },
     baseOption: {
+      tooltip: {
+        show: true,
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+        },
+        formatter: (data: any) => {
+          return formatScatterTooltip(data)
+        },
+      },
       xAxis: {
         type: 'value',
         max: 3600 * 24,
         axisLabel: {
           formatter: (data: number) => {
-            const timeZoneOffsetSec = (new Date()).getTimezoneOffset() * 60
-            const dateOffset = new Date((data + timeZoneOffsetSec) * 1000)
-            return `${dateOffset.getHours()}:${dateOffset.getMinutes()}`
-          }
-        }
+            return timeStampToTimeStr(data)
+          },
+        },
       },
       yAxis: {
         type: 'value',
@@ -240,23 +246,25 @@ export const createPlotOption = () => {
         axisLabel: {
           formatter: (data: number) => {
             return `${data / 1000} kWh`
-          }
-        }
+          },
+        },
       },
       series: [{
         type: 'scatter',
         symbolSize: 5,
-      }]
+      }],
     },
-    options: []
+    options: [],
   }
 }
 
 export function getOption(result: ecStat.clustering.Result, k: number) {
-  const clusterAssment = result.clusterAssment
+  // const clusterAssment = result.clusterAssment
   const centroids = result.centroids
   const ptsInCluster = result.pointsInCluster
-  const color = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3']
+  const color = [
+    '#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83',
+  ]
   const series = []
   for (let i = 0; i < k; i++) {
     series.push({
@@ -266,32 +274,36 @@ export function getOption(result: ecStat.clustering.Result, k: number) {
       animation: false,
       data: ptsInCluster[i],
       markPoint: {
-        symbolSize: 29,
+        symbolSize: 35,
         label: {
           normal: {
-            show: false
+            show: false,
           },
           emphasis: {
             show: true,
             position: 'top',
             formatter: function (params: { data: { coord: number[]}}) {
-              return Math.round(params.data.coord[0] * 100) / 100 + '  ' +
-                Math.round(params.data.coord[1] * 100) / 100 + ' '
+              const timeStr = timeStampToTimeStr(Math.round(params.data.coord[0]))
+              const energyStr = (params.data.coord[1] / 1000).toFixed(3) + ' kWh'
+              return `${timeStr}  ${energyStr}`
+              // return Math.round(params.data.coord[0] * 100) / 100 + '  ' +
+              //   Math.round(params.data.coord[1] * 100) / 100 + ' '
             },
             textStyle: {
-              color: '#000'
-            }
-          }
+              color: '#000',
+              fontWeight: 'bold',
+            },
+          },
         },
         itemStyle: {
           normal: {
-            opacity: 0.7
-          }
+            opacity: 0.7,
+          },
         },
         data: [{
-          coord: centroids[i]
-        }]
-      }
+          coord: centroids[i],
+        }],
+      },
     })
   }
 
@@ -299,14 +311,56 @@ export function getOption(result: ecStat.clustering.Result, k: number) {
     tooltip: {
       trigger: 'axis',
       axisPointer: {
-        type: 'cross'
-      }
+        type: 'cross',
+      },
     },
     series: series,
-    color: color
+    color: color,
   }
+}
+
+interface tooltipData {
+  color: string,
+  data: number[],
+  marker: string,
+  name: string,
+  seriesName: string,
+  seriesIndex: number,
+  seriesType: string,
+}
+function formatScatterTooltip(dataList: tooltipData[]) {
+  const ttlStyle = 'display: block;font-size: 14px;font-weight: bold;padding-left: 10px;'
+  const listStyle = 'display: block;font-size: 12px;font-weight: normal;padding-left: 5px;'
+
+  const dataSet = dataList[0]
+  const timeStampList = dataList.map(data => data.data[0])
+  const energyList = dataList.map(data => data.data[1])
+  const [timeStampMin, timeStampMax] = [_.min(timeStampList), _.max(timeStampList)]
+  const energyMin = (_.min(energyList) as number / 1000).toFixed(3)
+  const energyMax = (_.max(energyList) as number / 1000).toFixed(3)
+
+  const seriesTtl = `Cluster ${dataSet.seriesIndex + 1}`
+  const timeStr = `${timeStampToTimeStr(timeStampMin)} ~ ${timeStampToTimeStr(timeStampMax)}`
+  const energyStr = `${energyMin} kwh ~ ${energyMax} kwh`
+
+  const outerHtml = `
+    <div>
+      <span style="${ttlStyle}">${dataSet.marker} ${seriesTtl}</span><hr>
+      <span style="${listStyle}">Time  : ${timeStr}</span>
+      <span style="${listStyle}">Energy: ${energyStr}</span>
+    </div>
+  `
+  return outerHtml
 }
 
 const toISODateString = (date: Date) => date.toISOString().split('T')[0]
 const toISOTimeString = (date: Date) =>
   date.toISOString().split('T')[1].replace('Z', '').split('.')[0]
+
+const formatTimeStr = (hour: number, min = 0) =>
+  `${_.padStart(hour.toString(), 2, '0')}:${_.padStart(min.toString(), 2, '0')}`
+const timeStampToTimeStr = (timeStamp = 0) => {
+  const timeZoneOffsetSec = (new Date()).getTimezoneOffset() * 60
+  const dateOffset = new Date((timeStamp + timeZoneOffsetSec) * 1000)
+  return formatTimeStr(dateOffset.getHours(), dateOffset.getMinutes())
+}
