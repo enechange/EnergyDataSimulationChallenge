@@ -38,7 +38,8 @@ export const appConfigsQuery = gql`
 `
 
 export const obj2Snippet = (obj: any) =>
-  JSON.stringify(obj).replace(/^{|}$|"/g, '')
+  JSON.stringify(obj).replace(/^{|}$/g, '')
+    .replace(/("[^,]+?"):/g, m => m.replace(/"/g, ''))
 
 export const getAppConfig = async (queryString?: string) => {
   const query = queryString || gql`{
