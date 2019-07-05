@@ -208,6 +208,7 @@ heroku config:set RAILS_ENV=production -a iuliana-challenges
 heroku config:set DEFAULT_USER_EMAIL="USERNAME@example.com" -a iuliana-challenges
 heroku config:set DEFAULT_USER_PASSWORD="PASSWORD" -a iuliana-challenges
 heroku config:set SECRET_KEY_BASE="XXXXXXXXXX" -a iuliana-challenges
+heroku config:set ALLOW_GRAPHIQL=1 -a iuliana-challenges
 heroku config:set TZ=Asia/Tokyo -a iuliana-challenges
 heroku config:set RAILS_SERVE_STATIC_FILES=1 -a iuliana-challenges
 

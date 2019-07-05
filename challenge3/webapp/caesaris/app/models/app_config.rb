@@ -2,9 +2,20 @@
 class AppConfig < RailsSettings::Base
   cache_prefix { "v1" }
 
+  @field_keys = []
+
+  def self.field(key, **opts)
+    @field_keys << key.to_sym
+    super(key, **opts)
+  end
+
+  def self.field_keys
+    @field_keys
+  end
+
   field :general, type: :hash, default: {
     # allow_graphiql: true
-    allow_graphiql: Rails.env.development?
+    allow_graphiql: Rails.env.development? || ENV['ALLOW_GRAPHIQL'].present?
   }
 
   field :challenge2, type: :hash, default: {
@@ -16,7 +27,4 @@ class AppConfig < RailsSettings::Base
     dataset_url: "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv",
   }
 
-  def self.fields
-    %i(general challenge2 challenge3)
-  end
 end

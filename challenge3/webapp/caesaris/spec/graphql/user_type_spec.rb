@@ -1,9 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe 'GraphQL on User' do
+  it "Should get all users" do
+    query = <<~GRAPHQL
+      {
+        users {
+          id, email, name, roles
+        }
+      }
+    GRAPHQL
+
+    context = { current_user: User.admin.first }
+    data = Util.graphql_query(query, context: context)['users']
+    expect(data.size).to eq User.count
+  end
+
   it "Should search user by id" do
     @user = User.last
-    query = <<-GQL
+    query = <<~GQL
       {
         users (q: { idEq: #{@user.id} }) {
           id, email, name, roles
@@ -21,13 +35,13 @@ RSpec.describe 'GraphQL on User' do
   end
 
   it "Should search user by email" do
-    query = <<-GQL
+    query = <<~GRAPHQL
       {
         users (q: { emailCont: "@", s: "id desc"}) {
           id, email, name, roles
         }
       }
-    GQL
+    GRAPHQL
 
     @users = User.where(User.arel_table[:email].matches('%@%'))
 
@@ -38,7 +52,7 @@ RSpec.describe 'GraphQL on User' do
 
   it "Should search user by role: admin" do
     role = "admin"
-    query = <<-GQL
+    query = <<~GQL
       {
         users (q: { hasRole: "#{role}"}) {
           id, roles
@@ -56,7 +70,7 @@ RSpec.describe 'GraphQL on User' do
 
   it "Should search user by role: observer" do
     role = "observer"
-    query = <<-GQL
+    query = <<~GQL
       {
         users (q: { hasRole: "#{role}"}) {
           id, roles
@@ -73,13 +87,13 @@ RSpec.describe 'GraphQL on User' do
   end
 
   it "Should throw error if user is not admin" do
-    query = <<-GQL
+    query = <<~GRAPHQL
       {
         users (q: { idEq: 1 }) {
           id, email, name, roles
         }
       }
-    GQL
+    GRAPHQL
     context = { current_user: User.observer.first }
     expect{
       Util.graphql_query(query, context: context)

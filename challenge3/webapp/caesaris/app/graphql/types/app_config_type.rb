@@ -16,6 +16,6 @@ module Types
     field :general, GeneralType, null: false
     field :challenge2, Challenge2Type, null: false
     field :challenge3, Challenge3Type, null: false
-    field :fields, [String], null: false
+    field :field_keys, [String], null: false
   end
 end
