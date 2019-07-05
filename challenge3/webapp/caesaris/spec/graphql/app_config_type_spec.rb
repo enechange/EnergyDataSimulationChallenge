@@ -29,7 +29,7 @@ RSpec.describe 'GraphQL on AppConfigType' do
           general { allowGraphiql }
           challenge2 { totalWattUrl }
           challenge3 { datasetUrl, houseDataUrl }
-          fields
+          fieldKeys
         }
       }
     GQL
@@ -41,6 +41,6 @@ RSpec.describe 'GraphQL on AppConfigType' do
     expect(data[:challenge2][:totalWattUrl]).to eq AppConfig.challenge2[:total_watt_url]
     expect(data[:challenge3][:datasetUrl]).to eq AppConfig.challenge3[:dataset_url]
     expect(data[:challenge3][:houseDataUrl]).to eq AppConfig.challenge3[:house_data_url]
-    expect(data[:fields].size).to be > 0
+    expect(data[:fieldKeys].size).to be > 0
   end
 end
