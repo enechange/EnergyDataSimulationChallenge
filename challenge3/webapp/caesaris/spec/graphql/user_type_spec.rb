@@ -17,13 +17,13 @@ RSpec.describe 'GraphQL on User' do
 
   it "Should search user by id" do
     @user = User.last
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         users (q: { idEq: #{@user.id} }) {
           id, email, name, roles
         }
       }
-    GQL
+    GRAPHQL
 
     context = { current_user: User.admin.first }
     data = Util.graphql_query(query, context: context)['users'][0]
@@ -52,13 +52,13 @@ RSpec.describe 'GraphQL on User' do
 
   it "Should search user by role: admin" do
     role = "admin"
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         users (q: { hasRole: "#{role}"}) {
           id, roles
         }
       }
-    GQL
+    GRAPHQL
 
     context = { current_user: User.admin.first }
     data = Util.graphql_query(query, context: context)['users']
@@ -70,13 +70,13 @@ RSpec.describe 'GraphQL on User' do
 
   it "Should search user by role: observer" do
     role = "observer"
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         users (q: { hasRole: "#{role}"}) {
           id, roles
         }
       }
-    GQL
+    GRAPHQL
 
     context = { current_user: User.admin.first }
     data = Util.graphql_query(query, context: context)['users']

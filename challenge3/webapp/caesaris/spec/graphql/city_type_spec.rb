@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe 'GraphQL on CityType' do
   it "Should find city by name" do
     city = City.all.last
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
-        city(name: \"#{city.name}\") { id, name }
+        city(name: "#{city.name}") { id, name }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     expect(data.dig('city', 'id')).to eq city.id.to_s
   end

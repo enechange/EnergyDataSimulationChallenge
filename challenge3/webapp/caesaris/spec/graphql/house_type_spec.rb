@@ -26,11 +26,11 @@ RSpec.describe 'GraphQL on HouseType' do
 
   it "Should find houses by city" do
     city = City.all.first
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
-        houses(city: \"#{city.name}\") { id, firstname }
+        houses(city: "#{city.name}") { id, firstname }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     house_num = city.houses.size
     expect(data['houses'].size).to eq house_num
@@ -50,13 +50,13 @@ RSpec.describe 'GraphQL on HouseType' do
   it "Should find houses by ransack in json" do
     city = City.first
     houses = city.houses
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         houses(q: "{ \\"cityNameCont\\": \\"#{city.name}\\"}") {
           id, fullName, city { name }
         }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     house = House.find(3)
     expect(data['houses'].size).to eq houses.size

@@ -13,11 +13,11 @@ RSpec.describe 'GraphQL on DatasetType' do
 
   it "Should find datasets by ransack" do
     dataset = Dataset.last
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         datasets(q: { idEq: #{dataset.id} }) { id, daylight }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
     expect(data['datasets'][0]["daylight"]).to eq dataset.daylight
   end

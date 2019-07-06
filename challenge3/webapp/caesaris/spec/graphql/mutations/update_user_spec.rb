@@ -20,7 +20,7 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
   context "Create user" do
     email = "new-user-mutation@example.org"
     role = "observer"
-    query = <<~GQL
+    query = <<~GRAPHQL
       mutation {
         newUser (
           input: {
@@ -35,7 +35,7 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
           }
         }
       }
-    GQL
+    GRAPHQL
 
     it "Should throw error if user is not admin" do
       context = { current_user: User.observer.first }
@@ -67,7 +67,7 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
     it "Should throw error if user is not admin" do
       @user = User.observer.last
       roles = %w(editor observer)
-      query = <<~GQL
+      query = <<~GRAPHQL
         mutation {
           updateUser (
             input: {
@@ -79,7 +79,7 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
             }
           }
         }
-      GQL
+      GRAPHQL
 
       context = { current_user: User.observer.first }
       expect{
@@ -90,7 +90,7 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
     it "Should update user" do
       @user = User.observer.last
       roles = %w(editor observer)
-      query = <<~GQL
+      query = <<~GRAPHQL
         mutation {
           updateUser (
             input: {
@@ -102,7 +102,7 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
             }
           }
         }
-      GQL
+      GRAPHQL
 
       context = { current_user: User.admin.first }
       data = Util.graphql_query(query, context: context)

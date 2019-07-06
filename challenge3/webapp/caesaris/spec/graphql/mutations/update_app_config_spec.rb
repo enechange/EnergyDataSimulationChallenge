@@ -22,7 +22,7 @@ RSpec.describe 'GraphQL Mutation on AppConfigs' do
   it "Should update challenge2" do
     context = { current_user: User.admin.first }
     dummy_url = "https://example.org/total_watt_url.csv"
-    query = <<~GQL
+    query = <<~GRAPHQL
       mutation {
         updateAppConfig(
           input: {
@@ -30,7 +30,7 @@ RSpec.describe 'GraphQL Mutation on AppConfigs' do
           }
         ) { appConfigs { challenge2 { totalWattUrl } } }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query, context: context)
       .dig('updateAppConfig', 'appConfigs')
     expect(data['challenge2']['totalWattUrl']).to eq dummy_url
@@ -39,7 +39,7 @@ RSpec.describe 'GraphQL Mutation on AppConfigs' do
   it "Should update challenge3 partial" do
     context = { current_user: User.admin.first }
     dummy_url = "https://example.com/house_data_url.csv"
-    query = <<~GQL
+    query = <<~GRAPHQL
       mutation {
         updateAppConfig(
           input: {
@@ -47,7 +47,7 @@ RSpec.describe 'GraphQL Mutation on AppConfigs' do
           }
         ) { appConfigs { challenge3 { houseDataUrl, datasetUrl } } }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query, context: context)
       .dig('updateAppConfig', 'appConfigs')
     expect(data['challenge3']['houseDataUrl']).to eq dummy_url
