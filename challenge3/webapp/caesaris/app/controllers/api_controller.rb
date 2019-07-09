@@ -22,7 +22,7 @@ class ApiController < ApplicationController
 
   def load_csv
     if params[:house_data_url].blank? || params[:dataset_url].blank?
-      render(json: { error: 'url not found' }, status: 400) && return
+      render(json: { error: "url not found" }, status: 400) && return
     end
 
     case params[:key]
@@ -35,19 +35,19 @@ class ApiController < ApplicationController
           DataLoader.load_cities
           DataLoader.sync_cities_houses
           DataLoader.load_dataset(params[:dataset_url])
-          render json: { result: 'ok' }
+          render json: { result: "ok" }
         end
       rescue => e
         render json: { error: e.message }, status: 500
       end
     else
-      render json: { error: 'key not found' }, status: 400
+      render json: { error: "key not found" }, status: 400
     end
   end
 
   def create_user
-    unless current_user.roles.include?('admin')
-      render(json: { error: 'Only Admin User Are Allowed.' }, status: 400) && return
+    unless current_user.roles.include?("admin")
+      render(json: { error: "Only Admin User Are Allowed." }, status: 400) && return
     end
 
     begin

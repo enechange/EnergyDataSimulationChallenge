@@ -26,7 +26,7 @@ module Types
         # when search on `has_child`, use `{hasChildEq: false}`
         @q = House.includes(:datasets, :city).joins(:city, :datasets)
           .ransack(Util.form_ransack_params(q))
-        @q.sorts = 'id asc' if @q.sorts.blank?
+        @q.sorts = "id asc" if @q.sorts.blank?
         @q.result.distinct
       elsif city.present?
         House.joins(:city).where(cities: { name: city.capitalize }).order(:id)
@@ -53,7 +53,7 @@ module Types
       if q.present?
         @q = City.includes(:houses, :datasets).joins(:houses, :datasets)
           .ransack(Util.form_ransack_params(q))
-        @q.sorts = 'id asc' if @q.sorts.blank?
+        @q.sorts = "id asc" if @q.sorts.blank?
         @q.result(distinct: true)
       else
         City.all.order(:id)
@@ -74,7 +74,7 @@ module Types
         # when search at `cities`, use `{house_city_name_cont: "London"}`
         @q = Dataset.includes(house: :city).joins(house: :city)
           .ransack(Util.form_ransack_params(q))
-        @q.sorts = 'id asc' if @q.sorts.blank?
+        @q.sorts = "id asc" if @q.sorts.blank?
         if per.nil? && page.nil?
           @q.result(distinct: true)
         else
@@ -108,7 +108,7 @@ module Types
       Util.auth_user_graphql(context[:current_user])
       if q.present?
         @q = User.ransack(Util.form_ransack_params(q))
-        @q.sorts = 'id asc' if @q.sorts.blank?
+        @q.sorts = "id asc" if @q.sorts.blank?
         @q.result(distinct: true)
       else
         User.all.order(:id)

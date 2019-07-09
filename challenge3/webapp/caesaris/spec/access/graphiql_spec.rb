@@ -1,19 +1,19 @@
-require 'rails_helper'
-require 'devise/jwt/test_helpers'
+require "rails_helper"
+require "devise/jwt/test_helpers"
 
 headers = {
-  'Accept' => 'application/json',
-  'Content-Type' => 'application/json',
+  "Accept" => "application/json",
+  "Content-Type" => "application/json",
 }
 
-RSpec.describe 'Test GraphiQL Page Shown', type: :request do
+RSpec.describe "Test GraphiQL Page Shown", type: :request do
   it "Create dummy users" do
     email = "admin-user-graphiql@example.org"
     pass = "12345678"
     @admin_user = User.create({
       email: email, password: pass,
       password_confirmation: pass,
-      roles: ['admin']
+      roles: ["admin"]
     })
   end
 
@@ -24,7 +24,7 @@ RSpec.describe 'Test GraphiQL Page Shown', type: :request do
     }
     auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, @user)
 
-    get graphiql_rails_path(auth: URI.encode(auth_headers['Authorization']))
+    get graphiql_rails_path(auth: URI.encode(auth_headers["Authorization"]))
     expect(response).to be_successful
   end
 
@@ -36,7 +36,7 @@ RSpec.describe 'Test GraphiQL Page Shown', type: :request do
     auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, @user)
 
     expect {
-      get graphiql_rails_path(auth: URI.encode(auth_headers['Authorization']))
+      get graphiql_rails_path(auth: URI.encode(auth_headers["Authorization"]))
     }.to raise_error(ActionController::BadRequest)
   end
 

@@ -1,19 +1,19 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'Create and update user by GraphQL Mutation' do
+RSpec.describe "Create and update user by GraphQL Mutation" do
   it "Create dummy users" do
     email = "admin-user-mutation@example.org"
     pass = "12345678"
     @admin_user = User.create({
       email: email, password: pass,
       password_confirmation: pass,
-      roles: ['admin']
+      roles: ["admin"]
     })
     email = "nomal-user-mutation@example.org"
     @normal_user = User.create({
       email: email, password: pass,
       password_confirmation: pass,
-      roles: ['observer']
+      roles: ["observer"]
     })
   end
 
@@ -48,7 +48,7 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
       context = { current_user: User.admin.first }
       data = nil
       expect {
-        data = Util.graphql_query(query, context: context).dig('newUser', 'user')
+        data = Util.graphql_query(query, context: context).dig("newUser", "user")
       }.to change { User.count }.by(+1)
       expect(data["email"]).to eq email
       expect(data["roles"]).to include role
@@ -106,7 +106,7 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
 
       context = { current_user: User.admin.first }
       data = Util.graphql_query(query, context: context)
-        .dig('updateUser', 'user')
+        .dig("updateUser", "user")
       user_after = User.find(@user.id)
       expect(data["email"]).to eq user_after.email
       expect(data["name"]).to eq user_after.name

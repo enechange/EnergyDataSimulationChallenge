@@ -1,5 +1,5 @@
-require 'csv'
-require 'open-uri'
+require "csv"
+require "open-uri"
 
 class DataLoader
   class << self
@@ -59,7 +59,7 @@ class DataLoader
     def load_file_as_stream(uri)
       file = nil
       if uri !~ /^https?|^ftp\:\/\//
-        file = File.open(uri, 'r')
+        file = File.open(uri, "r")
       else
         file = open(uri)
       end

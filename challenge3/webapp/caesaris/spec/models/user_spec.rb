@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
   before do
@@ -11,27 +11,27 @@ RSpec.describe User, type: :model do
     @user = User.create!({
       email: email, password: pass,
       password_confirmation: pass,
-      roles: ['admin']
+      roles: ["admin"]
     })
     expect(@user).to be_truthy
   end
 
   it "Should has roles" do
-    expect(@user.roles).to include 'admin'
+    expect(@user.roles).to include "admin"
   end
 
   it "Should update roles" do
-    @user.roles = ['admin', 'editor']
+    @user.roles = ["admin", "editor"]
     roles_code = EasySettings.user_roles.admin | EasySettings.user_roles.editor
     @user.save!
-    expect(@user.roles).to include 'editor'
+    expect(@user.roles).to include "editor"
     expect(@user.roles_code).to eq roles_code
   end
 
   it "Should find by roles" do
-    @users = User.has_role('editor')
+    @users = User.has_role("editor")
     expect(@users.size).to be > 0
-    expect(@users.first.roles).to include 'editor'
+    expect(@users.first.roles).to include "editor"
   end
 
   it "Should find by roles use scope" do

@@ -10,7 +10,7 @@ class User < ApplicationRecord
   scope :roles_equal, ->(role_list) { where(roles_code: role_list_to_code(role_list)) }
   scope :has_role, lambda { |role|
     role_code = EasySettings.user_roles[role].to_i
-    where('roles_code & ? = ?', role_code, role_code)
+    where("roles_code & ? = ?", role_code, role_code)
   }
 
   validates :email, presence: true,
@@ -42,7 +42,7 @@ class User < ApplicationRecord
     }
     scope role_name.to_sym, lambda {
       role_code = EasySettings.user_roles[role_name].to_i
-      where('roles_code & ? = ?', role_code, role_code)
+      where("roles_code & ? = ?", role_code, role_code)
     }
   end
 
@@ -68,7 +68,7 @@ class User < ApplicationRecord
     if name.blank?
       self.name = email.split(/@/).map do |str|
         "#{str.first(3)}.".upcase_first
-      end.join(' ')
+      end.join(" ")
     end
   end
 

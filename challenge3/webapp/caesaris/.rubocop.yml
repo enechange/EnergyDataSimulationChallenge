@@ -5,6 +5,8 @@ AllCops:
   Exclude:
     - 'db/**/*'
     - 'bin/*'
+    - 'config/environment.rb'
+    - 'config/boot.rb'
     - 'config/environments/*'
     - 'config/application.rb'
     - 'config/initializers/*'

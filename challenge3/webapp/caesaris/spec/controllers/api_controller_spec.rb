@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ApiController, type: :controller do
   it "Create dummy users" do
@@ -7,7 +7,7 @@ RSpec.describe ApiController, type: :controller do
     @admin_user = User.create!({
       email: email, password: pass,
       password_confirmation: pass,
-      roles: ['admin']
+      roles: ["admin"]
     })
     email = "nomal-user@example.org"
     @normal_user = User.create!({
@@ -36,7 +36,7 @@ RSpec.describe ApiController, type: :controller do
         get :user_info
         res = JSON.parse(response.body)
         expect(response).to have_http_status(:success)
-        expect(res['roles']).to eq ['admin']
+        expect(res["roles"]).to eq ["admin"]
       end
     end
 
@@ -45,7 +45,7 @@ RSpec.describe ApiController, type: :controller do
         post :load_csv
         res = JSON.parse(response.body)
         expect(response).to have_http_status(400)
-        expect(res['error']).to be_truthy
+        expect(res["error"]).to be_truthy
       end
 
       it "Should raise error if no key" do
@@ -55,7 +55,7 @@ RSpec.describe ApiController, type: :controller do
         }
         res = JSON.parse(response.body)
         expect(response).to have_http_status(400)
-        expect(res['error']).to be_truthy
+        expect(res["error"]).to be_truthy
       end
 
       it "Should load challenge-3 data csv from URL" do
@@ -66,7 +66,7 @@ RSpec.describe ApiController, type: :controller do
         }
         res = JSON.parse(response.body)
         expect(response).to have_http_status(:success)
-        expect(res['result']).to eq 'ok'
+        expect(res["result"]).to eq "ok"
       end
     end
 
@@ -77,7 +77,7 @@ RSpec.describe ApiController, type: :controller do
         post :create_user
         res = JSON.parse(response.body)
         expect(response).to have_http_status(400)
-        expect(res['error']).to be_truthy
+        expect(res["error"]).to be_truthy
       end
 
       it "Should create a user" do
@@ -85,10 +85,10 @@ RSpec.describe ApiController, type: :controller do
           post :create_user, params: {
             email: "test-3@example.com",
             password: "12345678",
-            roles: ['observer'],
+            roles: ["observer"],
           }
         }.to change(User, :count).by(1)
-        expect(User.find_by(email: 'test-3@example.com')).to be_truthy
+        expect(User.find_by(email: "test-3@example.com")).to be_truthy
       end
     end
   end

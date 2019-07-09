@@ -10,11 +10,11 @@ class Util
       end
       param_org.each do |key, val|
         key = key.to_s.underscore
-        if (key == 's' || key == 'sorts') && val.instance_of?(String)
+        if (key == "s" || key == "sorts") && val.instance_of?(String)
           param_res[key] = val.squish.underscore
-        elsif (key == 's' || key == 'sorts') && val.instance_of?(Array)
+        elsif (key == "s" || key == "sorts") && val.instance_of?(Array)
           param_res[key] = val.map { |v| v.squish.underscore }
-        elsif (key == 'g' || key == 'groupings') && (val.instance_of?(Hash) || val.instance_of?(Array))
+        elsif (key == "g" || key == "groupings") && (val.instance_of?(Hash) || val.instance_of?(Array))
           if val.instance_of?(Hash)
             param_res[key] = val.values.map { |v| Util.form_ransack_params(v) }
           else
@@ -48,7 +48,7 @@ class Util
       end
     end
 
-    def auth_user_graphql(user, role = 'admin')
+    def auth_user_graphql(user, role = "admin")
       return true if Rails.env.development?
       if user.blank? || !user.try("#{role}?")
         raise GraphQL::ExecutionError.new("GraphQL: Need admin user")

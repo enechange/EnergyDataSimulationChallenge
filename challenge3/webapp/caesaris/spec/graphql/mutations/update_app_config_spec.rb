@@ -1,19 +1,19 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'GraphQL Mutation on AppConfigs' do
+RSpec.describe "GraphQL Mutation on AppConfigs" do
   it "Create dummy users" do
     email = "admin-user-gql@example.org"
     pass = "12345678"
     @admin_user = User.create!({
       email: email, password: pass,
       password_confirmation: pass,
-      roles: ['admin']
+      roles: ["admin"]
     })
     email = "nomal-user-gql@example.org"
     @normal_user = User.create!({
       email: email, password: pass,
       password_confirmation: pass,
-      roles: ['observer']
+      roles: ["observer"]
     })
     expect(@admin_user).to be_truthy
     expect(@normal_user).to be_truthy
@@ -32,8 +32,8 @@ RSpec.describe 'GraphQL Mutation on AppConfigs' do
       }
     GRAPHQL
     data = Util.graphql_query(query, context: context)
-      .dig('updateAppConfig', 'appConfigs')
-    expect(data['challenge2']['totalWattUrl']).to eq dummy_url
+      .dig("updateAppConfig", "appConfigs")
+    expect(data["challenge2"]["totalWattUrl"]).to eq dummy_url
   end
 
   it "Should update challenge3 partial" do
@@ -49,9 +49,9 @@ RSpec.describe 'GraphQL Mutation on AppConfigs' do
       }
     GRAPHQL
     data = Util.graphql_query(query, context: context)
-      .dig('updateAppConfig', 'appConfigs')
-    expect(data['challenge3']['houseDataUrl']).to eq dummy_url
-    expect(data['challenge3']['datasetUrl']).to eq AppConfig.challenge3[:dataset_url]
+      .dig("updateAppConfig", "appConfigs")
+    expect(data["challenge3"]["houseDataUrl"]).to eq dummy_url
+    expect(data["challenge3"]["datasetUrl"]).to eq AppConfig.challenge3[:dataset_url]
   end
 
   it "Should throw error if user is not admin" do
