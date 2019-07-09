@@ -95,7 +95,7 @@ RSpec.describe 'GraphQL on User' do
       }
     GRAPHQL
     context = { current_user: User.observer.first }
-    expect{
+    expect {
       Util.graphql_query(query, context: context)
     }.to raise_error "GraphQL: Need admin user"
   end

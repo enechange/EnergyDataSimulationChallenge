@@ -39,7 +39,7 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
 
     it "Should throw error if user is not admin" do
       context = { current_user: User.observer.first }
-      expect{
+      expect {
         Util.graphql_query(query, context: context)
       }.to raise_error "GraphQL: Need admin user"
     end
@@ -47,9 +47,9 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
     it "Should create new user" do
       context = { current_user: User.admin.first }
       data = nil
-      expect{
+      expect {
         data = Util.graphql_query(query, context: context).dig('newUser', 'user')
-      }.to change{ User.count }.by(+1)
+      }.to change { User.count }.by(+1)
       expect(data["email"]).to eq email
       expect(data["roles"]).to include role
       expect(User.find_by(email: email)).to be_truthy
@@ -57,7 +57,7 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
 
     it "Should throw error if user email doubled" do
       context = { current_user: User.admin.first }
-      expect{
+      expect {
         Util.graphql_query(query, context: context)
       }.to raise_error "Validation failed: Email has already been taken"
     end
@@ -82,7 +82,7 @@ RSpec.describe 'Create and update user by GraphQL Mutation' do
       GRAPHQL
 
       context = { current_user: User.observer.first }
-      expect{
+      expect {
         Util.graphql_query(query, context: context)
       }.to raise_error "GraphQL: Need admin user"
     end

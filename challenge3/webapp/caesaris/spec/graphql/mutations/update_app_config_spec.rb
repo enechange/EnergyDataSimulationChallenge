@@ -64,6 +64,6 @@ RSpec.describe 'GraphQL Mutation on AppConfigs' do
       }
     GRAPHQL
 
-    expect{ Util.graphql_query(query) }.to raise_error "GraphQL: Need admin user"
+    expect { Util.graphql_query(query) }.to raise_error "GraphQL: Need admin user"
   end
 end

@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
 
-  scope :roles_equal, ->(role_list){ where(roles_code: role_list_to_code(role_list)) }
+  scope :roles_equal, ->(role_list) { where(roles_code: role_list_to_code(role_list)) }
   scope :has_role, lambda { |role|
     role_code = EasySettings.user_roles[role].to_i
     where('roles_code & ? = ?', role_code, role_code)
@@ -46,7 +46,7 @@ class User < ApplicationRecord
     }
   end
 
-  def self.ransackable_scopes(auth_object = nil)
+  def self.ransackable_scopes(_auth_object = nil)
     %i(has_role)
   end
 

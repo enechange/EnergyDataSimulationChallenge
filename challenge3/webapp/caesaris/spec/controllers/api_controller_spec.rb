@@ -51,7 +51,7 @@ RSpec.describe ApiController, type: :controller do
       it "Should raise error if no key" do
         post :load_csv, params: {
           house_data_url: "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/house_data.csv",
-          dataset_url: "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv"
+          dataset_url: "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv",
         }
         res = JSON.parse(response.body)
         expect(response).to have_http_status(400)
@@ -62,7 +62,7 @@ RSpec.describe ApiController, type: :controller do
         post :load_csv, params: {
           key: "challenge-3",
           house_data_url: "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/house_data.csv",
-          dataset_url: "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv"
+          dataset_url: "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/dataset_50.csv",
         }
         res = JSON.parse(response.body)
         expect(response).to have_http_status(:success)
@@ -81,11 +81,11 @@ RSpec.describe ApiController, type: :controller do
       end
 
       it "Should create a user" do
-        expect{
+        expect {
           post :create_user, params: {
             email: "test-3@example.com",
             password: "12345678",
-            roles: ['observer']
+            roles: ['observer'],
           }
         }.to change(User, :count).by(1)
         expect(User.find_by(email: 'test-3@example.com')).to be_truthy

@@ -13,12 +13,12 @@ class Util
         if (key == 's' || key == 'sorts') && val.instance_of?(String)
           param_res[key] = val.squish.underscore
         elsif (key == 's' || key == 'sorts') && val.instance_of?(Array)
-          param_res[key] = val.map{|v| v.squish.underscore }
+          param_res[key] = val.map { |v| v.squish.underscore }
         elsif (key == 'g' || key == 'groupings') && (val.instance_of?(Hash) || val.instance_of?(Array))
           if val.instance_of?(Hash)
-            param_res[key] = val.values.map{|v| Util.form_ransack_params(v) }
+            param_res[key] = val.values.map { |v| Util.form_ransack_params(v) }
           else
-            param_res[key] = val.map{|v| Util.form_ransack_params(v) }
+            param_res[key] = val.map { |v| Util.form_ransack_params(v) }
           end
         else
           param_res[key] = val

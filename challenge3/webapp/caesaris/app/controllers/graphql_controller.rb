@@ -47,9 +47,7 @@ class GraphqlController < ApplicationController
 
   def from_graphiql?
     referrer = request.referer
-    if Rails.env.development? && referrer =~ /\/graphiql/
-      return true
-    end
+    return true if Rails.env.development? && referrer =~ /\/graphiql/
   end
 
 end

@@ -29,7 +29,7 @@ module Types
         @q.sorts = 'id asc' if @q.sorts.blank?
         @q.result.distinct
       elsif city.present?
-        House.joins(:city).where(cities: {name: city.capitalize}).order(:id)
+        House.joins(:city).where(cities: { name: city.capitalize }).order(:id)
       else
         House.all.order(:id)
       end

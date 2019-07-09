@@ -49,5 +49,4 @@ RSpec.describe User, type: :model do
     })
     expect(@user.roles).to eq [EasySettings.user_roles.keys.last]
   end
-
 end

@@ -69,7 +69,7 @@ class DataLoader
     def csv_options
       {
         headers: :first_row,
-        header_converters: lambda { |h| h.underscore.to_sym },
+        header_converters: ->(h) { h.underscore.to_sym },
         converters: :all,
         skip_blanks: true,
       }

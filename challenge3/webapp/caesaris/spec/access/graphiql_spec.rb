@@ -20,7 +20,7 @@ RSpec.describe 'Test GraphiQL Page Shown', type: :request do
   it "Should show GraphiQL" do
     @user = User.admin.first
     AppConfig.general = {
-      allow_graphiql: true
+      allow_graphiql: true,
     }
     auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, @user)
 
@@ -31,17 +31,17 @@ RSpec.describe 'Test GraphiQL Page Shown', type: :request do
   it "Should Reject GraphiQL if allow_graphiql: false" do
     @user = User.admin.first
     AppConfig.general = {
-      allow_graphiql: false
+      allow_graphiql: false,
     }
     auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, @user)
 
-    expect{
+    expect {
       get graphiql_rails_path(auth: URI.encode(auth_headers['Authorization']))
     }.to raise_error(ActionController::BadRequest)
   end
 
   it "Should Reject GraphiQL if no `auth` field" do
-    expect{
+    expect {
       get graphiql_rails_path
     }.to raise_error(ActionController::BadRequest)
   end

@@ -16,13 +16,13 @@ class ApiController < ApplicationController
       userId: user.id,
       roles: user.roles,
       avatar: user.img_url,
-      name: user.name
+      name: user.name,
     }
   end
 
   def load_csv
     if params[:house_data_url].blank? || params[:dataset_url].blank?
-      render json: { error: 'url not found' }, status: 400 and return
+      render(json: { error: 'url not found' }, status: 400) && return
     end
 
     case params[:key]
@@ -47,7 +47,7 @@ class ApiController < ApplicationController
 
   def create_user
     unless current_user.roles.include?('admin')
-      render json: { error: 'Only Admin User Are Allowed.' }, status: 400 and return
+      render(json: { error: 'Only Admin User Are Allowed.' }, status: 400) && return
     end
 
     begin
@@ -56,14 +56,14 @@ class ApiController < ApplicationController
           email: params[:email],
           password: params[:password],
           password_confirmation: params[:password],
-          roles: params[:roles]
+          roles: params[:roles],
         )
         user.save!
         render json: {
           id: user.id,
           roles: user.roles,
           avatar: user.img_url,
-          name: user.name
+          name: user.name,
         }
       end
     rescue => e
