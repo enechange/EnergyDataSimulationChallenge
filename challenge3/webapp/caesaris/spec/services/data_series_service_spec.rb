@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'DataSeriesService' do
+RSpec.describe "DataSeriesService" do
   before do
     @data_series = DataSeriesService.new
   end
@@ -8,7 +8,7 @@ RSpec.describe 'DataSeriesService' do
   it "Should return date_labels" do
     date_labels = @data_series.date_labels
     expect(date_labels.size).to be > 0
-    expect(date_labels.first).to include '-'
+    expect(date_labels.first).to include "-"
   end
 
   it "Should return house_energy_prod" do

@@ -15,7 +15,7 @@ class AppConfig < RailsSettings::Base
 
   field :general, type: :hash, default: {
     # allow_graphiql: true
-    allow_graphiql: Rails.env.development? || ENV['ALLOW_GRAPHIQL'].present?
+    allow_graphiql: Rails.env.development? || ENV["ALLOW_GRAPHIQL"].present?,
   }
 
   field :challenge2, type: :hash, default: {

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe House, type: :model do
   before do
@@ -28,5 +28,4 @@ RSpec.describe House, type: :model do
     expect(@house.full_name).to include @house.firstname
     expect(@house.full_name).to include @house.lastname
   end
-  
 end

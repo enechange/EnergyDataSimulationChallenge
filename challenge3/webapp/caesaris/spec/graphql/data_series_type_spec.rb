@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'GraphQL on DataSeriesType' do
+RSpec.describe "GraphQL on DataSeriesType" do
   it "Should get date_labels" do
     query = <<~GRAPHQL
       {
