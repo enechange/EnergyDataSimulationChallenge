@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(style='padding:30px;')
+  div.contents-area(style='padding:30px;')
     h1.challenge-ttl Challenge 2
     p.challenge-txt Visualization of Energy Consumptions
     el-tabs(v-model='activeName', @tab-click='handleClick')
