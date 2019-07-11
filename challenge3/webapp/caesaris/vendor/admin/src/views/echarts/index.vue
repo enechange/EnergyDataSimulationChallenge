@@ -4,12 +4,16 @@
     p.challenge-txt Visualization of Given Data
     el-tabs(v-model='activeName')
       el-tab-pane.tab-panel(label='Histogram', name='histogram', lazy=true)
+        histogram
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
+import Histogram from './Charts/Histogram.vue'
 
-@Component
+@Component({
+  components: { Histogram },
+})
 export default class EchartsPlayground extends Vue {
   private activeName: string = 'histogram'
 }
