@@ -15,7 +15,9 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import { MessageBox } from 'element-ui'
 import InputDialog from './InputDialog.vue'
+import { histogramOptions } from './ChartPgHelper'
 import * as echarts from 'echarts'
 
 @Component({
@@ -26,6 +28,7 @@ export default class Histogram extends Vue {
   private chart: echarts.ECharts | null = null
   private chartData: string | null = null
   private openDialogFlg = 0
+  private rawData: string = ''
 
   openDataInputDialog() {
     this.openDialogFlg = Date.now()
@@ -33,6 +36,7 @@ export default class Histogram extends Vue {
 
   mounted() {
     this.initChart()
+    this.openDataInputDialog()
   }
 
   beforeDestroy() {
@@ -49,8 +53,8 @@ export default class Histogram extends Vue {
     this.chart.showLoading()
   }
 
-  onDataChange(data: string) {
-    console.log('dataChange', data)
+  onDataChange(rawData: string) {
+    this.rawData = rawData
     this.updateChart()
   }
   // @Watch('chartData')
@@ -60,9 +64,17 @@ export default class Histogram extends Vue {
 
   updateChart() {
     if (this.chart) {
-      this.chart.hideLoading()
-      // const opt = createHistOption(this.dataList, this.dataSetLabel)
-      // this.chart.setOption(opt)
+      try {
+        const opt = histogramOptions(this.rawData)
+        this.chart.setOption(opt)
+        this.chart.hideLoading()
+      } catch (e) {
+        MessageBox.alert(e.toString(), {
+          confirmButtonText: 'OK',
+        }).then(() => {
+          this.openDataInputDialog()
+        }).catch(() => { /* Handle `cancel` Action */ })
+      }
     }
   }
 }
