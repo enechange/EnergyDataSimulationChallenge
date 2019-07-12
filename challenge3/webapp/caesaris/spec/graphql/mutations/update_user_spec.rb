@@ -132,7 +132,7 @@ RSpec.describe "Create and update user by GraphQL Mutation" do
         @default_user.save
       end
       @default_user = User.find_by(
-        email: EasySettings.default_user.email
+        email: EasySettings.default_user.email,
       )
       new_email = "default_user@example.com"
       query = <<~GRAPHQL
@@ -167,7 +167,7 @@ RSpec.describe "Create and update user by GraphQL Mutation" do
         @demo_user.save
       end
       @demo_user = User.find_by(
-        email: EasySettings.demo_user.email
+        email: EasySettings.demo_user.email,
       )
       new_email = "demo_user@example.com"
       query = <<~GRAPHQL
@@ -187,6 +187,66 @@ RSpec.describe "Create and update user by GraphQL Mutation" do
       expect {
         Util.graphql_query(query, context: context)
       }.to raise_error "GraphQL: Can not alt demo user's email or password"
+    end
+  end
+
+  context "Delete user" do
+    it "Should throw error if user is not admin" do
+      query = <<~GRAPHQL
+        mutation {
+          deleteUser(input: {id: 3}) {
+            user { id email }
+          }
+        }
+      GRAPHQL
+
+      context = { current_user: User.observer.first }
+      expect {
+        Util.graphql_query(query, context: context)
+      }.to raise_error "GraphQL: Need admin user"
+    end
+
+    it "Should not delete default_user" do
+      @default_user = User.find_by(
+        email: EasySettings.default_user.email,
+      )
+      query = <<~GRAPHQL
+        mutation {
+          deleteUser(input: {id: #{@default_user.id}}) {
+            user { id email }
+          }
+        }
+      GRAPHQL
+
+      context = { current_user: User.admin.first }
+      expect {
+        Util.graphql_query(query, context: context)
+      }.to raise_error "GraphQL: Can not delete demo or default user"
+    end
+
+    it "Should delete user" do
+      @user = User.find_by(
+        email: "nomal-user-mutation@example.org",
+      )
+      query = <<~GRAPHQL
+        mutation {
+          deleteUser(input: {id: #{@user.id}}) {
+            user { id email }
+          }
+        }
+      GRAPHQL
+
+      context = { current_user: User.admin.first }
+      data = nil
+      expect {
+        data = Util.graphql_query(query, context: context)
+          .dig("deleteUser", "user")
+      }.to change { User.count }.by(-1)
+      expect(data["email"]).to eq @user.email
+      user_after = User.find_by(
+        email: "nomal-user-mutation@example.org",
+      )
+      expect(user_after).to be_falsey
     end
   end
 end

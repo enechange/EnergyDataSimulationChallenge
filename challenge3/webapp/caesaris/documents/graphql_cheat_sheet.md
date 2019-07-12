@@ -134,8 +134,8 @@ mutation {
 }
 ```
 
-### Update User Info
-*Need Current User as Admin†*
+### Update User Info†
+*Need Current User as Admin*
 
 ```graphql
 mutation {
@@ -154,3 +154,16 @@ mutation {
 
 *†: Cannot Change Email & Password of Default User & Demo User*  
 *†: Default User Must Has Role `admin`*
+
+### Delete User††
+*Need Current User as Admin*
+
+```graphql
+mutation {
+  deleteUser(input: {id: 3}) {
+    user { id, email }
+  }
+}
+```
+
+*††: Cannot Delete Default User & Demo User*
