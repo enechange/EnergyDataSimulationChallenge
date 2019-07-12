@@ -31,6 +31,10 @@
           el-form-item(label='GraphiQL', prop='allowGraphiql')
             el-switch(v-model='generalData.allowGraphiql', :disabled='generalData.onloadFlg',
               active-text='Allow', inactive-text='Disallow')
+        el-col(:span='8')
+          el-form-item(label='Demo User', prop='showDemoUser')
+            el-switch(v-model='generalData.showDemoUser', :disabled='generalData.onloadFlg',
+              active-text='Show', inactive-text='Hide')
         el-col(:span='24')
           el-row.inline-btn-row(:gutter='20')
             el-button(type='primary', :loading='generalData.onloadFlg',
@@ -113,6 +117,7 @@ export default class Form extends Vue {
 
   private generalDataRules = {
     allowGraphiql: [{ required: true, trigger: 'change' }],
+    showDemoUser: [{ required: true, trigger: 'change' }],
   }
 
   private challenge2Data = {
