@@ -14,6 +14,7 @@ class GraphqlController < ApplicationController
     render json: result
   rescue => e
     raise e unless Rails.env.development?
+
     handle_error_in_development e
   end
 
@@ -46,9 +47,7 @@ class GraphqlController < ApplicationController
 
   def from_graphiql?
     referrer = request.referer
-    if Rails.env.development? && referrer =~ /\/graphiql/
-      return true
-    end
+    return true if Rails.env.development? && referrer =~ /\/graphiql/
   end
 
 end

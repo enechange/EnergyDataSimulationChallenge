@@ -1,6 +1,7 @@
 module Types
   class GeneralType < Types::BaseObject
     field :allow_graphiql, Boolean, null: false
+    field :show_demo_user, Boolean, null: false
   end
 
   class Challenge2Type < Types::BaseObject

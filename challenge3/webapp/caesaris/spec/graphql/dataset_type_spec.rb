@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'GraphQL on DatasetType' do
+RSpec.describe "GraphQL on DatasetType" do
   it "Should return all datasets" do
     query = <<~GRAPHQL
       {
@@ -8,18 +8,18 @@ RSpec.describe 'GraphQL on DatasetType' do
       }
     GRAPHQL
     data = Util.graphql_query(query)
-    expect(data['datasets'].size).to be > 0
+    expect(data["datasets"].size).to be > 0
   end
 
   it "Should find datasets by ransack" do
     dataset = Dataset.last
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         datasets(q: { idEq: #{dataset.id} }) { id, daylight }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
-    expect(data['datasets'][0]["daylight"]).to eq dataset.daylight
+    expect(data["datasets"][0]["daylight"]).to eq dataset.daylight
   end
 
   it "Should find datasets sorted and with pagination" do
@@ -31,7 +31,7 @@ RSpec.describe 'GraphQL on DatasetType' do
       }
     GRAPHQL
     data = Util.graphql_query(query)
-    expect(data['datasets'].size).to eq 20
+    expect(data["datasets"].size).to eq 20
   end
 
   it "Should find datasets sorted by multiple conditions" do
@@ -43,6 +43,6 @@ RSpec.describe 'GraphQL on DatasetType' do
       }
     GRAPHQL
     data = Util.graphql_query(query)
-    expect(data['datasets'].size).to be > 0
+    expect(data["datasets"].size).to be > 0
   end
 end

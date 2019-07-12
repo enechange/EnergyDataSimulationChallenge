@@ -15,6 +15,7 @@ module Mutations
       app_conf.each do |fld, val|
         value_origin = AppConfig.try(fld)
         next if value_origin.nil? || val.blank?
+
         value_to_update = value_origin.is_a?(Hash) ?
           value_origin.deep_merge(val) : val
         method_name = "#{fld}="

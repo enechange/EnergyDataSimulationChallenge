@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'GraphQL on User' do
+RSpec.describe "GraphQL on User" do
   it "Should get all users" do
     query = <<~GRAPHQL
       {
@@ -11,26 +11,26 @@ RSpec.describe 'GraphQL on User' do
     GRAPHQL
 
     context = { current_user: User.admin.first }
-    data = Util.graphql_query(query, context: context)['users']
+    data = Util.graphql_query(query, context: context)["users"]
     expect(data.size).to eq User.count
   end
 
   it "Should search user by id" do
     @user = User.last
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         users (q: { idEq: #{@user.id} }) {
           id, email, name, roles
         }
       }
-    GQL
+    GRAPHQL
 
     context = { current_user: User.admin.first }
-    data = Util.graphql_query(query, context: context)['users'][0]
-    expect(data['id']).to eq @user.id.to_s
-    expect(data['email']).to eq @user.email
+    data = Util.graphql_query(query, context: context)["users"][0]
+    expect(data["id"]).to eq @user.id.to_s
+    expect(data["email"]).to eq @user.email
     @user.roles.each do |role|
-      expect(data['roles']).to include role
+      expect(data["roles"]).to include role
     end
   end
 
@@ -43,46 +43,46 @@ RSpec.describe 'GraphQL on User' do
       }
     GRAPHQL
 
-    @users = User.where(User.arel_table[:email].matches('%@%'))
+    @users = User.where(User.arel_table[:email].matches("%@%"))
 
     context = { current_user: User.admin.first }
-    data = Util.graphql_query(query, context: context)['users']
+    data = Util.graphql_query(query, context: context)["users"]
     expect(data.size).to eq @users.size
   end
 
   it "Should search user by role: admin" do
     role = "admin"
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         users (q: { hasRole: "#{role}"}) {
           id, roles
         }
       }
-    GQL
+    GRAPHQL
 
     context = { current_user: User.admin.first }
-    data = Util.graphql_query(query, context: context)['users']
+    data = Util.graphql_query(query, context: context)["users"]
     expect(data.size).to eq User.admin.size
     data.each do |user|
-      expect(user['roles']).to include role
+      expect(user["roles"]).to include role
     end
   end
 
   it "Should search user by role: observer" do
     role = "observer"
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
         users (q: { hasRole: "#{role}"}) {
           id, roles
         }
       }
-    GQL
+    GRAPHQL
 
     context = { current_user: User.admin.first }
-    data = Util.graphql_query(query, context: context)['users']
+    data = Util.graphql_query(query, context: context)["users"]
     expect(data.size).to eq User.observer.size
     data.each do |user|
-      expect(user['roles']).to include role
+      expect(user["roles"]).to include role
     end
   end
 
@@ -95,7 +95,7 @@ RSpec.describe 'GraphQL on User' do
       }
     GRAPHQL
     context = { current_user: User.observer.first }
-    expect{
+    expect {
       Util.graphql_query(query, context: context)
     }.to raise_error "GraphQL: Need admin user"
   end

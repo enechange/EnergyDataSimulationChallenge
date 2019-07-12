@@ -1,6 +1,7 @@
 module Types
   class GeneralInputType < Types::BaseInputObject
     argument :allow_graphiql, Boolean, required: false
+    argument :show_demo_user, Boolean, required: false
   end
 
   class Challenge2InputType < Types::BaseInputObject

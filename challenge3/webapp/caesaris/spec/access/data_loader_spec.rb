@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'DataLoader' do
+RSpec.describe "DataLoader" do
   it "Should load house_data.csv from URL" do
     uri = "https://raw.githubusercontent.com/jerrywdlee/EnergyDataSimulationChallenge/master/challenge3/data/house_data.csv"
     DataLoader.load_houses(uri)

@@ -1,15 +1,15 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'GraphQL on CityType' do
+RSpec.describe "GraphQL on CityType" do
   it "Should find city by name" do
     city = City.all.last
-    query = <<~GQL
+    query = <<~GRAPHQL
       {
-        city(name: \"#{city.name}\") { id, name }
+        city(name: "#{city.name}") { id, name }
       }
-    GQL
+    GRAPHQL
     data = Util.graphql_query(query)
-    expect(data.dig('city', 'id')).to eq city.id.to_s
+    expect(data.dig("city", "id")).to eq city.id.to_s
   end
 
   it "Should find city by ransack like query" do
@@ -20,7 +20,7 @@ RSpec.describe 'GraphQL on CityType' do
       }
     GRAPHQL
     data = Util.graphql_query(query)
-    expect(data['cities'][0]['name']).to eq city.name
+    expect(data["cities"][0]["name"]).to eq city.name
   end
 
   it "Should return all cities" do
@@ -31,7 +31,7 @@ RSpec.describe 'GraphQL on CityType' do
       }
     GRAPHQL
     data = Util.graphql_query(query)
-    expect(data['cities'].size).to eq city_num
+    expect(data["cities"].size).to eq city_num
   end
 
   it "Should find cities with multiple conditions" do
@@ -47,6 +47,6 @@ RSpec.describe 'GraphQL on CityType' do
       }
     GRAPHQL
     data = Util.graphql_query(query)
-    expect(data['cities'].size).to eq 2
+    expect(data["cities"].size).to eq 2
   end
 end
