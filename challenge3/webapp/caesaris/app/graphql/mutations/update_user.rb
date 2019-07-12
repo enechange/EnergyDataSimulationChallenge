@@ -26,11 +26,11 @@ module Mutations
         @user.assign_attributes(user_params)
         if default_user_flg && (alt_login_flg || !@user.admin?)
           msg = "GraphQL: Can not alt default user's email, password or roles"
-          raise GraphQL::ExecutionError.new(msg)
+          raise GraphQL::ExecutionError, msg
         end
         if demo_user_flg && alt_login_flg
           msg = "GraphQL: Can not alt demo user's email or password"
-          raise GraphQL::ExecutionError.new(msg)
+          raise GraphQL::ExecutionError, msg
         end
         @user.save!
       end
