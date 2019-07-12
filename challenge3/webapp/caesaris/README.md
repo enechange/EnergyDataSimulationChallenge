@@ -62,7 +62,7 @@ $ npx vsvg -s ./src/icons/svg -t ./src/icons/components --ext ts --es6
 ```sh
 $ bundle exec rspec
 # Coverage in `caesaris/coverage`
-# Coverage(2019-07-12): 962 / 970 LOC (99.18%)
+# Coverage(2019-07-12): 1000 / 1008 LOC (99.21%)
 ```
 
 ##### Tests on Admin(Vue.js) Part
