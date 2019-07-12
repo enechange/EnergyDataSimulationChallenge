@@ -12,6 +12,11 @@ default: &default
     password: admin2019
     img_url_tmp: https://api.adorable.io/avatars/150/<@email@>.png
 
+  demo_user:
+    # show: true # This flag is in AppConfig.general[:show_demo_user]
+    email: demo@example.com
+    password: demo-user
+
 development:
   <<: *default
 test:
@@ -20,6 +25,6 @@ production:
   <<: *default
   default_user:
     show: <%= ENV['SHOW_DEFAULT_USER'] %>
-    email: <%= ENV['DEFAULT_USER_EMAIL'] %>
-    password: <%= ENV['DEFAULT_USER_PASSWORD'] %>
+    email: <%= ENV['DEFAULT_USER_EMAIL'] || 'admin@example.com' %>
+    password: <%= ENV['DEFAULT_USER_PASSWORD'] || 'admin2019' %>
     img_url_tmp: https://api.adorable.io/avatars/150/<@email@>.png
