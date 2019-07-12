@@ -69,11 +69,15 @@ export default class Histogram extends Vue {
         this.chart.setOption(opt)
         this.chart.hideLoading()
       } catch (e) {
-        MessageBox.alert(e.toString(), {
-          confirmButtonText: 'OK',
-        }).then(() => {
-          this.openDataInputDialog()
-        }).catch(() => { /* Handle `cancel` Action */ })
+        setTimeout(() => {
+          MessageBox.alert(e.toString(), {
+            confirmButtonText: 'OK',
+          }).then(() => {
+            setTimeout(() => {
+              this.openDataInputDialog()
+            }, 150)
+          }).catch(() => { /* Handle `cancel` Action */ })
+        }, 150)
       }
     }
   }

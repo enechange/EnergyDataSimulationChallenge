@@ -32,7 +32,7 @@ function createHistogramOptions(dataBins: ecStat.HistogramBins) {
         // console.log(foo)
         // console.log(bar)
         const { value } = data
-        return `Middle: ${value[0]}<br>Total: ${value[1]}`
+        return `Mean: ${value[0]}<br>Count: ${value[1]}`
         // return formatScatterTooltip([data] as tooltipData[], schema)
       },
     },
