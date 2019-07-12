@@ -150,7 +150,7 @@ $ npx vsvg -s ./src/icons/svg -t ./src/icons/components --ext ts --es6
 ENV=production
 RAILS_ENV=production
 
-SHOW_DEFAULT_USER=1
+# SHOW_DEFAULT_USER=1
 DEFAULT_USER_EMAIL=admin@example.com
 DEFAULT_USER_PASSWORD=admin2019
 

@@ -4,6 +4,7 @@ const gql = String.raw // Dummy gql
 export interface appConfigs {
   general: {
     allowGraphiql: boolean,
+    showDemoUser: boolean,
   },
   challenge2: {
     totalWattUrl: string,
@@ -16,7 +17,7 @@ export interface appConfigs {
 
 export const initEmptyAppConfigs = () => {
   return {
-    general: { allowGraphiql: false },
+    general: { allowGraphiql: false, showDemoUser: false },
     challenge2: { totalWattUrl: '' },
     challenge3: { houseDataUrl: '', datasetUrl: '' },
   } as appConfigs
@@ -26,6 +27,7 @@ export const appConfigsQuery = gql`
   appConfigs {
     general {
       allowGraphiql
+      showDemoUser
     }
     challenge2 {
       totalWattUrl

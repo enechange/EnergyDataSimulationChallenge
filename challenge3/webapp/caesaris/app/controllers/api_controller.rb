@@ -5,6 +5,8 @@ class ApiController < ApplicationController
   def default_user
     if EasySettings.default_user.show
       render json: EasySettings.default_user
+    elsif AppConfig.general[:show_demo_user]
+      render json: EasySettings.demo_user
     else
       render json: {}
     end

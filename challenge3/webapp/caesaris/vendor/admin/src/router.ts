@@ -82,14 +82,14 @@ export default new Router({
       ],
     },
     {
-      path: '/console',
+      path: '/echarts-playground',
       component: Layout,
       children: [
         {
           path: 'index',
-          name: 'Console',
-          component: () => import(/* webpackChunkName: "console" */ '@/views/console/index.vue'),
-          meta: { title: 'Console', icon: 'dashboard' },
+          name: 'Echarts',
+          component: () => import(/* webpackChunkName: "echarts-playground" */ '@/views/echarts/index.vue'),
+          meta: { title: 'Echarts', icon: 'chart-bar' },
         },
       ],
     },
@@ -102,6 +102,18 @@ export default new Router({
           name: 'GraphiQL',
           component: () => import(/* webpackChunkName: "graphiql" */ '@/views/graphiql/index.vue'),
           meta: { title: 'GraphiQL', icon: 'graphql' },
+        },
+      ],
+    },
+    {
+      path: '/console',
+      component: Layout,
+      children: [
+        {
+          path: 'index',
+          name: 'Console',
+          component: () => import(/* webpackChunkName: "console" */ '@/views/console/index.vue'),
+          meta: { title: 'Console', icon: 'dashboard' },
         },
       ],
     },

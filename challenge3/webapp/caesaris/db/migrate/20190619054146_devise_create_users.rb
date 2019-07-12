@@ -49,16 +49,28 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     add_index :users, :name
     add_index :users, :roles_code
 
-    # create User `Admin`
     ActiveRecord::Base.transaction do
       EasySettings.load!
+      # create User `Admin`
       email = EasySettings.default_user.email
       password = EasySettings.default_user.password
       if email.present? && password.present?
         User.create!(
-          email: email, password: password, password_confirmation: password,
+          email: email, password: password,
+          password_confirmation: password,
           # jti: SecureRandom.uuid,
           roles: [EasySettings.user_roles.keys.first]
+        )
+      end
+
+      # create User `Demo`
+      email = EasySettings.demo_user.email
+      password = EasySettings.demo_user.password
+      if email.present? && password.present?
+        User.create!(
+          email: email, password: password,
+          password_confirmation: password,
+          roles: [EasySettings.user_roles.keys.last]
         )
       end
     end

@@ -3,6 +3,7 @@
 // Command: vsvg -s ./src/icons/svg -t ./src/icons/components --ext ts --es6
 
 /* tslint:disable */
+import './chart-bar'
 import './dashboard'
 import './example'
 import './eye-off'

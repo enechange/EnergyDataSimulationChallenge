@@ -99,4 +99,10 @@ export default class Form extends Vue {
   float: right;
   margin-left: -105px;
 }
+@media (max-width: 800px) {
+  .cheat-sheet-btn {
+    display: block;
+    margin-left: calc(100% - 100px);
+  }
+}
 </style>
