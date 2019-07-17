@@ -1,0 +1,15 @@
+h1 = "challenge3 ishioka"
+h2 各都市別の１家庭での平均エネルギー生産量
+= line_chart @average_energies
+h2 都市別の詳細情報へ
+= form_with
+.city-list
+  table border="1" cellspacing="0"
+    tr
+      th 都市名
+      th 詳細へ
+
+    - @cities.each do |city|
+      tr
+        td = city.name
+        td = link_to "詳細へ", city_path(city)
