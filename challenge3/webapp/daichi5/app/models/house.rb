@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class House < ApplicationRecord
   has_many :energies
   validates :first_name, presence: true
-  validates :last_name , presence: true
-  validates :city , presence: true
-  validates :num_of_people , presence: true
-  validates :has_child , presence: true
+  validates :last_name, presence: true
+  validates :city, presence: true
+  validates :num_of_people, presence: true
+  validates :has_child, presence: true
 
-  scope :select_city, -> (city) {
-    city == 'all' ? joins(:energies) : joins(:energies).group(:city).where("city= ? ", city)
+  scope :select_city, lambda { |city|
+    city == 'all' ? joins(:energies) : joins(:energies).group(:city).where('city= ? ', city)
   }
 
   scope :sum_data, lambda {
@@ -16,6 +18,6 @@ class House < ApplicationRecord
       AVG(temperature) as ave_temperature,
       AVG(daylight) as ave_daylight,
       AVG(energyproduction) as ave_production
-    ').map {|e| [e.date.to_i , e.ave_temperature, e.ave_daylight, e.ave_production.to_f] }.sort
+    ').map { |e| [e.date.to_i, e.ave_temperature, e.ave_daylight, e.ave_production.to_f] }.sort
   }
 end
