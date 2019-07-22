@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Demo
+  [https://enechalle.herokuapp.com/](https://enechalle.herokuapp.com/)
 
-Things you may want to cover:
+## How to Setup
+### Database Creation
+`rails db:create` ( if you need in your environment)  
+`rails db:migrate`
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Import CSV data
+`rake import:houses`
+`rake import:energies`
