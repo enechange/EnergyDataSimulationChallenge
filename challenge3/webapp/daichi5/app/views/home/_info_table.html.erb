@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <td>Type</td>
+      <td>Max</td>
+      <td>Min</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% type = %w[Temperature Daylight EnergyProduction] %>
+    <% energies.each_with_index do |energy, i| %>
+      <tr>
+        <td>Average <%= type[i] %></td>
+        <td><%= energy.max.round(2) %></td>
+        <td><%= energy.min.round(2) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
