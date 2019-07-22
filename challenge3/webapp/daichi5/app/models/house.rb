@@ -7,11 +7,7 @@ class House < ApplicationRecord
   validates :has_child , presence: true
 
   scope :select_city, -> (city) {
-    if city == 'all'
-      joins(:energies)
-    else
-      joins(:energies).group(:city).where("city= ? ", city)
-    end
+    city == 'all' ? joins(:energies) : joins(:energies).group(:city).where("city= ? ", city)
   }
 
   scope :sum_data, lambda {
