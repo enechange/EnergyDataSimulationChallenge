@@ -1,0 +1,17 @@
+<h1>EnergyDataSimulationChallenge</h1>
+<div style="width: 600px; height: 300px;">
+  <canvas id="myChart" width="400" height="200"></canvas>
+</div>
+
+<%= form_with url: root_path, method: :get, local: true do |f| %>
+  <%= f.label 'DataType' %>
+  <%= select :chart, :type, [["All", 0], ["Temperature", 1], ["Daylight", 2], ["EnergyProduction", 3]], selected: @selected_type %>
+  <%= f.label 'City' %>
+  <%= select :chart, :city, [["All", "all"], ["London", "London"], ["Cambridge", "Cambridge"], ["Oxford", "Oxford"]], selected: @selected_city %>
+  <%= f.submit 'Show'  %>
+<% end %>
+
+<br />
+<%= render partial: 'info_table', locals: { energies: @energies[1..3] } %>
+
+<script>draw_chart();</script>
