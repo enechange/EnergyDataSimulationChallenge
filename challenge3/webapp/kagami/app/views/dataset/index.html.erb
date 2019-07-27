@@ -1,0 +1,34 @@
+<h1>Dataset_50</h1>
+<%= link_to "House Data", root_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Label</th>
+      <th>House</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Temperature</th>
+      <th>Daylight</th>
+      <th>EnergyProduction</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @datasets.each do |dataset| %>
+      <tr>
+        <td><%= dataset.id %></td>
+        <td><%= dataset.Label %></td>
+        <td><%= dataset.House %></td>
+        <td><%= dataset.Year %></td>
+        <td><%= dataset.Month %></td>
+        <td><%= dataset.Temperature %></td>
+        <td><%= dataset.Daylight %></td>
+        <td><%= dataset.EnergyProduction %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

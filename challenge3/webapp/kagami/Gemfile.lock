@@ -33,6 +33,8 @@ GEM
       activemodel (= 5.2.3)
       activesupport (= 5.2.3)
       arel (>= 9.0)
+    activerecord-import (1.0.2)
+      activerecord (>= 3.2)
     activestorage (5.2.3)
       actionpack (= 5.2.3)
       activerecord (= 5.2.3)
@@ -60,11 +62,16 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    chartable (0.0.0.3)
+      activesupport (>= 3.0.0)
+      chronic (~> 0.10)
+    chartkick (3.2.1)
     childprocess (1.0.1)
       rake (< 13.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    chronic (0.10.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -191,9 +198,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
+  chartable
+  chartkick
   chromedriver-helper
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)

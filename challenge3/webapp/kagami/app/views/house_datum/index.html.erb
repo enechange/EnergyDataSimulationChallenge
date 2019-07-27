@@ -1,0 +1,30 @@
+<h1>House Data</h1>
+
+<%= link_to "Dataset_50", dataset_index_path %>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Firtname</th>
+      <th>Lastname</th>
+      <th>City</th>
+      <th>num_of_people</th>
+      <th>has_child</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @housedata.each do |housedatum| %>
+      <tr>
+        <td><%= housedatum.id %></td>
+        <td><%= housedatum.Firstname %></td>
+        <td><%= housedatum.Lastname %></td>
+        <td><%= housedatum.City %></td>
+        <td><%= housedatum.num_of_people %></td>
+        <td><%= housedatum.has_child %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
