@@ -1,7 +1,7 @@
 class StaticsController < ApplicationController
-  
+  before_action :search
   def index
-    @houses = House.page(params[:page]).per(10)
+    @houses = House.search(params).page(params[:page]).per(10)
   end
 
   def show
@@ -13,4 +13,9 @@ class StaticsController < ApplicationController
     @energyproductions = @datas.map(&:fifth)
   end
 
+ private
+
+  def search
+    @houses = House.search(params.permit!)
+  end
 end

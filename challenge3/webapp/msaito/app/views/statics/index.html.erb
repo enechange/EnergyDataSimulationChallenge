@@ -1,4 +1,28 @@
 <h1>EnergyDataSimulation</h1>
+<%= form_with url: root_path, method: :get, local: :true  do |f| %>
+  <form>
+    <div class="form-group mt-5">
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :city %>
+        <%= f.select :city, House::CITY_ARRAY, {prompt: "unselected"}, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :num_of_people %>
+        <%= f.select :num_of_people, options_for_select(1..6), {prompt: "unselected"},class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :has_child %>
+        <%= f.select :has_child, [['yes', :yes], ['no', :no]], {prompt: "unselected"}, {class: "form-control"} %>
+      </div>
+      <%= f.submit 'search', :class => "btn btn-primary m-auto" %>
+    </div>
+  </form>
+<% end %>
+
 <table class="table table-bordered border-primary table-hover table-sm text-center mt-5">
   <thead class="bg-info text-light">
     <tr>

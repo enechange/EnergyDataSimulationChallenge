@@ -4,12 +4,13 @@
     <title>Msaito</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container col-md-7 mt-5 mb-5">
+      <%= yield %>
+    </div>
   </body>
 </html>

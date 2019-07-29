@@ -15,4 +15,12 @@
 class House < ApplicationRecord
   has_many :datasets
   CITY_ARRAY = ['London','Cambridge','Oxford']
+  def self.search(params)
+    houses = House.all
+    houses = houses.where("firstname LIKE :name or lastname LIKE :name", name: "%#{params[:name]}%") if params[:name].present?
+    houses = houses.where("houses.city LIKE ?", "%#{params[:city]}%") if params[:city].present?
+    houses = houses.where("houses.num_of_people LIKE ?", "%#{params[:num_of_people]}%") if params[:num_of_people].present?
+    houses = houses.where("houses.has_child LIKE ?", "%#{params[:has_child]}%") if params[:has_child].present?
+    return houses
+  end
 end
