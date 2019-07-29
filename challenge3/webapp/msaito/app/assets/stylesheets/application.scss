@@ -13,4 +13,22 @@
  */
 
  @import "bootstrap";
- 
+ a.page-link, a.btn-outline-info, .return {
+  color: #17a2b8;
+ }
+ a {
+  color: #ffffff;
+ }
+ a.btn-outline-info:hover, .return:hover {
+  color: #ffffff;
+  text-decoration: none;
+ }
+ .page-item.active .page-link {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  color: #dee2e6;
+ }
+ .m-auto {
+  display: block;
+  margin: 0 auto;
+ }
