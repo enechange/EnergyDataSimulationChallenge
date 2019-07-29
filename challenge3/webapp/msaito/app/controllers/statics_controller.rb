@@ -1,7 +1,7 @@
 class StaticsController < ApplicationController
   
   def index
-    @houses = House.all
+    @houses = House.page(params[:page]).per(10)
   end
 
   def show
