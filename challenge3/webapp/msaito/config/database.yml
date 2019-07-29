@@ -49,6 +49,8 @@ test:
 #
 production:
   <<: *default
-  database: msaito_production
-  username: msaito
-  password: <%= ENV['MSAITO_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV['DATABASE_USERNAAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  master_key: <%= ENV['RAILS_MASTER_KEY'] %>
+
