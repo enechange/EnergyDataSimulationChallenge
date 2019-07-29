@@ -26,9 +26,9 @@
 <table class="table table-bordered border-primary table-hover table-sm text-center mt-5">
   <thead class="bg-info text-light">
     <tr>
-      <th scope="col">Name</th>
+      <th scope="col">Name<%= sort_link(:firstname) %></th>
       <th scope="col">City</th>
-      <th scope="col">Num Of People</th>
+      <th scope="col">Num Of People<%= sort_link(:num_of_people) %></th>
       <th scope="col">Has Child</th>
       <th></th>
     </tr>
