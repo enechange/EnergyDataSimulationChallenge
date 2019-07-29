@@ -13,4 +13,6 @@
 #
 
 class House < ApplicationRecord
+  has_many :datasets
+  CITY_ARRAY = ['London','Cambridge','Oxford']
 end

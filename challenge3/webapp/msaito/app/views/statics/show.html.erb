@@ -1,0 +1,103 @@
+<h1 class = "mb-5"><%= @house.firstname %> <%= @house.lastname %>'s Data🔋</h1>
+
+<canvas id="myChart" height="200" width = "400" class="mb-5"></canvas>
+<button class="btn btn-outline-info m-auto mt-5"><%= link_to "return", root_path, class: "return" %></button>
+
+<script>
+ var ctx = document.getElementById('myChart');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      fontColor: {
+        red: 'rgb(255, 99, 132,0.6)',
+        orange: 'rgb(255, 159, 64,0.6)',
+        yellow: 'rgb(255, 205, 86,0.6)',
+        green: 'rgb(75, 192, 192,0.6)',
+        grey: 'rgb(201, 203, 207,0.6)',
+   　　},
+      labels:[
+        <% for i in 0..@dates.length - 1 %>
+         '<%= @dates[i][0] %>/<%= @dates[i][1] %>',
+        <% end %>
+       ],
+      datasets: [{
+        label: 'Energy Production',
+        data: <%= @energyproductions %>,
+        borderColor: 'green',
+        lineTension: 0,
+        fill: false,
+        yAxisID: 'y1'
+      }, {
+        label: 'daylight',
+        data: <%= @daylights %>,
+        borderColor: 'orange',
+        lineTension: 0,
+        fill: false,
+        yAxisID: 'y2'
+      }, {
+        label: 'Temperature',
+        data: <%= @temperatures %>,
+        borderColor: 'red',
+        lineTension: 0,
+        fill: false,
+        yAxisID: 'y3'
+      }]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Date',
+            color: 'grey'
+          },
+          gridLines: {
+            color: 'yellow',
+            lineWidth: 1
+          }
+        }],
+        yAxes: [{
+          id: 'y1',
+          position: 'left',
+          ticks: {
+            max: 1500,
+            min: 100,
+            stepSize: 100
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Energy Production',
+            fontColor: 'green'
+          },
+        }, {
+          id: 'y2',
+          position: 'right',
+          ticks: {
+            max: 280,
+            min: 80,
+            stepSize: 20
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Daylight',
+            fontColor: 'orange'
+          }
+        }, {
+          id: 'y3',
+          position: 'right',
+          ticks: {
+              max: 35,
+              min: -15,
+              stepSize: 5
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Temperature',
+            fontColor: 'red'
+          }
+        }]
+      }
+    }
+  });
+</script>
+

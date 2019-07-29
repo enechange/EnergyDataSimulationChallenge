@@ -1,0 +1,25 @@
+<h1>EnergyDataSimulation</h1>
+<table class="table table-bordered border-primary table-hover table-sm text-center mt-5">
+  <thead class="bg-info text-light">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">City</th>
+      <th scope="col">Num Of People</th>
+      <th scope="col">Has Child</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+        <th class="align-middle"><%= house.firstname %> <%= house.lastname %></th>
+        <td class="align-middle"><%= house.city %></td>
+        <td class="align-middle"><%= house.num_of_people %></td>
+        <td class="align-middle"><%= house.has_child %></td>
+        <td class="align-middle"><%= link_to "detail" , static_path(id: house.id), class: 'btn btn-outline-info' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
