@@ -39,14 +39,14 @@ class Energy < ApplicationRecord
 
       Energy.select(<<-SQL).
         year, month,
-        ROUND(AVG(temperature)) AS temperature_avg,
-        ROUND(AVG(daylight)) AS daylight_avg,
+        ROUND(AVG(temperature), 1) AS temperature_avg,
+        ROUND(AVG(daylight), 1) AS daylight_avg,
         ROUND(AVG(energy_production)) AS energy_production_avg
       SQL
       where(house_id: houses.pluck(:id)).group(:year, :month).inject({}) do |h, r|
         h[:dates] = (h[:dates] || []).push("#{r.year}/#{r.month}")
-        h[:temperature_avg] = (h[:temperature_avg] || []).push(r.temperature_avg)
-        h[:daylight_avg] = (h[:daylight_avg] || []).push(r.daylight_avg)
+        h[:temperature_avg] = (h[:temperature_avg] || []).push(r.temperature_avg.to_f)
+        h[:daylight_avg] = (h[:daylight_avg] || []).push(r.daylight_avg.to_f)
         h[:energy_production_avg] = (h[:energy_production_avg] || []).push(r.energy_production_avg)
         h
       end

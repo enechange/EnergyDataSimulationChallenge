@@ -19,7 +19,7 @@
                     text: 'Summary energy production report'
                 },
                 tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    pointFormat: '{series.name}: <b>{point.y} / {point.percentage:.1f}%</b>'
                 },
                 plotOptions: {
                     pie: {
@@ -27,7 +27,7 @@
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                            format: '<b>{point.name}</b>: {point.y} / {point.percentage:.1f}%'
                         }
                     }
                 },

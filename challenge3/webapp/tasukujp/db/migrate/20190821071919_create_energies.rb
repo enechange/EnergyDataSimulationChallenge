@@ -5,8 +5,8 @@ class CreateEnergies < ActiveRecord::Migration[5.2]
       t.integer :house_id, null: false
       t.integer :year, null: false
       t.integer :month, null: false
-      t.decimal :temperature, null: false
-      t.decimal :daylight, null: false
+      t.decimal :temperature, precision: 3, scale: 1, null: false
+      t.decimal :daylight, precision: 4, scale: 1, null: false
       t.integer :energy_production, null: false
 
       t.timestamps

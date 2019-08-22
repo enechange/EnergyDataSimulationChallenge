@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2019_08_21_071919) do
     t.integer "house_id", null: false
     t.integer "year", null: false
     t.integer "month", null: false
-    t.decimal "temperature", precision: 10, null: false
-    t.decimal "daylight", precision: 10, null: false
+    t.decimal "temperature", precision: 3, scale: 1, null: false
+    t.decimal "daylight", precision: 4, scale: 1, null: false
     t.integer "energy_production", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
