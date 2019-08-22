@@ -2,10 +2,14 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Tasukujp
+    %title enechallenge3 - tasukujp
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'https://code.highcharts.com/highcharts.js'
+    = javascript_include_tag 'https://code.highcharts.com/modules/series-label.js'
+    = javascript_include_tag 'https://code.highcharts.com/modules/exporting.js'
+    = javascript_include_tag 'https://code.highcharts.com/modules/export-data.js'
   %body
     = yield

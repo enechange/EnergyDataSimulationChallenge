@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get '/home/api/sum_graph_data.json', to: 'home#sum_graph_data'
+  get '/home/api/avg_graph_data.json', to: 'home#avg_graph_data'
+
+  root 'home#index'
+
 end

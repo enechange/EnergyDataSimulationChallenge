@@ -1,5 +1,7 @@
 class House < ApplicationRecord
 
+  has_many :energies
+
   CITIES = %w(London Cambridge Oxford)
 
   validates :firstname, :lastname, :city, :num_of_people, presence: true
