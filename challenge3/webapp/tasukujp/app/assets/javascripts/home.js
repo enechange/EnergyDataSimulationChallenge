@@ -5,6 +5,13 @@
     root.homeIndexFunc = function() {
 
         var summaryChart = function(data) {
+            if (!Object.keys(data.report).length) {
+                $('#sum_error_message').text('report does not exists.');
+                return
+            } else {
+                $('#sum_error_message').text('');
+            }
+
             $('#year').val(data.year);
             $('#month').val(data.month);
 
@@ -60,6 +67,13 @@
         getSummaryData();
 
         var averageChart = function(data) {
+            if (!Object.keys(data).length) {
+                $('#avg_error_message').text('report does not exists.');
+                return
+            } else {
+                $('#avg_error_message').text('');
+            }
+
             Highcharts.chart('avg_graph_container', {
                 chart: {
                     zoomType: 'xy'
