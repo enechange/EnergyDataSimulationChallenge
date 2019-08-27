@@ -1,0 +1,25 @@
+%h2 EnergyDataSimulationChallenge
+%p
+  #sum_graph_container
+%p
+  = label_tag :year
+  = number_field_tag :year, nil, min: 2011, max: 2013
+  = label_tag :month
+  = number_field_tag :month, nil, min: 1, max: 12
+  = button_tag 'Search', id: 'search_sum'
+  %span#sum_error_message
+
+%p
+  #avg_graph_container
+%p
+  = label_tag :city
+  = select_tag :city, options_for_select(House::CITIES)
+  = label_tag :num_of_people
+  = number_field_tag :num_of_people, nil, min: 0
+  = label_tag :has_child
+  = select_tag :has_child, options_for_select(Yes: 1, No: 0), include_blank: true
+  = button_tag 'Search', id: 'search_avg'
+  %span#avg_error_message
+
+:javascript
+  homeIndexFunc();
