@@ -1,0 +1,25 @@
+h1 #{@house.firstname}家の発電状況
+hr
+= link_to "住居一覧に戻る", houses_path
+- @chart_energies.each do |key, value|
+  h2 #{key}の月別合計値
+  = line_chart [{name: "#{@house.firstname}家のエネルギー生産量", data: value},
+          {name: "#{@house.city}の平均エネルギー生産量", data: @chart_energies_avg[key]},
+          {name: "#{@house.city}の平均日射量", data: @chart_daylights[key]}]
+br
+table border="1"
+  thead
+    tr
+      th 名前
+      th 性
+      th 都市
+      th 人数
+      th 子供の有無
+  tbody
+    tr
+    td = @house.firstname
+    td = @house.lastname
+    td = @house.city
+    td = @house.num_of_people
+    td = @house.has_child
+

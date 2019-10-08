@@ -1,0 +1,27 @@
+h1 住居の一覧
+= link_to "エネルギー生産量一覧", energies_path
+hr
+h5 住居を追加する
+= form_tag import_houses_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "インポート"
+hr
+br
+table border="1"
+  thead
+    tr
+      th 名前
+      th 性
+      th 都市
+      th 人数
+      th 子供の有無
+      th 詳細
+  tbody
+    - @houses.each do |house|
+      tr
+        td = house.firstname
+        td = house.lastname
+        td = house.city
+        td = house.num_of_people
+        td = house.has_child
+        td = link_to "グラフを見る", house_path(house)
