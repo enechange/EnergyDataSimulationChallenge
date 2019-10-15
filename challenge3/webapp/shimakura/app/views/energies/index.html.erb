@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <%= link_to '家庭一覧表示に切り替え', '/houses' %>
+
+  <h1>エネルギー情報一覧</h1>
+
+  <table class="table table-hover table-striped table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th>House_ID</th>
+        <th>Label</th>
+        <th>Year</th>
+        <th>Month</th>
+        <th>Temperature</th>
+        <th>Daylight</th>
+        <th>Energy production</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @energies.each do |energy| %>
+        <tr>
+          <td><%= energy.house_id %></td>
+          <td><%= energy.label %></td>
+          <td><%= energy.year %></td>
+          <td><%= energy.month %></td>
+          <td><%= energy.temperature %></td>
+          <td><%= energy.daylight %></td>
+          <td><%= energy.energy_production %></td>
+          <td><%= link_to '編集', edit_energy_path(energy) %></td>
+          <td><%= link_to '削除', energy, method: :delete, data: { confirm: 'レコードを削除してよろしいですか？' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @energies %>
+
+  <br>
+  <%= link_to 'エネルギー情報レコード追加', new_energy_path %>
+</div>

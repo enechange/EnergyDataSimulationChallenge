@@ -1,0 +1,52 @@
+<%= form_with(model: energy, local: true) do |form| %>
+  <% if energy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(energy.errors.count, "error") %> prohibited this energy from being saved:</h2>
+
+      <ul>
+        <% energy.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :house_id %>
+    <%= form.number_field :house_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :label %>
+    <%= form.number_field :label %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :month %>
+    <%= form.number_field :month %>
+  </div>
+
+  <div class="field">
+    <%= form.label :temperature %>
+    <%= form.text_field :temperature %>
+  </div>
+
+  <div class="field">
+    <%= form.label :daylight %>
+    <%= form.text_field :daylight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :energy_production %>
+    <%= form.number_field :energy_production %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
