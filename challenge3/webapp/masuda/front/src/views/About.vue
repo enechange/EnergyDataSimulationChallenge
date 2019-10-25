@@ -1,24 +1,24 @@
 <template>
   <div class="about">
-      <select
-        name="city"
-        v-model="selectedCity"
-        v-on:change="filterCity"
-        style="width:20vw;height:30px;font-size:15px;"
-      >
-      <option value='' disabled selected style='display:none;'>1.Please Select City</option>
-        <option v-for="city in Cities" v-bind:key="city.name">{{ city.name }}</option>
-      </select>
-      <br />
-      <select
-        name="family"
-        v-model="selectedFamily"
-        v-on:change="filterFamily"
-        style="width:20vw;height:30px;font-size:15px;margin-top:10px;"
-      >
-      <option value='' disabled selected style='display:none;'>2.Please Select Family</option>
-        <option v-for="family in Families" v-bind:key="family.id">{{ family.name }}</option>
-      </select>
+    <select
+      name="city"
+      v-model="selectedCity"
+      v-on:change="filterCity"
+      style="width:20vw;height:30px;font-size:15px;"
+    >
+      <option value disabled selected style="display:none;">1.Please Select City</option>
+      <option v-for="city in Cities" v-bind:key="city.name">{{ city.name }}</option>
+    </select>
+    <br />
+    <select
+      name="family"
+      v-model="selectedFamily"
+      v-on:change="filterFamily"
+      style="width:20vw;height:30px;font-size:15px;margin-top:10px;"
+    >
+      <option value disabled selected style="display:none;">2.Please Select Family</option>
+      <option v-for="family in Families" v-bind:key="family.id">{{ family.name }}</option>
+    </select>
     <highcharts :options="chartOptions"></highcharts>
   </div>
 </template>
@@ -88,17 +88,19 @@ export default {
   },
   methods: {
     async getHousesData() {
-      await axios.get("http://localhost:3000/houses").then(response => {
-        if (response.status != 200) {
-          console.error(response);
-          return;
-        }
-        this.housesData = response.data;
-      });
+      await axios
+        .get("http://" + location.hostname + ":3000/houses")
+        .then(response => {
+          if (response.status != 200) {
+            console.error(response);
+            return;
+          }
+          this.housesData = response.data;
+        });
     },
     async getEnergyProductionsData() {
       await axios
-        .get("http://localhost:3000/energy_productions")
+        .get("http://" + location.hostname + ":3000/energy_productions")
         .then(response => {
           if (response.status != 200) {
             console.error(response);

@@ -123,7 +123,12 @@ export default {
   methods: {
     getApiDataAndCalc(param) {
       axios
-        .get("http://localhost:3000/average_by_cities?select=" + param)
+        .get(
+          "http://" +
+            location.hostname +
+            ":3000/average_by_cities?select=" +
+            param
+        )
         .then(response => {
           if (response.status != 200) {
             console.error(response);
