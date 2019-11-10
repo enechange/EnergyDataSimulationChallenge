@@ -1,0 +1,53 @@
+
+<!--<dic class="location-graph">-->
+<!--    <div class="container">-->
+<!--        <div class="sum-energy-graph">-->
+<!--        <canvas id="myChart" width="100" height="50"></canvas>-->
+<!--        <script>draw_graph();</script>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</dic>-->
+
+<div class="data-wrapper">
+    <div class="container">
+        
+        <div class="datas">
+            <p class="house-title">Energy Total of Location</p>
+        </div>
+        <div class="sum-energy-graph">
+            <canvas id="myChart" width="100" height="50"></canvas>
+            <script>draw_graph();</script>
+        </div>
+        
+        <div class="datas">
+        <p class="house-title">House datas</p>
+        <table>
+            <thead class="head-house">
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>City</th>
+                <th>People</th>
+                <th>Child</th>
+                <th>Graph</th>
+            </tr>
+            </thead>    
+            <tbody>
+            <% @houses.each do |house| %>
+            <tr>
+                <td><p><%= house.id %></p></td>
+                <td><p><%= house.firstname %></p></td>
+                <td><p><%= house.lastname %></p></td>
+                <td><p><%= house.city %></p></td>
+                <td><p><%= house.num_of_people %></p></td>
+                <td><p><%= house.has_child %></p></td>
+                <td><p><%= link_to 'graph', data_path(house), class: 'house-link' %></p></td>
+            </tr>
+            <% end %>
+            </tbody>
+        </table>
+        </div>
+        <%= link_to 'TOPへ', datas_path , :method => :get , class: 'top' %>
+    </div>
+</div>
