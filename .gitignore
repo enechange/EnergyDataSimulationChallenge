@@ -1,5 +1,6 @@
 # mac
 .DS_Store
+.idea
 
 # data files
 data/user/user_*.csv

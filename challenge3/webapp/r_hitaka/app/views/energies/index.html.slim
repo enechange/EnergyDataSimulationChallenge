@@ -1,0 +1,28 @@
+h1 エネルギー生産量の一覧
+= link_to "住居一覧", houses_path
+hr
+h5 エネルギー生産量データを追加する
+= form_tag import_energies_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "インポート"
+hr
+br
+table border="1"
+  thead
+    tr
+      th 家のID
+      th 年
+      th 月
+      th 気温
+      th 日射量
+      th エネルギー生産量
+  tbody
+    - @energies.each do |energy|
+      tr
+        td = energy.house_id
+        td = energy.year
+        td = energy.month
+        td = energy.temperature
+        td = energy.daylight
+        td = energy.energy_production
+
