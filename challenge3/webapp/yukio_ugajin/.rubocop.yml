@@ -1,6 +1,5 @@
 inherit_from: .rubocop_todo.yml
 
-
 AllCops:
   TargetRubyVersion: 2.6.3
   Exclude:
@@ -11,29 +10,29 @@ AllCops:
   Include:
     - rubocop-rails
 
-# # 日本語でのコメントを許可
-AsciiComments:
-  Enabled: false
+# # # 日本語でのコメントを許可
+# AsciiComments:
+#   Enabled: false
 
-# 複数行での「lambda」で「->」による省略記法を許可
-Lambda:
-  Enabled: false
+# # 複数行での「lambda」で「->」による省略記法を許可
+# Lambda:
+#   Enabled: false
 
-# モジュール名::クラス名の定義を許可
-ClassAndModuleChildren:
-  Enabled: false
+# # モジュール名::クラス名の定義を許可
+# ClassAndModuleChildren:
+#   Enabled: false
 
-# メソッド名のprefixに「set_」「get_」を許可
-AccessorMethodName:
-  Enabled: false
+# # メソッド名のprefixに「set_」「get_」を許可
+# AccessorMethodName:
+#   Enabled: false
 
-# クラスにコメントを残さない
-Documentation:
-  Enabled: false
+# # クラスにコメントを残さない
+# Documentation:
+#   Enabled: false
 
-# 「and」「or」の使用を許可
-AndOr:
-  Enabled: false
+# # 「and」「or」の使用を許可
+# AndOr:
+#   Enabled: false
 
 # do .. end から更にメソッドチェーンすると見づらいので
 # auto-correct せず、自分で修正する
