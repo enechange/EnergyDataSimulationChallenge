@@ -2,10 +2,10 @@ inherit_from: .rubocop_todo.yml
 
 
 AllCops:
-  TargetRubyVersion: 2.5.5
+  TargetRubyVersion: 2.6.3
   Exclude:
-    - "vendor/**/*" 
-    - "db/schema.rb"
+    - vendor/**/* 
+    - db/schema.rb
     - bin/bundle
   DisplayCopNames: true
   Include:
