@@ -1,0 +1,2 @@
+class CityEnergy < ApplicationRecord
+end

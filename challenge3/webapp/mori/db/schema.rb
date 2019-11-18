@@ -10,30 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_015625) do
+ActiveRecord::Schema.define(version: 2019_11_18_114826) do
 
-  create_table "datasets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "label"
-    t.bigint "house_id"
+  create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "city_energies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "city_id"
     t.integer "year"
     t.integer "month"
-    t.float "temperature"
-    t.float "daylight"
     t.integer "energy_production"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["house_id"], name: "index_datasets_on_house_id"
+  end
+
+  create_table "energies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "label"
+    t.integer "house_id"
+    t.integer "year"
+    t.integer "month"
+    t.decimal "temperature", precision: 10
+    t.decimal "daylight", precision: 10
+    t.integer "energy_production"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "houses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
-    t.string "city"
+    t.integer "city_id"
     t.integer "num_of_people"
-    t.string "has_child"
+    t.integer "has_child"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "datasets", "houses"
 end

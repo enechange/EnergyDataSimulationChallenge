@@ -3,13 +3,13 @@
 one:
   firstname: MyString
   lastname: MyString
-  city: MyString
+  city_id: 1
   num_of_people: 1
-  has_child: MyString
+  has_child: 1
 
 two:
   firstname: MyString
   lastname: MyString
-  city: MyString
+  city_id: 1
   num_of_people: 1
-  has_child: MyString
+  has_child: 1
