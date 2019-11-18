@@ -1,3 +1,207 @@
 // Place all the styles related to the cities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//----------------- all ----------------------------------
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  background-color:gray;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 870px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.clear {
+  clear: left;
+}
+
+p {
+  padding: 5px;
+  margin: 5px;
+}
+
+.top {
+  margin-top:10px;
+  color: white;
+}
+//-----------------  header  ------------------------------------
+
+header {
+  height: 60px;
+  width: 100%;
+  background-color:darkgray;
+  position:fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.header-left {
+  float: left;
+  font-size:20px;
+  color:white;
+}
+
+.header-right {
+  float: right;
+}
+
+.header-right .menu{
+  line-height: 60px;
+  color:white;
+  padding: 0 25px;
+  display: block;
+  float: left;
+  transition: all 0.5s;
+}
+
+
+//-----------------  form  ------------------------------------
+
+//----------------- city form ---------------------------------
+.form-label {
+  font-size:16px;
+  margin-right: 13px;
+  letter-spacing:2px;
+}
+
+.city-form {
+  font:15px/24px sans-serif;
+	box-sizing: border-box;
+	width:50%;
+	padding:0.3em;
+	transition:0.3s;
+	letter-spacing:1px;
+	color:white;
+	border:none;
+	border-bottom:2px solid #1b2538;
+	background:transparent;
+	margin-right:10px;
+}
+
+.city-form:focus {
+	border-bottom: 2px solid #da3c41;
+	outline: none;
+}
+
+.btn {
+  color:white;
+  background-color:gray;
+  font-size:16px;
+  padding:4px;
+  margin-top:10px;
+}
+
+.select-left {
+  margin-left:24px;
+}
+
+//----------------- chart  ----------------------------------
+.chart {
+    background-color:lightgray;
+}
+
+.house-chart {
+  margin-bottom:30px;
+}
+
+//----------------- city wrapper  ---------------------------
+.city_wrapper {
+  padding: 80px 0 100px 0;
+  text-align: center;
+  background-color: gray;
+  color:white;
+}
+
+.table,tr,td {
+  width:250px;
+  letter-spacing: 2px;
+  border-collapse: collapse;
+  text-align:center;
+}
+
+tr:hover td{
+  opacity: 0.6;
+}
+
+.title {
+  font-size:25px;
+  letter-spacing:2px;
+  font-weight:bold;
+  border-bottom:1px solid white;
+  margin-bottom:20px;
+  color:white;
+}
+
+.city-data-wrapper {
+  text-align:center;
+}
+
+.city-chart-wrapper {
+  margin-bottom:60px;
+}
+
+.city-data-wrapper {
+  margin-bottom:60px;
+}
+
+.city-create-wrapper {
+}
+
+//----------------- houses wrapper  ------------------------
+
+.houses-wrapper {
+  padding:80px 0 100px 0;
+  text-align:center;
+  background-color:gray;
+  color:white;
+}
+
+.houses-create-wrapper {
+  margin-bottom:15px;
+}
+
+.house-data-wrapper{
+  margin-bottom:10px;
+}
+
+.house-link {
+  color:white;
+  border:1px solid white;
+  padding:7px;
+  transition:1s;
+}
+
+.house-link:hover {
+  background-color:white;
+  color:gray;
+  font-weight:3px;
+  transition:1s;
+}
+
+
+//----------------- house wrapper  ------------------------
+
+.house-wrapper {
+  padding:80px 0 100px 0;
+  text-align:center;
+  background-color:gray;
+  color:white;
+}
+
+.house-info {
+  margin-bottom:35px;
+}
+
+
