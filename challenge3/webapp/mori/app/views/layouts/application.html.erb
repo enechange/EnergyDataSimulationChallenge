@@ -1,19 +1,35 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Challenge3</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <%= Gon::Base.render_data %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <div class="container">
+        <div class="header-left">
+          <p>Challenge3</p>
+        </div>
+        <div class="header-right">
+          <%= link_to 'City', root_url, class: "menu" %>
+          <%= link_to 'Houses', houses_path, class: "menu" %>
+        </div>
+      </div>
+    </header>
+    <div class="clear"></div>
+    
+    <div class="flash">
+      <% flash.each do |message_type, message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    
     <%= yield %>
   </body>
 </html>

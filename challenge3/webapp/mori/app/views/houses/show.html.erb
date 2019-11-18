@@ -1,0 +1,73 @@
+
+<div class="house-wrapper">
+  <div class="container">
+    
+    <div class="house-info">
+      <div class="house-title">
+        <p class="title"><%= @house.lastname %></p>
+      </div>
+      <table class="home-top">
+        <thead class="head-house">
+          <tr>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>City</th>
+            <th>People</th>
+            <th>Child</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="head-tr">
+            <td><p><%= @house.id %></p></td>
+            <td><p><%= @house.firstname %></p></td>
+            <td><p><%= @house.lastname %></p></td>
+            <td><p><%= @city_name[@house.city_id - 1].name %></p></td>
+            <td><p><%= @house.num_of_people %></p></td>
+            <td><p><%= @house.has_child == 1 ? "Yes" : "No" %></p></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="house-chart-wrapper">
+      <% @years.length.times do |i| %>
+        <div class="house-chart">
+          <%= high_chart("chart#{i}", @charts[i]) %>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="energy-form-wrapper">
+      <%= form_with(model: @energy, local: true) do |f| %>
+        <div class="form-group down">
+          
+          
+          <%= f.label :year, 'Year', class: 'form-label' %>
+          <%= f.select :year, Energy.group('year').map { |year| [year.year, year.year] } %>
+          
+          <%= f.label :month, 'Month', class: 'form-label select-left' %>
+          <%= f.select :month, {"1": 1, "2": 2, "3": 3,"4": 4, "5": 5, "6": 6,"7": 7,"8": 8, "9": 9,"10": 10,"11": 11,"12": 12} %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :temperature, 'Temperature', class: 'form-label' %>
+          <%= f.text_field :temperature, class: 'city-form' %>
+        </div>
+  
+        <div class="form-group">
+          <%= f.label :daylight, 'Daylight', class: 'form-label' %>
+          <%= f.text_field :daylight, class: 'city-form' %>
+        </div>
+          
+        <div class="form-group">
+          <%= f.label :energy_production, class: 'city-label' %>
+          <%= f.text_field :energy_production, class: 'city-form' %>
+        </div>
+        
+        <%= f.submit 'Create', class: 'btn btn-form house-btn' %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
