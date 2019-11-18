@@ -4,8 +4,9 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   TargetRubyVersion: 2.5.5
   Exclude:
-    - "vendor/**/*" # rubocop config/default.yml
+    - "vendor/**/*" 
     - "db/schema.rb"
+    - bin/bundle
   DisplayCopNames: true
   Include:
     - rubocop-rails
