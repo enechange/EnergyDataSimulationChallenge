@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_id: 1
+  year: 1
+  month: 1
+  energy_production: 1
+
+two:
+  city_id: 1
+  year: 1
+  month: 1
+  energy_production: 1

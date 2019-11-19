@@ -1,0 +1,87 @@
+<div class="houses-wrapper">
+  <div class="container">
+    
+    <div class="houses-create-wrapper">
+      <div class="houses-title">
+        <p class="title">New House Create</p>
+      </div>
+      
+      <div class="houses-form-wrapper">
+        <%= form_with(model: @house, local:true) do |f| %>
+          
+          <% if @house.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@house.errors.count, "error") %> prohibited this message from being saved:</h2>
+              <ul>
+                <% @house.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          
+          <div class="form-group">
+            <%= f.label :firstname, 'FirstName', class: 'form-label' %>
+            <%= f.text_field :firstname, class: 'city-form' %>
+          </div>
+  
+          <div class="form-group">
+            <%= f.label :lastname, 'LastName', class: 'form-label' %>
+            <%= f.text_field :lastname, class: 'city-form' %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :num_of_people, 'People', class: 'form-label' %>
+            <%= f.text_field :num_of_people, class: 'city-form' %>
+          </div>
+          
+          <div class="form-group down">
+            <%= f.label :has_child, 'Child', class: 'form-label' %>
+            <%= f.select :has_child, {Yes: 1, No: 0} %>
+      
+            <%= f.label :city_id, 'City', class: 'form-label select-left' %>
+            <%= f.select :city_id, City.all.map { |city| [city.name, city.id] }, class: 'pull' %>
+          </div>
+          
+          <%= f.submit 'Create', class: 'btn btn-form house-btn' %>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="house-data-wrapper">
+      <div class="house-data-title">
+        <p class="title">Houses Data</p>
+      </div>
+      <div class="houses-data">
+        <table>
+          <thead class="head-house">
+            <tr>
+              <th>FirsNname</th>
+              <th>LastName</th>
+              <th>City</th>
+              <th>People</th>
+              <th>Child</th>
+              <th>Graph</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @houses.each do |house| %>
+              <tr>
+                <td><p><%= house.firstname %></p></td>
+                <td><p><%= house.lastname %></p></td>
+                <td><p><%= @city_name[house.city_id - 1].name %></p></td>
+                <td><p><%= house.num_of_people %></p></td>
+                <td><p><%= house.has_child == 1 ? "Yes" : "No" %></p></td>
+                <td><p><%= link_to 'graph', house_path(house), class: 'house-link' %></p></td>
+                <td><p><%= link_to 'Delete', house_path(house), method: :delete, data: { confirm: 'sure delete?' }, class: 'house-link' %></p></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+      <%= link_to 'TOPへ', houses_path , :method => :get , class: 'top' %>
+    </div>
+  </div>
+</div>
