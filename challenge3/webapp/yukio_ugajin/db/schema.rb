@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_141625) do
+ActiveRecord::Schema.define(version: 2019_11_19_145638) do
+
+  create_table "energy_details", force: :cascade do |t|
+    t.integer "label", null: false
+    t.integer "house_id", null: false
+    t.integer "year", null: false
+    t.integer "month", null: false
+    t.float "temperature", null: false
+    t.float "daylight", null: false
+    t.integer "energy_production", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_energy_details_on_house_id"
+  end
 
   create_table "houses", force: :cascade do |t|
     t.string "firstname", null: false
@@ -22,4 +35,5 @@ ActiveRecord::Schema.define(version: 2019_11_19_141625) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "energy_details", "houses"
 end
