@@ -13,7 +13,7 @@ namespace :import_csv do
 
   task houses: :environment do
     houses = []
-    path = '../../data/house_data.csv'
+    path = 'db/csv/house_data.csv'
 
     CSV.foreach(path, headers: true) do |row|
       houses << House.new(
@@ -29,7 +29,7 @@ namespace :import_csv do
 
   task energy_details: :environment do
     energy_details = []
-    path = '../../data/dataset_50.csv'
+    path = 'db/csv/dataset_50.csv'
 
     CSV.foreach(path, headers: true) do |row|
       energy_details << EnergyDetail.new(
