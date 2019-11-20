@@ -1,20 +1,49 @@
-const ctx = document.getElementById('myChart1').getContext('2d');
-// debugger;
-const chart = new Chart(ctx, {
-  // The type of chart we want to create
-  type: 'line',
+// const get_data = () => {
 
-  // The data for our dataset
-  data: {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [{
-          label: 'My First dataset',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: [0, 10, 5, 2, 20, 30, 45]
-      }]
-  },
+// };
+const scatter_chart = () => {
+  const ctx = document.getElementById('myChart1').getContext('2d');
+  new Chart(ctx, {
+    type: 'scatter',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [{
+              x: 20,
+              y: 0
+          }, {
+              x: 0,
+              y: 10
+          }, {
+              x: 11,
+              y: 5
+          }]
+        }]
+    },
+    options: {
+      // responsive: true, // レスポンシブ設定
+      maintainAspectRatio: true, // アスペクト比の維持設定
+      scales: {
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Daylight'
+          }
+        }],
+        yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Energy Production'
+          }
+        }]
+      }
+    }
+  })
+};
 
-  // Configuration options go here
-  options: {}
-});
+window.onload = () => {
+  scatter_chart();
+};
