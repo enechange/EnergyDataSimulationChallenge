@@ -27,12 +27,12 @@ namespace :import_csv do
     House.import houses
   end
 
-  task data_details: :environment do
-    data_details = []
+  task energy_details: :environment do
+    energy_details = []
     path = '../../data/dataset_50.csv'
 
     CSV.foreach(path, headers: true) do |row|
-      data_details << DataDetail.new(
+      energy_details << EnergyDetail.new(
         label:             row['Label'].to_i,
         house_id:          row['House'].to_i,
         year:              row['Year'].to_i,
@@ -42,6 +42,6 @@ namespace :import_csv do
         energy_production: row['EnergyProduction'].to_i
       )
     end
-    DataDetail.import data_details
+    EnergyDetail.import energy_details
   end
 end
