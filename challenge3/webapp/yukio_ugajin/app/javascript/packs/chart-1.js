@@ -49,5 +49,5 @@ const scatter_chart = (dataArray) => {
 };
 
 window.onload = () => {
-  get_data('all_data');
+  get_data('all');
 };
