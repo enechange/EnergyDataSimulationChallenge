@@ -1,10 +1,13 @@
 const get_data = (url) => {
+  // debugger;
   axios.get('/' + url )
     .then(function (response) {
-      scatter_chart(response);
+      debugger;
+      // scatter_chart(response);
       console.log(response);
     })
     .catch(function (error) {
+      debugger;
       alert('エラーが発生しました。');
       console.log(error);
     })
