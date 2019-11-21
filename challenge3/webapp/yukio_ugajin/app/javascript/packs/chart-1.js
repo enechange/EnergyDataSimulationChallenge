@@ -1,27 +1,31 @@
-// const get_data = () => {
+const get_data = (url) => {
+  axios.get('/' + url )
+    .then(function (response) {
+      scatter_chart(response);
+      console.log(response);
+    })
+    .catch(function (error) {
+      alert('エラーが発生しました。');
+      console.log(error);
+    })
+};
 
-// };
-const scatter_chart = () => {
+const scatter_chart = (dataArray) => {
   const ctx = document.getElementById('myChart1').getContext('2d');
   new Chart(ctx, {
     type: 'scatter',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [{
-              x: 20,
-              y: 0
-          }, {
-              x: 0,
-              y: 10
-          }, {
-              x: 11,
-              y: 5
-          }]
-        }]
+    data: { datasets: dataArray
+        // datasets: [{
+        //     label: 'My First dataset',
+        //     backgroundColor: '#cfcfcf',
+        //     borderColor: '#808080',
+        //     // pointRadius: 1,
+        //     // pointBorder: 5
+        //     data: [{
+        //       x: 20,
+        //       y: 0
+        //     }]
+        // }]
     },
     options: {
       // responsive: true, // レスポンシブ設定
@@ -45,5 +49,5 @@ const scatter_chart = () => {
 };
 
 window.onload = () => {
-  scatter_chart();
+  get_data('all_data');
 };
