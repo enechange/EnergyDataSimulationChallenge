@@ -1,3 +1,1 @@
-json.array! @all_house do |house|
-  json.id house.id
-end
+json.array! @all_energy, :label, :backgroundColor, :borderColor, :data
