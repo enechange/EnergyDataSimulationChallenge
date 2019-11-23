@@ -2,33 +2,27 @@ class StaticPagesController < ApplicationController
   def top; end
 
   def all
-    data = []
-    EnergyDetail.all.each do |e|
-      data << e.scatter_position
-    end
-    @all_energy = [scatter_params('All Data', '#ffea00', '#ffbb00', data)]
+    @all_energy = [scatter_params(EnergyDetail.all_data)]
   end
 
   def city
-    cambridge = []
-    london = []
-    oxford = []
+    @all_energy = []
+    cities = %w[cambridge london oxford]
 
-    EnergyDetail.all.each do |e|
-      
+    cities.each do |city|
+      @all_energy << scatter_params(EnergyDetail.city_data(city))
     end
-
-
+    render 'all.json.jbuilder'
   end
 
   private
 
-    def scatter_params(label, background, border, data)
+    def scatter_params(data_array)
       {
-        label: label,
-        backgroundColor: background,
-        borderColor: border,
-        data: data
+        label:           data_array[0],
+        backgroundColor: data_array[1],
+        borderColor:     data_array[2],
+        data:            data_array[3]
       }
     end
 end
