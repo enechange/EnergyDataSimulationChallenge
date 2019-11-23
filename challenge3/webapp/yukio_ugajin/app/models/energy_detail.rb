@@ -9,7 +9,7 @@ class EnergyDetail < ApplicationRecord
             presence: true, numericality: { only_integer: true }
   validates :month,
             presence: true, numericality: { only_integer: true }
-  validates :temperture,
+  validates :temperature,
             presence: true, numericality: true
   validates :daylight,
             presence: true, numericality: true
