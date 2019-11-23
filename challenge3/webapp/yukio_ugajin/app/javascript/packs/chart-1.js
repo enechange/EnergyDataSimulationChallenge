@@ -1,4 +1,6 @@
-const get_data = (url) => {
+const select_box = document.getElementById('select_box');
+
+let get_data = (url) => {
   axios.get('/' + url )
     .then(function (response) {
       scatter_chart(response.data);
@@ -34,5 +36,10 @@ const scatter_chart = (dataArray) => {
 };
 
 window.onload = () => {
-  get_data('has_child');
+  get_data('all');
 };
+
+select_box.addEventListener('change', (e) => {
+  get_data(e.target.value);
+});
+

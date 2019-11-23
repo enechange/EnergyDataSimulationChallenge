@@ -21,7 +21,7 @@ class EnergyDetail < ApplicationRecord
     EnergyDetail.all.each do |e|
       position_data << e.scatter_position
     end
-    ['All Data', '#ffea00', '#ffbb00', position_data]
+    ['All Data', '#FFF5F5', '#d10000', position_data]
   end
 
   def self.city_data(city)
@@ -33,11 +33,11 @@ class EnergyDetail < ApplicationRecord
     end
 
     if city == 'cambridge'
-      ['cambridge', '#ff3838', '#d10000', position_data]
+      ['cambridge', '#FFF5F5', '#d10000', position_data]
     elsif city == 'london'
-      ['london', '#ffea00', '#ffbb00', position_data]
+      ['london', '#FFFDE5', '#ffbb00', position_data]
     elsif city == 'oxford'
-      ['oxford', '#00B8F5', '#0000F5', position_data]
+      ['oxford', '#F5FCFF', '#0000F5', position_data]
     end
   end
 
@@ -50,15 +50,15 @@ class EnergyDetail < ApplicationRecord
     end
 
     if num == 2
-      ['2', '#ff3838', '#d10000', position_data]
+      ['2', '#FFF5F5', '#d10000', position_data]
     elsif num == 3
-      ['3', '#ffea00', '#ffbb00', position_data]
+      ['3', '#FFFDE5', '#ffbb00', position_data]
     elsif num == 4
-      ['4', '#00B8F5', '#0000F5', position_data]
+      ['4', '#F5FCFF', '#0000F5', position_data]
     elsif num == 5
-      ['5', '#33FF70', '#00C217', position_data]
+      ['5', '#E5FFED', '#00C217', position_data]
     elsif num == 6
-      ['6', '#E014FF', '#A800C2', position_data]
+      ['6', '#FCE5FF', '#A800C2', position_data]
     end
   end
 
@@ -71,9 +71,9 @@ class EnergyDetail < ApplicationRecord
     end
 
     if answer
-      ['YES', '#ff3838', '#d10000', position_data]
+      ['YES', '#FFF5F5', '#d10000', position_data]
     else
-      ['NO', '#00B8F5', '#0000F5', position_data]
+      ['NO', '#F5FCFF', '#0000F5', position_data]
     end
   end
 
