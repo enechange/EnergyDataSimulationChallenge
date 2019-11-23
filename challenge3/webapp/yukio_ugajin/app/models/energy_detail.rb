@@ -62,6 +62,21 @@ class EnergyDetail < ApplicationRecord
     end
   end
 
+  def self.has_child_data(answer)
+    position_data = []
+    energies = EnergyDetail.joins(:house).where(houses: { has_child: answer })
+
+    energies.each do |e|
+      position_data << e.scatter_position
+    end
+
+    if answer
+      ['YES', '#ff3838', '#d10000', position_data]
+    else
+      ['NO', '#00B8F5', '#0000F5', position_data]
+    end
+  end
+
   def scatter_position
     { x: daylight, y: energy_production }
   end

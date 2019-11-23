@@ -25,6 +25,16 @@ class StaticPagesController < ApplicationController
     render 'all.json.jbuilder'
   end
 
+  def has_child
+    @all_energy = []
+    answers = [true, false]
+
+    answers.each do |a|
+      @all_energy << scatter_params(EnergyDetail.has_child_data(a))
+    end
+    render 'all.json.jbuilder'
+  end
+
   private
 
     def scatter_params(data_array)
@@ -35,4 +45,5 @@ class StaticPagesController < ApplicationController
         data:            data_array[3]
       }
     end
+
 end

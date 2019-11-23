@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get 'all',  to: 'static_pages#all',  defaults: { format: :json }
   get 'city', to: 'static_pages#city', defaults: { format: :json }
   get 'num_of_people', to: 'static_pages#num_of_people', defaults: { format: :json }
+  get 'has_child', to: 'static_pages#has_child', defaults: { format: :json }
 end

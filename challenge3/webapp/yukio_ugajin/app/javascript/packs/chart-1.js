@@ -34,5 +34,5 @@ const scatter_chart = (dataArray) => {
 };
 
 window.onload = () => {
-  get_data('num_of_people');
+  get_data('has_child');
 };
