@@ -1,1 +1,1 @@
-
+by Will Turbayevsky; it's a little tricky because I used three methods and the best result (expectedly) show the model with limited number of month and to be trained for each house respectively; LSTM will show better result, if needed will extend it
