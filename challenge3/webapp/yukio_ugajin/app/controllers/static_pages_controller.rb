@@ -15,6 +15,16 @@ class StaticPagesController < ApplicationController
     render 'all.json.jbuilder'
   end
 
+  def num_of_people
+    @all_energy = []
+    nums = [2, 3, 4, 5, 6]
+
+    nums.each do |num|
+      @all_energy << scatter_params(EnergyDetail.num_of_people_data(num))
+    end
+    render 'all.json.jbuilder'
+  end
+
   private
 
     def scatter_params(data_array)

@@ -41,6 +41,27 @@ class EnergyDetail < ApplicationRecord
     end
   end
 
+  def self.num_of_people_data(num)
+    position_data = []
+    energies = EnergyDetail.joins(:house).where(houses: { num_of_people: num })
+
+    energies.each do |e|
+      position_data << e.scatter_position
+    end
+
+    if num == 2
+      ['2', '#ff3838', '#d10000', position_data]
+    elsif num == 3
+      ['3', '#ffea00', '#ffbb00', position_data]
+    elsif num == 4
+      ['4', '#00B8F5', '#0000F5', position_data]
+    elsif num == 5
+      ['5', '#33FF70', '#00C217', position_data]
+    elsif num == 6
+      ['6', '#E014FF', '#A800C2', position_data]
+    end
+  end
+
   def scatter_position
     { x: daylight, y: energy_production }
   end
