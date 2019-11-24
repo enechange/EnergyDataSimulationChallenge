@@ -1,2 +1,64 @@
-h1 Houses#index
-p Find me in app/views/houses/index.html.slim
+.content-wrapper
+  .content-header
+  section.content
+    .container-fluid
+      .col-12
+        .card
+          .card-header.border-0
+            .form-group
+              = form_tag houses_path, method: :get do
+                = select_tag :city, options_for_select(House::CITIES, { selected: @selected_city }), class: 'form-control form-control-lg select2 mb-2 col-lg-6'
+                = button_tag 'Submit', class: 'btn btn-primary'
+            .d-flex.justify-content-between
+              h3.card-title #{params[:city]}のエネルギー生産量 - 年月別比較
+          .card-body
+            .position-relative.mb-4
+              = column_chart @energy_each_years.map { |energy_by_city| { name: "#{energy_by_city[:name]}年", data: energy_by_city[:data] } }, thousands: ","
+
+  section.content.mb-5
+    .container-fluid
+      .col-12
+        .card.card-primary.card-outline.card-outline-tabs
+          .card-header.p-0.border-bottom-0
+            ul#custom-tabs-three-tab.nav.nav-tabs role="tablist"
+              - @children_by_city.each_with_index do |city, index|
+                li.nav-item
+                  a id="custom-tabs-#{city[:name]}-tab" class="nav-link #{index.zero? ? "active" : ""}" aria-controls="custom-tabs-#{city[:name]}" aria-selected="true" data-toggle="pill" href="#custom-tabs-#{city[:name]}" role="tab" = city[:name]
+          .card-body
+            #custom-tabs-three-tabContent.tab-content
+              - @children_by_city.each_with_index do |city, index|
+                div id="custom-tabs-#{city[:name]}" class="tab-pane fade #{index.zero? ? "show active" : ""}" aria-labelledby="custom-tabs-#{city[:name]}-tab" role="tabpanel"
+                  h4 #{city[:name]}の子どもの有無の割合
+                  = pie_chart city[:data]
+
+    .col-12
+      .card
+        .card-header
+          h3.card-title 家族一覧
+        .card-body
+          table#table-datas.table.table-bordered.table-striped
+            thead
+              tr
+                th ID
+                th Firstname
+                th Lastname
+                th City
+                th num_of_people
+                th has_child
+            tbody
+              - @houses.each do |house|
+                tr
+                  td = house[:id]
+                  td = house[:firstname]
+                  td = house[:lastname]
+                  td = house[:city]
+                  td = house[:num_of_people]
+                  td = house[:has_child]
+            tfoot
+              tr
+                th ID
+                th Firstname
+                th Lastname
+                th City
+                th num_of_people
+                th has_child
