@@ -1,24 +1,26 @@
-# README
+## 構成
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- 実行環境
+  - Ruby 2.5.1
+  - Rails 5.2.3
+  - MySQL 5.7
+  - Node.js 12.13.0
+- サーバー
+  - Heroku
 
-Things you may want to cover:
+### 依存
 
-* Ruby version
+- Ruby
+- MySQL
+- Node.js
+  - yarn
 
-* System dependencies
+### 主要gem
 
-* Configuration
 
-* Database creation
+- [chartkick](https://github.com/ankane/chartkick)
+- [activerecord-import](https://github.com/continuum/active_importer)
+- slim-rails
+- turbolinks
+- frails-i18n
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
