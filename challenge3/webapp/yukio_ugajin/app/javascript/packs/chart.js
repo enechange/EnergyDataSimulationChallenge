@@ -4,6 +4,7 @@ const get_data = (url) => {
   axios.get('/' + url )
     .then(function (response) {
       scatter_chart(response.data);
+      pie_chart(response.data);
     })
     .catch(function (error) {
       alert('エラーが発生しました。');
@@ -13,6 +14,7 @@ const get_data = (url) => {
 
 const scatter_chart = (dataArray) => {
   const ctx = document.getElementById('myChart1').getContext('2d');
+  
   new Chart(ctx, {
     type: 'scatter',
     data: { datasets: dataArray },
@@ -35,42 +37,37 @@ const scatter_chart = (dataArray) => {
   })
 };
 
-const line_chart = () => {
-  const ctx = document.getElementById('myChart2').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: '#FFEA00',
-            borderColor: '#FFBB00',
-            data: [0, 10, 5, 2, 20, 30, 45]
-        }]
-    },
 
-    options: {
-      scales: {
-        xAxes: [{
-          scaleLabel: {
-            display: true,
-            labelString: 'Daylight'
-          }
+const pie_chart = (dataArray) => {
+  const ctx = document.getElementById('myChart2').getContext('2d');
+  const labelArray = dataArray.map((value) => {
+    return value.label
+  });
+  const colorArray = dataArray.map((value) => {
+    return value.borderColor
+  });
+  const newDataArray = dataArray.map((value) => {
+    let data = 0;
+    value.data.forEach((value) => {
+      data = data + value.y;
+    });
+    return data
+  });
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: labelArray,
+        datasets: [{
+          data: newDataArray,
+          backgroundColor: colorArray
         }],
-        yAxes: [{
-          scaleLabel: {
-            display: true,
-            labelString: 'Energy Production'
-          }
-        }]
-      }
-    }
+    },
   });
 };
 
 window.onload = () => {
   get_data('all');
-  line_chart();
 };
 
 select_box.addEventListener('change', (e) => {
