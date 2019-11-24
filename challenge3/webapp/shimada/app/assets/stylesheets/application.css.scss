@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+@import 'admin-lte/plugins/fontawesome-free/css/all.min';
+@import 'bootstrap/dist/css/bootstrap.min';
+@import 'admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4';
+@import 'admin-lte/plugins/select2/css/select2.min';
+@import 'admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min';
+@import 'admin-lte/dist/css/adminlte';
