@@ -1,2 +1,70 @@
-h1 Energies#index
-p Find me in app/views/energies/index.html.slim
+.content-wrapper
+  .content-header
+  section.content.mb-5
+    .container-fluid
+      .col-12
+        .card.card-primary.card-outline.card-outline-tabs
+          .card-header.p-0.border-bottom-0
+            ul#custom-tabs-two-tab.nav.nav-tabs role="tablist"
+              - @daylights_by_city.each_with_index do |city, index|
+                li.nav-item
+                  a id="custom-tabs-total#{index}-tab" class="nav-link #{index.zero? ? "active" : ""}" aria-controls="custom-tabs-total#{index}" aria-selected="true" data-toggle="pill" href="#custom-tabs-total#{index}" role="tab" = total_title(index)
+          .card-body
+            #custom-tabs-two-tabContent.tab-content
+              - @daylights_by_city.each_with_index do |city, index|
+                div id="custom-tabs-total#{index}" class="tab-pane fade #{index.zero? ? "show active" : ""}" aria-labelledby="custom-tabs-total#{index}-tab" role="tabpanel"
+                  = column_chart city.map { |energy_by_city| { name: "#{energy_by_city[:name]}", data: energy_by_city[:data] } }, thousands: ",", discrete: true, xtitle: "月別", ytitle: total_ytitle(index), curve: false
+
+  section.content.mb-5
+    .container-fluid
+      .col-12
+        .card.card-primary.card-outline.card-outline-tabs
+          .card-header.p-0.border-bottom-0
+            ul#custom-tabs-three-tab.nav.nav-tabs role="tablist"
+              - @energies_by_city.each_with_index do |city, index|
+                li.nav-item
+                  a id="custom-tabs-average#{index}-tab" class="nav-link #{index.zero? ? "active" : ""}" aria-controls="custom-tabs-average#{index}" aria-selected="true" data-toggle="pill" href="#custom-tabs-average#{index}" role="tab" = average_title(index)
+          .card-body
+            #custom-tabs-three-tabContent.tab-content
+              - @energies_by_city.each_with_index do |city, index|
+                div id="custom-tabs-average#{index}" class="tab-pane fade #{index.zero? ? "show active" : ""}" aria-labelledby="custom-tabs-average#{index}-tab" role="tabpanel"
+                  = line_chart city.map { |energy_by_city| { name: "#{energy_by_city[:name]}", data: energy_by_city[:data] } }, thousands: ",", discrete: true, xtitle: "月別", ytitle: average_ytitle(index), curve: false
+
+  section.content
+    .col-12
+      .card
+        .card-header
+          h3.card-title エネルギー生産一覧
+        .card-body
+          table#table-datas.table.table-bordered.table-striped
+            thead
+              tr
+                th ID
+                th Label
+                th House
+                th Year
+                th Month
+                th Temperature
+                th Daylight
+                th EnergyProduction
+            tbody
+              - @energies.each do |energy|
+                tr
+                  td = energy[:id]
+                  td = energy[:label]
+                  td = energy[:house_id]
+                  td = energy[:year]
+                  td = energy[:month]
+                  td = energy[:temperature]
+                  td = energy[:daylight]
+                  td = energy[:energy_production]
+            tfoot
+              tr
+                th ID
+                th Label
+                th House
+                th Year
+                th Month
+                th Temperature
+                th Daylight
+                th EnergyProduction
