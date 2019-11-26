@@ -36,7 +36,7 @@ RSpec.describe House, type: :model do
       expect(house.errors[:city]).to include('is not a number')
     end
 
-    it 'num_of_peopleは数字出ないと保存できない' do
+    it 'num_of_peopleは数字でないと保存できない' do
       house = build(:house, num_of_people: 'これは文字です')
       house.valid?
       expect(house.errors[:num_of_people]).to include('is not a number')
