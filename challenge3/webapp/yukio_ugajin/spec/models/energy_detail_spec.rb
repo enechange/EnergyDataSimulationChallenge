@@ -86,6 +86,5 @@ RSpec.describe EnergyDetail, type: :model do
       expect(energy.errors[:house]).to include('must exist')
     end
 
-
   end
 end
