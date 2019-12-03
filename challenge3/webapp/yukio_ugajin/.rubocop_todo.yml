@@ -1,0 +1,57 @@
+Bundler/OrderedGems:
+  Exclude:
+    - 'Gemfile'
+
+Layout/EmptyLines:
+  Exclude:
+    - 'Gemfile'
+
+Layout/EmptyLinesAroundClassBody:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Exclude:
+    - 'config/environments/production.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'test/test_helper.rb'
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'app/helpers/application_helper.rb'
+    - 'app/mailers/application_mailer.rb'
+    - 'app/models/application_record.rb'
+    - 'config/application.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/MixinUsage:
+  Exclude:
+    - 'bin/setup'
+    - 'bin/update'
+
+Style/RedundantBegin:
+  Exclude:
+    - 'bin/yarn'
+
+Style/StderrPuts:
+  Exclude:
+    - 'bin/yarn'
+
+Style/StringLiterals:
+  Exclude:
+    - 'bin/yarn'
+    - 'config/environments/production.rb'
+    - 'config/puma.rb'
+    - 'test/application_system_test_case.rb'
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Metrics/LineLength:
+  Max: 130
