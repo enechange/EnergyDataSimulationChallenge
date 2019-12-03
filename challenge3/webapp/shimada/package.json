@@ -1,0 +1,8 @@
+{
+  "name": "shimada",
+  "private": true,
+  "dependencies": {
+    "admin-lte": "3.0.0",
+    "highcharts": "^7.2.1"
+  }
+}

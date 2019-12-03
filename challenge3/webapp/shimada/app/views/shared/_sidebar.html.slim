@@ -1,0 +1,20 @@
+aside.main-sidebar.sidebar-dark-primary.elevation-4
+  .sidebar
+    .user-panel.mt-3.pb-3.mb-3.d-flex
+      .image
+        = image_tag 'shimada.jpg', class: 'img-circle elevation-2', alt: 'User Image'
+      .info
+        a.d-block[href="#"]
+          | Shimada Yuhki
+    nav.mt-2
+      ul.nav.nav-pills.nav-sidebar.flex-column[data-widget="treeview" role="menu" data-accordion="false"]
+        li.nav-item.has-treeview.menu-open
+          a.nav-link.active[href="#"]
+            i.nav-icon.fas.fa-tachometer-alt
+            p Dashboard
+            i.right.fas.fa-angle-left
+          ul.nav.nav-treeview
+            li.nav-item
+              a.nav-link[href="/houses"]
+                i.fas.fa-home
+                p.ml-2 houses
