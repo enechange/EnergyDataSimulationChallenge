@@ -97,7 +97,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     pg (0.20.0)
     puma (3.9.1)
-    rack (2.0.5)
+    rack (2.0.8)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.1.4)
