@@ -1,0 +1,19 @@
+version: "3"
+services:
+  db_container:
+    image: postgres:12.1
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  rails_app:
+    build:
+      context: .
+      dockerfile: ./docker/rails_app/Dockerfile
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      RAILS_ENV: production
+    volumes:
+      - .:/var/www/rails
+    ports:
+      - 4000:3000
+    depends_on:
+      - db_container
