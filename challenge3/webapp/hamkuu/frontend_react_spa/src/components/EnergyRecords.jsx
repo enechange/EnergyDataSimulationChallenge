@@ -12,14 +12,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-function FormatDate(dateString) {
-  const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const monthTwoDigits = ('0' + month).slice(-2);
+import SynCharts from './SynCharts';
 
-  return `${year}-${monthTwoDigits}`;
-}
+import { FormatDate } from '../helpers/FormatDate';
 
 export default function EnergyRecords(props) {
   const houseId = props.match.params.id;
@@ -65,6 +60,8 @@ export default function EnergyRecords(props) {
         {data.house.hasChildren ? 'with' : 'without'} children in{' '}
         {data.house.city}
       </Typography>
+
+      <SynCharts records={data.house.householdEnergyRecords}></SynCharts>
 
       <TableContainer component={Paper}>
         <Table aria-label='simple table'>
