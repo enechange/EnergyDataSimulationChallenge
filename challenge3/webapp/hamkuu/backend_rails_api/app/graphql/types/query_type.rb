@@ -20,14 +20,6 @@ module Types
       House.all
     end
 
-    field :house_owners, [Types::HouseOwnerType], null: false do
-      description 'Gets all house owners'
-    end
-
-    def house_owners
-      HouseOwner.all
-    end
-
     field :household_energy_records, [Types::HouseholdEnergyRecordType], null: true do
       description 'Gets all energy records of a specific house'
       argument :house_id, Int, required: true
