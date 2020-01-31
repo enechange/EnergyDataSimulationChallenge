@@ -19,17 +19,19 @@ body { background-color: #30303d; color: #fff; }
 <!-- HTML -->
 <div id="chartdiv"></div>
 
+
+<label for="city">都市エリア</label>
+<select name="chart[city]" id="city">
+  <option value="All">全エリア</option>
+  <option value="London">ロンドン</option>
+  <option value="Cambridge">ケンブリッジ</option>
+  <option value="Oxford">オックスフォード</option>
+</select>
+
 <label for="datakind">データ種別</label>
 <select name="chart[kind]" id="datakind">
   <option value="0">全て</option>
   <option value="1">気温</option>
   <option value="2">光量</option>
   <option value="3">エネルギー生産量</option>
-</select>
-<label for="city">都市エリア</label>
-<select name="chart[city]" id="city">
-  <option value="All">すべて</option>
-  <option value="London">London</option>
-  <option value="Cambridge">Cambridge</option>
-  <option value="Oxford">Oxford</option>
 </select>

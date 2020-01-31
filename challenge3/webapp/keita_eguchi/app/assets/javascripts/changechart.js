@@ -1,5 +1,5 @@
 $(function(){
-  function changeChart(data,kind){
+  function changeChart(data,city,kind){
     am4core.ready(function() {
       // Themes begin
       am4core.useTheme(am4themes_dark);
@@ -30,7 +30,6 @@ $(function(){
         series.dataFields.valueY = field;
         series.dataFields.dateX = "date";
         series.strokeWidth = 2;
-        series.yAxis = valueAxis;
         series.name = name;
         series.tooltipText = "{name}: [bold]{valueY}[/]";
         series.tensionX = 0.8;
@@ -79,16 +78,17 @@ $(function(){
         valueAxis.renderer.labels.template.fill = series.stroke;
         valueAxis.renderer.opposite = opposite;
       }
-      if(kind == 0){
+      if( city == 'All' && kind != 0 ){
+        createAxisAndSeries("london", "ロンドン", false, "circle");
+        createAxisAndSeries("cambridge", "ケンブリッジ", false, "rectangle");
+        createAxisAndSeries("oxford", "オックスフォード", true, "triangle");
+      }else if(city == 'All' || kind == 0 ){
         createAxisAndSeries("temperatures", "気温", false, "circle");
         createAxisAndSeries("daylights", "光量", false, "rectangle");
         createAxisAndSeries("energy_productions", "エネルギー生産量", true, "triangle");
-      }else if(kind ==1){
-        createAxisAndSeries("temperatures", "気温", false, "circle");
-      }else if(kind ==2){
-        createAxisAndSeries("daylights", "光量", false, "rectangle");
-      }else if(kind ==3){
-        createAxisAndSeries("energy_productions", "エネルギー生産量", false, "triangle");
+      }else{
+        createAxisAndSeries("target_citykinds", city, false, "circle");
+        createAxisAndSeries("all_citykinds", "全エリアの平均", false, "triangle");
       }
 
       // Add legend
@@ -106,17 +106,40 @@ $(function(){
         for (var i = 0; i < data.labels.length  ; i++) {
           var newMonth = new Date(firstMonth);
           newMonth.setMonth(newMonth.getMonth() + i );
+          if(city == 'All' && kind != 0 ){
 
-          temperatures = data.temperatures[i]
-          daylights = data.daylights[i]
-          energy_productions = data.energy_productions[i]
+            london = data.london[i]
+            cambridge = data.cambridge[i]
+            oxford = data.oxford[i]
 
-          chartData.push({
-            date: newMonth,
-            temperatures: temperatures,
-            daylights: daylights,
-            energy_productions: energy_productions
-          });
+            chartData.push({
+              date: newMonth,
+              london: london,
+              cambridge: cambridge,
+              oxford: oxford
+            });
+
+          }else if ( city == 'All' || kind == 0 ){
+            temperatures = data.temperatures[i]
+            daylights = data.daylights[i]
+            energy_productions = data.energy_productions[i]
+
+            chartData.push({
+              date: newMonth,
+              temperatures: temperatures,
+              daylights: daylights,
+              energy_productions: energy_productions
+            });
+          }else{
+            target_citykinds= data.target_citykinds[i]
+            all_citykinds = data.all_citykinds[i]
+
+            chartData.push({
+              date: newMonth,
+              target_citykinds: target_citykinds,
+              all_citykinds: all_citykinds
+            });
+          }
         }
         return chartData;
       }
@@ -124,27 +147,29 @@ $(function(){
       });
   }
   if(document.URL.match(/\//)) {
+    var city = 'All'
     var kind = 0
-    changeChart(gon.data, kind)
+    changeChart(gon.data, city ,kind)
 
     $(document).on('change', 'select',function(e) {
 
       e.preventDefault();
-      var kind = $('select[name="chart[kind]"] option:selected').val();
       var city = $('select[name="chart[city]"] option:selected').val();
+      var kind = $('select[name="chart[kind]"] option:selected').val();
 
       $.ajax({
         type:'get',
         url: '/energies',
-        data: {kind: kind, city: city},
+        data: {city: city, kind: kind},
         dataType:'json',
       })
       .done(function(data){
         am4core.disposeAllCharts();
         console.log(data)
+        console.log(city)
         console.log(kind)
 
-        changeChart(data, kind)
+        changeChart(data, city, kind)
       })
       .fail(function(){
         alert('データの読み込みに失敗しました')
