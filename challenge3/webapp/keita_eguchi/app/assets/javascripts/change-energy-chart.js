@@ -146,13 +146,12 @@ $(function(){
 
       });
   }
-  if(document.URL.match(/\//)) {
+  if(document.URL.match(/\/$/)) {
     var city = 'All'
     var kind = 0
     changeChart(gon.data, city ,kind)
 
     $(document).on('change', 'select',function(e) {
-
       e.preventDefault();
       var city = $('select[name="chart[city]"] option:selected').val();
       var kind = $('select[name="chart[kind]"] option:selected').val();
@@ -165,10 +164,6 @@ $(function(){
       })
       .done(function(data){
         am4core.disposeAllCharts();
-        console.log(data)
-        console.log(city)
-        console.log(kind)
-
         changeChart(data, city, kind)
       })
       .fail(function(){

@@ -25,7 +25,7 @@ class Energy < ApplicationRecord
     }
   end
 
-  def self.one_of_cities_for_kind(energies,kind)
+  def self.one_of_cities_for_kind(energies, kind)
     kinds = ["temperature", "daylight" ,"energy_production"]
     @monthly_energies = {}
     @monthly_group = energies.group_by(&:label)
@@ -52,7 +52,7 @@ class Energy < ApplicationRecord
     @kind = kinds[kind.to_i - 1]
 
     @monthly_energies = {}
-    @monthly_group = energies.group_by{|energy| [energy[:label], energy.house[:city]]}
+    @monthly_group = energies.group_by { |energy| [energy[:label], energy.house[:city]] }
 
     @london = []
     @cambridge = []
@@ -77,4 +77,9 @@ class Energy < ApplicationRecord
     }
   end
 
+  def self.kind_select(house, kind)
+    kinds = ["temperature", "daylight" ,"energy_production"]
+    @kind = kinds[kind.to_i - 1]
+    eval("target = Energy.where(house:house).map(&:#{@kind})")
+  end
 end

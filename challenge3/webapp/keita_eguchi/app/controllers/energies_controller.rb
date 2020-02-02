@@ -15,7 +15,6 @@ class EnergiesController < ApplicationController
       format.html
       format.json { render json: @monthly_energies }
     end
-
   end
 
   private
