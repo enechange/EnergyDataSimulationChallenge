@@ -47,8 +47,15 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: keita_eguchi_production
+#   username: keita_eguchi
+#   password: <%= ENV['KEITA_EGUCHI_DATABASE_PASSWORD'] %>
 production:
   <<: *default
-  database: keita_eguchi_production
-  username: keita_eguchi
-  password: <%= ENV['KEITA_EGUCHI_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  databese: heroku_fa4893743c63e6e
+  username: b3949506dd2ddb
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  master_key: <%= ENV['RAILS_MASTER_KEY'] %>
