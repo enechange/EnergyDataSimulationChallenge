@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  house_owner: one
+  residents_count: 1
+  has_children: false
+  city: MyString
+
+two:
+  house_owner: two
+  residents_count: 1
+  has_children: false
+  city: MyString
