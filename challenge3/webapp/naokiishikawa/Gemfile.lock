@@ -135,7 +135,7 @@ GEM
     nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     public_suffix (3.0.0)
-    puma (3.10.0)
+    puma (3.12.2)
     rack (2.0.8)
     rack-proxy (0.6.2)
       rack
@@ -253,7 +253,7 @@ DEPENDENCIES
   less-rails
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.3.18, < 0.5)
-  puma (~> 3.7)
+  puma (~> 3.12)
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
   selenium-webdriver
