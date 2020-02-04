@@ -130,7 +130,7 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    puma (3.6.0)
+    puma (3.12.2)
     rack (2.0.7)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -239,7 +239,7 @@ DEPENDENCIES
   pry-doc
   pry-rails
   pry-stack_explorer
-  puma (~> 3.0)
+  puma (~> 3.12)
   rails (~> 5.0.0)
   rails-controller-testing
   sass-rails (~> 5.0)
