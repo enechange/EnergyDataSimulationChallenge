@@ -58,23 +58,14 @@ class Energy < ApplicationRecord
     @cambridge = []
     @oxford = []
 
-    @monthly_group.each do |key, value|
-      case key[1]
-      when 'London'
-        eval("@london << value.map(&:#{@kind}).average")
-      when 'Cambridge'
-        eval("@cambridge << value.map(&:#{@kind}).average")
-      when 'Oxford'
-        eval("@oxford << value.map(&:#{@kind}).average")
-      end
+    cities = ["london", "cambridge", "oxford"]
+    @monthly_group.each do |lavel_city, value|
+      eval("@#{lavel_city[1].downcase} << value.map(&:#{@kind}).average")
     end
-
     @monthly_energies = {
-      labels: energies.group_by(&:label).keys,
-      london: @london,
-      cambridge: @cambridge,
-      oxford: @oxford
-    }
+      labels: energis.group_by(&:label).keys,
+    }.merge!(cities.map { |city| [city, instance_variable_get("@#{city.downcase}")] }.to_h)
+
   end
 
   def self.kind_select(house, kind)

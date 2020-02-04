@@ -101,11 +101,8 @@ $(function(){
       function generateChartData() {
 
         var chartData = [];
-        var firstMonth = new Date('2011/7');
-
+        var month = new Date('2011/7');
         for (var i = 0; i < data.labels.length  ; i++) {
-          var newMonth = new Date(firstMonth);
-          newMonth.setMonth(newMonth.getMonth() + i );
           if(city == 'All' && kind != 0 ){
 
             london = data.london[i]
@@ -113,7 +110,7 @@ $(function(){
             oxford = data.oxford[i]
 
             chartData.push({
-              date: newMonth,
+              date: month,
               london: london,
               cambridge: cambridge,
               oxford: oxford
@@ -125,23 +122,27 @@ $(function(){
             energy_productions = data.energy_productions[i]
 
             chartData.push({
-              date: newMonth,
+              date: month.setMonth(month.getMonth() + 1 ),
               temperatures: temperatures,
               daylights: daylights,
               energy_productions: energy_productions
             });
+
           }else{
             target_citykinds= data.target_citykinds[i]
             all_citykinds = data.all_citykinds[i]
 
             chartData.push({
-              date: newMonth,
+              date: month,
               target_citykinds: target_citykinds,
               all_citykinds: all_citykinds
             });
           }
+
         }
+        console.log(chartData)
         return chartData;
+
       }
 
       });

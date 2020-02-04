@@ -31,13 +31,12 @@ class HousesController < ApplicationController
   end
 
   def to_gon(data)
-    gon.data = {
-      labels: data[:labels],
-      house_energy_kind: data[:house_energy_kind],
-      same_condition_temperatures: data[:same_condition_temperatures],
-      same_condition_daylights: data[:same_condition_daylights],
-      same_condition_energy_productions: data[:same_condition_energy_productions]
-
-    }
+    gon.data = data.slice(
+      :labels,
+      :house_energy_kind,
+      :same_condition_temperatures,
+      :same_condition_daylights,
+      :same_condition_energy_productions
+    )
   end
 end

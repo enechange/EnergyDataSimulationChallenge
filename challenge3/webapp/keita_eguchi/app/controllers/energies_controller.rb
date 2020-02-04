@@ -20,11 +20,11 @@ class EnergiesController < ApplicationController
   private
 
   def to_gon(data)
-    gon.data = {
-      labels: data[:labels],
-      temperatures: data[:temperatures],
-      daylights: data[:daylights],
-      energy_productions: data[:energy_productions]
-    }
+    gon.data = data.slice(
+      :labels,
+      :temperatures,
+      :daylights,
+      :energy_productions
+    )
   end
 end
