@@ -69,7 +69,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    puma (3.1.0)
+    puma (3.12.2)
     rack (2.0.0.alpha)
       json
     rack-test (0.6.3)
