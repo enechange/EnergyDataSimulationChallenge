@@ -34,11 +34,11 @@ class Energy < ApplicationRecord
     @kind = kinds[kind.to_i - 1]
 
     @monthly_group.each_value do |value|
-      eval("@target_citykinds << value.map(&:#{@kind}).average")
+      @target_citykinds << value.map{|v| v.attributes[@kind]}.average
     end
 
     Energy.all.group_by(&:label).each_value do |value|
-      eval("@all_citykinds<< value.map(&:#{@kind}).average")
+      @all_citykinds << value.map{|v| v.attributes[@kind]}.average
     end
     @monthly_energies = {
       labels: @monthly_group.keys,
@@ -71,6 +71,6 @@ class Energy < ApplicationRecord
   def self.kind_select(house, kind)
     kinds = ["temperature", "daylight" ,"energy_production"]
     @kind = kinds[kind.to_i - 1]
-    eval("target = Energy.where(house:house).map(&:#{@kind})")
+    target = Energy.where(house:house).map{|v| v.attributes[@kind]}
   end
 end

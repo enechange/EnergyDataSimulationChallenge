@@ -110,7 +110,7 @@ $(function(){
             oxford = data.oxford[i]
 
             chartData.push({
-              date: month,
+              date: month.setMonth(month.getMonth() + 1 ),
               london: london,
               cambridge: cambridge,
               oxford: oxford
@@ -133,7 +133,7 @@ $(function(){
             all_citykinds = data.all_citykinds[i]
 
             chartData.push({
-              date: month,
+              date: month.setMonth(month.getMonth() + 1 ),
               target_citykinds: target_citykinds,
               all_citykinds: all_citykinds
             });
