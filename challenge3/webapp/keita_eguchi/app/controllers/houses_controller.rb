@@ -7,7 +7,7 @@ class HousesController < ApplicationController
 
     if kind != 0
       @energies = Energy.kind_select(@house, kind)
-      @same_condition_energies = @same_condition_houses.map(&:energies).flatten!
+      @same_condition_energies = @same_condition_houses.flat_map(&:energies)
       @monthly_energies = Energy.monthly_average(@same_condition_energies)
     else
       @monthly_energies= Energy.monthly_average(@house.energies)

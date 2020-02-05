@@ -1,7 +1,7 @@
 class EnergiesController < ApplicationController
   def index
     city = params[:city] || 'All'
-    kind = params[:kind].to_i || 0
+    kind = params[:kind].to_i
     @energies = Energy.city_place(city)
     if city == 'All' && kind != 0
       @monthly_energies = Energy.all_kinds(@energies, kind)

@@ -59,7 +59,7 @@ class Energy < ApplicationRecord
     @oxford = []
 
     cities = ["london", "cambridge", "oxford"]
-    @monthly_group.each do |lavel_city, value|
+    @monthly_group.each do |label_city, value|
       eval("@#{lavel_city[1].downcase} << value.map(&:#{@kind}).average")
     end
     @monthly_energies = {
