@@ -1,6 +1,6 @@
-class CreateHouseData < ActiveRecord::Migration[6.0]
+class CreateHouses < ActiveRecord::Migration[6.0]
   def change
-    create_table :house_data do |t|
+    create_table :houses do |t|
       t.string :first_name
       t.string :last_name
       t.string :city

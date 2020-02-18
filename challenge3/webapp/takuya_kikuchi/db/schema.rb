@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_02_16_095059) do
 
   create_table "datasets", force: :cascade do |t|
     t.integer "label"
-    t.bigint "house_data_id", null: false
+    t.bigint "house_id", null: false
     t.integer "year"
     t.integer "month"
     t.float "temperature"
@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 2020_02_16_095059) do
     t.integer "energy_production"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["house_data_id"], name: "index_datasets_on_house_data_id"
+    t.index ["house_id"], name: "index_datasets_on_house_id"
   end
 
-  create_table "house_data", force: :cascade do |t|
+  create_table "houses", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "city"
@@ -38,5 +38,5 @@ ActiveRecord::Schema.define(version: 2020_02_16_095059) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "datasets", "house_data", column: "house_data_id"
+  add_foreign_key "datasets", "houses"
 end

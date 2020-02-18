@@ -2,7 +2,7 @@ class CreateDatasets < ActiveRecord::Migration[6.0]
   def change
     create_table :datasets do |t|
       t.integer :label
-      t.references :house_data, null: false, foreign_key: true
+      t.references :house, null: false, foreign_key: true
       t.integer :year
       t.integer :month
       t.float :temperature
