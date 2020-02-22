@@ -1,5 +1,4 @@
 <h1>House energy production chart</h1>
-<p>Please select a house</p>
 <select class='house'>
   <% @houses.each_with_index do |house, i| %>
     <option value= <%= (i+1) %>>
@@ -7,11 +6,12 @@
       <%= house.first_name.capitalize %>
       <%= house.last_name.capitalize %>
       (<%= house.city.capitalize %>)
+      <% house.num_of_people %>
     </option>
   <% end %>
 </select>
 
-<div class="result">on change</div>
+<div class="result">House information</div>
 
 <canvas id="myChart"></canvas>
 
