@@ -9,7 +9,7 @@ class Simulator
     @usage = usage
   end
 
-
+  # 料金の出力
   def simulate
     result = []
 
@@ -41,7 +41,7 @@ class Simulator
 
     add_pay =
       if @usage > 300
-        30.57 * (@usage - 300 ) + 26.48 * 180 + 26.48 + 19.88 * 120
+        30.57 * (@usage - 300 ) + 26.48 * 180 + 19.88 * 120
       elsif @usage > 120
         26.48 * (@usage - 120) + 19.88 * 120
       else
@@ -73,6 +73,8 @@ class Simulator
         1430
       when 60
         1716
+      else
+        return {provider_name: '東京ガス', plan_name: 'ずっとも電気1', price: "このプランは存在しません"}
       end
 
     add_pay =
