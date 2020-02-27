@@ -1,15 +1,13 @@
+# frozen_string_literal: true
 
 class Simulator
-
   attr_reader :ampere, :usage
 
-  # 第一引数 : 契約アンペア、 第二引数 : 使用した電力量(kWh)
   def initialize(ampere, usage)
     @ampere = ampere
     @usage = usage
   end
 
-  # 料金の出力
   def simulate
     result = []
 
@@ -41,7 +39,7 @@ class Simulator
 
     add_pay =
       if @usage > 300
-        30.57 * (@usage - 300 ) + 26.48 * 180 + 19.88 * 120
+        30.57 * (@usage - 300) + 26.48 * 180 + 19.88 * 120
       elsif @usage > 120
         26.48 * (@usage - 120) + 19.88 * 120
       else
@@ -50,16 +48,15 @@ class Simulator
 
     sum = (base_pay + add_pay).floor
 
-    {provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: sum}
-
+    { provider_name: '東京電力エナジーパートナー',
+      plan_name: '従量電灯B',
+      price: sum }
   end
 
   def use_loop_plan
-
     sum = (@usage * 26.40).floor
 
-    {provider_name: 'Looopでんき', plan_name: 'おうちプラン', price: sum}
-
+    { provider_name: 'Looopでんき', plan_name: 'おうちプラン', price: sum }
   end
 
   def use_tokyogas_plan
@@ -74,7 +71,11 @@ class Simulator
       when 60
         1716
       else
-        return {provider_name: '東京ガス', plan_name: 'ずっとも電気1', price: "このプランは存在しません"}
+        return {
+          provider_name: '東京ガス',
+          plan_name: 'ずっとも電気1',
+          price: 'このプランは存在しません'
+        }
       end
 
     add_pay =
@@ -88,10 +89,8 @@ class Simulator
 
     sum = (base_pay + add_pay).floor
 
-    {provider_name: '東京ガス', plan_name: 'ずっとも電気1', price: sum}
-
+    { provider_name: '東京ガス',
+      plan_name: 'ずっとも電気1',
+      price: sum }
   end
-
-
-
 end
