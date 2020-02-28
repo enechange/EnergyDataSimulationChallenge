@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: yoshikawa_keishi_production
-  username: yoshikawa_keishi
-  password: <%= ENV['YOSHIKAWA_KEISHI_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
