@@ -23,14 +23,9 @@
     </table>
 
     <section>
-      <h2 class="section-title">Monthly Energy Production<h2>
-      <%= column_chart @energyProduction_perMonth, height: "500px", colors: ['#b00'] %>
-    </section>
-
-    <section>
       <h2 class="section-title">Monthly data<h2>
       <p class="warning"> ※click the data you want </p>
-      <%= line_chart @output_data %>
+      <%= line_chart @monthly_data %>
     </section>
 
     <table class="table table-hover">

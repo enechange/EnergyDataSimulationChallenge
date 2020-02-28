@@ -24,4 +24,22 @@ class House < ApplicationRecord
     "#{self.firstname} #{self.lastname}"
   end
 
+  def monthly_sort
+    output = []
+    energyProduction_perMonth = []
+    daylight_perMonth = []
+    temperature_perMonth = []
+    self.data.each do |d|
+      energyProduction_perMonth << [d.month_of_year, d.energy_production]
+      daylight_perMonth << [d.month_of_year, d.daylight]
+      temperature_perMonth << [d.month_of_year, d.temperature.to_f]
+    end
+    output = [
+      {name: "日照エネルギー", data: daylight_perMonth},
+      {name: "エネルギー産出量", data: energyProduction_perMonth},
+      {name: "気温", data: temperature_perMonth}
+    ]    
+  end
+
+
 end
