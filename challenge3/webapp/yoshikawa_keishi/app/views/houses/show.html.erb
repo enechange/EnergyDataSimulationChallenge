@@ -25,7 +25,7 @@
     <section>
       <h2 class="section-title">Monthly data<h2>
       <p class="warning"> ※click the data you want </p>
-      <%= line_chart @monthly_data %>
+      <%= line_chart @house_monthly_data %>
     </section>
 
     <table class="table table-hover">
@@ -39,7 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @data.each do |d|%>
+        <% @house_data.each do |d|%>
           <tr>
             <td><%= d.month_of_year %></td>
             <td><%= d.temperature %></td>

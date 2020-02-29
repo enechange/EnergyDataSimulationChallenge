@@ -25,7 +25,7 @@ class House < ApplicationRecord
     "#{self.firstname} #{self.lastname}"
   end
 
-  def monthly_sort
+  def monthly_data
     output = []
     energyProduction_perMonth = []
     daylight_perMonth = []
