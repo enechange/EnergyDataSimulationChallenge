@@ -1,52 +1,52 @@
 
 <div class="p-5">
   <%= link_to 'back', houses_path, class: "back"%>
-    <table class="table mt-5">
-      <thead class="thead-dark">
-        <tr>
-          <th>ID</th>
-          <th>FullName</th>
-          <th>City</th>
-          <th>num_of_people</th>
-          <th>has_child</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-            <td><%= @house.id %></td>
-            <td><%= @house.fullname %></td>
-            <td><%= @house.city %></td>
-            <td><%= @house.num_of_people %></td>
-            <td><%= @house.has_child %></td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table mt-5">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>FullName</th>
+        <th>City</th>
+        <th>num_of_people</th>
+        <th>has_child</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td><%= @house.id %></td>
+          <td><%= @house.fullname %></td>
+          <td><%= @house.city %></td>
+          <td><%= @house.num_of_people %></td>
+          <td><%= @house.has_child %></td>
+      </tr>
+    </tbody>
+  </table>
 
-    <section>
-      <h2 class="section-title">Monthly data<h2>
-      <p class="warning"> ※click the data you want </p>
-      <%= line_chart @house_monthly_data %>
-    </section>
+  <section>
+    <h2 class="section-title">Monthly data<h2>
+    <p class="warning"> ※click the data you want </p>
+    <%= line_chart @house_monthly_data %>
+  </section>
 
-    <table class="table table-hover">
-      <h2 class="section-title">All Data<h2>
-      <thead class="thead-light"> 
+  <table class="table table-hover">
+    <h2 class="section-title">All Data<h2>
+    <thead class="thead-light"> 
+      <tr>
+        <th>Time</th>
+        <th>Temperature</th>
+        <th>Daylight</th>
+        <th>EnergyProduction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @house_data.each do |d|%>
         <tr>
-          <th>Time</th>
-          <th>Temperature</th>
-          <th>Daylight</th>
-          <th>EnergyProduction</th>
+          <td><%= d.month_of_year %></td>
+          <td><%= d.temperature %></td>
+          <td><%= d.daylight %></td>
+          <td><%= d.energy_production %></td>
+        <% end %>
         </tr>
-      </thead>
-      <tbody>
-        <% @house_data.each do |d|%>
-          <tr>
-            <td><%= d.month_of_year %></td>
-            <td><%= d.temperature %></td>
-            <td><%= d.daylight %></td>
-            <td><%= d.energy_production %></td>
-          <% end %>
-          </tr>
-      </tbody>  
-    </table>
+    </tbody>  
+  </table>
 </div>

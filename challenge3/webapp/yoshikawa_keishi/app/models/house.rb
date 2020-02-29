@@ -1,5 +1,5 @@
 class House < ApplicationRecord
-  has_many :data
+  has_many :data, dependent: :destroy
   validates :csv_id, presence: true, numericality: { only_integer: true }
   validates :firstname, presence: true
   validates :lastname, presence: true
