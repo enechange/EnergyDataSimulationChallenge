@@ -1,0 +1,16 @@
+<div class="comparison-title">
+  <h2>発電量比較</h2>
+</div>
+<% if @energies.present? %>
+  <div class="chart-wrapper">
+    <%= column_chart @chart_data,
+            title: "年・月別発電量比較",
+            xtitle: "年・月",
+            ytitle: "発電量",
+            max: 1500 %>
+  </div>
+<% else %>
+  <div class="error">
+    <h3>必要なデータが不足しています</h3>
+  </div>
+<% end %>
