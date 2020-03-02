@@ -1,0 +1,8 @@
+ja:
+  attributes:
+    firstname: 名前
+    lastname: 苗字
+    email: メールアドレス
+    password: パスワード
+    password_confirmation: パスワード (確認)
+    city_id: 居住地

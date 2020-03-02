@@ -1,0 +1,54 @@
+<div class="welcome">
+  <h2>ようこそ、<%= current_user.firstname%>さん</h2>
+</div>
+<div class="confirmation-menu">
+  <h3>確認したいことを選択してください</h3>
+</div>
+<div class="menu">
+  <%= link_to comparison_user_path(current_user.id) do%>
+    <div class="menu-comparison">
+      発電量比較
+    </div>
+  <% end %>
+  <%= link_to self_sufficiency_user_path(current_user.id) do%>
+    <div class="menu-self_sufficiency">
+      エネルギー自給率
+    </div>
+  <%end%>
+</div>
+<div class="registrations-menu">
+  <h3>登録したいデータを選んでください</h3>
+</div>
+<div class="menu">
+  <%= link_to new_power_consumption_path do%>
+    <div class="menu-comparison">
+      消費電力データ
+    </div>
+  <% end %>
+  <%= link_to new_energy_path do%>
+    <div class="menu-self_sufficiency">
+      エネルギー生産量データ
+    </div>
+  <%end%>
+</div>
+
+<div class="user-menu">
+  <h3>アカウント情報</h3>
+</div>
+<div class="menu">
+  <%= link_to  destroy_user_session_path, method: :delete do%>
+    <div class="menu-comparison">
+      ログアウト
+    </div>
+  <% end %>
+  <%= link_to edit_user_registration_path do%>
+    <div class="menu-self_sufficiency">
+      アカウント編集
+    </div>
+  <%end%>
+  <%= link_to user_registration_path, method: :delete do%>
+    <div class="menu-self_sufficiency">
+      アカウント削除
+    </div>
+  <% end %>
+</div>

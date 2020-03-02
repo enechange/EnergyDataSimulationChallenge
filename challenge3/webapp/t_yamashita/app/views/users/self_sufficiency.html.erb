@@ -1,0 +1,24 @@
+<h2>電気の自給率</h2>
+<% if @chart_data %>
+  <div class="chart-title">
+    <h2><%= @recently_year %>年<%= @recently_month%>月現在</h2><h1><%= @rate %>%</h1>
+  </div>
+  <div class="sschart-wrapper">
+    <div class="column-chart">
+      <%= column_chart @chart_data%>
+    </div>
+  </div>
+
+  <div class="chart-title">
+    <h2>トータル</h2><h1><%= @total_rate %>%</h1>
+  </div>
+  <div class="sschart-wrapper">
+    <div class="column-chart">
+      <%= column_chart @chart_total_data%>
+    </div>
+  </div>
+<% else %>
+  <div class="error">
+    <h3>必要なデータが不足しています</h3>
+  </div>
+<% end %>
