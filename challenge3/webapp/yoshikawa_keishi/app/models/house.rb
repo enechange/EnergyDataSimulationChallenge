@@ -22,7 +22,7 @@ class House < ApplicationRecord
   end
 
   def fullname
-    "#{self.firstname} #{self.lastname}"
+    "#{firstname} #{lastname}"
   end
 
   def monthly_data
@@ -30,7 +30,7 @@ class House < ApplicationRecord
     energyProduction_perMonth = []
     daylight_perMonth = []
     temperature_perMonth = []
-    self.data.each do |d|
+    data.each do |d|
       energyProduction_perMonth << [d.month_of_year, d.energy_production]
       daylight_perMonth << [d.month_of_year, d.daylight]
       temperature_perMonth << [d.month_of_year, d.temperature.to_f]

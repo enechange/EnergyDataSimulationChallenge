@@ -26,7 +26,7 @@ class Datum < ApplicationRecord
   end
 
   def month_of_year 
-    "#{self.year}/#{self.month}"
+    "#{year}/#{month}"
   end
 
   def self.city_energy_production
