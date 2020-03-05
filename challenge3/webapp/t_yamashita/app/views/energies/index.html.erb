@@ -1,0 +1,25 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Temperature</th>
+      <th>Daylight</th>
+      <th>Energy Production</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @energies.each do |e|%>
+      <tr>
+        <td><%= e.year %></td>
+        <td><%= e.month %></td>
+        <td><%= e.temperature %></td>
+        <td><%= e.daylight %></td>
+        <td><%= e.energy_production %></td>
+        <td><%= link_to "編集", edit_energy_path(e.id) %></td>
+        <td><%= link_to "削除", energy_path(e.id), method: :delete%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -16,6 +16,7 @@
     </div>
   <%end%>
 </div>
+
 <div class="registrations-menu">
   <h3>登録したいデータを選んでください</h3>
 </div>
@@ -26,6 +27,22 @@
     </div>
   <% end %>
   <%= link_to new_energy_path do%>
+    <div class="menu-self_sufficiency">
+      エネルギー生産量データ
+    </div>
+  <%end%>
+</div>
+
+<div class="registrations-menu">
+  <h3>編集したいデータを選んでください</h3>
+</div>
+<div class="menu">
+  <%= link_to power_consumptions_path do%>
+    <div class="menu-comparison">
+      消費電力データ
+    </div>
+  <% end %>
+  <%= link_to energies_path do%>
     <div class="menu-self_sufficiency">
       エネルギー生産量データ
     </div>
