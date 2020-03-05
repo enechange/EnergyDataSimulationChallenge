@@ -1,6 +1,7 @@
 class Datum < ApplicationRecord
   belongs_to :house
 
+  validates :csv_id, presence: true, numericality: { only_integer: true }
   validates :label, presence: true, numericality: { only_integer: true }
   validates :house_id, presence: true
   validates :year, presence: true, numericality: { only_integer: true, greater_than: 0 }
@@ -25,7 +26,7 @@ class Datum < ApplicationRecord
   end
 
   def month_of_year 
-    "#{self.year}/#{self.month}"
+    "#{year}/#{month}"
   end
 
   def self.city_energy_production

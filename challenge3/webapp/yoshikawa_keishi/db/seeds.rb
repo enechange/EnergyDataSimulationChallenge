@@ -14,3 +14,4 @@ ActiveRecord::Base.transaction do
   House.import("#{Rails.root.to_s}/data/house_data.csv")
   Datum.import("#{Rails.root.to_s}/data/dataset_50.csv")
 end
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_052050) do
+ActiveRecord::Schema.define(version: 2020_03_05_084710) do
 
   create_table "data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "csv_id", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_052050) do
     t.string "lastname"
     t.string "city"
     t.integer "num_of_people"
-    t.boolean "has_child"
+    t.string "has_child"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
