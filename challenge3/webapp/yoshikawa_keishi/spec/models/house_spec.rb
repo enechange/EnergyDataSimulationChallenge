@@ -39,7 +39,13 @@ describe House do
     it "can't be saved without has_child" do
       house = build(:house, has_child: nil)
       house.valid?
-      expect(house.errors[:has_child]).to include("value should be only true or false")
+      expect(house.errors[:has_child]).to include("value should be only Yes(yes) or No(no)")
+    end
+
+    it "can't be saved with wrong type of has_child input" do
+      house = build(:house, has_child: 1)
+      house.valid?
+      expect(house.errors[:has_child]).to include("value should be only Yes(yes) or No(no)")
     end
   end
 end

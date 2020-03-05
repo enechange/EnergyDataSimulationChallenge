@@ -6,7 +6,7 @@ FactoryBot.define do
     lastname             {"brown"}
     city                 {"London"}
     num_of_people        {2}
-    has_child            {1}
+    has_child            {"Yes"}
   end
 
 end

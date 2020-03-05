@@ -10,15 +10,8 @@ require 'csv'
 
 puts "start reading csv ..."
 
-# ActiveRecord::Base.transaction do
-#   House.import("#{Rails.root.to_s}/data/house_data.csv")
-#   Datum.import("#{Rails.root.to_s}/data/dataset_50.csv")
-# end
+ActiveRecord::Base.transaction do
+  House.import("#{Rails.root.to_s}/data/house_data.csv")
+  Datum.import("#{Rails.root.to_s}/data/dataset_50.csv")
+end
 
-# House.create!(
-#   csv_id: 100,
-#   firstname: "keishi",
-#   lastname: "yoshikawa",
-#   city: "Kawagoe",
-#   num_of_people: 4,
-#   has_child: nil)
