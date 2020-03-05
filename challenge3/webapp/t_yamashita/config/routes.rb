@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :energies, only: [:new, :create]
+  resources :energies
 
-  resources :power_consumptions, only: [:new, :create, :edit, :update, :delete, :destroy]
+  resources :power_consumptions
 
 end

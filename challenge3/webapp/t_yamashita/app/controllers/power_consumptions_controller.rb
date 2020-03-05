@@ -1,5 +1,10 @@
 class PowerConsumptionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_params, only: [:edit, :update, :destroy]
+
+  def index
+    @power_consumptions = PowerConsumption.where(user_id: current_user.id)
+  end
 
   def new
     @power_consumption = PowerConsumption.new
@@ -19,14 +24,38 @@ class PowerConsumptionsController < ApplicationController
   end
 
   def update
+    if @power_consumption.update(update_params)
+      redirect_to power_consumptions_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    if @power_consumption.destroy
+      redirect_to power_consumptions_path
+    else
+      redirect_to power_consumptions_path
+      :javascript
+        alert('削除できませんでした。');
+    end
   end
 
   private
 
   def power_consumption_params
+    params.require(:power_consumption).permit(
+      :power_consumption,
+      :year,
+      :month
+    )
+  end
+
+  def set_params
+    @power_consumption = PowerConsumption.find(params[:id])
+  end
+
+  def update_params
     params.require(:power_consumption).permit(
       :power_consumption,
       :year,
