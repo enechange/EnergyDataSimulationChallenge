@@ -1,0 +1,39 @@
+<section>
+  <h2 class="section-title">Each City's Total Production<h2>
+  <%= column_chart @city_energy_production,
+                 height: '600px',
+                 ytitle: "Total_Energy_Production",
+                 colors: ['#79817B']  %>
+</section>
+<section>
+  <h2 class="section-title">Correrlation of daylight and energy production<h2>
+  <%= scatter_chart @daylight_energy_data,
+                  height: '600px',
+                  xtitle: "Daylight", 
+                  ytitle: "Energy_Production",
+                  colors: ['#79817B'] %>
+</section>
+<table class="table table-hover">
+  <h2 class="section-title">All houses data<h2>
+  <p class="warning"> ※click the name you want </p>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>FullName</th>
+      <th>City</th>
+      <th>num_of_people</th>
+      <th>has_child</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+          <td><%= house.id %></td>
+          <td><%= link_to "#{house.fullname}", house_path(house) %></td>
+          <td><%= house.city %></td>
+          <td><%= house.num_of_people %></td>
+          <td><%= house.has_child %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
