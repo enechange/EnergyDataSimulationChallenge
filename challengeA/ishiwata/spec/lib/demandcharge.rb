@@ -34,4 +34,14 @@ describe 'DemandCharge' do
       expect(demand_charge.tokyo_demand).to eq(286)
     end
   end
+
+  describe 'choose_plan' do
+    it '引数通りのプランの料金の出力' do
+      demand_charge = DemandCharge.new(10)
+      plan_name = '従量電灯B'
+
+      expect(demand_charge.choose_plan(plan_name)).to eq(286)
+
+    end
+  end
 end

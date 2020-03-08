@@ -19,4 +19,21 @@ describe 'EnergyCharge' do
       expect(energy_charge.tokyo_energy).to eq(7152)
     end
   end
+
+  describe 'choose_plan' do
+
+    it '引数通りの料金が出力されているか' do
+      energy_charge = EnergyCharge.new(300)
+      plan_name = '従量電灯B'
+      expect(energy_charge.choose_plan(plan_name)).to eq(7152)
+    end
+
+    it '引数通りのプランの料金の表示 looop' do
+      energy_charge = EnergyCharge.new(300)
+      plan_name = 'おうちプラン'
+      expect(energy_charge.choose_plan(plan_name)).to eq(7920)
+    end
+  end
+
+
 end

@@ -15,6 +15,7 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'simulator'
 require 'demandcharge'
 require 'energycharge'
 require 'plan'
