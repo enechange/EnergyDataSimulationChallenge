@@ -1,0 +1,28 @@
+<div class="comparison-title">
+  <h2>新規発電量登録</h2>
+</div>
+<%= form_with(model: @energy, local: true) do |f| %>
+  <div class="field">
+    <%= f.label :energy_production %></br>
+    <%= f.number_field :energy_production %>
+  </div>
+  <div class="field">
+    <%= f.label :year %></br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :month %></br>
+    <%= f.number_field :month %>
+  </div>
+  <div class="field">
+    <%= f.label :temperature %></br>
+    <%= f.number_field :temperature, step: "0.1" %>
+  </div>
+  <div class="field">
+    <%= f.label :daylight %></br>
+    <%= f.number_field :daylight, step: "0.1" %>
+  </div>
+  <duv class="actions">
+    <%= f.submit '新規登録', class: "send-btn" %>
+  </duv>
+<% end %>
