@@ -1,0 +1,40 @@
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @house.firstname %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @house.lastname %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @house.city %>
+</p>
+
+<p>
+  <strong>Num of people:</strong>
+  <%= @house.num_of_people %>
+</p>
+
+<p>
+  <strong>Has child:</strong>
+  <%= @house.has_child %>
+</p>
+
+<div id="app1">
+ <bar-chart :data="datacollection" :options="options"></bar-chart>
+<p>{{data}}</p>
+<p>{{labels}}</p>
+<p>{{datacollection}}</p>
+<p>{{options}}</p>
+
+</div>
+<div id="app2">
+  <line-chart :data="datacollection" :options="options"></line-chart>
+</div>
+
+<%= javascript_pack_tag 'chart1' %>
+<%= javascript_pack_tag 'chart2' %>
