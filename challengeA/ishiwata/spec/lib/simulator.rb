@@ -1,83 +1,70 @@
-# frozen_string_literal: true
-
 require 'spec_helper'
-require 'simulator'
 
 describe 'Simulator' do
-  it 'is initialized' do
-    simulation = Simulator.new(40, 280)
+  describe 'initialize' do
+    it '入力データの取り出し ampere = 40' do
+      simulator = Simulator.new(ampere: 40, usage: 240)
+      expect(simulator.ampere).to eq(40)
+    end
 
-    expect(simulation.ampere).to eq(40)
-    expect(simulation.usage).to eq(280)
+    it '入力データの取り出し usage = 240' do
+      simulator = Simulator.new(ampere:40, usage:240)
+      expect(simulator.usage).to eq(240)
+    end
   end
 
-  it 'is simulated by (60 A, 360 kWh)' do
-    simulation = Simulator.new(60, 360)
+  describe 'simulate' do
 
-    expect(simulation.simulate).to eq([
-                                        { provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: 10_702 },
-                                        { provider_name: 'Looopでんき', plan_name: 'おうちプラン', price: 9504 },
-                                        { provider_name: '東京ガス', plan_name: 'ずっとも電気1', price: 10_308 }
-                                      ])
-  end
+    context '適切な値を入力した場合' do
 
-  it 'is simulated by (50 A, 320 kWh)' do
-    simulation = Simulator.new(50, 320)
+      it "契約アンペア : 0 A 電気使用量 : 100kWh" do
+        simulator = Simulator.new(ampere:0, usage:100)
+        expect(simulator.simulate).to eq(
+                 [{provider_name: '東京電力', plan_name: '従量電灯B', error: 'このプランの料金をシミュレーションできませんでした'},
+                  {provider_name: 'Looopでんき', plan_name: 'おうちプラン', charge: 2640 },
+                  {provider_name: '東京ガス', plan_name: 'ずっとも電気1', error: 'このプランの料金をシミュレーションできませんでした' }])
+      end
 
-    expect(simulation.simulate).to eq([
-                                        { provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: 9193 },
-                                        { provider_name: 'Looopでんき', plan_name: 'おうちプラン', price: 8448 },
-                                        { provider_name: '東京ガス', plan_name: 'ずっとも電気1', price: 9042 }
-                                      ])
-  end
+      it "契約アンペア : 10 A 電気使用量 : 100kWh" do
+        simulator = Simulator.new(ampere:10, usage:100)
+        expect(simulator.simulate).to eq(
+                 [{provider_name: '東京電力', plan_name: '従量電灯B', charge: 2274},
+                  {provider_name: 'Looopでんき', plan_name: 'おうちプラン', charge: 2640 },
+                  {provider_name: '東京ガス', plan_name: 'ずっとも電気1', error: 'このプランの料金をシミュレーションできませんでした' }])
+      end
 
-  it 'is simulated by (40 A, 280 kWh)' do
-    simulation = Simulator.new(40, 280)
+      it "契約アンペア : 30 A 電気使用量 : 100kWh" do
+        simulator = Simulator.new(ampere:30, usage:100)
+        expect(simulator.simulate).to eq(
+                 [{provider_name: '東京電力', plan_name: '従量電灯B', charge: 2846},
+                  {provider_name: 'Looopでんき', plan_name: 'おうちプラン', charge: 2640 },
+                  {provider_name: '東京ガス', plan_name: 'ずっとも電気1', charge: 3225 }])
+      end
+    end
 
-    expect(simulation.simulate).to eq([
-                                        { provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: 7766 },
-                                        { provider_name: 'Looopでんき', plan_name: 'おうちプラン', price: 7392 },
-                                        { provider_name: '東京ガス', plan_name: 'ずっとも電気1', price: 7801 }
-                                      ])
-  end
+    context '適切な値を入力しなかった場合' do
+      
+      it "ampereが数字でなければNG" do
+        simulator = Simulator.new(ampere: "アンペア",usage: 120)
+        expect(simulator.simulate).to eq("契約アンペアと電気使用量は整数を入力してください。(例) 契約アンペア : 30 電気使用量 : 120")
+      end
 
-  it 'is simulated by (30 A, 150 kWh)' do
-    simulation = Simulator.new(30, 150)
+      it "usageが数字でなければNG" do
+        simulator = Simulator.new(ampere: "40",usage: "使用量")
+        expect(simulator.simulate).to eq("契約アンペアと電気使用量は整数を入力してください。(例) 契約アンペア : 30 電気使用量 : 120")
+      end
 
-    expect(simulation.simulate).to eq([
-                                        { provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: 4038 },
-                                        { provider_name: 'Looopでんき', plan_name: 'おうちプラン', price: 3960 },
-                                        { provider_name: '東京ガス', plan_name: 'ずっとも電気1', price: 4410 }
-                                      ])
-  end
 
-  it 'is simulated by (20 A, 100 kWh)' do
-    simulation = Simulator.new(20, 100)
+      it "ampereが整数でなければNG" do
+        simulator = Simulator.new(ampere: 10.0,usage: 120)
+        expect(simulator.simulate).to eq("契約アンペアと電気使用量は整数を入力してください。(例) 契約アンペア : 30 電気使用量 : 120")
+      end
 
-    expect(simulation.simulate).to eq([
-                                        { provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: 2560 },
-                                        { provider_name: 'Looopでんき', plan_name: 'おうちプラン', price: 2640 },
-                                        { provider_name: '東京ガス', plan_name: 'ずっとも電気1', price: 'このプランは存在しません' }
-                                      ])
-  end
+      it "usageが整数でなければNG" do
+        simulator = Simulator.new(ampere: 30,usage: 120.0)
+        expect(simulator.simulate).to eq("契約アンペアと電気使用量は整数を入力してください。(例) 契約アンペア : 30 電気使用量 : 120")
+      end
+    end
 
-  it 'is simulated by (15 A, 70 kWh)' do
-    simulation = Simulator.new(15, 70)
-
-    expect(simulation.simulate).to eq([
-                                        { provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: 1820 },
-                                        { provider_name: 'Looopでんき', plan_name: 'おうちプラン', price: 1848 },
-                                        { provider_name: '東京ガス', plan_name: 'ずっとも電気1', price: 'このプランは存在しません' }
-                                      ])
-  end
-
-  it 'is simulated by (10 A,  kWh)' do
-    simulation = Simulator.new(10, 210)
-
-    expect(simulation.simulate).to eq([
-                                        { provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: 5054 },
-                                        { provider_name: 'Looopでんき', plan_name: 'おうちプラン', price: 5544 },
-                                        { provider_name: '東京ガス', plan_name: 'ずっとも電気1', price: 'このプランは存在しません' }
-                                      ])
   end
 end
