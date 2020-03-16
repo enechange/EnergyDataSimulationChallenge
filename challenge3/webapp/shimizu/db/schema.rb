@@ -13,19 +13,21 @@
 ActiveRecord::Schema.define(version: 2020_03_15_103519) do
 
   create_table "energy_datasets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "label"
-    t.bigint "house_id"
-    t.integer "year"
-    t.integer "month"
-    t.float "temperature"
-    t.float "daylight"
-    t.integer "energy_production"
+    t.integer "energy_ID", null: false
+    t.integer "label", null: false
+    t.bigint "house_id", null: false
+    t.integer "year", null: false
+    t.integer "month", null: false
+    t.float "temperature", null: false
+    t.float "daylight", null: false
+    t.integer "energy_production", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["house_id"], name: "index_energy_datasets_on_house_id"
   end
 
   create_table "houses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "house_ID", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "city", null: false
