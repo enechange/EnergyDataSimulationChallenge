@@ -1,17 +1,29 @@
-<h1>データ解析</h1>
-<%= link_to '詳細' %>
-<br>
-<h2>【目的】</h2>
-<h3>各家庭におけるエネルギーの生産量×消費量の関係を調査し、余剰エネルギー買取先や不足エネルギー購入先の提案に繋げる</h3>
-<br>
-<h2>【考え方】</h2>
-<h3>①エネルギー生産量は家庭によらず変わらない</h3>
-<h3>②エネルギー消費量は人数によって大きく変わる</h3>
-<h3>つまり、人数の多い家庭ではエネルギー足りず、人数の少ない家庭ではエネルギーが余ると予想</h3>
-<h3>③人数（家族構成）はエリアによって違いがありそう</h3>
-<br>
-<h2>エリア別人数構成比（棒グラフ）③</h2>
-<h2>一人当たりのエネルギー生産量月平均エリア別比較（棒グラフ）③</h2>
-<h2>=>攻めるべきエリア、余剰・不足が見える（全データ平均でなく消費量と比べるべきだが）</h2>
-<h2>選択した家庭の一人当たりのエネルギー月別生産量vs全データ平均（線グラフ）</h2>
-<h2>=>その家庭でエネルギーが余っているのか、不足しているのかが見える（全データ平均でなく消費量と比べるべきだが）</h2>
+<div class="container">
+  <h1 class="title">Energy Data Simulation Challenge3</h1>
+  <hr>
+  <div class="card">
+    <h2 class="card-title">Energy production vs Daylight</h2>
+    <div class="card-body">
+      <%= scatter_chart @scatter_data, xtitle: "Daylight", ytitle: "Energy Production" %>
+    </div>
+  </div>
+  <hr>
+  <table class="table">
+    <tr class="table-title">
+      <th>Name</th>
+      <th>City</th>
+      <th>Number of people</th>
+      <th>Has_child?</th>
+      <th></th>
+    </tr>
+    <% @houses.each do |house| %>
+      <tr>
+        <td><%= house.first_name %> <%= house.last_name %></td>
+        <td><%= house.city %></td>
+        <td><%= house.num_of_people %></td>
+        <td><%= house.has_child ? 'Yes' : 'No' %></td>
+        <td><%= link_to 'Show', house_path(house.id) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

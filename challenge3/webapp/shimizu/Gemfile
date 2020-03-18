@@ -30,7 +30,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rubocop-airbnb'
 gem 'gon'
 gem 'chartkick'
-gem 'activerecord-import'
+gem 'seed-fu'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,2 +1,28 @@
-<h1>各家庭データ</h1>
-<%=link_to 'TOPへ', root_path %>
+<div class="container">
+  <h1 class="title">Energy Data Simulation Challenge3</h1>
+  <hr>
+  <div class="card">
+      <h2 class="card-title">Comparison of energy production between <%= @house.first_name %>'s house and overall average</h2>
+    <div class="card-body">
+      <%= line_chart [{ name: "#{@house.first_name}'s house", data: @energy_in_house },
+                      { name: "overall average", data: @average_energy_in_all_house }], ytitle: "Energy Production" %>
+    </div>
+  </div>
+  <hr>
+  <table class="table">
+    <tr class="table-title">
+      <th>Name</th>
+      <th>City</th>
+      <th>Number of people</th>
+      <th>Has_child?</th>
+      <th></th>
+    </tr>
+      <tr>
+        <td><%= @house.first_name %> <%= @house.last_name %></td>
+        <td><%= @house.city %></td>
+        <td><%= @house.num_of_people %></td>
+        <td><%= @house.has_child ? 'Yes' : 'No' %></td>
+      </tr>
+  </table>
+  <h2 class="link"><%=link_to 'Top', root_path %></h2>
+</div>
