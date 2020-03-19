@@ -1,3 +1,4 @@
+<%= provide :title, "TOP" %>
 <div class="container">
   <h1 class="title">Energy Data Simulation Challenge3</h1>
   <hr>
@@ -22,7 +23,7 @@
         <td><%= house.city %></td>
         <td><%= house.num_of_people %></td>
         <td><%= house.has_child ? 'Yes' : 'No' %></td>
-        <td><%= link_to 'Show', house_path(house.id) %></td>
+        <td><%= link_to 'Detail', house_path(house.id) %></td>
       </tr>
     <% end %>
   </table>
