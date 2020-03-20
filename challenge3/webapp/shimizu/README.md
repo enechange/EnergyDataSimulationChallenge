@@ -1,15 +1,15 @@
-##URL  
+## URL
 ```bash
-https://anyride.herokuapp.com
+
 ```
 
-##Installed Libraries
-%ul
-  %li chartkick
-  %li seed-fu
-  %li rspec-rails
-  %li factory_bot_rails
-  %li capybara
-  %li rubocop-airbnb
+## Installed Libraries
+・chartkick
+・seed-fu
+・rspec-rails
+・factory_bot_rails
+・capybara
+・rubocop-airbnb
 
-##Points
+## Points
+・
