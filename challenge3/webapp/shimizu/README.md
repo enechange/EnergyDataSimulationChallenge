@@ -1,24 +1,15 @@
-# README
+##URL  
+```bash
+https://anyride.herokuapp.com
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Installed Libraries
+%ul
+  %li chartkick
+  %li seed-fu
+  %li rspec-rails
+  %li factory_bot_rails
+  %li capybara
+  %li rubocop-airbnb
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Points

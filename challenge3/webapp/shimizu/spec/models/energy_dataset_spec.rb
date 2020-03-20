@@ -17,11 +17,11 @@ RSpec.describe 'EnergyDataset', type: :model do
 
   describe 'scope' do
     it 'average_energy' do
-      expect(EnergyDataset.average_energy).to include [2020,1]=>750
+      expect(EnergyDataset.average_energy).to include [2020, 1] => 750
     end
 
     it 'energy_in_house' do
-      expect(EnergyDataset.energy_in_house(energy_dataset_1.house_id)).to include [2020,1]=>700
+      expect(EnergyDataset.energy_in_house(energy_dataset_1.house_id)).to include [2020, 1] => 700
     end
   end
 end
