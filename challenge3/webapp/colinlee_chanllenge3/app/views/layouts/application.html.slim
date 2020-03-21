@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    meta charset="UTF-8"
+    meta content="ie=edge" http-equiv="x-ua-compatible"
+    meta content="width=device-width, initial-scale=1.0" name="viewport"
+    meta content="ColinLeeChallenge3" name="description"
+    title ColinLeeChallenge3
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_pack_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
+
+  body
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}"
+    = yield
+    = javascript_include_tag 'application'
