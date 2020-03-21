@@ -19,6 +19,7 @@ AllCops:
     - 'db/migrate/*'
     - 'db/schema.rb'
     - 'db/seeds.rb'
+    - 'db/fixtures/*'
     - 'lib/tasks/*'
     - 'vendor/**/*'
     - 'path/ruby'
