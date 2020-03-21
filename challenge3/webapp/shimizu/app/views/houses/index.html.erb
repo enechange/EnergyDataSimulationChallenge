@@ -5,7 +5,8 @@
   <div class="card">
     <h2 class="card-title">Energy production vs Daylight</h2>
     <div class="card-body">
-      <%= scatter_chart @scatter_data, xtitle: "Daylight", ytitle: "Energy Production" %>
+      <canvas id="scatterChart"></canvas>
+      <script>draw_graph_scatter();</script>
     </div>
   </div>
   <hr>

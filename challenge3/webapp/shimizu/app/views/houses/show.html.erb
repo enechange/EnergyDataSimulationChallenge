@@ -5,8 +5,8 @@
   <div class="card">
       <h2 class="card-title">Comparison of energy production between <%= @house.first_name %>'s house and overall average</h2>
     <div class="card-body">
-      <%= line_chart [{ name: "#{@house.first_name}'s house", data: @energy_in_house },
-                      { name: "overall average", data: @average_energy_in_all_house }], ytitle: "Energy Production" %>
+      <canvas id="lineChart"></canvas>
+      <script>draw_graph_line();</script>
     </div>
   </div>
   <hr>

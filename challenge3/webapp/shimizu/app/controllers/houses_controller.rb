@@ -1,12 +1,14 @@
 class HousesController < ApplicationController
   def index
     @houses = House.all
-    @scatter_data = EnergyDataset.pluck(:daylight, :energy_production)
+    gon.energy_production_daylight = EnergyDataset.energy_production_daylight
   end
 
   def show
     @house = House.find(params[:id])
-    @average_energy_in_all_house = EnergyDataset.average_energy
-    @energy_in_house = EnergyDataset.energy_in_house(params[:id])
+    gon.first_name = @house.first_name
+    gon.energy_in_house = EnergyDataset.energy_in_house(params[:id]).values
+    gon.overall_average = EnergyDataset.overall_average.values
+    gon.month = EnergyDataset.overall_average.keys
   end
 end
