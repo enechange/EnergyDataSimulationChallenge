@@ -30,9 +30,5 @@
   },
   "scripts": {
     "eslint": "eslint --ext .js,.jsx,.ts,.tsx app/javascript --ignore-pattern **/*.min.js"
-  },
-  "engines": {
-    "node": "12.16",
-    "yarn": "1.22"
   }
 }

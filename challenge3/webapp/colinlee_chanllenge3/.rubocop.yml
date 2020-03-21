@@ -1,0 +1,133 @@
+# See example at https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - 'app/admin/**/*.rb'
+    - 'bin/**/*'
+    - 'config/**/*.rb'
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
+    - 'lib/tasks/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+
+# Align the elements of a hash literal if they span more than one line.
+Layout/HashAlignment:
+  # Alignment of entries using hash rocket as separator. Valid values are:
+  #
+  # key - left alignment of keys
+  #   'a' => 2
+  #   'bb' => 3
+  # separator - alignment of hash rockets, keys are right aligned
+  #    'a' => 2
+  #   'bb' => 3
+  # table - left alignment of keys, hash rockets, and values
+  #   'a'  => 2
+  #   'bb' => 3
+  EnforcedHashRocketStyle: table
+  # Alignment of entries using colon as separator. Valid values are:
+  #
+  # key - left alignment of keys
+  #   a: 0
+  #   bb: 1
+  # separator - alignment of colons, keys are right aligned
+  #    a: 0
+  #   bb: 1
+  # table - left alignment of keys and values
+  #   a:  0
+  #   bb: 1
+  EnforcedColonStyle: table
+
+Style/Documentation:
+  Enabled: false
+
+Layout/EmptyLines:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 150
+
+Metrics/AbcSize:
+  Enabled: true
+  Max:     25
+
+Metrics/ClassLength:
+  Enabled:       false
+  CountComments: false
+
+Metrics/BlockLength:
+  Enabled:       false
+  CountComments: false
+
+Metrics/MethodLength:
+  Enabled:       true
+  CountComments: false
+  Max:           25
+
+Naming/MethodParameterName:
+  MinNameLength: 2
+
+Naming/BlockParameterName:
+  MinNameLength: 2
+
+Layout/SpaceInsideParens:
+  Enabled: false
+
+Layout/SpaceBeforeFirstArg:
+  Enabled: false
+
+Style/AccessModifierDeclarations:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled:       true
+  EnforcedStyle: compact
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled:                   true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled:                   true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  Enabled:                   true
+  EnforcedStyleForMultiline: comma
+
+Style/AndOr:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+# https://github.com/codeclimate/codeclimate-rubocop/blob/master/base_rubocop.yml#L71
+# We use %w[ ], not %w( ) because the former looks like an array
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false

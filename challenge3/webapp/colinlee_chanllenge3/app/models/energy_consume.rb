@@ -7,6 +7,7 @@ class EnergyConsume < ApplicationRecord
   #
   # @return [Array], array of year, month and average temperature
   def self.average_temperature_timeline
-    group(:year, :month).order(:year, :month).pluck(:year, :month, 'AVG(temperature)')
+    group(:year, :month).order(:year, :month)
+                        .pluck(:year, :month, 'AVG(temperature)')
   end
 end

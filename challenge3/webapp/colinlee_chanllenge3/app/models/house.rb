@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class House < ApplicationRecord
-  has_many :energy_consumes
+  has_many :energy_consumes, dependent: :destroy
 
   # Get the sum of daylight
   #
@@ -16,10 +16,8 @@ class House < ApplicationRecord
   #
   # @return [Float], average house daylight of input city
   def self.average_house_daylights(city)
-    house_sum_daylights = where(city: city).map do |house|
-      house.sum_daylights
-    end
-    return 0 unless house_sum_daylights.count > 0
+    house_sum_daylights = where(city: city).map(&:sum_daylights)
+    return 0 unless house_sum_daylights.count.positive?
 
     house_sum_daylights.sum / house_sum_daylights.count
   end

@@ -7,7 +7,7 @@ class ReportService::CityHouseDaylightService
   def self.report_data
     House.cities.each_with_object([]) do |city, report|
       item = {
-        name: city,
+        name:     city,
         daylight: House.average_house_daylights(city).round(1).to_s,
       }
       report << item
