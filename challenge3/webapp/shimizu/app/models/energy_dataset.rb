@@ -10,8 +10,8 @@ class EnergyDataset < ApplicationRecord
   validates :energy_production, presence: true
 
   scope :energy_production_daylight, -> {
-    pluck(:daylight, :energy_production)
-      .map{|daylight, energy_production| { x: daylight, y: energy_production } }
+    pluck(:daylight, :energy_production).
+      map { |daylight, energy_production| { x: daylight, y: energy_production } }
   }
 
   scope :overall_average, -> {

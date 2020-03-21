@@ -16,8 +16,12 @@ RSpec.describe 'EnergyDataset', type: :model do
   end
 
   describe 'scope' do
-    it 'average_energy' do
-      expect(EnergyDataset.average_energy).to include [2020, 1] => 750
+    it 'energy_production_daylight' do
+      expect(EnergyDataset.energy_production_daylight).to include x: 200, y: 700
+    end
+
+    it 'overall_average' do
+      expect(EnergyDataset.overall_average).to include [2020, 1] => 750
     end
 
     it 'energy_in_house' do
