@@ -5,8 +5,12 @@ class ReportService::CityHouseDaylightService
   #
   # @return [Hash, NilClass], the report data.
   def self.report_data
-    House.cities.each_with_object({}) do |city, report|
-      report[city] = House.average_house_daylights(city).round(1).to_s
+    House.cities.each_with_object([]) do |city, report|
+      item = {
+        name: city,
+        daylight: House.average_house_daylights(city).round(1).to_s,
+      }
+      report << item
     end
   end
 end

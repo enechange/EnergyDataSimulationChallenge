@@ -3,10 +3,10 @@ import WebpackerReact from 'webpacker-react';
 import 'babel-polyfill';
 
 // Alphabet order
-import Hello from './hello';
+import Report from './report';
 
 WebpackerReact.setup({
-  Hello,
+  Report,
 });
 
 window.WebpackerReact = WebpackerReact;

@@ -1,4 +1,11 @@
-= react_component('Hello',
-  name: "colin",
+= react_component('Report',
+  name: 'Temperature Timeline Chart',
+  endPoint: reports_temperature_timeline_url,
+  dataKey: 'temperature',
 )
 
+= react_component('Report',
+  name: 'House Daylight Chart(Average City)',
+  endPoint: reports_city_daylight_url,
+  dataKey: 'daylight',
+)
