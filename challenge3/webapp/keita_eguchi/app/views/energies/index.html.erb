@@ -1,0 +1,46 @@
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- HTML -->
+<p>energy</p>
+<%= link_to "各家庭別に移動" ,houses_path %>
+<p>都市エリア別の気温/光量/エネルギー生産量のグラフ</p>
+<div id="chartdiv"></div>
+
+<label for="city">都市エリア</label>
+<select name="chart[city]" id="city">
+  <option value="All">全エリア</option>
+  <option value="London">ロンドン</option>
+  <option value="Cambridge">ケンブリッジ</option>
+  <option value="Oxford">オックスフォード</option>
+</select>
+
+<label for="datakind">データ種別</label>
+<select name="chart[kind]" id="datakind">
+  <option value="0">全て</option>
+  <option value="1">気温</option>
+  <option value="2">光量</option>
+  <option value="3">エネルギー生産量</option>
+</select>
+
+<p>(ⅰ)都市エリア:"全て" , データ種別："全て"
+</br>→全都市エリアの"気温","光量","エネルギー生産量"の平均のグラフが3本描画されます</p>
+<p>(ⅱ)都市エリア:"全て" , データ種別："全て"以外
+</br>→選択したデータ種別の平均のグラフが各都市分、3本描画されます</p>
+<p>(ⅲ)都市エリア:"全て"以外 , データ種別："全て"
+</br>→選択した都市エリアの"気温","光量","エネルギー生産量"のグラフの3本が描画されます</p>
+<p>(ⅳ)都市エリア:"全て"以外 , データ種別："全て"以外
+</br>→選択した都市エリアの選択したデータ種別のグラフと全ての都市の選択したデータ種別の平均のグラフ、2本が描画されます</p>
+
+<!-- Styles -->
+<style>
+body { background-color: #30303d; color: #fff; }
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+
+</style>

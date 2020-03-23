@@ -1,0 +1,21 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Month</th>
+      <th>PowerConsumption</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @power_consumptions.each do |p|%>
+      <tr>
+        <td><%= p.year %></td>
+        <td><%= p.month %></td>
+        <td><%= p.power_consumption  %></td>
+        <td><%= link_to "編集", edit_power_consumption_path(e.id) %></td>
+        <td><%= link_to "削除", power_consumption_path(e.id), method: :delete%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

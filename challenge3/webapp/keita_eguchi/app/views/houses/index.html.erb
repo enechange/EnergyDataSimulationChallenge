@@ -1,0 +1,59 @@
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+
+<!-- HTML -->
+<p>house</p>
+<%= link_to "都市別に移動" ,root_path %>
+<p>家庭と選択した家庭と同条件の家庭の比較グラフ</p>
+<div id="chartdiv"></div>
+
+<label for="datahouse">家庭選択</label>
+<select name="chart[house]" id="datahouse">
+  <%= render @housees %>
+</select>
+
+<label for="datakind">データ種別</label>
+<select name="chart[kind]" id="datakind">
+  <option value="0">全て</option>
+  <option value="1">気温</option>
+  <option value="2">光量</option>
+  <option value="3">エネルギー生産量</option>
+</select>
+<p>選択した家庭の条件</p>
+<table class="condition">
+  <tr>
+    <td>都市エリア</td>
+    <td>人数</td>
+    <td>子供の有無</td>
+    <td>条件に合う家庭数</td>
+  </tr>
+  <tr>
+    <td><%=@house.city %></td>
+    <td><%=@house.num_of_people %></td>
+    <td><%=@house.has_child %></td>
+    <td><%=@same_condition_houses.length %></td>
+  </tr>
+</table>
+<p>(ⅰ)家庭選択:任意の家庭, データ種別："全て"以外
+</br>→選択した家庭のデータ種別に沿ったグラフと同条件の家庭のデータ種別(平均)に沿ったグラフの2本が描画されます</p>
+<p>(ⅱ)家庭選択:任意の家庭, データ種別："全て"
+</br>→選択した家庭の"気温","光量","エネルギー生産量"のグラフの3本が描画されます</p>
+
+<style>
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+
+table {
+	border-collapse: collapse;
+}
+td {
+	border: solid 1px;
+	padding: 0.5em;
+}
+</style>

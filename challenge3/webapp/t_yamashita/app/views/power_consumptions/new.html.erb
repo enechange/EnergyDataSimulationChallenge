@@ -1,0 +1,20 @@
+<div class="comparison-title">
+  <h2>新規消費電力量登録</h2>
+</div>
+<%= form_with(model: @power_consumption, local: true) do |f| %>
+  <div class="field">
+    <%= f.label :power_consumption %></br>
+    <%= f.number_field :power_consumption %>
+  </div>
+  <div class="field">
+    <%= f.label :year %></br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :month %></br>
+    <%= f.number_field :month %>
+  </div>
+  <duv class="actions">
+    <%= f.submit '新規登録', class:"send-btn" %>
+  </duv>
+<% end %>

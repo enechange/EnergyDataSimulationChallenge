@@ -1,0 +1,18 @@
+<h1>House energy production chart</h1>
+<select class='house'>
+  <% @houses.each_with_index do |house, i| %>
+    <option value= <%= (i+1) %>>
+      <%= house.id %> - 
+      <%= house.first_name.capitalize %>
+      <%= house.last_name.capitalize %>
+      (<%= house.city.capitalize %>)
+      <% house.num_of_people %>
+    </option>
+  <% end %>
+</select>
+
+<div class="result">House information</div>
+
+<canvas id="myChart"></canvas>
+
+<%= javascript_pack_tag 'pages/main' %>
