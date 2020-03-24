@@ -1,0 +1,31 @@
+<%= provide :title, "TOP" %>
+<div class="container">
+  <h1 class="title">Energy Data Simulation Challenge3</h1>
+  <hr>
+  <div class="card">
+    <h2 class="card-title">Energy production vs Daylight</h2>
+    <div class="card-body">
+      <canvas id="scatterChart"></canvas>
+      <script>draw_graph_scatter();</script>
+    </div>
+  </div>
+  <hr>
+  <table class="table">
+    <tr class="table-title">
+      <th>Name</th>
+      <th>City</th>
+      <th>Number of people</th>
+      <th>Has_child?</th>
+      <th></th>
+    </tr>
+    <% @houses.each do |house| %>
+      <tr>
+        <td><%= house.first_name %> <%= house.last_name %></td>
+        <td><%= house.city %></td>
+        <td><%= house.num_of_people %></td>
+        <td><%= house.has_child ? 'Yes' : 'No' %></td>
+        <td><%= link_to 'Detail', house_path(house.id) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

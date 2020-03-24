@@ -1,0 +1,45 @@
+body{
+  background: aliceblue;
+  font-family: Arial, sans-serif;
+}
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title{
+  text-align: center;
+  font-size: 30px;
+}
+
+.card{
+  margin: 50px auto;
+  padding: 20px 20px;
+  background: white;
+}
+
+.card-title{
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+
+.table-title{
+  font-size: 20px;
+}
+
+.table{
+  width: 100%;
+
+  th, td{
+    text-align: center;
+    padding: 20px 0;
+  }
+}
+
+.link{
+  text-align: center;
+  font-size: 20px;
+}
