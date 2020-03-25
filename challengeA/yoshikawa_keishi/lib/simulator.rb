@@ -88,8 +88,8 @@ end
 # # 申し込みできるアンペア数が変わった時
 # Simulator.acceptableAmpere << 25
 
-simulator = Simulator.new(30, 300)
-# simulator.simulate
+simulator = Simulator.new(10, 300)
+simulator.simulate
 
 
 
