@@ -12,9 +12,9 @@ class Simulator
   def simulate
     if @@acceptableAmperes.include?(amp) && usage.is_a?(Integer) 
       output = [
-        {provider_name: "東京電力エナジーパートナー", plan_name: "従量電灯B", price: "#{ep_planB}"},
-        {provider_name: "Looop電気", plan_name: "おうちプラン", price: "#{looop_homePlan}"},
-        {provider_name: "東京ガス", plan_name: "ずっとも電気１", price: "#{tg_zuttomoDenki1}"}
+        {provider_name: "東京電力エナジーパートナー", plan_name: "従量電灯B", price: "#{ep_planB_bill}"},
+        {provider_name: "Looop電気", plan_name: "おうちプラン", price: "#{looop_homePlan_bill}"},
+        {provider_name: "東京ガス", plan_name: "ずっとも電気１", price: "#{tg_zuttomoDenki1_bill}"}
       ]
       print "#{output.sort{|a,b| a[:price] <=> b[:price]}}\n"
     elsif @@acceptableAmperes.include?(amp)
@@ -25,18 +25,18 @@ class Simulator
   end
 
 # 東京電力エネルギーパートナー従量電灯B
-  def ep_planB
+  def ep_planB_bill
     @@EP_planB_SET[:rate].sort{|a,b| a[0] <=> b[0]}
     totalCharge = @@EP_planB_SET[:basicChargeRate] * amp + usageBasedCharge(@@EP_planB_SET[:rate].keys, @@EP_planB_SET[:rate].values)
     return totalCharge.floor
   end
 # Looopeおうち電気プラン
-  def looop_homePlan
+  def looop_homePlan_bill
     usageBasedCharge = (@usage * 26.40)
     return usageBasedCharge.floor
   end
 # 東京ガスずっとも電気１
-  def tg_zuttomoDenki1
+  def tg_zuttomoDenki1_bill
     @@TG_ZUTTOMO_SET[:rate].sort{|a,b| a[0] <=> b[0]}
     new_amp = amp < 30? 30 : amp
     totalCharge = @@TG_ZUTTOMO_SET[:basicChargeRate] * new_amp + usageBasedCharge(@@TG_ZUTTOMO_SET[:rate].keys, @@TG_ZUTTOMO_SET[:rate].values)
