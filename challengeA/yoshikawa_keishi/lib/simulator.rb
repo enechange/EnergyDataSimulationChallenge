@@ -2,6 +2,7 @@ class Simulator
   attr_reader :amp, :usage
   @@EP_planB_SET = {rate: {0 => 19.88, 120 => 26.48, 300 => 30.57}, basicChargeRate: 28.6 }
   @@TG_ZUTTOMO_SET = {rate: {0 => 23.67, 140 => 23.88, 350 => 26.41}, basicChargeRate: 28.6 }
+  @@LOOOP_HOMEPLAN_SET = {basicChargeRate: 26.40 }
   @@acceptableAmperes = [10, 15, 20, 30, 40, 50, 60]
 
   def initialize(amp, usage)
@@ -32,7 +33,7 @@ class Simulator
   end
 # Looopeおうち電気プラン
   def looop_homePlan_bill
-    usageBasedCharge = (@usage * 26.40)
+    usageBasedCharge = (@usage * @@LOOOP_HOMEPLAN_SET[:basicChargeRate])
     return usageBasedCharge.floor
   end
 # 東京ガスずっとも電気１
@@ -66,6 +67,10 @@ class Simulator
 
     def TG_ZUTTOMO_SET
       @@TG_ZUTTOMO_SET
+    end
+
+    def LOOOP_HOMEPLAN_SET
+      @@LOOOP_HOMEPLAN_SET
     end
 
     def acceptableAmperes
