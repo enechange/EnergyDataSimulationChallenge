@@ -1,9 +1,9 @@
 class Simulator 
   attr_reader :amp, :usage
-  @@EP_planB_SET = {rate: {0 => 19.88, 120 => 26.48, 300 => 30.57}, basicChargeRate: 28.6 }
-  @@TG_ZUTTOMO_SET = {rate: {0 => 23.67, 140 => 23.88, 350 => 26.41}, basicChargeRate: 28.6 }
-  @@LOOOP_HOMEPLAN_SET = {basicChargeRate: 26.40 }
-  @@acceptableAmperes = [10, 15, 20, 30, 40, 50, 60]
+  @@EP_planB_SET = {amperes: [10, 15, 20, 30, 40, 50, 60], rate: {0 => 19.88, 120 => 26.48, 300 => 30.57}, basicChargeRate: 28.6 }
+  @@TG_ZUTTOMO_SET = {amperes: [30, 40, 50, 60], rate: {0 => 23.67, 140 => 23.88, 350 => 26.41}, basicChargeRate: 28.6 }
+  @@LOOOP_HOMEPLAN_SET = {amperes: [10, 15, 20, 30, 40, 50, 60], rate: {0 => 26.40}, basicChargeRate: 0 }
+  $acceptableAmperes = @@EP_planB_SET[:amperes] || @@TG_ZUTTOMO_SET [:amperes] || @@LOOOP_HOMEPLAN_SET[:amperes]
 
   def initialize(amp, usage)
     @amp, @usage = amp, usage
@@ -11,37 +11,24 @@ class Simulator
 
  # 価格の安い順に各プランを表示
   def simulate
-    if @@acceptableAmperes.include?(amp) && usage.is_a?(Integer) 
+    if $acceptableAmperes.include?(amp) && usage.is_a?(Integer) 
       output = [
-        {provider_name: "東京電力エナジーパートナー", plan_name: "従量電灯B", price: "#{ep_planB_bill}"},
-        {provider_name: "Looop電気", plan_name: "おうちプラン", price: "#{looop_homePlan_bill}"},
-        {provider_name: "東京ガス", plan_name: "ずっとも電気１", price: "#{tg_zuttomoDenki1_bill}"}
+        {provider_name: "東京電力エナジーパートナー", plan_name: "従量電灯B", price: "#{basic_and_usageBased_charge(@@EP_planB_SET[:amperes], @@EP_planB_SET[:basicChargeRate], @@EP_planB_SET[:rate])}"},
+        {provider_name: "Looop電気", plan_name: "おうちプラン", price: "#{basic_and_usageBased_charge(@@LOOOP_HOMEPLAN_SET [:amperes], @@LOOOP_HOMEPLAN_SET [:basicChargeRate], @@LOOOP_HOMEPLAN_SET [:rate])}"},
+        {provider_name: "東京ガス", plan_name: "ずっとも電気１", price: "#{basic_and_usageBased_charge(@@TG_ZUTTOMO_SET[:amperes], @@TG_ZUTTOMO_SET[:basicChargeRate], @@TG_ZUTTOMO_SET[:rate])}"}
       ]
       print "#{output.sort{|a,b| a[:price] <=> b[:price]}}\n"
-    elsif @@acceptableAmperes.include?(amp)
+    elsif $acceptableAmperes.include?(amp)
       $stderr.puts "電気の使用量は整数を入力してください。(例) simulator = Simulator.new(30, 100)"
     else usage.is_a?(Integer)
       $stderr.puts "アンペアは10,15,20,30,40,50,60のうちから一つを選んで入力してください (例) simulator = Simulator.new(30, 100)"
     end
   end
 
-# 東京電力エネルギーパートナー従量電灯B
-  def ep_planB_bill
-    @@EP_planB_SET[:rate].sort{|a,b| a[0] <=> b[0]}
-    totalCharge = @@EP_planB_SET[:basicChargeRate] * amp + usageBasedCharge(@@EP_planB_SET[:rate].keys, @@EP_planB_SET[:rate].values)
-    return totalCharge.floor
-  end
-# Looopeおうち電気プラン
-  def looop_homePlan_bill
-    usageBasedCharge = (@usage * @@LOOOP_HOMEPLAN_SET[:basicChargeRate])
-    return usageBasedCharge.floor
-  end
-# 東京ガスずっとも電気１
-  def tg_zuttomoDenki1_bill
-    @@TG_ZUTTOMO_SET[:rate].sort{|a,b| a[0] <=> b[0]}
-    new_amp = amp < 30? 30 : amp
-    totalCharge = @@TG_ZUTTOMO_SET[:basicChargeRate] * new_amp + usageBasedCharge(@@TG_ZUTTOMO_SET[:rate].keys, @@TG_ZUTTOMO_SET[:rate].values)
-    return totalCharge.floor
+  def basic_and_usageBased_charge(amperes, basicChargeRate, rate)
+    return "ご指定のアンペアでのプランは用意されておりません" unless amperes.include?(amp)
+    rate.sort{|a,b| a[0] <=> b[0]}
+    totalCharge = basicChargeRate * amp + usageBasedCharge(rate.keys, rate.values)
   end
 
 # 使用量によって変動する料金を各プランの従量制に基づいて計算する
@@ -72,10 +59,6 @@ class Simulator
     def LOOOP_HOMEPLAN_SET
       @@LOOOP_HOMEPLAN_SET
     end
-
-    def acceptableAmperes
-      @@acceptableAmperes
-    end
   end
 end
 
@@ -92,6 +75,7 @@ end
 # Simulator.EP_planB_SET[:basicChargeRate] = 10000.00
 # # 申し込みできるアンペア数が変わった時
 # Simulator.acceptableAmpere << 25
+
 
 simulator = Simulator.new(10, 300)
 simulator.simulate
