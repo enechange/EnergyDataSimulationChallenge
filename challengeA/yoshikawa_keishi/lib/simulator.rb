@@ -1,9 +1,13 @@
 class Simulator 
   attr_reader :amp, :usage
-  @@EP_planB_SET = {amperes: [10, 15, 20, 30, 40, 50, 60], rate: {0 => 19.88, 120 => 26.48, 300 => 30.57}, basicChargeRate: 28.6 }
-  @@TG_ZUTTOMO_SET = {amperes: [30, 40, 50, 60], rate: {0 => 23.67, 140 => 23.88, 350 => 26.41}, basicChargeRate: 28.6 }
-  @@LOOOP_HOMEPLAN_SET = {amperes: [10, 15, 20, 30, 40, 50, 60], rate: {0 => 26.40}, basicChargeRate: 0 }
-  $acceptableAmperes = @@EP_planB_SET[:amperes] || @@TG_ZUTTOMO_SET [:amperes] || @@LOOOP_HOMEPLAN_SET[:amperes]
+  @@plans = [
+    {provider_name: "東京電力エナジーパートナー", plan_name: "従量電灯B", amperes: [10, 15, 20, 30, 40, 50, 60], rate: {0 => 19.88, 120 => 26.48, 300 => 30.57}, basicChargeRate: 28.6 },
+    {provider_name: "東京ガス", plan_name: "ずっとも電気１", amperes: [30, 40, 50, 60], rate: {0 => 23.67, 140 => 23.88, 350 => 26.41}, basicChargeRate: 28.6 },
+    {provider_name: "Looop電気", plan_name: "おうちプラン", amperes: [10, 15, 20, 30, 40, 50, 60], rate: {0 => 26.40}, basicChargeRate: 0 },
+    # {provider_name: "吉川電気", plan_name: "お試しプラン", amperes: [50, 60], rate: {0 => 100.40}, basicChargeRate: 0 }
+  ]
+  $acceptableAmperes = []
+  @@plans.each {|plan| $acceptableAmperes = $acceptableAmperes | plan[:amperes]}
 
   def initialize(amp, usage)
     @amp, @usage = amp, usage
@@ -12,11 +16,10 @@ class Simulator
  # 価格の安い順に各プランを表示
   def simulate
     if $acceptableAmperes.include?(amp) && usage.is_a?(Integer) 
-      output = [
-        {provider_name: "東京電力エナジーパートナー", plan_name: "従量電灯B", price: "#{basic_and_usageBased_charge(@@EP_planB_SET[:amperes], @@EP_planB_SET[:basicChargeRate], @@EP_planB_SET[:rate])}"},
-        {provider_name: "Looop電気", plan_name: "おうちプラン", price: "#{basic_and_usageBased_charge(@@LOOOP_HOMEPLAN_SET [:amperes], @@LOOOP_HOMEPLAN_SET [:basicChargeRate], @@LOOOP_HOMEPLAN_SET [:rate])}"},
-        {provider_name: "東京ガス", plan_name: "ずっとも電気１", price: "#{basic_and_usageBased_charge(@@TG_ZUTTOMO_SET[:amperes], @@TG_ZUTTOMO_SET[:basicChargeRate], @@TG_ZUTTOMO_SET[:rate])}"}
-      ]
+      output = []
+      @@plans.each do |plan|
+        output << {provider_name: plan[:provider_name], plan_name: plan[:plan_name], price: "#{basic_and_usageBased_charge(plan[:amperes], plan[:basicChargeRate], plan[:rate])}"}
+      end
       print "#{output.sort{|a,b| a[:price] <=> b[:price]}}\n"
     elsif $acceptableAmperes.include?(amp)
       $stderr.puts "電気の使用量は整数を入力してください。(例) simulator = Simulator.new(30, 100)"
@@ -48,16 +51,12 @@ class Simulator
 
 # 各プランを変更、拡張するクラスメソッド
   class << self
-    def EP_planB_SET
-      @@EP_planB_SET
+    def plans
+      @@plans 
     end
-
-    def TG_ZUTTOMO_SET
-      @@TG_ZUTTOMO_SET
-    end
-
-    def LOOOP_HOMEPLAN_SET
-      @@LOOOP_HOMEPLAN_SET
+    
+    def find_plans(name)
+      @@plans.find{|hash| hash[:provider_name] === name}
     end
   end
 end
@@ -66,18 +65,10 @@ end
 
 
 # プランの規格変更の例
-
-# # 1kWhのあたりの料金設定を帰る
-# Simulator.EP_planB_SET[:rate][0] = 20.00
-# Simulator.EP_planB_SET[:rate].delete(120)
-# Simulator.EP_planB_SET[:rate].update({350 => 50.00})
-# # 基本料金が変わった時
-# Simulator.EP_planB_SET[:basicChargeRate] = 10000.00
-# # 申し込みできるアンペア数が変わった時
-# Simulator.acceptableAmpere << 25
+# Simulator.find_plans("東京電力エナジーパートナー")[:amperes].push(70)
 
 
-simulator = Simulator.new(10, 300)
+simulator = Simulator.new(50, 300)
 simulator.simulate
 
 
