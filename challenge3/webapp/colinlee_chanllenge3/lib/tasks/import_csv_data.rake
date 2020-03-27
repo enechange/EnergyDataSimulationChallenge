@@ -10,6 +10,7 @@ namespace :import_csv_data do
   task import_house_data_from_csv: :environment do
     read_csv_file(file_path(HOUSE_FILE)) do |row|
       item_attirbutes = {
+        uuid: row['ID'].to_i,
         first_name: row['Firstname'].to_s,
         last_name: row['Lastname'].to_s,
         city: row['City'].to_s,
@@ -18,7 +19,10 @@ namespace :import_csv_data do
       }
       house = House.new
       house.assign_attributes(item_attirbutes)
-      house.save
+      house.save!
+    rescue StandardError
+      #TODO report the error to developers
+      Rails.logger.info("Import house csv failed with #{row}")
     end
   end
 
@@ -26,6 +30,7 @@ namespace :import_csv_data do
   task import_energy_consume_data_from_csv: :environment do
     read_csv_file(file_path(ENERGY_CONSUME_FILE)) do |row|
       item_attirbutes = {
+        uuid: row['ID'].to_i,
         label: row['Label'].to_i,
         house_id: row['House'].to_i,
         year: row['Year'].to_i,
@@ -36,7 +41,10 @@ namespace :import_csv_data do
       }
       energy_consume = EnergyConsume.new
       energy_consume.assign_attributes(item_attirbutes)
-      energy_consume.save
+      energy_consume.save!
+    rescue StandardError
+      #TODO report the error to developers
+      Rails.logger.info("Import energy consume csv failed with #{row}")
     end
   end
 
@@ -61,5 +69,8 @@ namespace :import_csv_data do
         block.call(row)
       end
     end
+  rescue StandardError
+    #TODO report the error to developers
+    Rails.logger.info("Import #{file_path} failed")
   end
 end

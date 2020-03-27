@@ -3,6 +3,10 @@
 class House < ApplicationRecord
   has_many :energy_consumes, dependent: :destroy
 
+  validates :uuid, presence: true, uniqueness: true
+  validates :living_count, presence: true
+  validates :has_child, inclusion: { in: [true, false] }
+
   # Get the sum of daylight
   #
   # @return [Float], sum of total daylight
@@ -10,22 +14,19 @@ class House < ApplicationRecord
     energy_consumes.map(&:daylight).sum
   end
 
-  # Get the average of house daylight with given city
+  # Get the sum of house daylight with given city
   #
   # @param city[String], city name
   #
-  # @return [Float], average house daylight of input city
-  def self.average_house_daylights(city)
-    house_sum_daylights = where(city: city).map(&:sum_daylights)
-    return 0 unless house_sum_daylights.count.positive?
-
-    house_sum_daylights.sum / house_sum_daylights.count
+  # @return [Float], sum house daylight of input city
+  def self.sum_house_daylights(city)
+    where(city: city).map(&:sum_daylights)
   end
 
-  # Get the list of cities
+  # Get the list of uniq cities
   #
   # @return [Array]<String>, list of all the cities
   def self.cities
-    all.map(&:city).uniq
+    distinct.pluck(:city)
   end
 end

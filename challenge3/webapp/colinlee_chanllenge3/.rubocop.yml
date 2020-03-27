@@ -131,3 +131,6 @@ Style/PercentLiteralDelimiters:
 
 Rails/HasAndBelongsToMany:
   Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false

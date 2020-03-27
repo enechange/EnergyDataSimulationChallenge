@@ -16,19 +16,22 @@ ActiveRecord::Schema.define(version: 2020_03_20_084449) do
   enable_extension "plpgsql"
 
   create_table "energy_consumes", force: :cascade do |t|
+    t.integer "uuid", null: false
     t.integer "label"
     t.integer "year", null: false
     t.integer "month", null: false
     t.float "temperature", default: 0.0, null: false
     t.float "daylight", default: 0.0, null: false
     t.integer "energy_production", default: 0, null: false
-    t.string "house_id"
+    t.integer "house_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["house_id"], name: "index_energy_consumes_on_house_id"
+    t.index ["uuid"], name: "index_energy_consumes_on_uuid", unique: true
   end
 
   create_table "houses", force: :cascade do |t|
+    t.integer "uuid", null: false
     t.string "first_name"
     t.string "last_name"
     t.string "city"
@@ -36,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_084449) do
     t.boolean "has_child", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["uuid"], name: "index_houses_on_uuid", unique: true
   end
 
 end
