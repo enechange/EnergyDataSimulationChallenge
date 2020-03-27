@@ -49,15 +49,9 @@ class Simulator
     usageBasedCharge += values[i] * (@usage - keys[i])
   end
 
-# 各プランを変更、拡張するクラスメソッド
-  class << self
-    def plans
-      @@plans 
-    end
-    
-    def find_plans(name)
-      @@plans.find{|hash| hash[:provider_name] === name}
-    end
+# 各プランを変更、拡張するクラスメソッド 
+  def self.find_plans(name)
+    @@plans.find{|hash| hash[:provider_name] === name}
   end
 end
 
@@ -65,7 +59,7 @@ end
 
 
 # プランの規格変更の例
-# Simulator.find_plans("東京電力エナジーパートナー")[:amperes].push(70)
+Simulator.find_plans("東京電力エナジーパートナー")[:amperes].push(70)
 
 
 simulator = Simulator.new(50, 300)
