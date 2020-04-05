@@ -13,13 +13,13 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  host: localhost
+  username: <%= ENV.fetch("MYSQL_USER") { "root" } %>
+  password: <%= ENV.fetch("MYSQL_PASSWORD") { "password" } %> 
+  host: db
 
 development:
   <<: *default
-  database: kumaki_development
+  database: <%= ENV.fetch("MYSQL_DATABASE") { "app_development" } %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -50,5 +50,3 @@ test:
 production:
   <<: *default
   database: kumaki_production
-  username: kumaki
-  password: <%= ENV['KUMAKI_DATABASE_PASSWORD'] %>
