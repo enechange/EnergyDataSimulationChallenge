@@ -1,0 +1,22 @@
+= line_chart @data_for_chart
+table.table.table-striped
+  thead
+    tr
+      th scope="col"
+        | ID
+      th scope="col"
+        | Label
+      th scope="col"
+        | House
+      th scope="col"
+        | Year
+      th scope="col"
+        | Month
+      th scope="col"
+        | Temperature
+      th scope="col"
+        | Daylight
+      th scope="col"
+        | EnergyProduction
+  tbody
+    = render partial: 'datasets/dataset', collection: @datasets, as: :dataset
