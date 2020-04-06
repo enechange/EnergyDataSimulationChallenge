@@ -20,8 +20,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_062517) do
 
   create_table "datasets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "label", null: false
-    t.integer "year", null: false
-    t.integer "month", null: false
+    t.date "year_month", null: false
     t.decimal "temperature", precision: 3, scale: 1, null: false
     t.decimal "daylight", precision: 5, scale: 1, null: false
     t.integer "energy_production", null: false

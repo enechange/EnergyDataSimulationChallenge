@@ -1,10 +1,10 @@
 require "csv"
+provisional_day = "01"
 
 CSV.foreach('db/seeds/csv/datasets.csv', headers: true) do |row|
   dataset = Dataset.create!(
     label: row['Label'],
-    year: row['Year'],
-    month: row['Month'],
+    year_month: "#{row['Year']}-#{row['Month']}-#{provisional_day}",
     temperature: row['Temperature'],
     daylight: row['Daylight'],
     energy_production: row['EnergyProduction'],
