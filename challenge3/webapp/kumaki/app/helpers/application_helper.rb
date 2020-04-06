@@ -2,7 +2,7 @@ module ApplicationHelper
   def data_of_temperature(datasets)
     data = []
     datasets.each do |dataset|
-      data << [dataset.date, dataset.temperature]
+      data << [dataset.year_month, dataset.temperature]
     end
     data
   end
@@ -10,7 +10,7 @@ module ApplicationHelper
   def data_of_daylight(datasets)
     data = []
     datasets.each do |dataset|
-      data << [dataset.date, dataset.daylight]
+      data << [dataset.year_month, dataset.daylight]
     end
     data
   end
@@ -18,7 +18,7 @@ module ApplicationHelper
   def data_of_energey_production(datasets)
     data = []
     datasets.each do |dataset|
-      data << [dataset.date, dataset.energy_production]
+      data << [dataset.year_month, dataset.energy_production]
     end
     data
   end
