@@ -9,5 +9,5 @@
 #
 
 class City < ApplicationRecord
-  has_many :houses
+  has_many :houses, dependent: :destroy
 end

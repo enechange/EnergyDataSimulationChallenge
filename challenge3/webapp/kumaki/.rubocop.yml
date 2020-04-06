@@ -6,13 +6,10 @@ require: rubocop-rails
 
 AllCops:
   TargetRubyVersion: 2.6
-  Include:
-    - rubocop-rspec
   Exclude:
     - 'vendor/**/*'
     - 'db/**/*'
     - 'bin/**/*'
-    - 'spec/**/*'
     - 'node_modules/**/*'
   DisplayCopNames: true
 Rails:
