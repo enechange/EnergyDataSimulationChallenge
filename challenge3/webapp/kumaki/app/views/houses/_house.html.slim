@@ -10,4 +10,4 @@ tr
   td
     = house.num_of_people
   td
-    = house.has_child
+    = render 'houses/has_child', has_child: house.has_child
