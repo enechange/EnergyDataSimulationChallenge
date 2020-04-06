@@ -13,7 +13,7 @@ require 'rails_helper'
 RSpec.describe City, type: :model do
   let(:city) { build(:city) }
 
-  it "有効なファクトリを持つこと" do
+  it '有効なファクトリを持つこと' do
     expect(city).to be_valid
   end
 end
