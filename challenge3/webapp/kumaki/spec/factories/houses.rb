@@ -22,5 +22,10 @@
 
 FactoryBot.define do
   factory :house do
+    firstname { "Carolyn" }
+    has_child { TRUE }
+    lastname { "Flores" }
+    num_of_people { 2 }
+    association :city
   end
 end

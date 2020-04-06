@@ -23,4 +23,9 @@
 require 'rails_helper'
 
 RSpec.describe House, type: :model do
+  let(:house) { build(:house) }
+
+  it "有効なファクトリを持つこと" do
+    expect(house).to be_valid
+  end
 end
