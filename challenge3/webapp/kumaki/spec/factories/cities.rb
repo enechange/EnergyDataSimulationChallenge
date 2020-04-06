@@ -10,6 +10,6 @@
 
 FactoryBot.define do
   factory :city do
-    name 'London'
+    name { 'London' }
   end
 end
