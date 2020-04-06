@@ -26,4 +26,9 @@ class Dataset < ApplicationRecord
   belongs_to :house
 
   scope :search_with_house_id, ->(house_id) { where(house_id: house_id) }
+
+  def date
+    provisional_day = "01"
+    "#{year}-#{month}-#{provisional_day}".to_date
+  end
 end
