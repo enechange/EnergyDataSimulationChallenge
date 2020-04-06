@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_04_06_062517) do
 
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_062517) do
     t.integer "month", null: false
     t.decimal "temperature", precision: 3, scale: 1, null: false
     t.decimal "daylight", precision: 5, scale: 1, null: false
-    t.integer "energy_production"
+    t.integer "energy_production", null: false
     t.bigint "house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

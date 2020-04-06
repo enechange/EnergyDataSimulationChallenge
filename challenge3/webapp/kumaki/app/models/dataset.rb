@@ -22,8 +22,5 @@
 #  fk_rails_...  (house_id => houses.id)
 #
 
-FactoryBot.define do
-  factory :dataset do
-    
-  end
+class Dataset < ApplicationRecord
 end
