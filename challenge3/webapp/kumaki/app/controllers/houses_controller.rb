@@ -5,9 +5,5 @@ class HousesController < ApplicationController
 
   def show
     @datasets = Dataset.search_with_house_id(params[:id]).order(:id)
-    @data_for_chart = []
-    @datasets.each do |dataset|
-      @data_for_chart << [dataset.date, dataset.energy_production]
-    end
   end
 end
