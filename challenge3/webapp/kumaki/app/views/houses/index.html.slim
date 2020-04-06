@@ -15,3 +15,4 @@ table.table.table-striped
         | has_child
   tbody
     = render partial: 'houses/house', collection: @houses, as: :house
+= paginate @houses
