@@ -1,5 +1,3 @@
-= line_chart @data_for_chart
-
 table.table.table-striped
   thead
     tr
@@ -21,3 +19,5 @@ table.table.table-striped
         | EnergyProduction
   tbody
     = render partial: 'datasets/dataset', collection: @datasets, as: :dataset
+
+= paginate @datasets
