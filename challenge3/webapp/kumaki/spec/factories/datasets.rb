@@ -23,5 +23,11 @@
 
 FactoryBot.define do
   factory :dataset do
+    daylight { 178.9 }
+    energy_production { 740 }
+    label { 0 }
+    temperature { 26.2 }
+    year_month { 2011-07-01 }
+    association :house
   end
 end

@@ -24,4 +24,9 @@
 require 'rails_helper'
 
 RSpec.describe Dataset, type: :model do
+  let(:dataset) { build(:dataset) }
+
+  it "有効なファクトリを持つこと" do
+    expect(dataset).to be_valid
+  end
 end
