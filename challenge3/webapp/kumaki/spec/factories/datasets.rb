@@ -27,7 +27,7 @@ FactoryBot.define do
     energy_production { 740 }
     label { 0 }
     temperature { 26.2 }
-    year_month { 2011-07-01 }
+    year_month { '2011-07-01' }
     association :house
   end
 end
