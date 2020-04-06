@@ -24,4 +24,6 @@
 
 class Dataset < ApplicationRecord
   belongs_to :house
+
+  scope :search_with_house_id, ->(house_id) { where(house_id: house_id) }
 end

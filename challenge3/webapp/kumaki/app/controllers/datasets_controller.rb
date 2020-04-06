@@ -1,5 +1,5 @@
 class DatasetsController < ApplicationController
   def index
-    @datasets = Dataset.all.page(params[:page]).per(100).order(:id)
+    @datasets = Dataset.search_with_house_id(params[:house_id]).order(:id)
   end
 end
