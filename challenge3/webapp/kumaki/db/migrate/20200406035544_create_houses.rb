@@ -5,6 +5,7 @@ class CreateHouses < ActiveRecord::Migration[5.2]
       t.string :lastname, null: false
       t.integer :num_of_people, null: false
       t.boolean :has_child, null: false
+      t.references :city, foreign_key: true
 
       t.timestamps
     end
