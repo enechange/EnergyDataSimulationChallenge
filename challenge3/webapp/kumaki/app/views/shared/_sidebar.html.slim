@@ -1,0 +1,11 @@
+nav.flex-column.pt-3
+  ul.nav.nav-pills
+    li.nav-item
+      = link_to datasets_path, class: "nav-link #{'active' if controller.controller_name == 'datasets' && controller.action_name == 'index'}" do
+        | datasets
+    li.nav-item
+      = link_to houses_path, class: "nav-link #{'active' if controller.controller_name == 'houses' && controller.action_name == 'index'}" do
+        | houses
+    li.nav-item
+      = link_to cities_path, class: "nav-link #{'active' if controller.controller_name == 'cities' && controller.action_name == 'index'}" do
+        | cities

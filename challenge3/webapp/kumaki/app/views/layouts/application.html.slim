@@ -8,4 +8,9 @@ html
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   body
-    = yield
+    .container
+      .row
+        .col-2.position-fixed
+          = render 'shared/sidebar'
+        .col.offset-2
+          = yield
