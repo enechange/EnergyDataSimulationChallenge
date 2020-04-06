@@ -1,0 +1,17 @@
+table.table.table-striped
+  thead
+    tr
+      th scope="col"
+        | ID
+      th scope="col"
+        | Firstname
+      th scope="col"
+        | Lastname
+      th scope="col"
+        | City
+      th scope="col"
+        | num_of_people
+      th scope="col"
+        | has_child
+  tbody
+    = render partial: 'houses/house', collection: @houses, as: :house
