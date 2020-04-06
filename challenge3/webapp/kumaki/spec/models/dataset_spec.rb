@@ -4,7 +4,7 @@
 #
 #  id                :bigint           not null, primary key
 #  daylight          :decimal(5, 1)    not null
-#  energy_production :integer
+#  energy_production :integer          not null
 #  label             :integer          not null
 #  month             :integer          not null
 #  temperature       :decimal(3, 1)    not null
