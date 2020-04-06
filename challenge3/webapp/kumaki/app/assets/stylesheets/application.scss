@@ -14,4 +14,8 @@
  *= require_self
  */
 
- @import "bootstrap";
+@import "bootstrap";
+
+.pagination {
+  justify-content: center;
+}
