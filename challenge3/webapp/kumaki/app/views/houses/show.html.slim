@@ -1,9 +1,9 @@
 h5 Temperature
-= line_chart data_of_temperature(@datasets)
+= line_chart data_of_temperature(@datasets), colors: ["#B00", "#666"]
 h5 Daylight
-= line_chart data_of_daylight(@datasets)
+= line_chart data_of_daylight(@datasets), colors: ["#E90", "#666"]
 h5 EnergyProduction
-= line_chart data_of_energey_production(@datasets)
+= line_chart data_of_energey_production(@datasets), colors: ["#00B", "#666"]
 table.table.table-striped
   thead
     tr
