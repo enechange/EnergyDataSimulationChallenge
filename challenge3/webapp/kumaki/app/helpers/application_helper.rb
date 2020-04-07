@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def data_of_temperature(datasets)
+  def data_of_temperature_with_time(datasets)
     data = []
     datasets.each do |dataset|
       data << [dataset.year_month, dataset.temperature]
@@ -7,7 +7,7 @@ module ApplicationHelper
     data
   end
 
-  def data_of_daylight(datasets)
+  def data_of_daylight_with_time(datasets)
     data = []
     datasets.each do |dataset|
       data << [dataset.year_month, dataset.daylight]
@@ -15,7 +15,7 @@ module ApplicationHelper
     data
   end
 
-  def data_of_energey_production(datasets)
+  def data_of_energey_production_with_time(datasets)
     data = []
     datasets.each do |dataset|
       data << [dataset.year_month, dataset.energy_production]
@@ -39,7 +39,7 @@ module ApplicationHelper
     data
   end
 
-  def convert_yes_or_no(true_or_false)
+  def convert_into_yes_or_no(true_or_false)
     if true_or_false
       'YES'
     else
