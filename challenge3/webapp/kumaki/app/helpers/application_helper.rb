@@ -15,7 +15,7 @@ module ApplicationHelper
     data
   end
 
-  def data_of_energey_production_with_time(datasets)
+  def data_of_energy_production_with_time(datasets)
     data = []
     datasets.each do |dataset|
       data << [dataset.year_month, dataset.energy_production]
