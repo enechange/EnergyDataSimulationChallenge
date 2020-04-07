@@ -1,0 +1,16 @@
+h4.dataset-heading has_child
+= pie_chart has_child
+table.table.table-striped.mt-3
+  thead
+    tr
+      th scope="col"
+        | has_child
+      th scope="col"
+        | Count
+  tbody
+    - has_child.each do |key, value|
+      tr
+        th scope="row"
+          = key
+        th
+          = value

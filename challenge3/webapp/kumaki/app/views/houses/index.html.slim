@@ -4,4 +4,5 @@
   .col-4
     = render 'houses/num_of_people', num_of_people: @num_of_people
   .col-4
+    = render 'houses/has_child', has_child: data_of_has_child_with_count(@has_child)
 = render 'houses/houses_table', houses: @houses_for_pagination

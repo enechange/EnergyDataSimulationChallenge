@@ -6,6 +6,9 @@ class HousesController < ApplicationController
     @num_of_people = House.group(:num_of_people)
                           .select('MAX(num_of_people) AS num_of_people, COUNT(*) AS count_all')
                           .order(:num_of_people).map{ |house| [house.num_of_people, house.count_all] }.to_h
+    @has_child = House.group(:has_child)
+                      .select('houses.has_child, COUNT(*) AS count_all')
+                      .order(count_all: :desc)
     @houses_for_pagination = House.includes(:city).page(params[:page]).per(10).order(:id)
   end
 
