@@ -8,9 +8,7 @@
   .col-6
     = render 'datasets/average', average_dataset: @average_dataset
   .col-6
-    h4.dataset-heading Temperature-Daylight
-    = scatter_chart data_of_daylight_with_temperature(@datasets), xtitle: "Temperature", ytitle: "Daylight", xmin: 0, colors: ["#BB0", "#666"]
+    = render 'datasets/scatter_chart_of_daylight_with_temperature', datasets: @datasets
   .col-6
-    h4.dataset-heading Daylight-EnergyProduciton
-    = scatter_chart data_of_energy_production_with_daylight(@datasets), xtitle: "Daylight", ytitle: "EnergyProduction", xmin: 0, colors: ["#0BB", "#666"]
+    = render 'datasets/scatter_chart_of_energy_production_with_daylight', datasets: @datasets
 = render 'datasets/datasets_table', datasets: @datasets_for_pagination
