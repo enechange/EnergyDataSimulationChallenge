@@ -24,6 +24,7 @@ class House < ApplicationRecord
   belongs_to :city
   has_many :datasets, dependent: :destroy
 
+  scope :search_with_city_id, ->(city_id) { where(city_id: city_id) }
   scope :count_city, -> {
     joins(:city).group(:city_id)
     .select('MAX(city_id) AS city_id, cities.name AS city_name, COUNT(*) AS count_all')

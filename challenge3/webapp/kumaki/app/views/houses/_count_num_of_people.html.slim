@@ -27,4 +27,4 @@ table.table.table-striped.mt-5
       th scope="row"
         | Average
       th
-        = sum.to_f / count
+        = (sum.to_f / count).round(1)
