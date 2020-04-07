@@ -1,7 +1,7 @@
 class CitiesController < ApplicationController
   def index
     @cities = City.all
-    @count_city = House.count_city.map { |house| [house.city_name, house.count_all] }.to_h
+    @count_city = House.count_city
   end
 
   def show

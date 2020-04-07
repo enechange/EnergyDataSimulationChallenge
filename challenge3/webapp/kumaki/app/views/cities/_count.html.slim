@@ -1,5 +1,5 @@
 h4.dataset-heading City
-= pie_chart count_city
+= pie_chart data_for_chart
 table.table.table-striped.mt-5
   thead
     tr
@@ -8,7 +8,7 @@ table.table.table-striped.mt-5
       th scope="col"
         | Count
   tbody
-    - count_city.each do |key, value|
+    - data_for_chart.each do |key, value|
       tr
         th scope="row"
           = key

@@ -1,6 +1,6 @@
 .row
   .col-4
-    = render 'cities/count', count_city: @count_city
+    = render 'cities/count', data_for_chart: data_of_num_of_people_with_count(@houses_group_by_city)
   .col-4
     = render 'houses/count_num_of_people', data_for_chart: data_of_num_of_people_with_count(@houses_num_of_people)
   .col-4

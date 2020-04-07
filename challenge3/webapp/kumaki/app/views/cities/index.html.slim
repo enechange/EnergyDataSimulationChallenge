@@ -1,4 +1,4 @@
 .row
   .col-6.offset-3
-    = render 'cities/count', count_city: @count_city
+    = render 'cities/count', data_for_chart: data_of_num_of_people_with_count(@houses_group_by_city)
 = render 'cities/cities_table', cities: @cities

@@ -1,6 +1,6 @@
 class HousesController < ApplicationController
   def index
-    @count_city = House.count_city.map { |house| [house.city_name, house.count_all] }.to_h
+    @houses_group_by_city = House.count_city
     @houses_num_of_people = House.count_num_of_people
     @houses_has_child = House.count_has_child
     @houses_for_pagination = House.includes(:city).page(params[:page]).per(10).order(:id)
