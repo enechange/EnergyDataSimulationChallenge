@@ -1,5 +1,5 @@
-nav.flex-column.pt-3
-  ul.nav.nav-pills
+nav.pt-3
+  ul.nav.nav-pills.flex-column
     li.nav-item
       = link_to datasets_path, class: "nav-link #{'active' if controller.controller_name == 'datasets' && controller.action_name == 'index'}" do
         | datasets
