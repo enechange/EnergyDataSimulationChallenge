@@ -7,4 +7,11 @@ RSpec.describe 'Cities', type: :request do
     expect(response).to have_http_status(200)
     expect(response.body).to include('London')
   end
+
+  it 'City詳細画面の表示に成功すること' do
+    city = create(:city, name: 'London')
+    get "/cities/#{city.id}"
+    expect(response).to have_http_status(200)
+    expect(response.body).to include('London')
+  end
 end
