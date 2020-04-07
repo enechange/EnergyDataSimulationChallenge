@@ -39,11 +39,7 @@ module ApplicationHelper
     data
   end
 
-  def convert_into_yes_or_no(true_or_false)
-    if true_or_false
-      'YES'
-    else
-      'NO'
-    end
+  def convert_into_yes_or_no(boolean)
+    boolean ? 'Yes' : 'No'
   end
 end
