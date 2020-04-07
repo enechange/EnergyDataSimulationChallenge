@@ -1,7 +1,10 @@
-h4.dataset-heading Temperature-Daylight
-= scatter_chart data_of_daylight_with_temperature(@datasets), xtitle: "Temperature", ytitle: "Daylight"
-h4.dataset-heading Temperature-Daylight
-= scatter_chart data_of_energy_production_with_daylight(@datasets), xtitle: "Daylight", ytitle: "EnergyProduction"
+.row
+  .col-6
+    h4.dataset-heading Temperature-Daylight
+    = scatter_chart data_of_daylight_with_temperature(@datasets), xtitle: "Temperature", ytitle: "Daylight"
+  .col-6
+    h4.dataset-heading Daylight-EnergyProduciton
+    = scatter_chart data_of_energy_production_with_daylight(@datasets), xtitle: "Daylight", ytitle: "EnergyProduction"
 h4.dataset-heading Temperature
 = line_chart data_of_temperature(@datasets), colors: ["#B00", "#666"]
 h4.dataset-heading Daylight
