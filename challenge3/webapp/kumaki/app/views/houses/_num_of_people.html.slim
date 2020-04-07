@@ -1,0 +1,31 @@
+h4.dataset-heading num_of_people
+= column_chart num_of_people
+h4.dataset-heading Count
+table.table.table-striped
+  thead
+    tr
+      th scope="col"
+        | City
+      th scope="col"
+        | Count
+  tbody
+    - sum = 0
+    - count = 0
+    - num_of_people.each do |key, value|
+      tr
+        th scope="row"
+          = key
+        th
+          = value
+      - sum += key * value
+      - count += value
+    tr
+      th scope="row"
+        | Total
+      th
+        = sum
+    tr
+      th scope="row"
+        | Average
+      th
+        = sum.to_f / count
