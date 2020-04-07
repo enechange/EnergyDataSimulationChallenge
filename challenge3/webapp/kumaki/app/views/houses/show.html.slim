@@ -1,16 +1,21 @@
 .row
   .col-6
+    h4.dataset-heading Temperature
+    = line_chart data_of_temperature_with_time(@datasets), colors: ["#B00", "#666"], height: "200px"
+  .col-6
+    h4.dataset-heading Daylight
+    = line_chart data_of_daylight_with_time(@datasets), colors: ["#0B0", "#666"], height: "200px"
+  .col-6
+    h4.dataset-heading EnergyProduction
+    = line_chart data_of_energey_production_with_time(@datasets), colors: ["#00B", "#666"], height: "200px"
+  .col-6
+  .col-6
     h4.dataset-heading Temperature-Daylight
     = scatter_chart data_of_daylight_with_temperature(@datasets), xtitle: "Temperature", ytitle: "Daylight", xmin: 0, colors: ["#BB0", "#666"]
   .col-6
     h4.dataset-heading Daylight-EnergyProduciton
     = scatter_chart data_of_energy_production_with_daylight(@datasets), xtitle: "Daylight", ytitle: "EnergyProduction", xmin: 0, colors: ["#0BB", "#666"]
-h4.dataset-heading Temperature
-= line_chart data_of_temperature_with_time(@datasets), colors: ["#B00", "#666"]
-h4.dataset-heading Daylight
-= line_chart data_of_daylight_with_time(@datasets), colors: ["#0B0", "#666"]
-h4.dataset-heading EnergyProduction
-= line_chart data_of_energey_production_with_time(@datasets), colors: ["#00B", "#666"]
+
 h4.dataset-heading datasets
 table.table.table-striped
   thead
