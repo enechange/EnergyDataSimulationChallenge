@@ -1,5 +1,5 @@
 h4.dataset-heading num_of_people
-= column_chart num_of_people
+= column_chart count_num_of_people
 table.table.table-striped.mt-5
   thead
     tr
@@ -10,7 +10,7 @@ table.table.table-striped.mt-5
   tbody
     - sum = 0
     - count = 0
-    - num_of_people.each do |key, value|
+    - count_num_of_people.each do |key, value|
       tr
         th scope="row"
           = key

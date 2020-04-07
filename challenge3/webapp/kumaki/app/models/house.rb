@@ -29,4 +29,15 @@ class House < ApplicationRecord
     .select('MAX(city_id) AS city_id, cities.name AS city_name, COUNT(*) AS count_all')
     .order(count_all: :desc)
   }
+  scope :count_num_of_people, -> {
+    group(:num_of_people)
+    .select('MAX(num_of_people) AS num_of_people, COUNT(*) AS count_all')
+    .order(:num_of_people)
+  }
+  scope :count_has_child, -> {
+    group(:has_child)
+    .select('houses.has_child, COUNT(*) AS count_all')
+    .order(count_all: :desc)
+  }
+
 end

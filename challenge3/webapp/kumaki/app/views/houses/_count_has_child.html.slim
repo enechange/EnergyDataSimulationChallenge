@@ -1,5 +1,5 @@
 h4.dataset-heading has_child
-= pie_chart has_child
+= pie_chart count_has_child
 table.table.table-striped.mt-5
   thead
     tr
@@ -8,7 +8,7 @@ table.table.table-striped.mt-5
       th scope="col"
         | Count
   tbody
-    - has_child.each do |key, value|
+    - count_has_child.each do |key, value|
       tr
         th scope="row"
           = key

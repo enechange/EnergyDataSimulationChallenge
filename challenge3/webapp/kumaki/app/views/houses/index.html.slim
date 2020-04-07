@@ -2,7 +2,7 @@
   .col-4
     = render 'cities/count', count_city: @count_city
   .col-4
-    = render 'houses/num_of_people', num_of_people: @num_of_people
+    = render 'houses/count_num_of_people', count_num_of_people: @count_num_of_people
   .col-4
-    = render 'houses/has_child', has_child: data_of_has_child_with_count(@has_child)
+    = render 'houses/count_has_child', count_has_child: data_of_has_child_with_count(@count_has_child)
 = render 'houses/houses_table', houses: @houses_for_pagination
