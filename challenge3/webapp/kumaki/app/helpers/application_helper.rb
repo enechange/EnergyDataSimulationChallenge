@@ -26,4 +26,8 @@ module ApplicationHelper
   def data_of_has_child_with_count(houses)
     houses.map { |house| [convert_into_yes_or_no(house.has_child), house.count_all] }.to_h
   end
+
+  def data_of_num_of_people_with_count(houses)
+    houses.map { |house| [house.num_of_people, house.count_all] }.to_h
+  end
 end
