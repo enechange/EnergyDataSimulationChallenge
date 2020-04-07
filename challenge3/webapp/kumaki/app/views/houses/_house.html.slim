@@ -7,7 +7,8 @@ tr
   td
     = house.lastname
   td
-    = house.city.name
+    = link_to house.city do
+      = house.city.name
   td
     = house.num_of_people
   td
