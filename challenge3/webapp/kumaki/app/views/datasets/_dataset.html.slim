@@ -4,7 +4,8 @@ tr
   td
     = dataset.label
   td
-    = dataset.house_id
+    = link_to dataset.house do
+      = dataset.house_id
   td
     = dataset.year_month.year
   td
