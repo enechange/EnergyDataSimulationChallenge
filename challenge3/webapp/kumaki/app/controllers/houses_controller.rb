@@ -1,6 +1,6 @@
 class HousesController < ApplicationController
   def index
-    @houses = House.joins(:city).group(:city_id)
+    @count_city = House.joins(:city).group(:city_id)
                     .select('MAX(city_id) AS city_id, cities.name AS city_name, COUNT(*) AS count_all')
                     .order(count_all: :desc).map{ |house| [house.city_name, house.count_all] }.to_h
     @houses_for_pagination = House.includes(:city).page(params[:page]).per(10).order(:id)
