@@ -5,7 +5,7 @@ class HousesController < ApplicationController
 
   def show
     @datasets = Dataset.includes(:house).search_with_house_id(params[:id]).order(:id)
-    @average_dataset = Dataset.search_with_house_id(params[:id]).group(:house_id).select_average
+    @average_dataset = Dataset.search_with_house_id(params[:id]).group(:house_id).select_average_dataset
     @houses = House.where(id: params[:id])
   end
 end

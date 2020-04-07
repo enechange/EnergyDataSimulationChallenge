@@ -1,7 +1,7 @@
 class DatasetsController < ApplicationController
   def index
-    @datasets_group_by_time = Dataset.select('datasets.year_month, AVG(datasets.temperature) AS temperature, AVG(datasets.daylight) AS daylight, AVG(datasets.energy_production) AS energy_production').group(:year_month).order(:year_month)
-    @average_dataset = Dataset.select_average
+    @datasets_group_by_time = Dataset.select_average_datasets_group_by(:year_month)
+    @average_dataset = Dataset.select_average_dataset
     @datasets = Dataset.order(:id)
     @datasets_for_pagination = @datasets.includes(:house).page(params[:page]).per(50)
   end
