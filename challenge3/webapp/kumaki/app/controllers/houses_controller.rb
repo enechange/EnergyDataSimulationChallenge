@@ -5,5 +5,6 @@ class HousesController < ApplicationController
 
   def show
     @datasets = Dataset.includes(:house).search_with_house_id(params[:id]).order(:id)
+    @houses = House.where(id: params[:id])
   end
 end
