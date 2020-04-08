@@ -1,14 +1,12 @@
-h4.dataset-heading City
-= pie_chart data_of_city_with_count(houses)
 table.table.table-striped.mt-5
   thead
     tr
       th scope="col"
-        | City
+        | has_child
       th scope="col"
         | Count
   tbody
-    - data_of_city_with_count(houses).each do |key, value|
+    - data_for_table.each do |key, value|
       tr
         th scope="row"
           = key

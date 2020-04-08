@@ -1,9 +1,9 @@
 = render 'cities/cities_table', cities: @cities
 .row
   .col-6
-    = render 'houses/count_num_of_people', data_for_chart: data_of_num_of_people_with_count(@houses_num_of_people)
+    = render 'houses/count_num_of_people', houses: @houses_num_of_people
   .col-6
-    = render 'houses/count_has_child', data_for_chart: data_of_has_child_with_count(@houses_has_child)
+    = render 'houses/count_has_child', houses: @houses_has_child
   .col-6
     = render 'datasets/line_chart_of_temperature_with_time', datasets: @datasets_group_by_time
   .col-6

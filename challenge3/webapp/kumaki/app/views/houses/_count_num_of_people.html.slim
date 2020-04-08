@@ -1,30 +1,3 @@
 h4.dataset-heading num_of_people
-= column_chart data_for_chart
-table.table.table-striped.mt-5
-  thead
-    tr
-      th scope="col"
-        | num_of_people
-      th scope="col"
-        | Count
-  tbody
-    - sum = 0
-    - count = 0
-    - data_for_chart.each do |key, value|
-      tr
-        th scope="row"
-          = key
-        th
-          = value
-      - sum += key * value
-      - count += value
-    tr
-      th scope="row"
-        | Total
-      th
-        = sum
-    tr
-      th scope="row"
-        | Average
-      th
-        = (sum.to_f / count).round(1)
+= render 'houses/column_chart_of_num_of_people_with_count', data_for_chart: data_of_num_of_people_with_count(houses)
+= render 'houses/table_of_num_of_people_with_count', data_for_table: data_of_num_of_people_with_count(houses)

@@ -1,7 +1,7 @@
 class CitiesController < ApplicationController
   def index
     @cities = City.all
-    @count_city = House.count_city
+    @houses_group_by_city = House.count_city
   end
 
   def show
