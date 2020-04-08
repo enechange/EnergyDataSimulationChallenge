@@ -3,7 +3,7 @@ class HousesController < ApplicationController
     @houses_group_by_city = House.count_city
     @houses_num_of_people = House.count_num_of_people
     @houses_has_child = House.count_has_child
-    @houses_for_pagination = House.includes(:city).page(params[:page]).per(10).order(:id)
+    @houses = House.includes(:city)
   end
 
   def show
