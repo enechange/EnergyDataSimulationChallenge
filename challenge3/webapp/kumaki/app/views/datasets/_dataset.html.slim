@@ -1,0 +1,18 @@
+tr
+  th scope="row"
+    = dataset.id
+  td
+    = dataset.label
+  td
+    = link_to dataset.house do
+      = dataset.house_id
+  td
+    = dataset.year_month.year
+  td
+    = dataset.year_month.month
+  td
+    = dataset.temperature
+  td
+    = dataset.daylight
+  td
+    = dataset.energy_production

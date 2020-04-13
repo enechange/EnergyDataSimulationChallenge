@@ -1,0 +1,18 @@
+h4.dataset-heading Average
+table.table.table-striped
+  thead
+    tr
+      th scope="col"
+        | Temperature
+      th scope="col"
+        | Daylight
+      th scope="col"
+        | EnergyProduciton
+  tbody
+    tr
+      th scope="row"
+        = average_dataset.temperature
+      th
+        = average_dataset.daylight
+      th
+        = average_dataset.energy_production

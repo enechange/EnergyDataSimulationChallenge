@@ -1,0 +1,4 @@
+.row
+  .col-6.offset-3
+    = render 'cities/count', houses: @houses_group_by_city
+= render 'cities/cities_table', cities: pagination_feature(@cities)

@@ -1,0 +1,15 @@
+tr
+  th scope="row"
+    = link_to house do
+      = house.id
+  td
+    = house.firstname
+  td
+    = house.lastname
+  td
+    = link_to house.city do
+      = house.city.name
+  td
+    = house.num_of_people
+  td
+    = convert_into_yes_or_no house.has_child

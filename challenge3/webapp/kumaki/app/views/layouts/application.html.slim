@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title
+      | Challenge 3 - Web Application
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  body
+    .container
+      .row
+        .col-1.position-fixed
+          = render 'shared/sidebar'
+        .col.offset-2
+          = yield

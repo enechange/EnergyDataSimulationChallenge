@@ -1,0 +1,14 @@
+table.table.table-striped.mt-5
+  thead
+    tr
+      th scope="col"
+        | has_child
+      th scope="col"
+        | Count
+  tbody
+    - data_for_table.each do |key, value|
+      tr
+        th scope="row"
+          = key
+        th
+          = value

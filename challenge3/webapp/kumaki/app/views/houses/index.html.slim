@@ -1,0 +1,8 @@
+.row
+  .col-4
+    = render 'cities/count', houses: @houses_group_by_city
+  .col-4
+    = render 'houses/count_num_of_people', houses: @houses_num_of_people
+  .col-4
+    = render 'houses/count_has_child', houses: @houses_has_child
+= render 'houses/houses_table', houses: pagination_feature(@houses)

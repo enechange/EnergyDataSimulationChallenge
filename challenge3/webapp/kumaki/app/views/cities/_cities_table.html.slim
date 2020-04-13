@@ -1,0 +1,10 @@
+h4.dataset-heading City
+table.table.table-striped
+  thead
+    tr
+      th scope="col"
+        | ID
+      th scope="col"
+        | city
+  tbody
+    = render partial: 'cities/city', collection: cities, as: :city

@@ -1,0 +1,15 @@
+= render 'houses/houses_table', houses: @houses
+.row
+  .col-6
+    = render 'datasets/line_chart_of_temperature_with_time', datasets: @datasets
+  .col-6
+    = render 'datasets/line_chart_of_daylight_with_time', datasets: @datasets
+  .col-6
+    = render 'datasets/line_chart_of_energy_production_with_time', datasets: @datasets
+  .col-6
+    = render 'datasets/average', average_dataset: @average_dataset
+  .col-6
+    = render 'datasets/scatter_chart_of_daylight_with_temperature', datasets: @datasets
+  .col-6
+    = render 'datasets/scatter_chart_of_energy_production_with_daylight', datasets: @datasets
+= render 'datasets/datasets_table', datasets: pagination_feature(@datasets)
