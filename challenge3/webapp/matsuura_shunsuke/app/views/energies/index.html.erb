@@ -1,2 +1,49 @@
-<h1>Energies#index</h1>
-<p>Find me in app/views/energies/index.html.erb</p>
+<body>
+  <%= form_with(url: energies_path, method: :get, local: true) do |form| %>
+  <div class="form-group">
+
+    <div class="">
+      <%= form.label :target_select, '対象データ' %>
+      <%= form.select :target_select,
+        ['Energy Production','Daylight','Temperature','Energry Production / Daylight'],
+        {include_blank: false,
+        selected: (params[:target_select] if params[:target_select])}
+      %>
+    </div>
+
+    <div class="">
+      <%= form.label :cal_select, '集計方法' %>
+      <%= form.select :cal_select,
+           ['Total','Per House'],
+           {include_blank: false,
+           selected: (params[:cal_select] if params[:cal_select] )}
+      %>
+    </div>
+
+    <div class="">
+      都市選択
+      <% ["London","Cambridge","Oxford"].each do |city| %>
+        <%= form.check_box :city_checkbox,
+        {multiple: true, checked: params[:city_checkbox].present? ? (params[:city_checkbox].include? city) : false}, city, nil %>
+        <%= city %>
+      <% end %>
+    </div>
+    <div class="">
+      世帯区分選択
+      <% ["All","With child","Without child"].each do |status| %>
+      <%= form.check_box :status_checkbox,
+      {multiple: true, checked: params[:status_checkbox].present? ? (params[:status_checkbox].include? status) : false}, status, nil %>
+      <%= status %>
+      <% end %>
+    </div>
+
+    <%= form.submit :"Submit" %>
+
+   </div>
+   <% end %>
+  <h2>
+    <%= params[:target_select].present? ? params[:target_select] : 'Energy Production' %>
+    <%= params[:cal_select].present? ? "(#{params[:cal_select]})" : '(Total)' %>
+  </h2>
+  <%= line_chart @graph_data %>
+</body>
