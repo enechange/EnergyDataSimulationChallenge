@@ -1,0 +1,31 @@
+<h1>Houses#index</h1>
+
+<h3>energy production per city</h3>
+<%= column_chart @data %>
+
+<table border='1'>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>City</th>
+      <th>num of people</th>
+      <th>has child</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+        <td><%= house.id %></td>
+        <td><%= house.first_name %></td>
+        <td><%= house.last_name %></td>
+        <td><%= house.city %></td>
+        <td><%= house.num_of_people %></td>
+        <td><%= house.has_child %></td>
+        <td><%= link_to 'Detail', house_path(house.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

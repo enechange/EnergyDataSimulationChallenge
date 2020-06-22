@@ -1,0 +1,7 @@
+<h1><%= "#{@house.first_name} #{@house.last_name}(#{@house.city})" %></h1>
+<%= link_to 'TOP', houses_path %>
+<%= line_chart [
+  {name: 'energy production', data: @energies.sum(:energy_production)},
+  {name: 'daylight', data: @energies.sum(:daylight)},
+  {name: 'temperature', data: @energies.sum(:temperature)}
+] %>
