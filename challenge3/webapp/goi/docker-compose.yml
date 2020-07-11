@@ -21,7 +21,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./docker/db/data:/var/lib/mysql
-      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     ports: 
       - '5432:5432'
   front:

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'homes#index'
 
   namespace :api, format: 'json' do
     namespace :v1 do
@@ -7,6 +7,6 @@ Rails.application.routes.draw do
       resources :energy, only: %i[index]
     end
 
-    get '*path', to: 'home#index'
+    get '*path', to: 'homes#index'
   end
 end
