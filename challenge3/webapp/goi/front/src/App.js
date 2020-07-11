@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+//必須
+import React, { Component } from 'react';
+import Home from './Home/App';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//Appクラス = Appコンポーネント(カスタムタグ)
+class App extends Component {
+  render() {
+    return (
+      //returnの中にJSXを記載
+      <div className="driver">
+        <Home />
+      </div>
+    );
+  }
 }
 
+//他の場所で読み込んで使えるようにexport
 export default App;
