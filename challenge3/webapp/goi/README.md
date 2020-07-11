@@ -29,7 +29,10 @@
 
 ## MEMO
 ### Total Time
-- Docker 5〜7h
-- API : 3h〜
+- Docker 6.5〜9h
+- API : 4h〜
   - Script : 2h
+  - Response : 2h
 - Front : 0h
+
+- Total : XXh
