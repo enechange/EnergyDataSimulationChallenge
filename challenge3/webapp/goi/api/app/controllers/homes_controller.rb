@@ -1,28 +1,27 @@
 class HomesController < ApplicationController
   def index
     energies = House.city_energy_production
-    year = []
-    month = []
-    name = []
     energy_production = []
-    energies.each{|k,v|
-      year << k[0]
-      month << k[1]
-      name << k[2]
-      energy_production << v
+    date = []
+    cambridge = []
+    london = []
+    oxford = []
+
+    energies.each.with_index {|(k, v), i|
+      d_num = (i+3) % 3 ##k[2]で取っても良かったかも
+      if d_num == 0 #Cambridge
+        cambridge << v
+        date << "#{k[0]}-#{k[1]}"
+      elsif d_num == 1 #London
+        london << v
+      elsif d_num == 2 #Oxford
+        oxford << v
+      end
+    }
+    date.each_with_index{|m, n|
+      energy_production << {date: m, cambridge: cambridge[n], london: london[n], oxford: oxford[n]}      
     }
 
-    energy_production_max = energy_production.max.ceil
-    energy_production_min = energy_production.min.floor # 多分いらない
-    energies = {
-                  year: year,
-                  month: month,
-                  name: name,
-                  energy_production: energy_production,
-                  energy_production_max: energy_production_max,
-                  energy_production_min: energy_production_min
-                }
-
-    render json: { status: 'SUCCESS', message: 'Loaded chart', data: energies } 
+    render json: { status: 'SUCCESS', message: 'Loaded chart', data: energy_production } 
   end
 end
