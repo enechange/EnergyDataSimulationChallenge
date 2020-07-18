@@ -11,6 +11,7 @@
     - Original Rake Command(CSV import script)
 - Front
   - React
+    - Rechart
   - (Redux?)
 - DB
    - MySQL
@@ -30,10 +31,10 @@
 ## MEMO
 ### Total Time
 - Docker 8〜12h
-- API : 4h〜
+- API : 5h
   - Script : 2h
-  - Response : 2h
-- Front : 5h〜
-  - rechart : 4h
+  - Response : 3h
+- Front : 6h
+  - rechart : 6h
 
-- Total : XXh
+- Total : 33h
