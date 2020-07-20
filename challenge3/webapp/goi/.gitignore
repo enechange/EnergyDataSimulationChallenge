@@ -6,4 +6,8 @@
 
 .DS_Store
 /docker/*
-/db/*
+/tmp/*
+#/db/*
+
+/public
+/vendor/bundle

@@ -1,0 +1,2 @@
+frontend: exec /usr/bin/env PORT=8000 sh -c 'cd front && yarn start'
+backend: exec /usr/bin/env PORT=3000 sh -c 'bundle exec rails s'
