@@ -11,3 +11,5 @@
 
 /public
 /vendor/bundle
+
+/node_modules
