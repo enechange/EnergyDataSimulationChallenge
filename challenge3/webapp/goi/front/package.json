@@ -1,0 +1,45 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "10.21.0",
+    "npm": "6.14.5"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "moment": "^2.27.0",
+    "react": "16.0.0",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "recharts": "^1.8.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build_heroku": "cd front && npm install && npm run build && cd ..",
+    "deploy": "cp -a front/build/. public/",
+    "heroku-postbuild": "cp package.json front/package.json && cp yarn.lock front/yarn.lock && cd front && yarn build && cd .. && yarn deploy && echo 'Client built!'"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
