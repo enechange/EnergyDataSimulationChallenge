@@ -1,0 +1,19 @@
+<h1>Csv import</h1>
+<p>
+<div id = "button">
+  <%= button_to 'csv data 画面へ', {:action => "index"}, {:method => :get} %>
+</div>
+</p>
+
+<p>
+<%= link_to "house_data.csv download", "https://csvsamples.s3.us-east-2.amazonaws.com/house_data.csv" %>
+</p>
+
+<p>
+<%= link_to "dataset_50.csv download", "https://csvsamples.s3.us-east-2.amazonaws.com/dataset_50.csv" %>
+</p>
+
+<%= form_with url: csv_import_path do |form| %>
+  <%= form.file_field :file %>
+  <%= form.submit "インポート" %>
+<% end %>
