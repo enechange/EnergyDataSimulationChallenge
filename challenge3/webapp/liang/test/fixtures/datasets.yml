@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Label: 1
+  House: 1
+  Year: 1
+  Month: 1
+  Temperature: 1
+  Daylight: 1
+  EnergyProduction: 1
+
+two:
+  Label: 1
+  House: 1
+  Year: 1
+  Month: 1
+  Temperature: 1
+  Daylight: 1
+  EnergyProduction: 1

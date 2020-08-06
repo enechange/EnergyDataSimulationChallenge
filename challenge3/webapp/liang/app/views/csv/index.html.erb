@@ -1,0 +1,219 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+
+  // google chartで図表作成
+  // percentage of energy in cities
+
+  google.load("visualization", "1", {packages:["corechart"]});
+
+  google.setOnLoadCallback(drawChartSamplePie);
+  function drawChartSamplePie() {
+    var data = new google.visualization.DataTable();
+    var data = google.visualization.arrayToDataTable([
+      ['situation', 'number'],
+      ['London\n(<%= @london_housese %>軒)', <%= @London %>],
+      ['Cambridge\n(<%= @cambrige_housese %>軒)', <%= @Cambridge %>],
+      ['Oxford\n(<%= @oxford_housese %>軒)', <%= @Oxford %>],
+    ]);
+
+    var options = {
+      title: 'percentage of energy production in cities',
+      is3D: true
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('gct_sample_pie'));
+    chart.draw(data, options);
+  }
+
+
+  // energy production
+  function london() {
+    google.setOnLoadCallback(
+      function() {
+        // rubyからのデータを処理する
+        data_array = <%= @lodon_year_energy %>
+
+        let data_for_chart = []
+        data_array.forEach(function(item, index, array) {
+          data_for_chart.push([new Date(item[0],item[1],01), item[2]]);
+          return data_for_chart
+        });
+        // chart処理
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', '');
+        data.addColumn('number', 'energy');
+
+        data.addRows(  data_for_chart );
+        var options = {
+          title: 'energy production',
+          hAxis: {format: 'YYYY年MM月'}, // 表示フォーマットの指定
+          seriesType: "bars",
+          legend: 'none'
+        };
+        var chart = new google.visualization.ComboChart(document.getElementById('gct_sample_area'));
+        chart.draw(data, options);
+      }
+    );
+  }
+
+  function cambrige() {
+    google.setOnLoadCallback(
+      function() {
+        // rubyからのデータを処理する
+        data_array = <%= @cambridge_year_energy %>
+
+        let data_for_chart = []
+        data_array.forEach(function(item, index, array) {
+          data_for_chart.push([new Date(item[0],item[1],01), item[2]]);
+          return data_for_chart
+        });
+        // chart処理
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', '');
+        data.addColumn('number', 'energy');
+
+        data.addRows(  data_for_chart );
+        var options = {
+          title: 'energy production',
+          hAxis: {format: 'YYYY年MM月'}, // 表示フォーマットの指定
+          seriesType: "bars",
+          legend: 'none'
+        };
+        var chart = new google.visualization.ComboChart(document.getElementById('gct_sample_area'));
+        chart.draw(data, options);
+      }
+    );
+  }
+
+  function oxford() {
+    google.setOnLoadCallback(
+      function() {
+        // rubyからのデータを処理する
+        data_array = <%= @oxford_year_energy %>
+
+        let data_for_chart = []
+        data_array.forEach(function(item, index, array) {
+          data_for_chart.push([new Date(item[0],item[1],01), item[2]]);
+          return data_for_chart
+        });
+        // chart処理
+        var data = new google.visualization.DataTable();
+        data.addColumn('date', '');
+        data.addColumn('number', 'energy');
+
+        data.addRows(  data_for_chart );
+        var options = {
+          title: 'energy production',
+          hAxis: {format: 'YYYY年MM月'}, // 表示フォーマットの指定
+          seriesType: "bars",
+          legend: 'none'
+        };
+        var chart = new google.visualization.ComboChart(document.getElementById('gct_sample_area'));
+        chart.draw(data, options);
+      }
+    );
+  }
+
+  window.onload = () => {
+    london();
+  }
+</script>
+
+
+<h1>Csv Data</h1>
+
+<p>
+<%= link_to "house_data.csv download", "https://csvsamples.s3.us-east-2.amazonaws.com/house_data.csv" %>
+</p>
+
+<p>
+<%= link_to "dataset_50.csv download", "https://csvsamples.s3.us-east-2.amazonaws.com/dataset_50.csv" %>
+</p>
+
+<div id = "button">
+  <%= button_to 'csv import 画面へ', {:action => "import"}, {:method => :get}%>
+</div>
+
+
+<h2>都市エネルギー生産量割合</h2>
+<div id="gct_sample_pie" style="width: 400px;"></div>
+<h2>都市別年間毎月エネルギー生産量</h2>
+<%= form_with local: true do |form| %>
+  <%= form.radio_button :city, :london, onClick: "london()", checked: 'checked' %>
+  <%= form.label :city, "London", {value: :london, style: "display: inline-block;"} %>
+  <%= form.radio_button :city, :cambrige, onClick: "cambrige()" %>
+  <%= form.label :city, "Cambridge", {value: :cambrage, style: "display: inline-block;"} %>
+  <%= form.radio_button :city, :oxford, onClick: "oxford()" %>
+  <%= form.label :city, "Oxford", {value: :oxford, style: "display: inline-block;"} %>
+<% end %>
+<div id="gct_sample_area" style="width:80%; height:250pt" ></div>
+
+
+<h1>house_data一覧</h1>
+
+<table border='1'>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>firstname</th>
+      <th>lastname</th>
+      <th>city</th>
+      <th>num_of_people</th>
+      <th>has_child</th>
+      <th>created_at</th>
+      <th>updated_at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @house_data.each do |data| %>
+      <tr>
+        <td><%= data.id %></td>
+        <td><%= data.firstname %></td>
+        <td><%= data.lastname %></td>
+        <td><%= data.city %></td>
+        <td><%= data.num_of_people %></td>
+        <td><%= data.has_child %></td>
+        <td><%= data.created_at %></td>
+        <td><%= data.updated_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h1>dataset_50一覧</h1>
+
+<table border='1'>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>label</th>
+      <th>house</th>
+      <th>year</th>
+      <th>month</th>
+      <th>temperature</th>
+      <th>daylight</th>
+      <th>energyproduction</th>
+      <th>created_at</th>
+      <th>updated_at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dataset.each do |data| %>
+      <tr>
+        <td><%= data.id %></td>
+        <td><%= data.label %></td>
+        <td><%= data.house %></td>
+        <td><%= data.year %></td>
+        <td><%= data.month %></td>
+        <td><%= data.temperature %></td>
+        <td><%= data.daylight %></td>
+        <td><%= data.energyproduction %></td>
+        <td><%= data.created_at %></td>
+        <td><%= data.updated_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
