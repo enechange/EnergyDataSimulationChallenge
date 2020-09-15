@@ -1,0 +1,4 @@
+%h1 challenge3
+- @houses.each do |house|
+  =link_to house_path(house) do
+    .customer_name="#{house.firstname} #{house.lastname}"
