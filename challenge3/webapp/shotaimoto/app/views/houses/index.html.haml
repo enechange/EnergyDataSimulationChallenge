@@ -2,3 +2,7 @@
 - @houses.each do |house|
   =link_to house_path(house) do
     .customer_name="#{house.firstname} #{house.lastname}"
+
+.energy_production=line_chart @energy_productions_by_city.map{|energy_production| {name: energy_production[:city], data: energy_production[:data].map{|k, v| [Time.local(k[0],k[1]), v]}}}
+
+

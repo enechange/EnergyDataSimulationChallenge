@@ -1,5 +1,6 @@
 class House < ApplicationRecord
   has_many :energies
+  belongs_to :city
   # after_find set_gotten_at
 
   # def set_gotten_at
