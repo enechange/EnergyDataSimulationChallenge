@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: challenge3_production
-  username: shotaimoto
-  password: <%= ENV['SHOTAIMOTO_DATABASE_PASSWORD'] %>
+  username: root
+  password:
+  socket: /tmp/mysql.sock

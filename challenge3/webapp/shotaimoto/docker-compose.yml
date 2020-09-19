@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --socket=/tmp/mysql.sock
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: challenge3_production
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_USER: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - socket-tmp:/tmp
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: dockerize -wait tcp://db:3306 -timeout 20s rails s -e production
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/challenge3
+      - tmp-data:/challenge3/tmp/sockets
+      - public-data:/challenge3/public
+      - socket-tmp:/tmp
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - tmp-data:/challenge3/tmp/sockets
+      - public-data:/challenge3/public
+    depends_on:
+      - web
+volumes:
+  public-data:
+  tmp-data:
+  mysql-data:
+  socket-tmp:

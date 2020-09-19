@@ -1,5 +1,5 @@
 require 'csv'
-CSV.foreach('db/house_data.csv', headers: true) do |record|
+CSV.foreach('../../data/house_data.csv', headers: true) do |record|
 if City.exists?(name: record['City'])
   city = City.find_by(name: record['City'])
 else
@@ -23,7 +23,7 @@ end
   )
 end
 
-CSV.foreach('db/dataset_50.csv', headers: true) do |record|
+CSV.foreach('../../data/dataset_50.csv', headers: true) do |record|
   Energy.create(
     label: record['Label'],
     house_id: record['House'],
