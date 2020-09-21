@@ -34,7 +34,7 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - tmp-data:/challenge3/tmp/sockets
       - public-data:/challenge3/public
