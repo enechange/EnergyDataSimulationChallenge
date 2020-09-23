@@ -15,3 +15,13 @@ http://54.250.88.80/
 - compose 実行時に docker image が生成される仕様のため、アプリディレクトリまるごと必要。->ローカルでイメージ作成。docker-compose は dockerhub からイメージをダウンロードして起動する仕様とする
 - グラフ表示 2 のための変数が map メソッドによる配列となっており、rails の書き方になっていない->データベースなしモデルの定義+rails ヘルパーメソッドの組み合わせで工夫して表示
 - 追加する機能・・・csv アップロード → データ反映 機能
+
+# スクリーンショット
+
+### トップページ
+
+![example](./public/images/example.png)
+
+### 顧客個別ページ
+
+![example2](./public/images/example2.png)

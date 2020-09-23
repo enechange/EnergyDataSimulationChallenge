@@ -3,4 +3,5 @@
   =link_to house_path(house) do
     .customer_name="#{house.firstname} #{house.lastname}"
 
-.energy_production=line_chart @energy_productions_by_city.map{|energy_production| {name: energy_production[:city], data: energy_production[:data].map{|k, v| [Time.local(k[0],k[1]), v]}}}
+%h2 都市ごとのエネルギー生産量
+.energy_production=line_chart @energy_productions_by_city.map{|energy_production| {name: energy_production[:city], data: energy_production[:data].map{|k, v| [Time.local(k[0],k[1]), v]}}}, ytitle: "Energy Production"
