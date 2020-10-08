@@ -17,7 +17,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: dockerize -wait tcp://db:3306 -timeout 20s rails s -e production
+    command: >
+      rails assets:precompile RAILS_ENV=production &&
+      dockerize -wait tcp://db:3306 -timeout 20s rails s -e production
     tty: true
     stdin_open: true
     depends_on:
