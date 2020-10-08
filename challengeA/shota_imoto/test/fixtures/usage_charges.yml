@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lower_power: 1
+  upper_power: 1
+  charge: 1
+
+two:
+  lower_power: 1
+  upper_power: 1
+  charge: 1

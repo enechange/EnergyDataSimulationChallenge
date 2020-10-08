@@ -1,0 +1,16 @@
+%h1 従量料金登録
+= form_with model: @usage_charge do |f|
+  .form
+    電力区分(下限)
+    =f.number_field :lower_power
+  .form
+    電力区分(上限)
+    =f.number_field :upper_power
+  .form
+    従量料金料金
+    =f.number_field :charge, step: "0.01"
+  .form
+    プラン選択
+    = f.collection_select :plan, @plans, :id, :name
+  .btn
+    =f.submit "登録"

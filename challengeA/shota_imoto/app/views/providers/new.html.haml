@@ -1,0 +1,9 @@
+%h1 プロバイダー登録
+= form_with model: @provider do |f|
+  .form
+    プロバイダー名
+    =f.text_field :name
+  .btn
+    =f.submit "登録"
+
+
