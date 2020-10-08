@@ -1,5 +1,4 @@
-class Simulator
+class SimulationResult
   include ActiveModel::Model
-
-  attr_accessor
+  attr_accessor :provider_name, :plan_name, :price
 end

@@ -1,0 +1,17 @@
+%h1 Results of Simulation
+- if @simulation_results.length
+  %table
+    %tr
+      %th No.
+      %th プロバイダ
+      %th プラン
+      %th 価格
+      - @simulation_results.each_with_index do |result, i|
+        %tr
+          %td=i+1
+          %td=result.provider_name
+          %td=result.plan_name
+          %td=result.price
+- else
+  ご要望の契約アンペアのプランが見つかりませんでした。
+

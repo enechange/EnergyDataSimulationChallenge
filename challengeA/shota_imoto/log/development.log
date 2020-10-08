@@ -3399,3 +3399,1680 @@ Processing by UsageChargesController#new as HTML
 Completed 200 OK in 74ms (Views: 37.4ms | ActiveRecord: 5.9ms)
 
 
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=20&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 15:24:03 +0900
+  [1m[35m (1.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"20"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.8ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+Completed 500 Internal Server Error in 100737ms (ActiveRecord: 16.0ms)
+
+
+  
+NoMethodError (undefined method `basic_charges' for #<Plan:0x00007fbde4ea0ea8>
+Did you mean?  basic_charge
+               basic_charge=
+               basic_charge_ids
+               basic_charge_ids=):
+  
+app/models/simulator.rb:8:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 15:26:55 +0900
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (21.8ms)
+Completed 200 OK in 339ms (Views: 319.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=233&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 15:26:59 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"233"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mCACHE Plan Load (0.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/controllers/simulators_controller.rb:9
+  [1m[36mCACHE Plan Load (0.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ (pry):3
+  [1m[36mCACHE Plan Load (0.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ (pry):4
+  [1m[36mBasicCharge Load (1.5ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/controllers/simulators_controller.rb:9
+  [1m[36mCACHE Plan Load (0.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ (pry):5
+  [1m[36mCACHE Plan Load (0.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mCACHE Provider Load (0.0ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+Completed 500 Internal Server Error in 67678ms (ActiveRecord: 17.7ms)
+
+
+  
+NoMethodError (undefined method `basic_charges' for #<Plan:0x00007fef235ef190>
+Did you mean?  basic_charge
+               basic_charge=
+               basic_charge_ids
+               basic_charge_ids=):
+  
+app/models/simulator.rb:8:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 15:28:10 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (7.0ms)
+Completed 200 OK in 54ms (Views: 45.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=322&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 15:28:14 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"322"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mCACHE Plan Load (0.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/controllers/simulators_controller.rb:9
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/controllers/simulators_controller.rb:9
+  [1m[36mCACHE Plan Load (0.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mCACHE Provider Load (0.0ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+No template found for SimulatorsController#simulate, rendering head :no_content
+Completed 204 No Content in 59753ms (ActiveRecord: 18.2ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:15:50 +0900
+  [1m[35m (0.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (53.9ms)
+Completed 200 OK in 112ms (Views: 100.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=330&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:15:53 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"330"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.5ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mUsageCharge Load (1.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+  [1m[36mCACHE Plan Load (0.5ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mCACHE Provider Load (3.0ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mCACHE UsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m  [["plan_id", 1]]
+  ↳ app/models/simulator.rb:10
+Completed 500 Internal Server Error in 150055ms (ActiveRecord: 23.5ms)
+
+
+  
+ArgumentError (comparison of String with 120 failed):
+  
+app/models/simulator.rb:13:in `>'
+app/models/simulator.rb:13:in `block (2 levels) in simulate'
+app/models/simulator.rb:10:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 16:18:26 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (6.8ms)
+Completed 200 OK in 54ms (Views: 47.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=300&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:18:29 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"300"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.7ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.9ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mUsageCharge Load (0.7ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+Completed 500 Internal Server Error in 144075ms (ActiveRecord: 24.2ms)
+
+
+  
+NoMethodError (undefined method `lower_charge' for #<UsageCharge:0x00007fef2ceecde8>
+Did you mean?  lower_power_change):
+  
+app/models/simulator.rb:16:in `block (2 levels) in simulate'
+app/models/simulator.rb:10:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 16:21:36 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (6.1ms)
+Completed 200 OK in 50ms (Views: 43.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:21:42 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.8ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mUsageCharge Load (1.0ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+Completed 500 Internal Server Error in 37968ms (ActiveRecord: 23.2ms)
+
+
+  
+TypeError (BasicCharge::ActiveRecord_AssociationRelation can't be coerced into Integer):
+  
+app/models/simulator.rb:21:in `+'
+app/models/simulator.rb:21:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:24:06 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (1.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (1.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mUsageCharge Load (2.7ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+  [1m[36mBasicCharge Load (0.7ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10[0m
+  ↳ app/models/simulator.rb:13
+Completed 500 Internal Server Error in 65975ms (ActiveRecord: 6.8ms)
+
+
+  
+TypeError (BasicCharge::ActiveRecord_AssociationRelation can't be coerced into Integer):
+  
+app/models/simulator.rb:21:in `+'
+app/models/simulator.rb:21:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 16:25:15 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (5.6ms)
+Completed 200 OK in 44ms (Views: 38.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:25:19 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 45ms (Views: 40.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:25:34 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (1.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.6ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mBasicCharge Load (0.7ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.8ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+Completed 500 Internal Server Error in 20399ms (ActiveRecord: 25.1ms)
+
+
+  
+NameError (uninitialized constant Simulator::SimulatorResult):
+  
+app/models/simulator.rb:23:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:27:06 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 19.1ms)
+
+
+  
+NameError (uninitialized constant Simulator::SimulatorResult):
+  
+app/models/simulator.rb:21:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 16:27:22 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 46ms (Views: 36.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:27:25 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.5ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+Completed 500 Internal Server Error in 3893ms (ActiveRecord: 14.1ms)
+
+
+  
+NameError (uninitialized constant Simulator::SimulatorResult):
+  
+app/models/simulator.rb:22:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 16:27:42 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (18.5ms)
+Completed 200 OK in 62ms (Views: 54.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:27:44 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+Completed 500 Internal Server Error in 3419ms (ActiveRecord: 19.9ms)
+
+
+  
+TypeError ([:provider_name, :plan_name, :price] is not a symbol nor a string):
+  
+app/models/simulation_result.rb:3:in `attr_accessor'
+app/models/simulation_result.rb:3:in `<class:SimulationResult>'
+app/models/simulation_result.rb:1:in `<top (required)>'
+app/models/simulator.rb:22:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 16:28:10 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (6.3ms)
+Completed 200 OK in 46ms (Views: 39.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:28:25 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+Completed 500 Internal Server Error in 10833ms (ActiveRecord: 12.8ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'charge' for SimulationResult.):
+  
+app/models/simulator.rb:22:in `new'
+app/models/simulator.rb:22:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 16:29:23 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (8.2ms)
+Completed 200 OK in 51ms (Views: 43.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:29:26 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+Completed 500 Internal Server Error in 6163ms (ActiveRecord: 18.8ms)
+
+
+  
+NameError (undefined local variable or method `charge' for #<Simulator:0x00007fef2d06eea0 @current="10", @power="320">):
+  
+app/models/simulator.rb:22:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 16:29:49 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (6.1ms)
+Completed 200 OK in 51ms (Views: 42.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:29:51 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:10
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+Completed 500 Internal Server Error in 4355ms (ActiveRecord: 16.3ms)
+
+
+  
+NoMethodError (undefined method `charge' for nil:NilClass):
+  
+app/models/simulator.rb:8:in `block in simulate'
+app/models/simulator.rb:7:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 16:31:44 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (10.5ms)
+Completed 200 OK in 61ms (Views: 53.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:31:47 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:10
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+No template found for SimulatorsController#simulate, rendering head :no_content
+Completed 204 No Content in 3195ms (ActiveRecord: 14.0ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:32:09 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (12.8ms)
+Completed 200 OK in 78ms (Views: 71.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:32:11 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.5ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:10
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:10
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mCACHE Plan Load (0.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mCACHE Provider Load (0.0ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:7
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mCACHE UsageCharge Load (0.0ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m  [["plan_id", 1]]
+  ↳ app/models/simulator.rb:10
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mCACHE UsageCharge Load (0.0ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m  [["plan_id", 2]]
+  ↳ app/models/simulator.rb:10
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:8
+No template found for SimulatorsController#simulate, rendering head :no_content
+Completed 204 No Content in 264997ms (ActiveRecord: 18.1ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:36:39 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 63ms (Views: 56.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=329&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:36:44 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"329"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.8ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+Completed 500 Internal Server Error in 5208ms (ActiveRecord: 23.6ms)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  
+app/models/simulator.rb:25:in `new'
+app/models/simulator.rb:25:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 16:37:07 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 40ms (Views: 34.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:37:09 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (19.8ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+Completed 500 Internal Server Error in 1898ms (ActiveRecord: 48.0ms)
+
+
+  
+NoMethodError (undefined method `build' for SimulationResult:Class):
+  
+app/models/simulator.rb:25:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/" for ::1 at 2020-10-08 16:40:51 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (6.4ms)
+Completed 200 OK in 60ms (Views: 52.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:40:55 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mCACHE Plan Load (0.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mCACHE Provider Load (0.0ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mCACHE UsageCharge Load (0.0ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m  [["plan_id", 1]]
+  ↳ app/models/simulator.rb:11
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mCACHE UsageCharge Load (0.0ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m  [["plan_id", 2]]
+  ↳ app/models/simulator.rb:11
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mCACHE Plan Load (0.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mCACHE Provider Load (0.0ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mCACHE UsageCharge Load (0.0ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m  [["plan_id", 1]]
+  ↳ app/models/simulator.rb:11
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mCACHE UsageCharge Load (0.0ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m  [["plan_id", 2]]
+  ↳ app/models/simulator.rb:11
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+No template found for SimulatorsController#simulate, rendering head :no_content
+Completed 204 No Content in 33611ms (ActiveRecord: 22.7ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:41:33 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 40ms (Views: 34.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:41:36 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mCACHE Plan Load (0.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mCACHE Provider Load (0.0ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mCACHE UsageCharge Load (0.0ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m  [["plan_id", 1]]
+  ↳ app/models/simulator.rb:11
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mCACHE UsageCharge Load (0.0ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m  [["plan_id", 2]]
+  ↳ app/models/simulator.rb:11
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+No template found for SimulatorsController#simulate, rendering head :no_content
+Completed 204 No Content in 9257ms (ActiveRecord: 22.0ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:43:26 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 73ms (Views: 67.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:43:33 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 36ms (Views: 31.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:43:35 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (1.9ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (348.2ms)
+Completed 500 Internal Server Error in 3728ms (ActiveRecord: 4.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `simulation_results' for #<#<Class:0x00007fef27f04970>:0x00007fef237e5da0>
+Did you mean?  @simulation_results):
+    1: %h1 Results of Simulation
+    2: = simulation_results[0].price
+  
+app/views/simulators/simulate.html.haml:2:in `_app_views_simulators_simulate_html_haml__3525664826435259470_70332534699340'
+Started GET "/" for ::1 at 2020-10-08 16:43:51 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (9.6ms)
+Completed 200 OK in 60ms (Views: 52.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:43:52 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (36.7ms)
+Completed 500 Internal Server Error in 2669ms (ActiveRecord: 2.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `price' for #<Plan:0x00007fef2cfbe118>):
+    1: %h1 Results of Simulation
+    2: = @simulation_results[0].price
+  
+app/views/simulators/simulate.html.haml:2:in `_app_views_simulators_simulate_html_haml__3525664826435259470_70332619176240'
+Started GET "/" for ::1 at 2020-10-08 16:44:14 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (7.1ms)
+Completed 200 OK in 52ms (Views: 47.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:44:16 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.6ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (37.6ms)
+Completed 500 Internal Server Error in 3584ms (ActiveRecord: 2.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `price' for #<Plan:0x00007fef28efa6b8>):
+    1: %h1 Results of Simulation
+    2: binding.pry
+    3: = @simulation_results[0].price
+  
+app/views/simulators/simulate.html.haml:3:in `_app_views_simulators_simulate_html_haml__3525664826435259470_70332570721680'
+Started GET "/" for ::1 at 2020-10-08 16:44:36 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (6.3ms)
+Completed 200 OK in 46ms (Views: 38.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:44:39 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.8ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (36.0ms)
+Completed 500 Internal Server Error in 190ms (ActiveRecord: 22.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `price' for #<Plan:0x00007fef2371d968>):
+    1: %h1 Results of Simulation
+    2: binding.pry
+    3: = @simulation_results[0].price
+  
+app/views/simulators/simulate.html.haml:3:in `_app_views_simulators_simulate_html_haml__3525664826435259470_70332613239040'
+Started GET "/" for ::1 at 2020-10-08 16:45:01 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (7.0ms)
+Completed 200 OK in 48ms (Views: 40.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:45:03 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (31714.1ms)
+Completed 500 Internal Server Error in 31802ms (ActiveRecord: 2.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `price' for #<Plan:0x00007fef27ce6d00>):
+    1: %h1 Results of Simulation
+    2: - binding.pry
+    3: = @simulation_results[0].price
+  
+app/views/simulators/simulate.html.haml:3:in `_app_views_simulators_simulate_html_haml__3525664826435259470_70332580744740'
+Started GET "/" for ::1 at 2020-10-08 16:45:39 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (4.7ms)
+Completed 200 OK in 46ms (Views: 40.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:45:41 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (22632.7ms)
+Completed 200 OK in 22789ms (Views: 22682.3ms | ActiveRecord: 13.6ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:46:54 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (6.2ms)
+Completed 200 OK in 48ms (Views: 40.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:47:03 +0900
+Processing by SimulatorsController#simulate as JS
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 139ms (Views: 65.2ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:47:33 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (8.2ms)
+Completed 200 OK in 62ms (Views: 54.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:47:37 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 44ms (Views: 30.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:49:58 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.6ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 2.9ms)
+
+
+  
+ActionView::Template::Error (Illegal nesting: content can't be both given on the same line as %h1 and nested within it.):
+    1: %h1 Results of Simulation
+    2:   %table
+    3:     %tr
+    4:       %th No.
+    5:       %th プロバイダ
+  
+app/views/simulators/simulate.html.haml:2
+app/controllers/simulators_controller.rb:10:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:50:09 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (3.4ms)
+Completed 200 OK in 52ms (Views: 35.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:50:19 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.6ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.6ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (4.1ms)
+Completed 200 OK in 65ms (Views: 48.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:50:33 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (3.6ms)
+Completed 200 OK in 46ms (Views: 32.7ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:50:39 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 49ms (Views: 34.9ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:51:08 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:11
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/simulator.rb:9
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (2.8ms)
+Completed 200 OK in 111ms (Views: 30.2ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:51:57 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (6.2ms)
+Completed 200 OK in 43ms (Views: 37.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:52:07 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (8.0ms)
+Completed 200 OK in 41ms (Views: 36.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:52:19 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (6.0ms)
+Completed 200 OK in 40ms (Views: 35.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:55:20 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (6.7ms)
+Completed 200 OK in 49ms (Views: 40.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 16:57:35 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (8.1ms)
+Completed 200 OK in 57ms (Views: 49.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:57:40 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/imotoshouta/projects/EnergyDataSimulationChallenge/challengeA/shota_imoto/app/models/plan.rb:5: syntax error, unexpected ->, expecting keyword_end
+...scope :suitable_basic_charge -> (current){basic_charges.find...
+...                             ^~):
+  
+app/models/plan.rb:5: syntax error, unexpected ->, expecting keyword_end
+app/models/simulator.rb:6:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 16:58:00 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ (pry):34
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ (pry):34
+Completed 500 Internal Server Error in 22506ms (ActiveRecord: 15.1ms)
+
+
+  
+NoMethodError (undefined method `suitable_basic_charge' for #<Plan:0x00007fef2cec6328>):
+  
+app/models/simulator.rb:10:in `block in simulate'
+app/models/simulator.rb:9:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:00:22 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:9
+Completed 500 Internal Server Error in 2814ms (ActiveRecord: 10.7ms)
+
+
+  
+NoMethodError (undefined method `basic_charge' for #<Plan:0x00007fef28b4a8b0>
+Did you mean?  basic_charges
+               basic_charges=):
+  
+app/models/simulator.rb:10:in `block in simulate'
+app/models/simulator.rb:9:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:00:36 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mBasicCharge Load (1.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.8ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 LIMIT 11[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 1882ms (ActiveRecord: 21.3ms)
+
+
+  
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 LIMIT 11[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+NoMethodError (undefined method `charge' for #<BasicCharge::ActiveRecord_AssociationRelation:0x00007fef27d84a00>):
+  
+app/models/simulator.rb:21:in `block in simulate'
+app/models/simulator.rb:9:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:01:05 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mBasicCharge Load (3.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:23
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:23
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:23
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:23
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ (pry):45
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:23
+Completed 500 Internal Server Error in 561278ms (ActiveRecord: 25.4ms)
+
+
+  
+NoMethodError (undefined method `charge' for #<BasicCharge::ActiveRecord_AssociationRelation:0x00007fef2ca076e8>):
+  
+app/models/simulator.rb:23:in `block in simulate'
+app/models/simulator.rb:9:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:10:29 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (1.2ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mProvider Load (0.6ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mBasicCharge Load (0.6ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 LIMIT 11[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 3013ms (ActiveRecord: 23.7ms)
+
+
+  
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 LIMIT 11[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+NoMethodError (undefined method `suitable_for_current' for #<BasicCharge::ActiveRecord_Associations_CollectionProxy:0x00007fef27d4cce0>):
+  
+app/models/simulator.rb:10:in `block in simulate'
+app/models/simulator.rb:9:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:15:33 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mProvider Load (2.8ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 2948ms (Views: 52.1ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:15:59 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (1.8ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mProvider Load (1.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:9
+  [1m[36mBasicCharge Load (0.8ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mBasicCharge Load (0.6ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (5.6ms)
+Completed 200 OK in 57446ms (Views: 45.0ms | ActiveRecord: 25.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:16:59 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.6ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:14
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:14
+  [1m[36mBasicCharge Load (0.6ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:14
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 LIMIT 11[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 12304ms (ActiveRecord: 19.8ms)
+
+
+  
+  [1m[36mCACHE BasicCharge Load (0.0ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 LIMIT 11[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+NoMethodError (undefined method `charge' for #<BasicCharge::ActiveRecord_AssociationRelation:0x00007fef2342bd68>):
+  
+app/models/simulator.rb:24:in `block in simulate'
+app/models/simulator.rb:8:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:17:21 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.6ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:14
+  [1m[36mBasicCharge Load (7.8ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.6ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:14
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mUsageCharge Load (0.9ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:14
+Completed 500 Internal Server Error in 90196ms (ActiveRecord: 12.2ms)
+
+
+  
+NoMethodError (undefined method `charge' for #<BasicCharge::ActiveRecord_AssociationRelation:0x00007fef23784c58>):
+  
+app/models/simulator.rb:24:in `block in simulate'
+app/models/simulator.rb:8:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:18:56 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.6ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+Completed 500 Internal Server Error in 1681ms (ActiveRecord: 12.0ms)
+
+
+  
+NoMethodError (undefined method `length' for #<BasicCharge:0x00007fef2c8e8ff0>):
+  
+app/models/simulator.rb:12:in `block in simulate'
+app/models/simulator.rb:8:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:20:03 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+Completed 500 Internal Server Error in 291919ms (ActiveRecord: 1.3ms)
+
+
+  
+NoMethodError (undefined method `length' for #<BasicCharge:0x00007fef237f8bf8>):
+  
+app/models/simulator.rb:12:in `block in simulate'
+app/models/simulator.rb:8:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:24:58 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mBasicCharge Load (0.6ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:13
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:14
+Completed 500 Internal Server Error in 265493ms (ActiveRecord: 28.0ms)
+
+
+  
+NoMethodError (undefined method `charge' for #<BasicCharge::ActiveRecord_AssociationRelation:0x00007fef27e76378>):
+  
+app/models/simulator.rb:24:in `block in simulate'
+app/models/simulator.rb:8:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:29:26 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mBasicCharge Load (2.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/models/simulator.rb:14
+Completed 500 Internal Server Error in 36022ms (ActiveRecord: 23.2ms)
+
+
+  
+NoMethodError (undefined method `charge' for #<BasicCharge::ActiveRecord_AssociationRelation:0x00007fef27f2ca88>):
+  
+app/models/simulator.rb:24:in `block in simulate'
+app/models/simulator.rb:8:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:30:14 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:14
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:14
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (4.2ms)
+Completed 200 OK in 3345ms (Views: 56.9ms | ActiveRecord: 18.1ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:43:00 +0900
+  [1m[35m (1.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (1.1ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.8ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.6ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.7ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (2.0ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 134933ms (Views: 49.8ms | ActiveRecord: 25.9ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:46:51 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (3.6ms)
+Completed 200 OK in 5748ms (Views: 52.5ms | ActiveRecord: 17.6ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:48:34 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (1.2ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.8ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 212ms (Views: 79.1ms | ActiveRecord: 25.6ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:48:38 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.9ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (6.4ms)
+Completed 200 OK in 84ms (Views: 59.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 17:48:43 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (14.0ms)
+Completed 200 OK in 78ms (Views: 71.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:48:46 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/simulator.rb:12
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (7.8ms)
+Completed 200 OK in 101ms (Views: 73.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for ::1 at 2020-10-08 17:51:58 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (10.0ms)
+Completed 200 OK in 79ms (Views: 71.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:52:01 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/simulator.rb:12
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 15.9ms)
+
+
+  
+NoMethodError (undefined method `+' for nil:NilClass):
+  
+app/models/simulator.rb:13:in `block (2 levels) in simulate'
+app/models/simulator.rb:12:in `block in simulate'
+app/models/simulator.rb:8:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:55:29 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.7ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/plan.rb:8
+Completed 500 Internal Server Error in 102647ms (ActiveRecord: 38.3ms)
+
+
+  
+NoMethodError (undefined method `power_i' for #<Plan:0x00007fef2d8b4ee8>):
+  
+app/models/plan.rb:9:in `block in calculate_usage_charge'
+app/models/plan.rb:8:in `calculate_usage_charge'
+app/models/simulator.rb:12:in `block in simulate'
+app/models/simulator.rb:8:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:57:15 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/plan.rb:8
+Completed 500 Internal Server Error in 21379ms (ActiveRecord: 18.0ms)
+
+
+  
+ArgumentError (comparison of String with 120 failed):
+  
+app/models/usage_charge.rb:4:in `>'
+app/models/usage_charge.rb:4:in `calculate_usage_charge_each_of_range'
+app/models/plan.rb:9:in `block in calculate_usage_charge'
+app/models/plan.rb:8:in `calculate_usage_charge'
+app/models/simulator.rb:12:in `block in simulate'
+app/models/simulator.rb:8:in `simulate'
+app/controllers/simulators_controller.rb:9:in `simulate'
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 17:57:38 +0900
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (0.7ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/plan.rb:8
+  [1m[36mBasicCharge Load (0.6ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/plan.rb:8
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (4.2ms)
+Completed 200 OK in 11459ms (Views: 47.3ms | ActiveRecord: 18.9ms)
+
+
+Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=320&commit=%E8%A8%88%E7%AE%97" for ::1 at 2020-10-08 18:06:07 +0900
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by SimulatorsController#simulate as HTML
+  Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"320"}, "commit"=>"計算"}
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT `providers`.* FROM `providers` WHERE `providers`.`id` IN (1, 2, 3)[0m
+  ↳ app/models/simulator.rb:8
+  [1m[36mBasicCharge Load (1.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/models/plan.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/models/plan.rb:8
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT  `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3 AND `basic_charges`.`current` = 10 LIMIT 1[0m
+  ↳ app/models/basic_charge.rb:3
+  Rendering simulators/simulate.html.haml within layouts/application
+  Rendered simulators/simulate.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 134ms (Views: 42.2ms | ActiveRecord: 16.7ms)
+
+

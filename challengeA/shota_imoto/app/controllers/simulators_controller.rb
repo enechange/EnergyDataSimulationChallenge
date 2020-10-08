@@ -4,7 +4,7 @@ class SimulatorsController < ApplicationController
     @simulator = Simulator.new
   end
   def simulate
-    binding.pry
+    # binding.pry
     @simulator = Simulator.new(simulator_params)
     @simulation_results = @simulator.simulate
   end
