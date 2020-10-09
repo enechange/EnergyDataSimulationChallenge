@@ -3,10 +3,10 @@ FROM ruby:2.7.1-alpine3.12
 
 ENV DOCKERIZE_VERSION=v0.6.1
 
-WORKDIR /challenge3
+WORKDIR /challengeA
 
-COPY Gemfile /challenge3/Gemfile
-COPY Gemfile.lock /challenge3/Gemfile.lock
+COPY Gemfile /challengeA/Gemfile
+COPY Gemfile.lock /challengeA/Gemfile.lock
 
 RUN apk update && \
     apk add --no-cache \
@@ -32,6 +32,8 @@ RUN gem install bundler && \
     find /usr/lib/node_modules -delete && \
     find /usr/local/bundle/gems/ -name "*.c" -delete && \
     find /usr/local/bundle/gems/ -name "*.o" -delete && \
-    apk del --purge libxml2-dev curl-dev make gcc libc-dev g++ linux-headers && \
-    rails assets:precompile RAILS_ENV=production
-COPY . /challenge3
+    apk del --purge libxml2-dev curl-dev make gcc libc-dev g++ linux-headers
+RUN rails assets:precompile RAILS_ENV=production && \
+    rails db:create RAILS_ENV=production && \
+    rails db:migrate RAILS_ENV=production
+COPY . /challengeA

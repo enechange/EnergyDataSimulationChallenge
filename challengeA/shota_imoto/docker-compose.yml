@@ -7,7 +7,7 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: challenge3_production
+      MYSQL_DATABASE: challengeA_production
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_USER: root
     volumes:
@@ -17,9 +17,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: >
-      rails assets:precompile RAILS_ENV=production &&
-      dockerize -wait tcp://db:3306 -timeout 20s rails s -e production
+    command: dockerize -wait tcp://db:3306 -timeout 20s rails s -e production
     tty: true
     stdin_open: true
     depends_on:
@@ -27,9 +25,9 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/challenge3
-      - tmp-data:/challenge3/tmp/sockets
-      - public-data:/challenge3/public
+      - .:/challengeA
+      - tmp-data:/challengeA/tmp/sockets
+      - public-data:/challengeA/public
       - socket-tmp:/tmp
   nginx:
     build:
@@ -38,8 +36,8 @@ services:
     ports:
       - 80:80
     volumes:
-      - tmp-data:/challenge3/tmp/sockets
-      - public-data:/challenge3/public
+      - tmp-data:/challengeA/tmp/sockets
+      - public-data:/challengeA/public
     depends_on:
       - web
 volumes:
