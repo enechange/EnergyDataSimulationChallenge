@@ -33,7 +33,5 @@ RUN gem install bundler && \
     find /usr/local/bundle/gems/ -name "*.c" -delete && \
     find /usr/local/bundle/gems/ -name "*.o" -delete && \
     apk del --purge libxml2-dev curl-dev make gcc libc-dev g++ linux-headers
-RUN rails assets:precompile RAILS_ENV=production && \
-    rails db:create RAILS_ENV=production && \
-    rails db:migrate RAILS_ENV=production
 COPY . /challengeA
+RUN rails assets:precompile RAILS_ENV=production

@@ -1,0 +1,28 @@
+%h1 プラン一覧
+- @plans.each do |plan|
+  .provider_name
+    ="プロバイダ名：#{plan.provider.name}"
+  .plan_name
+    ="プラン名：#{plan.name}"
+  .basic_charge
+    %h2 基本料金(/月)
+    %table
+      %tr
+        %th 契約アンペア
+        %th 料金単価(消費税率10%)
+      - plan.basic_charges.each do |basic_charge|
+        %tr
+          %td=basic_charge.current
+          %td=basic_charge.charge
+  .usage_charge
+    %h2 従量料金(/月)
+    %table
+      %tr
+        %th 消費電力量(/月)
+        %th 料金単価(消費税率10%)
+      - plan.usage_charges.each do |usage_charge|
+        %tr
+          %td=show_power_range(usage_charge)
+          %td=usage_charge.charge
+  %hr
+

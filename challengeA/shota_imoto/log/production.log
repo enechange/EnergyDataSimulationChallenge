@@ -1,7 +1,129 @@
-I, [2020-10-09T02:44:26.602969 #13]  INFO -- : [3e53024f-f88d-45f2-9263-2904b8f242f0] Started GET "/plans/new" for 172.29.0.1 at 2020-10-09 02:44:26 +0000
-I, [2020-10-09T02:44:26.609635 #13]  INFO -- : [3e53024f-f88d-45f2-9263-2904b8f242f0] Processing by PlansController#new as HTML
-I, [2020-10-09T02:44:26.620135 #13]  INFO -- : [3e53024f-f88d-45f2-9263-2904b8f242f0] Completed 500 Internal Server Error in 9ms
-F, [2020-10-09T02:44:26.625454 #13] FATAL -- : [3e53024f-f88d-45f2-9263-2904b8f242f0]   
-F, [2020-10-09T02:44:26.626928 #13] FATAL -- : [3e53024f-f88d-45f2-9263-2904b8f242f0] Mysql2::Error::ConnectionError (Access denied for user 'challengeA'@'localhost' (using password: NO)):
-F, [2020-10-09T02:44:26.627977 #13] FATAL -- : [3e53024f-f88d-45f2-9263-2904b8f242f0]   
-F, [2020-10-09T02:44:26.629388 #13] FATAL -- : [3e53024f-f88d-45f2-9263-2904b8f242f0] app/controllers/plans_controller.rb:3:in `new'
+I, [2020-10-09T04:42:12.583337 #11]  INFO -- : [8e8bb582-fd3b-413a-b60e-ff980f57583a] Started GET "/plans/new" for 192.168.112.1 at 2020-10-09 04:42:12 +0000
+I, [2020-10-09T04:42:12.593351 #11]  INFO -- : [8e8bb582-fd3b-413a-b60e-ff980f57583a] Processing by PlansController#new as HTML
+I, [2020-10-09T04:42:12.604658 #11]  INFO -- : [8e8bb582-fd3b-413a-b60e-ff980f57583a] Completed 500 Internal Server Error in 7ms (ActiveRecord: 2.2ms)
+F, [2020-10-09T04:42:12.609006 #11] FATAL -- : [8e8bb582-fd3b-413a-b60e-ff980f57583a]   
+F, [2020-10-09T04:42:12.611348 #11] FATAL -- : [8e8bb582-fd3b-413a-b60e-ff980f57583a] ActiveRecord::StatementInvalid (Mysql2::Error: Table 'challengeA_production.plans' doesn't exist: SHOW FULL FIELDS FROM `plans`):
+F, [2020-10-09T04:42:12.613272 #11] FATAL -- : [8e8bb582-fd3b-413a-b60e-ff980f57583a]   
+F, [2020-10-09T04:42:12.617585 #11] FATAL -- : [8e8bb582-fd3b-413a-b60e-ff980f57583a] app/controllers/plans_controller.rb:3:in `new'
+D, [2020-10-09T04:58:40.019989 #35] DEBUG -- :   [1m[35m (5.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2020-10-09T04:58:40.023219 #35] DEBUG -- :   [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE `challengeA_production` DEFAULT CHARACTER SET `utf8`[0m
+D, [2020-10-09T04:59:07.062041 #39] DEBUG -- :   [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2020-10-09T04:59:07.175598 #39] DEBUG -- :   [1m[35m (15.6ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+D, [2020-10-09T04:59:07.208752 #39] DEBUG -- :   [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+D, [2020-10-09T04:59:07.211593 #39] DEBUG -- :   [1m[35m (0.6ms)[0m  [1m[34mSELECT GET_LOCK('1522837940761339755', 0)[0m
+D, [2020-10-09T04:59:07.258773 #39] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+I, [2020-10-09T04:59:07.265944 #39]  INFO -- : Migrating to CreatePlans (20201008003142)
+D, [2020-10-09T04:59:07.321836 #39] DEBUG -- :   [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE `plans` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+D, [2020-10-09T04:59:07.335657 #39] DEBUG -- :   [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+D, [2020-10-09T04:59:07.339107 #39] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20201008003142')[0m
+D, [2020-10-09T04:59:07.342925 #39] DEBUG -- :   [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+I, [2020-10-09T04:59:07.344620 #39]  INFO -- : Migrating to CreateBasicCharges (20201008003302)
+D, [2020-10-09T04:59:07.389435 #39] DEBUG -- :   [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE `basic_charges` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `current` int NOT NULL, `charge` int NOT NULL, `plan_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_basic_charges_on_plan_id`  (`plan_id`), CONSTRAINT `fk_rails_76f7e814ca`
+FOREIGN KEY (`plan_id`)
+  REFERENCES `plans` (`id`)
+)[0m
+D, [2020-10-09T04:59:07.391332 #39] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+D, [2020-10-09T04:59:07.394612 #39] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20201008003302')[0m
+D, [2020-10-09T04:59:07.399348 #39] DEBUG -- :   [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+I, [2020-10-09T04:59:07.400390 #39]  INFO -- : Migrating to CreateUsageCharges (20201008003343)
+D, [2020-10-09T04:59:07.439518 #39] DEBUG -- :   [1m[35m (14.7ms)[0m  [1m[35mCREATE TABLE `usage_charges` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `lower_power` int NOT NULL, `upper_power` int NOT NULL, `charge` int NOT NULL, `plan_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_usage_charges_on_plan_id`  (`plan_id`), CONSTRAINT `fk_rails_90ade36b13`
+FOREIGN KEY (`plan_id`)
+  REFERENCES `plans` (`id`)
+)[0m
+D, [2020-10-09T04:59:07.441323 #39] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+D, [2020-10-09T04:59:07.444427 #39] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20201008003343')[0m
+D, [2020-10-09T04:59:07.448207 #39] DEBUG -- :   [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+I, [2020-10-09T04:59:07.449364 #39]  INFO -- : Migrating to ChangeIntegerToFloat (20201008014954)
+D, [2020-10-09T04:59:07.507709 #39] DEBUG -- :   [1m[35m (32.2ms)[0m  [1m[35mALTER TABLE `basic_charges` CHANGE `charge` `charge` float(24) NOT NULL[0m
+D, [2020-10-09T04:59:07.549684 #39] DEBUG -- :   [1m[35m (36.9ms)[0m  [1m[35mALTER TABLE `usage_charges` CHANGE `charge` `charge` float(24) NOT NULL[0m
+D, [2020-10-09T04:59:07.556152 #39] DEBUG -- :   [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+D, [2020-10-09T04:59:07.559537 #39] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20201008014954')[0m
+D, [2020-10-09T04:59:07.565331 #39] DEBUG -- :   [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+I, [2020-10-09T04:59:07.567216 #39]  INFO -- : Migrating to CreateProviders (20201008054311)
+D, [2020-10-09T04:59:07.603115 #39] DEBUG -- :   [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE `providers` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255) NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+D, [2020-10-09T04:59:07.605223 #39] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+D, [2020-10-09T04:59:07.607640 #39] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20201008054311')[0m
+D, [2020-10-09T04:59:07.611562 #39] DEBUG -- :   [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+I, [2020-10-09T04:59:07.612786 #39]  INFO -- : Migrating to AddProviderIdToPlan (20201008054526)
+D, [2020-10-09T04:59:07.671900 #39] DEBUG -- :   [1m[35m (22.0ms)[0m  [1m[35mALTER TABLE `plans` ADD `provider_id` bigint[0m
+D, [2020-10-09T04:59:07.685109 #39] DEBUG -- :   [1m[35m (10.2ms)[0m  [1m[35mCREATE  INDEX `index_plans_on_provider_id`  ON `plans` (`provider_id`) [0m
+D, [2020-10-09T04:59:07.734463 #39] DEBUG -- :   [1m[35m (46.4ms)[0m  [1m[35mALTER TABLE `plans` ADD CONSTRAINT `fk_rails_de584490bb`
+FOREIGN KEY (`provider_id`)
+  REFERENCES `providers` (`id`)
+[0m
+D, [2020-10-09T04:59:07.738918 #39] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2020-10-09T04:59:07.743019 #39] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20201008054526')[0m
+D, [2020-10-09T04:59:07.747239 #39] DEBUG -- :   [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+D, [2020-10-09T04:59:07.779001 #39] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2020-10-09T04:59:07.787137 #39] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+D, [2020-10-09T04:59:07.790317 #39] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'production', '2020-10-09 04:59:07', '2020-10-09 04:59:07')[0m
+D, [2020-10-09T04:59:07.794355 #39] DEBUG -- :   [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+D, [2020-10-09T04:59:07.795941 #39] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('1522837940761339755')[0m
+I, [2020-10-09T05:00:10.368582 #12]  INFO -- : [d019af73-5325-40d8-a585-2518fbe5b329] Started GET "/" for 192.168.144.1 at 2020-10-09 05:00:10 +0000
+I, [2020-10-09T05:00:10.374572 #12]  INFO -- : [d019af73-5325-40d8-a585-2518fbe5b329] Processing by SimulatorsController#index as HTML
+I, [2020-10-09T05:00:10.584957 #12]  INFO -- : [d019af73-5325-40d8-a585-2518fbe5b329]   Rendering simulators/index.html.haml within layouts/application
+I, [2020-10-09T05:00:10.629059 #12]  INFO -- : [d019af73-5325-40d8-a585-2518fbe5b329]   Rendered simulators/index.html.haml within layouts/application (42.4ms)
+I, [2020-10-09T05:00:12.044041 #12]  INFO -- : [d019af73-5325-40d8-a585-2518fbe5b329] Completed 200 OK in 1668ms (Views: 1563.4ms)
+I, [2020-10-09T05:00:15.020370 #12]  INFO -- : [db514fe3-d426-4f96-9818-842113620a7f] Started GET "/plans/new" for 192.168.144.1 at 2020-10-09 05:00:15 +0000
+I, [2020-10-09T05:00:15.024397 #12]  INFO -- : [db514fe3-d426-4f96-9818-842113620a7f] Processing by PlansController#new as HTML
+D, [2020-10-09T05:00:15.045065 #12] DEBUG -- : [db514fe3-d426-4f96-9818-842113620a7f]   [1m[35m (2.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+I, [2020-10-09T05:00:15.172218 #12]  INFO -- : [db514fe3-d426-4f96-9818-842113620a7f]   Rendering plans/new.html.haml within layouts/application
+D, [2020-10-09T05:00:15.180512 #12] DEBUG -- : [db514fe3-d426-4f96-9818-842113620a7f]   [1m[36mProvider Load (1.2ms)[0m  [1m[34mSELECT `providers`.* FROM `providers`[0m
+I, [2020-10-09T05:00:15.185774 #12]  INFO -- : [db514fe3-d426-4f96-9818-842113620a7f]   Rendered plans/new.html.haml within layouts/application (12.2ms)
+I, [2020-10-09T05:00:15.189303 #12]  INFO -- : [db514fe3-d426-4f96-9818-842113620a7f] Completed 200 OK in 163ms (Views: 55.5ms | ActiveRecord: 24.8ms)
+I, [2020-10-09T05:00:20.804942 #12]  INFO -- : [07b745d7-1f78-491a-a4cc-63e4a38c538f] Started GET "/providers/new" for 192.168.144.1 at 2020-10-09 05:00:20 +0000
+I, [2020-10-09T05:00:20.811298 #12]  INFO -- : [07b745d7-1f78-491a-a4cc-63e4a38c538f] Processing by ProvidersController#new as HTML
+I, [2020-10-09T05:00:20.921028 #12]  INFO -- : [07b745d7-1f78-491a-a4cc-63e4a38c538f]   Rendering providers/new.html.haml within layouts/application
+I, [2020-10-09T05:00:20.926170 #12]  INFO -- : [07b745d7-1f78-491a-a4cc-63e4a38c538f]   Rendered providers/new.html.haml within layouts/application (4.0ms)
+I, [2020-10-09T05:00:20.928724 #12]  INFO -- : [07b745d7-1f78-491a-a4cc-63e4a38c538f] Completed 200 OK in 115ms (Views: 44.9ms | ActiveRecord: 2.4ms)
+I, [2020-10-09T05:00:24.571512 #12]  INFO -- : [b005dadc-b846-4ca1-bb9e-722ac06952cf] Started POST "/providers" for 192.168.144.1 at 2020-10-09 05:00:24 +0000
+I, [2020-10-09T05:00:24.574232 #12]  INFO -- : [b005dadc-b846-4ca1-bb9e-722ac06952cf] Processing by ProvidersController#create as JS
+I, [2020-10-09T05:00:24.575624 #12]  INFO -- : [b005dadc-b846-4ca1-bb9e-722ac06952cf]   Parameters: {"utf8"=>"✓", "authenticity_token"=>"Mpn4/WdrSN0ovt42nJoN2fNZUpI64SpAJW12k7Yoh8cA5o/wLucgbpiJ7yIaymvkvKe5dfHqVozikFM9Q6/l1Q==", "provider"=>{"name"=>"東京電力エナジーパートナー"}, "commit"=>"登録"}
+D, [2020-10-09T05:00:24.581320 #12] DEBUG -- : [b005dadc-b846-4ca1-bb9e-722ac06952cf]   [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+D, [2020-10-09T05:00:24.587564 #12] DEBUG -- : [b005dadc-b846-4ca1-bb9e-722ac06952cf]   [1m[36mProvider Create (0.5ms)[0m  [1m[32mINSERT INTO `providers` (`name`, `created_at`, `updated_at`) VALUES ('東京電力エナジーパートナー', '2020-10-09 05:00:24', '2020-10-09 05:00:24')[0m
+D, [2020-10-09T05:00:24.592281 #12] DEBUG -- : [b005dadc-b846-4ca1-bb9e-722ac06952cf]   [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+I, [2020-10-09T05:00:24.594168 #12]  INFO -- : [b005dadc-b846-4ca1-bb9e-722ac06952cf] Redirected to http://localhost:3000/
+I, [2020-10-09T05:00:24.596298 #12]  INFO -- : [b005dadc-b846-4ca1-bb9e-722ac06952cf] Completed 200 OK in 19ms (ActiveRecord: 3.5ms)
+I, [2020-10-09T05:00:24.608130 #12]  INFO -- : [8c651781-5929-4f64-9803-e22d758c6092] Started GET "/" for 192.168.144.1 at 2020-10-09 05:00:24 +0000
+I, [2020-10-09T05:00:24.613280 #12]  INFO -- : [8c651781-5929-4f64-9803-e22d758c6092] Processing by SimulatorsController#index as HTML
+I, [2020-10-09T05:00:24.618617 #12]  INFO -- : [8c651781-5929-4f64-9803-e22d758c6092]   Rendering simulators/index.html.haml within layouts/application
+I, [2020-10-09T05:00:24.623300 #12]  INFO -- : [8c651781-5929-4f64-9803-e22d758c6092]   Rendered simulators/index.html.haml within layouts/application (2.2ms)
+I, [2020-10-09T05:00:24.629142 #12]  INFO -- : [8c651781-5929-4f64-9803-e22d758c6092] Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.0ms)
+I, [2020-10-09T05:00:26.893289 #12]  INFO -- : [be61a90f-7027-4605-8108-34efdb3e1bbd] Started GET "/providers/new" for 192.168.144.1 at 2020-10-09 05:00:26 +0000
+I, [2020-10-09T05:00:26.900615 #12]  INFO -- : [be61a90f-7027-4605-8108-34efdb3e1bbd] Processing by ProvidersController#new as HTML
+I, [2020-10-09T05:00:26.906756 #12]  INFO -- : [be61a90f-7027-4605-8108-34efdb3e1bbd]   Rendering providers/new.html.haml within layouts/application
+I, [2020-10-09T05:00:26.912748 #12]  INFO -- : [be61a90f-7027-4605-8108-34efdb3e1bbd]   Rendered providers/new.html.haml within layouts/application (3.4ms)
+I, [2020-10-09T05:00:26.921520 #12]  INFO -- : [be61a90f-7027-4605-8108-34efdb3e1bbd] Completed 200 OK in 18ms (Views: 15.4ms | ActiveRecord: 0.0ms)
+I, [2020-10-09T05:00:29.100981 #12]  INFO -- : [bdc78116-ad1b-441f-9a1c-8131786eae69] Started GET "/plans/new" for 192.168.144.1 at 2020-10-09 05:00:29 +0000
+I, [2020-10-09T05:00:29.106425 #12]  INFO -- : [bdc78116-ad1b-441f-9a1c-8131786eae69] Processing by PlansController#new as HTML
+I, [2020-10-09T05:00:29.154707 #12]  INFO -- : [bdc78116-ad1b-441f-9a1c-8131786eae69]   Rendering plans/new.html.haml within layouts/application
+D, [2020-10-09T05:00:29.159054 #12] DEBUG -- : [bdc78116-ad1b-441f-9a1c-8131786eae69]   [1m[36mProvider Load (0.7ms)[0m  [1m[34mSELECT `providers`.* FROM `providers`[0m
+I, [2020-10-09T05:00:29.163684 #12]  INFO -- : [bdc78116-ad1b-441f-9a1c-8131786eae69]   Rendered plans/new.html.haml within layouts/application (7.6ms)
+I, [2020-10-09T05:00:29.171074 #12]  INFO -- : [bdc78116-ad1b-441f-9a1c-8131786eae69] Completed 200 OK in 61ms (Views: 15.2ms | ActiveRecord: 0.7ms)
+I, [2020-10-09T05:36:22.858106 #12]  INFO -- : [c99cb079-aeb0-4514-b7f8-e799170731ce] Started GET "/" for 192.168.160.1 at 2020-10-09 05:36:22 +0000
+I, [2020-10-09T05:36:22.862409 #12]  INFO -- : [c99cb079-aeb0-4514-b7f8-e799170731ce] Processing by SimulatorsController#index as HTML
+I, [2020-10-09T05:36:23.084528 #12]  INFO -- : [c99cb079-aeb0-4514-b7f8-e799170731ce]   Rendering simulators/index.html.haml within layouts/application
+I, [2020-10-09T05:36:23.123486 #12]  INFO -- : [c99cb079-aeb0-4514-b7f8-e799170731ce]   Rendered simulators/index.html.haml within layouts/application (35.1ms)
+I, [2020-10-09T05:36:30.318805 #12]  INFO -- : [c99cb079-aeb0-4514-b7f8-e799170731ce] Completed 200 OK in 7488ms (Views: 7403.6ms)
+I, [2020-10-09T05:36:30.374079 #12]  INFO -- : [f892916f-1c94-4130-b6c6-a6854aea5f7f] Started GET "/assets/application-b03c420baade619e770bd145d8e112b97affb916a37b845552536c8750de169d.css" for 192.168.160.1 at 2020-10-09 05:36:30 +0000
+I, [2020-10-09T05:36:32.538083 #12]  INFO -- : [03b9fbc9-f7d2-48d4-9754-adbe6832010a] Started GET "/plans" for 192.168.160.1 at 2020-10-09 05:36:32 +0000
+I, [2020-10-09T05:36:32.542929 #12]  INFO -- : [03b9fbc9-f7d2-48d4-9754-adbe6832010a] Processing by PlansController#index as HTML
+I, [2020-10-09T05:36:32.656882 #12]  INFO -- : [03b9fbc9-f7d2-48d4-9754-adbe6832010a]   Rendering plans/index.html.haml within layouts/application
+D, [2020-10-09T05:36:32.678511 #12] DEBUG -- : [03b9fbc9-f7d2-48d4-9754-adbe6832010a]   [1m[35m (5.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2020-10-09T05:36:32.693570 #12] DEBUG -- : [03b9fbc9-f7d2-48d4-9754-adbe6832010a]   [1m[36mPlan Load (12.0ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+I, [2020-10-09T05:36:32.700335 #12]  INFO -- : [03b9fbc9-f7d2-48d4-9754-adbe6832010a]   Rendered plans/index.html.haml within layouts/application (41.7ms)
+I, [2020-10-09T05:36:32.706982 #12]  INFO -- : [03b9fbc9-f7d2-48d4-9754-adbe6832010a] Completed 200 OK in 159ms (Views: 94.1ms | ActiveRecord: 19.8ms)
+I, [2020-10-09T05:36:41.230685 #12]  INFO -- : [c1d110f6-85da-464f-aedf-54138ebb5d0f] Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=&simulator%5Bpower%5D=&commit=%E8%A8%88%E7%AE%97" for 192.168.160.1 at 2020-10-09 05:36:41 +0000
+I, [2020-10-09T05:36:41.235092 #12]  INFO -- : [c1d110f6-85da-464f-aedf-54138ebb5d0f] Processing by SimulatorsController#simulate as HTML
+I, [2020-10-09T05:36:41.237638 #12]  INFO -- : [c1d110f6-85da-464f-aedf-54138ebb5d0f]   Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"", "power"=>""}, "commit"=>"計算"}
+D, [2020-10-09T05:36:41.244141 #12] DEBUG -- : [c1d110f6-85da-464f-aedf-54138ebb5d0f]   [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+I, [2020-10-09T05:36:41.306169 #12]  INFO -- : [c1d110f6-85da-464f-aedf-54138ebb5d0f]   Rendering simulators/simulate.html.haml within layouts/application
+I, [2020-10-09T05:36:41.310532 #12]  INFO -- : [c1d110f6-85da-464f-aedf-54138ebb5d0f]   Rendered simulators/simulate.html.haml within layouts/application (3.0ms)
+I, [2020-10-09T05:36:41.313350 #12]  INFO -- : [c1d110f6-85da-464f-aedf-54138ebb5d0f] Completed 200 OK in 73ms (Views: 7.5ms | ActiveRecord: 0.6ms)
+I, [2020-10-09T05:36:45.875953 #12]  INFO -- : [c563d704-4443-4585-a02e-ec0f46b323ed] Started GET "/simulators/simulate?utf8=%E2%9C%93&simulator%5Bcurrent%5D=10&simulator%5Bpower%5D=10&commit=%E8%A8%88%E7%AE%97" for 192.168.160.1 at 2020-10-09 05:36:45 +0000
+I, [2020-10-09T05:36:45.880937 #12]  INFO -- : [c563d704-4443-4585-a02e-ec0f46b323ed] Processing by SimulatorsController#simulate as HTML
+I, [2020-10-09T05:36:45.882713 #12]  INFO -- : [c563d704-4443-4585-a02e-ec0f46b323ed]   Parameters: {"utf8"=>"✓", "simulator"=>{"current"=>"10", "power"=>"10"}, "commit"=>"計算"}
+D, [2020-10-09T05:36:45.887770 #12] DEBUG -- : [c563d704-4443-4585-a02e-ec0f46b323ed]   [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+I, [2020-10-09T05:36:45.891348 #12]  INFO -- : [c563d704-4443-4585-a02e-ec0f46b323ed]   Rendering simulators/simulate.html.haml within layouts/application
+I, [2020-10-09T05:36:45.892970 #12]  INFO -- : [c563d704-4443-4585-a02e-ec0f46b323ed]   Rendered simulators/simulate.html.haml within layouts/application (0.3ms)
+I, [2020-10-09T05:36:45.896294 #12]  INFO -- : [c563d704-4443-4585-a02e-ec0f46b323ed] Completed 200 OK in 11ms (Views: 5.4ms | ActiveRecord: 0.4ms)

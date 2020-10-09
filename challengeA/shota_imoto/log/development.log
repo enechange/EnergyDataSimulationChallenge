@@ -5076,3 +5076,686 @@ Processing by SimulatorsController#simulate as HTML
 Completed 200 OK in 134ms (Views: 42.2ms | ActiveRecord: 16.7ms)
 
 
+Started GET "/" for ::1 at 2020-10-09 14:09:53 +0900
+  [1m[35m (35.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Started GET "/" for ::1 at 2020-10-09 14:09:54 +0900
+  [1m[35m (0.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (22.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by SimulatorsController#index as HTML
+  [1m[35m (63.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (20.4ms)
+  Rendered simulators/index.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 713ms (Views: 688.3ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 717ms (Views: 699.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-10-09 14:11:36 +0900
+  [1m[35m (4.8ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (17.5ms)
+Completed 200 OK in 381ms (Views: 370.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-10-09 14:12:35 +0900
+Processing by SimulatorsController#index as HTML
+  Rendering simulators/index.html.haml within layouts/application
+  Rendered simulators/index.html.haml within layouts/application (6.5ms)
+Completed 200 OK in 33ms (Views: 31.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:12:36 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (156.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (9.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  Rendered plans/index.html.haml within layouts/application (230.5ms)
+Completed 200 OK in 275ms (Views: 62.9ms | ActiveRecord: 185.7ms)
+
+
+Started GET "/plans/new" for ::1 at 2020-10-09 14:16:39 +0900
+Processing by PlansController#new as HTML
+  Rendering plans/new.html.haml within layouts/application
+  [1m[36mProvider Load (0.7ms)[0m  [1m[34mSELECT `providers`.* FROM `providers`[0m
+  ↳ app/views/plans/new.html.haml:8
+  Rendered plans/new.html.haml within layouts/application (61.9ms)
+Completed 200 OK in 122ms (Views: 108.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:16:43 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  Rendered plans/index.html.haml within layouts/application (10.8ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Inconsistent indentation: 7 spaces used for indentation, but the rest of the document was indented using 2 spaces.):
+    10:         %th 契約アンペア
+    11:         %th 料金単価(消費税率10%)
+    12:       - plan.basic_charges.each do |basic_charge|
+    13:        %tr
+    14:         %td=basic_charge.current
+    15:         %td=basic_charge.charge
+    16:   .usage_charge
+  
+app/views/plans/index.html.haml:13
+Started GET "/plans" for ::1 at 2020-10-09 14:16:52 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.6ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.6ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (13.0ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:12
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (1.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:12
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (4.6ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:12
+  Rendered plans/index.html.haml within layouts/application (82.2ms)
+Completed 200 OK in 113ms (Views: 79.5ms | ActiveRecord: 30.9ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:17:25 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (1.6ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (1.0ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  Rendered plans/index.html.haml within layouts/application (18.1ms)
+Completed 200 OK in 54ms (Views: 47.7ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:23:03 +0900
+  [1m[35m (2.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/imotoshouta/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (2.7ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (11.7ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (30.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  Rendered plans/index.html.haml within layouts/application (168.5ms)
+Completed 500 Internal Server Error in 206ms (ActiveRecord: 44.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `usage_charge' for #<Plan:0x00007fdde33220a8>
+Did you mean?  usage_charges
+               usage_charges=):
+    20:       %tr
+    21:         %th 消費電力量(/月)
+    22:         %th 料金単価(消費税率10%)
+    23:       - plan.usage_charge.each do |usage_charge|
+    24:         %tr
+    25:           %td
+    26:             ="#{usage_charge.low_power}~"
+  
+app/views/plans/index.html.haml:23:in `block in _app_views_plans_index_html_haml__1347161567230490581_17840'
+app/views/plans/index.html.haml:2:in `_app_views_plans_index_html_haml__1347161567230490581_17840'
+Started GET "/plans" for ::1 at 2020-10-09 14:23:04 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.6ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  Rendered plans/index.html.haml within layouts/application (25.4ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `usage_charge' for #<Plan:0x00007fdde3846cc8>
+Did you mean?  usage_charges
+               usage_charges=):
+    20:       %tr
+    21:         %th 消費電力量(/月)
+    22:         %th 料金単価(消費税率10%)
+    23:       - plan.usage_charge.each do |usage_charge|
+    24:         %tr
+    25:           %td
+    26:             ="#{usage_charge.low_power}~"
+  
+app/views/plans/index.html.haml:23:in `block in _app_views_plans_index_html_haml__1347161567230490581_18400'
+app/views/plans/index.html.haml:2:in `_app_views_plans_index_html_haml__1347161567230490581_18400'
+Started GET "/plans" for ::1 at 2020-10-09 14:23:10 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (147.1ms)
+Completed 500 Internal Server Error in 153ms (ActiveRecord: 25.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `low_power' for #<UsageCharge:0x00007fdde427da20>
+Did you mean?  lower_power
+               lower_power?
+               lower_power=):
+    23:       - plan.usage_charges.each do |usage_charge|
+    24:         %tr
+    25:           %td
+    26:             ="#{usage_charge.low_power}~"
+    27:             - if usage_charge.low_power <= 99999
+    28:               =low_power
+    29:             - else
+  
+app/views/plans/index.html.haml:26:in `block (2 levels) in _app_views_plans_index_html_haml__1347161567230490581_18920'
+app/views/plans/index.html.haml:23:in `block in _app_views_plans_index_html_haml__1347161567230490581_18920'
+app/views/plans/index.html.haml:2:in `_app_views_plans_index_html_haml__1347161567230490581_18920'
+Started GET "/plans" for ::1 at 2020-10-09 14:23:12 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.2ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (16.0ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `low_power' for #<UsageCharge:0x00007fdde403c630>
+Did you mean?  lower_power
+               lower_power?
+               lower_power=):
+    23:       - plan.usage_charges.each do |usage_charge|
+    24:         %tr
+    25:           %td
+    26:             ="#{usage_charge.low_power}~"
+    27:             - if usage_charge.low_power <= 99999
+    28:               =low_power
+    29:             - else
+  
+app/views/plans/index.html.haml:26:in `block (2 levels) in _app_views_plans_index_html_haml__1347161567230490581_19460'
+app/views/plans/index.html.haml:23:in `block in _app_views_plans_index_html_haml__1347161567230490581_19460'
+app/views/plans/index.html.haml:2:in `_app_views_plans_index_html_haml__1347161567230490581_19460'
+Started GET "/plans" for ::1 at 2020-10-09 14:23:24 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (231.8ms)
+Completed 500 Internal Server Error in 237ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `low_power' for #<#<Class:0x00007fdde412c130>:0x00007fdde3ba5dd8>):
+    25:           %td
+    26:             ="#{usage_charge.lower_power}~"
+    27:             - if usage_charge.lower_power <= 99999
+    28:               =low_power
+    29:             - else
+    30:           %td=usage_charge.charge
+  
+app/views/plans/index.html.haml:28:in `block (2 levels) in _app_views_plans_index_html_haml__1347161567230490581_19980'
+app/views/plans/index.html.haml:23:in `block in _app_views_plans_index_html_haml__1347161567230490581_19980'
+app/views/plans/index.html.haml:2:in `_app_views_plans_index_html_haml__1347161567230490581_19980'
+Started GET "/plans" for ::1 at 2020-10-09 14:23:31 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (384.8ms)
+Completed 500 Internal Server Error in 390ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `lower_power' for #<#<Class:0x00007fdde412c130>:0x00007fdde3859878>):
+    25:           %td
+    26:             ="#{usage_charge.lower_power}~"
+    27:             - if usage_charge.lower_power <= 99999
+    28:               =lower_power
+    29:             - else
+    30:           %td=usage_charge.charge
+  
+app/views/plans/index.html.haml:28:in `block (2 levels) in _app_views_plans_index_html_haml__1347161567230490581_20600'
+app/views/plans/index.html.haml:23:in `block in _app_views_plans_index_html_haml__1347161567230490581_20600'
+app/views/plans/index.html.haml:2:in `_app_views_plans_index_html_haml__1347161567230490581_20600'
+Started GET "/plans" for ::1 at 2020-10-09 14:23:41 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.2ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.6ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (6.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (25.8ms)
+Completed 200 OK in 59ms (Views: 48.5ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:24:13 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.2ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.2ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.2ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.2ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.2ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (16.7ms)
+Completed 200 OK in 50ms (Views: 45.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:24:20 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.2ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (17.6ms)
+Completed 200 OK in 37ms (Views: 31.8ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:24:27 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.9ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.2ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.6ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (20.0ms)
+Completed 200 OK in 48ms (Views: 41.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:26:43 +0900
+  
+SyntaxError (/Users/imotoshouta/projects/EnergyDataSimulationChallenge/challengeA/shota_imoto/app/helpers/plans_helper.rb:3: syntax error, unexpected '='
+    ="#{usage_charge.lower_power} ...
+    ^
+/Users/imotoshouta/projects/EnergyDataSimulationChallenge/challengeA/shota_imoto/app/helpers/plans_helper.rb:5: syntax error, unexpected '='
+      =usage_charge.upper_power
+      ^
+/Users/imotoshouta/projects/EnergyDataSimulationChallenge/challengeA/shota_imoto/app/helpers/plans_helper.rb:6: syntax error, unexpected `else'
+    - else
+      ^~~~
+):
+  
+app/helpers/plans_helper.rb:3: syntax error, unexpected '='
+app/helpers/plans_helper.rb:5: syntax error, unexpected '='
+app/helpers/plans_helper.rb:6: syntax error, unexpected `else'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/plans_controller.rb:1:in `<main>'
+Started GET "/plans" for ::1 at 2020-10-09 14:27:31 +0900
+  
+SyntaxError (/Users/imotoshouta/projects/EnergyDataSimulationChallenge/challengeA/shota_imoto/app/helpers/plans_helper.rb:7: syntax error, unexpected `else'
+    - else
+      ^~~~
+):
+  
+app/helpers/plans_helper.rb:7: syntax error, unexpected `else'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/plans_controller.rb:1:in `<main>'
+Started GET "/plans" for ::1 at 2020-10-09 14:27:39 +0900
+  
+SyntaxError (/Users/imotoshouta/projects/EnergyDataSimulationChallenge/challengeA/shota_imoto/app/helpers/plans_helper.rb:8: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/helpers/plans_helper.rb:8: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/plans_controller.rb:1:in `<main>'
+Started GET "/plans" for ::1 at 2020-10-09 14:27:45 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (3.1ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (101.7ms)
+Completed 500 Internal Server Error in 118ms (ActiveRecord: 40.7ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of Integer into String):
+    22:         %th 料金単価(消費税率10%)
+    23:       - plan.usage_charges.each do |usage_charge|
+    24:         %tr
+    25:           %td=show_power_range(usage_charge)
+    26:           %td=usage_charge.charge
+  
+app/helpers/plans_helper.rb:6:in `+'
+app/helpers/plans_helper.rb:6:in `show_power_range'
+app/views/plans/index.html.haml:25:in `block (2 levels) in _app_views_plans_index_html_haml__1347161567230490581_35980'
+app/views/plans/index.html.haml:23:in `block in _app_views_plans_index_html_haml__1347161567230490581_35980'
+app/views/plans/index.html.haml:2:in `_app_views_plans_index_html_haml__1347161567230490581_35980'
+Started GET "/plans" for ::1 at 2020-10-09 14:28:05 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.2ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.2ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (81.9ms)
+Completed 200 OK in 131ms (Views: 99.6ms | ActiveRecord: 25.5ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:28:47 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.3ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (4.2ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.7ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (83.8ms)
+Completed 200 OK in 118ms (Views: 83.9ms | ActiveRecord: 26.4ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:29:27 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (24.4ms)
+Completed 200 OK in 65ms (Views: 58.3ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:31:27 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (1.4ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (1.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (5.7ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.7ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.9ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (82.3ms)
+Completed 200 OK in 504ms (Views: 473.3ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:31:44 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (1.2ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (5.7ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.6ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (3.0ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (4.0ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.8ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (6.1ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.5ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (52.4ms)
+Completed 200 OK in 171ms (Views: 143.7ms | ActiveRecord: 22.8ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:31:51 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (2.1ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (10.8ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (13.0ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.4ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (1.0ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.6ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (64.2ms)
+Completed 200 OK in 154ms (Views: 121.6ms | ActiveRecord: 29.5ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:32:30 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (1.2ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (4.4ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (4.0ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (3.8ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (2.6ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (51.8ms)
+Completed 200 OK in 160ms (Views: 135.7ms | ActiveRecord: 17.8ms)
+
+
+Started GET "/plans" for ::1 at 2020-10-09 14:32:42 +0900
+Processing by PlansController#index as HTML
+  Rendering plans/index.html.haml within layouts/application
+  [1m[36mPlan Load (0.5ms)[0m  [1m[34mSELECT `plans`.* FROM `plans`[0m
+  ↳ app/views/plans/index.html.haml:2
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.5ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 1[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.3ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.3ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 2[0m
+  ↳ app/views/plans/index.html.haml:23
+  [1m[36mProvider Load (0.5ms)[0m  [1m[34mSELECT  `providers`.* FROM `providers` WHERE `providers`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/plans/index.html.haml:4
+  [1m[36mBasicCharge Load (0.4ms)[0m  [1m[34mSELECT `basic_charges`.* FROM `basic_charges` WHERE `basic_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:13
+  [1m[36mUsageCharge Load (0.3ms)[0m  [1m[34mSELECT `usage_charges`.* FROM `usage_charges` WHERE `usage_charges`.`plan_id` = 3[0m
+  ↳ app/views/plans/index.html.haml:23
+  Rendered plans/index.html.haml within layouts/application (23.1ms)
+Completed 200 OK in 84ms (Views: 77.7ms | ActiveRecord: 3.8ms)
+
+
