@@ -17,6 +17,7 @@ class HouseDataService
 
   def house_form_params(row, city)
     {
+      id: row['ID'],
       firstname: row['Firstname'],
       lastname: row['Lastname'],
       city_id: city.id,
