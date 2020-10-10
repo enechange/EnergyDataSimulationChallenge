@@ -10,7 +10,6 @@ class CityChartService
       {
         name: city.name,
         data: city.energies
-                  .select(:energies_production)
                   .group(:year, :month)
                   .order(:year, :month)
                   .sum(:energy_production)
