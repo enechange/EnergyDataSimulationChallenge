@@ -1,0 +1,17 @@
+%h1 市ごとのエネルギー生産量月推移
+= line_chart @cities_data
+
+%table
+  %thead
+    %tr
+      %th name
+      - @dates.each do |date|
+        %th
+          = date
+  - @cities_data.each do |city_data|
+    %tr
+      %td
+        = city_data[:name]
+      - city_data[:data].values.each do |energy_production|
+        %td
+          = energy_production
