@@ -8,7 +8,9 @@
 require 'csv'
 
 house_data = CSV.read('db/house_data.csv', headers: true)
-HouseDataService.call(house_data)
-
 dataset = CSV.read('db/dataset_50.csv', headers: true)
-DatasetService.call(dataset)
+
+ActiveRecord::Base.transaction do
+  HouseDataService.call(house_data)
+  DatasetService.call(dataset)
+end

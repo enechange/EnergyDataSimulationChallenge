@@ -7,10 +7,8 @@ class DatasetService
 
   def call(dataset)
     dataset.each do |row|
-      ActiveRecord::Base.transaction do
-        energy_form = EnergyForm.new(energy_form_params(row))
-        energy_form.save
-      end
+      energy_form = EnergyForm.new(energy_form_params(row))
+      energy_form.save
     end
   end
 

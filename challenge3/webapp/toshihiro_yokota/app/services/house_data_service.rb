@@ -7,11 +7,9 @@ class HouseDataService
 
   def call(house_data)
     house_data.each do |row|
-      ActiveRecord::Base.transaction do
-        city = City.find_or_create_by!(name: row['City'])
-        house_form = HouseForm.new(house_form_params(row, city))
-        house_form.save
-      end
+      city = City.find_or_create_by!(name: row['City'])
+      house_form = HouseForm.new(house_form_params(row, city))
+      house_form.save
     end
   end
 

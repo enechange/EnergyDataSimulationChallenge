@@ -19,9 +19,7 @@ class EnergyForm
   validates :energy_production, presence: true
 
   def save
-    ActiveRecord::Base.transaction do
-      energy.save!
-    end
+    energy.save!
   end
 
   def energy
