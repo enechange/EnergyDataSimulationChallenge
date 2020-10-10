@@ -21,12 +21,12 @@ class HouseForm
   end
 
   def house
-    @house ||= House.new(house_attributes)
+    @house ||= House.new(as_json)
   end
 
   private
 
-  def house_attributes
+  def as_json
     {
       firstname: firstname,
       lastname: lastname,

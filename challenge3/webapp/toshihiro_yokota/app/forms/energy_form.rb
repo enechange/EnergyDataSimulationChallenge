@@ -25,12 +25,12 @@ class EnergyForm
   end
 
   def energy
-    @energy ||= Energy.new(energy_attributes)
+    @energy ||= Energy.new(as_json)
   end
 
   private
 
-  def energy_attributes
+  def as_json
     {
       label: label,
       house_id: house_id,
