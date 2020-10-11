@@ -7,8 +7,10 @@ class Simulator
     simulation_results = []
     plans.each do |plan|
 
+      # find suitable basic charge for current
       # FIXME: Make me readable!! This code confuses developers, "what's happen??"
       basic_charge = plan.basic_charges.find{|basic_charge| basic_charge.current == self.current_i}
+
       # if there are not basic charge relation of ampere, go next loop
       next unless basic_charge.kind_of?(BasicCharge)
 
