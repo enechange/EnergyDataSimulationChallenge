@@ -2,6 +2,7 @@ class SimulatorsController < ApplicationController
   def index
     # binding.pry
     @simulator = Simulator.new
+    @currents = BasicCharge.select(:current).distinct
   end
   def simulate
     # binding.pry

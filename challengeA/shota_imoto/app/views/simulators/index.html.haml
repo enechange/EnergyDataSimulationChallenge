@@ -2,7 +2,7 @@
 = form_with url: simulate_simulators_path, model: @simulator, method: :get, local: true do |f|
   .form
     契約アンペア(A)
-    =f.number_field :current, step: "0.01"
+    =f.select :current, @currents.map{|current| current.current}
   .form
     １ヶ月の電力使用量(kWh)
     =f.number_field :power, step: "0.01"
