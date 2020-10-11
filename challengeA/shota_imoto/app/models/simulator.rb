@@ -3,11 +3,12 @@ class Simulator
 
   attr_accessor :current, :power
   def simulate
-    plans = Plan.all.includes(:provider)
+    plans = Plan.all.includes(:provider, :basic_charges, :usage_charges)
     simulation_results = []
     plans.each do |plan|
-      basic_charge = plan.basic_charges.suitable_for_current(self.current)
 
+      # FIXME: Make me readable!! This code confuses developers, "what's happen??"
+      basic_charge = plan.basic_charges.find{|basic_charge| basic_charge.current == self.current_i}
       # if there are not basic charge relation of ampere, go next loop
       next unless basic_charge.kind_of?(BasicCharge)
 
@@ -21,5 +22,9 @@ class Simulator
 
   def power_i
     self.power.to_i
+  end
+
+  def current_i
+    self.current.to_i
   end
 end
