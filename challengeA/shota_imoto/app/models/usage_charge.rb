@@ -3,7 +3,6 @@ class UsageCharge < ApplicationRecord
 
   belongs_to :plan
   def calculate_usage_charge_each_of_range(power_consumption)
-    binding.pry
     if power_consumption > self.upper_power
       BigDecimal(self.charge_s) * (self.upper_power - self.lower_power)
     else
