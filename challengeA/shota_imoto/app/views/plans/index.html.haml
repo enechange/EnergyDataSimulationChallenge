@@ -10,7 +10,7 @@
       %tr
         %th 契約アンペア
         %th 料金単価(消費税率10%)
-      - plan.basic_charges.each do |basic_charge|
+      - plan.basic_charges.current_order.each do |basic_charge|
         %tr
           %td=basic_charge.current
           %td=basic_charge.charge

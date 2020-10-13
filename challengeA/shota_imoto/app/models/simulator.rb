@@ -15,7 +15,7 @@ class Simulator
       next unless basic_charge.kind_of?(BasicCharge)
 
       sum_usage_charge = plan.calculate_usage_charge(self.power_i)
-      total_price = basic_charge.charge + sum_usage_charge
+      total_price = total_price(basic_charge.charge, sum_usage_charge)
 
       simulation_results << SimulationResult.new(provider_name: plan.provider.name, plan_name: plan.name, price: total_price)
     end
@@ -28,5 +28,14 @@ class Simulator
 
   def current_i
     self.current.to_i
+  end
+
+  def total_price(basic_charge, sum_usage_charge)
+    if sum_usage_charge == 0
+      # when use 0 kWh power, we must pay only half price of basic_charge.
+      (basic_charge/2).floor
+    else
+      (basic_charge + sum_usage_charge).floor
+    end
   end
 end
