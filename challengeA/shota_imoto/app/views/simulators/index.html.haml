@@ -1,0 +1,25 @@
+%h1 EnergyCostSimulator
+= form_with url: simulate_simulators_path, model: @simulator, method: :get, local: true do |f|
+  .form
+    契約アンペア(A)
+    =f.select :current, @currents.map{|current| current.current}
+  .form
+    １ヶ月の電力使用量(kWh)
+    =f.number_field :power, step: "0.01"
+  .btn
+    =f.submit "計算"
+
+.plans
+  .title
+    %h2 プラン一覧
+  .link
+    =link_to "リンク", plans_path
+
+
+.admin_menu
+  .title
+    %h2 管理メニュー
+  .registration_plan=link_to "プラン登録", new_plan_path
+  .registration_provider=link_to "プロバイダー登録", new_provider_path
+  .registration_basic_charge=link_to "基本料金 登録", new_basic_charge_path
+  .registration_usage_charge=link_to "従量料金 登録", new_usage_charge_path

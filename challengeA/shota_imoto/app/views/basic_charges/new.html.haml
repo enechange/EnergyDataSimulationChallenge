@@ -1,0 +1,13 @@
+%h1 基本料金登録
+= form_with model: @basic_charge do |f|
+  .form
+    電流区分
+    =f.number_field :current
+  .form
+    基本料金
+    =f.number_field :charge, step: "0.01"
+  .form
+    プラン選択
+    = f.collection_select :plan, @plans, :id, :name
+  .btn
+    =f.submit "登録"

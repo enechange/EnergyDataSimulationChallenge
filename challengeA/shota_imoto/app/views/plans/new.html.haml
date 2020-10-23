@@ -1,0 +1,12 @@
+%h1 プラン登録
+= form_with model: @plan do |f|
+  .form
+    プラン名
+    =f.text_field :name
+  .form
+    プロバイダー選択
+    = f.collection_select :provider, @providers, :id, :name
+  .btn
+    =f.submit "登録"
+
+
