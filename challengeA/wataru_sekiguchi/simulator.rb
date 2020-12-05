@@ -19,13 +19,17 @@ class Simulator
   end
 
   def simulate
-    set_info
-    @plans.each { |plan| plan[:total_price] = total_price(plan) }
+    calc
     @plans.sort_by! { |a| a[:total_price] }
     puts '', "現在のプラン：#{@residents}人住まいでひと月#{@current_bills}円（#{@amp}A, #{@consumption}kWh）"
     puts '**************************************************************'
     @current_bills <= @plans.first[:total_price] ? no_change : change
     suggestion
+  end
+
+  def calc
+    set_info
+    @plans.each { |plan| plan[:total_price] = total_price(plan) }
   end
 
   def total_price(plan)
@@ -55,7 +59,7 @@ class Simulator
   end
 
   def no_change
-    puts '【最安値プラン】', "現在ご契約中のプランが最安値（ひと月あたり#{@current_bills}円）です！"
+    puts "【最安値プラン】\n現在ご契約中のプランが最安値（ひと月あたり#{@current_bills}円）です！"
     puts '【その他プラン】'
     @plans.each do |plan|
       puts "#{plan[:retailer]}#{plan[:plan]}はひと月あたり#{plan[:total_price]}円"
@@ -66,10 +70,10 @@ class Simulator
     @plans.each_with_index do |plan, idx|
       diff = @current_bills - plan[:total_price]
       if idx.zero?
-        puts '【最安値プラン】', "#{plan[:retailer]}#{plan[:plan]}でひと月あたり#{plan[:total_price]}円(#{diff}円お得！)", '【その他プラン】'
+        puts "【最安値プラン】\n #{plan[:retailer]}の#{plan[:plan]}はひと月あたり#{plan[:total_price]}円(#{diff}円お得！)", '【その他プラン】'
       else
-        puts "#{plan[:retailer]}#{plan[:plan]}でひと月あたり#{plan[:total_price]}円(#{diff}円お得！)\n" if diff.positive?
-        puts "#{plan[:retailer]}#{plan[:plan]}でひと月あたり#{plan[:total_price]}円(#{-diff}円高くなります)\n" if diff.negative?
+        puts "#{plan[:retailer]}の#{plan[:plan]}はひと月あたり#{plan[:total_price]}円(#{diff}円お得！)\n" if diff.positive?
+        puts "#{plan[:retailer]}の#{plan[:plan]}はひと月あたり#{plan[:total_price]}円(#{-diff}円高くなります)\n" if diff.negative?
       end
     end
   end
@@ -79,7 +83,7 @@ class Simulator
     return if @residents <= 5 && guideline[@residents] == @amp
 
     puts '', '**************************************************************'
-    puts '【見直しのご提案】', "#{@residents}人住まいのあなたは#{guideline[@residents]}Aがおすすめ！"
+    puts "【見直しのご提案】\n #{@residents}人住まいのあなたは#{guideline[@residents]}Aがおすすめ！"
     puts 'よくブレーカーが落ちる、なんか電気代が高い、とお考えの方は見直しをご検討ください！'
     puts '※目安であり、部屋の大きさや使用している電気機器の種類や数、オール電化かどうかによって異なります。'
     puts "※集合住宅の場合、所有者等の承諾が必要な場合があります。\n"
