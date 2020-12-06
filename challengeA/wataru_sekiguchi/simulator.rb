@@ -97,7 +97,7 @@ class Simulator
       $stdout.puts comment + '半角数字で入力ください'
       input = $stdin.gets.chomp.to_i
     end
-    exit unless input.positive?
+    input.positive? ? input : exit
   rescue SystemExit
     $stdout.puts '【エラー】始めからやり直してください'
     exit! if __FILE__ == $PROGRAM_NAME
