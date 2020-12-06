@@ -80,7 +80,7 @@ class Simulator
 
   def suggestion
     guideline = { 1 => 30, 2 => 30, 3 => 40, 4 => 50, 5 => 60 }
-    return if @residents <= 5 && guideline[@residents] == @amp
+    return if (@residents <= 5 && guideline[@residents] == @amp) || @residents > 5
 
     puts '', '**************************************************************'
     puts "【見直しのご提案】\n #{@residents}人住まいのあなたは#{guideline[@residents]}Aがおすすめ！"
@@ -88,47 +88,64 @@ class Simulator
     puts '※目安であり、部屋の大きさや使用している電気機器の種類や数、オール電化かどうかによって異なります。'
     puts "※集合住宅の場合、所有者等の承諾が必要な場合があります。\n"
   end
-end
 
-## 入出力
-# 入力値が正しいかチェック（3回失敗でプログラム終了）
-def valid_value?(input, comment)
-  n = 1
-  until input.positive?
-    puts comment + '半角数字で入力ください'
-    input = gets.chomp.to_i
-    puts '始めからやり直してください' if n == 2
-    exit if n == 2
-    n += 1
+  ## Standard input/output
+  def self.valid_value?(input, comment)
+    (1..2).each do |_n|
+      return input if input.positive?
+
+      $stdout.puts comment + '半角数字で入力ください'
+      input = $stdin.gets.chomp.to_i
+    end
+    exit unless input.positive?
+  rescue SystemExit
+    $stdout.puts '【エラー】始めからやり直してください'
+    exit! if __FILE__ == $PROGRAM_NAME
   end
-  input
+
+  def self.residents_reciever
+    puts '電気代のシミュレーションを行います！お得なプランを見つけましょう！'
+    puts '何人でお住まいですか？半角数字で入力ください。（例:1人住まいの場合 "1"）'
+    residents = $stdin.gets.chomp.to_i
+    residents = valid_value?(residents, 'お住まいの人数を')
+    residents
+  end
+
+  def self.bills_reciever
+    puts '現在の月のご利用料金はいくらですか？半角数字で入力ください。（例:1000円の場合 "1000"）'
+    current_bills = $stdin.gets.chomp.to_i
+    current_bills = valid_value?(current_bills, '現在の月のご利用料金を')
+    current_bills
+  end
+
+  def self.consumption_reciever
+    puts '現在の月のご使用量はいくらですか？半角数字で入力ください。（例:100kWhの場合 "100"）'
+    consumption = $stdin.gets.chomp.to_i
+    consumption = valid_value?(consumption, '現在の月のご使用量')
+    consumption
+  end
+
+  def self.amp_reciever
+    puts 'お使いのアンペア数はいくつですか？半角数字で入力ください。（次の内からお選びください：10, 15, 20, 30, 40, 50, 60）'
+    amp = $stdin.gets.chomp.to_i
+    (1..2).each do |_n|
+      return amp if [10, 15, 20, 30, 40, 50, 60].include?(amp)
+
+      $stdout.puts '10, 15, 20, 30, 40, 50, 60 の内から半角数字で入力ください'
+      amp = $stdin.gets.chomp.to_i
+    end
+    [10, 15, 20, 30, 40, 50, 60].include?(amp) ? amp : exit
+  rescue SystemExit
+    $stdout.puts '【エラー】始めからやり直してください'
+    exit! if __FILE__ == $PROGRAM_NAME
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
-  puts '電気代のシミュレーションを行います！お得なプランを見つけましょう！'
-  puts '何人でお住まいですか？半角数字で入力ください。（例:1人住まいの場合 "1"）'
-  residents = gets.chomp.to_i
-  residents = valid_value?(residents, 'お住まいの人数を')
-
-  puts '現在の月のご利用料金はいくらですか？半角数字で入力ください。（例:1000円の場合 "1000"）'
-  current_bills = gets.chomp.to_i
-  current_bills = valid_value?(current_bills, '現在の月のご利用料金を')
-
-  puts '現在の月のご使用量はいくらですか？半角数字で入力ください。（例:100kWhの場合 "100"）'
-  consumption = gets.chomp.to_i
-  consumption = valid_value?(consumption, '現在の月のご使用量')
-
-  puts 'お使いのアンペア数はいくつですか？半角数字で入力ください。（次の内からお選びください：10, 15, 20, 30, 40, 50, 60）'
-  amp = gets.chomp.to_i
-  n = 1
-  until [10, 15, 20, 30, 40, 50, 60].include?(amp)
-    puts '10, 15, 20, 30, 40, 50, 60 の内から半角数字で入力ください'
-    amp = gets.chomp.to_i
-    puts '始めからやり直してください' if n == 2
-    exit if n == 2
-    n += 1
-  end
-
+  residents = Simulator.residents_reciever
+  current_bills = Simulator.bills_reciever
+  consumption = Simulator.consumption_reciever
+  amp = Simulator.amp_reciever
   answer = Simulator.new(residents, current_bills, consumption, amp)
   answer.simulate
 end

@@ -231,4 +231,101 @@ RSpec.describe Simulator do
       end
     end
   end
+
+  describe 'Reciever' do
+    before { allow($stdin).to receive(:gets) { input } }
+
+    context 'of residents' do
+      let(:question) { "電気代のシミュレーションを行います！お得なプランを見つけましょう！\n" }
+      let(:message) { '何人でお住まいですか？半角数字で入力ください。（例:1人住まいの場合 "1"）' + "\n" }
+      subject { Simulator.residents_reciever }
+
+      context 'recieved acceptable value' do
+        let(:input) { "1\n" }
+        it 'returns text and the value' do
+          expect { subject }.to output(question + message).to_stdout
+          is_expected.to eq(input.chomp.to_i)
+        end
+      end
+
+      context 'recieved unacceptable value' do
+        subject { proc { Simulator.residents_reciever } }
+        let(:input) { "a\n" }
+        let(:confirmation) { "お住まいの人数を半角数字で入力ください\n" }
+        let(:error) { "【エラー】始めからやり直してください\n" }
+        it 'puts error message after confirming twice' do
+          is_expected.to output(question + message + confirmation + confirmation + error).to_stdout
+        end
+      end
+    end
+
+    context 'of current_bills' do
+      let(:message) { '現在の月のご利用料金はいくらですか？半角数字で入力ください。（例:1000円の場合 "1000"）' + "\n" }
+      subject { Simulator.bills_reciever }
+
+      context 'recieved acceptable value' do
+        let(:input) { "1\n" }
+        it 'returns text and the value' do
+          expect { subject }.to output(message).to_stdout
+          is_expected.to eq(input.chomp.to_i)
+        end
+      end
+
+      context 'recieved unacceptable value' do
+        subject { proc { Simulator.bills_reciever } }
+        let(:input) { "a\n" }
+        let(:confirmation) { "現在の月のご利用料金を半角数字で入力ください\n" }
+        let(:error) { "【エラー】始めからやり直してください\n" }
+        it 'puts error message after confirming twice' do
+          is_expected.to output(message + confirmation + confirmation + error).to_stdout
+        end
+      end
+    end
+
+    context 'of consumption' do
+      let(:message) { '現在の月のご使用量はいくらですか？半角数字で入力ください。（例:100kWhの場合 "100"）' + "\n" }
+      subject { Simulator.consumption_reciever }
+
+      context 'recieved acceptable value' do
+        let(:input) { "1\n" }
+        it 'returns text and the value' do
+          expect { subject }.to output(message).to_stdout
+          is_expected.to eq(input.chomp.to_i)
+        end
+      end
+
+      context 'recieved unacceptable value' do
+        subject { proc { Simulator.consumption_reciever } }
+        let(:input) { "a\n" }
+        let(:confirmation) { "現在の月のご使用量半角数字で入力ください\n" }
+        let(:error) { "【エラー】始めからやり直してください\n" }
+        it 'puts error message after confirming twice' do
+          is_expected.to output(message + confirmation + confirmation + error).to_stdout
+        end
+      end
+    end
+
+    context 'of amp' do
+      let(:message) { 'お使いのアンペア数はいくつですか？半角数字で入力ください。（次の内からお選びください：10, 15, 20, 30, 40, 50, 60）' + "\n" }
+      subject { Simulator.amp_reciever }
+
+      context 'recieved acceptable value' do
+        let(:input) { "10\n" }
+        it 'returns text and the value' do
+          expect { subject }.to output(message).to_stdout
+          is_expected.to eq(input.chomp.to_i)
+        end
+      end
+
+      context 'recieved unacceptable value' do
+        subject { proc { Simulator.amp_reciever } }
+        let(:input) { "a\n" }
+        let(:confirmation) { "10, 15, 20, 30, 40, 50, 60 の内から半角数字で入力ください\n" }
+        let(:error) { "【エラー】始めからやり直してください\n" }
+        it 'puts error message after confirming twice' do
+          is_expected.to output(message + confirmation + confirmation + error).to_stdout
+        end
+      end
+    end
+  end
 end
