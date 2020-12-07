@@ -47,6 +47,20 @@ RSpec.describe Simulator do
         it { is_expected.to eq (basic_price[amp] + rate[consumption] * consumption).floor }
       end
 
+      context 'with 0kWh' do
+        let(:consumption) { 0 }
+
+        context 'and 10A' do
+          let(:amp) { 10 }
+          it { is_expected.to eq(235) }
+        end
+
+        context 'and 20A' do
+          let(:amp) { 20 }
+          it { is_expected.to eq (basic_price[amp] * 0.5).floor }
+        end
+      end
+
       context 'with 120kWh' do
         let(:consumption) { 120 }
         it { is_expected.to eq (basic_price[amp] + rate[consumption] * consumption).floor }
@@ -79,8 +93,13 @@ RSpec.describe Simulator do
         it { is_expected.to eq (rate * consumption).floor }
       end
 
-      context 'with any consumption' do
-        let(:consumption) { 350 }
+      context 'with less than 8kWh' do
+        let(:consumption) { 8 }
+        it { is_expected.to eq(235) }
+      end
+
+      context 'with more than 9kWh' do
+        let(:consumption) { 9 }
         it { is_expected.to eq (rate * consumption).floor }
       end
     end
@@ -192,12 +211,12 @@ RSpec.describe Simulator do
 
       context 'is the cheapest' do
         let(:current_bills) { 3000 }
-        it { is_expected.to include("【最安値プラン】\n 東京電力エナジーパートナーの従量電灯Bはひと月あたり") }
+        it { is_expected.to include("【最安値プラン】\n東京電力エナジーパートナーの従量電灯Bはひと月あたり") }
       end
 
       context 'is not the cheapest' do
         let(:current_bills) { 1 }
-        it { is_expected.to_not include("【最安値プラン】\n 東京電力エナジーパートナーの従量電灯Bはひと月あたり") }
+        it { is_expected.to_not include("【最安値プラン】\n東京電力エナジーパートナーの従量電灯Bはひと月あたり") }
       end
     end
 
@@ -207,12 +226,12 @@ RSpec.describe Simulator do
 
       context 'is the cheapest' do
         let(:current_bills) { 3000 }
-        it { is_expected.to include("【最安値プラン】\n Looopでんきのおうちプランはひと月あたり") }
+        it { is_expected.to include("【最安値プラン】\nLooopでんきのおうちプランはひと月あたり") }
       end
 
       context 'is not the cheapest' do
         let(:current_bills) { 1 }
-        it { is_expected.to_not include("【最安値プラン】\n Looopでんきのおうちプランはひと月あたり") }
+        it { is_expected.to_not include("【最安値プラン】\nLooopでんきのおうちプランはひと月あたり") }
       end
     end
 
@@ -222,12 +241,12 @@ RSpec.describe Simulator do
 
       context 'is the cheapest' do
         let(:current_bills) { 10_000 }
-        it { is_expected.to include("【最安値プラン】\n 東京ガスのずっとも電気１はひと月あたり") }
+        it { is_expected.to include("【最安値プラン】\n東京ガスのずっとも電気１はひと月あたり") }
       end
 
       context 'is not the cheapest' do
         let(:current_bills) { 1 }
-        it { is_expected.to_not include("【最安値プラン】\n 東京ガスのずっとも電気１はひと月あたり") }
+        it { is_expected.to_not include("【最安値プラン】\n東京ガスのずっとも電気１はひと月あたり") }
       end
     end
   end
