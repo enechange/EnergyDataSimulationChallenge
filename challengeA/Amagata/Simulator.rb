@@ -5,28 +5,40 @@ class Simulator
   end
 
   def simulate
-    # if A < B && A < C
+    # if sum_tepco < B && sum_tepco < C
     #   p A
-    # elsif B < A && B < C
+    # elsif B < sum_tepco && B < C
     #   p B
     # else
     #   p C
     # end
+    # p sum_tepco
   end
+  
+  def calc_tepco
+    # 基本料金
+    tepco= { "10A" => "286", "15A" => "429", "20A" => "572","30A" => "858", "40A" => "1144", "50A" => "1430", "60A" => "1716" }
+    loooop=0
+    tokyo_gas= { "30A" => "858", "40A" => "1144", "50A" => "1430", "60A" => "1716" }
+    # kWhの条件
+    if @kilowatt_hour < 120
+      sum_tepco = tepco["#{@ampare}A"].to_i + 19.88
+    elsif @kilowatt_hour >=120 && @kilowatt_hour < 300
+      sum_tepco = tepco["#{@ampare}A"].to_i + 26.48
+    else
+      sum_tepco = tepco["#{@ampare}A"].to_i + 30.57
+    end  
+    p sum_tepco
+  end
+  
 end
-
-
-
 # 入力欄
 p "契約アンペアを入力してください(A)"
 ampere = gets.to_i
 p "1ヶ月の電力使用料を入力してください(kWh)"
 kilowatt_hour = gets.to_i
 simulator = Simulator.new(ampere,kilowatt_hour)
-simulator.simulate
+# simulator.simulate
+simulator.calc_tepco
 
-# 基本料金
-tepco= { "10A" => "286", "15A" => "429", "20A" => "572","30A" => "858", "40A" => "1144", "50A" => "1430", "60A" => "1716" }
-loooop=0
-tokyo_gas= { "30A" => "858", "40A" => "1144", "50A" => "1430", "60A" => "1716" }
 
