@@ -36,6 +36,22 @@ class Simulator
       sum_loooop = 26.4*@kilowatt_hour
     p sum_loooop
   end
+
+  def calc_tokyo_gas
+    # 基本料金
+    tepco= { "10A" => "286", "15A" => "429", "20A" => "572","30A" => "858", "40A" => "1144", "50A" => "1430", "60A" => "1716" }
+    tokyo_gas= { "30A" => "858", "40A" => "1144", "50A" => "1430", "60A" => "1716" }
+    # kWhの条件と計算結果
+    if @kilowatt_hour < 140
+      sum_tokyo_gas = tokyo_gas["#{@ampare}A"].to_i + 23.67*@kilowatt_hour
+    elsif @kilowatt_hour >=140 && @kilowatt_hour < 350
+      sum_tokyo_gas = tokyo_gas["#{@ampare}A"].to_i + 23.88*@kilowatt_hour
+    else
+      sum_tokyo_gas = tokyo_gas["#{@ampare}A"].to_i + 26.41*@kilowatt_hour
+    end  
+    p sum_tokyo_gas
+  end
+
   
 end
 # 入力欄
@@ -46,6 +62,7 @@ kilowatt_hour = gets.to_i
 simulator = Simulator.new(ampere,kilowatt_hour)
 # simulator.simulate
 # simulator.calc_tepco
-simulator.calc_loooop
+# simulator.calc_loooop
+simulator.calc_tokyo_gas
 
 
