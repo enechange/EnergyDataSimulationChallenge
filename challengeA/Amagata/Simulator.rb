@@ -109,6 +109,7 @@
 class Information
   #東京の基本料金
   @@basic_charge_tokyo= { "10A" => "286", "15A" => "429", "20A" => "572","30A" => "858", "40A" => "1144", "50A" => "1430", "60A" => "1716" }
+  
   # 以下、[会社名、プラン名、レンジ、従量料金]
   def tepco
     @tepco = ["TEPCO","従量電灯B",[0,120,300],[19.88,26.48,30.57]]
@@ -123,17 +124,26 @@ class Information
   end
 end
 
-
+class UserInput
+  # 区分を入力
+  def ampare
+    p "契約アンペアを入力してください(A)"
+    gets.to_i
+  end
+  # 使用電力を入力
+  def kilowatt_hour
+    p "1ヶ月の電力使用料を入力してください(kWh)"
+    gets.to_i
+  end
+end
 # simulator=Simulator.new
 
 data=Information.new
 data.tepco
 
-
-# # 入力欄
-# p "契約アンペアを入力してください(A)"
-# ampere = gets.to_i
-# p "1ヶ月の電力使用料を入力してください(kWh)"
-# kilowatt_hour = gets.to_i
+user_input=UserInput.new
+# ユーザー情報入力
+user_input.ampare
+user_input.kilowatt_hour
 # simulator = Simulator.new(ampere,kilowatt_hour)
 # simulator.simulate
