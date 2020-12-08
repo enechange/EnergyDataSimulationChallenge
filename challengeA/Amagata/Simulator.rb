@@ -107,19 +107,22 @@
 # end
 
 class Information
+  #東京の基本料金
   @@basic_charge_tokyo= { "10A" => "286", "15A" => "429", "20A" => "572","30A" => "858", "40A" => "1144", "50A" => "1430", "60A" => "1716" }
+  # 以下、[会社名、プラン名、レンジ、従量料金]
   def tepco
-    @tepco = ["TEPCO","従量電灯B",[0,120,300]]
+    @tepco = ["TEPCO","従量電灯B",[0,120,300],[19.88,26.48,30.57]]
   end
-
+  
   def  loooop
-    @loooop = ["Loooop","おうちプラン",[nil,nil,nil]]
+    @loooop = ["Loooop","おうちプラン",[0],[26.40]]
   end
 
   def  tokyo_gas
-    @tokyo_gas = ["Tokyo gas","ずっとも電気１",[0,140,350]]
+    @tokyo_gas = ["Tokyo gas","ずっとも電気１",[0,140,350],[23.67,23.88,26.41]]
   end
 end
+
 
 # simulator=Simulator.new
 
