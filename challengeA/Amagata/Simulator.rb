@@ -16,14 +16,14 @@ class Calculator
       # 基本料金を定義
       basic = info.basic_charge["#{@ampare}A"]
       # 単価決定の条件式1
-      if array[2][0]<= @kilowatt_hour && @kilowatt_hour < array[2][1]
-        sum = basic + array[3][0] * @kilowatt_hour
+      if array[:range][0]<= @kilowatt_hour && @kilowatt_hour < array[:range][1]
+        sum = basic + array[:pay_per_use][0] * @kilowatt_hour
       # 単価決定の条件式2
-      elsif @kilowatt_hour >= array[2][1] && @kilowatt_hour < array[2][2]
-        sum = basic + array[3][1] * @kilowatt_hour
+      elsif @kilowatt_hour >= array[:range][1] && @kilowatt_hour < array[:range][2]
+        sum = basic + array[:pay_per_use][1] * @kilowatt_hour
       # 単価決定の条件式3
       else
-        sum = basic + array[3][2] * @kilowatt_hour
+        sum = basic + array[:pay_per_use][2] * @kilowatt_hour
       end
       price << sum
     end
@@ -31,7 +31,7 @@ class Calculator
     # 料金の計算結果の個数だけ会社とプラント料金を、配列@resultsに入れる。
     @results=[]
     price.length.times do |i|
-      @results << { provider_name: "#{arrays_all[i][0]}", plan_name: "#{arrays_all[i][1]}", price: "#{price[i]}" }
+      @results << { provider_name: "#{arrays_all[i][:provider_name]}", plan_name: "#{arrays_all[i][:plan_name]}", price: "#{price[i]}" }
     end
   end
   # 結果ゲッター
@@ -44,23 +44,45 @@ end
 class Information
   #東京の基本料金
   def basic_charge
-    @basic_charge_tokyo= { "10A" => 286, "15A" => 429, "20A" => 572,"30A" => 858, "40A" => 1144, "50A" => 1430, "60A" => 1716 }
+    @basic_charge_tokyo= { 
+      "10A" => 286, "15A" => 429, "20A" => 572,"30A" => 858, "40A" => 1144, "50A" => 1430, "60A" => 1716 
+    }
   end
   # 以下、[会社名、プラン名、レンジ、従量料金]
   def tepco
-    @tepco = ["TEPCO","従量電灯B",[0,120,300],[19.88,26.48,30.57]]
+    @tepco = {
+      "provider_name": "TEPCO",
+      "plan_name": "従量電灯B",
+      "range": [0,120,300],
+      "pay_per_use": [19.88,26.48,30.57]
+    }
   end
 
   def  loooop
-    @loooop = ["Loooop","おうちプラン",[0,0,0],[26.40,26.40,26.40]]
+    @loooop = {
+      "provider_name": "Loooop",
+      "plan_name": "おうちプラン",
+      "range": [0,0,0],
+      "pay_per_use": [26.40,26.40,26.40]
+    }
   end
 
   def  tokyo_gas
-    @tokyo_gas = ["Tokyo gas","ずっとも電気１",[0,140,350],[23.67,23.88,26.41]]
+    @tokyo_gas = {
+      "provider_name": "Tokyo gas",
+      "plan_name": "ずっとも電気１",
+      "range": [0,140,350],
+      "pay_per_use": [23.67,23.88,26.41]
+    }
   end
 #追加用
   # def amagata
-  #   @amagata=["amagata","amagataplan",[0,200,500],[10,20,30]]
+  #   @amagata={
+  #     "provider_name": "amagata",
+  #     "plan_name": "amagataplan",
+  #     "range": [0,200,500],
+  #     "pay_per_use": [10,20,30]
+  #   }
   # end
 end
 
