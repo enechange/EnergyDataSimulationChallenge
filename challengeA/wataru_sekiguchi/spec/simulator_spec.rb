@@ -211,12 +211,12 @@ RSpec.describe Simulator do
 
       context 'is the cheapest' do
         let(:current_bills) { 3000 }
-        it { is_expected.to include("【最安値プラン】\n東京電力エナジーパートナーの従量電灯Bはひと月あたり") }
+        it { is_expected.to include("【最安値プラン】\n東京電力エナジーパートナーの従量電灯Ｂはひと月あたり") }
       end
 
       context 'is not the cheapest' do
         let(:current_bills) { 1 }
-        it { is_expected.to_not include("【最安値プラン】\n東京電力エナジーパートナーの従量電灯Bはひと月あたり") }
+        it { is_expected.to_not include("【最安値プラン】\n東京電力エナジーパートナーの従量電灯Ｂはひと月あたり") }
       end
     end
 
