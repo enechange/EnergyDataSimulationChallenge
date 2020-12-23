@@ -165,11 +165,12 @@ The first line gives the format name. `ID` column values in this file are same t
 
 ### Output
 
-1. Please place ALL source code in `challenge3/webapp/YOURNAME/`
-2. Write deployed URL in Pull Request Comment.
+1. Fork this repository.
+2. Place all source code in `challenge3/webapp/YOURNAME/`.
+3. Create a pull request.
+4. (Option) Write deployed url in pull request comment.
 
-You can refer to sample implementation in `challenge3/webapp/sample/`
-But please bear in mind that it is a rough implementation and may be broken in some places.
+You can refer to sample implementation in `challenge3/webapp/sample/`, but please bear in mind that it is a rough implementation and may be broken in some places.
 
 ## Challenge 4 - WEB-API Server
 
