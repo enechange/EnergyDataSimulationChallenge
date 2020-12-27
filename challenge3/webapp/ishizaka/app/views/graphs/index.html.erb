@@ -1,7 +1,11 @@
-<%= javascript_pack_tag 'hello_vue' %>
-<%= stylesheet_pack_tag 'hello_vue' %>
-
-<div id='vue'>
-  {{message}}
-  <chart></chart>
+<div>
+  <% @houses.each do |house| %>
+    <p><%= house.id %></p>
+    <p><%= house.first_name %></p>
+    <p><%= house.last_name %></p>
+    <p><%= house.city %></p>
+    <p><%= house.num_of_people %></p>
+    <p><%= house.has_child %></p>
+    <p><%= link_to 'Detail', graph_path(house.id) %></p>
+  <% end %>
 </div>

@@ -1,0 +1,14 @@
+<%= javascript_pack_tag 'hello_vue' %>
+<%= stylesheet_pack_tag 'hello_vue' %>
+
+<div>
+  <%= @energy_production %>
+</div>
+<h3 class=""><%= @name %>'s Energy Production</h3>
+<div id='vue'>
+  <chart></chart>
+</div>
+
+<script>
+  const dates = <%= @dates %>;
+</script>

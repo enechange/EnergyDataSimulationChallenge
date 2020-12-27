@@ -1,6 +1,5 @@
 <template>
   <div class="graph-wrap">
-    <h3 class="title">世帯人数ごとの平均年間エネルギー生産</h3>
     <BarChart/>
   </div>
 </template>
@@ -13,19 +12,13 @@ var BarChart = {
   mounted () {
     this.renderChart({
       //ラベル
-      labels:['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+      labels: dates,
       //データ詳細
       datasets: [{
         type: 'bar',
-        label:'エネルギー生産（子供なし）',
+        label:'Energy Production',
         data: [20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130],
         backgroundColor: 'blue'
-      },
-      {
-        type: 'bar',
-        label:'エネルギー生産（子供あり）',
-        data: [20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130],
-        backgroundColor: 'green'
       }]
     });
   }
