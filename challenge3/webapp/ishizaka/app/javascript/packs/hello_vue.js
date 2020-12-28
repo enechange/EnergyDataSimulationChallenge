@@ -32,18 +32,18 @@
 // </div>
 
 
-// import Vue from 'vue/dist/vue.esm'
-// import App from '../app.vue'
-//
-// document.addEventListener('DOMContentLoaded', () => {
-//   const app = new Vue({
-//     el: '#hello',
-//     data: {
-//       message: "Can you say hello?"
-//     },
-//     components: { App }
-//   })
-// })
+import Vue from 'vue/dist/vue.esm'
+import Chart from '../chart.vue'
+
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new Vue({
+    el: '#vue',
+    data: {
+      message: "Can you say hello?"
+    },
+    components: { Chart }
+  })
+})
 //
 //
 //
@@ -53,23 +53,19 @@
 //
 // Then uncomment the code block below:
 //
-import TurbolinksAdapter from 'vue-turbolinks'
-import Vue from 'vue/dist/vue.esm'
-import App from '../app.vue'
-import Chart from '../chart.vue'
+// import TurbolinksAdapter from 'vue-turbolinks'
+// import Vue from 'vue/dist/vue.esm'
+// import App from '../app.vue'
+// import Chart from '../chart.vue'
 
-Vue.use(TurbolinksAdapter)
+// Vue.use(TurbolinksAdapter)
 
-document.addEventListener('turbolinks:load', () => {
-  const app = new Vue({
-    el: '#vue',
-    // data: () => {
-    //   return {
-    //     message: "Can you say hello?"
-    //   }
-    // },
-    components: {
-      Chart,
-    }
-  })
-})
+// document.addEventListener('turbolinks:load', () => {
+//   const app = new Vue({
+//     el: '#vue',
+//     components: {
+//       App,
+//       Chart,
+//     }
+//   })
+// })

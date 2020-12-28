@@ -4,22 +4,64 @@
   </div>
 </template>
 
-<script>
+<script defer>
 import { Bar } from 'vue-chartjs'
 
 var BarChart = {
   extends: Bar,
   mounted () {
+    const elem = document.getElementById('datasets');
+    const energyProduction = elem.dataset.energy.split(',');
+    const tempreture = elem.dataset.temperature.split(',');
+    const daylight = elem.dataset.daylight.split(',');
+    const dates = elem.dataset.dates.split(',');
     this.renderChart({
       //ラベル
       labels: dates,
       //データ詳細
-      datasets: [{
+      datasets: [
+      {
+        type: 'line',
+        fill: false,
+        label:'Temperature',
+        data: daylight,
+        backgroundColor: 'rgba(34, 116, 165, 0.8)',
+        borderColor: 'rgba(34, 116, 165, 0.5)'
+      },
+      {
+        type: 'line',
+        fill: false,
+        label:'Daylight',
+        data: tempreture,
+        backgroundColor: 'rgba(234, 140, 85, 0.8)',
+        borderColor: 'rgba(234, 140, 85, 0.5)',
+        yAxisID: "y-axis-2"
+      },
+      {
         type: 'bar',
         label:'Energy Production',
-        data: [20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130],
-        backgroundColor: 'blue'
+        data: energyProduction,
+        backgroundColor: 'rgba(231, 235, 144, 0.8)',
       }]
+    },
+    {
+      scales: {
+        yAxes: [{
+            id: "y-axis-1",
+            type: "linear",
+            position: "left",
+        },
+        {
+          id: "y-axis-2",
+          type: "linear", 
+          position: "right",
+          ticks: {
+              max: 100,
+              min: 0,
+              stepSize: 10
+          },
+        }],
+      }
     });
   }
 }
