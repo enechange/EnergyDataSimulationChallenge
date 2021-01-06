@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: Taishi_Ito_production
   username: Taishi_Ito
   password: <%= ENV['TAISHI_ITO_DATABASE_PASSWORD'] %>
