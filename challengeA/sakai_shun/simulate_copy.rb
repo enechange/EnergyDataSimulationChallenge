@@ -1,24 +1,6 @@
+require 'pp'
+
 class Simulator
-  attr_reader :calculator
-
-  def initialize(contract_amp, usage, tokyo_gas, tepco, looop_denki)
-    @calculator = Calculator.new(
-      contract_amp,
-      usage,
-      tokyo_gas,
-      tepco,
-      looop_denki
-    )
-  end
-
-  # [{provider_name: "Looopでんき", plan_name: "おうちプラン", price: 1234}, ...]の形で返ってくることを期待する
-  def simulate
-    plans = calculator.calculate
-    puts plans
-  end
-end
-
-class Calculator
   attr_reader :contract_amp, :usage, :plans
 
   def initialize(contract_amp, usage, *power_company)
@@ -27,16 +9,15 @@ class Calculator
     @plans = Plans.new(power_company)
   end
 
-  # [{provider_name: "Looopでんき", plan_name: "おうちプラン", price: 1234}, ...]の形で返す
-  def calculate
-    prices = basic_price.zip(energy_price).map { |a, b| a + b }
-    plans.plans.map.with_index do |plan, i|
+  def simulate
+    result = plans.plans.map do |plan|
       {
         provider_name: plan.provider_name,
         plan_name: plan.name,
-        price: prices[i]
+        price: price[plan.name.to_sym]
       }
     end
+    puts result
   end
 
   def basic_price
@@ -45,6 +26,17 @@ class Calculator
 
   def energy_price
     plans.energy_price(usage)
+  end
+
+  def price
+    result = {}
+    prices = basic_price.concat(energy_price)
+    plans.plans.map do |plan|
+      price = prices.sum{_1[plan.name.to_sym] || 0}
+      result[plan.name.to_sym] = price
+    end
+
+    return result
   end
 end
 
@@ -55,19 +47,17 @@ class Plans
     @plans = plans
   end
 
-  # 基本料金を配列で返すようにする。例) [1000, 2000, 3000]
   def basic_price(contract_amp)
     basic_fees = []
 
     plans.map do |plan|
-      plan.basic_charge.map do |amount|
-        if amount[:ampere] == contract_amp
-          basic_fee = amount[:amount]
-          basic_fees << basic_fee
+      plan.basic_charge.map do |usage_fee|
+        if usage_fee[:ampere] == contract_amp
+          basic_fee = usage_fee[:amount]
+          basic_fees << { plan.name.to_sym => basic_fee }
         end
       end
     end
-
     return basic_fees
   end
 
@@ -79,11 +69,10 @@ class Plans
         range = Range.new(fee_structure[:range][:from_kwh], fee_structure[:range][:to_kwh])
         if range.cover?(usage)
           energy_fee = usage * fee_structure[:cost_per_kwh]
-          energy_fees << energy_fee
+          energy_fees << { plan.name.to_sym => energy_fee }
         end
       end
     end
-
     return energy_fees
   end
 end
