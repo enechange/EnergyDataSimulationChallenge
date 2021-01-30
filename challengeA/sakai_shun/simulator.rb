@@ -10,8 +10,7 @@ class Simulator
   end
 
   def simulate
-    result = plans.plans.map do |plan|
-
+    result = plans.check(contract_amp).map do |plan|
       {
         provider_name: plan.provider_name,
         plan_name: plan.name,
@@ -27,14 +26,6 @@ class Simulator
     plans ||= Plans.new(power_companies)
   end
 
-  def basic_price
-    plans.basic_price(contract_amp)
-  end
-
-  def energy_price
-    plans.energy_price(usage)
-  end
-
   def price
     result = {}
     prices = basic_price.concat(energy_price)
@@ -44,6 +35,14 @@ class Simulator
     end
 
     return result
+  end
+
+  def basic_price
+    plans.basic_price(contract_amp)
+  end
+
+  def energy_price
+    plans.energy_price(usage)
   end
 end
 
@@ -65,7 +64,6 @@ class Plans
         end
       end
     end
-    # pp basic_fees
     return basic_fees
   end
 
@@ -83,14 +81,19 @@ class Plans
     end
     return energy_fees
   end
+
+  def check(constract_amp)
+    plans.select { _1.supporting_amp.include?(constract_amp) }
+  end
 end
 
 class Plan
-  attr_accessor :name, :provider_name, :basic_charge, :energy_charge
+  attr_accessor :name, :provider_name, :supporting_amp, :basic_charge, :energy_charge
 
   def initialize(args)
     @name = args[:name]
     @provider_name = args[:provider_name]
+    @supporting_amp = args[:supporting_amp]
     @basic_charge = args[:basic_charge]
     @energy_charge = args[:energy_charge]
   end
@@ -99,6 +102,7 @@ end
 tokyo_gas = Plan.new(
   name: "ずっとも電気１",
   provider_name: "東京ガス",
+  supporting_amp: [30, 40, 50, 60],
   basic_charge: [
     {
       "ampere": 30,
@@ -128,14 +132,14 @@ tokyo_gas = Plan.new(
     {
       "cost_per_kwh": 23.88,
       "range": {
-        "from_kwh": 140,
+        "from_kwh": 141,
         "to_kwh":  350
       }
     },
     {
       "cost_per_kwh": 26.41,
       "range": {
-        "from_kwh": 350,
+        "from_kwh": 351,
         "to_kwh":  99999
       }
     }
@@ -145,6 +149,7 @@ tokyo_gas = Plan.new(
 tepco = Plan.new(
   name: "従量電灯B",
   provider_name: "東京電力エナジーパートナー",
+  supporting_amp: [10, 15, 20, 30, 40, 50, 60],
   basic_charge: [
     {
       "ampere": 10,
@@ -186,14 +191,14 @@ tepco = Plan.new(
     {
       "cost_per_kwh": 26.48,
       "range": {
-        "from_kwh": 120,
+        "from_kwh": 121,
         "to_kwh":  300
       }
     },
     {
       "cost_per_kwh": 30.57,
       "range": {
-        "from_kwh": 300,
+        "from_kwh": 301,
         "to_kwh":  99999
       }
     }
@@ -203,9 +208,14 @@ tepco = Plan.new(
 looop_denki = Plan.new(
   name: "おうちプラン",
   provider_name: "Looopでんき",
+  supporting_amp: [10, 15, 20, 30, 40, 50, 60],
   basic_charge: [
     {
       "ampere": 10,
+      "amount": 0
+    },
+    {
+      "ampere": 15,
       "amount": 0
     },
     {
@@ -241,5 +251,5 @@ looop_denki = Plan.new(
 )
 
 # 第一引数：契約アンペア、第二引数：1ヶ月の使用量(kWh)
-simulator = Simulator.new(10, 280, tokyo_gas, tepco, looop_denki)
+simulator = Simulator.new(30, 280, tokyo_gas, tepco, looop_denki)
 p simulator.simulate
