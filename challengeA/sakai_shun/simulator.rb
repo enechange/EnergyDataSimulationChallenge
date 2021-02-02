@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pp'
 
 class Simulator
@@ -10,14 +12,13 @@ class Simulator
   end
 
   def simulate
-    result = plans.check(contract_amp).map do |plan|
+    plans.check(contract_amp).map do |plan|
       {
         provider_name: plan.provider_name,
         plan_name: plan.name,
         price: price[plan.name.to_sym]
       }
     end
-    return result
   end
 
   private
@@ -34,7 +35,7 @@ class Simulator
       result[plan.name.to_sym] = price
     end
 
-    return result
+    result
   end
 
   def basic_price
@@ -64,22 +65,27 @@ class Plans
         end
       end
     end
-    return basic_fees
+    basic_fees
   end
 
   def energy_price(usage)
     energy_fees = []
 
     plans.map do |plan|
+      energy_fee = 0
       plan.energy_charge.map do |fee_structure|
         range = Range.new(fee_structure[:range][:from_kwh], fee_structure[:range][:to_kwh])
+
         if range.cover?(usage)
-          energy_fee = usage * fee_structure[:cost_per_kwh]
-          energy_fees << { plan.name.to_sym => energy_fee }
+          energy_fee += (usage - fee_structure[:range][:from_kwh]) * fee_structure[:cost_per_kwh]
+        elsif usage > fee_structure[:range][:to_kwh]
+          energy_fee += (fee_structure[:range][:to_kwh] - fee_structure[:range][:from_kwh]) * fee_structure[:cost_per_kwh]
         end
       end
+      energy_fees << { plan.name.to_sym => energy_fee }
     end
-    return energy_fees
+
+    energy_fees
   end
 
   def check(constract_amp)
@@ -100,8 +106,8 @@ class Plan
 end
 
 tokyo_gas = Plan.new(
-  name: "ずっとも電気１",
-  provider_name: "東京ガス",
+  name: 'ずっとも電気１',
+  provider_name: '東京ガス',
   supporting_amp: [30, 40, 50, 60],
   basic_charge: [
     {
@@ -126,29 +132,29 @@ tokyo_gas = Plan.new(
       "cost_per_kwh": 23.67,
       "range": {
         "from_kwh": 0,
-        "to_kwh":  140
+        "to_kwh": 140
       }
     },
     {
       "cost_per_kwh": 23.88,
       "range": {
-        "from_kwh": 141,
-        "to_kwh":  350
+        "from_kwh": 140,
+        "to_kwh": 350
       }
     },
     {
       "cost_per_kwh": 26.41,
       "range": {
-        "from_kwh": 351,
-        "to_kwh":  99999
+        "from_kwh": 350,
+        "to_kwh": 99_999
       }
     }
   ]
 )
 
 tepco = Plan.new(
-  name: "従量電灯B",
-  provider_name: "東京電力エナジーパートナー",
+  name: '従量電灯B',
+  provider_name: '東京電力エナジーパートナー',
   supporting_amp: [10, 15, 20, 30, 40, 50, 60],
   basic_charge: [
     {
@@ -185,29 +191,29 @@ tepco = Plan.new(
       "cost_per_kwh": 19.88,
       "range": {
         "from_kwh": 0,
-        "to_kwh":  120
+        "to_kwh": 120
       }
     },
     {
       "cost_per_kwh": 26.48,
       "range": {
-        "from_kwh": 121,
-        "to_kwh":  300
+        "from_kwh": 120,
+        "to_kwh": 300
       }
     },
     {
       "cost_per_kwh": 30.57,
       "range": {
-        "from_kwh": 301,
-        "to_kwh":  99999
+        "from_kwh": 300,
+        "to_kwh": 99_999
       }
     }
   ]
 )
 
 looop_denki = Plan.new(
-  name: "おうちプラン",
-  provider_name: "Looopでんき",
+  name: 'おうちプラン',
+  provider_name: 'Looopでんき',
   supporting_amp: [10, 15, 20, 30, 40, 50, 60],
   basic_charge: [
     {
@@ -244,12 +250,12 @@ looop_denki = Plan.new(
       "cost_per_kwh": 26.40,
       "range": {
         "from_kwh": 0,
-        "to_kwh":  99999
+        "to_kwh": 99_999
       }
     }
   ]
 )
 
 # 第一引数：契約アンペア、第二引数：1ヶ月の使用量(kWh)
-simulator = Simulator.new(30, 280, tokyo_gas, tepco, looop_denki)
+simulator = Simulator.new(30, 100, tokyo_gas, tepco, looop_denki)
 p simulator.simulate

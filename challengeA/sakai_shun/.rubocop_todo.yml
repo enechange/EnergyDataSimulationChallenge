@@ -1,0 +1,7 @@
+Metrics/AbcSize:
+  Exclude:
+    - simulator.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - simulator.rb
