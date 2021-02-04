@@ -24,7 +24,7 @@ class Simulator
   private
 
   def plans
-    plans ||= Plans.new(power_companies)
+    Plans.new(power_companies)
   end
 
   def price
@@ -65,6 +65,7 @@ class Plans
         end
       end
     end
+
     basic_fees
   end
 
