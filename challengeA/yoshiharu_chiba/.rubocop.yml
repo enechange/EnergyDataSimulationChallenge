@@ -1,3 +1,6 @@
+AllCops:
+  NewCops: enable
+
 Style/AsciiComments:
   Enabled: false
 
@@ -35,9 +38,6 @@ Metrics/ClassLength:
 
 Metrics/MethodLength:
   Max: 15
-
-AllCops:
-  NewCops: enable
 
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
