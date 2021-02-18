@@ -1,8 +1,7 @@
-# frozen_string_literal: true
+# # frozen_string_literal: true
 
-require_relative '../lib/companies/tokyo_denryoku'
-require_relative '../lib/companies/looop'
-require_relative '../lib/companies/tokyo_gas'
+require_relative './calculate'
+require "json"
 
 class Simulator
   def initialize(amps, amount_per_month)
@@ -11,54 +10,37 @@ class Simulator
   end
 
   def simulate
-    # 東京電力の計算
-    tokyo_denryoku_price = tokyo_denryoku_plan(@amps, @amount_per_month)
+    calculate = Calculate.new(@amps, @amount_per_month)
 
-    # ループ電気の計算
-    looop_price = looop_plan(@amps, @amount_per_month)
+    # 東京電力
+    tokyo_denryoku_price = calculate.tokyo_denryoku_plan
 
-    # 東京ガスの計算
-    tokyo_gas_price = tokyo_gas_plan(@amps, @amount_per_month) if [30, 40, 50, 60].include?(@amps)
+    # ループでんき
+    looop_price = calculate.looop_plan
 
-    # 新規電力会社の計算
-    # hoge_price = hoge_plan(@amps, @amount_per_month)
+    # 東京ガス
+    tokyo_gas_price = calculate.tokyo_gas_plan if [30, 40, 50, 60].include?(@amps)
 
-    if tokyo_gas_price.nil?
-      p [
-        { provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯Bプラン', price: tokyo_denryoku_price.to_s },
-        { provider_name: 'Looopでんき', plan_name: 'おうちプラン', price: looop_price.to_s }
-      ]
-    else
-      p [
-        { provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯Bプラン', price: tokyo_denryoku_price.to_s },
-        { provider_name: 'Looopでんき', plan_name: 'おうちプラン', price: looop_price.to_s },
-        { provider_name: '東京ガス', plan_name: 'ずっとも電気１プラン', price: tokyo_gas_price.to_s }
-      ]
+    # 新規電力会社
+    # test_price = calculate.test_plan
+
+    # test_price.to_sを末尾に追記
+    prices = [tokyo_denryoku_price.to_s, looop_price.to_s, tokyo_gas_price.to_s]
+    all_plans = File.open("json_plan.json") do |file|
+      hash = JSON.load(file)
+      hash.each_with_index do |plan, i|
+        plan["price"] = prices[i]
+      end
     end
+
+    plans = []
+    all_plans.each do |plan|
+      unless plan["price"].empty?
+        plans << plan
+      end
+    end
+    p plans
   end
-
-  private
-
-  def tokyo_denryoku_plan(amps, amount_per_month)
-    tokyodenryoku = TokyoDenryoku.new(amps, amount_per_month)
-    tokyodenryoku.tokyo_denryoku_plan
-  end
-
-  def looop_plan(amps, amount_per_month)
-    looop = Looop.new(amps, amount_per_month)
-    looop.looop_plan
-  end
-
-  def tokyo_gas_plan(amps, amount_per_month)
-    tokyogas = TokyoGas.new(amps, amount_per_month)
-    tokyogas.tokyo_gas_plan
-  end
-
-  # 新規電力会社の計算
-  # def hoge_plan
-  #   hoge = Hoge.new(amps, amount_per_month)
-  #   hoge.hoge_plan
-  # end
 end
 
 amps_range = [10, 15, 20, 30, 40, 50, 60]
