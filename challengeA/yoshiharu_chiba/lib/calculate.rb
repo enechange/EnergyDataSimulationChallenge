@@ -6,17 +6,24 @@ class Calculate
     @amount_per_month = amount_per_month
   end
 
+  # 東京電力
   def tokyo_denryoku_plan
     (tokyo_denryoku_amps_price + tokyo_denryoku_amount_price).floor
   end
 
+  # Looopでんき
   def looop_plan
     (@amount_per_month * 26.40).floor
   end
 
+  # 東京ガス
   def tokyo_gas_plan
     (tokyo_gas_amps_price + tokyo_gas_amount_price).floor
   end
+
+  # 新規電力会社
+  # def test_plan
+  # end
 
   private
 
