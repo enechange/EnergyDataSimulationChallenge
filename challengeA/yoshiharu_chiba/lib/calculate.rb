@@ -8,21 +8,22 @@ class Calculate
 
   # 東京電力
   def tokyo_denryoku_plan
-    (tokyo_denryoku_amps_price + tokyo_denryoku_amount_price).floor
+    (tokyo_denryoku_amps_price + tokyo_denryoku_amount_price).floor.to_s
   end
 
   # Looopでんき
   def looop_plan
-    (@amount_per_month * 26.40).floor
+    (@amount_per_month * 26.40).floor.to_s
   end
 
   # 東京ガス
   def tokyo_gas_plan
-    (tokyo_gas_amps_price + tokyo_gas_amount_price).floor
+    (tokyo_gas_amps_price + tokyo_gas_amount_price).floor.to_s
   end
 
   # 新規電力会社
   # def test_plan
+  #   ().floor.to_s
   # end
 
   private
