@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 # # frozen_string_literal: true
 
 require_relative './calculate'
-require "json"
+require 'json'
 
 class Simulator
   def initialize(amps, amount_per_month)
@@ -9,38 +11,36 @@ class Simulator
     @amount_per_month = amount_per_month
   end
 
+  # rubocop:disable Metrics/AbcSize
   def simulate
     calculate = Calculate.new(@amps, @amount_per_month)
 
+    prices = []
+
     # 東京電力
-    tokyo_denryoku_price = calculate.tokyo_denryoku_plan
+    prices << calculate.tokyo_denryoku_plan
 
     # ループでんき
-    looop_price = calculate.looop_plan
+    prices << calculate.looop_plan
 
     # 東京ガス
-    tokyo_gas_price = calculate.tokyo_gas_plan if [30, 40, 50, 60].include?(@amps)
+    prices << calculate.tokyo_gas_plan if [30, 40, 50, 60].include?(@amps)
 
     # 新規電力会社
     # test_price = calculate.test_plan
 
-    # test_price.to_sを末尾に追記
-    prices = [tokyo_denryoku_price.to_s, looop_price.to_s, tokyo_gas_price.to_s]
-    all_plans = File.open("json_plan.json") do |file|
-      hash = JSON.load(file)
-      hash.each_with_index do |plan, i|
-        plan["price"] = prices[i]
+    all_plans = File.open('json_plan.json') do |file|
+      JSON.load(file).each_with_index do |plan, i|
+        plan['price'] = prices[i]
       end
     end
 
-    plans = []
-    all_plans.each do |plan|
-      unless plan["price"].empty?
-        plans << plan
-      end
-    end
+    plans = all_plans.map do |plan|
+      plan unless plan['price'].nil?
+    end.compact
     p plans
   end
+  # rubocop:enable Metrics/AbcSize
 end
 
 amps_range = [10, 15, 20, 30, 40, 50, 60]
