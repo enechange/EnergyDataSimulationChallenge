@@ -27,7 +27,8 @@ class Simulator
     # 新規電力会社
     # prices << calculate.test_plan
 
-    all_plans = File.open('./json_plan.json') do |file|
+    json_file_path = File.expand_path('json_plan.json', __dir__)
+    all_plans = File.open(json_file_path) do |file|
       JSON.load(file).each_with_index do |plan, i|
         plan['price'] = prices[i]
       end
