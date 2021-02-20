@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../lib/calculate'
+
 RSpec.describe Calculate do
   describe '東京電力エナジーパートナー従量電灯Bの料金計算' do
     context '10A' do

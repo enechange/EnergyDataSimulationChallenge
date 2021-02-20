@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../../lib/calculate'
+
 RSpec.describe Calculate do
   describe 'Looopでんきおうちプランの料金計算' do
     context '10A' do
