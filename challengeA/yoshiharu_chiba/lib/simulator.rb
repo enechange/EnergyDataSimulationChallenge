@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# # frozen_string_literal: true
-
 require_relative './calculate'
 require 'json'
 
@@ -27,9 +25,9 @@ class Simulator
     prices << calculate.tokyo_gas_plan if [30, 40, 50, 60].include?(@amps)
 
     # 新規電力会社
-    # test_price = calculate.test_plan
+    # prices << calculate.test_plan
 
-    all_plans = File.open('json_plan.json') do |file|
+    all_plans = File.open('./json_plan.json') do |file|
       JSON.load(file).each_with_index do |plan, i|
         plan['price'] = prices[i]
       end

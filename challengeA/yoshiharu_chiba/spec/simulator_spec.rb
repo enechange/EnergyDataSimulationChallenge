@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'pry'
+require_relative '../lib/simulator'
 
 RSpec.describe Simulator do
   describe 'プラン名とそのプラン料金を配列で返す' do
