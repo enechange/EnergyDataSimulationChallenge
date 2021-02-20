@@ -11,20 +11,20 @@
 - 10A, 15A, 20A, 30A, 40A, 50A, 60A時の電気料計算
 - 120kWh、121kWh、300kWh、301kWh時の電気料計算
 
-実行コマンド: bundle exec rspec spec/companies/tokyo_denryoku_spec.rb
+実行コマンド: bundle exec rspec spec/calculate/tokyo_denryoku_spec.rb
 
 ②Looop電気の料金計算
 
 - 10A, 60A時の電気料計算
 - 120kWh, 301kWh時の電気料計算
 
-実行コマンド: bundle exec rspec spec/companies/looop_spec.rb
+実行コマンド: bundle exec rspec spec/calculate/looop_spec.rb
 
 ③東京ガスの料金計算
 - 30A, 40A, 50A, 60A時の電気料計算
 - 140kWh, 141kWh, 350kWh, 351kWh時の電気料計算
 
-実行コマンド: bundle exec rspec spec/companies/tokyo_gas_spec.rb
+実行コマンド: bundle exec rspec spec/calculate/tokyo_gas_spec.rb
 
 ④プラン名とそのプランの電気料金が配列で出力
 - 10A, 20A, 30A, 60A時の配列の中身
@@ -43,8 +43,6 @@
 
 ### こだわったポイント
 - RubocopとEditorConfigで統一感のあるコードを心がけたこと
-
-- 電力会社毎にファイルを切り出したこと（電力会社が増える度にsimulater.rbが肥大化してしまうことを懸念しました）
 
 - テストコードの期待値をベタ書きで1つ1つ確かめたこと（DRYを取るか迷いましたが、「対象のコードの仕様がひと目でわかること」を優先し、ベタ書きを採用しました）
 
