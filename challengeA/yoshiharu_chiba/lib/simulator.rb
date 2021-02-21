@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './calculate'
+require './calculate'
 require 'json'
 
 class Simulator
