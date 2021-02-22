@@ -52,7 +52,7 @@ end
 
 puts '1ヶ月あたりの使用量(kWh)を入力してください。'
 amount_per_month = gets.to_f.round
-unless amount_per_month.positive?
+unless amount_per_month >= 0
   puts "入力された使用量が正しくありません。\n再度入力してください。"
   amount_per_month = gets.to_f.round
 end
