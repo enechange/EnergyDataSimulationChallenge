@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require './calculate'
 require 'json'
 
 class Simulator
@@ -9,37 +8,41 @@ class Simulator
     @amount_per_month = amount_per_month
   end
 
-  # rubocop:disable Metrics/AbcSize
   def simulate
-    calculate = Calculate.new(@amps, @amount_per_month)
-
-    prices = []
-
-    # 東京電力
-    prices << calculate.tokyo_denryoku_plan
-
-    # ループでんき
-    prices << calculate.looop_plan
-
-    # 東京ガス
-    prices << calculate.tokyo_gas_plan if [30, 40, 50, 60].include?(@amps)
-
-    # 新規電力会社
-    # prices << calculate.test_plan
-
     json_file_path = File.expand_path('json_plan.json', __dir__)
-    all_plans = File.open(json_file_path) do |file|
-      JSON.load(file).each_with_index do |plan, i|
-        plan['price'] = prices[i]
+    data = File.open(json_file_path) do |file|
+      JSON.load(file).each do |plan|
+        case
+        when plan['provider_name'] == "東京電力エナジーパートナー" then plan['price'] = (plan['basic_price']["#{@amps}"] + tokyo_denryoku_amount_price).floor.to_s
+        when plan['provider_name'] == "Looopでんき" then plan['price'] = (@amount_per_month * 26.40).floor.to_s
+        when plan['provider_name'] == "東京ガス" && ["30", "40", "50", "60"].include?("#{@amps}") then plan["price"] = (plan['basic_price']["#{@amps}"] + tokyo_gas_amount_price).floor.to_s
+        end
       end
     end
 
-    plans = all_plans.map do |plan|
-      plan unless plan['price'].nil?
+    select_data = data.map { |h| h.select { |k, _v| ["provider_name", "plan_name", "price"].include?(k) }}
+    plans = select_data.map do |plan|
+      plan unless plan['price'].empty?
     end.compact
-    p plans
   end
-  # rubocop:enable Metrics/AbcSize
+
+  private
+
+  def tokyo_denryoku_amount_price
+    case @amount_per_month
+    when 0..120 then @amount_per_month * 19.88
+    when 121..300 then 120 * 19.88 + (@amount_per_month - 120) * 26.48
+    else 120 * 19.88 + 180 * 26.48 + (@amount_per_month - 300) * 30.57
+    end
+  end
+
+  def tokyo_gas_amount_price
+    case @amount_per_month
+    when 0..140 then @amount_per_month * 23.67
+    when 141..350 then 140 * 23.67 + (@amount_per_month - 140) * 23.88
+    else 140 * 23.67 + 210 * 23.88 + (@amount_per_month - 350) * 26.41
+    end
+  end
 end
 
 amps_range = [10, 15, 20, 30, 40, 50, 60]
@@ -59,3 +62,4 @@ end
 
 simulator = Simulator.new(amps, amount_per_month)
 simulator.simulate
+
