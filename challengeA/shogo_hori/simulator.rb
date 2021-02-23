@@ -1,4 +1,4 @@
-require './charges.rb'
+require './charges'
 
 class Simulator
   attr_reader :amps, :usage
@@ -10,12 +10,12 @@ class Simulator
 
   def simulate
     charge = Charges.new(@amps, @usage)
-    plans = [
-      { provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: "#{charge.tepco}" },
-      { provider_name: 'Looopでんき', plan_name: 'おうちでんきプラン', price: "#{charge.looop}" },
-      { provider_name: '東京ガス', plan_name: 'ずっとも電気１', price: "#{charge.tokyo_gas}" }
-    ]
-    plans.sort{|a,b| a[:price] <=> b[:price]}.each do |plan|
+    plans = []
+    plans << { provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: "#{charge.tepco}" }
+    plans << { provider_name: 'Looopでんき', plan_name: 'おうちでんきプラン', price: "#{charge.looop}" }
+    plans << { provider_name: '東京ガス', plan_name: 'ずっとも電気１', price: "#{charge.tokyo_gas}" } if [30, 40, 50, 60].include?(@amps)
+
+    plans.each do |plan|
       puts plan
     end
   end
