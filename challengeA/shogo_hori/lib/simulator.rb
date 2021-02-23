@@ -1,26 +1,26 @@
 require './shogo_hori/lib/charges.rb'
 
 class Simulator
-  attr_reader :amps, :usage, :company
+  attr_reader :amps, :usage
 
-  def initialize(amps, usage, company)
+  def initialize(amps, usage)
     @amps = amps
     @usage = usage
-    @company = company
   end
 
   def simulate
     charge = Charges.new(@amps, @usage)
-
-    if @company == '東京電力エナジーパートナー'
-      charge.tepco
-    elsif @company == 'Looopでんき'
-      charge.looop
-    elsif @company == '東京ガス'
-      charge.tokyo_gas
+    plans = [
+      { provider_name: "東京電力エナジーパートナー", plan_name: "従量電灯B", price: "#{charge.tepco}" },
+      { provider_name: 'Looopでんき', plan_name: 'おうちでんきプラン', price: "#{charge.looop}" },
+      { provider_name: '東京ガス', plan_name: 'ずっとも電気１', price: "#{charge.tokyo_gas}" }
+    ]
+    plans.each do |plan|
+      puts plan
     end
   end
 end
 
-simulator = Simulator.new(40, 180, '東京電力エナジーパートナー')
-puts simulator.simulate
+simulator = Simulator.new(40, 180)
+simulator.simulate
+puts '山の人生'

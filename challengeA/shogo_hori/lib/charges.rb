@@ -10,25 +10,31 @@ class Charges
   def tepco
     basicCharge = basicCharge(CSV.read('./shogo_hori/csv/tepco/basicCharge.csv'))
     usageCharge = usageUnitCharge(CSV.read('./shogo_hori/csv/tepco/usageCharge.csv'))
-    basicCharge + usageCharge * @usage
+    (basicCharge + usageCharge * @usage).floor
   end
 
   def looop
     basicCharge = basicCharge(CSV.read('./shogo_hori/csv/looop/basicCharge.csv'))
     usageCharge = usageUnitCharge(CSV.read('./shogo_hori/csv/looop/usageCharge.csv'))
-    basicCharge + usageCharge * @usage
+    (basicCharge + usageCharge * @usage).floor
   end
 
   def tokyo_gas
     basicCharge = basicCharge(CSV.read('./shogo_hori/csv/tokyo_gas/basicCharge.csv'))
     usageCharge = usageUnitCharge(CSV.read('./shogo_hori/csv/tokyo_gas/usageCharge.csv'))
-    basicCharge + usageCharge * @usage
+    (basicCharge + usageCharge * @usage).floor
   end
+
+  # def 【会社名】
+  #   basicCharge = basicCharge(CSV.read('./shogo_hori/csv/【会社名】/basicCharge.csv'))
+  #   usageCharge = usageUnitCharge(CSV.read('./shogo_hori/csv/【会社名】/usageCharge.csv'))
+  #   basicCharge + usageCharge * @usage
+  # end
 
   private
 
   def basicCharge(basicChargeList)
-    basicChargeList = basicChargeList.map{|a|a.map{|a|a.to_i}}
+    basicChargeList = basicChargeList.map{|a|a.map{|a|a.to_f}}
     basicCharge = basicChargeList.find{|charge| charge[0] == @amps}[1]
   end
 
@@ -36,7 +42,6 @@ class Charges
     usageChargeList = usageChargeList.map{|a|a.map{|a|a.to_f}}
     usageChargeList.find{|charge| charge[0] < @usage && charge[1] >= @usage } [2]
   end
-
 end
 
 # require 'csv'
@@ -48,5 +53,5 @@ end
 # usageCharges = usageCharges.map{|a|a.map{|a|a.to_f}}
 # p usageCharges.find{|charge| charge[0] < 160 && charge[1] > 160 } [2]
 
-charges = Charges.new(30, 180)
-p charges.tepco
+# charges = Charges.new(30, 180)
+# p charges.looop
