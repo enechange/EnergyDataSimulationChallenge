@@ -1,4 +1,4 @@
-require "./charges.rb"
+require './shogo_hori/lib/charges.rb'
 
 class Simulator
   attr_reader :amps, :usage, :company
@@ -10,7 +10,8 @@ class Simulator
   end
 
   def simulate
-    @amps + @usage
+    a = Charges.new(@amps, @usage)
+    a.tepco
   end
 end
 
