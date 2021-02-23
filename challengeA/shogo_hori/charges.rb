@@ -40,6 +40,21 @@ class Charges
 
   def usageUnitCharge(usageChargeList)
     usageChargeList = usageChargeList.map{|a|a.map{|a|a.to_f}}
-    usageChargeList.find{|charge| charge[0] < @usage && charge[1] >= @usage } [2]
+    unless usageChargeList.last[0] < @usage
+      usageCharge = usageChargeList.find { |charge| charge[0] < @usage && charge[1] >= @usage }[2]
+    else
+      usageCharge = usageChargeList.last[2]
+    end
   end
 end
+
+usageChargeList = CSV.read('./csv/tepco/usageCharge.csv')
+usageChargeList = usageChargeList.map{|a|a.map{|a|a.to_f}}
+@usage = 99999999999999
+unless usageChargeList.last[0] < @usage
+  charges = usageChargeList.find { |charge| charge[0] < @usage && charge[1] >= @usage }[2]
+else
+  charges = usageChargeList.last[2]
+end
+
+puts charges
