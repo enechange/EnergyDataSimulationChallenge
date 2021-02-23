@@ -1,4 +1,4 @@
-require 'csv'
+require "./charges.rb"
 
 class Simulator
   attr_reader :amps, :usage, :company
