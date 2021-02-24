@@ -20,10 +20,7 @@ class Simulator
         end
       end
     end
-    select_data = data.map { |h| h.select { |k, _v| ["provider_name", "plan_name", "price"].include?(k) }}
-    plans = select_data.map do |plan|
-      plan unless plan['price'].empty?
-    end.compact
+    plans = data.map { |h| h.slice("provider_name", "plan_name", "price") }.reject { |plan| plan['price'].empty? }
     p plans
   end
 
