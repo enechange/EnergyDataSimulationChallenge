@@ -1,6 +1,7 @@
+require_relative './plan'
+
 class Charges
   attr_reader :amps, :usage
-  require 'csv'
 
   def initialize(amps, usage)
     @amps = amps
@@ -8,30 +9,31 @@ class Charges
   end
 
   def tepco
-    basicCharge = basicCharge(CSV.read('./csv/tepco/basicCharge.csv'))
-    usageCharge = usageUnitCharge(CSV.read('./csv/tepco/usageCharge.csv'))
+    basicCharge = basicCharge(Plan::TEPCO[:basicChargeList])
+    usageCharge = usageUnitCharge(Plan::TEPCO[:usageChargeList])
     amount = @usage.round
     (basicCharge + usageCharge * amount).floor
   end
 
   def looop
-    basicCharge = basicCharge(CSV.read('./csv/looop/basicCharge.csv'))
-    usageCharge = usageUnitCharge(CSV.read('./csv/looop/usageCharge.csv'))
+    basicCharge = basicCharge(Plan::LOOOP[:basicChargeList])
+    usageCharge = usageUnitCharge(Plan::LOOOP[:usageChargeList])
     amount = @usage.round
     (basicCharge + usageCharge * amount).floor
   end
 
   def tokyo_gas
-    basicCharge = basicCharge(CSV.read('./csv/tokyo_gas/basicCharge.csv'))
-    usageCharge = usageUnitCharge(CSV.read('./csv/tokyo_gas/usageCharge.csv'))
+    basicCharge = basicCharge(Plan::TOKYO_GAS[:basicChargeList])
+    usageCharge = usageUnitCharge(Plan::TOKYO_GAS[:usageChargeList])
     amount = @usage.round
     (basicCharge + usageCharge * amount).floor
   end
 
-  # def 【会社名】
-  #   basicCharge = basicCharge(CSV.read('./csv/【会社名】/basicCharge.csv'))
-  #   usageCharge = usageUnitCharge(CSV.read('./csv/【会社名】/usageCharge.csv'))
-  #   basicCharge + usageCharge * @usage
+  # def 【company】
+  #   basicCharge = basicCharge(Plan::【COMPANY】[:basicChargeList])
+  #   usageCharge = usageUnitCharge(Plan::【COMPANY】[:usageChargeList])
+  #   amount = @usage.round
+  #   (basicCharge + usageCharge * amount).floor
   # end
 
   private
