@@ -7,29 +7,11 @@
 - トータルの電気料金は小数点以下切り捨て
 
 ### テスト内容
-①東京電力エナジーパートナーの料金計算
-- 10A, 15A, 20A, 30A, 40A, 50A, 60A時の電気料計算
-- 120kWh、121kWh、300kWh、301kWh時の電気料計算
-
-実行コマンド: bundle exec rspec spec/calculate/tokyo_denryoku_spec.rb
-
-②Looop電気の料金計算
-
-- 10A, 60A時の電気料計算
-- 120kWh, 301kWh時の電気料計算
-
-実行コマンド: bundle exec rspec spec/calculate/looop_spec.rb
-
-③東京ガスの料金計算
-- 30A, 40A, 50A, 60A時の電気料計算
-- 140kWh, 141kWh, 350kWh, 351kWh時の電気料計算
-
-実行コマンド: bundle exec rspec spec/calculate/tokyo_gas_spec.rb
-
-④プラン名とそのプランの電気料金が配列で出力
+プラン名とそのプランの電気料金が配列で出力される
 - 10A, 20A, 30A, 60A時の配列の中身
+- 120kwH ~ 351kWh時の電気料金
 
-実行コマンド: bundle exec rspec spec/simulator_spec.rb
+実行コマンド: ruby simulator.rb
 
 ### 使用言語とそのバージョン
 - Ruby 2.6.5
@@ -51,6 +33,7 @@
 - requireとrequire_relativeの違い
 - eq, match, match_array, contain_exactlyマッチャの違い
 - nil?とempty?はRuby標準のメソッドで、blank?とpresent?はRailsで拡張されたメソッドであること
+- Rubocopの規約では、expand_path('../../config/environment', __FILE__)の代わりにexpand_path('../config/environment', __dir__)を使うことが推奨されている
 
 ### 参考
 - https://qiita.com/jnchito/items/eb3cfa9f7db752dcb796#%E3%83%99%E3%82%BF%E6%9B%B8%E3%81%8D%E3%81%AB%E3%81%AF%E5%A3%8A%E3%82%8C%E3%82%84%E3%81%99%E3%81%8F%E3%81%AA%E3%82%8B%E3%81%A8%E3%81%84%E3%81%86%E3%83%87%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%82%82%E3%81%82%E3%82%8B
