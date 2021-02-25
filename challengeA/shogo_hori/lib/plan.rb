@@ -12,7 +12,7 @@ class Plan
             usageChargeList: CSV.read(File.expand_path('./csv/looop/usageCharge.csv'))}
 
   TOKYO_GAS = { provider_name: '東京ガス',
-                plan_name: 'おうちでんきプラン',
+                plan_name: 'ずっとも電気１',
                 basicChargeList: CSV.read(File.expand_path('./csv/tokyo_gas/basicCharge.csv')),
                 usageChargeList: CSV.read(File.expand_path('./csv/tokyo_gas/usageCharge.csv'))}
 
