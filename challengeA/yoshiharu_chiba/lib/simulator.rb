@@ -2,6 +2,7 @@
 
 require 'rspec/autorun'
 require 'json'
+require 'pry'
 
 class Simulator
   def initialize(amps, amount_per_month)
@@ -10,6 +11,20 @@ class Simulator
   end
 
   def simulate
+    energy_charges = [
+      { kwh_from: 0, kwh_to: 120, price: 19.88 },
+      { kwh_from: 120, kwh_to: 300, price: 26.48 },
+      { kwh_from: 300, kwh_to: Float::INFINITY, price: 30.57 }
+    ]
+    tokyo_denryoku_amount_price = calculate(energy_charges)
+
+    energy_charges = [
+      { kwh_from: 0, kwh_to: 140, price: 23.67 },
+      { kwh_from: 140, kwh_to: 350, price: 23.88 },
+      { kwh_from: 350, kwh_to: Float::INFINITY, price: 26.41 }
+    ]
+    tokyo_gas_amount_price = calculate(energy_charges)
+
     json_file_path = File.expand_path('json_plan.json', __dir__)
     data = File.open(json_file_path) do |file|
       JSON.load(file).each do |plan|
@@ -20,26 +35,23 @@ class Simulator
         end
       end
     end
+
     plans = data.map { |h| h.slice("provider_name", "plan_name", "price") }.reject { |plan| plan['price'].empty? }
     p plans
   end
 
   private
 
-  def tokyo_denryoku_amount_price
-    case @amount_per_month
-    when 0..120 then @amount_per_month * 19.88
-    when 121..300 then 120 * 19.88 + (@amount_per_month - 120) * 26.48
-    else 120 * 19.88 + 180 * 26.48 + (@amount_per_month - 300) * 30.57
+  def calculate(energy_charges)
+    energy_price = 0
+    energy_charges.each do |energy_charge|
+      if energy_charge[:kwh_from] < @amount_per_month && @amount_per_month <= energy_charge[:kwh_to]
+        energy_price += energy_charge[:price] * (@amount_per_month - energy_charge[:kwh_from])
+      elsif energy_charge[:kwh_to] < @amount_per_month
+        energy_price += energy_charge[:price] * (energy_charge[:kwh_to] - energy_charge[:kwh_from])
+      end
     end
-  end
-
-  def tokyo_gas_amount_price
-    case @amount_per_month
-    when 0..140 then @amount_per_month * 23.67
-    when 141..350 then 140 * 23.67 + (@amount_per_month - 140) * 23.88
-    else 140 * 23.67 + 210 * 23.88 + (@amount_per_month - 350) * 26.41
-    end
+    return energy_price
   end
 end
 
