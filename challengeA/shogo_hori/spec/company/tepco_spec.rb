@@ -1,5 +1,3 @@
-require_relative '../../lib/charges'
-
 RSpec.describe Charges do
   describe '東京電力エナジーパートナー従量電灯B' do
     context '10A' do
@@ -48,9 +46,9 @@ RSpec.describe Charges do
         expect(charges.tepco).to eq 30570255
       end
 
-      it '198.65kWh *四捨五入処理が正しいか' do
-        charges = Charges.new(10, 198.65)
-        expect(charges.tepco).to eq 5555
+      it '110.46kWh *四捨五入処理が正しいか' do
+        charges = Charges.new(10, 110.46)
+        expect(charges.tepco).to eq 2472
       end
 
       it '198.65kWh *四捨五入処理が正しいか' do
@@ -104,11 +102,6 @@ RSpec.describe Charges do
         charges = Charges.new(15, 999999)
         expect(charges.tepco).to eq 30570398
       end
-
-      it '198.65kWh *四捨五入処理が正しいか' do
-        charges = Charges.new(15, 198.65)
-        expect(charges.tepco).to eq 5698
-      end
     end
 
     context '20A' do
@@ -155,11 +148,6 @@ RSpec.describe Charges do
       it '999999kWh' do
         charges = Charges.new(20, 999999)
         expect(charges.tepco).to eq 30570541
-      end
-
-      it '198.65kWh *四捨五入処理が正しいか' do
-        charges = Charges.new(20, 198.65)
-        expect(charges.tepco).to eq 5841
       end
     end
 
@@ -208,12 +196,53 @@ RSpec.describe Charges do
         charges = Charges.new(30, 999999)
         expect(charges.tepco).to eq 30570827
       end
-
-      it '198.65kWh *四捨五入処理が正しいか' do
-        charges = Charges.new(30, 198.65)
-        expect(charges.tepco).to eq 6127
-      end
     end
 
+    context '40A' do
+      it '0kWh' do
+        charges = Charges.new(40, 0)
+        expect(charges.tepco).to eq 1144
+      end
+
+      it '1kWh' do
+        charges = Charges.new(40, 1)
+        expect(charges.tepco).to eq 877
+      end
+
+      it '60kWh' do
+        charges = Charges.new(40, 60)
+        expect(charges.tepco).to eq 2050
+      end
+
+      it '120kWh' do
+        charges = Charges.new(40, 120)
+        expect(charges.tepco).to eq 3243
+      end
+
+      it '121kWh' do
+        charges = Charges.new(40, 121)
+        expect(charges.tepco).to eq 4062
+      end
+
+      it '210kWh' do
+        charges = Charges.new(40, 210)
+        expect(charges.tepco).to eq 6418
+      end
+
+      it '300kWh' do
+        charges = Charges.new(40, 300)
+        expect(charges.tepco).to eq 8802
+      end
+
+      it '301kWh' do
+        charges = Charges.new(40, 301)
+        expect(charges.tepco).to eq 10059
+      end
+
+      it '999999kWh' do
+        charges = Charges.new(40, 999999)
+        expect(charges.tepco).to eq 30570827
+      end
+    end
   end
 end

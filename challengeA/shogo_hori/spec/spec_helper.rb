@@ -95,5 +95,5 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   Kernel.srand config.seed
-  # Dir[File.join(File.dirname(__FILE__), "../lib/**/*.rb")].each { |f| require f }
+  Dir[File.join(File.dirname(__FILE__), "../lib/**/*.rb")].each { |f| require f }
 end

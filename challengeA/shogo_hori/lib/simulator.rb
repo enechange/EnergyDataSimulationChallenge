@@ -5,8 +5,16 @@ class Simulator
   attr_reader :amps, :usage
 
   def initialize(amps, usage)
-    @amps = amps
-    @usage = usage
+    if !(amps?(amps)) && !(number?(usage))
+      puts "アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n使用量は0以上の数値で入力ください。"
+    elsif !(number?(usage))
+      puts '使用量は0以上の数値で入力ください。'
+    elsif !(amps?(amps))
+      puts 'アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。'
+    else
+      @amps = amps
+      @usage = usage
+    end
   end
 
   def simulate
@@ -20,6 +28,16 @@ class Simulator
     plans.each do |plan|
       puts plan
     end
+  end
+
+  private
+
+  def number?(usage)
+    nil != (usage.to_s =~ /\A([1-9]\d*|0)(\.\d+)?\z/)
+  end
+
+  def amps?(amps)
+    [10, 15, 20, 30, 40, 50, 60].include?(amps)
   end
 end
 
