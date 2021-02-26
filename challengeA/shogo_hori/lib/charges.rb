@@ -22,9 +22,9 @@ class Charges
     (basicCharge + usageCharge * amount).floor
   end
 
-  def tokyo_gas
-    basicCharge = basicCharge(Plan::TOKYO_GAS[:basicChargeList])
-    usageCharge = usageUnitCharge(Plan::TOKYO_GAS[:usageChargeList])
+  def tokyogas
+    basicCharge = basicCharge(Plan::TOKYOGAS[:basicChargeList])
+    usageCharge = usageUnitCharge(Plan::TOKYOGAS[:usageChargeList])
     amount = @usage.round
     (basicCharge + usageCharge * amount).floor
   end
@@ -38,19 +38,19 @@ class Charges
 
   private
 
-  def basicCharge(basicChargeList)
-    basicChargeList = basicChargeList.map{|a|a.map{|a|a.to_f}}
-    basicCharge = basicChargeList.find{|charge| charge[0] == @amps}[1]
+  def basicCharge(list)
+    basicChargeList = list.map { |n| n.map(&:to_f) }
+    basicChargeList.find { |charge| charge[0] == @amps }[1]
   end
 
-  def usageUnitCharge(usageChargeList)
-    usageChargeList = usageChargeList.map{|a|a.map{|a|a.to_f}}
-    if @usage == 0
-      usageCharge = 0
+  def usageUnitCharge(list)
+    usageChargeList = list.map { |n| n.map(&:to_f) }
+    if @usage.zero?
+      @usage
     elsif usageChargeList.last[0] >= @usage
-      usageCharge = usageChargeList.find { |charge| charge[0] < @usage && charge[1] >= @usage }[2]
+      usageChargeList.find { |charge| charge[0] < @usage && charge[1] >= @usage }[2]
     else
-      usageCharge = usageChargeList.last[2]
+      usageChargeList.last[2]
     end
   end
 end

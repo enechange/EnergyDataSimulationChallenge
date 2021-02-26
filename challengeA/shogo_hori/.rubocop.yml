@@ -1,0 +1,29 @@
+AllCops:
+  TargetRubyVersion: 3.0
+
+Naming/VariableName:
+  EnforcedStyle: camelCase
+
+MethodName:
+  EnforcedStyle: camelCase
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+AsciiComments:
+  Enabled: false
+
+Metrics/AbcSize:
+    Exclude:
+    - 'lib/simulator.rb'
+
+Metrics/MethodLength:
+    Exclude:
+    - 'lib/simulator.rb'
+
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

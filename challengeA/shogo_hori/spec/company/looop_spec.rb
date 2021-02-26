@@ -33,12 +33,12 @@ RSpec.describe Charges do
 
       it '400kWh' do
         charges = Charges.new(10, 400)
-        expect(charges.looop).to eq 10560
+        expect(charges.looop).to eq 10_560
       end
 
       it '999999kWh' do
-        charges = Charges.new(10, 999999)
-        expect(charges.looop).to eq 26399973
+        charges = Charges.new(10, 999_999)
+        expect(charges.looop).to eq 26_399_973
       end
 
       it '110.46kWh *使用量の四捨五入処理が正しいか' do

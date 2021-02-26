@@ -42,8 +42,8 @@ RSpec.describe Charges do
       end
 
       it '999999kWh' do
-        charges = Charges.new(10, 999999)
-        expect(charges.tepco).to eq 30570255
+        charges = Charges.new(10, 999_999)
+        expect(charges.tepco).to eq 30_570_255
       end
 
       it '110.46kWh *使用量の四捨五入処理が正しいか' do
@@ -99,8 +99,8 @@ RSpec.describe Charges do
       end
 
       it '999999kWh' do
-        charges = Charges.new(15, 999999)
-        expect(charges.tepco).to eq 30570398
+        charges = Charges.new(15, 999_999)
+        expect(charges.tepco).to eq 30_570_398
       end
     end
 
@@ -146,8 +146,8 @@ RSpec.describe Charges do
       end
 
       it '999999kWh' do
-        charges = Charges.new(20, 999999)
-        expect(charges.tepco).to eq 30570541
+        charges = Charges.new(20, 999_999)
+        expect(charges.tepco).to eq 30_570_541
       end
     end
 
@@ -189,12 +189,12 @@ RSpec.describe Charges do
 
       it '301kWh' do
         charges = Charges.new(30, 301)
-        expect(charges.tepco).to eq 10059
+        expect(charges.tepco).to eq 10_059
       end
 
       it '999999kWh' do
-        charges = Charges.new(30, 999999)
-        expect(charges.tepco).to eq 30570827
+        charges = Charges.new(30, 999_999)
+        expect(charges.tepco).to eq 30_570_827
       end
     end
 
@@ -236,12 +236,12 @@ RSpec.describe Charges do
 
       it '301kWh' do
         charges = Charges.new(40, 301)
-        expect(charges.tepco).to eq 10345
+        expect(charges.tepco).to eq 10_345
       end
 
       it '999999kWh' do
-        charges = Charges.new(40, 999999)
-        expect(charges.tepco).to eq 30571113
+        charges = Charges.new(40, 999_999)
+        expect(charges.tepco).to eq 30_571_113
       end
     end
 
@@ -283,12 +283,12 @@ RSpec.describe Charges do
 
       it '301kWh' do
         charges = Charges.new(50, 301)
-        expect(charges.tepco).to eq 10631
+        expect(charges.tepco).to eq 10_631
       end
 
       it '999999kWh' do
-        charges = Charges.new(50, 999999)
-        expect(charges.tepco).to eq 30571399
+        charges = Charges.new(50, 999_999)
+        expect(charges.tepco).to eq 30_571_399
       end
     end
 
@@ -330,12 +330,12 @@ RSpec.describe Charges do
 
       it '301kWh' do
         charges = Charges.new(60, 301)
-        expect(charges.tepco).to eq 10917
+        expect(charges.tepco).to eq 10_917
       end
 
       it '999999kWh' do
-        charges = Charges.new(60, 999999)
-        expect(charges.tepco).to eq 30571685
+        charges = Charges.new(60, 999_999)
+        expect(charges.tepco).to eq 30_571_685
       end
     end
   end
