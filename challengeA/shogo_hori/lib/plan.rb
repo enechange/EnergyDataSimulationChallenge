@@ -1,6 +1,13 @@
 require 'csv'
 
 class Plan
+  attr_reader :amps, :usage
+
+  def initialize(amps, usage)
+    @amps = amps
+    @usage = usage
+  end
+
   TEPCO = { provider_name: '東京電力エナジーパートナー',
             plan_name: '従量電灯B',
             basicChargeList: CSV.read(File.expand_path('./csv/tepco/basicCharge.csv')),
