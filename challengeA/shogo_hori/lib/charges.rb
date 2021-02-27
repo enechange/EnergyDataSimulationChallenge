@@ -1,6 +1,6 @@
 require_relative './plan'
 
-class Charges < Plan
+class Charges
   attr_reader :amps, :usage
 
   def initialize(amps, usage)

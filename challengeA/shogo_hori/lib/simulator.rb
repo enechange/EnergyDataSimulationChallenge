@@ -1,7 +1,7 @@
 require_relative './charges'
 require_relative './plan'
 
-class Simulator < Plan
+class Simulator
   attr_reader :amps, :usage
 
   def initialize(amps, usage)
