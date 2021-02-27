@@ -22,9 +22,8 @@ RSpec.describe Simulator do
     context '無効なシュミレーション' do
       it 'アンペア、kWh共に英字' do
         simulator = Simulator.new('a', 'a')
-        expect do
-          simulator.simulate
-        end.to output("アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n使用量は0以上の数値で入力ください。\n").to_stdout
+        expect { simulator.simulate }.to output{ "アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n
+                                                 使用量は0以上の数値で入力ください。\n" }.to_stdout
       end
 
       it 'アンペアが英字' do
@@ -39,9 +38,8 @@ RSpec.describe Simulator do
 
       it 'アンペア、kWh共にスペース' do
         simulator = Simulator.new('', '')
-        expect do
-          simulator.simulate
-        end.to output("アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n使用量は0以上の数値で入力ください。\n").to_stdout
+        expect { simulator.simulate }.to output { "アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n
+                                                   使用量は0以上の数値で入力ください。\n"}.to_stdout
       end
 
       it 'アンペアがスペース' do
