@@ -1,23 +1,30 @@
 require_relative './plan'
 
 class Charges < Plan
+  attr_reader :amps, :usage
+
+  def initialize(amps, usage)
+    @amps = amps
+    @usage = usage
+  end
+
   def tepco
-    basicCharge = basicCharge(TEPCO[:basicChargeList])
-    usageCharge = usageUnitCharge(TEPCO[:usageChargeList])
+    basicCharge = basicCharge(Plan::TEPCO[:basicChargeList])
+    usageCharge = usageUnitCharge(Plan::TEPCO[:usageChargeList])
     amount = @usage.round
     (basicCharge + usageCharge * amount).floor
   end
 
   def looop
-    basicCharge = basicCharge(LOOOP[:basicChargeList])
-    usageCharge = usageUnitCharge(LOOOP[:usageChargeList])
+    basicCharge = basicCharge(Plan::LOOOP[:basicChargeList])
+    usageCharge = usageUnitCharge(Plan::LOOOP[:usageChargeList])
     amount = @usage.round
     (basicCharge + usageCharge * amount).floor
   end
 
   def tokyogas
-    basicCharge = basicCharge(TOKYOGAS[:basicChargeList])
-    usageCharge = usageUnitCharge(TOKYOGAS[:usageChargeList])
+    basicCharge = basicCharge(Plan::TOKYOGAS[:basicChargeList])
+    usageCharge = usageUnitCharge(Plan::TOKYOGAS[:usageChargeList])
     amount = @usage.round
     (basicCharge + usageCharge * amount).floor
   end

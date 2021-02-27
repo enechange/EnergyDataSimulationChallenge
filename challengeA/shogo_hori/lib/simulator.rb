@@ -2,6 +2,13 @@ require_relative './charges'
 require_relative './plan'
 
 class Simulator < Plan
+  attr_reader :amps, :usage
+
+  def initialize(amps, usage)
+    @amps = amps
+    @usage = usage
+  end
+
   def simulate
     if !amps?(amps) && !number?(usage)
       puts "アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n使用量は0以上の数値で入力ください。"
@@ -12,9 +19,9 @@ class Simulator < Plan
     else
       charge = Charges.new(@amps, @usage)
       plans = []
-      plans << { provider_name: TEPCO[:provider_name], plan_name: TEPCO[:plan_name],
+      plans << { provider_name: Plan::TEPCO[:provider_name], plan_name: Plan::TEPCO[:plan_name],
                  price: charge.tepco.to_s }
-      plans << { provider_name: LOOOP[:provider_name], plan_name: LOOOP[:plan_name],
+      plans << { provider_name: Plan::LOOOP[:provider_name], plan_name: Plan::LOOOP[:plan_name],
                  price: charge.looop.to_s }
       if [
         30, 40, 50, 60
