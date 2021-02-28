@@ -26,3 +26,6 @@ test:
 production:
   <<: *default
   database: energy_data
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: energy-challenge.cvyparcu4lcp.us-east-2.rds.amazonaws.com
