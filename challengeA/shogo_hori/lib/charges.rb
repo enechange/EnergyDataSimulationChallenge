@@ -1,5 +1,6 @@
-require_relative './plan'
+require 'csv'
 
+#計算結果テスト用クラス
 class Charges
   attr_reader :amps, :usage
 
@@ -9,22 +10,22 @@ class Charges
   end
 
   def tepco
-    basicCharge = basicCharge(Plan::TEPCO[:basicChargeList])
-    usageCharge = usageUnitCharge(Plan::TEPCO[:usageChargeList])
+    basicCharge = basicCharge(CSV.read(File.expand_path('./csv/01_tepco/basicCharge.csv')))
+    usageCharge = usageUnitCharge(CSV.read(File.expand_path('./csv/01_tepco/usageCharge.csv')))
     amount = @usage.round
     (basicCharge + usageCharge * amount).floor
   end
 
   def looop
-    basicCharge = basicCharge(Plan::LOOOP[:basicChargeList])
-    usageCharge = usageUnitCharge(Plan::LOOOP[:usageChargeList])
+    basicCharge = basicCharge(CSV.read(File.expand_path('./csv/02_looop/basicCharge.csv')))
+    usageCharge = usageUnitCharge(CSV.read(File.expand_path('./csv/02_looop/usageCharge.csv')))
     amount = @usage.round
     (basicCharge + usageCharge * amount).floor
   end
 
   def tokyogas
-    basicCharge = basicCharge(Plan::TOKYOGAS[:basicChargeList])
-    usageCharge = usageUnitCharge(Plan::TOKYOGAS[:usageChargeList])
+    basicCharge = basicCharge(CSV.read(File.expand_path('./csv/03_tokyogas/basicCharge.csv')))
+    usageCharge = usageUnitCharge(CSV.read(File.expand_path('./csv/03_tokyogas/usageCharge.csv')))
     amount = @usage.round
     (basicCharge + usageCharge * amount).floor
   end

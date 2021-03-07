@@ -1,5 +1,4 @@
-require_relative './charges'
-require_relative './plan'
+require 'csv'
 
 class Simulator
   attr_reader :amps, :usage
@@ -17,19 +16,20 @@ class Simulator
     elsif !amps?(amps)
       puts 'アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。'
     else
-      charge = Charges.new(@amps, @usage)
+      companies = Dir.glob("csv/*")
       plans = []
-      plans << { provider_name: Plan::TEPCO[:provider_name], plan_name: Plan::TEPCO[:plan_name],
-                 price: charge.tepco.to_s }
-      plans << { provider_name: Plan::LOOOP[:provider_name], plan_name: Plan::LOOOP[:plan_name],
-                 price: charge.looop.to_s }
-      if [
-        30, 40, 50, 60
-      ].include?(@amps)
-        plans << { provider_name: Plan::TOKYOGAS[:provider_name], plan_name: Plan::TOKYOGAS[:plan_name],
-                   price: charge.tokyogas.to_s }
+
+      companies.each do |u|
+        inculdeAmps = CSV.table(File.expand_path("./#{u}/basicCharge.csv"))
+        if inculdeAmps[:amps].include?(@amps)
+          basicCharge = basicCharge(CSV.read(File.expand_path("./#{u}/basicCharge.csv")))
+          usageCharge = usageUnitCharge(CSV.read(File.expand_path("./#{u}/usageCharge.csv")))
+          amount = @usage.round
+          result = (basicCharge + usageCharge * amount).floor
+          info = CSV.table(File.expand_path("./#{u}/info.csv"))
+          plans << { provider_name: info[:provider_name][0], plan_name: info[:plan_name][0], price: result.to_s }
+        end
       end
-      # plans << { provider_name: 【電力会社】, plan_name: 【プラン】, price: 【電気料金】 }
 
       plans.each do |plan|
         puts plan
@@ -45,6 +45,22 @@ class Simulator
 
   def amps?(amps)
     [10, 15, 20, 30, 40, 50, 60].include?(amps)
+  end
+
+  def basicCharge(list)
+    basicChargeList = list.map { |n| n.map(&:to_f) }
+    basicChargeList.find { |charge| charge[0] == @amps }[1]
+  end
+
+  def usageUnitCharge(list)
+    usageChargeList = list.map { |n| n.map(&:to_f) }
+    if @usage.zero?
+      @usage
+    elsif usageChargeList.last[0] >= @usage
+      usageChargeList.find { |charge| charge[0] < @usage && charge[1] >= @usage }[2]
+    else
+      usageChargeList.last[2]
+    end
   end
 end
 
