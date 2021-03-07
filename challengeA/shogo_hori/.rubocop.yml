@@ -22,6 +22,14 @@ Metrics/MethodLength:
     Exclude:
     - 'lib/simulator.rb'
 
+Metrics/CyclomaticComplexity:
+    Exclude:
+    - 'lib/simulator.rb'
+
+Metrics/PerceivedComplexity:
+    Exclude:
+    - 'lib/simulator.rb'
+
 Documentation:
   Enabled: false
 

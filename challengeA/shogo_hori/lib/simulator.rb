@@ -16,19 +16,18 @@ class Simulator
     elsif !amps?(amps)
       puts 'アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。'
     else
-      companies = Dir.glob("csv/*")
+      companies = Dir.glob('csv/*')
       plans = []
 
       companies.each do |u|
         inculdeAmps = CSV.table(File.expand_path("./#{u}/basicCharge.csv"))
-        if inculdeAmps[:amps].include?(@amps)
-          basicCharge = basicCharge(CSV.read(File.expand_path("./#{u}/basicCharge.csv")))
-          usageCharge = usageUnitCharge(CSV.read(File.expand_path("./#{u}/usageCharge.csv")))
-          amount = @usage.round
-          result = (basicCharge + usageCharge * amount).floor
-          info = CSV.table(File.expand_path("./#{u}/info.csv"))
-          plans << { provider_name: info[:provider_name][0], plan_name: info[:plan_name][0], price: result.to_s }
-        end
+        next unless inculdeAmps[:amps].include?(@amps)
+
+        basicCharge = basicCharge(CSV.read(File.expand_path("./#{u}/basicCharge.csv")))
+        usageCharge = usageUnitCharge(CSV.read(File.expand_path("./#{u}/usageCharge.csv")))
+        result = (basicCharge + usageCharge * @usage.round).floor
+        info = CSV.table(File.expand_path("./#{u}/info.csv"))
+        plans << { provider_name: info[:provider_name][0], plan_name: info[:plan_name][0], price: result.to_s }
       end
 
       plans.each do |plan|

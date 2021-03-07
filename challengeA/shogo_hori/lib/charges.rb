@@ -1,6 +1,6 @@
 require 'csv'
 
-#計算結果テスト用クラス
+# 計算結果テスト用クラス
 class Charges
   attr_reader :amps, :usage
 
