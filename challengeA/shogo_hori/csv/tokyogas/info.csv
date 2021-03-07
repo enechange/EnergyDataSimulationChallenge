@@ -1,0 +1,16 @@
+info,,
+provider_name,東京ガス,
+plan_name,ずっとも電気１,
+,,
+basicCharges,,
+amps,basic_charge,
+30,858.00,
+40,1144.00,
+50,1430.00,
+60,1716.00,
+,,
+usageCharges,,
+gt,lte,unitCharge
+0,140,23.67
+140,350,23.88
+350,,26.41

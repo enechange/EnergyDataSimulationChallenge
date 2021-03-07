@@ -1,23 +1,23 @@
 require 'csv'
 
 class Plan
-  TEPCO = { provider_name: '東京電力エナジーパートナー',
-            plan_name: '従量電灯B',
-            basicChargeList: CSV.read(File.expand_path('./csv/tepco/basicCharge.csv')),
-            usageChargeList: CSV.read(File.expand_path('./csv/tepco/usageCharge.csv')) }.freeze
+  attr_reader :provider_name, :plan_name, :basic_charge, :usage_charge
 
-  LOOOP = { provider_name: 'Looopでんき',
-            plan_name: 'おうちでんきプラン',
-            basicChargeList: CSV.read(File.expand_path('./csv/looop/basicCharge.csv')),
-            usageChargeList: CSV.read(File.expand_path('./csv/looop/usageCharge.csv')) }.freeze
+  def initialize(provider_name, plan_name, basic_charge, usage_charge)
+    @provider_name = provider_name
+    @plan_name = plan_name
+    @basic_charge = basic_charge
+    @usage_charge = usage_charge
+  end
+end
 
-  TOKYOGAS = { provider_name: '東京ガス',
-               plan_name: 'ずっとも電気１',
-               basicChargeList: CSV.read(File.expand_path('./csv/tokyogas/basicCharge.csv')),
-               usageChargeList: CSV.read(File.expand_path('./csv/tokyogas/usageCharge.csv')) }.freeze
+companies = Dir.glob("csv/*")
+plans = []
 
-  # 【COMPANY】 = { provider_name: '【会社名】',
-  #               plan_name: '【プラン】',
-  #               basicChargeList: CSV.read('./csv/【company】/basicCharge.csv'),
-  #               usageChargeList: CSV.read('./csv/【company】/usageCharge.csv')}.freeze
+companies.each do |u|
+  info = CSV.read(File.expand_path("./#{u}/info.csv"))
+  plans << Plan.new(info.find { |name| name[0] = 'provider_name' }[1],
+                   info.find { |name| name[0] = 'plan_name' }[1],
+                   CSV.read(File.expand_path("./#{u}/basicCharge.csv")),
+                   CSV.read(File.expand_path("./#{u}/usageCharge.csv")))
 end
