@@ -9,13 +9,8 @@ class Simulator
   end
 
   def simulate
-    if !amps?(amps) && !number?(usage)
-      puts "アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n使用量は0以上の数値で入力ください。"
-    elsif !number?(usage)
-      puts '使用量は0以上の数値で入力ください。'
-    elsif !amps?(amps)
-      puts 'アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。'
-    else
+    simulate = Plan.new(@amps, @usage)
+    simulate.inputCheck(
       companies = Dir.glob('csv/*')
       plans = []
 
@@ -31,7 +26,7 @@ class Simulator
       plans.each do |plan|
         puts plan
       end
-    end
+    )
   end
 
   def calculate(directory)
