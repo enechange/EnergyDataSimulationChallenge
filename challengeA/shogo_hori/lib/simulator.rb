@@ -34,6 +34,13 @@ class Simulator
     end
   end
 
+  def calculate(directory)
+    basicCharge = basicCharge(CSV.read(File.expand_path("./#{directory}/basicCharge.csv")))
+    usageCharge = usageUnitCharge(CSV.read(File.expand_path("./#{directory}/usageCharge.csv")))
+    amount = @usage.round
+    (basicCharge + usageCharge * amount).floor
+  end
+
   private
 
   def number?(usage)
@@ -42,13 +49,6 @@ class Simulator
 
   def amps?(amps)
     [10, 15, 20, 30, 40, 50, 60].include?(amps)
-  end
-
-  def calculate(directory)
-    basicCharge = basicCharge(CSV.read(File.expand_path("./#{directory}/basicCharge.csv")))
-    usageCharge = usageUnitCharge(CSV.read(File.expand_path("./#{directory}/usageCharge.csv")))
-    amount = @usage.round
-    (basicCharge + usageCharge * amount).floor
   end
 
   def basicCharge(list)
