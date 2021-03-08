@@ -19,15 +19,13 @@ class Simulator
       companies = Dir.glob('csv/*')
       plans = []
 
-      companies.each do |u|
-        inculdeAmps = CSV.table(File.expand_path("./#{u}/basicCharge.csv"))
+      companies.each do |d|
+        inculdeAmps = CSV.table(File.expand_path("./#{d}/basicCharge.csv"))
         next unless inculdeAmps[:amps].include?(@amps)
 
-        basicCharge = basicCharge(CSV.read(File.expand_path("./#{u}/basicCharge.csv")))
-        usageCharge = usageUnitCharge(CSV.read(File.expand_path("./#{u}/usageCharge.csv")))
-        result = (basicCharge + usageCharge * @usage.round).floor
-        info = CSV.table(File.expand_path("./#{u}/info.csv"))
-        plans << { provider_name: info[:provider_name][0], plan_name: info[:plan_name][0], price: result.to_s }
+        info = CSV.table(File.expand_path("./#{d}/info.csv"))
+        plans << { provider_name: info[:provider_name][0], plan_name: info[:plan_name][0],
+                   price: calculate(d).to_s }
       end
 
       plans.each do |plan|
@@ -44,6 +42,13 @@ class Simulator
 
   def amps?(amps)
     [10, 15, 20, 30, 40, 50, 60].include?(amps)
+  end
+
+  def calculate(directory)
+    basicCharge = basicCharge(CSV.read(File.expand_path("./#{directory}/basicCharge.csv")))
+    usageCharge = usageUnitCharge(CSV.read(File.expand_path("./#{directory}/usageCharge.csv")))
+    amount = @usage.round
+    (basicCharge + usageCharge * amount).floor
   end
 
   def basicCharge(list)
