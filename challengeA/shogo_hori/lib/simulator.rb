@@ -30,33 +30,35 @@ class Simulator
   end
 
   def calculate(basic_charge_list, usage_unit_charge_list, min_charge)
-    result = (basic_charge(basic_charge_list) + usage_charge(usage_unit_charge_list)).floor
+    result = (basic_charge(basic_charge_list) + usage_charge(usage_unit_charge_list))
     result /= 2 if @usage.zero?
     result = min_charge if min_charge && result <= min_charge
-    result
+    result.floor
   end
 
   private
 
   def basic_charge(list)
-    list.delete_at(0)
     list.find { |charge| charge[0] == @amps }[1]
   end
 
   def usage_charge(list)
     list.delete_at(0)
     list = list.map { |n| n.map(&:to_f) }
+    rounding_usage = @usage.round
     price = 0
     list.each do |particular_case|
-      if particular_case[0] < @usage && (@usage <= particular_case[1] || particular_case[1].zero?)
-        price += particular_case[2] * (@usage - particular_case[0])
-      elsif particular_case[1] < @usage && particular_case[1]
-        price += particular_case[2] * particular_case[1]
+      if particular_case[0] >= rounding_usage && particular_case[1].zero?
+        price += 0
+      elsif particular_case[0] < rounding_usage && (rounding_usage <= particular_case[1] || particular_case[1].zero?)
+        price += particular_case[2] * (rounding_usage - particular_case[0])
+      elsif particular_case[1] < rounding_usage
+        price += particular_case[2] * (particular_case[1] - particular_case[0])
       end
     end
     price
   end
 end
 
-simulator = Simulator.new(30, 100)
+simulator = Simulator.new(30, 351)
 simulator.simulate

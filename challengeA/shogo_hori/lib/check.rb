@@ -38,6 +38,3 @@ class Check
     amps_array.flatten.uniq
   end
 end
-
-check = Check.new(10, 300)
-check.input_check

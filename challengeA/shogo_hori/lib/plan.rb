@@ -18,8 +18,8 @@ class Plan
     info = CSV.table(File.expand_path("./#{d}/info.csv"))
     ALLPLANS << Plan.new(info[:provider_name][0],
                          info[:plan_name][0],
-                         CSV.table(File.expand_path("./#{d}/basicCharge.csv")),
-                         CSV.table(File.expand_path("./#{d}/usageCharge.csv")),
+                         CSV.table(File.expand_path("./#{d}/basic_charge.csv")),
+                         CSV.table(File.expand_path("./#{d}/usage_charge.csv")),
                          info[:min_charge][0])
   end
 end

@@ -1,6 +1,14 @@
 AllCops:
   TargetRubyVersion: 3.0
 
+Style/MutableConstant:
+  Exclude:
+    - 'lib/plan.rb'
+
+Style/GuardClause:
+    Exclude:
+    - 'lib/simulator.rb'
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
