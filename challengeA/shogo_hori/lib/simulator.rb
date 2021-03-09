@@ -18,8 +18,9 @@ class Simulator
         next unless inculde_amps[:amps].include?(@amps)
 
         plans << { provider_name: plan.provider_name, plan_name: plan.plan_name,
-                   price: calculate(plan.basic_charge_list.to_a,
-                                    plan.usage_charge_list.to_a).to_s }
+                   price: calculate(plan.basic_charge_list,
+                                    plan.usage_charge_list,
+                                    plan.min_charge).to_s }
       end
 
       plans.each do |plan|
@@ -28,20 +29,19 @@ class Simulator
     end
   end
 
-  def calculate(basic_charge_list, usage_unit_charge_list)
-    amount = @usage.round
-    (basic_charge(basic_charge_list) + usage_unit_charge(usage_unit_charge_list) * amount).floor
+  def calculate(basic_charge_list, usage_unit_charge_list, min_charge)
+    (basic_charge(basic_charge_list) + usage_unit_charge(usage_unit_charge_list) * @usage.round).floor
   end
 
   private
 
   def basic_charge(list)
-    list.delete_at(0)
+    list.to_a.delete_at(0)
     list.find { |charge| charge[0] == @amps }[1]
   end
 
   def usage_unit_charge(list)
-    list.delete_at(0)
+    list.to_a.delete_at(0)
     if @usage.zero?
       @usage
     elsif list.last[0] >= @usage
@@ -52,5 +52,5 @@ class Simulator
   end
 end
 
-simulator = Simulator.new(10, 100)
+simulator = Simulator.new(30, 100)
 simulator.simulate

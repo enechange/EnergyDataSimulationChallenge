@@ -1,2 +1,2 @@
-provider_name,plan_name
-東京電力エナジーパートナー,従量電灯B
+provider_name,plan_name,min_charge
+東京電力エナジーパートナー,従量電灯B,231.55
