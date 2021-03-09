@@ -18,8 +18,8 @@ class Simulator
         next unless inculde_amps[:amps].include?(@amps)
 
         plans << { provider_name: plan.provider_name, plan_name: plan.plan_name,
-                   price: calculate(plan.basic_charge_list,
-                                    plan.usage_charge_list,
+                   price: calculate(plan.basic_charge_list.to_a,
+                                    plan.usage_charge_list.to_a,
                                     plan.min_charge).to_s }
       end
 
@@ -30,25 +30,31 @@ class Simulator
   end
 
   def calculate(basic_charge_list, usage_unit_charge_list, min_charge)
-    (basic_charge(basic_charge_list) + usage_unit_charge(usage_unit_charge_list) * @usage.round).floor
+    result = (basic_charge(basic_charge_list) + usage_charge(usage_unit_charge_list)).floor
+    result /= 2 if @usage.zero?
+    result = min_charge if min_charge && result <= min_charge
+    result
   end
 
   private
 
   def basic_charge(list)
-    list.to_a.delete_at(0)
+    list.delete_at(0)
     list.find { |charge| charge[0] == @amps }[1]
   end
 
-  def usage_unit_charge(list)
-    list.to_a.delete_at(0)
-    if @usage.zero?
-      @usage
-    elsif list.last[0] >= @usage
-      list.find { |charge| charge[0] < @usage && charge[1] >= @usage }[2]
-    else
-      list.last[2]
+  def usage_charge(list)
+    list.delete_at(0)
+    list = list.map { |n| n.map(&:to_f) }
+    price = 0
+    list.each do |particular_case|
+      if particular_case[0] < @usage && (@usage <= particular_case[1] || particular_case[1].zero?)
+        price += particular_case[2] * (@usage - particular_case[0])
+      elsif particular_case[1] < @usage && particular_case[1]
+        price += particular_case[2] * particular_case[1]
+      end
     end
+    price
   end
 end
 

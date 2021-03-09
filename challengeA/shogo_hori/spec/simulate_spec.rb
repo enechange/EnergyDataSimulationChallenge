@@ -12,9 +12,9 @@ RSpec.describe Simulator do
       it '30A、200kWh' do
         simulator = Simulator.new(30, 200)
         expect(simulator.simulate).to match_array(
-          [{ provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: '6154' },
+          [{ provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: '5362' },
            { provider_name: 'Looopでんき', plan_name: 'おうちでんきプラン', price: '5280' },
-           { provider_name: '東京ガス', plan_name: 'ずっとも電気１', price: '5634' }]
+           { provider_name: '東京ガス', plan_name: 'ずっとも電気１', price: '5604' }]
         )
       end
     end
