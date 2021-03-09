@@ -1,4 +1,5 @@
-require 'csv'
+require_relative './plan'
+require_relative './check'
 
 class Simulator
   attr_reader :amps, :usage
@@ -9,59 +10,47 @@ class Simulator
   end
 
   def simulate
-    simulate = Plan.new(@amps, @usage)
-    simulate.inputCheck(
-      companies = Dir.glob('csv/*')
+    check = Check.new(@amps, @usage)
+    if check.input_check == 1
       plans = []
+      Plan::ALLPLANS.each do |plan|
+        inculde_amps = plan.basic_charge_list
+        next unless inculde_amps[:amps].include?(@amps)
 
-      companies.each do |d|
-        inculdeAmps = CSV.table(File.expand_path("./#{d}/basicCharge.csv"))
-        next unless inculdeAmps[:amps].include?(@amps)
-
-        info = CSV.table(File.expand_path("./#{d}/info.csv"))
-        plans << { provider_name: info[:provider_name][0], plan_name: info[:plan_name][0],
-                   price: calculate(d).to_s }
+        plans << { provider_name: plan.provider_name, plan_name: plan.plan_name,
+                   price: calculate(plan.basic_charge_list.to_a,
+                                    plan.usage_charge_list.to_a).to_s }
       end
 
       plans.each do |plan|
         puts plan
       end
-    )
+    end
   end
 
-  def calculate(directory)
-    basicCharge = basicCharge(CSV.read(File.expand_path("./#{directory}/basicCharge.csv")))
-    usageCharge = usageUnitCharge(CSV.read(File.expand_path("./#{directory}/usageCharge.csv")))
+  def calculate(basic_charge_list, usage_unit_charge_list)
     amount = @usage.round
-    (basicCharge + usageCharge * amount).floor
+    (basic_charge(basic_charge_list) + usage_unit_charge(usage_unit_charge_list) * amount).floor
   end
 
   private
 
-  def number?(usage)
-    (usage.to_s =~ /\A([1-9]\d*|0)(\.\d+)?\z/) != nil
+  def basic_charge(list)
+    list.delete_at(0)
+    list.find { |charge| charge[0] == @amps }[1]
   end
 
-  def amps?(amps)
-    [10, 15, 20, 30, 40, 50, 60].include?(amps)
-  end
-
-  def basicCharge(list)
-    basicChargeList = list.map { |n| n.map(&:to_f) }
-    basicChargeList.find { |charge| charge[0] == @amps }[1]
-  end
-
-  def usageUnitCharge(list)
-    usageChargeList = list.map { |n| n.map(&:to_f) }
+  def usage_unit_charge(list)
+    list.delete_at(0)
     if @usage.zero?
       @usage
-    elsif usageChargeList.last[0] >= @usage
-      usageChargeList.find { |charge| charge[0] < @usage && charge[1] >= @usage }[2]
+    elsif list.last[0] >= @usage
+      list.find { |charge| charge[0] < @usage && charge[1] >= @usage }[2]
     else
-      usageChargeList.last[2]
+      list.last[2]
     end
   end
 end
 
-simulator = Simulator.new(40, 180)
+simulator = Simulator.new(10, 100)
 simulator.simulate

@@ -1,12 +1,6 @@
 AllCops:
   TargetRubyVersion: 3.0
 
-Naming/VariableName:
-  EnforcedStyle: camelCase
-
-MethodName:
-  EnforcedStyle: camelCase
-
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'

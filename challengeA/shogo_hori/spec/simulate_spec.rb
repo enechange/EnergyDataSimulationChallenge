@@ -23,14 +23,14 @@ RSpec.describe Simulator do
       it 'アンペア、kWh共に英字' do
         simulator = Simulator.new('a', 'a')
         expect { simulator.simulate }.to output {
-                                           "アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n
+                                           "アンペアは[10, 15, 20, 30, 40, 50, 60]中から入力ください。\n
                                             使用量は0以上の数値で入力ください。\n"
                                          }.to_stdout
       end
 
       it 'アンペアが英字' do
         simulator = Simulator.new('a', 100)
-        expect { simulator.simulate }.to output("アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n").to_stdout
+        expect { simulator.simulate }.to output("アンペアは[10, 15, 20, 30, 40, 50, 60]中から入力ください。\n").to_stdout
       end
 
       it 'kWhが英字' do
@@ -41,14 +41,14 @@ RSpec.describe Simulator do
       it 'アンペア、kWh共にスペース' do
         simulator = Simulator.new('', '')
         expect { simulator.simulate }.to output {
-                                           "アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n
+                                           "アンペアは[10, 15, 20, 30, 40, 50, 60]中から入力ください。\n
                                             使用量は0以上の数値で入力ください。\n"
                                          }.to_stdout
       end
 
       it 'アンペアがスペース' do
         simulator = Simulator.new('', 100)
-        expect { simulator.simulate }.to output("アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n").to_stdout
+        expect { simulator.simulate }.to output("アンペアは[10, 15, 20, 30, 40, 50, 60]中から入力ください。\n").to_stdout
       end
 
       it 'kWhがスペース' do
@@ -58,7 +58,7 @@ RSpec.describe Simulator do
 
       it 'アンペアが10, 15, 20, 30, 40, 50, 60以外' do
         simulator = Simulator.new(59, 100)
-        expect { simulator.simulate }.to output("アンペアは10, 15, 20, 30, 40, 50, 60中から入力ください。\n").to_stdout
+        expect { simulator.simulate }.to output("アンペアは[10, 15, 20, 30, 40, 50, 60]中から入力ください。\n").to_stdout
       end
 
       it 'kWhが負の整数' do
