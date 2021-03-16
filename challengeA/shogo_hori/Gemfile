@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}" }
+
+gem 'rspec-rails'
+gem 'rubocop'

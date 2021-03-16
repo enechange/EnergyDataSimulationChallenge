@@ -1,0 +1,39 @@
+AllCops:
+  TargetRubyVersion: 3.0
+
+Style/MutableConstant:
+  Exclude:
+    - 'lib/plan.rb'
+
+Style/GuardClause:
+    Exclude:
+    - 'lib/simulator.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+AsciiComments:
+  Enabled: false
+
+Metrics/AbcSize:
+    Exclude:
+    - 'lib/simulator.rb'
+
+Metrics/MethodLength:
+    Exclude:
+    - 'lib/simulator.rb'
+
+Metrics/CyclomaticComplexity:
+    Exclude:
+    - 'lib/simulator.rb'
+
+Metrics/PerceivedComplexity:
+    Exclude:
+    - 'lib/simulator.rb'
+
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
