@@ -13,6 +13,7 @@ class Simulator
   def simulate
     # プロバイダと料金プラン名のCSVデータをインポート
     csv_data = Plan.import(path: "csv/plans.csv")
+
     # 該当プランに計算結果(メソッドの返り値)のハッシュを追加
     plan_list = csv_data.each do |data|
       case
@@ -24,6 +25,7 @@ class Simulator
         data[:price] = "#{self.calc_planC(@amp,@usage_per_week)}"
       end
     end
+
     # priceキーに値が入ってるプランのみを表示
     p output_array = plan_list.select{|plan| plan.has_key?(:price)}
   end
