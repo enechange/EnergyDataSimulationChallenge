@@ -62,9 +62,4 @@ class Simulator
         first_threshold * charges["first"] + second_threshold * charges["second"] + (@electric_energy_per_month - second_threshold) * charges["third"]
       end
     end
-
-  # # 全く使わない場合は半額、考慮する？
-  # 対象外の契約電流のため計算できません。
-  # https://www.enecho.meti.go.jp/category/electricity_and_gas/electric/fee/stracture/ratesystem.html
-  # http://stroll.hatenablog.com/entry/2015/07/02/214704
 end
