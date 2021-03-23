@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'yaml'
-require 'active_model'
+require "yaml"
+require "active_model"
 
 class Simulator
   include ActiveModel::Model
