@@ -20,7 +20,7 @@ class Simulator
   end
 
   def simulate
-    return "無効な契約アンペアまたは電力量です。" if invalid?
+    return "無効な契約アンペアまたは電気使用量です。" if invalid?
 
     PLANS.map do |plan|
       {
@@ -38,7 +38,7 @@ class Simulator
     end
 
     def basic_charge(basic_charges)
-      return 0 if basic_charges == nil
+      return 0 if basic_charges.nil?
 
       basic_charges[@contract_ampere]
     end
@@ -47,8 +47,8 @@ class Simulator
       thresholds = commodity_charges["thresholds"]
       charges = commodity_charges["charges"]
 
-      if commodity_charges["thresholds"] == nil
-        return @electric_energy_per_month * commodity_charges["charges"]
+      if thresholds.nil?
+        return @electric_energy_per_month * charges
       end
 
       first_threshold = thresholds["first"]
