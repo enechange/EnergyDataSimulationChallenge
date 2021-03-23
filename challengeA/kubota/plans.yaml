@@ -19,6 +19,14 @@
 
 Looopでんき:
   plan_name: おうちプラン
+  basic_charges:
+    10: 0.00
+    15: 0.00
+    20: 0.00
+    30: 0.00
+    40: 0.00
+    50: 0.00
+    60: 0.00
   commodity_charges:
     charges: 26.40
 
