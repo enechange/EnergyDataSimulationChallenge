@@ -59,7 +59,7 @@ class Simulator
       elsif @electric_energy_per_month > first_threshold && @electric_energy_per_month <= second_threshold
         first_threshold * charges['first'] + (@electric_energy_per_month - first_threshold) * charges['second']
       else
-        first_threshold * charges['first'] + second_threshold * charges['second'] + (@electric_energy_per_month - second_threshold) * charges['third']
+        first_threshold * charges['first'] + (second_threshold - first_threshold) * charges['second'] + (@electric_energy_per_month - second_threshold) * charges['third']
       end
     end
 end
