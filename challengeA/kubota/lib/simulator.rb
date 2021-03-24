@@ -7,7 +7,7 @@ class Simulator
   include ActiveModel::Model
 
   PLANS = YAML.load_file('./plans.yaml')
-  CONTRACT_AMPS = [10, 15, 20, 30, 40, 50, 60]
+  CONTRACT_AMPS = [10, 15, 20, 30, 40, 50, 60].freeze
 
   attr_accessor :contract_ampere, :electric_energy_per_month
 
