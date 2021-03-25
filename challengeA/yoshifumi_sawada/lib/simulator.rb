@@ -19,6 +19,12 @@ class Simulator
     usage_datas3 = Usage_charge.import3(path: "../csv/tokyogas/usage_charge.csv")
     # 東京ガスのずっとも電気１の電気量料金
     usage_charge3 = calculate(usage_datas3)
+
+    # JXTGでんき 従量電灯B たっぷりプランの電気量料金の電気量料金テーブルのCSVデータをインポート
+    usage_datas4 = Usage_charge.import4(path: "../csv/jxtg/usage_charge.csv")
+    # 東京ガスのずっとも電気１の電気量料金
+    usage_charge4 = calculate(usage_datas4)
+
     # Looopでんきのおうちプランの電気量料金テーブルのCSVデータをインポート
     usage_datas2 = Usage_charge.import2(path: "../csv/loop/usage_charge.csv")
     # Looopでんきのおうちプランの電気量料金の単価
@@ -30,6 +36,7 @@ class Simulator
     basic_charge_table  = Basic_charge.import(path: "../csv/tokyo_energy_partner/basic_charge.csv")
     basic_charge_table2 = Basic_charge.import2(path: "../csv/loop/basic_charge.csv")
     basic_charge_table3 = Basic_charge.import3(path: "../csv/tokyogas/basic_charge.csv")
+    basic_charge_table4 = Basic_charge.import4(path: "../csv/jxtg/basic_charge.csv")
 
 
     # プロバイダと料金プラン名のCSVデータをインポート
@@ -49,6 +56,10 @@ class Simulator
       when data[:provider_name] == "東京ガス" && [30,40,50,60].include?(@amp)
       charge_data3 = basic_charge_table3.find { |data| data[:amp] == "#{@amp}" }
       data[:price]= (charge_data3[:basic_charge].to_i + usage_charge3).floor.to_s
+
+      when data[:provider_name] == "JXTGでんき" && [30,40,50,60].include?(@amp)
+      charge_data4 = basic_charge_table4.find { |data| data[:amp] == "#{@amp}" }
+      data[:price]= (charge_data4[:basic_charge].to_i + usage_charge4).floor.to_s
       end
     end
 
