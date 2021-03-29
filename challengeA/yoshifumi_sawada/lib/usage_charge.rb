@@ -1,47 +1,62 @@
 require "csv"
 require "pry"
-
 class Usage_charge
   def self.import(path)
-    #全てを読込、配列を作成
-    CSV.read("csv/tokyo_energy_partner/usage_charge.csv", headers: true).map do |row|
-      {
-        kwh_from: row["kwh_from"],
-        kwh_to: row["kwh_to"],
-        unit_price: row["unit_price"]
-      }
+  if path[:path].include?("tokyo_energy_partner")
+    list = []
+    CSV.foreach("csv/tokyo_energy_partner/usage_charge.csv", headers: true) do |row|
+    list << row.to_h.transform_values{|v|
+      case v
+      when "Float::INFINITY"
+        Float::INFINITY
+      else
+        v.to_f
+      end
+    }
     end
-  end
+    return list
 
-  def self.import2(path)
-    #全てを読込、配列を作成
-    CSV.read("csv/loop/usage_charge.csv", headers: true).map do |row|
-      {
-        kwh: row["kwh"],
-        unit_price: row["unit_price"]
-      }
+  elsif path[:path].include?("loop")
+    list = []
+    CSV.foreach("csv/loop/usage_charge.csv", headers: true) do |row|
+    list << row.to_h.transform_values{|v|
+      case v
+      when "Float::INFINITY"
+        Float::INFINITY
+      else
+        v.to_f
+      end
+    }
     end
-  end
+    return list
 
-  def self.import3(path)
-    #全てを読込、配列を作成
-    CSV.read("csv/tokyogas/usage_charge.csv", headers: true).map do |row|
-      {
-        kwh_from: row["kwh_from"],
-        kwh_to: row["kwh_to"],
-        unit_price: row["unit_price"]
-      }
+  elsif  path[:path].include?("tokyogas")
+    list = []
+    CSV.foreach("csv/tokyogas/usage_charge.csv", headers: true) do |row|
+    list << row.to_h.transform_values{|v|
+      case v
+      when "Float::INFINITY"
+        Float::INFINITY
+      else
+        v.to_f
+      end
+    }
     end
-  end
+    return list
 
-  def self.import4(path)
-    #全てを読込、配列を作成
+  elsif path[:path].include?("jxtg")
+    list = []
     CSV.read("csv/jxtg/usage_charge.csv", headers: true).map do |row|
-      {
-        kwh_from: row["kwh_from"],
-        kwh_to: row["kwh_to"],
-        unit_price: row["unit_price"]
-      }
+    list << row.to_h.transform_values{|v|
+      case v
+      when "Float::INFINITY"
+        Float::INFINITY
+      else
+        v.to_f
+      end
+    }
     end
+    return list
+  end
   end
 end

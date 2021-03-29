@@ -16,27 +16,27 @@ class Simulator
     # 東京電力エナジーパートナーの従量電灯Bの電気量料金
     usage_charge1 = calculate(usage_datas)
     # 東京ガスのずっとも電気１の電気量料金の電気量料金テーブルのCSVデータをインポート
-    usage_datas3 = Usage_charge.import3(path: "../csv/tokyogas/usage_charge.csv")
+    usage_datas3 = Usage_charge.import(path: "../csv/tokyogas/usage_charge.csv")
     # 東京ガスのずっとも電気１の電気量料金
     usage_charge3 = calculate(usage_datas3)
 
     # JXTGでんき 従量電灯B たっぷりプランの電気量料金の電気量料金テーブルのCSVデータをインポート
-    usage_datas4 = Usage_charge.import4(path: "../csv/jxtg/usage_charge.csv")
+    usage_datas4 = Usage_charge.import(path: "../csv/jxtg/usage_charge.csv")
     # 東京ガスのずっとも電気１の電気量料金
     usage_charge4 = calculate(usage_datas4)
 
     # Looopでんきのおうちプランの電気量料金テーブルのCSVデータをインポート
-    usage_datas2 = Usage_charge.import2(path: "../csv/loop/usage_charge.csv")
+    usage_datas2 = Usage_charge.import(path: "../csv/loop/usage_charge.csv")
     # Looopでんきのおうちプランの電気量料金の単価
-    usage_charge_data2 = usage_datas2.find { |data| data[:kwh] == "0" }
-    unit_price2 = usage_charge_data2[:unit_price].to_f
+    usage_charge_data2 = usage_datas2.find { |data| data['kwh'] == 0.0 }
+    unit_price2 = usage_charge_data2["unit_price"]
 
 
     # 基本料金テーブルのCSVデータをインポート
     basic_charge_table  = Basic_charge.import(path: "../csv/tokyo_energy_partner/basic_charge.csv")
-    basic_charge_table2 = Basic_charge.import2(path: "../csv/loop/basic_charge.csv")
-    basic_charge_table3 = Basic_charge.import3(path: "../csv/tokyogas/basic_charge.csv")
-    basic_charge_table4 = Basic_charge.import4(path: "../csv/jxtg/basic_charge.csv")
+    basic_charge_table2 = Basic_charge.import(path: "../csv/loop/basic_charge.csv")
+    basic_charge_table3 = Basic_charge.import(path: "../csv/tokyogas/basic_charge.csv")
+    basic_charge_table4 = Basic_charge.import(path: "../csv/jxtg/basic_charge.csv")
 
 
     # プロバイダと料金プラン名のCSVデータをインポート
@@ -46,20 +46,20 @@ class Simulator
     plan_list = plan_datas.each do |data|
       case
       when data[:provider_name] == "東京電力エナジーパートナー"
-      charge_data = basic_charge_table.find { |data| data[:amp] == "#{@amp}" }
-      data[:price]= (charge_data[:basic_charge].to_i + usage_charge1).floor.to_s
+      charge_data = basic_charge_table.find { |data| data[:amp] == @amp }
+      data[:price]= (charge_data[:basic_charge] + usage_charge1).floor.to_s
 
       when data[:provider_name] == "Looopでんき"
-      charge_data2 = basic_charge_table2.find { |data| data[:amp] == "#{@amp}" }
-      data[:price]= (charge_data2[:basic_charge].to_i + @usage_per_month * unit_price2).floor.to_s
+      charge_data2 = basic_charge_table2.find { |data| data[:amp] == @amp }
+      data[:price]= (charge_data2[:basic_charge] + @usage_per_month * unit_price2).floor.to_s
 
       when data[:provider_name] == "東京ガス" && [30,40,50,60].include?(@amp)
-      charge_data3 = basic_charge_table3.find { |data| data[:amp] == "#{@amp}" }
-      data[:price]= (charge_data3[:basic_charge].to_i + usage_charge3).floor.to_s
+      charge_data3 = basic_charge_table3.find { |data| data[:amp] == @amp }
+      data[:price]= (charge_data3[:basic_charge] + usage_charge3).floor.to_s
 
       when data[:provider_name] == "JXTGでんき" && [30,40,50,60].include?(@amp)
-      charge_data4 = basic_charge_table4.find { |data| data[:amp] == "#{@amp}" }
-      data[:price]= (charge_data4[:basic_charge].to_i + usage_charge4).floor.to_s
+      charge_data4 = basic_charge_table4.find { |data| data[:amp] == @amp }
+      data[:price]= (charge_data4[:basic_charge] + usage_charge4).floor.to_s
       end
     end
 
@@ -73,10 +73,10 @@ class Simulator
   def calculate(usage_datas)
     usage_charge = 0
     usage_datas.each do |usage_data|
-    if usage_data[:kwh_from].to_i < @usage_per_month && @usage_per_month <= usage_data[:kwh_to].to_i
-      usage_charge = usage_charge + usage_data[:unit_price].to_f * (@usage_per_month - usage_data[:kwh_from].to_i)
-    elsif usage_data[:kwh_to].to_i < @usage_per_month
-      usage_charge = usage_charge + usage_data[:unit_price].to_f * (usage_data[:kwh_to].to_i - usage_data[:kwh_from].to_i)
+    if usage_data['kwh_from'] < @usage_per_month && @usage_per_month <= usage_data['kwh_to']
+      usage_charge = usage_charge + usage_data['unit_price'] * (@usage_per_month - usage_data['kwh_from'])
+    elsif usage_data['kwh_to'] < @usage_per_month
+      usage_charge = usage_charge + usage_data['unit_price'] * (usage_data['kwh_to'] - usage_data['kwh_from'])
     end
     end
   return usage_charge
