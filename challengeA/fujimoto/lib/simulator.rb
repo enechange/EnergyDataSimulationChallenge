@@ -15,9 +15,10 @@ class Simulator
   def simulate
     all_basic_plans = BasicPlanImporter.new('basic.csv').import
     all_energy_plans = EnergyPlanImporter.new('energy.csv').import
+    providers = ProviderImporter.new('provider.csv').import
     basic_plans = get_basic_plans(all_basic_plans)
     energy_plans = get_energy_plans(all_energy_plans)
-    get_plan_list(basic_plans, energy_plans)
+    get_plan_list(basic_plans, energy_plans, providers)
   end
 
   private
@@ -32,8 +33,7 @@ class Simulator
                 .map { |_k, v| v.max_by(&:kwh_min) }
   end
 
-  def get_plan_list(basic_plans, energy_plans)
-    providers = ProviderImporter.new('provider.csv').import
+  def get_plan_list(basic_plans, energy_plans, providers)
     basic_plans.map do |basic_plan|
       provider = providers.map(&:to_h).find { |provider| provider[:id] == basic_plan.provider_id }
       energy_plan = energy_plans.map(&:to_h).find { |energy_plan| energy_plan[:provider_id] == basic_plan.provider_id }
