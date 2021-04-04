@@ -1,22 +1,40 @@
+# frozen_string_literal: true
+
 require './lib/simulator'
 
 RSpec.describe do
-  it '東京電力エナジーパートナーの従量電灯Bプラン：40A, 100kWhの電力量で3132円' do
-    simulator = Simulator.new(40, 100)
-    plan_a = simulator.simulate.find{ |plan| 
-      plan[:provider_name] == "東京電力エナジーパートナー" &&
-      plan[:plan_name] == "従量電灯B"
-    }
+  describe 'シミュレーション結果がただしいこと' do
+    it '東京電力エナジーパートナーの従量電灯Bプラン：15A, 100kWhの電力量で2,417円' do
+      simulator = Simulator.new(15, 100)
+      plan_a = simulator.simulate.find do |plan|
+        plan[:provider_name] == '東京電力エナジーパートナー' && plan[:plan_name] == '従量電灯B'
+      end
 
-    expect(plan_a[:price]).to eq 3132
-  end
+      expect(plan_a[:price]).to eq '2,417'
+    end
 
-  it '東京ガスのずっとも電気1プラン：40A, 100kWhの電力量で3132円' do
-    simulator = Simulator.new(40, 100)
-    plan_b = simulator.simulate.find{ |plan|
-      plan[:provider_name] == "東京ガス" &&
-      plan[:plan_name] == "ずっとも電気1"
-    }
-    expect(plan_b[:price]).to eq 3511
+    it '東京ガスのずっとも電気1プラン：30A, 200kWhの電力量で5,634円' do
+      simulator = Simulator.new(30, 200)
+      plan_b = simulator.simulate.find do |plan|
+        plan[:provider_name] == '東京ガス' && plan[:plan_name] == 'ずっとも電気1'
+      end
+      expect(plan_b[:price]).to eq '5,634'
+    end
+
+    it 'Looopでんきのおうちプラン：20A, 150kWhの電力量で3,960円' do
+      simulator = Simulator.new(20, 150)
+      plan_c = simulator.simulate.find do |plan|
+        plan[:provider_name] == 'Looopでんき' && plan[:plan_name] == 'おうちプラン'
+      end
+      expect(plan_c[:price]).to eq '3,960'
+    end
+
+    it 'JXTGでんきの従量電灯Bたっぷりプラン：50A, 400kWhの電力量で11,462円' do
+      simulator = Simulator.new(50, 400)
+      plan_d = simulator.simulate.find do |plan|
+        plan[:provider_name] == 'JXTGでんき' && plan[:plan_name] == '従量電灯B たっぷりプラン'
+      end
+      expect(plan_d[:price]).to eq '11,462'
+    end
   end
 end
