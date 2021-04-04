@@ -3,7 +3,7 @@
 require 'csv'
 
 class Importer
-  DATA_PATH = './data/'
+  DATA_PATH = './data/'.freeze
 
   def import
     CSV.read(DATA_PATH + @path).map do |row|
