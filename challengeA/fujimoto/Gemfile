@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 
 ruby '3.0.0'
 
+gem 'activesupport'
 gem 'rspec', require: false
 gem 'rubocop', require: false
 gem 'rubocop-rspec', require: false
-gem 'activesupport'
+gem 'smarter_csv'
