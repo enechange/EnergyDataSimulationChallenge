@@ -3,6 +3,8 @@
 require './lib/importer/basic_plan_importer'
 require './lib/importer/provider_importer'
 require './lib/importer/energy_plan_importer'
+require 'active_support'
+require 'active_support/core_ext'
 
 class Simulator
   def initialize(amps, kwh)
@@ -44,6 +46,6 @@ class Simulator
   end
 
   def calculate_price(basic, energy)
-    (basic[:price].to_f + energy[:price].to_f * @kwh).round
+    (basic[:price].to_f + energy[:price].to_f * @kwh).round.to_s(:delimited)
   end
 end
