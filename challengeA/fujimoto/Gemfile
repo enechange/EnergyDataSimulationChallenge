@@ -4,5 +4,6 @@ source 'https://rubygems.org'
 
 ruby '3.0.0'
 
+gem 'rspec', require: false
 gem 'rubocop', require: false
-gem 'rspec'
+gem 'rubocop-rspec', require: false
