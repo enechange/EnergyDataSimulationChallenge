@@ -21,7 +21,7 @@ if kwh <= 0
   exit
 end
 
-simulator = Simulator.new(30, 150)
+simulator = Simulator.new(amps, kwh)
 plan_list = simulator.simulate
 
 if plan_list.empty?

@@ -1,4 +1,4 @@
-# CHALENGE A
+# CHALLENGE A
 
 Challenge A のスクリプトです。
 
