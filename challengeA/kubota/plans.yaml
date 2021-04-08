@@ -1,0 +1,47 @@
+東京電力エナジーパートナー:
+  plan_name: 従量電灯B
+  basic_charges:
+    10: 286.00
+    15: 429.00
+    20: 572.00
+    30: 858.00
+    40: 1144.00
+    50: 1430.00
+    60: 1716.00
+  commodity_charges:
+    thresholds:
+      first: 120
+      second: 300
+    charges:
+      first: 19.88
+      second: 26.48
+      third: 30.57
+
+Looopでんき:
+  plan_name: おうちプラン
+  basic_charges:
+    10: 0.00
+    15: 0.00
+    20: 0.00
+    30: 0.00
+    40: 0.00
+    50: 0.00
+    60: 0.00
+  commodity_charges:
+    charges: 26.40
+
+東京ガス:
+  plan_name: ずっとも電気1
+  basic_charges:
+    30: 858.00
+    40: 1144.00
+    50: 1430.00
+    60: 1716.00
+  commodity_charges:
+    thresholds:
+      first: 140
+      second: 350
+    charges:
+      first: 23.67
+      second: 23.88
+      third: 26.41
