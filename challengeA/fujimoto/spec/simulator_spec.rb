@@ -34,7 +34,7 @@ RSpec.describe do
       plan_d = simulator.simulate.find do |plan|
         plan[:provider_name] == 'JXTGでんき' && plan[:plan_name] == '従量電灯B たっぷりプラン'
       end
-      expect(plan_d[:price]).to eq 11090.0
+      expect(plan_d[:price]).to eq 11_090.0
     end
   end
 end

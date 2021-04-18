@@ -18,7 +18,7 @@ class Simulator
   private
 
   def basic_plans
-    @all_basic_plans.filter { |plan| plan[:amps] == @amp }
+    @all_basic_plans.filter { |plan| plan[:amp] == @amp }
   end
 
   def energy_plans
@@ -39,13 +39,15 @@ class Simulator
   end
 
   def energy_plan_price(energy_plan)
-    energy_plans_with_price = energy_plan.sort_by{|plan| plan[:kwh_min]}.map{ |plan|
-      { kwh: plan[:kwh_min], price: plan[:price] }
-    }.push({
-      kwh: @kwh,
-      price: 0
-    }).each_cons(2).map{ |v| 
-      (v[1][:kwh] - v[0][:kwh]) * v[0][:price] 
-    }.inject(:+)
+    prereduced_energy_plan_values = energy_plan.sort_by { |plan| plan[:kwh_min] }
+                                               .map do |plan|
+      {
+        kwh: plan[:kwh_min],
+        price: plan[:price]
+      }
+    end.push({ kwh: @kwh })
+    prereduced_energy_plan_values.each_cons(2)
+                                 .map { |v| (v[1][:kwh] - v[0][:kwh]) * v[0][:price] }
+                                 .reduce(:+)
   end
 end
