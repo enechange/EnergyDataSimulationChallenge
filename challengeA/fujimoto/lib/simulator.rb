@@ -1,49 +1,51 @@
 # frozen_string_literal: true
 
 require_relative 'importer'
-require 'active_support'
-require 'active_support/core_ext'
 
 class Simulator
-  def initialize(amps, kwh)
-    @amps = amps
+  def initialize(amp, kwh)
+    @amp = amp
     @kwh = kwh
+    @all_basic_plans = Importer.new('basic.csv').import
+    @all_energy_plans = Importer.new('energy.csv').import
+    @providers = Importer.new('provider.csv').import
   end
 
   def simulate
-    all_basic_plans = Importer.new('basic.csv').import
-    all_energy_plans = Importer.new('energy.csv').import
-    providers = Importer.new('provider.csv').import
-    basic_plans = get_basic_plans(all_basic_plans)
-    energy_plans = get_energy_plans(all_energy_plans)
-    get_plan_list(basic_plans, energy_plans, providers)
+    plans_with_price(basic_plans, energy_plans)
   end
 
   private
 
-  def get_basic_plans(basic_plans)
-    basic_plans.filter { |plan| plan[:amps] == @amps }
+  def basic_plans
+    @all_basic_plans.filter { |plan| plan[:amps] == @amp }
   end
 
-  def get_energy_plans(energy_plans)
-    energy_plans.filter { |plan| plan[:kwh_min] < @kwh }
-                .group_by { |plan| plan[:provider_id] }
-                .map { |_k, v| v.max_by { |plan| plan[:kwh_min] } }
+  def energy_plans
+    @all_energy_plans.filter { |plan| plan[:kwh_min] < @kwh }
+                     .group_by { |plan| plan[:provider_id] }
   end
 
-  def get_plan_list(basic_plans, energy_plans, providers)
+  def plans_with_price(basic_plans, energy_plans)
     basic_plans.map do |basic_plan|
-      provider = providers.find { |provider| provider[:id] == basic_plan[:provider_id] }
-      energy_plan = energy_plans.find { |energy_plan| energy_plan[:provider_id] == basic_plan[:provider_id] }
+      provider = @providers.find { |provider| provider[:id] == basic_plan[:provider_id] }
+      energy_plan = energy_plans[provider[:id]]
       {
         provider_name: provider[:name],
         plan_name: provider[:plan_name],
-        price: calculate_price(basic_plan, energy_plan)
+        price: basic_plan[:price] + energy_plan_price(energy_plan)
       }
     end
   end
 
-  def calculate_price(basic, energy)
-    (basic[:price] + energy[:price] * @kwh).round.to_s(:delimited)
+  def energy_plan_price(energy_plan)
+    energy_plans_with_price = energy_plan.sort_by{|plan| plan[:kwh_min]}.map{ |plan|
+      { kwh: plan[:kwh_min], price: plan[:price] }
+    }.push({
+      kwh: @kwh,
+      price: 0
+    }).each_cons(2).map{ |v| 
+      (v[1][:kwh] - v[0][:kwh]) * v[0][:price] 
+    }.inject(:+)
   end
 end
