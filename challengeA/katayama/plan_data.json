@@ -3,6 +3,8 @@
     {
       "name": "従量電灯B",
       "provider_name": "東京電力エナジーパートナー",
+      "supported_amp": [10, 15, 20, 30, 40, 50, 60],
+      "min_charge": 235.84,
       "base": [
         {
           "amp": 10,
@@ -53,6 +55,7 @@
     },
     {
       "name": "おうちプラン",
+      "supported_amp": [10, 15, 20, 30, 40, 50, 60],
       "provider_name": "Loopでんき",
       "base": [
         {
@@ -94,6 +97,7 @@
     },
     {
       "name": "ずっとも電気1",
+      "supported_amp": [30, 40, 50, 60],
       "provider_name": "東京ガス",
       "base": [
         {
@@ -146,6 +150,7 @@
     {
       "name": "従量電灯Bたっぷりプラン",
       "provider_name": "JXTGでんき",
+      "supported_amp": [30, 40, 50, 60],
       "base": [
         {
           "amp": 10,

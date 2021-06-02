@@ -21,12 +21,10 @@ require './plan'
   （例：300kWhの場合は"300"と入力してください）
   TEXT
   
-  while true
-    print "電気使用量を入力 > "
-    kwh = gets.to_i
-    break if kwh > 0
-    puts "電気使用量は0以上の数値で入力してください"
-  end
+
+  print "電気使用量を入力 > "
+  kwh = gets.to_i
+
 
   # プランごとの設定値をJSONファイルから取得
   plan_objs = []
@@ -34,7 +32,7 @@ require './plan'
     json_data = JSON.load(file, create_additions: true)
     
     # プランごとにインスタンスを生成する
-    json_data["plan"].map do |plan_obj|
+    json_data["plan"].map do |plan_obj| 
       plan_objs << Plan.new(plan_obj)
     end
   end
