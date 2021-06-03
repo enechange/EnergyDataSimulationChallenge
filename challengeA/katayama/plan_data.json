@@ -1,0 +1,208 @@
+{
+  "plan": [
+    {
+      "name": "従量電灯B",
+      "provider_name": "東京電力エナジーパートナー",
+      "supported_amp": [10, 15, 20, 30, 40, 50, 60],
+      "min_charge": 235.84,
+      "base": [
+        {
+          "amp": 10,
+          "charge": 286.0
+        },
+        {
+          "amp": 15,
+          "charge": 429.0
+        },
+        {
+          "amp": 20,
+          "charge": 572.0
+        },
+        {
+          "amp": 30,
+          "charge": 858.0
+        },
+        {
+          "amp": 40,
+          "charge": 1144.0
+        },
+        {
+          "amp": 50,
+          "charge": 1430.0
+        },
+        {
+          "amp": 60,
+          "charge": 1716.0
+        }
+      ],
+      "as_pay": [
+        {
+          "from": 0,
+          "to": 120,
+          "per_charge": 19.88
+        },
+        {
+          "from": 120,
+          "to": 300,
+          "per_charge": 26.48
+        },
+        {
+          "from": 300,
+          "to": 9999,
+          "per_charge": 30.57
+        }
+      ]
+    },
+    {
+      "name": "おうちプラン",
+      "supported_amp": [10, 15, 20, 30, 40, 50, 60],
+      "provider_name": "Loopでんき",
+      "base": [
+        {
+          "amp": 10,
+          "charge": 0
+        },
+        {
+          "amp": 15,
+          "charge": 0
+        },
+        {
+          "amp": 20,
+          "charge": 0
+        },
+        {
+          "amp": 30,
+          "charge": 0
+        },
+        {
+          "amp": 40,
+          "charge": 0
+        },
+        {
+          "amp": 50,
+          "charge": 0
+        },
+        {
+          "amp": 60,
+          "charge": 0
+        }
+      ],
+      "as_pay": [
+        {
+          "from": 0,
+          "to": 9999,
+          "per_charge": 26.40
+        }
+      ]
+    },
+    {
+      "name": "ずっとも電気1",
+      "supported_amp": [30, 40, 50, 60],
+      "provider_name": "東京ガス",
+      "base": [
+        {
+          "amp": 10,
+          "charge": 286.0
+        },
+        {
+          "amp": 15,
+          "charge": 429.0
+        },
+        {
+          "amp": 20,
+          "charge": 572.0
+        },
+        {
+          "amp": 30,
+          "charge": 858.0
+        },
+        {
+          "amp": 40,
+          "charge": 1144.0
+        },
+        {
+          "amp": 50,
+          "charge": 1430.0
+        },
+        {
+          "amp": 60,
+          "charge": 1716.0
+        }
+      ],
+      "as_pay": [
+        {
+          "from": 0,
+          "to": 140,
+          "per_charge": 23.67
+        },
+        {
+          "from": 140,
+          "to": 350,
+          "per_charge": 23.88
+        },
+        {
+          "from": 350,
+          "to": 9999,
+          "per_charge": 26.41
+        }
+      ]
+    },
+    {
+      "name": "従量電灯Bたっぷりプラン",
+      "provider_name": "JXTGでんき",
+      "supported_amp": [30, 40, 50, 60],
+      "base": [
+        {
+          "amp": 10,
+          "charge": 286.0
+        },
+        {
+          "amp": 15,
+          "charge": 429.0
+        },
+        {
+          "amp": 20,
+          "charge": 572.0
+        },
+        {
+          "amp": 30,
+          "charge": 858.0
+        },
+        {
+          "amp": 40,
+          "charge": 1144.0
+        },
+        {
+          "amp": 50,
+          "charge": 1430.0
+        },
+        {
+          "amp": 60,
+          "charge": 1716.0
+        }
+      ],
+      "as_pay": [
+        {
+          "from": 0,
+          "to": 120,
+          "per_charge": 19.88
+        },
+        {
+          "from": 120,
+          "to": 300,
+          "per_charge": 26.48
+        },
+        {
+          "from": 300,
+          "to": 600,
+          "per_charge": 25.08
+        },
+        {
+          "from": 600,
+          "to": 9999,
+          "per_charge": 26.15
+        }
+      ]
+    }
+  ]
+}
