@@ -1,0 +1,4 @@
+kwh_from,kwh_to,unit_price
+0,140,23.67
+140,350,23.88
+350,Float::INFINITY,26.41
