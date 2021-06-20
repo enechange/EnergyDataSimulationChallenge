@@ -75,6 +75,3 @@ class Plan
     plan['pay_per_use_price'].select { |price| price['min_kwh'] <= power_usage }
   end
 end
-
-simulator = Simulator.new(30,600)
-puts simulator.simulate
