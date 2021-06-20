@@ -17,6 +17,10 @@ RSpec.describe Plan do
     let(:tokyogas_plan1_price) { plans.show_plans.find {|plan| plan[:provider_name] == TOKYOGAS && plan[:plan_name] == TOKYOGAS_PLAN1 }[:price] }
     let(:jxtg_plan1_price) { plans.show_plans.find {|plan| plan[:provider_name] == JXTG && plan[:plan_name] == JXTG_PLAN1 }[:price] }
 
+    shared_examples 'planがヒットしないこと' do
+      it { expect(plans.show_plans.count).to eq 0 }
+    end
+
     shared_examples 'planが2件ヒットすること' do
       it { expect(plans.show_plans.count).to eq 2 }
     end
@@ -187,6 +191,17 @@ RSpec.describe Plan do
           it 'jxtg_plan1_の価格が正常であること' do
             expect(jxtg_plan1_price).to eq (858.0 + 120 * 19.88 + (300 - 120) * 26.48 + (600 - 300) * 25.08 + (601 - 600) * 26.15).floor
           end
+        end
+      end
+    end
+
+    context '契約アンペア対象がない場合のテスト' do
+      context '141kwhの場合' do
+        let(:power) { 141 }
+        context '70Aの場合' do
+          let(:amp) { 70 }
+
+          it_behaves_like 'planがヒットしないこと'
         end
       end
     end
