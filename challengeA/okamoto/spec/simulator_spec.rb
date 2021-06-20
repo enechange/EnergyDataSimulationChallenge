@@ -99,24 +99,6 @@ RSpec.describe Plan do
           end
         end
 
-        context '120kwhのとき' do
-          let(:power) { 120 }
-
-          it_behaves_like 'planが4件ヒットすること'
-          it 'tepco_plan1_の価格が正常であること' do
-            expect(tepco_plan1_price).to eq (858.0 + 120 * 19.88).floor
-          end
-          it 'looop_plan1_の価格が正常であること' do
-            expect(looop_plan1_price).to eq (120 * 26.4).floor
-          end
-          it 'tokyogas_plan1_の価格が正常であること' do
-            expect(tokyogas_plan1_price).to eq (858.0 + 120 * 23.67).floor
-          end
-          it 'jxtg_plan1_の価格が正常であること' do
-            expect(jxtg_plan1_price).to eq (858.0 + 120 * 19.88).floor
-          end
-        end
-
         context '140kwhのとき' do
           let(:power) { 140 }
 
@@ -132,24 +114,6 @@ RSpec.describe Plan do
           end
           it 'jxtg_plan1_の価格が正常であること' do
             expect(jxtg_plan1_price).to eq (858.0 + 120 * 19.88 + (140 - 120) * 26.48).floor
-          end
-        end
-
-        context '300kwhのとき' do
-          let(:power) { 300 }
-
-          it_behaves_like 'planが4件ヒットすること'
-          it 'tepco_plan1_の価格が正常であること' do
-            expect(tepco_plan1_price).to eq (858.0 + 120 * 19.88 + (300 - 120) * 26.48).floor
-          end
-          it 'looop_plan1_の価格が正常であること' do
-            expect(looop_plan1_price).to eq (300 * 26.4).floor
-          end
-          it 'tokyogas_plan1_の価格が正常であること' do
-            expect(tokyogas_plan1_price).to eq (858.0 + 140 * 23.67 + (300 - 140) * 23.88).floor
-          end
-          it 'jxtg_plan1_の価格が正常であること' do
-            expect(jxtg_plan1_price).to eq (858.0 + 120 * 19.88 + (300 - 120) * 26.48).floor
           end
         end
 
