@@ -1,0 +1,166 @@
+[
+  {
+    "name": "従量電灯B",
+    "provider_name": "東京電力エナジーパートナー",
+    "basic_price": [
+      {
+        "ampere": 10,
+        "price": 286.0
+      },
+      {
+        "ampere": 15,
+        "price": 429.0
+      },
+      {
+        "ampere": 20,
+        "price": 572.0
+      },
+      {
+        "ampere": 30,
+        "price": 858.0
+      },
+      {
+        "ampere": 40,
+        "price": 1144.0
+      },
+      {
+        "ampere": 50,
+        "price": 1430.0
+      },
+      {
+        "ampere": 60,
+        "price": 1716.0
+      }
+    ],
+    "pay_per_use_price": [
+      {
+        "price_per_kwh": 19.88,
+        "min_kwh": 0
+      },
+      {
+        "price_per_kwh": 26.48,
+        "min_kwh": 120
+      },
+      {
+        "price_per_kwh": 30.57,
+        "min_kwh": 300
+      }
+    ]
+  },
+  {
+    "name": "おうちプラン",
+    "provider_name": "Looopでんき",
+    "basic_price": [
+      {
+        "ampere": 10,
+        "price": 0
+      },
+      {
+        "ampere": 15,
+        "price": 0
+      },
+      {
+        "ampere": 20,
+        "price": 0
+      },
+      {
+        "ampere": 30,
+        "price": 0
+      },
+      {
+        "ampere": 40,
+        "price": 0
+      },
+      {
+        "ampere": 50,
+        "price": 0
+      },
+      {
+        "ampere": 60,
+        "price": 0
+      }
+    ],
+    "pay_per_use_price": [
+      {
+        "price_per_kwh": 26.40,
+        "min_kwh": 0
+      }
+    ]
+  },
+  {
+    "name": "ずっとも電気１",
+    "provider_name": "東京ガス",
+    "basic_price": [
+      {
+        "ampere": 30,
+        "price": 858.0
+      },
+      {
+        "ampere": 40,
+        "price": 1144.0
+      },
+      {
+        "ampere": 50,
+        "price": 1430.0
+      },
+      {
+        "ampere": 60,
+        "price": 1716.0
+      }
+    ],
+    "pay_per_use_price": [
+      {
+        "price_per_kwh": 23.67,
+        "min_kwh": 0
+      },
+      {
+        "price_per_kwh": 23.88,
+        "min_kwh": 140
+      },
+      {
+        "price_per_kwh": 26.41,
+        "min_kwh": 350
+      }
+    ]
+  },
+  {
+    "name": "従量電灯Bたっぷりプラン",
+    "provider_name": "JXTGでんき",
+    "basic_price": [
+      {
+        "ampere": 30,
+        "price": 858.0
+      },
+      {
+        "ampere": 40,
+        "price": 1144.0
+      },
+      {
+        "ampere": 50,
+        "price": 1430.0
+      },
+      {
+        "ampere": 60,
+        "price": 1716.8
+      }
+    ],
+    "pay_per_use_price": [
+      {
+        "price_per_kwh": 19.88,
+        "min_kwh": 0
+      },
+      {
+        "price_per_kwh": 26.48,
+        "min_kwh": 120
+      },
+      {
+        "price_per_kwh": 25.08,
+        "min_kwh": 300
+      },
+      {
+        "price_per_kwh": 26.15,
+        "min_kwh": 600
+      }
+    ]
+  }
+]
