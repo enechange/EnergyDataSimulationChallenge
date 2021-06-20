@@ -23,3 +23,8 @@ bundle exec rspec
 ## 補足事項
 
 - 合計電気料金は小数点以下切り捨て
+
+## 参考文献
+
+- オブジェクト指向設計実践ガイド
+- [使えるRSpec入門](https://qiita.com/jnchito/items/42193d066bd61c740612)
