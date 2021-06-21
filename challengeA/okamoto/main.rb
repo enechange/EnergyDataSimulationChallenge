@@ -22,14 +22,16 @@ end
 simulator = Simulator.new(contract_amp, power_usage)
 plan_lists = simulator.simulate
 
-return puts '条件に一致するプランはありません。' if plan_lists.empty?
-
-puts 'ご入力いただいた条件での見積もり結果は以下の通りです。'
-puts "契約アンペア：#{contract_amp}(A), 電力使用量：#{power_usage}(kwh)"
-puts '================================================'
-plan_lists.each do |plan|
-  puts "プロバイダー名：#{plan[:provider_name]}"
-  puts "プラン名：#{plan[:plan_name]}"
-  puts "月額料金：#{plan[:price]}円"
+if plan_lists.empty?
+  puts '条件に一致するプランはありません。'
+else
+  puts 'ご入力いただいた条件での見積もり結果は以下の通りです。'
+  puts "契約アンペア：#{contract_amp}(A), 電力使用量：#{power_usage}(kwh)"
   puts '================================================'
+  plan_lists.each do |plan|
+    puts "プロバイダー名：#{plan[:provider_name]}"
+    puts "プラン名：#{plan[:plan_name]}"
+    puts "月額料金：#{plan[:price]}円"
+    puts '================================================'
+  end
 end
