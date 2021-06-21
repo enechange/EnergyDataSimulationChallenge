@@ -1,50 +1,39 @@
-require 'json'
-JSON_FILE_PATH = '../data/plans.json'
-
 class Plan
-  attr_reader :contract_amp, :power_usage, :plans
+  attr_reader :name, :provider_name, :basic_prices, :pay_per_use_prices
 
-  def initialize(contract_amp, power_usage)
-    @plans = json_load
-    @contract_amp = contract_amp
-    @power_usage = power_usage
+  def initialize(name:, provider_name:, basic_prices:, pay_per_use_prices:)
+    @name = name
+    @provider_name = provider_name
+    @basic_prices = basic_prices
+    @pay_per_use_prices = pay_per_use_prices
   end
 
-  def show_plans
-    plans.map { |plan| available?(plan)? plan_with_price(plan) : nil }.compact
+  def available?(contract_amp)
+    basic_prices.find { |price| price['ampere'] == contract_amp }
+  end
+
+  def plan_with_price(contract_amp, power_usage)
+    {
+      provider_name: provider_name,
+      plan_name: name,
+      price: sum_price(contract_amp, power_usage)
+    }
   end
 
   private
 
-  def json_load
-    json_file_path = File.expand_path(JSON_FILE_PATH, __dir__)
-    JSON.load(File.open(json_file_path))
+  def sum_price(contract_amp, power_usage)
+    (basic_price(contract_amp) + pay_per_use_price(power_usage)).floor
   end
 
-  def available?(plan)
-    plan['basic_price'].find { |price| price['ampere'] == contract_amp }
+  def basic_price(contract_amp)
+    basic_prices.find { |price| price['ampere'] == contract_amp }['price']
   end
 
-  def plan_with_price(plan)
-    {
-      provider_name: plan['provider_name'],
-      plan_name: plan['name'],
-      price: sum_price(plan)
-    }
-  end
-
-  def sum_price(plan)
-    (basic_price(plan) + pay_per_use_price(plan)).floor
-  end
-
-  def basic_price(plan)
-    plan['basic_price'].find { |price| price['ampere'] == contract_amp }['price']
-  end
-
-  def pay_per_use_price(plan)
+  def pay_per_use_price(power_usage)
     sum = 0
     power_usage_before_stage = 0
-    sorted_pay_per_use_price_lists(plan).each do |price_list|
+    sorted_pay_per_use_price_lists(power_usage).each do |price_list|
       power_usage_current_stage = power_usage - price_list['min_kwh'] - power_usage_before_stage
       #丸め誤差が生じるため小数点第四位を四捨五入とする
       sum += (price_list['price_per_kwh'] * power_usage_current_stage).round(3)
@@ -53,11 +42,11 @@ class Plan
     sum
   end
 
-  def sorted_pay_per_use_price_lists(plan)
-    pay_per_use_price_lists(plan).sort_by {|list| list['min_kwh']}.reverse
+  def sorted_pay_per_use_price_lists(power_usage)
+    pay_per_use_price_lists(power_usage).sort_by {|list| list['min_kwh']}.reverse
   end
 
-  def pay_per_use_price_lists(plan)
-    plan['pay_per_use_price'].select { |price| price['min_kwh'] <= power_usage }
+  def pay_per_use_price_lists(power_usage)
+    pay_per_use_prices.select { |price| price['min_kwh'] <= power_usage }
   end
 end

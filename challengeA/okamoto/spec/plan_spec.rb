@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Plan do
+RSpec.describe Plans do
   TEPCO = '東京電力エナジーパートナー'
   TEPCO_PLAN1 = '従量電灯B'
   LOOOP = 'Looopでんき'
@@ -11,7 +11,7 @@ RSpec.describe Plan do
   JXTG_PLAN1 = '従量電灯Bたっぷりプラン'
 
   describe '#show_plans' do
-    let(:plans) { Plan.new(amp, power) }
+    let(:plans) { Plans.new(amp, power) }
     let(:tepco_plan1_price) { plans.show_plans.find {|plan| plan[:provider_name] == TEPCO && plan[:plan_name] == TEPCO_PLAN1 }[:price] }
     let(:looop_plan1_price) { plans.show_plans.find {|plan| plan[:provider_name] == LOOOP && plan[:plan_name] == LOOOP_PLAN1 }[:price] }
     let(:tokyogas_plan1_price) { plans.show_plans.find {|plan| plan[:provider_name] == TOKYOGAS && plan[:plan_name] == TOKYOGAS_PLAN1 }[:price] }
