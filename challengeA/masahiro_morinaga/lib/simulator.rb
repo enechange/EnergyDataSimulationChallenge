@@ -18,16 +18,12 @@ class Simulator
 		
 	end
 
-	def create
-		@simulator = Simulator.new
-	end
-
 	def calculate
 		plans = YAML.load_file('../plan.yml')
 
-		monthly_charge_hash = {
+		monthly_charge = {
+			supplier: "",
 			plan: "",
-			basic_charge: 0,
 			price: 0,
 		}
 
@@ -37,25 +33,35 @@ class Simulator
 			if plan[:basic_charge][@ampere].present?
 				case
 				when plan[:name] == '東京電力', plan[:name] == '東京ガス' then
-					# 使用量に応じて条件分岐させる
-					plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])
+					if @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:first]
+						plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])
+					elsif @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:second]
+						plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:second])
+					else
+						plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:third])
+					end
 				when plan[:name] == 'Looop' then
-					# 使用量に応じて条件分岐させる
 					plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])
 				when plan[:name] == 'JXTG' then
-					# 使用量に応じて条件分岐させる
-					plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])
+					if @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:first]
+						plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])
+					elsif @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:second]
+						plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:second])
+					elsif @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:third]
+						plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:third])
+					else
+						plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:fourth])
+					end
 				end
 
-				monthly_charge_hash = [
+				monthly_charge = [
 					{
+						supplier: plan[:name],
 						plan: plan[:plan],
-						basic_charge: plan[:basic_charge][@ampere],
 						price: plan[:price]
 					}
 				]
-	
-				monthly_charge = monthly_charge_hash.to_a
+
 				monthly_charge_list.append(monthly_charge)
 			end
 		end
