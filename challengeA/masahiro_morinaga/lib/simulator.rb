@@ -14,7 +14,7 @@ class Simulator
 
 	def simulate
 
-		set_plans()
+		calculate()
 		
 	end
 
@@ -22,7 +22,7 @@ class Simulator
 		@simulator = Simulator.new
 	end
 
-	def set_plans
+	def calculate
 		plans = YAML.load_file('../plan.yml')
 
 		monthly_charge_hash = {
@@ -62,11 +62,6 @@ class Simulator
 
 		puts monthly_charge_list
 	end
-
-	def calculate
-
-	end
-
 end
 
 user_amps = [10, 15, 20, 30, 40, 50, 60]
