@@ -13,12 +13,16 @@ class Simulator
 	end
 
 	def simulate
-
-		calculate()
-		
+		monthly_charge = {
+			supplier: "",
+			plan: "",
+			price: 0,
+		}
+		puts calculate(monthly_charge)
+		return calculate(monthly_charge)
 	end
 
-	def calculate
+	def calculate(result)
 		plans = YAML.load_file('../plan.yml')
 
 		monthly_charge = {
@@ -85,7 +89,7 @@ class Simulator
 			end
 		end
 
-		puts monthly_charge_list
+		return monthly_charge_list
 	end
 end
 
