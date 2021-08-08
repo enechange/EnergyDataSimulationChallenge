@@ -18,6 +18,7 @@ class Simulator
 			plan: "",
 			price: 0,
 		}
+		puts calculate(monthly_charge)
 		return calculate(monthly_charge)
 	end
 
