@@ -17,6 +17,7 @@
       :first: 19.88
       :second: 26.48
       :third: 30.57
+  :price: 0
 - :name: Looop
   :plan: おうちプラン
   :basic_charge:
@@ -30,6 +31,7 @@
   :charge_per_use:
     :charge:
       :first: 26.40
+  :price: 0
 - :name: 東京ガス
   :plan: ずっとも電気1
   :basic_charge:
@@ -45,6 +47,7 @@
       :first: 23.67
       :second: 23.88
       :third: 26.41
+  :price: 0
 - :name: JXTG
   :plan: 従量電灯B たっぷりプラン
   :basic_charge:
@@ -62,3 +65,4 @@
       :second: 26.48
       :third: 25.08
       :fourth: 26.15
+  :price: 0

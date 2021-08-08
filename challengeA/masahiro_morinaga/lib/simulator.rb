@@ -26,36 +26,46 @@ class Simulator
 		plans = YAML.load_file('../plan.yml')
 
 		monthly_charge_hash = {
-			name: "",
-			basic_charge: 0
+			plan: "",
+			basic_charge: 0,
+			price: 0,
 		}
 
 		monthly_charge_list = []
 
 		plans.map do |plan|
-			# monthly_charge.append(plan["name"])
-
 			if plan[:basic_charge][@ampere].present?
+				case
+				when plan[:name] == '東京電力', plan[:name] == '東京ガス' then
+					# 使用量に応じて条件分岐させる
+					plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])
+				when plan[:name] == 'Looop' then
+					# 使用量に応じて条件分岐させる
+					plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])
+				when plan[:name] == 'JXTG' then
+					# 使用量に応じて条件分岐させる
+					plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])
+				end
+
 				monthly_charge_hash = [
 					{
-						name: plan[:plan],
-						basic_charge: plan[:basic_charge][@ampere]
+						plan: plan[:plan],
+						basic_charge: plan[:basic_charge][@ampere],
+						price: plan[:price]
 					}
 				]
 	
 				monthly_charge = monthly_charge_hash.to_a
 				monthly_charge_list.append(monthly_charge)
 			end
-			# binding.pry
-
-			# monthly_charge_list.append(monthly_charge_hash)
-
 		end
 
 		puts monthly_charge_list
 	end
 
-	# private
+	def calculate
+
+	end
 
 end
 
