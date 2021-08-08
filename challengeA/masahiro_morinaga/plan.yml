@@ -1,0 +1,64 @@
+# 電力プラン:
+- :name: 東京電力
+  :plan: 従量電灯B
+  :basic_charge:
+    10: 286.00
+    15: 429.00
+    20: 572.00
+    30: 858.00
+    40: 1144.00
+    50: 1430.00
+    60: 1716.00
+  :charge_per_use:
+    :used_energy_classification:
+      :first: 120
+      :second: 300
+    :charge:
+      :first: 19.88
+      :second: 26.48
+      :third: 30.57
+- :name: Looop
+  :plan: おうちプラン
+  :basic_charge:
+    10: 0.00
+    15: 0.00
+    20: 0.00
+    30: 0.00
+    40: 0.00
+    50: 0.00
+    60: 0.00
+  :charge_per_use:
+    :charge:
+      :first: 26.40
+- :name: 東京ガス
+  :plan: ずっとも電気1
+  :basic_charge:
+    30: 858.00
+    40: 1144.00
+    50: 1430.00
+    60: 1716.00
+  :charge_per_use:
+    :used_energy_classification:
+      :first: 140
+      :second: 350
+    :charge:
+      :first: 23.67
+      :second: 23.88
+      :third: 26.41
+- :name: JXTG
+  :plan: 従量電灯B たっぷりプラン
+  :basic_charge:
+    30: 858.00
+    40: 1144.00
+    50: 1430.00
+    60: 1716.80
+  :charge_per_use:
+    :used_energy_classification:
+      :first: 120
+      :second: 300
+      :third: 600
+    :charge:
+      :first: 19.88
+      :second: 26.48
+      :third: 25.08
+      :fourth: 26.15

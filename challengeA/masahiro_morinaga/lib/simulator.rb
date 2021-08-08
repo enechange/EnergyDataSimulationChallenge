@@ -14,7 +14,6 @@ class Simulator
 
 	def simulate
 
-		# binding.pry
 		set_plans()
 		
 	end
