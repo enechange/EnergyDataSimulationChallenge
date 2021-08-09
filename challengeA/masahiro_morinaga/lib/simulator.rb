@@ -95,7 +95,7 @@ if user_amps.include?(amps)
 
 	used_energy_ammount = gets.to_i
 
-	if used_energy_ammount >= 0
+	if used_energy_ammount > 0
 		simulator = Simulator.new(amps, used_energy_ammount)
 	
 		simulator.simulate
