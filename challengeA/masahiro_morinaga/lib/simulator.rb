@@ -1,7 +1,10 @@
 require "pry"
+require 'active_model'
 require 'yaml'
 
 class Simulator
+	include ActiveModel::Model
+
 	def initialize(ampere, monthly_energy)
 		@ampere = ampere
 		@monthly_energy = monthly_energy
@@ -104,7 +107,6 @@ if user_amps.include?(amps)
 		simulator = Simulator.new(amps, used_energy_ammount)
 	
 		simulator.simulate
-		puts simulator.ampere
 	else
 		puts "正しい電気使用量を入力してください"		
 	end
