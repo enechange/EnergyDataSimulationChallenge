@@ -28,7 +28,6 @@ class Simulator
 		plans.map do |plan|
 			@plan = plan
 			if plan[:basic_charge][@ampere].present?
-
 				if plan[:charge_per_use][:used_energy_classification].present?
 					base_price = plan[:basic_charge][@ampere]
 					low_price = 0
@@ -78,7 +77,6 @@ class Simulator
 				monthly_charge_list.append(monthly_charge)
 			end
 		end
-
 		return monthly_charge_list
 	end
 end
