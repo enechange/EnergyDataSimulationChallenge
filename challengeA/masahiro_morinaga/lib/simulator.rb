@@ -1,12 +1,7 @@
-# pryはpushする時に削除する
 require "pry"
-# validationかける　→　間に合わなかったら消す
-require 'active_model'
 require 'yaml'
 
 class Simulator
-	include ActiveModel::Model
-
 	def initialize(ampere, monthly_energy)
 		@ampere = ampere
 		@monthly_energy = monthly_energy
@@ -56,7 +51,7 @@ class Simulator
 
 
 				case
-				when plan[:name] == '東京電力', plan[:name] == '東京ガス' then
+				when plan[:supplier] == '東京電力', plan[:supplier] == '東京ガス' then
 					if @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:first]
 						plan[:price] = (plan[:basic_charge][@ampere] + @monthly_energy * plan[:charge_per_use][:charge][:first]).floor
 					elsif @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:second]
@@ -64,9 +59,9 @@ class Simulator
 					else
 						plan[:price] = (base_price + first_price + second_price + third_price).floor
 					end
-				when plan[:name] == 'Looop' then
+				when plan[:supplier] == 'Looop' then
 					plan[:price] = (plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])).floor
-				when plan[:name] == 'JXTG' then
+				when plan[:supplier] == 'JXTG' then
 					if @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:first]
 						plan[:price] = (plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])).floor
 					elsif @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:second]
@@ -80,7 +75,7 @@ class Simulator
 				end
 
 				monthly_charge = {
-					supplier: plan[:name],
+					supplier: plan[:supplier],
 					plan: plan[:plan],
 					price: plan[:price]
 				}
@@ -109,6 +104,7 @@ if user_amps.include?(amps)
 		simulator = Simulator.new(amps, used_energy_ammount)
 	
 		simulator.simulate
+		puts simulator.ampere
 	else
 		puts "正しい電気使用量を入力してください"		
 	end
