@@ -46,10 +46,10 @@ class Simulator
 						plan[:price] = (base_price + first_price + second_price + third_price).floor
 					end
 				when plan[:name] == 'Looop' then
-					plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first]).floor
+					plan[:price] = (plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])).floor
 				when plan[:name] == 'JXTG' then
 					if @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:first]
-						plan[:price] = plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first]).floor
+						plan[:price] = (plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])).floor
 					elsif @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:second]
 						base_price = plan[:basic_charge][@ampere]
 						first_price = (plan[:charge_per_use][:used_energy_classification][:first] * plan[:charge_per_use][:charge][:first])
