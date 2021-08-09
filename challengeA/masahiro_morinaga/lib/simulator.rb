@@ -26,11 +26,18 @@ class Simulator
 		monthly_charge_list = []
 
 		plans.map do |plan|
+			@plan = plan
 			if plan[:basic_charge][@ampere].present?
 
 				if plan[:charge_per_use][:used_energy_classification].present?
 					base_price = plan[:basic_charge][@ampere]
-					first_price = (plan[:charge_per_use][:used_energy_classification][:first] * plan[:charge_per_use][:charge][:first])
+					low_price = 0
+					first_price = 0
+					second_price = 0
+					third_price = 0
+					fourth_price = 0
+
+					first_price = (plan[:charge_per_use][:used_energy_classification][:first] * plan[:charge_per_use][:charge][:first]) if @monthly_energy > plan[:charge_per_use][:used_energy_classification][:first]
 
 					if plan[:charge_per_use][:used_energy_classification][:third].present?
 						if @monthly_energy > plan[:charge_per_use][:used_energy_classification][:first] && @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:second]
@@ -38,44 +45,29 @@ class Simulator
 						elsif @monthly_energy > plan[:charge_per_use][:used_energy_classification][:second] && @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:third]
 							second_price = ((plan[:charge_per_use][:used_energy_classification][:second] - plan[:charge_per_use][:used_energy_classification][:first]) * plan[:charge_per_use][:charge][:second])
 							third_price = ((@monthly_energy - plan[:charge_per_use][:used_energy_classification][:second]) * plan[:charge_per_use][:charge][:third])
-						else
+						elsif @monthly_energy > plan[:charge_per_use][:used_energy_classification][:third]
 							second_price = ((plan[:charge_per_use][:used_energy_classification][:second] - plan[:charge_per_use][:used_energy_classification][:first]) * plan[:charge_per_use][:charge][:second])
 							third_price = ((plan[:charge_per_use][:used_energy_classification][:third] - plan[:charge_per_use][:used_energy_classification][:second]) * plan[:charge_per_use][:charge][:third])
+							fourth_price = ((@monthly_energy - plan[:charge_per_use][:used_energy_classification][:third]) * plan[:charge_per_use][:charge][:fourth])
+						else
+							low_price = (@monthly_energy * plan[:charge_per_use][:charge][:first]).floor
 						end
 					else
 						if @monthly_energy > plan[:charge_per_use][:used_energy_classification][:first] &&  @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:second]
 							second_price = ((@monthly_energy - plan[:charge_per_use][:used_energy_classification][:first]) * plan[:charge_per_use][:charge][:second])
-						else
+						elsif @monthly_energy > plan[:charge_per_use][:used_energy_classification][:second]
 							second_price = ((plan[:charge_per_use][:used_energy_classification][:second] - plan[:charge_per_use][:used_energy_classification][:first]) * plan[:charge_per_use][:charge][:second])
 							third_price = ((@monthly_energy - plan[:charge_per_use][:used_energy_classification][:second]) * plan[:charge_per_use][:charge][:third])
+						else
+							low_price = (@monthly_energy * plan[:charge_per_use][:charge][:first]).floor
 						end
 					end
+					price = (base_price + low_price + first_price + second_price + third_price + fourth_price).floor
+				else
+					price = (@monthly_energy * plan[:charge_per_use][:charge][:first]).floor
 				end
 
-
-				case
-				when plan[:supplier] == '東京電力', plan[:supplier] == '東京ガス' then
-					if @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:first]
-						plan[:price] = (plan[:basic_charge][@ampere] + @monthly_energy * plan[:charge_per_use][:charge][:first]).floor
-					elsif @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:second]
-						plan[:price] = (base_price + first_price + second_price).floor
-					else
-						plan[:price] = (base_price + first_price + second_price + third_price).floor
-					end
-				when plan[:supplier] == 'Looop' then
-					plan[:price] = (plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])).floor
-				when plan[:supplier] == 'JXTG' then
-					if @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:first]
-						plan[:price] = (plan[:basic_charge][@ampere] + (@monthly_energy * plan[:charge_per_use][:charge][:first])).floor
-					elsif @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:second]
-						plan[:price] = (base_price + first_price + second_price).floor
-					elsif @monthly_energy <= plan[:charge_per_use][:used_energy_classification][:third]
-						plan[:price] = (base_price + first_price + second_price + third_price).floor
-					else
-						fourth_price = ((@monthly_energy - plan[:charge_per_use][:used_energy_classification][:third]) * plan[:charge_per_use][:charge][:fourth])
-						plan[:price] = (base_price + first_price + second_price + third_price + fourth_price).floor
-					end
-				end
+				plan[:price] = price
 
 				monthly_charge = {
 					supplier: plan[:supplier],

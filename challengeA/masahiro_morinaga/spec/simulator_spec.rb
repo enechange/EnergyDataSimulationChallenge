@@ -252,7 +252,7 @@ RSpec.describe Simulator do
 					{:supplier => "東京電力", :plan => "従量電灯B", :price => 4101},
 					{:supplier => "Looop", :plan => "おうちプラン", :price => 3168},
 					{:supplier => "東京ガス", :plan => "ずっとも電気1", :price => 4556},
-					{:supplier => "JXTG", :plan => "従量電灯B たっぷりプラン", :price => 4102}
+					{:supplier => "JXTG", :plan => "従量電灯B たっぷりプラン", :price => 4101}
 				)
 			end
 			it '140kwまでの電気使用量' do
