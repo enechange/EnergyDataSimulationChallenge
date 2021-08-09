@@ -187,5 +187,62 @@ RSpec.describe Simulator do
 				)
 			end
 		end
+
+		context "契約アンペア数が50A" do
+			it '120kwまでの電気使用量' do
+				simulator = Simulator.new(50, 120)
+				expect(simulator.simulate).to  contain_exactly(
+					[{:supplier => "東京電力", :plan => "従量電灯B", :price => 3815}],
+					[{:supplier => "Looop", :plan => "おうちプラン", :price => 3168}],
+					[{:supplier => "東京ガス", :plan => "ずっとも電気1", :price => 4270}],
+					[{:supplier => "JXTG", :plan => "従量電灯B たっぷりプラン", :price => 3815}]
+				)
+			end
+			it '140kwまでの電気使用量' do
+				simulator = Simulator.new(50, 140)
+				expect(simulator.simulate).to  contain_exactly(
+					[{:supplier => "東京電力", :plan => "従量電灯B", :price => 4345}],
+					[{:supplier => "Looop", :plan => "おうちプラン", :price => 3696}],
+					[{:supplier => "東京ガス", :plan => "ずっとも電気1", :price => 4743}],
+					[{:supplier => "JXTG", :plan => "従量電灯B たっぷりプラン", :price => 4345}]
+				)
+			end
+			it '300kwまでの電気使用量' do
+				simulator = Simulator.new(50, 300)
+				expect(simulator.simulate).to  contain_exactly(
+					[{:supplier => "東京電力", :plan => "従量電灯B", :price => 8582}],
+					[{:supplier => "Looop", :plan => "おうちプラン", :price => 7920}],
+					[{:supplier => "東京ガス", :plan => "ずっとも電気1", :price => 8564}],
+					[{:supplier => "JXTG", :plan => "従量電灯B たっぷりプラン", :price => 8582}]
+				)
+			end
+			it '350kwまでの電気使用量' do
+				simulator = Simulator.new(50, 350)
+				expect(simulator.simulate).to  contain_exactly(
+					[{:supplier => "東京電力", :plan => "従量電灯B", :price => 10110}],
+					[{:supplier => "Looop", :plan => "おうちプラン", :price => 9240}],
+					[{:supplier => "東京ガス", :plan => "ずっとも電気1", :price => 9758}],
+					[{:supplier => "JXTG", :plan => "従量電灯B たっぷりプラン", :price => 9836}]
+				)
+			end
+			it '600kwまでの電気使用量' do
+				simulator = Simulator.new(50, 600)
+				expect(simulator.simulate).to  contain_exactly(
+					[{:supplier => "東京電力", :plan => "従量電灯B", :price => 17753}],
+					[{:supplier => "Looop", :plan => "おうちプラン", :price => 15840}],
+					[{:supplier => "東京ガス", :plan => "ずっとも電気1", :price => 16361}],
+					[{:supplier => "JXTG", :plan => "従量電灯B たっぷりプラン", :price => 16106}]
+				)
+			end
+			it '600kw以上の電気使用量' do
+				simulator = Simulator.new(50, 700)
+				expect(simulator.simulate).to  contain_exactly(
+					[{:supplier => "東京電力", :plan => "従量電灯B", :price => 20810}],
+					[{:supplier => "Looop", :plan => "おうちプラン", :price => 18480}],
+					[{:supplier => "東京ガス", :plan => "ずっとも電気1", :price => 19002}],
+					[{:supplier => "JXTG", :plan => "従量電灯B たっぷりプラン", :price => 18721}]
+				)
+			end
+		end
 	end
 end
