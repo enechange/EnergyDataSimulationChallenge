@@ -74,7 +74,6 @@ class Simulator
 					plan: plan[:plan],
 					price: plan[:price]
 				}
-				
 
 				monthly_charge_list.append(monthly_charge)
 			end
