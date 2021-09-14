@@ -9,7 +9,7 @@ class Simulator
   def initialize(ampere, usage)
     @ampere = ampere
     @usage = usage
-    File.open("plans.json") do |f|
+    File.open("../data/plans.json") do |f|
       @plans = JSON.load(f)
     end
   end
