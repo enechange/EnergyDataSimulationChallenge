@@ -6,6 +6,8 @@ require 'json'
 class Simulator
   attr_accessor :ampere, :usage, :plans
 
+  TAX_RATE = 0.1
+
   def initialize(ampere, usage)
     @ampere = ampere
     @usage = usage
@@ -15,12 +17,10 @@ class Simulator
   end
 
   def simulate
-    @plans['suppliers'].map do |plan|
-      {
-        provider_name: plan['provider_name'],
-        plan_name: plan['plan_name'],
-        price: plan.price(@ampere, @usage)
-      }
+    @plans['suppliers'].map do |_plan|
+      Plan.new(
+        _plan['provider_name'], _plan['plan_name'], _plan['basic_price'], _plan['additional_price']
+      ).display(@ampere, @usage)
     end
   end
 end
