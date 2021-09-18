@@ -36,7 +36,8 @@ class Plan
   end
 
   def price_with_tax(ampere, usage)
-    price(ampere, usage) + (price(ampere, usage) * Simulator::TAX_RATE)
+    # 有効桁数は単価表に合わせ、小数点以下2桁とする
+    price(ampere, usage) + (price(ampere, usage) * Simulator::TAX_RATE).round(2)
   end
 
   def display(ampere, usage)
