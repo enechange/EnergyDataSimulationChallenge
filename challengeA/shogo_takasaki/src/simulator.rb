@@ -4,7 +4,7 @@ require 'json'
 
 # Simulator for electric usage
 class Simulator
-  attr_accessor :ampere, :usage, :plans
+  attr_reader :ampere, :usage, :plans
 
   TAX_RATE = 0.1
 
@@ -18,9 +18,7 @@ class Simulator
 
   def simulate
     @plans['suppliers'].map do |_plan|
-      Plan.new(
-        _plan['provider_name'], _plan['plan_name'], _plan['basic_price'], _plan['additional_price']
-      ).display(@ampere, @usage)
+      Plan.new(_plan).display(@ampere, @usage)
     end
   end
 end
