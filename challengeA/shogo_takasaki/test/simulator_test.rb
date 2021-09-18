@@ -31,7 +31,7 @@ class SimulatorTest < Minitest::Test
       {
         provider_name: "JXTGでんき",
         plan_name: "従量電灯B たっぷりプラン",
-        :price=>12923.68
+        price: 12923.68
       }
     ]
     assert_equal result, @simulator.simulate
