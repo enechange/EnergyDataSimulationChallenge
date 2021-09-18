@@ -11,14 +11,14 @@ class Simulator
   def initialize(ampere, usage)
     @ampere = ampere
     @usage = usage
-    File.open("../data/plans.json") do |f|
+    File.open('../data/plans.json') do |f|
       @plans = JSON.load(f)
     end
   end
 
   def simulate
-    @plans['suppliers'].map do |_plan|
-      Plan.new(_plan).display(@ampere, @usage)
+    @plans['suppliers'].map do |plan|
+      Plan.new(plan).display(@ampere, @usage)
     end
   end
 end
