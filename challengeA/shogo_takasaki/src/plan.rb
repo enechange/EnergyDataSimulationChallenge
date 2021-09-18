@@ -2,7 +2,7 @@
 
 # display plan info
 class Plan
-  attr_reader :provider_name, :plan_name, :basic_price, :additional_price
+  attr_reader :provider_name, :plan_name, :basic_price_list, :additional_price_list
 
   module Message
     NO_BASIC_PRICE = '基本料金設定無し'
@@ -12,16 +12,16 @@ class Plan
   def initialize(plan)
     @provider_name = plan['provider_name']
     @plan_name = plan['plan_name']
-    @basic_price = plan['basic_price']
-    @additional_price = plan['additional_price']
+    @basic_price_list = plan['basic_price']
+    @additional_price_list = plan['additional_price']
   end
 
   def basic_price(ampere)
-    @basic_price[ampere.to_s] or raise Message::NO_BASIC_PRICE
+    @basic_price_list[ampere.to_s] or raise Message::NO_BASIC_PRICE
   end
 
   def unit_price(usage)
-    @additional_price.each do |_price|
+    @additional_price_list.each do |_price|
       return _price[1] if usage <= _price[0].to_i
     end
     raise Message::NO_UNIT_PRICE
@@ -35,11 +35,15 @@ class Plan
     basic_price(ampere) + additional_price(usage)
   end
 
+  def price_with_tax(ampere, usage)
+    price(ampere, usage) + (price(ampere, usage) * Simulator::TAX_RATE)
+  end
+
   def display(ampere, usage)
     {
       provider_name: provider_name,
       plan_name: plan_name,
-      price: price(ampere, usage)
+      price: price_with_tax(ampere, usage)
     }
   end
 end
