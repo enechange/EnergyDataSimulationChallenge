@@ -16,7 +16,9 @@ class Plan
     @additional_price_list = plan['additional_price']
   end
 
-  def basic_price(ampere)
+  def basic_price(ampere, usage)
+    return @basic_price_list[ampere.to_s] / 2 if usage.zero?
+
     @basic_price_list[ampere.to_s] or raise Message::NO_BASIC_PRICE
   end
 
@@ -32,7 +34,7 @@ class Plan
   end
 
   def price(ampere, usage)
-    basic_price(ampere) + additional_price(usage)
+    basic_price(ampere, usage) + additional_price(usage)
   end
 
   def price_with_tax(ampere, usage)

@@ -18,43 +18,46 @@ class PlanTest < Minitest::Test
   end
 
   def test_tokyo_energy_basic_price
-    assert_equal 286, @tokyo_energy.basic_price(10)
-    assert_equal 429, @tokyo_energy.basic_price(15)
-    assert_equal 572, @tokyo_energy.basic_price(20)
-    assert_equal 858, @tokyo_energy.basic_price(30)
-    assert_equal 1144, @tokyo_energy.basic_price(40)
-    assert_equal 1430, @tokyo_energy.basic_price(50)
-    assert_equal 1716, @tokyo_energy.basic_price(60)
-    e = assert_raises RuntimeError do @tokyo_energy.basic_price(61) end
+    assert_equal 143, @tokyo_energy.basic_price(10, 0)
+    assert_equal 286, @tokyo_energy.basic_price(10, 100)
+    assert_equal 429, @tokyo_energy.basic_price(15, 100)
+    assert_equal 572, @tokyo_energy.basic_price(20, 100)
+    assert_equal 858, @tokyo_energy.basic_price(30, 100)
+    assert_equal 1144, @tokyo_energy.basic_price(40, 100)
+    assert_equal 1430, @tokyo_energy.basic_price(50, 100)
+    assert_equal 1716, @tokyo_energy.basic_price(60, 100)
+    e = assert_raises RuntimeError do @tokyo_energy.basic_price(61, 100) end
     assert_equal Plan::Message::NO_BASIC_PRICE, e.message
   end
 
   def test_loops_basic_price
-    assert_equal 0, @looop.basic_price(10)
-    assert_equal 0, @looop.basic_price(20)
-    assert_equal 0, @looop.basic_price(30)
-    assert_equal 0, @looop.basic_price(40)
-    assert_equal 0, @looop.basic_price(50)
-    assert_equal 0, @looop.basic_price(60)
-    e = assert_raises RuntimeError do @looop.basic_price(61) end
+    assert_equal 0, @looop.basic_price(10, 100)
+    assert_equal 0, @looop.basic_price(20, 100)
+    assert_equal 0, @looop.basic_price(30, 100)
+    assert_equal 0, @looop.basic_price(40, 100)
+    assert_equal 0, @looop.basic_price(50, 100)
+    assert_equal 0, @looop.basic_price(60, 100)
+    e = assert_raises RuntimeError do @looop.basic_price(61, 100) end
     assert_equal Plan::Message::NO_BASIC_PRICE, e.message
   end
 
   def test_tokyo_gas_basic_price
-    assert_equal 858, @tokyo_gas.basic_price(30)
-    assert_equal 1144, @tokyo_gas.basic_price(40)
-    assert_equal 1430, @tokyo_gas.basic_price(50)
-    assert_equal 1716, @tokyo_gas.basic_price(60)
-    e = assert_raises RuntimeError do @tokyo_gas.basic_price(20) end
+    assert_equal 429, @tokyo_gas.basic_price(30, 0)
+    assert_equal 858, @tokyo_gas.basic_price(30, 100)
+    assert_equal 1144, @tokyo_gas.basic_price(40, 100)
+    assert_equal 1430, @tokyo_gas.basic_price(50, 100)
+    assert_equal 1716, @tokyo_gas.basic_price(60, 100)
+    e = assert_raises RuntimeError do @tokyo_gas.basic_price(20, 100) end
     assert_equal Plan::Message::NO_BASIC_PRICE, e.message
   end
 
   def test_jxtg_basic_price
-    assert_equal 858, @jxtg.basic_price(30)
-    assert_equal 1144, @jxtg.basic_price(40)
-    assert_equal 1430, @jxtg.basic_price(50)
-    assert_equal 1716.80, @jxtg.basic_price(60)
-    e = assert_raises RuntimeError do @jxtg.basic_price(20) end
+    assert_equal 429, @jxtg.basic_price(30, 0)
+    assert_equal 858, @jxtg.basic_price(30, 100)
+    assert_equal 1144, @jxtg.basic_price(40, 100)
+    assert_equal 1430, @jxtg.basic_price(50, 100)
+    assert_equal 1716.80, @jxtg.basic_price(60, 100)
+    e = assert_raises RuntimeError do @jxtg.basic_price(20, 100) end
     assert_equal Plan::Message::NO_BASIC_PRICE, e.message
   end
 
@@ -117,21 +120,21 @@ class PlanTest < Minitest::Test
   end
 
   def test_price
-    assert_equal @tokyo_energy.basic_price(10) + @tokyo_energy.additional_price(0), @tokyo_energy.price(10, 0)
-    assert_equal @tokyo_energy.basic_price(15) + @tokyo_energy.additional_price(119), @tokyo_energy.price(15, 119)
-    assert_equal @tokyo_energy.basic_price(20) + @tokyo_energy.additional_price(120), @tokyo_energy.price(20, 120)
-    assert_equal @tokyo_energy.basic_price(30) + @tokyo_energy.additional_price(121), @tokyo_energy.price(30, 121)
-    assert_equal @tokyo_energy.basic_price(40) + @tokyo_energy.additional_price(300), @tokyo_energy.price(40, 300)
-    assert_equal @tokyo_energy.basic_price(50) + @tokyo_energy.additional_price(301), @tokyo_energy.price(50, 301)
-    assert_equal @tokyo_energy.basic_price(60) + @tokyo_energy.additional_price(400), @tokyo_energy.price(60, 400)
+    assert_equal @tokyo_energy.basic_price(10, 0) + @tokyo_energy.additional_price(0), @tokyo_energy.price(10, 0)
+    assert_equal @tokyo_energy.basic_price(15, 119) + @tokyo_energy.additional_price(119), @tokyo_energy.price(15, 119)
+    assert_equal @tokyo_energy.basic_price(20, 120) + @tokyo_energy.additional_price(120), @tokyo_energy.price(20, 120)
+    assert_equal @tokyo_energy.basic_price(30, 121) + @tokyo_energy.additional_price(121), @tokyo_energy.price(30, 121)
+    assert_equal @tokyo_energy.basic_price(40, 300) + @tokyo_energy.additional_price(300), @tokyo_energy.price(40, 300)
+    assert_equal @tokyo_energy.basic_price(50, 301) + @tokyo_energy.additional_price(301), @tokyo_energy.price(50, 301)
+    assert_equal @tokyo_energy.basic_price(60, 400) + @tokyo_energy.additional_price(400), @tokyo_energy.price(60, 400)
 
-    assert_equal @jxtg.basic_price(30) + @jxtg.additional_price(0), @jxtg.price(30, 0)
-    assert_equal @jxtg.basic_price(30) + @jxtg.additional_price(120), @jxtg.price(30, 120)
-    assert_equal @jxtg.basic_price(40) + @jxtg.additional_price(121), @jxtg.price(40, 121)
-    assert_equal @jxtg.basic_price(40) + @jxtg.additional_price(300), @jxtg.price(40, 300)
-    assert_equal @jxtg.basic_price(50) + @jxtg.additional_price(301), @jxtg.price(50, 301)
-    assert_equal @jxtg.basic_price(60) + @jxtg.additional_price(600), @jxtg.price(60, 600)
-    assert_equal @jxtg.basic_price(60) + @jxtg.additional_price(601), @jxtg.price(60, 601)
+    assert_equal @jxtg.basic_price(30, 0) + @jxtg.additional_price(0), @jxtg.price(30, 0)
+    assert_equal @jxtg.basic_price(30, 120) + @jxtg.additional_price(120), @jxtg.price(30, 120)
+    assert_equal @jxtg.basic_price(40, 121) + @jxtg.additional_price(121), @jxtg.price(40, 121)
+    assert_equal @jxtg.basic_price(40, 300) + @jxtg.additional_price(300), @jxtg.price(40, 300)
+    assert_equal @jxtg.basic_price(50, 301) + @jxtg.additional_price(301), @jxtg.price(50, 301)
+    assert_equal @jxtg.basic_price(60, 600) + @jxtg.additional_price(600), @jxtg.price(60, 600)
+    assert_equal @jxtg.basic_price(60, 601) + @jxtg.additional_price(601), @jxtg.price(60, 601)
   end
 
   def test_price_with_tax
