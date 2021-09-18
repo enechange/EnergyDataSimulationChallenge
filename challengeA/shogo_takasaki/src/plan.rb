@@ -16,23 +16,23 @@ class Plan
     @additional_price = plan['additional_price']
   end
 
-  def price(ampere, usage)
-    basic_price(ampere) + additional_price(usage)
-  end
-
   def basic_price(ampere)
-    @basic_price[ampere.to_s] || Message::NO_BASIC_PRICE
-  end
-
-  def additional_price(usage)
-    unit_price(usage) * usage
+    @basic_price[ampere.to_s] or raise Message::NO_BASIC_PRICE
   end
 
   def unit_price(usage)
     @additional_price.each do |_price|
       return _price[1] if usage <= _price[0].to_i
     end
-    Message::NO_UNIT_PRICE
+    raise Message::NO_UNIT_PRICE
+  end
+
+  def additional_price(usage)
+    unit_price(usage) * usage
+  end
+
+  def price(ampere, usage)
+    basic_price(ampere) + additional_price(usage)
   end
 
   def display(ampere, usage)
