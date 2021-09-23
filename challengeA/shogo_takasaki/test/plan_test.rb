@@ -28,6 +28,8 @@ class PlanTest < Minitest::Test
     assert_equal 1716, @tokyo_energy.basic_price(60, 100)
     e = assert_raises RuntimeError do @tokyo_energy.basic_price(61, 100) end
     assert_equal Plan::Message::NO_BASIC_PRICE, e.message
+    e = assert_raises RuntimeError do @tokyo_energy.basic_price(61, 0) end
+    assert_equal Plan::Message::NO_BASIC_PRICE, e.message
   end
 
   def test_loops_basic_price

@@ -17,9 +17,10 @@ class Plan
   end
 
   def basic_price(ampere, usage)
+    raise Message::NO_BASIC_PRICE if @basic_price_list[ampere.to_s].nil?
     return @basic_price_list[ampere.to_s] / 2 if usage.zero?
 
-    @basic_price_list[ampere.to_s] or raise Message::NO_BASIC_PRICE
+    @basic_price_list[ampere.to_s]
   end
 
   def unit_price(usage)
