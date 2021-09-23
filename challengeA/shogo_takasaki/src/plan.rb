@@ -24,8 +24,8 @@ class Plan
   end
 
   def unit_price(usage)
-    @additional_price_list.each do |_price|
-      return _price[1] if usage <= _price[0].to_i
+    @additional_price_list.sort.reverse.to_h.each do |_price|
+      return _price[1] if usage >= _price[0].to_i
     end
     raise Message::NO_UNIT_PRICE
   end
@@ -39,7 +39,7 @@ class Plan
   end
 
   def price_with_tax(ampere, usage)
-    price(ampere, usage) + (price(ampere, usage) * Simulator::TAX_RATE).to_i
+    (price(ampere, usage) + (price(ampere, usage) * Simulator::TAX_RATE)).to_i
   end
 
   def display(ampere, usage)
