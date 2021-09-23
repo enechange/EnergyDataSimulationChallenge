@@ -140,8 +140,8 @@ class PlanTest < Minitest::Test
   end
 
   def test_price_with_tax
-    assert_equal @tokyo_energy.price(60, 400) + (@tokyo_energy.price(60, 400) * Simulator::TAX_RATE), @tokyo_energy.price_with_tax(60, 400)
-    assert_equal @jxtg.price(30, 0) + (@jxtg.price(30, 0) * Simulator::TAX_RATE), @jxtg.price_with_tax(30, 0)
+    assert_equal (@tokyo_energy.price(60, 400) + (@tokyo_energy.price(60, 400) * Simulator::TAX_RATE)).to_i, @tokyo_energy.price_with_tax(60, 400)
+    assert_equal (@jxtg.price(30, 0) + (@jxtg.price(30, 0) * Simulator::TAX_RATE)).to_i, @jxtg.price_with_tax(30, 0)
   end
 
   def test_display
