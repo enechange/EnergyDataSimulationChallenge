@@ -2,7 +2,7 @@
 
 # display plan info
 class Plan
-  attr_reader :provider_name, :plan_name, :basic_price_list, :additional_price_list
+  attr_reader :provider_name, :plan_name, :basic_price_list, :usage_price_list
 
   module Message
     NO_BASIC_PRICE = '基本料金設定無し'
@@ -13,7 +13,7 @@ class Plan
     @provider_name = plan['provider_name']
     @plan_name = plan['plan_name']
     @basic_price_list = plan['basic_price']
-    @additional_price_list = plan['additional_price']
+    @usage_price_list = plan['usage_price']
   end
 
   def basic_price(ampere, usage)
@@ -24,18 +24,18 @@ class Plan
   end
 
   def unit_price(usage)
-    result = @additional_price_list.select { |k, v| k.to_i <= usage }.max.last
+    result = @usage_price_list.select { |k, v| k.to_i <= usage }.max.last
     return result unless result.nil?
 
     raise Message::NO_UNIT_PRICE
   end
 
-  def additional_price(usage)
+  def usage_price(usage)
     unit_price(usage) * usage
   end
 
   def price(ampere, usage)
-    basic_price(ampere, usage) + additional_price(usage)
+    basic_price(ampere, usage) + usage_price(usage)
   end
 
   def price_with_tax(ampere, usage)
