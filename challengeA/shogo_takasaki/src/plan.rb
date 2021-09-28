@@ -24,9 +24,9 @@ class Plan
   end
 
   def unit_price(usage)
-    @additional_price_list.sort.reverse.to_h.each do |_price|
-      return _price[1] if usage >= _price[0].to_i
-    end
+    result = @additional_price_list.select { |k, v| k.to_i <= usage }.max.last
+    return result unless result.nil?
+
     raise Message::NO_UNIT_PRICE
   end
 
