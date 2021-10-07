@@ -17,9 +17,22 @@ class Simulator
   def suggest_plan
     @suggest_plans = []
     plan_list = CSVPlan.create_list_from_csv.map(&:convert_to_plan)
-    @suggest_plans = plan_list.map{ |plan| plan.simulate_charge(@ampere, @monthly_amount_kwh) }
+    @suggest_plans = plan_list.map{ |plan| simulate_charge(plan) }
+  end
+
+  def simulate_charge(plan)
+    basic_charge = plan.basic_charge(@ampere)
+    return if basic_charge.nil? ## 対応するアンペアなし
+
+    price = basic_charge + plan.usage_charge(@monthly_amount_kwh)
+    {
+      "provider_name": plan.provider_name,
+      "plan_name": plan.plan_name,
+      "price": price
+    }
   end
 end
 
-a = Simulator.new(40, 300)
+## 動作確認用
+a = Simulator.new(40, 400)
 p a.simulate

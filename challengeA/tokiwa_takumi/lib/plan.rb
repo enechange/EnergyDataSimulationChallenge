@@ -8,20 +8,6 @@ class Plan
     @usage_charge_list = usage_charge_list
   end
 
-  def simulate_charge(ampere, monthly_amount_kwh)
-    basic_charge = basic_charge(ampere)
-    return if basic_charge.nil? ## 対応するアンペアなし
-
-    price = basic_charge + usage_charge(monthly_amount_kwh)
-    {
-      "provider_name": @provider_name,
-      "plan_name": @plan_name,
-      "price": price
-    }
-  end
-
-  private
-
   def basic_charge(ampere)
     basic_charge_plan = basic_charge_list.find{ |c| c["ampere"].to_i == ampere }
     basic_charge_plan["basic_charge"].to_i unless basic_charge_plan.nil?
