@@ -23,13 +23,13 @@ class CSVPlan
   class << self
     def create_list_from_csv
       plans = []
-      plans_dir = Dir.glob('../csv/*')
+      plans_dir = Dir.glob('../csv/*', base: __dir__)
       plans_dir.each do |plan|
-        info = CSV.table(File.expand_path("./#{plan}/info.csv"))
+        info = CSV.table(File.expand_path("./#{plan}/info.csv", __dir__))
         plans << CSVPlan.new(info[:provider_name][0],
                              info[:plan_name][0],
-                             CSV.read(File.expand_path("./#{plan}/basic_charge.csv"), headers: true).map(&:to_hash),
-                             CSV.read(File.expand_path("./#{plan}/usage_charge.csv"), headers: true).map(&:to_hash)
+                             CSV.read(File.expand_path("./#{plan}/basic_charge.csv", __dir__), headers: true).map(&:to_hash),
+                             CSV.read(File.expand_path("./#{plan}/usage_charge.csv", __dir__), headers: true).map(&:to_hash)
         )
       end
       plans
