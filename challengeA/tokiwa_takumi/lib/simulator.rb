@@ -32,7 +32,3 @@ class Simulator
     }
   end
 end
-
-## 動作確認用
-a = Simulator.new(40, 400)
-p a.simulate
