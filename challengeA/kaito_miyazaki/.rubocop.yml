@@ -1,0 +1,7 @@
+inherit_from: .rubocop_todo.yml
+
+Metrics/AbcSize:
+  Max: 23
+
+Metrics/MethodLength:
+  Max: 13
