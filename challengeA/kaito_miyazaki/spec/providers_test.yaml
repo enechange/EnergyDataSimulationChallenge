@@ -1,0 +1,57 @@
+---
+東京電力エナジーパートナー: 
+- plan_name: "従量電灯B"
+  charge_rules:
+    basic_charge_rule: 
+      10: 286
+      15: 429
+      20: 572
+      30: 858
+      40: 1144
+      50: 1430
+      60: 1716
+    usage_charge_rule: 
+      120: 19.88
+      300: 26.48
+      .inf: 30.57
+
+Looopでんき: 
+- plan_name: "おうちプラン"
+  charge_rules:
+    basic_charge_rule: 
+      10: 0
+      15: 0
+      20: 0
+      30: 0
+      40: 0
+      50: 0
+      60: 0
+    usage_charge_rule: 
+      .inf: 26.4
+
+東京ガス: 
+- plan_name: "ずっとも電気1"
+  charge_rules:
+    basic_charge_rule: 
+      30: 858
+      40: 1144
+      50: 1430
+      60: 1716
+    usage_charge_rule: 
+      140: 23.67
+      350: 23.88
+      .inf: 26.41
+
+JXTGでんき: 
+- plan_name: "従量電灯B たっぷりプラン"
+  charge_rules:
+    basic_charge_rule: 
+      30: 858
+      40: 1144
+      50: 1430
+      60: 1716.8
+    usage_charge_rule: 
+      120: 19.88
+      300: 26.48
+      600: 25.08
+      .inf: 26.15
