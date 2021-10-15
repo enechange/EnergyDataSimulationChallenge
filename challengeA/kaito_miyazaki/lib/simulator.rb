@@ -18,10 +18,10 @@ class Simulator
     @providers << Provider.new(provider_name, plans)
   end
 
-  # 契約アンペア数（@amp），使用量（@kwh）をインスタンス変数として持つ
+  # @conditions：ユーザー側の条件（hash）
+  # 例：{ amp: 10, kwh: 100 }（契約アンペア数[A]が10，使用量[kWh]が100の場合）
   def initialize(amp, kwh)
-    @amp = amp
-    @kwh = kwh
+    @conditions = { amp: amp, kwh: kwh }
   end
 
   # 契約アンペア数，使用量から，各プランについて料金を計算し，
@@ -30,7 +30,7 @@ class Simulator
     results = []
     self.class.providers.each do |provider|
       provider.plans.each do |plan|
-        price = plan.price(@amp, @kwh)
+        price = plan.price(@conditions)
         # 料金が計算できないプランについては，配列に含めない
         results << { provider_name: provider.name, plan_name: plan.name, price: price } unless price.nan?
       end

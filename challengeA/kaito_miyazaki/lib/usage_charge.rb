@@ -4,9 +4,9 @@ require_relative 'charge'
 
 # 従量料金クラス（料金クラスを継承）
 class UsageCharge < Charge
-  # 料金の計算用メソッド
-  # 引数：使用量（整数）
-  def calculate(kwh)
+  def calculate(conditions)
+    # 使用量
+    kwh = conditions[:kwh]
     result = 0
     # 使用量が正でなかった場合，0を返す
     return result if kwh <= 0

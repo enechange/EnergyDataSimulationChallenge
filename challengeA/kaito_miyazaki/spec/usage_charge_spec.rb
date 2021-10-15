@@ -4,7 +4,7 @@ require './lib/usage_charge'
 
 RSpec.describe UsageCharge do
   describe '#calculate' do
-    subject { usage_charge.calculate(kwh) }
+    subject { usage_charge.calculate({ kwh: kwh }) }
 
     context '東京電力エナジーパートナーの従量電灯Bプランの場合' do
       let(:usage_charge) { described_class.new(PROVIDERS['東京電力エナジーパートナー'][0]['charge_rules']['usage_charge_rule']) }

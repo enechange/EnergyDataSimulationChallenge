@@ -4,7 +4,7 @@ require './lib/plan'
 
 RSpec.describe Plan do
   describe '#price' do
-    subject { plan.price(amp, kwh) }
+    subject { plan.price({ amp: amp, kwh: kwh }) }
 
     context '東京電力エナジーパートナーの従量電灯Bプランの場合' do
       let(:plan) { described_class.new('東京電力エナジーパートナー', PROVIDERS['東京電力エナジーパートナー'][0]['charge_rules']) }
