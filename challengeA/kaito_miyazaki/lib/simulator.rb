@@ -9,13 +9,12 @@ PROVIDERS = open('./providers.yaml', 'r') { |f| YAML.safe_load(f) }
 # シミュレータークラス
 class Simulator
   # クラスインスタンス変数@providersの定義
-  @providers = []
-  class << self
-    attr_reader :providers
+  @providers = PROVIDERS.each_with_object([]) do |(provider_name, plans), array|
+    array << Provider.new(provider_name, plans)
   end
 
-  PROVIDERS.each do |provider_name, plans|
-    @providers << Provider.new(provider_name, plans)
+  class << self
+    attr_reader :providers
   end
 
   # @conditions：ユーザー側の条件（hash）
@@ -27,14 +26,12 @@ class Simulator
   # 契約アンペア数，使用量から，各プランについて料金を計算し，
   # { provider_name: プロバイダー名, plan_name: プラン名, price: 料金 }の形式のhashを要素とする配列として返す
   def simulate
-    results = []
-    self.class.providers.each do |provider|
+    self.class.providers.each_with_object([]) do |provider, array|
       provider.plans.each do |plan|
         price = plan.price(@conditions)
         # 料金が計算できないプランについては，配列に含めない
-        results << { provider_name: provider.name, plan_name: plan.name, price: price } unless price.nan?
+        array << { provider_name: provider.name, plan_name: plan.name, price: price } unless price.nan?
       end
     end
-    results
   end
 end
