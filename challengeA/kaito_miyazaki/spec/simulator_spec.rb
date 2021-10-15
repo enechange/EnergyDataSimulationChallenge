@@ -10,11 +10,12 @@ RSpec.describe Simulator do
       subject { simulator.simulate }
 
       # 基本料金がNaNでないプランについてのhashは戻り値に含まれること
-      context '契約アンペア数が 30 かつ使用量が 100 の場合' do
+      context '契約アンペア数が 30 かつ使用量が 110 の場合' do
         let(:amp) { 30 }
-        let(:kwh) { 100 }
+        let(:kwh) { 110 }
         it {
-          is_expected.to include({ provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B', price: (858 + 100 * 19.88) })
+          is_expected.to include({ provider_name: '東京電力エナジーパートナー', plan_name: '従量電灯B',
+                                   price: (858 + 110 * 19.88).floor })
         }
       end
       # 基本料金がNaNであるプランについてのhashは戻り値に含まれないこと

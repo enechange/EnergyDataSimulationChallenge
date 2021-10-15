@@ -25,8 +25,13 @@ class Plan
   # conditions：ユーザー側の条件（hash）
   # 例：{ amp: 10, kwh: 100 }（契約アンペア数[A]が10，使用量[kWh]が100の場合）
   def price(conditions)
-    @charges.inject(0) do |sum, charge|
+    result = @charges.inject(0) do |sum, charge|
       sum + charge.calculate(conditions)
     end
+    # 基本料金が計算不可能であればNaNを返す
+    return Float::NAN if result.nan?
+
+    # 小数点以下を切り捨てる
+    result.floor
   end
 end

@@ -30,7 +30,7 @@ class Simulator
       provider.plans.each do |plan|
         price = plan.price(@conditions)
         # 料金が計算できないプランについては，配列に含めない
-        array << { provider_name: provider.name, plan_name: plan.name, price: price } unless price.nan?
+        array << { provider_name: provider.name, plan_name: plan.name, price: price } unless Float(price).nan?
       end
     end
   end
