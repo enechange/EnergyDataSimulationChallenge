@@ -29,7 +29,7 @@ class Plan
       sum + charge.calculate(conditions)
     end
     # 基本料金が計算不可能であればNaNを返す
-    return Float::NAN if result.nan?
+    return Float::NAN if Float(result).nan?
 
     # 小数点以下を切り捨てる
     result.floor
