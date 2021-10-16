@@ -1,0 +1,104 @@
+---
+# 以下のような構造のデータを定義
+# {
+#   "PROVIDER_NAME_A": [
+#     {
+#       "plan_name": "PLAN_NAME_A",
+#       "charge_rules": {
+#         "basic_charge_rule": {
+#           "10": 123,
+#           "20": 456,
+#           ...
+#         },
+#         "usage_charge_rule": {
+#           "100": 12,
+#           "200": 34,
+#           ...
+#         }
+#       }
+#     },
+#     {
+#       "plan_name": "PLAN_NAME_B",
+#       ...
+#     },
+#     ...
+#   ],
+#   "PROVIDER_NAME_B": [
+#     ...
+#   ],
+#   ...
+# }
+
+# basic_charge_ruleは基本料金の計算規則を表す
+# 例えば，以下は，契約アンペア数[A]が10であれば123円，20であれば456円，...という規則を表す
+# "basic_charge_rule": {
+#   "10": 123,
+#   "20": 456,
+#   ...
+# }
+
+# usage_charge_ruleは従量料金の計算規則を表す
+# 例えば，以下は，使用量[kWh]が最初の100まで12円，100をこえ200まで34円，...という規則を表す
+# この規則のもとで，使用量が140である場合，従量料金は，100 * 12 + 40 * 34で計算される
+# "usage_charge_rule": {
+#   "100": 12,
+#   "200": 34,
+#   ...
+# }
+
+東京電力エナジーパートナー: 
+- plan_name: "従量電灯B"
+  charge_rules:
+    basic_charge_rule: 
+      10: 286
+      15: 429
+      20: 572
+      30: 858
+      40: 1144
+      50: 1430
+      60: 1716
+    usage_charge_rule: 
+      120: 19.88
+      300: 26.48
+      .inf: 30.57
+
+Looopでんき: 
+- plan_name: "おうちプラン"
+  charge_rules:
+    basic_charge_rule: 
+      10: 0
+      15: 0
+      20: 0
+      30: 0
+      40: 0
+      50: 0
+      60: 0
+    usage_charge_rule: 
+      .inf: 26.4
+
+東京ガス: 
+- plan_name: "ずっとも電気1"
+  charge_rules:
+    basic_charge_rule: 
+      30: 858
+      40: 1144
+      50: 1430
+      60: 1716
+    usage_charge_rule: 
+      140: 23.67
+      350: 23.88
+      .inf: 26.41
+
+JXTGでんき: 
+- plan_name: "従量電灯B たっぷりプラン"
+  charge_rules:
+    basic_charge_rule: 
+      30: 858
+      40: 1144
+      50: 1430
+      60: 1716.8
+    usage_charge_rule: 
+      120: 19.88
+      300: 26.48
+      600: 25.08
+      .inf: 26.15
