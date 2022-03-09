@@ -20,6 +20,8 @@ class Simulator
   end
 
   def simulator
+    validate!
+
     puts Company::TokyoDenryoku.new(ampere:, watt:).simulate_list
     puts Company::LoopDenki.new(ampere:, watt:).simulate_list
     puts Company::TokyoGasu.new(ampere:, watt:).simulate_list

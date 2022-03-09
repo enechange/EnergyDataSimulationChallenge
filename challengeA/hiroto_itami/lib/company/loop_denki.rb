@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../calculator'
+require_relative '../simulator'
 
 class Company
   class LoopDenki
@@ -38,7 +39,7 @@ class Company
 
       def initialize
         @name = NAME
-        @basic_charge = (1..60).each_with_object({}) do |key, hash|
+        @basic_charge = Simulator::CONSTRUCTABLE_AMPERES.each_with_object({}) do |key, hash|
           hash.store(key, '0.00')
         end
         @electricity_charge = ELECTRICITY_CHARGE
