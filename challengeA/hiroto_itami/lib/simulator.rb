@@ -38,5 +38,3 @@ class Simulator
   end
 end
 # rubocop:enable Metrics/AbcSize
-
-Simulator.new(ampere: 10, watt: 100).simulator
