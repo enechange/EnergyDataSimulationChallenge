@@ -1,0 +1,7 @@
+Style/Documentation:
+  Enabled: false
+Style/AccessModifierDeclarations:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'

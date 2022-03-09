@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require_relative '../calculator'
 
 class Company
   class LoopDenki
-    NAME = "Loopでんき"
+    NAME = 'Loopでんき'
 
     include Calculator
 
@@ -19,13 +21,14 @@ class Company
         {
           provider_name: NAME,
           plan_name: plan.name,
-          price: calculate(ampere: ampere, watt: watt, basic_charge: plan.basic_charge,  electricity_charge: plan.electricity_charge)
+          price: calculate(ampere:, watt:, basic_charge: plan.basic_charge,
+                           electricity_charge: plan.electricity_charge)
         }
       end
     end
 
     class OuchiPlan
-      NAME = "おうちプラン"
+      NAME = 'おうちプラン'
 
       ELECTRICITY_CHARGE = {
         1.. => '26.40'
@@ -35,7 +38,9 @@ class Company
 
       def initialize
         @name = NAME
-        @basic_charge = (1..60).inject({}) { |hash, key| hash.store(key, '0.00'); hash }
+        @basic_charge = (1..60).each_with_object({}) do |key, hash|
+          hash.store(key, '0.00')
+        end
         @electricity_charge = ELECTRICITY_CHARGE
       end
     end

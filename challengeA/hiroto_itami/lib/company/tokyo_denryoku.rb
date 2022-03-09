@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require_relative '../calculator'
 
 class Company
   class TokyoDenryoku
-    NAME = "東京電力エナジーパートナー"
+    NAME = '東京電力エナジーパートナー'
 
     include Calculator
 
@@ -19,13 +21,14 @@ class Company
         {
           provider_name: NAME,
           plan_name: plan.name,
-          price: calculate(ampere: ampere, watt: watt, basic_charge: plan.basic_charge,  electricity_charge: plan.electricity_charge)
+          price: calculate(ampere:, watt:, basic_charge: plan.basic_charge,
+                           electricity_charge: plan.electricity_charge)
         }
       end
     end
 
     class JuuryouDentouB
-      NAME = "従量電灯B"
+      NAME = '従量電灯B'
 
       BASIC_CHARGE = {
         10 => '286.00',

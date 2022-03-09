@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require_relative '../calculator'
 
 class Company
   class JxtgDenki
-    NAME = "JXTGでんき"
+    NAME = 'JXTGでんき'
 
     include Calculator
 
@@ -19,13 +21,14 @@ class Company
         {
           provider_name: NAME,
           plan_name: plan.name,
-          price: calculate(ampere: ampere, watt: watt, basic_charge: plan.basic_charge,  electricity_charge: plan.electricity_charge)
+          price: calculate(ampere:, watt:, basic_charge: plan.basic_charge,
+                           electricity_charge: plan.electricity_charge)
         }
       end
     end
 
     class TappuriPlan
-      NAME = "たっぷりプラン"
+      NAME = 'たっぷりプラン'
 
       BASIC_CHARGE = {
         30 => '858.00',
