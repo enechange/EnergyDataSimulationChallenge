@@ -4,14 +4,14 @@ require_relative '../../../lib/company/tokyo_denryoku'
 
 RSpec.describe do
   describe '#simulate_list' do
-    subject { Company::TokyoDenryoku.new(ampere:, watt:).simulate_list }
+    subject { Company::TokyoDenryoku.new(ampere:, kwh:).simulate_list }
 
     context '契約可能なアンペア数の場合' do
       context '10A' do
         let(:ampere) { 10 }
 
         context '120kWh' do
-          let(:watt) { 120 }
+          let(:kwh) { 120 }
 
           it do
             # 基本料金: 286.00 + (120 * 19.88) = 2671.6
@@ -20,7 +20,7 @@ RSpec.describe do
         end
 
         context '121kWh' do
-          let(:watt) { 121 }
+          let(:kwh) { 121 }
 
           it do
             # 基本料金: 286.00 + (120 * 19.88) + (1 * 26.48) = 2698.08
@@ -29,7 +29,7 @@ RSpec.describe do
         end
 
         context '300kWh' do
-          let(:watt) { 300 }
+          let(:kwh) { 300 }
 
           it do
             # 基本料金: 286.00 + (120 * 19.88) + (180 * 26.48) = 7438
@@ -38,7 +38,7 @@ RSpec.describe do
         end
 
         context '301kWh' do
-          let(:watt) { 301 }
+          let(:kwh) { 301 }
 
           it do
             # 基本料金: 286.00 + (120 * 19.88) + (180 * 26.48) + (1 * 30.57) = 7468
@@ -47,7 +47,7 @@ RSpec.describe do
         end
 
         context '999_999_999_999kWh' do
-          let(:watt) { 999_999_999_999 }
+          let(:kwh) { 999_999_999_999 }
 
           it do
             # 基本料金: 286.00 + (120 * 19.88) + (180 * 26.48) + (999_999_999_699 * 30.57) = 30569999998236.43
@@ -58,7 +58,7 @@ RSpec.describe do
 
       context '15A, 400kWh' do
         let(:ampere) { 15 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 429.00 + (120 * 19.88) + (180 * 26.48) + (100 * 30.57) = 10638
@@ -68,7 +68,7 @@ RSpec.describe do
 
       context '20A, 400kWh' do
         let(:ampere) { 20 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 572.00 + (120 * 19.88) + (180 * 26.48) + (100 * 30.57) = 10781
@@ -78,7 +78,7 @@ RSpec.describe do
 
       context '30A, 400kWh' do
         let(:ampere) { 30 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 858.00 + (120 * 19.88) + (180 * 26.48) + (100 * 30.57) = 11067
@@ -88,7 +88,7 @@ RSpec.describe do
 
       context '40A, 400kWh' do
         let(:ampere) { 40 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 1144.00 + (120 * 19.88) + (180 * 26.48) + (100 * 30.57) = 11353
@@ -98,7 +98,7 @@ RSpec.describe do
 
       context '50A, 400kWh' do
         let(:ampere) { 50 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 1430.00 + (120 * 19.88) + (180 * 26.48) + (100 * 30.57) = 11639
@@ -108,7 +108,7 @@ RSpec.describe do
 
       context '60A, 400kWh' do
         let(:ampere) { 60 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 1716.00 + (120 * 19.88) + (180 * 26.48) + (100 * 30.57) = 11925

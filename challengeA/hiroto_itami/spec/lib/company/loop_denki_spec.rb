@@ -4,12 +4,12 @@ require_relative '../../../lib/company/loop_denki'
 
 RSpec.describe do
   describe '#simulate_list' do
-    subject { Company::LoopDenki.new(ampere:, watt:).simulate_list }
+    subject { Company::LoopDenki.new(ampere:, kwh:).simulate_list }
 
     context '契約可能なアンペア数の場合' do
       context '10A, 400kWh' do
         let(:ampere) { 10 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 0.00 + (400 * 26.40) = 10560
@@ -19,7 +19,7 @@ RSpec.describe do
 
       context '15A, 400kWh' do
         let(:ampere) { 15 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 0.00 + (400 * 26.40) = 10560
@@ -29,7 +29,7 @@ RSpec.describe do
 
       context '20A, 400kWh' do
         let(:ampere) { 20 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 0.00 + (400 * 26.40) = 10560
@@ -39,7 +39,7 @@ RSpec.describe do
 
       context '30A, 400kWh' do
         let(:ampere) { 30 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 0.00 + (400 * 26.40) = 10560
@@ -49,7 +49,7 @@ RSpec.describe do
 
       context '40A, 400kWh' do
         let(:ampere) { 40 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 0.00 + (400 * 26.40) = 10560
@@ -59,7 +59,7 @@ RSpec.describe do
 
       context '50A, 400kWh' do
         let(:ampere) { 50 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 0.00 + (400 * 26.40) = 10560
@@ -69,7 +69,7 @@ RSpec.describe do
 
       context '60A, 400kWh' do
         let(:ampere) { 60 }
-        let(:watt) { 400 }
+        let(:kwh) { 400 }
 
         it do
           # 基本料金: 0.00 + (400 * 26.40) = 10560

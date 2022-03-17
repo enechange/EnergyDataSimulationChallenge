@@ -8,11 +8,11 @@ class Company
 
     include Calculator
 
-    private attr_reader :ampere, :watt
+    private attr_reader :ampere, :kwh
 
-    def initialize(ampere:, watt:)
+    def initialize(ampere:, kwh:)
       @ampere = ampere
-      @watt   = watt
+      @kwh   = kwh
       @plan_list = [TappuriPlan.new]
     end
 
@@ -21,7 +21,7 @@ class Company
         {
           provider_name: NAME,
           plan_name: plan.name,
-          price: calculate(ampere:, watt:, basic_charge: plan.basic_charge,
+          price: calculate(ampere:, kwh:, basic_charge: plan.basic_charge,
                            electricity_charge: plan.electricity_charge)
         }
       end

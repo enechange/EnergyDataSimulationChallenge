@@ -4,11 +4,11 @@ require_relative '../../lib/simulator'
 
 RSpec.describe do
   describe '#simulator' do
-    subject { Simulator.new(ampere:, watt:).simulator }
+    subject { Simulator.new(ampere:, kwh:).simulator }
 
     context '入力値が正常系の場合' do
       let(:ampere) { 40 }
-      let(:watt) { 400 }
+      let(:kwh) { 400 }
 
       it '結果が出力されること' do
         result = <<~RESULT
@@ -26,7 +26,7 @@ RSpec.describe do
       describe 'ampere' do
         context '契約範囲外' do
           let(:ampere) { 1 }
-          let(:watt) { 400 }
+          let(:kwh) { 400 }
 
           it do
             expect { subject }.to output("エラーが発生しました。Simulator::InValidAmpereError\n").to_stdout
@@ -35,7 +35,7 @@ RSpec.describe do
 
         context '負の数' do
           let(:ampere) { -1 }
-          let(:watt) { 400 }
+          let(:kwh) { 400 }
 
           it do
             expect { subject }.to output("エラーが発生しました。Simulator::InValidAmpereError\n").to_stdout
@@ -44,7 +44,7 @@ RSpec.describe do
 
         context '文字列' do
           let(:ampere) { 'a' }
-          let(:watt) { 400 }
+          let(:kwh) { 400 }
 
           it do
             expect { subject }.to output("エラーが発生しました。Simulator::InValidAmpereError\n").to_stdout
@@ -52,22 +52,22 @@ RSpec.describe do
         end
       end
 
-      describe 'watt' do
+      describe 'kwh' do
         context '負の数' do
           let(:ampere) { 40 }
-          let(:watt) { -1 }
+          let(:kwh) { -1 }
 
           it do
-            expect { subject }.to output("エラーが発生しました。Simulator::InValidWattError\n").to_stdout
+            expect { subject }.to output("エラーが発生しました。Simulator::InValidKwhError\n").to_stdout
           end
         end
 
         context '文字列' do
           let(:ampere) { 40 }
-          let(:watt) { 'a' }
+          let(:kwh) { 'a' }
 
           it do
-            expect { subject }.to output("エラーが発生しました。Simulator::InValidWattError\n").to_stdout
+            expect { subject }.to output("エラーが発生しました。Simulator::InValidKwhError\n").to_stdout
           end
         end
       end
