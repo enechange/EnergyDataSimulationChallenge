@@ -34,7 +34,7 @@ class Simulator
 
   def validate!
     raise InValidAmpereError unless CONSTRUCTABLE_AMPERES.include?(ampere)
-    raise InValidKwhError if !kwh.is_a?(Integer) || !kwh.positive?
+    raise InValidKwhError if !kwh.is_a?(Integer) || (kwh != 0 && !kwh.positive?)
   end
 end
 # rubocop:enable Metrics/AbcSize
